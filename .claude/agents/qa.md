@@ -14,7 +14,8 @@ When the brief asks you to check a phase gate:
 2. For every deliverable, open the evidence file and confirm that it exists and does what the row claims. Do not trust the status column
 3. Run the gate's test as written. If it cannot be checked as written, say so and propose a checkable version
 4. After Phase 2, the latest rules audit for the phase must show zero violations. Check its date against the latest changes
-5. Write the result to `docs/reviews/<date>-gate-<n>.md`, with each criterion, its evidence and pass or fail
+5. Check consistency. Every decision the phase relied on must read the same in every doc that restates it (counts, examples, cross-references). Any mismatch fails the gate (L-002)
+6. Write the result to `docs/reviews/<date>-gate-<n>.md`, with each criterion, its evidence and pass or fail
 6. Your verdict is a recommendation. Only the user passes a gate
 
 ## Read first, every time

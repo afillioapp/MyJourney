@@ -11,7 +11,7 @@ Status values: `todo` · `in progress` · `in review` · `done` · `blocked`
 ## Where we are
 
 **Current phase:** 1 — Define (two deliverables left)
-**Next step:** Rules Rubric (rules-guardian), then Screen Inventory (ux)
+**Next step:** Rules Rubric (rules-guardian) and Screen Inventory (ux), running in parallel
 **Waiting on you:** the stack decision below, before Phase 3 can start
 
 ---
@@ -25,6 +25,7 @@ Status values: `todo` · `in progress` · `in review` · `done` · `blocked`
 | Age gating | You | todo | Can wait. Not needed before Phase 6 |
 
 **Gate:** passed 2026-10-25.
+**Retrospective:** done 2026-10-27. Six learnings, L-001 to L-006, in `Learnings/index.md`.
 
 ## Phase 1 — Define
 
@@ -32,8 +33,8 @@ Status values: `todo` · `in progress` · `in review` · `done` · `blocked`
 |---|---|---|---|
 | Data model | lead-tech | done | `Phase-1-Proposal.md` §2, approved 2026-10-25 |
 | Fixture design | fixture-designer | done | `Phase-1-Proposal.md` §3, approved 2026-10-25 |
-| Rules list as testable statements | rules-guardian | todo | Target: `Rules-Rubric.md`. Starts from `Phase-1-Proposal.md` §2.5 (11 data-layer checks); the banned list's screen-level rules are not yet written as checks |
-| Screen inventory | ux | todo | Target: `Screen-Inventory.md` |
+| Rules list as testable statements | rules-guardian | in progress | Target: `Rules-Rubric.md`. Starts from `Phase-1-Proposal.md` §2.5 (11 data-layer checks); the banned list's screen-level rules are not yet written as checks |
+| Screen inventory | ux | in progress | Target: `Screen-Inventory.md` |
 
 **Gate:** a developer can read the data model and the fixture design and know exactly what to build, with no questions left.
 
@@ -109,3 +110,5 @@ Can start once Phase 2 has passed.
 - 2026-10-25 — Phase 0 gate passed. Phase 1 data model and fixtures approved.
 - 2026-10-27 — Agent team and `/phase` workflow set up.
 - 2026-10-27 — Holding page (`site/index.html`) deployed to Vercel production at `myjourney-afillio.vercel.app`, at the user's request. It uses only lines already approved in `CLAUDE.md` and the README: no form, no tracking. It is a placeholder, not the Phase 5 site. Public access is pending a change to Vercel Authentication.
+- 2026-10-27 — Learner agent added. Phase 0 retrospective written (L-001 to L-006). The supervisor applied the process fixes to `CLAUDE.md`, the `phase` skill, rules-guardian, qa and developer. Product-doc fixes and commits are waiting on the user.
+- 2026-10-27 — Phase 1 started: Rules Rubric and Screen Inventory dispatched.

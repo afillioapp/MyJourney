@@ -18,6 +18,34 @@ Almost every sensible default in this category is something this product has del
 
 The approved data model and fixture design are in `docs/Phase-1-Proposal.md` (approved 2026-10-25). Build against it; do not redesign it.
 
+**When two docs disagree, do not pick.** `docs/Functional-Spec.md` §20 and `docs/My-Journey-Concept.md` §29 win. Cite both lines and raise it as an open question. Known conflicts are listed in `docs/Learnings/index.md` under "Read before you start".
+
+## Which docs to trust
+
+In this order:
+
+1. `docs/Functional-Spec.md` §20 and `docs/My-Journey-Concept.md` §29: the dated decisions
+2. The rest of `docs/Functional-Spec.md`
+3. `docs/Phase-1-Proposal.md`
+4. `docs/Master-Prompt.md`, `docs/Build-Plan.md`, and the rest of the Concept doc
+
+`docs/Overview.md` is historical (2026-10-21, before the decisions). Never build or audit from it.
+
+## Names and IDs
+
+The only place to take these from. Never find an external resource by matching a name.
+
+| What | Value |
+|---|---|
+| Product | My Journey (formerly Retrogram) |
+| Folder | `Retro-Gram/myjourney` |
+| Vercel team | `team_eD0tvc1w4vZhmrNBOUb5F8Q0` (slug `afillio`) |
+| Vercel project | `myjourney`, `prj_5Cw4kvcC5aCVNQJPlf1irWVJb2b8` |
+| Production URL | `myjourney-afillio.vercel.app`. `myjourney.vercel.app` is **not ours** |
+| Search terms | my journey, myjourney, retrogram, retro-gram |
+
+"Phase n" always means a build phase from `docs/Build-Plan.md`. The business's printing stage is "the album phase".
+
 ## The banned list
 
 Breaking one of these is a build failure, not a style disagreement.
@@ -107,6 +135,7 @@ Rules:
 - If graphify-out/wiki/index.md exists, use it for broad navigation instead of raw source browsing.
 - Read graphify-out/GRAPH_REPORT.md only for broad architecture review or when query/path/explain do not surface enough context.
 - After modifying code, run `graphify update .` to keep the graph current (AST-only, no API cost).
-- A committed graphify-out/graph.json is rewritten whole on every build, so a large diff to it in a pull request is expected. Do not flag it as churn or suggest skipping the graph rebuild or its hooks.
+- `graphify-out/` is in `.gitignore`. The graph is local and is not committed
+- Edit nothing while a graph build is running. A file changed mid-read is recorded as only partly read (L-006)
 - **The graph is a map, not a source.** Use it to find which doc sections cover a topic, then read those sections and cite them. Never act on an INFERRED or AMBIGUOUS edge as if it were a decision; that would be inventing a behaviour (rule zero)
 - `graphify update .` only re-reads code. After a doc changes, run `/graphify . --update` so the change reaches the graph. `/phase` does this after each deliverable

@@ -1,0 +1,133 @@
+# Decisions Needed
+
+Every open question raised in Phase 1, merged and with duplicates removed. Sources:
+- `Screen-Inventory.md` "Open questions" (Inv 1–36)
+- `Rules-Rubric.md` "Gaps" (G-1–G-22) and "Questions for the user" (Q1–Q5)
+- `Learnings/index.md` "Open questions" (LQ1–LQ7)
+
+Only the user decides these. Where the docs lean one way, the lean is noted, but a lean is not a decision. Record each answer here with its date. The supervisor then writes it into `Functional-Spec.md` §20 and fixes every restatement (L-002).
+
+Last updated: 2026-10-27
+
+---
+
+## A. Text corrections: the decision already exists
+
+The docs already decided these, in `Functional-Spec.md` §20 or `Phase-1-Proposal.md`. Older lines still say otherwise. **One yes approves all of them.**
+
+| # | Stale text | Correct per | Raised as |
+|---|---|---|---|
+| A1 | The reflection example uses per-photo dates (`Functional-Spec.md:104–111`, `My-Journey-Concept.md:200, 203–210`) | §20 D: all photos of a journey move to their next slot on the unlock anniversary (`Functional-Spec.md:101, 274`) | Inv 1, G-1 |
+| A2 | "Written a year or more after the moment" (`Functional-Spec.md:98`) | §20 D slot rule | Inv 2 |
+| A3 | Close friends "get everything" (`My-Journey-Concept.md:807, 383`) | §20 H: they see nothing extra | Inv 4, G-3 |
+| A4 | Layers calculated on "upload" (`My-Journey-Concept.md:401`) | Calculated at reveal finished (`Functional-Spec.md:162`) | Inv 5, G-2 |
+| A5 | Journey stores "frames used", "highlights used" and a "committed" state (`Functional-Spec.md:14–15`) | Proposal: counts never stored, state derived (`Phase-1-Proposal.md:49, 76–84`) | Inv 8, G-6 |
+| A6 | Overview "written at reveal" (`Functional-Spec.md:118`, `My-Journey-Concept.md:218`) | §20 E: a new one every year (`Functional-Spec.md:275`) | Inv 14, G-15 |
+| A7 | "Frame range 24–48" and the arithmetic built on it (`My-Journey-Concept.md:99, 128, 799`, `Functional-Spec.md:47`) | Types are 12, 24 and 48 (`Functional-Spec.md:38–42`) | Inv 13, G-22 |
+| A8 | The streak ban points to "section 4" (`My-Journey-Concept.md:714`) | §7 (line 244) and `Functional-Spec.md` §18 | G-22, LQ3 |
+| A9 | The upload vs sealed fork is still open (`My-Journey-Concept.md` §28) | Sealing is automatic at capture (`Functional-Spec.md` §4) | LQ1 |
+| A10 | "Six phases" (`Build-Plan.md:3`, `README.md:14`), and the Phase 5 start is given three ways | Seven phases, 0 to 6. Phase 5 starts after Phase 2 (`Build-Plan.md:121`) | L-002 |
+| A11 | "Phase 2" also names the business's printing stage (`Functional-Spec.md` §17) | Rename it "the album phase" | L-003 |
+| A12 | `Overview.md` is out of date | Add a "Historical, not maintained since 2026-10-21" banner, and mark it so in `README.md` | LQ4 |
+
+**Decision:** ☐ Apply all · ☐ Apply except: ____
+
+---
+
+## B. Blocks the Phase 1 gate: these change the data model or the rules
+
+The Phase 1 gate asks that a developer can build the data model "with no questions left". Each question below changes a table, an access rule or a check.
+
+**B1. "Publish".** Does "published" (`Functional-Spec.md:141`, Concept 365–367, 424, 440) mean "the reveal is finished"? *Lean:* yes. Use only "reveal finished" and "journey launched". (Inv 3, G-2, LQ2)
+
+**B2. Reading a journey before its reveal is finished.** From unlock until the owner finishes, every photo is Network by default (`Functional-Spec.md:151, 269`, `Phase-1-Proposal.md:311`). Concept:362 says sharing happens "only … as a finished story". Can the network read an unlocked journey before its reveal is finished? (Inv 9)
+
+**B3. A reveal that is never finished.** Can the owner still finish it in later years? If they set a photo to Private and never finish, does that choice take effect? *Lean:* each choice takes effect when made (set-once, `Functional-Spec.md:286`), and the photos default to Network. (Inv 16, G-11)
+
+**B4. What adds a ring to the circle.** One per year with the app (`Functional-Spec.md:185`, Concept:687), or one per finished reveal (`Phase-1-Proposal.md:65`, approved)? (Inv 6, G-7)
+
+**B5. The activity graph and line.** When does the line twist into the circle: at unlock, or at reveal finished? Who sees the graph: owner only, or built only from the photos the viewer can see? Captured times of private photos must not leak (`Functional-Spec.md:145`). (Inv 7, 28)
+
+**B6. Highlights in the sealed year.** Highlight records are not sealed in the approved model (`Phase-1-Proposal.md:48`). May the owner see that a highlight is open, and when it ends? *Lean:* others see nothing (§20 I). For the owner, open or closed with no countdown. (Inv 26, G-13)
+
+**B7. Frames left.** May the owner ever see frames left (`Functional-Spec.md:243` leaves room; `Phase-1-Proposal.md:49` says never)? What does a refused capture say? (Inv 25, G-5, Q5)
+
+**B8. Counters after unlock.** The spec bans counters and progress bars "during the sealed year" (`Functional-Spec.md:233`), while `CLAUDE.md` bans them outright. Is "12 of 24 reflected" allowed during the reveal? *Lean:* banned at all times. (G-4)
+
+**B9. Positivity Feed.**
+- (a) Does it show photographs? "No photo feed, never images" covers the announcement feed. Is the Positivity Feed exempt?
+- (b) Visibility is per photo, not per journey.
+- (c) Which tags qualify: only the drafted list, or free text too?
+- (d) Can it be filtered by chapter?
+- (e) In what order?
+- (f) Can a photo enter before its reveal is finished?
+
+(Inv 11, 12, 30, G-8, G-14)
+
+**B10. "Reflection left" on a public photo.** It goes to everyone who can see the photo, so every user receives it. Intended? (Inv 22)
+
+**B11. "Path crossed" names the crossed person.** That tells them they are on the owner's map (`Functional-Spec.md:164`). Does it name them, and does it reach them? (Inv 21)
+
+**B12. "Where you appear" in Walking a path.** Showing a reader the photos they appear in lets them count those photos and estimate their ring. Show them without a total? Or not at all? (Inv 19, G-12)
+
+**B13. Overviews.** Can slot 1 be written after the reveal is finished? Can anyone outside the network read it? (Inv 14, G-19)
+
+**B14. "Public".** Does "anyone" include signed-out visitors? (G-20)
+
+**B15. Analytics.** May the app or site collect any usage analytics? *Lean:* no, since low usage is the goal. (Q2)
+
+**B16. Calendar edges.**
+- A commit on the 29th–31st or on 29 February: when do its months and its unlock fall?
+- Whose time zone defines a day?
+- Is a note added at exactly 15:00 minutes in or out?
+- Does a 24-hour highlight stay 24 hours across a daylight-saving change?
+
+(G-18)
+
+---
+
+## C. Needed in Phase 2: these shape flows and screens, not data
+
+**C1. Unlock day.** How does the owner learn the journey has unlocked, with no notifications? Is "Your Journey is ready" text shown on next open, or a notification? *Lean:* text on next open only. (Inv 15, G-16)
+
+**C2. The unlock date.** May the owner see it? As a date only, or as "in 64 days" (a countdown)? *Lean:* a plain date, no relative time. (Inv 27, G-17)
+
+**C3. The sealed-year screen and earlier journeys.** May the sealed-year screen point the owner to reflection slots still open on their earlier journeys? (Inv 10)
+
+**C4. The note step.** How does the user return to it within the 15 minutes, when the photo is already sealed? Can the page be re-photographed before saving? Must it be taken live in the app, or can it come from the gallery? (Inv 24, Q3)
+
+**C5. Finishing a reveal.** Is anything required before finishing, such as a chapter? Is the owner asked to confirm each set-once choice? (Inv 17, 18)
+
+**C6. People tags for readers.** Can a reader see who else is tagged? Can a tag lead to that person's profile? (Inv 20)
+
+**C7. Profile picture.** What may it show, given "nothing signals how the person looks"? When is it set, and can it change? May announcements show it? (Inv 31, G-9, G-10)
+
+**C8. The map's detail.** Does the owner's map show past rings, drift, or shared-photo counts? (Inv 36)
+
+**C9. Empty states.** What do an empty map, an empty feed and an empty circle hold? (Inv 23)
+
+**C10. Finding people.** How does a user find another user to tag or visit: search, invitation, or something else? (Inv 33)
+
+**C11. Invitation and onboarding.** Invitation is "the main arrival path" (`Functional-Spec.md:28`) but no step is described. (Inv 32)
+
+**C12. Opening the app.** Which screen opens the app in each state? (Inv 34)
+
+**C13. "The follow-up".** Is a photo's follow-up only its reflection stack? (Inv 29)
+
+**C14. Feed order.** *Lean:* newest first. (Q1)
+
+**C15. Notification permission.** If no notification is ever sent, should the app ask for notification permission at all? *Lean:* never ask. (Q4)
+
+**C16. The prototype viewer.** How does the demoer switch between fixture users? Does the time control show the simulated date? (Inv 35)
+
+---
+
+## D. Already open elsewhere
+
+| # | Decision | Blocks |
+|---|---|---|
+| D1 | Stack and database host (`Status.md` Open decisions 1) | Phase 3 |
+| D2 | Vercel Authentication on `myjourney`: make the holding page public or keep it private (a dashboard change) | The holding page |
+| D3 | May the supervisor commit after each recorded step? (LQ7) | Nothing; the working tree stays uncommitted until then |
+| D4 | Export and data ownership | Phase 6 |
+| D5 | Age gating | Phase 6 |
