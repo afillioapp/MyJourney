@@ -11,6 +11,49 @@ Last updated: 2026-10-27
 
 ---
 
+## Provisional defaults in force
+
+Approved approach (user, 2026-10-27): build the prototype with these defaults and decide by playing. Each default is the way the docs lean or, where they don't lean, the strictest reading of the banned list. **Switchable** defaults get a toggle in the prototype options panel, next to the time control. Every default is labelled in code as `PROVISIONAL: <ID>`. None of these is a decision until the user says so.
+
+| ID | Provisional default | Switchable |
+|---|---|---|
+| B1 | "Publish" means "reveal finished". Docs use only "reveal finished" and "journey launched" | no |
+| B2 | The network can read an unlocked journey from unlock, as D12 and `Phase-1-Proposal.md:311` say | **yes**: from unlock / only after reveal finished |
+| B3 | Each reveal choice takes effect when made. A reveal can be finished at any later time | no |
+| B4 | One ring per finished reveal (`Phase-1-Proposal.md:65`) | **yes**: per finished reveal / per year with the app |
+| B5 | Activity line twists in at reveal finished. The activity graph is visible to the owner only | **yes**: owner only / built from the photos the viewer can see |
+| B6 | Others learn nothing about highlights. The owner sees only "a highlight is open", with no end time and no countdown | no |
+| B7 | Frames left are never shown. A refused capture says so with no number (copy in Phase 2) | no |
+| B8 | Counters and progress bars are banned at all times, not only while sealed | no |
+| B9 | Positivity Feed: (a) reflection text only, with the photo shown when opened; (b) per-photo visibility; (c) drafted tag list only; (d) chapter filter available; (e) newest first; (f) only after reveal finished | **yes** (a): text only / with photographs |
+| B10 | "Reflection left" reaches only the owner's network members who can see the photo, even when it is public | no |
+| B11 | "Path crossed" names both people and reaches the owner's network. It never says which ring | **yes**: named / unnamed |
+| B12 | Walking a path shows the photos where the reader appears, in journey order, with no total and no grouping | **yes**: shown / hidden |
+| B13 | The slot 1 overview can be written after the reveal is finished, within the slot. Readable by the network only | no |
+| B14 | "Public" means signed-in users only | no |
+| B15 | No usage analytics or telemetry of any kind | no |
+| B16 | A commit on the 29th–31st uses the last day of shorter months. One time zone for the prototype (UTC). Exactly 15:00 is out. A highlight lasts 24 hours of elapsed time | no |
+| C1 | "Your Journey is ready" appears on next open, never as a notification | no |
+| C2 | The unlock date is shown as a plain date, never relative ("in 64 days") | no |
+| C3 | The sealed-year screen does not point to earlier journeys. Their open reflection slots are reached from the owner's profile | no |
+| C4 | The note step is offered only inside the capture flow, straight after the photo, for up to 15 minutes. Leaving capture ends it, so there is no way back from the sealed screen (this resolves audit finding 1). The page is taken live, once, with no re-shoot | no |
+| C5 | Nothing is required before finishing a reveal. Each set-once choice shows a one-line "this can't be changed" before it is saved | no |
+| C6 | People tags are not shown to readers | **yes**: hidden / shown |
+| C7 | No profile picture is shown anywhere. The profile shows the name in the circle. Announcements carry no image | no |
+| C8 | The map shows current rings only: no counts, no history, no drift | no |
+| C9 | Empty states are a plain statement; copy in Phase 2 | no |
+| C10 | People are found by name search, plus typed names for non-users | no |
+| C11 | No sign-up or onboarding in the prototype. Fixture users are picked from the prototype panel | no |
+| C12 | The app opens on the Profile, "the destination" (`CLAUDE.md`) | no |
+| C13 | A photo's "follow-up" is its reflection stack | no |
+| C14 | Feed is newest first | no |
+| C15 | The app never asks for notification permission | no |
+| C16 | The prototype panel has a viewer switcher (fixture users) and shows the simulated date | no |
+
+Section A was approved by the user on 2026-10-27 and is being applied.
+
+---
+
 ## A. Text corrections: the decision already exists
 
 The docs already decided these, in `Functional-Spec.md` §20 or `Phase-1-Proposal.md`. Older lines still say otherwise. **One yes approves all of them.**

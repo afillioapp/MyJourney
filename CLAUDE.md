@@ -10,11 +10,20 @@ Positioning: **not attention, intention.** Tone: self-recognition, self-progress
 
 Full detail is in `docs/`. `docs/Functional-Spec.md` is the source of truth for behaviour. `docs/Master-Prompt.md` is the brief. `docs/My-Journey-Concept.md` is the decision record, with dates.
 
+**What we are building:** a playable prototype on dummy data. The user explores it to find bugs, discover features and decide on options. Getting to something playable comes before settling every question on paper.
+
 ## Rule zero
 
-**Never invent a behaviour.** If something is not specified, stop and ask.
+**Never decide a behaviour silently.** Almost every sensible default in this category is something this product has deliberately banned, so a quiet guess is worse than a blocked task.
 
-Almost every sensible default in this category is something this product has deliberately banned. A plausible guess here is worse than a blocked task. `docs/Functional-Spec.md` section 20 records what was decided on 2026-10-25 and lists what is still undecided — if your task touches one of those, ask rather than pick.
+When the docs do not settle something (rule as of 2026-10-27):
+
+1. Look in `docs/Decisions-Needed.md`. If the item has a **provisional default**, build that, and nothing else
+2. If it is not listed, stop and ask the supervisor. Do not pick
+3. Every provisional default is labelled in the code (`// PROVISIONAL: Decisions-Needed B4`) so it can be found and changed. The ones marked "switchable" are wired to the prototype options panel, so the user can compare options in the app
+4. A provisional default may never break the banned list. When unsure, the strictest reading wins
+
+`docs/Functional-Spec.md` section 20 records what was decided. A provisional default becomes a decision only when the user says so, and then it moves into §20.
 
 The approved data model and fixture design are in `docs/Phase-1-Proposal.md` (approved 2026-10-25). Build against it; do not redesign it.
 
