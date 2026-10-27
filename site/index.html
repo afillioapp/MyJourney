@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>My Journey</title>
+<meta name="description" content="A photo app where every picture is sealed the moment it is taken and the whole year unlocks exactly one year later.">
+<style>
+  :root {
+    --paper: #f3ead8;
+    --ink: #2e2a24;
+    --muted: #6f6556;
+    --ring: #b5653a;
+    --ring-soft: #d9a873;
+    --rule: #d8ccb4;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --paper: #1f1b16;
+      --ink: #efe6d4;
+      --muted: #b3a690;
+      --ring: #d98a57;
+      --ring-soft: #a8794c;
+      --rule: #3a332a;
+    }
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+    line-height: 1.5;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 48px 16px;
+  }
+  main {
+    width: 100%;
+    max-width: 560px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .mark { width: 120px; height: 120px; margin-bottom: 20px; }
+  .mark circle { fill: none; }
+  .name {
+    font-size: 15px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0 0 40px;
+  }
+  h1 {
+    font-weight: normal;
+    font-size: clamp(28px, 6vw, 40px);
+    line-height: 1.2;
+    margin: 0 0 20px;
+  }
+  .what {
+    color: var(--muted);
+    font-size: 18px;
+    margin: 0 0 40px;
+  }
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 48px;
+    width: 100%;
+    border-top: 1px solid var(--rule);
+  }
+  li {
+    padding: 14px 0;
+    border-bottom: 1px solid var(--rule);
+    font-size: 19px;
+  }
+  footer {
+    color: var(--muted);
+    font-style: italic;
+    font-size: 17px;
+    text-align: center;
+    padding-top: 24px;
+  }
+</style>
+</head>
+<body>
+<main>
+  <svg class="mark" viewBox="0 0 120 120" aria-hidden="true">
+    <circle cx="60" cy="60" r="56" stroke="var(--ring-soft)" stroke-width="2"/>
+    <circle cx="60" cy="60" r="42" stroke="var(--ring-soft)" stroke-width="2"/>
+    <circle cx="60" cy="60" r="28" stroke="var(--ring)" stroke-width="2"/>
+    <circle cx="60" cy="60" r="10" stroke="var(--ring)" stroke-width="2" style="fill: var(--ring)"/>
+  </svg>
+  <p class="name">My Journey</p>
+
+  <h1>It's not about attention. It's about intention.</h1>
+  <p class="what">A photo app where every picture is sealed the moment it is taken and the whole year unlocks exactly one year later.</p>
+
+  <ul>
+    <li>No retakes. That moment is gone.</li>
+    <li>Strict at capture. Generous at reflect.</li>
+    <li>We want you here less, not more.</li>
+    <li>You've come further than you think.</li>
+  </ul>
+</main>
+<footer>This app takes time, like many other good things.</footer>
+</body>
+</html>
