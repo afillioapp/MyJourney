@@ -1,8 +1,8 @@
 # My Journey — Build Framework
 
-How to get from the concept to a working website and web app with dummy data. Six phases, each with a gate that must pass before the next one starts.
+How to get from the concept to a working website and web app with dummy data. Seven phases, 0 to 6, each with a gate that must pass before the next one starts.
 
-Last updated: 2026-10-25
+Last updated: 2026-10-27
 
 ---
 
@@ -14,7 +14,7 @@ Phase 1  Define        →  data model, rules list, fixture design
 Phase 2  Look          →  art direction + flows, on paper
 Phase 3  Foundation    →  schema, fixtures, TIME CONTROL
 Phase 4  Build app     →  screens, in ritual order
-Phase 5  Build site    →  marketing site (can run parallel from Phase 3)
+Phase 5  Build site    →  marketing site (can start any time after Phase 2)
 Phase 6  Review        →  rules audit, QA, polish
 ```
 
@@ -225,6 +225,6 @@ When the Rules Guardian finds a violation, the fix is not just repairing that sc
 
 ## What is deliberately not in this plan
 
-- Real authentication, real photo storage, real printing. All of it is phase 2 of the business, not of this build
+- Real authentication, real photo storage, real printing. All of it belongs to the album phase of the business, not to this build
 - Mobile apps. The capture rule says photos are taken inside the app, which eventually means a phone, but the prototype can demonstrate the ritual on the web
 - Any revenue mechanism. Phase 1 of the business has no revenue line by decision

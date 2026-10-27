@@ -2,7 +2,7 @@
 
 Build reference. Every behaviour below traces to a decision in `My-Journey-Concept.md`. Anything not decided is in section 20, marked as blocking or not. Nothing here is invented to fill a gap.
 
-Last updated: 2026-10-25
+Last updated: 2026-10-27
 
 ---
 
@@ -11,8 +11,8 @@ Last updated: 2026-10-25
 | Object | What it is | Key properties |
 |---|---|---|
 | **User** | A person with an account | Name (from within, not physical attributes), profile picture, circle (rings = years), layers, journeys |
-| **Journey** | One year of a user's life | Type, year, frame quota, frames used, highlights allowance, highlights used, state (committed / sealed / unlocked), overview, visibility defaults |
-| **Photo** | One sealed moment | Image, captured-at timestamp, unlock date, handwritten note, reflections, people tagged, visibility |
+| **Journey** | One year of a user's life | Type, commit date, unlock date (12 months on), frame quota, highlights allowance, overview, visibility defaults. Frames used and highlights used are never stored, and state is derived, never stored: sealed / revealing / revealed (`Phase-1-Proposal.md` §2.1–2.2) |
+| **Photo** | One sealed moment | Image, captured-at timestamp, unlock date (its journey's, §20 A), handwritten note, reflections, people tagged, visibility |
 | **Handwritten note** | A photographed A4 page | Image, belongs to exactly one photo, written once |
 | **Reflection** | A typed entry on one photo | Text, written-at date, year index, immutable |
 | **Journey overview** | A typed entry on a whole journey | Text, year, immutable |
@@ -44,7 +44,7 @@ The user picks one of three types and presses Commit, on any day. The journey ru
 - Pressing **Commit** locks the choice. It cannot be changed for that year
 - The word Commit is deliberate and carries the weight
 - No default type is pre-selected
-- Each step halves the one above; the three sit on the old 24–48 range's ceiling, middle and floor
+- Each step halves the one above: 48, 24, 12
 
 ---
 
@@ -86,7 +86,7 @@ When a journey unlocks, this is the single engagement moment of the year. The us
 3. Applies the chapter tag and any feeling tags
 4. Writes the journey overview
 5. Sets visibility
-6. Optionally orders the physical album (phase 2)
+6. Optionally orders the physical album (the album phase)
 
 Layers are recalculated at this point, never during the sealed year.
 
@@ -95,27 +95,27 @@ Layers are recalculated at this point, never during the sealed year.
 ## 8. Reflect
 
 - One reflection per photo, per year
-- Written a year or more after the moment
-- **Immutable.** No edits, ever. A new reflection is added instead, on the next anniversary
+- Written only once the journey has unlocked, in yearly slots counted from the unlock date (§20 D)
+- **Immutable.** No edits, ever. A new reflection is added instead, in the next slot, which opens on the journey's unlock anniversary
 - **No comments from others.** Others may read; only the owner writes
 - The window is generous: each slot stays open for a full year, and all photos of a journey move to their next slot together, on the journey's unlock anniversary (§20 D)
 - The user is never pushed or reminded to write one
 
-Example stack on one photo:
+Example stack on one photo, in a journey committed 1 Sep 2018 that unlocks 1 Sep 2019:
 
-| Event | Date |
+| Event | When |
 |---|---|
-| Photo captured | 7 Jan 2019 |
-| First reflection | 7 Jan 2020 |
-| Second reflection | 7 Jan 2021 |
-| … | one per anniversary, indefinitely |
+| Photo captured | 7 Jan 2019, sealed until 1 Sep 2019 |
+| First reflection | Any time in slot 1, 1 Sep 2019 to 1 Sep 2020 |
+| Second reflection | Any time in slot 2, 1 Sep 2020 to 1 Sep 2021 |
+| … | one slot per unlock anniversary, indefinitely |
 
 ---
 
 ## 9. Journey overview
 
 - One per journey, per year
-- Written at reveal
+- A new one every year on each journey, stacking, in the same yearly slots as reflections. Readable by the owner's network (§20 E). Optional (§20 O)
 - Covers how the user's views changed across that year
 - Immutable, like everything else
 - Stacks across years so a user can read five overviews back to back
@@ -210,7 +210,7 @@ Feeling tags currently drafted: hang in there · it eventually pays off · thank
 
 ---
 
-## 17. Album and print — phase 2
+## 17. Album and print — the album phase
 
 - Two photos per page
 - Thick tactile pages, classic prints, a thin plastic sheet over the photographs

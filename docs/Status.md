@@ -78,7 +78,7 @@ Status values: `todo` · `in progress` · `in review` · `done` · `blocked`
 
 ## Phase 5 — Build the site
 
-Can start once Phase 2 has passed.
+Can start any time after Phase 2.
 
 | Deliverable | Owner | Status | Evidence |
 |---|---|---|---|

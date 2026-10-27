@@ -1,7 +1,7 @@
 # MY JOURNEY — Working Concept
 
 Living document. Source: `Brainstorming/My_Journey_Complete_Concept_Document.docx` and `Brainstorming/Wednesday.docx`.
-Last updated: 2026-10-25
+Last updated: 2026-10-27
 
 ---
 
@@ -96,7 +96,7 @@ Two ideas stacked: delayed gratification, then delayed perspective. The second i
 
 ### Three journey types
 
-The single 24–48 range is replaced by three named journey types, framed as difficulty levels. The user picks one at the start of the year. *(Superseded 2026-10-25: Commit can be pressed on any day, and the journey runs 12 months from it. See §29.)* Each step halves the one above it, and the three land on the old range's ceiling, middle and floor.
+The single 24–48 range is replaced by three named journey types, framed as difficulty levels. The user picks one at the start of the year. *(Superseded 2026-10-25: Commit can be pressed on any day, and the journey runs 12 months from it. See §29.)* Each step halves the one above it: 48, 24, 12. *(Corrected 2026-10-27: 48 is the old range's ceiling, 24 its floor, and 12 sits below it.)*
 
 | Type | Cadence | Photos per year | Highlights |
 |---|---|---|---|
@@ -125,7 +125,7 @@ To reach different audiences with the same ritual:
 
 ### Open points on this change
 
-1. ~~Explorer's cadence~~ **Resolved 2026-10-25: 4 photos monthly, 48 a year.** The three types land exactly on the old 24–48 range: 48 is its ceiling, 24 its middle, 12 its floor. Each step halves the one above it.
+1. ~~Explorer's cadence~~ **Resolved 2026-10-25: 4 photos monthly, 48 a year.** The types are 48, 24 and 12, each step halving the one above it. *(Corrected 2026-10-27: 48 is the old 24–48 range's ceiling, 24 its floor, and 12 sits below it.)*
 2. 12 was originally rejected as "too few to create a substantial family album". Contemplator is 12, and it is the hard mode on purpose. Either the album for that type is thinner by design, or the album rule changes.
 3. Highlights make the yearly total **unbounded**, which cuts against the scarcity principle the product is built on. Worth deciding: is a highlight capped in photos, in hours, or in neither?
 4. Targeting teenagers brings obligations an adult-only product does not have: age gating, parental consent in some jurisdictions, and stricter rules on what can be collected and shown. Worth settling early, before the data model is built.
@@ -197,10 +197,10 @@ Public means **readable, not commentable**. No one can reply on your photo.
 ### Sealed and stacked — decided 2026-10-18
 
 - **No edits.** An old reflection is sealed, exactly like the photo. You never rewrite your past self
-- **You add a new one instead**, on the photo's anniversary
+- **You add a new one instead**, on the photo's anniversary *(superseded 2026-10-25: all photos of a journey move to their next slot together, on the journey's unlock anniversary. See §29 and Functional-Spec §20 D)*
 - **Nobody can comment.** The only voice on a photo is yours. Others may read a Journey; they cannot write on it
 
-Example:
+Example: *(superseded 2026-10-25: slots follow the journey's unlock anniversary, not the photo's, so these dates no longer apply. See §29 and Functional-Spec §8)*
 
 | | |
 |---|---|
@@ -215,7 +215,7 @@ A photo becomes a column of your own voice, one layer per year, none of it revis
 
 **Reflect** works on a single photo or memory. There is also something bigger, on the whole Journey.
 
-**The Journey overview** — a brief summary the user writes at reveal about **how their views changed** over that year. People mature; the overview is where that becomes visible.
+**The Journey overview** — a brief summary the user writes at reveal about **how their views changed** over that year. People mature; the overview is where that becomes visible. *(superseded 2026-10-25: a new overview every year on each journey, stacking, readable by the owner's network. See §29 and Functional-Spec §20 E)*
 
 - One per Journey, per year
 - Sealed like everything else, never edited
@@ -227,7 +227,7 @@ So the structure is:
 
 | Level | What it is | How often |
 |---|---|---|
-| Photo | The moment, unretaken | 24–48 per year |
+| Photo | The moment, unretaken | 24–48 per year *(superseded 2026-10-25: 12, 24 or 48 by journey type. See §4)* |
 | Handwritten note | Then-you's voice, on paper, photographed. Optional | once, in a skippable step just after capture |
 | Reflect | A text reflection on one photo | one per photo, per year |
 | Journey overview | How your views changed across the whole year | one per year |
@@ -286,7 +286,7 @@ Caution worth recording: the claim that 432 Hz has healing or physiological bene
 - If print shops are the only revenue line, is the app itself free, forever?
 - How many shops at what monthly price covers the company?
 - What does a shop get for the fee that it cannot get by just printing photos anyway: exclusivity in a city, listing in the app, the album materials, training on the ritual?
-- What happens in cities with no partner shop yet? *(not now — phase 2)*
+- What happens in cities with no partner shop yet? *(not now — the album phase)*
 
 ### Reopened 2026-10-17 — NEW
 
@@ -380,7 +380,7 @@ Consequence: the Positivity Feed is fed **only by Journeys set to public**. That
 - Tapping into someone's **profile** gives access to their Journey
 - **Close friends can be granted access to both** the Journey and the individual memories. *(Superseded 2026-10-25: close friends are the innermost ring and see nothing beyond the rest of the network. See §29.)*
 
-So three levels of access: individual photos, the Journey through the profile, and everything for the people closest to you.
+So three levels of access: individual photos, the Journey through the profile, and everything for the people closest to you. *(superseded 2026-10-25: see §29 and Functional-Spec §20 H)*
 
 ### Network and discovery — NEW, 2026-10-17
 
@@ -398,7 +398,7 @@ This revises the earlier "no feed" rule. A network now exists.
 
 Closeness is calculated from **crossing Journeys**: two people who appear in each other's photos, or share the same moments, are close. Five or more shared photos in a year means a tight layer that year.
 
-- Calculated when Journeys are **uploaded and ready to reflect on**, never during the sealed year
+- Calculated when Journeys are **uploaded and ready to reflect on**, never during the sealed year *(superseded 2026-10-25: there is no upload step; layers are computed when a reveal is finished. See §29 and Functional-Spec §12)*
 - **Recalculated every year.** Your circle moves as your life actually moved
 - A follow on Instagram never expires. A layer here does
 
@@ -516,7 +516,7 @@ Grounded partly in the Holmes–Rahe Life Stress Inventory, a 43-item list of th
 - worth it
 - I almost quit
 - the hard part was the start *(from the military draft story)*
-- **worried for nothing** — the things we worry about that never happen. Set on a Journey after it is uploaded a year later, to give someone else the confidence that it will be okay. Alternatives considered: *it never happened*, *the fear that never came*
+- **worried for nothing** — the things we worry about that never happen. Set on a Journey after it is uploaded a year later *(superseded: there is no upload step, and tags are applied at reveal. See §28 and Functional-Spec §10)*, to give someone else the confidence that it will be okay. Alternatives considered: *it never happened*, *the fear that never came*
 
 ### Decided, 2026-10-17 — categories fixed, tags free
 
@@ -637,7 +637,7 @@ A first test needs a shorter loop. Open.
 ### Phasing — decided 2026-10-18
 
 - **All segments launch together.** Disconnectors, parents, partners, founders, artists, communities. No single beachhead
-- **Printing is phase 2.** Albums, print shops and the in-person ritual come after launch
+- **Printing comes later, in the album phase.** Albums, print shops and the in-person ritual come after launch
 
 Consequences to work with:
 
@@ -711,7 +711,7 @@ This is the visual proof of **circling back**: a straight year bent into a ring.
 
 **It only appears after the year unlocks.** Never during the sealed year.
 
-A contribution grid that is visible while you are filling it is a streak mechanic, and streak mechanics are banned by section 4's rules. Because nothing in a sealed Journey is visible anyway, the graph cannot drive behaviour. It can only record it afterwards.
+A contribution grid that is visible while you are filling it is a streak mechanic, and streak mechanics are banned by section 7's rules (and `Functional-Spec.md` §18). Because nothing in a sealed Journey is visible anyway, the graph cannot drive behaviour. It can only record it afterwards.
 
 ---
 
@@ -796,7 +796,7 @@ Almost everything. See the dated decisions through sections 0–24. Summary of w
 
 - Behavior change is not the goal; we serve people who already want this
 - They can copy the feature, not the intent
-- Frame range 24–48, chosen at Commit, no default
+- Frame range 24–48, chosen at Commit, no default *(superseded 2026-10-25: three types, 12, 24 and 48 photos a year. See §4 and Functional-Spec §3)*
 - Capture is strict with no retakes; reflect is generous
 - One reflection per photo per year, sealed, no edits, no comments from others
 - A Journey overview per year, on top of the per-photo reflections
@@ -804,10 +804,10 @@ Almost everything. See the dated decisions through sections 0–24. Summary of w
 - Layers earned by crossing Journeys, recalculated yearly, no face recognition, layer never shown to the other person
 - Feed announces three events only: launch, reflection, path crossed
 - Profile is the destination; layers are navigation
-- Visibility per photo; Journey via profile; close friends get everything
+- Visibility per photo; Journey via profile; close friends get everything *(superseded 2026-10-25: see §29 and Functional-Spec §20 H)*
 - Fixed categories, free tags, popular tags promoted over time
 - Open signup, invitation as the main path
-- All segments launch together; printing is phase 2
+- All segments launch together; printing comes later, in the album phase
 - Tone shifts with the chapter but stays hopeful
 - Low usage is correct behavior, not a retention problem
 
@@ -815,7 +815,7 @@ Almost everything. See the dated decisions through sections 0–24. Summary of w
 
 1. **What is the smallest version we launch?** The only question still blocking anything
 2. Do we encourage capturing low points actively, or only leave room for it?
-3. Phase 2, when we get there: own the printing or partner with shops, the shop economics, and what happens in cities with no shop
+3. The album phase, when we get there: own the printing or partner with shops, the shop economics, and what happens in cities with no shop
 
 ## 27. The one thing to prove first
 
@@ -823,13 +823,13 @@ Not whether people say the idea sounds beautiful. Whether a specific group will 
 
 ---
 
-## 28. Unresolved fork from the source documents
+## 28. Fork from the source documents — closed
 
 The original voice note described an **upload** model: take photos, then when ready upload all of them, and the app announces "this user has uploaded his journey." It also described browsing other people's past years, effectively a feed shifted back twelve months.
 
 The concept document removed both. Sealing is automatic at capture, there is no upload step, and there is no feed of other people's Journeys.
 
-Neither document says which version won, or why. The current direction assumes the sealed, feedless version.
+Neither document says which version won, or why. The current direction assumes the sealed, feedless version. *(Closed, approved 2026-10-27: sealing is automatic at capture (`Functional-Spec.md` §4), so there is no upload step. The feed carries announcements only, never other people's photos (`Functional-Spec.md` §13).)*
 
 ---
 

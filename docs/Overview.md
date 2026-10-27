@@ -1,5 +1,7 @@
 # My Journey — Product Overview
 
+> **Historical.** Not maintained since 2026-10-21. It predates the 2026-10-25 decisions and contradicts them in places. Use `Functional-Spec.md` and `CLAUDE.md`.
+
 > Export of the live doc "My Journey — Product Overview" (21 Oct 2026). The doc is the editable version; `My-Journey-Concept.md` remains the full working record with all dated decisions.
 
 A photo app where every picture is sealed the moment it is taken and unlocks exactly one year later, so people can see how far they have come. Not attention. Intention.
