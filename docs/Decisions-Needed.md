@@ -33,6 +33,9 @@ Approved approach (user, 2026-10-27): build the prototype with these defaults an
 | B14 | "Public" means signed-in users only | no |
 | B15 | No usage analytics or telemetry of any kind | no |
 | B16 | A commit on the 29th–31st uses the last day of shorter months. One time zone for the prototype (UTC). Exactly 15:00 is out. A highlight lasts 24 hours of elapsed time | no |
+| B17 | Feeling tags are free text on the journey, with no category, as in the approved model (`Phase-1-Proposal.md:141`). Raised as Screen-Inventory OQ-37 and rubric G-14 | no |
+| B18 | Tags never "surface" by popularity. No suggestions and no counts (`Functional-Spec.md:202` over `:131`). Raised as OQ-38 and G-14 | no |
+| B19 | The owner of a sealed journey sees its type, commit date and unlock date and nothing else (`Phase-1-Proposal.md:84`; `Functional-Spec.md:74` read as covering the contents). Raised as OQ-39 and G-17 | no |
 | C1 | "Your Journey is ready" appears on next open, never as a notification | no |
 | C2 | The unlock date is shown as a plain date, never relative ("in 64 days") | no |
 | C3 | The sealed-year screen does not point to earlier journeys. Their open reflection slots are reached from the owner's profile | no |
