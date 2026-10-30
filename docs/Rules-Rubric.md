@@ -10,6 +10,8 @@ Updated 2026-10-30 (re-audit of `Screen-Inventory.md` round 1, `docs/reviews/202
 
 Updated 2026-10-30 (rules audit `docs/reviews/2026-10-30-rules-phase-1-r4.md`, after FS §20 T–DD and Decisions-Needed B20–B26): added R-151 (highlight facts after unlock, FS §20 DD, B24) and R-152 (journey type, dates, chapter and feeling tags never public, FS §20 T, CC). Added `Decided` lines for FS §20 U (R-040, R-043), X (R-068, R-142) and Z (R-141), and `Provisional default` lines for B20–B26 under R-040, R-117, R-119 and R-141. Corrected R-103's B9 reading, which still said "may be filtered by chapter" after FS §20 Y, and R-116's source `FS:299` (now §20 W) to `FS:321` (§21). No check renumbered or removed.
 
+Updated 2026-10-30 (rules audit `docs/reviews/2026-10-30-rules-phase-1-r5.md`, after FS §20 EE–HH): added R-153 (only the panel moves time or flips switches, FS §20 EE) and R-154 (non-owners see a capture date, never its time, FS §20 GG). Added `Decided` lines for FS §20 EE (R-141), FF (R-070), GG (R-151 residual) and HH (R-063, R-142). No check renumbered or removed.
+
 ---
 
 ## What this is for
@@ -153,6 +155,7 @@ Test fixtures named below come from `Phase-1-Proposal.md` §3. Steady Lantern #6
 - **Current implementation:** RLS on `highlight` with owner-only readers after unlock (B24); `photo.highlight_id` withheld from non-owners by a column grant or an owner-aware view, since row-level security alone cannot hide one column of a readable row. `P1:92` does not yet say how **Updated 2026-10-30:** now stated in `P1:48` (e) and `P1:92`: column grant without `highlight_id`, owner-only `photo_highlight_id()`, read view `photo_read` (Phase-1-Amendments §4 item 4).
 - **Provisional default:** Decisions-Needed B24: After unlock, highlight rows are readable by the owner only. Holds as written
 - **Residual (weakest point, reported by every audit until the user rules):** readers who can see `captured_at` of many photos from one day (Lantern #1: 19 in 24 hours) can infer a highlight. Neither DD nor B24 addresses it; it goes to the supervisor, not into the build
+- **Decided 2026-10-30 (FS §20 GG, `FS:311`):** readers other than the owner see a photo's capture date, never its time (R-154). This narrows the residual above but does not close it: 19 Lantern #1 photos dated the same day still suggest a highlight. The residual stays reported until the user rules on it
 
 ---
 
@@ -494,6 +497,7 @@ Commit, capture, frames, highlights and the note.
 - **Source:** FS:275 (§20 E), P1:23 (D10), P1:126, CL:105. See G-19 for everyone else
 - **How to check:** As Second Wind, read a Lantern overview: allowed, even where every photo of that journey is private.
 - **Provisional default:** Decisions-Needed B13: The slot 1 overview can be written after the reveal is finished, within the slot. Readable by the network only. Under B13 the statement reads "by its owner and the owner's network, and nobody else". Add the case: as First Light (not on Lantern's map), read a Lantern overview of a journey with public photos: refused, and the overview does not appear beside those photos in the Positivity Feed (closes G-19)
+- **Decided 2026-10-30 (FS §20 HH, `FS:312`):** under B2's "only after reveal finished" setting the network reads the overview only once the reveal is finished; under "from unlock", as written. Add the case: under "only after reveal finished", a slot 1 overview written on Long Way Round #4 (reveal never finished, in a test copy) is refused to Open Hands and readable by the owner; Lantern overviews are readable by Second Wind under both settings (R-142)
 
 ### R-064
 - **Statement:** Close friends see nothing beyond the rest of the network. There is no close-friends access level, list or grant.
@@ -535,6 +539,13 @@ Commit, capture, frames, highlights and the note.
 - **How to check:** At baseline as First Light (on no one's map), open Lantern #2 from the Positivity Feed, then Walking a path, A photo followed forward and Another user's profile for Lantern: no type, commit date, unlock date, chapter or feeling tag in the DOM or any API response, and `journey`, `journey_chapter` and `journey_feeling_tag` return 0 rows for Lantern's journeys. `photo.journey_id` leads to nothing readable. Repeat as Second Wind (network): all are readable. Positivity Feed list endpoint: no tag, chapter or journey field in any entry. Under both B2 settings (R-142).
 - **Current implementation:** RLS on the three tables with the `viewer_in_network(owner_id)` predicate (`Phase-1-Amendments.md` §5); the Positivity Feed selects by tag inside a SECURITY DEFINER function that returns reflection text only
 
+### R-154
+- **Statement:** Anyone but the owner learns a photo's capture date, never its time of day: not on any screen, not in any response, and not through another field that pins it, such as the handwritten note's written time (at most 15 minutes after capture) or an activity graph finer than one day. The owner sees the full time.
+- **Type:** auto · **Applies to:** data, API, UI
+- **Source:** FS §20 GG (`FS:311`), `Screen-Inventory.md` OQ-45, R-151 (residual), FS §20 DD. Found by `docs/reviews/2026-10-30-rules-phase-1-r5.md` finding V3 (`Phase-1-Amendments.md:226` (iii) and `Phase-1-Proposal.md:48` (e) give every reader the full `captured_at` through `photo_read`; `Phase-1-Proposal.md:106` gives every note reader `written_at`)
+- **How to check:** At baseline, as Second Wind (network) and as First Light (public), read every Lantern #1 photo and note each can read, through every read path (view, function, route): no value derived from `captured_at` carries an hour, minute or second (every photo of one UTC day returns the same value), and no note returns a time of day. Under B5's "viewer" setting, the activity data for Lantern's journeys has no bucket finer than one day. Repeat as Lantern: the full `captured_at` is returned. DOM review of Walking a path, A photo followed forward and Another user's profile as a non-owner: no hh:mm. Grep aid: `captured_at`, `written_at` in reader-side serializers and views.
+- **Current implementation:** not yet specified. `photo_read` (`Phase-1-Amendments.md` §4 item 4) returns the granted `captured_at` unchanged to every reader; the owner-aware view or function pattern of item 4 is one way to give non-owners the date only
+
 ---
 
 ## 6. Layers
@@ -551,6 +562,7 @@ Commit, capture, frames, highlights and the note.
 - **Type:** auto · **Applies to:** API
 - **Source:** P1:51, FS:235
 - **How to check:** List every function and route that takes a user id and touches layer data. None may return owners for a given member.
+- **Decided 2026-10-30 (FS §20 FF, `FS:310`):** `viewer_in_network(owner_id)` may stay directly callable. It takes an owner and answers only for the current viewer, which reveals nothing beyond what §20 T journey rows already give a network member. The check above still fails any call that takes a member and returns owners, and any route that exposes the predicate
 
 ### R-071
 - **Statement:** No screen or copy shows a person their ring on someone else's map, directly or by implication: no "you're in X's inner circle", no closeness badge or colour on their own avatar in someone else's view, no "you moved closer" or "further away", no ordering of someone else's content by the viewer's ring.
@@ -1044,6 +1056,7 @@ Added 2026-10-27 for the playable prototype (rule zero, CL:19–24; `Decisions-N
 - **Provisional default:** Decisions-Needed B20: The clock jumps also include +1 minute and +1 hour. They are the only additions to the time control; any other size, or a free date field, fails
 - **Provisional default:** Decisions-Needed B23: Option switches are one global setting, not per viewer. Switching the viewer in the panel changes no switch
 - **Provisional default:** Decisions-Needed B22: Reset puts every option switch back to its default (R-117)
+- **Decided 2026-10-30 (FS §20 EE, `FS:309`):** only the panel moves time or flips switches. `clock_jump()`, the jump to the next unlock and `set_option()` are callable by a separate panel role, never by the acting viewer (R-153)
 
 ### R-142
 - **Statement:** B2, under both settings ("from unlock" / "only after reveal finished"): nothing from a sealed journey is readable by anyone. The setting changes only who besides the owner may read an unlocked journey whose reveal is not finished: under "from unlock", the network reads photos not set Private and anyone signed in reads photos already set Public (B3, B14); under "only after reveal finished", no one but the owner reads any of it, Public photos included (**decided 2026-10-30, FS §20 R**). Before 2026-10-30 the statement read: "B2, under both settings ("from unlock" / "only after reveal finished"): nothing from a sealed journey is readable by anyone, and the setting changes only when the owner's network may read an unlocked journey's Network-default photos."
@@ -1051,6 +1064,7 @@ Added 2026-10-27 for the playable prototype (rule zero, CL:19–24; `Decisions-N
 - **Source:** DN B2, FS §20 R, FS:151, FS:269, P1:318, CL:73 (nothing leaks), CL:24
 - **How to check:** Under each setting: R-001 to R-008 pass for Lantern #6 at 2026-12-31 23:59:59. As Open Hands at baseline, read a Long Way Round #4 photo (reveal never finished): "from unlock" allowed, "only after reveal finished" refused. In a test copy, set one Long Way Round #4 photo Public (B3: takes effect when made) and read it as Open Hands and as First Light: "from unlock" allowed to both, "only after reveal finished" refused to both (FS §20 R); the owner reads it under both. This is a test-copy change, not a fixture change: the approved fixtures (P1 §3) are not edited, and a standing fixture for this case goes to the supervisor. Every Lantern #5 cell of the §3.6 matrix (reveal finished) is identical under both settings (R-068).
 - **Decided 2026-10-30 (FS §20 X):** "no one but the owner reads any of it" covers photos and what follows them (reflections, notes, people tags). The journey's type, dates, chapter and feeling tags are read by the network from unlock under both settings, and never by a public reader (FS §20 T, R-152). Add the case: under "only after reveal finished", as Open Hands at baseline, read Long Way Round #4's type and dates: allowed; read any #4 photo: refused
+- **Decided 2026-10-30 (FS §20 HH, `FS:312`):** "what follows them" includes the journey overview. Under "only after reveal finished" the network reads the overview only once the reveal is finished (R-063)
 
 ### R-143
 - **Statement:** B4, under both settings ("per finished reveal" / "per year with the app"): the circle is a record, not a rank, and nothing on it fills, grows or advances during a sealed year.
@@ -1114,6 +1128,13 @@ Added 2026-10-27 for the playable prototype (rule zero, CL:19–24; `Decisions-N
   3. Grep `F` for `no default`, `still open, no ID` and `B1–B1[0-9]` ranges, and confirm each against the table.
   4. Review: each labelled passage says what its row says, no more. A reading the row does not state (for example, what a switch setting does to a case the row does not name) is raised as a question, not built.
 
+### R-153
+- **Statement:** Only the prototype panel can move the clock or change an option switch. No acting viewer, through any route, function or direct database call, can jump time, jump to the next unlock or flip a switch.
+- **Type:** auto · **Applies to:** data, API
+- **Source:** FS §20 EE (`FS:309`), FS §20 Z, DN C16, R-141, R-117. Found by `docs/reviews/2026-10-30-rules-phase-1-r5.md` finding V1 (`Phase-1-Amendments.md:55` says `mj_app` holds EXECUTE on `clock_jump()` and calls the question unsettled; `:193` calls `set_option()` EXECUTE unsettled)
+- **How to check:** Connected as the viewer role with each fixture user set as the acting viewer, call `clock_jump('1 day')`, the next-unlock jump and `set_option('b2', 'after_reveal_finished')`: each is refused, and `app_now()` and `prototype_option` are unchanged. `has_function_privilege(<viewer role>, <fn>, 'EXECUTE')` is false for all three. No API route reachable from a product screen calls them. As the panel role: each succeeds.
+- **Current implementation:** a separate panel role holds EXECUTE on the three functions; the viewer role (`mj_app`) holds none
+
 ---
 
 ## Banned-list coverage
@@ -1138,7 +1159,7 @@ R-141 and R-149 apply to every row: no switch setting may break any item above, 
 
 R-150 applies to every row as well: a deliverable that leaves out or stretches a provisional default can carry a banned item in by that route.
 
-R-151 and R-152 carry dated rulings (FS §20 DD, T, CC) rather than banned items. R-151 extends the "Nothing leaks" row's intent past unlock for highlights (DN B6: others learn nothing about highlights).
+R-151 to R-154 carry dated rulings (FS §20 DD, T, CC, EE, GG) rather than banned items. R-153 keeps the time control from becoming a way round the seal (R-014); R-154 narrows what a reader can infer from capture times (R-151 residual). R-151 extends the "Nothing leaks" row's intent past unlock for highlights (DN B6: others learn nothing about highlights).
 
 ## `Phase-1-Proposal.md` §2.5 mapping
 
