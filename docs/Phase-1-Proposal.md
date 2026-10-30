@@ -205,12 +205,12 @@ Each one fails the build:
 | Key | Name | Who | Joined (`joined_at`) | At baseline |
 |---|---|---|---|---|
 | lantern | **Steady Lantern** | Primary demo persona, ME → ME | 2021-01-01 | 5 revealed journeys, 1 sealed |
-| wind | **Second Wind** | The friend whose path crosses again | 2021-01-01 | 5 revealed, 1 sealed |
-| hands | **Open Hands** | Parent, ME → YOU | 2021-01-01 | 3 revealed, 1 sealed |
-| round | **Long Way Round** | Founder, ME → IT. The main source for the Positivity Feed | 2021-01-01 | 3 revealed, 1 **unlocked but never revealed**, between journeys |
+| wind | **Second Wind** | The friend whose path crosses again | 2021-03-15 | 5 revealed, 1 sealed |
+| hands | **Open Hands** | Parent, ME → YOU | 2023-06-01 | 3 revealed, 1 sealed |
+| round | **Long Way Round** | Founder, ME → IT. Round #2 (8 public photos) is the largest single journey in the Positivity Feed *(amended 2026-10-30, user ruling)* | 2022-09-01 | 3 revealed, 1 **unlocked but never revealed**, between journeys |
 | light | **First Light** | Joined 2026-10-01 | 2026-10-01 | No journey. Can commit on any day during the demo (D2) |
 
-*(amended 2026-10-30, gate-1 O5/O6/CF-1)* **`joined_at`, how each value was set.** The fixture constrains `joined_at` from above only: a user exists before their first Commit, and before anyone tags them. Upper bounds: Lantern 2021-01-01 (#1 commit), Wind 2021-03-15 (#1 commit), Hands 2023-06-01 (#1 commit, which is earlier than Round's tag at the #1 reveal on 2023-09-12), Round 2022-09-01 (#1 commit). Nothing in the fixture sets a lower bound except where the fixture's own timeline starts, 2021-01-01, its earliest dated row. So Lantern's value is fixed by the fixture (both bounds are 2021-01-01). Wind, Hands and Round are free within their range, and each takes **the earliest date the fixture allows, 2021-01-01. This is a fixture choice, not product behaviour.** Times are 00:00:00 UTC (NB-6, B16), so Lantern joins and commits at the same instant; joining must come first in the load order. A side effect: Open Hands is a user with no journey from 2021-01-01 to 2023-06-01, which covers most of Round #1 (2022-09-01 to 2023-09-01; see the D14 row in §3.4).
+*(amended 2026-10-30, user ruling)* **`joined_at`, how each value was set.** Each user's `joined_at` is the date of their first Commit: Steady Lantern 2021-01-01 (#1), Second Wind 2021-03-15 (#1), Open Hands 2023-06-01 (#1), Long Way Round 2022-09-01 (#1). First Light, who has no journey, stays 2026-10-01. This replaces the earlier choice (gate-1 O5) of the earliest date the fixture allowed. It is a fixture choice, not product behaviour. Times are 00:00:00 UTC (NB-6, B16), so each of the four joins and commits at the same instant; joining must come first in the load order. Every people tag in §3.4 and §3.8 is made at a reveal that finishes after the tagged user's `joined_at` (earliest: Lantern tags Wind at the Lantern #1 reveal, 2022-01-16, against Wind's 2021-03-15; Round tags Hands at the Round #1 reveal, 2023-09-12, against Hands' 2023-06-01). A side effect: Open Hands is never a user without a journey, since Hands #1 (2023-06-01 to 2024-06-01) is sealed when Round tags Hands at the Round #1 reveal (see the D14 row in §3.4).
 
 ### 3.3 Journeys
 
@@ -301,6 +301,8 @@ Lantern's 2 private photos of Wind check that **being tagged doesn't give access
 
 Most other photos have 0–2 reflections.
 
+*(amended 2026-10-30, user ruling)* Six more reflections are fixed in the fixture, not left to the generator: one on a public photo of each Positivity Feed journey, listed in §3.7. With the four rows above, the fixture fixes 19 reflections (5 + 4 + 3 + 1 + 6).
+
 **Overviews:** every revealed journey has one per slot it has passed through. Steady Lantern has 15 (journey #1 has 5, down to journey #5 with 1). Second Wind has 15, Open Hands 6 and Long Way Round 9 (4 + 3 + 2). Long Way Round #4 has none.
 
 **Notes:** about one photo in three has a note, each written within 15 minutes of its capture.
@@ -359,6 +361,19 @@ That is 6 journeys and 23 public photos at baseline. All four working tags appea
 
 What the exclusions test: Steady Lantern #5's free-text tag is not on the list. Lantern #4 and Wind #5 (`worth it`), Lantern #1, Wind #3 and Round #1 (`I almost quit`, `the hard part was the start`) and Round #3 (`worried for nothing`) carry tags from the 8-item draft that are not working tags. Lantern #3 qualifies through `hang in there` even though it also carries `worried for nothing`. Round #4 is unlocked but its reveal was never finished, so nothing from it enters (B9 (f)). Private and Network photos of qualifying journeys never enter (B9 (b)).
 
+*(amended 2026-10-30, user ruling)* **The feed is not empty at baseline.** Each of the six journeys carries one reflection fixed in the fixture (not left to the generator) on one of its public photos. Each sits in slot 1 (§20 D: slot 1 runs from unlock to unlock + 1 year), dated 7 days after that journey's reveal finished, so it is written after the photo was set Public and the reveal locked (§20 F; it also holds under either B2 setting, §20 R). Every date is before baseline 2026-10-25 and away from a slot boundary. Times are 00:00:00 UTC (NB-6). The photo is named by its place among the journey's public photos in capture order, since §3 gives no capture dates for these photos.
+
+| Journey | Photo | Reveal finished | Slot 1 | Reflection written (slot) | Text |
+|---|---|---|---|---|---|
+| Steady Lantern #2 | lantern-2, public photo 1 of 4 | 2023-01-14 | 2023-01-01 → 2024-01-01 | 2023-01-21 (1) | `[copy: copywriter]` |
+| Steady Lantern #3 | lantern-3, public photo 1 of 5 | 2024-01-20 | 2024-01-01 → 2025-01-01 | 2024-01-27 (1) | `[copy: copywriter]` |
+| Second Wind #4 | wind-4, public photo 1 of 2 | 2025-04-19 | 2025-04-05 → 2026-04-05 | 2025-04-26 (1) | `[copy: copywriter]` |
+| Open Hands #2 | hands-2, public photo 1 of 2 | 2025-06-22 | 2025-06-03 → 2026-06-03 | 2025-06-29 (1) | `[copy: copywriter]` |
+| Open Hands #3 | hands-3, public photo 1 of 2 | 2026-06-20 | 2026-06-03 → 2027-06-03 | 2026-06-27 (1) | `[copy: copywriter]` |
+| Long Way Round #2 | round-2, public photo 1 of 8 | 2024-09-15 | 2024-09-04 → 2025-09-04 | 2024-09-22 (1) | `[copy: copywriter]` |
+
+So the Positivity Feed holds at least 6 entries at baseline, one per qualifying journey and at least one from each of the four users with a revealed journey (Lantern 2, Hands 2, Wind 1, Round 1). Any generated reflections on other public photos of these journeys add to that. None of the four photos in §3.5 is in a qualifying journey (lantern-1, round-1, wind-3, lantern-5), so none of them enters the feed.
+
 The scripted future (§3.8) adds nothing: the Wind #6 and Hands #4 reveals script no feeling tags.
 
 ### 3.8 Scripted future (applied on jumps)
@@ -366,7 +381,7 @@ The scripted future (§3.8) adds nothing: the Wind #6 and Hands #4 reveals scrip
 | Date | Action |
 |---|---|
 | 2027-01-01 | Steady Lantern #6 unlocks. **The reveal is left for whoever is demoing** |
-| 2027-04-25 | Second Wind finishes the #6 reveal, tagging Lantern in 4 photos (middle). Writes a reflection on wind-3 and an overview |
+| 2027-04-25 | Second Wind finishes the #6 reveal, tagging Lantern in 4 photos (middle). Writes a reflection on wind-3 and an overview on journey #6, its first overview slot *(amended 2026-10-30, user ruling)* |
 | 2027-06-20 | Open Hands finishes the #4 reveal, tagging Lantern in 1 photo |
 | never | Long Way Round's #4 reveal stays unfinished. At +5 years it's still Network-by-default |
 
