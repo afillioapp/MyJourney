@@ -94,7 +94,7 @@ The tables below repeat the items most at risk on each screen. **An item missing
 ### S-03 The sealed year
 
 - **Purpose:** the owner's current journey while it is sealed: an empty state that leaks nothing and reads as intended, and the way out to what the user does instead.
-- **Spec source:** Spec:71–76 (§6); Spec:233–234 (§18); Spec:246 (§19); Spec:279 (§20 I); Proposal:48–50, Proposal:84; Plan:107; Brief:71, Brief:130; Decisions B6, B7, C2, C3, C4
+- **Spec source:** Spec:71–76 (§6); Spec:233–234 (§18); Spec:246 (§19); Spec:279 (§20 I); Proposal:48–50, Proposal:84; Plan:107; Brief:71, Brief:130; Decisions B6, B7, B19, C2, C3, C4
 - **Viewer:** owner. How others see a sealed journey is a state of S-16 and S-06 ("exists only", Proposal:310)
 - **Reached from:** Profile (own) S-05, where the app opens (`PROVISIONAL: C12`); Commit S-01. **Leads to:** Capture S-02, Start a highlight S-13, Positivity Feed S-09, Feed S-08, Layers S-07, Another user's profile S-16, Profile (own) S-05. **Never to** the note step S-12 (`PROVISIONAL: C4`)
 
@@ -103,9 +103,9 @@ The tables below repeat the items most at risk on each screen. **An item missing
 | # | Element | Source |
 |---|---|---|
 | 1 | That the owner has a journey underway | Proposal:84 ("The owner also sees type, commit date and unlock date. Nothing else."), Proposal:309 |
-| 2 | The journey's type, **by name only**. Not its photos per year, cadence or highlight allowance: at Commit those describe a choice, but beside a running year they read as a target (Spec:243; Rubric R-098). Shown under `PROVISIONAL: B19`; Spec:74 reads against it (OQ-39) | Proposal:84, Decisions B19 |
-| 3 | The commit date, as a plain date (`PROVISIONAL: B19`; Spec:74 reads against it, OQ-39) | Proposal:84, Decisions B19 |
-| 4 | The unlock date, as a plain date, never relative to today (`PROVISIONAL: C2`) | Proposal:84, Decisions C2, Rubric R-013 |
+| 2 | The journey's type, **by name only**. Not its photos per year, cadence or highlight allowance: at Commit those describe a choice, but beside a running year they read as a target (Spec:243; Rubric R-098). Shown under `PROVISIONAL: B19`, which reads Spec:74 as covering the contents (OQ-39) | Proposal:84, Decisions B19 |
+| 3 | The commit date, as a plain date (`PROVISIONAL: B19`, which reads Spec:74 as covering the contents; OQ-39) | Proposal:84, Decisions B19 |
+| 4 | The unlock date, as a plain date, never relative to today (`PROVISIONAL: B19`, `C2`) | Proposal:84, Decisions B19, C2, Rubric R-013 |
 | 5 | The way to Capture (S-02), offered the same whether or not a frame is left (`PROVISIONAL: B7`; Rubric R-138) | Spec:53, Proposal:99 |
 | 6 | The way to start a highlight (S-13), offered the same whether or not a highlight is left, and whether or not one is open: never greyed or relabelled (Rubric R-138) | Spec:264, Proposal:135 |
 | 7 | Only in `sealed · highlight open`: the plain fact that a highlight is open, with no end time and no countdown (`PROVISIONAL: B6`) | Decisions B6, Rubric R-140 |
@@ -153,7 +153,7 @@ Not on the list:
 ### S-05 Profile (own)
 
 - **Purpose:** the owner's destination, and where the app opens: the circle with the owner's name in it, its rings, the activity line twisted into it, and the way into their own journeys.
-- **Spec source:** Spec:181–187 (§14); Spec:29 (§2); Proposal:65; Concept:681–714 (§21); Plan:109; Brief:85; Decisions B4, B5, C1, C3, C7, C9, C12
+- **Spec source:** Spec:181–187 (§14); Spec:29 (§2); Proposal:65; Concept:681–714 (§21); Plan:109; Brief:85; Decisions B4, B5, B19, C1, C3, C7, C9, C12
 - **Viewer:** owner. Others see S-16
 - **Reached from:** app entry, in every state (`PROVISIONAL: C12`); Reveal S-04; Layers S-07 (the core). **Leads to:** Walking a path S-06 (own), and through it the owner's earlier journeys, where open reflection slots are reached (`PROVISIONAL: C3`); Reveal S-04 when a reveal is open; Commit S-01 in `no-journey`; Journey overview S-15; The sealed year S-03; and the app's other screens, Layers S-07, Feed S-08 and Positivity Feed S-09 (how is Phase 2)
 
@@ -180,7 +180,7 @@ Under either option a ring is a record of time, not a reward. It never arrives a
 ### S-06 Walking a path
 
 - **Purpose:** read a person's journeys from the beginning to now, in order, with the hard times and the reflections written later.
-- **Spec source:** Spec:191–196 (§15); Spec:149 (§11); Spec:177 (§13); Concept:563–582 (§16); Plan:110; Decisions B2, B12, C6
+- **Spec source:** Spec:191–196 (§15); Spec:149 (§11); Spec:177 (§13); Concept:563–582 (§16); Plan:110; Decisions B2, B12, B19, C6
 - **Viewer:** owner, network, public (signed-in, `PROVISIONAL: B14`), tagged. What each sees depends on photo visibility (Spec:143–147, Proposal:305–313)
 - **Reached from:** Profile (own) S-05, Another user's profile S-16, Feed S-08, Positivity Feed S-09. **Leads to:** A photo, followed forward S-17, Journey overview S-15, Another user's profile S-16
 
@@ -259,7 +259,7 @@ On every state, never: an image: "Announcements only. No photographs in the stre
 ### S-09 Positivity Feed
 
 - **Purpose:** reflections written years later on other people's hard moments, filtered by tags of endurance and gratitude, so someone on a bad day finds a person who was where they are.
-- **Spec source:** Spec:200–209 (§16); Spec:30 (§2); Proposal:315–324; Concept:450–559 (§15); Plan:113; Brief:87; Decisions B9
+- **Spec source:** Spec:200–209 (§16); Spec:30 (§2); Proposal:315–324; Concept:450–559 (§15); Plan:113; Brief:87; Decisions B9, B18
 - **Viewer:** any signed-in user (`PROVISIONAL: B14`). Content is public only, chosen per photo (Spec:147, Spec:203; `PROVISIONAL: B9b`)
 - **Reached from:** Sign up (day one, Spec:30; not in the prototype, `PROVISIONAL: C11`); The sealed year S-03; the app's navigation from Profile (own) S-05 (`PROVISIONAL: C12`). **Leads to:** A photo, followed forward S-17, Walking a path S-06, Another user's profile S-16
 
@@ -273,7 +273,7 @@ The table follows the state of the **source** journey. The reader's own state ch
 |---|---|---|
 | `sealed` | Nothing from it | Anything (Spec:246) |
 | `unlock-day`, `reveal-open` | Nothing from it, even a photo already set Public (`PROVISIONAL: B9f`) | Network or private content |
-| `reveal-finished` | Reflections on public photos from journeys tagged with a drafted endurance or gratitude tag (Spec:202, Spec:207; Proposal:317; `PROVISIONAL: B9b`, `B9c`). Text only, or with the photograph, by B9(a). A chapter filter (`PROVISIONAL: B9d`). Newest first (`PROVISIONAL: B9e`) | Ordering or selection by popularity: "never by popularity" (Spec:202; Rubric R-103). "Public means readable, not commentable" (Spec:152). A tag outside the drafted list (`PROVISIONAL: B9c`) |
+| `reveal-finished` | Reflections on public photos from journeys tagged with a drafted endurance or gratitude tag (Spec:202, Spec:207; Proposal:317; `PROVISIONAL: B9b`, `B9c`). Text only, or with the photograph, by B9(a). A chapter filter (`PROVISIONAL: B9d`). Newest first (`PROVISIONAL: B9e`) | Ordering or selection by popularity: "never by popularity" (Spec:202; Rubric R-103). "Public means readable, not commentable" (Spec:152). A tag outside the drafted list (`PROVISIONAL: B9c`). Tags surfaced, suggested or counted by popularity (`PROVISIONAL: B18`) |
 | `later-years` | The same, with reflections written years after the moment, which is the feed's primary use (Spec:204) | As above |
 
 On every state, never: a prompt to capture a low point: "invited, never nudged" (Spec:209). Likes, reactions, views or counts (Proposal:180). **Endless or infinite scroll, autoplay, "more like this", or pull to refresh into new content** (Brief:49; Rubric R-104). An unread dot or "new" marker (Rubric R-096).
@@ -341,7 +341,7 @@ On every state, never: a prompt to capture a low point: "invited, never nudged" 
 | State | Holds | Must never show |
 |---|---|---|
 | `sealed`, no highlight open | The way to start one, offered the same whether or not any highlight is left: availability is learned only by trying (Rubric R-138). Accepted, or refused once the type's allowance is used (Proposal:135). The window is 24 hours of elapsed time, cut off at unlock (Proposal:133; `PROVISIONAL: B16`) | Highlights left or used: "Frames used, frames left and highlights left are counted inside them and never stored or returned" (Proposal:49). A start control hidden, greyed out or relabelled because none is left (Rubric R-138). The season as a rule: "Explorer's 'one per season' is a description, not a rule" (Spec:264) |
-| `sealed · highlight open` | The plain fact that a highlight is open, with no end time (`PROVISIONAL: B6`). Starting another is refused (Spec:284) | As above, including a start control greyed out or relabelled because one is open (Rubric R-138). **The highlight's end time, "ends in", time left, a timer, or a shrinking bar or ring** (`PROVISIONAL: B6`; Rubric R-140). Highlight photos taken or left (Proposal:49). Anything about the highlight to anyone but the owner (`PROVISIONAL: B6`; Rubric R-008) |
+| `sealed · highlight open` | The plain fact that a highlight is open, with no end time (`PROVISIONAL: B6`). The way to start one, offered the same as when none is open; starting another is refused (Spec:284; Rubric R-138) | As above, including a start control hidden, greyed out or relabelled because one is open (Rubric R-138). **The highlight's end time, "ends in", time left, a timer, or a shrinking bar or ring** (`PROVISIONAL: B6`; Rubric R-140). Highlight photos taken or left (Proposal:49). Anything about the highlight to anyone but the owner (`PROVISIONAL: B6`; Rubric R-008) |
 | `unlock-day` onward, `no-journey` | Not available: "Only on a sealed journey" (Proposal:135) | |
 
 - **Reads:** Highlight, Journey (Proposal §2.2), through `start_highlight()`'s accepted or refused only, and whether a highlight is open (`PROVISIONAL: B6`)
@@ -451,7 +451,7 @@ On every state, never: a comment, reply or like (Spec:230, Proposal:180). A capt
 ### S-19 Chapter and feeling tags (reveal step)
 
 - **Purpose:** the owner applies one chapter from the fixed catalogue and any free-text feeling tags.
-- **Spec source:** Spec:86 (§7); Spec:129–135 (§10); Proposal:137–143; Concept:469–529; Decisions B3, C5
+- **Spec source:** Spec:86 (§7); Spec:129–135 (§10); Proposal:137–143; Concept:469–529; Decisions B3, B17, B18, C5
 - **Viewer:** owner
 - **Reached from:** Reveal S-04. **Leads to:** Reveal S-04
 
@@ -460,7 +460,7 @@ On every state, never: a comment, reply or like (Spec:230, Proposal:180). A capt
 | State | Holds | Must never show |
 |---|---|---|
 | `sealed` | Not available | |
-| `unlock-day`, `reveal-open` | One chapter, from fixed categories under ME → ME, ME → YOU, ME → IT (Spec:129). Feeling tags as free text on the journey, with no category (`PROVISIONAL: B17`; Proposal:141). Each set once (Spec:286), with one line saying it can't be changed before it is saved (`PROVISIONAL: C5`). Neither is required to finish (`PROVISIONAL: C5`) | A second chapter: "One per journey" (Spec:129). A way to change a set tag. **Suggested, popular or trending feeling tags while the owner writes, or how many people use a tag**: tags never surface by popularity (`PROVISIONAL: B18`), and no count is ever shown (Brief:42) |
+| `unlock-day`, `reveal-open` | One chapter, from fixed categories under ME → ME, ME → YOU, ME → IT (Spec:129). Feeling tags as free text on the journey, with no category (`PROVISIONAL: B17`; Proposal:141). Each set once (Spec:286), with one line saying it can't be changed before it is saved (`PROVISIONAL: C5`). Neither is required to finish (`PROVISIONAL: C5`) | A second chapter: "One per journey" (Spec:129). A way to change a set tag. **Suggested, popular or trending feeling tags, or how many people use a tag**: tags never surface by popularity (`PROVISIONAL: B18`), and no count is ever shown (Brief:42) |
 | `reveal-finished`, `later-years · finished` | The tags, read-only | Any change (Spec:276) |
 | `later-years · never finished` | None set yet unless the owner set them, which took effect when made. They can still be set, once each (`PROVISIONAL: B3`; Spec:269 says "There's no chapter, no tags", Rubric G-11) | |
 
@@ -699,6 +699,8 @@ The Commit moment and button (S-01). The capture refusal, with no number, and th
 
 | Finding | What changed |
 |---|---|
-| N1: B17–B19 not applied | Range now B1–B19. S-19 follows B17 (free text on the journey, no category) and B18 (no popularity, suggestions or counts). Type and commit date on S-03, S-06 and the path labelled `PROVISIONAL: B19`. OQ-37, OQ-38, OQ-39 now point to B17, B18, B19 |
+| N1: B17–B19 not applied | Range now B1–B19. S-19 follows B17 (free text on the journey, no category) and B18 (no popularity, suggestions or counts). Type and commit date on S-03, S-05 and S-06 labelled `PROVISIONAL: B19`. OQ-37, OQ-38, OQ-39 now point to B17, B18, B19 |
 | N4: start-highlight control while one is open | S-03 element 6 and S-13 `sealed · highlight open` ban greying or relabelling it (R-138) |
 | N11: label with no ID | Out-of-scope C11 row now `PROVISIONAL: C11` |
+
+**2026-10-30, round 2 follow-up.** Against `docs/reviews/2026-10-30-rules-screen-inventory-r2.md`: S-13 open state holds the start control and bans hiding it (N12). B18 applied to S-09; S-19's ban no longer limited to "while the owner writes" (N13). Source lists on S-03, S-05, S-06, S-09, S-19 carry B17–B19; unlock date labelled B19; Spec:74 wording follows the B19 row; log screen names corrected (N14).
