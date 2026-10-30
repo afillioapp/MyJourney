@@ -123,12 +123,12 @@ Not on the list:
 | State | Holds | Must never show |
 |---|---|---|
 | `sealed` | Elements 1–6, 8 and 9 | "No previews, no counts of what is inside, no thumbnails" (Spec:75). "Not thumbnails, not counts, not '3 moments captured'" (Brief:46). Frames used, frames left, highlights left (Proposal:49). The year's activity graph or line: "Never during the sealed year" (Spec:187). Anything derived from `captured_at`, such as the last capture or which months have photos, since it is unreadable (Proposal:48, 50). Any note (sealed, Proposal:105). "No visible counters, no progress bars, no reminders during the sealed year" (Spec:233). A countdown or relative date: "in 64 days", "unlocks in", days to go, a timer or a ticking display (`PROVISIONAL: C2`; Rubric R-013). Anything that fills, grows or advances with the date: "month 7 of 12", an elapsed-time bar or arc (Rubric R-012). The type's photos per year, cadence or highlight allowance (Spec:243; Rubric R-098). The Capture or highlight control hidden, greyed out or relabelled because nothing is left, or any hint of when a frame comes back (Rubric R-138). A pointer to open reflection slots on earlier journeys (`PROVISIONAL: C3`). A way back to the note step (`PROVISIONAL: C4`). A reminder to capture (Spec:242). A prompt to photograph a low point: "The app does not prompt anyone to document a bad moment" (Spec:209). A way to change type or abandon (Spec:44, Spec:263). A second Commit (Spec:273) |
-| `sealed · highlight open` | Elements 1–9: as `sealed`, plus element 7 (`PROVISIONAL: B6`) | As in `sealed`. Highlight photos taken or left (Proposal:49). The highlight's end time, "ends in", time left, a timer, or a shrinking bar or ring (`PROVISIONAL: B6`; Rubric R-140) |
+| `sealed · highlight open` | Elements 1–9: as `sealed`, plus element 7 (Spec §20 S) | As in `sealed`. Highlight photos taken or left (Proposal:49). The highlight's end time, "ends in", time left, a timer, or a shrinking bar or ring (`PROVISIONAL: B6`; Rubric R-140) |
 | `sealed · note window` | **Identical to `sealed`.** The note step is not reachable from here (`PROVISIONAL: C4`) | As in `sealed`. Any way back to the note step (`PROVISIONAL: C4`). Anything that differs because a photo was just taken: "A capture changes nothing that any reader can observe, the owner included" (Rubric R-010). The photo the note belongs to |
 | `unlock-day` | The screen gives way to Reveal S-04, reached on the owner's next open through "Your Journey is ready" (`PROVISIONAL: C1`) | Nothing from the sealed list carries over: the whole journey opens at once (Spec:73). A notification that it has unlocked (`PROVISIONAL: C1`; Spec:236) |
 | `no-journey` | Not reached. Commit S-01 is open instead | |
 
-- **Reads:** Journey (type, `committed_at`, `unlocks_at` only); for element 7, whether a highlight is open, and nothing else about it (Proposal §2.2; `PROVISIONAL: B6`)
+- **Reads:** Journey (type, `committed_at`, `unlocks_at` only); for element 7, whether a highlight is open, and nothing else about it (Proposal §2.2; Spec §20 S)
 - **Copy:** the sealed state `[copy: copywriter]` (Plan:79). Approved lines exist (Brief:115–122, for example "This app takes time, like many other good things."). Where each goes is the copywriter's call
 
 ### S-04 Reveal
@@ -263,7 +263,7 @@ On every state, never: an image: "Announcements only. No photographs in the stre
 - **Viewer:** any signed-in user (`PROVISIONAL: B14`). Content is public only, chosen per photo (Spec:147, Spec:203; `PROVISIONAL: B9b`)
 - **Reached from:** Sign up (day one, Spec:30; not in the prototype, `PROVISIONAL: C11`); The sealed year S-03; the app's navigation from Profile (own) S-05 (`PROVISIONAL: C12`). **Leads to:** A photo, followed forward S-17, Walking a path S-06, Another user's profile S-16
 
-**`PROVISIONAL: B9`.** (b) Visibility is per photo, not per journey (OQ-12). (c) Only the drafted tag list qualifies (Spec:207); a free-text tag such as Steady Lantern #5's "slow is still forward" does not. (d) A chapter filter is available. (e) Newest first. (f) A photo enters only after its journey's reveal is finished. Only (a) is switchable:
+**`PROVISIONAL: B9`.** (b) Visibility is per photo, not per journey (OQ-12). (c) Only the drafted tag list qualifies (Spec:207); a free-text tag such as Steady Lantern #5's "slow is still forward" does not. (d) A chapter filter is available. (e) Newest first. (f) A photo enters only after its journey's reveal is finished. (a) is decided, not switchable:
 - **(a) Text only (decided 2026-10-30, Spec §20 Q).** Each entry is a reflection's text. The photograph is shown only when the reader opens the entry, in S-17.
 
 The table follows the state of the **source** journey. The reader's own state changes nothing: the same feed serves a new user (Spec:30) and a user in a sealed year (Concept:555).
@@ -340,10 +340,10 @@ On every state, never: a prompt to capture a low point: "invited, never nudged" 
 | State | Holds | Must never show |
 |---|---|---|
 | `sealed`, no highlight open | The way to start one, offered the same whether or not any highlight is left: availability is learned only by trying (Rubric R-138). Accepted, or refused once the type's allowance is used (Proposal:135). The window is 24 hours of elapsed time, cut off at unlock (Proposal:133; `PROVISIONAL: B16`) | Highlights left or used: "Frames used, frames left and highlights left are counted inside them and never stored or returned" (Proposal:49). A start control hidden, greyed out or relabelled because none is left (Rubric R-138). The season as a rule: "Explorer's 'one per season' is a description, not a rule" (Spec:264) |
-| `sealed · highlight open` | The plain fact that a highlight is open, with no end time (`PROVISIONAL: B6`). The way to start one, offered the same as when none is open; starting another is refused (Spec:284; Rubric R-138) | As above, including a start control hidden, greyed out or relabelled because one is open (Rubric R-138). **The highlight's end time, "ends in", time left, a timer, or a shrinking bar or ring** (`PROVISIONAL: B6`; Rubric R-140). Highlight photos taken or left (Proposal:49). Anything about the highlight to anyone but the owner (`PROVISIONAL: B6`; Rubric R-008) |
+| `sealed · highlight open` | The plain fact that a highlight is open, with no end time (Spec §20 S). The way to start one, offered the same as when none is open; starting another is refused (Spec:284; Rubric R-138) | As above, including a start control hidden, greyed out or relabelled because one is open (Rubric R-138). **The highlight's end time, "ends in", time left, a timer, or a shrinking bar or ring** (`PROVISIONAL: B6`; Rubric R-140). Highlight photos taken or left (Proposal:49). Anything about the highlight to anyone but the owner (`PROVISIONAL: B6`; Rubric R-008) |
 | `unlock-day` onward, `no-journey` | Not available: "Only on a sealed journey" (Proposal:135) | |
 
-- **Reads:** Highlight, Journey (Proposal §2.2), through `start_highlight()`'s accepted or refused only, and whether a highlight is open (`PROVISIONAL: B6`)
+- **Reads:** Highlight, Journey (Proposal §2.2), through `start_highlight()`'s accepted or refused only, and whether a highlight is open (Spec §20 S)
 - **Copy:** starting a highlight; the refusal `[copy: copywriter]`
 
 ### S-14 Reflect
@@ -421,7 +421,7 @@ On every state, never: the viewer's ring on this person's map, or this person's 
 | State | Holds | Must never show |
 |---|---|---|
 | `sealed` | Not reachable | Anything (Spec:234) |
-| `unlock-day`, `reveal-open` | The photo, its note if any, the slot 1 reflection if written. Readers: the owner; under B2's default, also the network while the photo is Network by default, and anyone once it is set Public; under B2's option, the owner only until finished | The photo to a non-owner once it is Private |
+| `unlock-day`, `reveal-open` | The photo, its note if any, the slot 1 reflection if written. Readers: the owner; under B2's default, also the network while the photo is Network by default, and anyone once it is set Public; under B2's option, the owner only until finished | The photo to a non-owner once it is Private. A next, previous or swipe control that steps to another feed entry's photo: it would rebuild a photo feed one image at a time (Spec §20 Q; Rubric R-145) |
 | `reveal-finished` | As above, with visibility locked | As above |
 | `later-years` | The reflection stack grows by at most one per slot (Spec:97) | As above. For the owner, a marker that a new slot is open (Rubric R-095, R-096) |
 
@@ -528,7 +528,7 @@ This table is for the reader of this inventory. The panel shows none of it.
 ### T-02 Prototype options panel
 
 - **Purpose:** let the demoer compare the switchable provisional defaults, choose which fixture user to view the app as, and see the simulated date. Not part of the product.
-- **Spec source:** `CLAUDE.md` rule zero, item 3; Decisions "Provisional defaults in force" (B2, B4, B5, B9, B11, B12, C6, C11, C16); Proposal:204–210 (the fixture users); Proposal:305–313 (the access matrix the viewer switcher tests)
+- **Spec source:** `CLAUDE.md` rule zero, item 3; Decisions "Provisional defaults in force" (B2, B4, B5, B11, B12, C6, C11, C16); Proposal:204–210 (the fixture users); Proposal:305–313 (the access matrix the viewer switcher tests)
 - **Viewer:** demoer only
 - **Reached from:** T-01, beside it. Never from a product screen
 
@@ -629,7 +629,7 @@ Where two docs disagree, both lines are cited and neither is picked unless Decis
 25. **A refused capture.** What does the user see when there is no frame (Proposal:97–99)? Is the camera offered at all? Spec:243 bans a quota count "in a way that reads as a target", which leaves room for some other kind of count. Proposal:49 returns no number at all. Affects S-02.
     → Decisions B7, provisional: frames left are never shown; a refused capture says so with no number. Not switchable. The camera is offered the same either way (Rubric R-138, provisional on this question).
 26. **An open highlight.** May the owner see that a highlight is open and when it ends? Proposal:49 forbids returning highlights left. The window itself is not addressed. Affects S-02, S-03, S-13.
-    → Decisions B6, provisional: others learn nothing; the owner sees only "a highlight is open", with no end time and no countdown. Not switchable. This inventory shows it on S-03 and S-13, not on S-02 (strictest reading of where).
+    → Decisions B6: the owner sees only "a highlight is open", with no end time and no countdown (decided 2026-10-30, Spec §20 S); others learn nothing (provisional). Not switchable. This inventory shows it on S-03 and S-13, not on S-02 (strictest reading of where).
 27. **The unlock date shown relative to today.** The owner may see the unlock date (Proposal:84). Is "in 64 days" a counter under Spec:233? Affects S-03.
     → Decisions C2, provisional: a plain date, never relative. Not switchable. (Rubric R-013 already bans the countdown; the audit, finding 2, noted this question should not have been framed as open.)
 28. **Who sees the activity graph.** It is built from `captured_at` (Proposal:50), including private photos. Shown to network or public, it would reveal when private photos were taken (Spec:145). Is it owner-only, or built only from photos the viewer can see? Affects S-16.
@@ -662,6 +662,8 @@ Where two docs disagree, both lines are cited and neither is picked unless Decis
 40. **The announcement feed's order.** No source states it (Rubric Question 1). Affects S-08. (Audit finding 11.)
     → Decisions C14, provisional: newest first. Not switchable.
 41. **"Jump to the next unlock" and another user's date.** T-01's jump plus the simulated date it shows (C16) tells the demoer when another user's journey unlocks (Rubric R-014, R-008). Is the demoer exempt as a prototype tool, or does the jump go to the chosen viewer's own next unlock? Affects T-01. (Re-audit N8.)
+    → **Still open, no ID.** Raised for the user.
+42. **How long "Your Journey is ready" stays.** Decisions C1 says it appears on the owner's "next open". Once only, or on every open until the reveal is finished? Shown on every open for a year it becomes a nudge (Rubric R-095). Affects S-05, S-03. (Re-audit N5.)
     → **Still open, no ID.** Raised for the user.
 
 ---
@@ -707,3 +709,5 @@ The Commit moment and button (S-01). The capture refusal, with no number, and th
 
 
 **2026-10-30, user rulings.** G-8: Positivity Feed text only, the B9a switch removed (S-09, T-02). B2 option: Public photos wait too (S-06, OQ-9). B6 holds over B19 on S-03 element 7. All recorded in Spec §20 Q–S. N8 raised as OQ-41.
+
+**2026-10-30, after the round 3 audit** (`docs/reviews/2026-10-30-rules-screen-inventory-r3.md`, PASS): B9 (a) no longer called switchable (N16); T-02 source drops B9 (N17); the owner half of B6 cites Spec §20 S, OQ-26 updated (N18); S-17 bans stepping photo to photo from the feed (N20); N5 raised as OQ-42.

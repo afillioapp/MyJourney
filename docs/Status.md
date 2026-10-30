@@ -34,7 +34,7 @@ Status values: `todo` · `in progress` · `in review` · `done` · `blocked`
 | Data model | lead-tech | done | `Phase-1-Proposal.md` §2, approved 2026-10-25 |
 | Fixture design | fixture-designer | done | `Phase-1-Proposal.md` §3, approved 2026-10-25 |
 | Rules list as testable statements | rules-guardian | in progress | Target: `Rules-Rubric.md`. Starts from `Phase-1-Proposal.md` §2.5 (11 data-layer checks); the banned list's screen-level rules are not yet written as checks |
-| Screen inventory | ux | in progress | Target: `Screen-Inventory.md` |
+| Screen inventory | ux | done | `Screen-Inventory.md`; rules audit PASS `docs/reviews/2026-10-30-rules-screen-inventory-r3.md` |
 
 **Gate:** a developer can read the data model and the fixture design and know exactly what to build, with no questions left.
 
@@ -115,3 +115,4 @@ Can start any time after Phase 2.
 - 2026-10-30 — Screen Inventory re-audit after round 1: FAIL, 3 confirmed (N1–N3), R-150 added. Round 2 fixed N1, N4, N11. N2, N3 (G-8), N7 and N8 wait for the user. Not yet re-audited.
 - 2026-10-30 — Re-audit after round 2: FAIL on N2 and N3 only (both wait for the user). Follow-up fixed N12, N13, N14.
 - 2026-10-30 — User rulings: G-8 text only (Spec §20 Q), Public waits under B2's option (§20 R), B6 over B19 (§20 S), stack local Postgres. Restatements fixed in Decisions-Needed, Screen-Inventory, Rules-Rubric.
+- 2026-10-30 — Screen Inventory round 3 audit: PASS (0 violations). Leftovers N16–N18, N20 fixed; N5 and N8 raised as C18 and C17.

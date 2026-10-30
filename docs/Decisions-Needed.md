@@ -168,6 +168,10 @@ The Phase 1 gate asks that a developer can build the data model "with no questio
 
 ---
 
+**C17. Time-control jump and another user's unlock date.** "Jump to the next unlock" plus the shown date tells the demoer when another user's journey unlocks. Is the demoer exempt, or does the jump go to the chosen viewer's own next unlock? (Inv OQ-41; re-audit N8.) No default.
+
+**C18. How long "Your Journey is ready" stays.** Once, on the next open, or on every open until the reveal is finished? (Inv OQ-42; re-audit N5.) C1 says "next open". No default.
+
 ## D. Already open elsewhere
 
 | # | Decision | Blocks |
