@@ -684,7 +684,7 @@ Where two docs disagree, both lines are cited and neither is picked unless Decis
 **Raised 2026-10-30, after Spec §20 GG** (`docs/reviews/2026-10-30-gate-1-r4.md` NB-22; `docs/reviews/2026-10-30-rules-phase-1-r5.md` V3)
 
 46. **The order of photos within one day, for a non-owner.** Spec §20 GG (Spec:311) gives a non-owner the capture date, never the time. A path runs "in order, not as a grid" (Spec:193), and S-17 sits in that order. When several photos share a date, ordering them by capture time, or by anything that follows it such as sequential photo ids, would tell a non-owner the order the moments happened in, which GG may or may not count as "time". No source says how same-day photos are ordered for a non-owner. A second, smaller point: GG grants the capture date only; whether a non-owner may see the note's written **date** (which, near midnight, can differ from the capture date and so pin the time, Rubric R-154) is not stated either. Affects S-06, S-16, S-17.
-    → **Still open, no ID.** Nothing is picked here. The screens above hold only what GG states: the capture date to a non-owner, no time of day, no note written time; they show no note written date to a non-owner, since GG grants none. The within-day order is left for the user.
+    → Decided 2026-10-30: same-day photos for a non-owner carry no time order, and ids are not sequential across users (Spec §20 JJ); a non-owner never sees when a note was written, not even the date (Spec §20 LL).
 
 ---
 

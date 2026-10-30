@@ -310,6 +310,10 @@ Feeling tags currently drafted: hang in there · it eventually pays off · thank
 - **FF. `viewer_in_network()` may stay directly callable.** It reveals nothing beyond what §20 T journey rows already give a network member (Phase-1-Amendments OQ-17; Rubric R-070)
 - **GG. Readers other than the owner see a photo's capture date, never its time.** The owner sees the full time (Screen-Inventory OQ-45)
 - **HH. The journey overview waits too.** Under B2's "only after reveal finished" setting, the network reads the overview only once the reveal is finished (§20 X "what follows them")
+- **II. The loader and the tests run as the panel role** and act as a user only through a one-way switch to the app role; the app role can never become the panel role (Phase-1-Amendments §2.1, approved)
+- **JJ. Same-day photos, for a non-owner, carry no time order.** They are shown in a fixed order that carries no time information, and photo ids are not sequential across users (Phase-1-Amendments OQ-18; Screen-Inventory OQ-46)
+- **KK. Time and location metadata are stripped from images at capture** (Phase-1-Amendments OQ-19)
+- **LL. A non-owner never sees when a note was written**, not even the date. The owner sees the full time (Screen-Inventory OQ-46)
 
 ### Still open — can wait
 
