@@ -306,6 +306,10 @@ Feeling tags currently drafted: hang in there · it eventually pays off · thank
 - **BB. Scripted fixture actions happen at 12:00 UTC** on their dates, away from the 00:00 UTC unlock instant (gate-1 r2 B-1)
 - **CC. The Positivity Feed may select journeys by feeling tag**, but never shows the tag to a public reader: they see reflection text only (gate-1 r2 NB-15)
 - **DD. Whether a photo was taken in a highlight** (`photo.highlight_id`) is readable by the owner only, also after unlock (gate-1 r2 NB-13; matches Decisions-Needed B24)
+- **EE. Only the prototype panel moves time or flips switches.** `clock_jump()`, the jump to the next unlock and `set_option()` are callable only by a separate panel role, never by the acting viewer (Phase-1-Amendments OQ-16)
+- **FF. `viewer_in_network()` may stay directly callable.** It reveals nothing beyond what §20 T journey rows already give a network member (Phase-1-Amendments OQ-17; Rubric R-070)
+- **GG. Readers other than the owner see a photo's capture date, never its time.** The owner sees the full time (Screen-Inventory OQ-45)
+- **HH. The journey overview waits too.** Under B2's "only after reveal finished" setting, the network reads the overview only once the reveal is finished (§20 X "what follows them")
 
 ### Still open — can wait
 

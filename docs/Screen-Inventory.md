@@ -678,7 +678,7 @@ Where two docs disagree, both lines are cited and neither is picked unless Decis
 44. **Rings and journey order to a public viewer.** Spec §20 T keeps a journey's dates from public readers. S-16 shows a public viewer rings (B4) and S-06 shows journeys "in order" (Spec:193). Whether a ring or a journey's place on the path may carry a year or any date label for a public viewer is not stated. Affects S-16, S-06.
     → **Still open, no ID.** S-06 and S-16 add no date label for a public viewer, because a dated ring or path entry would show a journey's dates, which §20 T withholds. Whether an undated ring or path order is itself too much is for the user.
 45. **Capture times and highlights.** Spec §20 DD keeps `highlight_id` owner-only, but a reader shown `captured_at` on many photos from one day can still infer a highlight (audit N8; Rubric R-151, residual risk). No screen here shows a photo's capture time to a non-owner except through B5's option graph. Whether any reader screen may show it is not stated. Affects S-06, S-16, S-17.
-    → **Still open, no ID.** Raised for the user.
+    → Decided 2026-10-30 (Spec §20 GG): readers see the capture date only, never the time; the owner sees the full time.
 
 ---
 
