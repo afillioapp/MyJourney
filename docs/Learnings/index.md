@@ -13,7 +13,7 @@ Every brief carries this list. Each line is the rule; the page has the evidence.
 1. **[L-001](L-001-stale-docs-must-say-so.md):** Build and audit only from the authoritative docs. `docs/Overview.md` is out of date (lines 63, 70, 125, 133, 210, 257–259 contradict the 2026-10-25 decisions). Never cite it.
 2. **[L-002](L-002-decisions-propagate-everywhere.md):** When two docs disagree, do not pick. `Functional-Spec.md` §20 and `My-Journey-Concept.md` §29 win. Cite both lines under Open questions. Known traps: the reflection example at `Functional-Spec.md:104–111` uses per-photo dates (wrong, see §20 D); "publish" names no real step; `My-Journey-Concept.md:807` says close friends "get everything" (wrong, see §20 H).
 3. **[L-003](L-003-names-and-ids-register.md):** The product is My Journey, formerly Retrogram, in folder `Retro-Gram/myjourney`. "Phase n" means a build phase, never the business's printing stage. Take external IDs only from the register, never by name match.
-4. **[L-004](L-004-environment-is-a-decision.md):** The stack and database host are undecided (`Status.md` Open decisions 1). Treat "Postgres, local" as an assumption. State every check as behaviour, not as a database feature.
+4. **[L-004](L-004-environment-is-a-decision.md):** Stack decided 2026-10-30: local Postgres first. The deploy host is still open (`Status.md` Open decisions 1). State every check as behaviour, not as a database feature.
 5. **[L-006](L-006-history-and-graph-freshness.md):** The graph may be stale, so read the cited section itself. Edit nothing while a graph build runs.
 
 Also carry, when the labels match:
@@ -54,6 +54,6 @@ Raised by the learnings above. Only the user can settle these.
 2. **"Published".** In `My-Journey-Concept.md:365–367, 424, 440` and `Functional-Spec.md:141`, does "published" mean "the reveal is finished"? If so, should the docs use only "reveal finished" or "journey launched"? (L-002)
 3. **`My-Journey-Concept.md:714`** says streaks are banned by "section 4", which does not ban them. Point it at §7 (line 244) and `Functional-Spec.md` §18? (L-002)
 4. **`docs/Overview.md`.** Mark it historical, update it to match, or move it out of `docs/`? Is the live doc it was exported from (line 3) still being edited, and if so, which copy wins? (L-001)
-5. **Stack and database host.** Already open as `Status.md` Open decisions 1. It blocks Phase 3, not Phase 1. (L-004)
+5. **Stack and database host.** Stack decided 2026-10-30: local Postgres first. Deploy host still open (`Status.md` Open decisions 1); it does not block Phase 3. (L-004)
 6. **Vercel Authentication** on project `myjourney`. Switch it off so the holding page is public, or keep the page private for now? This has to be done by hand in the Vercel dashboard. (L-005)
 7. **Commits.** May the supervisor commit after each recorded step, as L-006 proposes? (L-006)

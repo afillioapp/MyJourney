@@ -176,7 +176,7 @@ The Phase 1 gate asks that a developer can build the data model "with no questio
 
 | # | Decision | Blocks |
 |---|---|---|
-| D1 | Stack and database host (`Status.md` Open decisions 1) | Phase 3 |
+| D1 | Stack: **decided 2026-10-30, local Postgres first**. Deploy host still open (`Status.md` Open decisions 1) | Before deploy |
 | D2 | Vercel Authentication on `myjourney`: make the holding page public or keep it private (a dashboard change) | The holding page |
 | D3 | May the supervisor commit after each recorded step? (LQ7) | Nothing; the working tree stays uncommitted until then |
 | D4 | Export and data ownership | Phase 6 |

@@ -17,7 +17,7 @@ Every later audit and every rules test runs against this list. Each check states
 - **auto**: a test, scan or script can decide it. These must run in the build and fail it (R-137)
 - **review**: a person has to read the screen, copy or design to decide it
 
-The stack and database host are not decided yet (`Status.md` Open decisions 1, L-004). Each statement describes behaviour. Where a check names Postgres grants, triggers or row-level security, that is the **current implementation** from `Phase-1-Proposal.md` §2.1, recorded so the test author knows where the rule lives today. If the stack changes, the statement stays and the mechanism changes.
+The stack was decided 2026-10-30: local Postgres first (`Status.md`); the deploy host is still open (L-004). Each statement describes behaviour. Where a check names Postgres grants, triggers or row-level security, that is the **current implementation** from `Phase-1-Proposal.md` §2.1, recorded so the test author knows where the rule lives today. If the stack changes, the statement stays and the mechanism changes.
 
 ## How the rubric grows
 
@@ -38,7 +38,7 @@ The stack and database host are not decided yet (`Status.md` Open decisions 1, L
 | BP | `docs/Build-Plan.md` |
 | MJC | `docs/My-Journey-Concept.md` (cited only for §29 and under Gaps) |
 | RG | `.claude/agents/rules-guardian.md` |
-| DN | `docs/Decisions-Needed.md` (cited by ID: A1–A12, B1–B19, C1–C16; B17–B19 added 2026-10-27 in fdb83d3) |
+| DN | `docs/Decisions-Needed.md` (cited by ID: A1–A12, B1–B19, C1–C18 (C17, C18 added 2026-10-30); B17–B19 added 2026-10-27 in fdb83d3) |
 
 `docs/Overview.md` is historical and is never cited.
 

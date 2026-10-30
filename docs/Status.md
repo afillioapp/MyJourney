@@ -11,8 +11,8 @@ Status values: `todo` · `in progress` · `in review` · `done` · `blocked`
 ## Where we are
 
 **Current phase:** 1 — Define (two deliverables left)
-**Next step:** final rules audit of the Screen Inventory, then the Phase 1 gate check (qa)
-**Waiting on you:** OQ-41 (time-control jump, not blocking); passing the Phase 1 gate
+**Next step:** answer the gate-1 blockers, then fix-ups by lead-tech and fixture-designer, then re-check the gate
+**Waiting on you:** gate-1 questions U1–U4 and model changes O3, O4 (`docs/reviews/2026-10-30-gate-1.md`); C17, C18
 
 ---
 
@@ -33,7 +33,7 @@ Status values: `todo` · `in progress` · `in review` · `done` · `blocked`
 |---|---|---|---|
 | Data model | lead-tech | done | `Phase-1-Proposal.md` §2, approved 2026-10-25 |
 | Fixture design | fixture-designer | done | `Phase-1-Proposal.md` §3, approved 2026-10-25 |
-| Rules list as testable statements | rules-guardian | in progress | Target: `Rules-Rubric.md`. Starts from `Phase-1-Proposal.md` §2.5 (11 data-layer checks); the banned list's screen-level rules are not yet written as checks |
+| Rules list as testable statements | rules-guardian | done | `Rules-Rubric.md`: R-001–R-150, every check has a how-to-check; all banned-list rows and §2.5 checks mapped (`docs/reviews/2026-10-30-gate-1.md`) |
 | Screen inventory | ux | done | `Screen-Inventory.md`; rules audit PASS `docs/reviews/2026-10-30-rules-screen-inventory-r3.md` |
 
 **Gate:** a developer can read the data model and the fixture design and know exactly what to build, with no questions left.
@@ -116,3 +116,4 @@ Can start any time after Phase 2.
 - 2026-10-30 — Re-audit after round 2: FAIL on N2 and N3 only (both wait for the user). Follow-up fixed N12, N13, N14.
 - 2026-10-30 — User rulings: G-8 text only (Spec §20 Q), Public waits under B2's option (§20 R), B6 over B19 (§20 S), stack local Postgres. Restatements fixed in Decisions-Needed, Screen-Inventory, Rules-Rubric.
 - 2026-10-30 — Screen Inventory round 3 audit: PASS (0 violations). Leftovers N16–N18, N20 fixed; N5 and N8 raised as C18 and C17.
+- 2026-10-30 — Phase 1 gate check (qa): FAIL. 4 questions for the user (U1–U4), 6 for owner agents (O1–O6), fixture inconsistency CF-1. Stale stack lines fixed (CF-2–CF-4). `docs/reviews/2026-10-30-gate-1.md`.

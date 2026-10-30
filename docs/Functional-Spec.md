@@ -2,7 +2,7 @@
 
 Build reference. Every behaviour below traces to a decision in `My-Journey-Concept.md`. Anything not decided is in section 20, marked as blocking or not. Nothing here is invented to fill a gap.
 
-Last updated: 2026-10-27
+Last updated: 2026-10-30
 
 ---
 
