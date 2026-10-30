@@ -1,6 +1,6 @@
 # Phase 1 Amendments: gate-1 items O1–O4, and rulings T and U
 
-Status: **2026-10-30: O1, O2 accepted (no model change). O3 APPROVED by the user (Spec §20 Z). O4 NOT approved: waiting on the user.** OQ-10 → Spec §20 X; OQ-11 → §20 Y; OQ-2, 4, 6, 7, 8, 9 and the extra jumps → Decisions-Needed B20–B26 (provisional). Owner: lead-tech.
+Status: **2026-10-30: O1, O2 accepted (no model change). O3 APPROVED by the user (Spec §20 Z). O4 APPROVED by the user (Spec §20 AA).** OQ-10 → Spec §20 X; OQ-11 → §20 Y; OQ-2, 4, 6, 7, 8, 9 and the extra jumps → Decisions-Needed B20–B26 (provisional). Owner: lead-tech.
 
 This file amends `Phase-1-Proposal.md` (P1, approved 2026-10-25) without editing it. Where P1 needs a matching line, §7 lists it for the supervisor to apply once the amendments are approved. Every amendment is the smallest change that closes its gate item. Nothing here redesigns §2.
 

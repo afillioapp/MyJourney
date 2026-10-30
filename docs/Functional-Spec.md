@@ -301,6 +301,7 @@ Feeling tags currently drafted: hang in there · it eventually pays off · thank
 - **X. Type, dates and tags under B2's "only after reveal finished" setting.** The network reads a journey's type, dates, chapter and feeling tags from unlock, as under §20 T. Only photos (and what follows them) wait for the reveal to finish (Phase-1-Amendments OQ-10)
 - **Y. No chapter filter on the Positivity Feed.** §20 T wins: chapters are never public. Replaces Decisions-Needed B9 (d) (Phase-1-Amendments OQ-11)
 - **Z. Option switches live in the database.** One `prototype_option` row holds the six switches, changed only through `set_option()` (Phase-1-Amendments O3, approved; a model change)
+- **AA. Highlight rows are sealed**, owner included. The owner learns only yes/no "a highlight is open" through one owner-only function (Phase-1-Amendments O4, approved; a model change)
 
 ### Still open — can wait
 

@@ -45,7 +45,7 @@ Postgres, local. The rules sit in the database itself: grants, triggers, row-lev
 | Photo, note, journey, user name immutable | The same grant and trigger pair. No delete path exists anywhere (D7) |
 | Reveal choices lock at finish (D12) | Visibility, people tags, chapter and feeling tags are insert-only. A trigger also refuses any insert once that journey's reveal is finished |
 | One journey at a time (D3) | An exclusion constraint: no two journeys of one user may have overlapping `[committed_at, unlocks_at)` |
-| Sealed means unreadable | (a) Row-level security: photo, note, tag and reflection rows are readable only once `app_now() >= unlocks_at`, **including by the owner**, so `count(*)` returns 0. (b) Image blobs are encrypted with a per-journey key that only one function releases, and only after unlock |
+| Sealed means unreadable | (a) Row-level security: photo, note, tag, reflection and highlight rows are readable only once `app_now() >= unlocks_at`, **including by the owner**, so `count(*)` returns 0. (b) Image blobs are encrypted with a per-journey key that only one function releases, and only after unlock. (c) The owner's only view of a highlight before unlock is `highlight_open(journey)`, true or false (FS §20 AA). (d) After unlock, journey, chapter and feeling-tag rows are readable by the owner and the owner's network only, never public (FS §20 T) *(amended 2026-10-30, `Phase-1-Amendments.md`)* |
 | No counters | `capture()` and `start_highlight()` return only `accepted` or `refused`. Frames used, frames left and highlights left are counted inside them and never stored or returned |
 | Activity graph only after unlock | It's built from `captured_at`, which is unreadable while sealed |
 | Layer invisibility | Layer rows are readable only where `owner = viewer`. Nothing callable takes a member and returns an owner |
@@ -81,7 +81,7 @@ The row is immutable once inserted, which is what makes Commit final. Its state 
 | revealing | Unlocked, reveal not finished |
 | revealed | Reveal finished |
 
-The spec's separate "committed" state collapses into sealed under D1. Others see only `has_journey_underway(user)`, a true/false (D17). The owner also sees type, commit date and unlock date. Nothing else.
+The spec's separate "committed" state collapses into sealed under D1. Others see only `has_journey_underway(user)`, a true/false (D17). The owner also sees type, commit date and unlock date. Nothing else, except whether a highlight is open (FS §20 S). After unlock, the owner and the owner's network read type and dates; never public (FS §20 T). *(amended 2026-10-30, `Phase-1-Amendments.md`)*
 
 **Photo**
 | Field | Rule |
@@ -96,7 +96,7 @@ There's no caption, and no update or delete (D7). `capture()` accepts a photo in
 - **Inside a highlight:** a highlight is open and it holds fewer photos than the yearly quota (D6).
 - **Normal frame:** the journey's normal photos so far are below `cadence × current journey month` (D5, which gives carry-forward for free).
 
-Otherwise it refuses. It only works on a sealed journey, so nothing can be captured after unlock.
+In this order: inside an open highlight that is not full; else a normal frame; else refused (FS §20 U). *(amended 2026-10-30, `Phase-1-Amendments.md`)* Otherwise it refuses. It only works on a sealed journey, so nothing can be captured after unlock.
 
 **Handwritten note**
 | Field | Rule |
@@ -140,7 +140,7 @@ Only on a sealed journey, at most the type's allowance per journey.
 | Chapter | `journey_chapter` (journey_id primary key, so one per journey) → catalogue (label, relationship) |
 | Feeling | `journey_feeling_tag` (journey_id, free text) |
 
-Both are insert-only during the reveal and locked at finish (D12).
+Both are insert-only during the reveal and locked at finish (D12). Readable after unlock by the owner and the owner's network only (FS §20 T). *(amended 2026-10-30, `Phase-1-Amendments.md`)*
 
 **Layer**
 | Field | Rule |
@@ -166,7 +166,8 @@ B's own map never changes because of A's tags.
 - **photo_visibility**: (photo_id primary key, private / network / public). No row means Network (D12). Insert-only during the reveal.
 - **journey_type**: constants. **chapter**: catalogue seeded from Concept §15.
 - **announcement**: (type limited to journey_launched, reflection_left and path_crossed; actor; subject; at). No media column, no count column. Who sees each one is worked out from visibility (see reading R2).
-- **sim_clock** and **journey_key**.
+- **sim_clock** (the last jump's time and when it was made; `app_now()` runs at real speed from it, FS §20 V) and **journey_key**.
+- **prototype_option**: one row, one column per switch (B2, B4, B5, B11, B12, C6), changed only through `set_option()` (FS §20 Z). *(amended 2026-10-30, `Phase-1-Amendments.md`)*
 
 ### 2.5 Checks that ship with the schema
 
@@ -191,7 +192,7 @@ Each one fails the build:
 ### 3.1 Time control
 
 - **One clock:** `sim_clock`, read through `app_now()`.
-- **Controls:** +1 day, +1 month, +1 year, +5 years, jump to the next unlock, reset to baseline. **Forward only.** To look at an earlier moment, reset and jump again.
+- **Controls:** +1 minute, +1 hour (`PROVISIONAL: B20`), +1 day, +1 month, +1 year, +5 years, jump to the next unlock, reset to baseline. The clock runs at real speed from the last jump (FS §20 V). *(amended 2026-10-30, `Phase-1-Amendments.md`)* Load and reset: the 2021–2026 history is replayed through the real functions as the app role, kept as a template database; reset clones the template (`Phase-1-Amendments.md` §2). **Forward only.** To look at an earlier moment, reset and jump again.
 - **On each jump, in this order:**
   1. Unlocks need nothing to run, since state is derived from the clock.
   2. Scripted fixture actions dated at or before the new time are applied.
