@@ -1,6 +1,6 @@
 # Phase 1 Proposal: data model and fixtures
 
-Status: **APPROVED 2026-10-25.** The data model, the fixtures and readings R1–R5 were all approved as written. **Amended 2026-10-30**: see `Phase-1-Amendments.md` and `Functional-Spec.md` §20 Q–HH; each amended line is tagged. No code written yet.
+Status: **APPROVED 2026-10-25.** The data model, the fixtures and readings R1–R5 were all approved as written. **Amended 2026-10-30**: see `Phase-1-Amendments.md` and `Functional-Spec.md` §20 Q–LL; each amended line is tagged. No code written yet.
 Date: 2026-10-25
 
 This version folds in every decision made on 2026-10-25. They're listed in section 1 and recorded in `Functional-Spec.md` §20 and `My-Journey-Concept.md` §29. The five readings in section 4 were approved too.
@@ -45,7 +45,7 @@ Postgres, local. The rules sit in the database itself: grants, triggers, row-lev
 | Photo, note, journey, user name immutable | The same grant and trigger pair. No delete path exists anywhere (D7) |
 | Reveal choices lock at finish (D12) | Visibility, people tags, chapter and feeling tags are insert-only. A trigger also refuses any insert once that journey's reveal is finished |
 | One journey at a time (D3) | An exclusion constraint: no two journeys of one user may have overlapping `[committed_at, unlocks_at)` |
-| Sealed means unreadable | (a) Row-level security: photo, note, tag, reflection and highlight rows are readable only once `app_now() >= unlocks_at`, **including by the owner**, so `count(*)` returns 0. (b) Image blobs are encrypted with a per-journey key that only one function releases, and only after unlock. (c) The owner's only view of a highlight before unlock is `highlight_open(journey)`, true or false (FS §20 AA). (d) After unlock, journey, chapter and feeling-tag rows are readable by the owner and the owner's network only, never public (FS §20 T). (e) After unlock, highlight rows are readable by the owner only (`PROVISIONAL: B24`), and `photo.highlight_id` by the owner only (FS §20 DD): the app role has no SELECT on that column, and every reader reads photos through one read view whose `highlight_id` is filled only for the owner (`Phase-1-Amendments.md` §4 item 4). (f) A photo's capture time, and a note's written time, are readable by the owner only; everyone else gets the UTC capture date and no part of the note's written time (FS §20 GG): the app role has no SELECT on `photo.captured_at` or `note.written_at`, and the read views fill them only for the owner (`Phase-1-Amendments.md` §4 item 5) *(amended 2026-10-30, `Phase-1-Amendments.md`)* |
+| Sealed means unreadable | (a) Row-level security: photo, note, tag, reflection and highlight rows are readable only once `app_now() >= unlocks_at`, **including by the owner**, so `count(*)` returns 0. (b) Image blobs are encrypted with a per-journey key that only one function releases, and only after unlock. (c) The owner's only view of a highlight before unlock is `highlight_open(journey)`, true or false (FS §20 AA). Highlight RLS is FORCEd; `capture()`, `start_highlight()` and `highlight_open()` still read it through a policy for the function owner limited to app and panel sessions (`Phase-1-Amendments.md` §4 item 1). (d) After unlock, journey, chapter and feeling-tag rows are readable by the owner and the owner's network only, never public (FS §20 T). (e) After unlock, highlight rows are readable by the owner only (`PROVISIONAL: B24`), and `photo.highlight_id` by the owner only (FS §20 DD): the app role has no SELECT on that column, and every reader reads photos through one read view whose `highlight_id` is filled only for the owner (`Phase-1-Amendments.md` §4 item 4). (f) A photo's capture time, and a note's written time, are readable by the owner only; everyone else gets the UTC capture date and no part of the note's written time (FS §20 GG): the app role has no SELECT on `photo.captured_at` or `note.written_at`, and the read views fill them only for the owner (`Phase-1-Amendments.md` §4 item 5). (g) Every `id` is a random version-4 uuid from no sequence, and same-day photos reach a non-owner in a fixed order, capture date then id, which carries no time (FS §20 JJ; `Phase-1-Amendments.md` §4 item 6) *(amended 2026-10-30, `Phase-1-Amendments.md`)* |
 | No counters | `capture()` and `start_highlight()` return only `accepted` or `refused`. Frames used, frames left and highlights left are counted inside them and never stored or returned |
 | Activity graph only after unlock | It's built from `captured_at`, which is unreadable while sealed. For anyone but the owner it is built from the UTC capture date only, so no finer than one day (FS §20 GG; `PROVISIONAL: B5`) *(amended 2026-10-30, `Phase-1-Amendments.md`)* |
 | Layer invisibility | Layer rows are readable only where `owner = viewer`. Nothing callable takes a member and returns an owner |
@@ -86,9 +86,9 @@ The spec's separate "committed" state collapses into sealed under D1. Others see
 **Photo**
 | Field | Rule |
 |---|---|
-| id, journey_id | |
+| id, journey_id | `id` a random uuid, not sequential across users (FS §20 JJ) *(amended 2026-10-30)* |
 | captured_at | `app_now()`, set inside `capture()`. The full time is readable by the owner only; anyone else reads its UTC date (FS §20 GG; §2.1 (f)) *(amended 2026-10-30)* |
-| image | Sealed, encrypted blob |
+| image | Sealed, encrypted blob. Time and location metadata are stripped at capture, before encryption, for the note's image too; fixture placeholders carry none (FS §20 KK; P1:256) *(amended 2026-10-30)* |
 | highlight_id | Nullable. Readable by the owner only, also after unlock (FS §20 DD; §2.1 (e)) *(amended 2026-10-30)* |
 
 There's no caption, and no update or delete (D7). `capture()` accepts a photo in one of two cases:
@@ -101,9 +101,9 @@ In this order: inside an open highlight that is not full; else a normal frame; e
 **Handwritten note**
 | Field | Rule |
 |---|---|
-| id, photo_id | `photo_id` unique: one note per photo at most |
+| id, photo_id | `photo_id` unique: one note per photo at most. `id` a random uuid (FS §20 JJ, LL) *(amended 2026-10-30)* |
 | image | Sealed under the journey key |
-| written_at | Readable by the owner only. Anyone else gets no part of it, not even its date (FS §20 GG; §2.1 (f)) *(amended 2026-10-30)* |
+| written_at | Readable by the owner only. Anyone else gets no part of it, not even its date (FS §20 GG, LL; §2.1 (f)) *(amended 2026-10-30)* |
 
 Insert-only, and only within 15 minutes of the photo's `captured_at` (D8). Readers are the same as the photo's: the note is part of the photo (`Functional-Spec.md:15`; FS §20 X) *(amended 2026-10-30, `Phase-1-Amendments.md`)*
 
@@ -192,7 +192,7 @@ Each one fails the build:
 ### 3.1 Time control
 
 - **One clock:** `sim_clock`, read through `app_now()`.
-- **Controls:** +1 minute, +1 hour (`PROVISIONAL: B20`), +1 day, +1 month, +1 year, +5 years, jump to the next unlock, reset to baseline. The clock runs at real speed from the last jump (FS §20 V). *(amended 2026-10-30, `Phase-1-Amendments.md`)* Load and reset: the 2021–2026 history is replayed through the real functions, kept as a template database: the panel role jumps the clock and runs each action as the app role (`SET ROLE`); only the panel role may jump or flip a switch, never the acting viewer (FS §20 EE); reset clones the template (`Phase-1-Amendments.md` §2), which also puts every option switch back to its default (`PROVISIONAL: B22`). **Forward only.** To look at an earlier moment, reset and jump again.
+- **Controls:** +1 minute, +1 hour (`PROVISIONAL: B20`), +1 day, +1 month, +1 year, +5 years, jump to the next unlock, reset to baseline. The clock runs at real speed from the last jump (FS §20 V). *(amended 2026-10-30, `Phase-1-Amendments.md`)* Load and reset: the 2021–2026 history is replayed through the real functions, kept as a template database: the panel role jumps the clock and runs each action as the app role (`SET ROLE`), and the tests run the same way (FS §20 II); only the panel role may jump or flip a switch, never the acting viewer (FS §20 EE); reset clones the template (`Phase-1-Amendments.md` §2), which also puts every option switch back to its default (`PROVISIONAL: B22`). **Forward only.** To look at an earlier moment, reset and jump again.
 - **On each jump, in this order** (`Phase-1-Amendments.md` §1.5):
   1. Unlocks need nothing to run, since state is derived from the clock.
   2. Scripted fixture actions dated at or before the new time are applied, at 12:00 UTC on their dates (FS §20 BB). An action whose instant the running clock has already passed is applied at the next jump (`PROVISIONAL: B26`).
