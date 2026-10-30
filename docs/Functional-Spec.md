@@ -285,6 +285,12 @@ Feeling tags currently drafted: hang in there · it eventually pays off · thank
 - **O. Overviews are optional**, like reflections. A reveal can be finished without one
 - **P. Each reveal choice is set once**, even before the reveal is finished
 
+### Resolved 2026-10-30 (Screen Inventory audits)
+
+- **Q. The Positivity Feed is text only.** Each entry is a reflection's text. A photograph is shown only when the reader opens one entry. "No photo feed" covers the Positivity Feed (Decisions-Needed B9 (a), Rubric G-8)
+- **R. Public before the reveal is finished.** Under B2's "only after reveal finished" setting, no one but the owner reads the journey until the reveal is finished, including photos already set Public (Decisions-Needed B2)
+- **S. An open highlight, to the owner.** While a journey is sealed, the owner sees the plain fact that a highlight is open, with no end time and no countdown. This holds over B19's "nothing else" (Decisions-Needed B6, B19)
+
 ### Still open — can wait
 
 1. Export and data ownership, which the trust position depends on

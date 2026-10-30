@@ -7,7 +7,7 @@ Every open question raised in Phase 1, merged and with duplicates removed. Sourc
 
 Only the user decides these. Where the docs lean one way, the lean is noted, but a lean is not a decision. Record each answer here with its date. The supervisor then writes it into `Functional-Spec.md` §20 and fixes every restatement (L-002).
 
-Last updated: 2026-10-27
+Last updated: 2026-10-30
 
 ---
 
@@ -18,14 +18,14 @@ Approved approach (user, 2026-10-27): build the prototype with these defaults an
 | ID | Provisional default | Switchable |
 |---|---|---|
 | B1 | "Publish" means "reveal finished". Docs use only "reveal finished" and "journey launched" | no |
-| B2 | The network can read an unlocked journey from unlock, as D12 and `Phase-1-Proposal.md:311` say | **yes**: from unlock / only after reveal finished |
+| B2 | The network can read an unlocked journey from unlock, as D12 and `Phase-1-Proposal.md:311` say. Under the option, no one but the owner reads it until the reveal is finished, Public photos included (**decided 2026-10-30**, Spec §20 R) | **yes**: from unlock / only after reveal finished |
 | B3 | Each reveal choice takes effect when made. A reveal can be finished at any later time | no |
 | B4 | One ring per finished reveal (`Phase-1-Proposal.md:65`) | **yes**: per finished reveal / per year with the app |
 | B5 | Activity line twists in at reveal finished. The activity graph is visible to the owner only | **yes**: owner only / built from the photos the viewer can see |
-| B6 | Others learn nothing about highlights. The owner sees only "a highlight is open", with no end time and no countdown | no |
+| B6 | Others learn nothing about highlights. The owner sees only "a highlight is open", with no end time and no countdown. The owner part holds over B19 (**decided 2026-10-30**, Spec §20 S) | no |
 | B7 | Frames left are never shown. A refused capture says so with no number (copy in Phase 2) | no |
 | B8 | Counters and progress bars are banned at all times, not only while sealed | no |
-| B9 | Positivity Feed: (a) reflection text only, with the photo shown when opened; (b) per-photo visibility; (c) drafted tag list only; (d) chapter filter available; (e) newest first; (f) only after reveal finished | **yes** (a): text only / with photographs |
+| B9 | Positivity Feed: (a) reflection text only, with the photo shown when opened; (b) per-photo visibility; (c) drafted tag list only; (d) chapter filter available; (e) newest first; (f) only after reveal finished | (a) **decided 2026-10-30: text only**, no longer switchable (Spec §20 Q). (b)–(f) provisional, no |
 | B10 | "Reflection left" reaches only the owner's network members who can see the photo, even when it is public | no |
 | B11 | "Path crossed" names both people and reaches the owner's network. It never says which ring | **yes**: named / unnamed |
 | B12 | Walking a path shows the photos where the reader appears, in journey order, with no total and no grouping | **yes**: shown / hidden |
@@ -35,7 +35,7 @@ Approved approach (user, 2026-10-27): build the prototype with these defaults an
 | B16 | A commit on the 29th–31st uses the last day of shorter months. One time zone for the prototype (UTC). Exactly 15:00 is out. A highlight lasts 24 hours of elapsed time | no |
 | B17 | Feeling tags are free text on the journey, with no category, as in the approved model (`Phase-1-Proposal.md:141`). Raised as Screen-Inventory OQ-37 and rubric G-14 | no |
 | B18 | Tags never "surface" by popularity. No suggestions and no counts (`Functional-Spec.md:202` over `:131`). Raised as OQ-38 and G-14 | no |
-| B19 | The owner of a sealed journey sees its type, commit date and unlock date and nothing else (`Phase-1-Proposal.md:84`; `Functional-Spec.md:74` read as covering the contents). Raised as OQ-39 and G-17 | no |
+| B19 | The owner of a sealed journey sees its type, commit date and unlock date and nothing else (`Phase-1-Proposal.md:84`; `Functional-Spec.md:74` read as covering the contents). Raised as OQ-39 and G-17. Exception: B6's "a highlight is open" (**decided 2026-10-30**, Spec §20 S) | no |
 | C1 | "Your Journey is ready" appears on next open, never as a notification | no |
 | C2 | The unlock date is shown as a plain date, never relative ("in 64 days") | no |
 | C3 | The sealed-year screen does not point to earlier journeys. Their open reflection slots are reached from the owner's profile | no |

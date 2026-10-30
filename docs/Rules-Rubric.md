@@ -108,7 +108,7 @@ Test fixtures named below come from `Phase-1-Proposal.md` §3. Steady Lantern #6
 - **Provisional default:** Decisions-Needed C2: The unlock date is shown as a plain date, never relative ("in 64 days"). The owner's unlock date is allowed as a date only (see R-013)
 - **Provisional default:** Decisions-Needed B6: The owner sees only "a highlight is open", with no end time and no countdown. Under B6 the check reads: type, commit date, unlock date and, while a highlight is open, the bare fact that one is open. Its start time, end time, elapsed or remaining time, how many highlights are used or left, and any photo count in it all fail
 - **Provisional default:** Decisions-Needed C3: The sealed-year screen does not point to earlier journeys. Nothing about an earlier journey, including an open reflection slot, appears on the sealed-year screen
-- **Provisional default:** Decisions-Needed B19: The owner of a sealed journey sees its type, commit date and unlock date and nothing else (`P1:84`; `FS:74` read as covering the contents). Holds as written; B19 settles the first half of G-17 for the prototype. B19's "nothing else" and B6's "a highlight is open" (line above) read against each other. That is raised as an open question for the user (`docs/reviews/2026-10-30-rules-screen-inventory-r1.md`) and is not settled here
+- **Provisional default:** Decisions-Needed B19: The owner of a sealed journey sees its type, commit date and unlock date and nothing else (`P1:84`; `FS:74` read as covering the contents). Holds as written; B19 settles the first half of G-17 for the prototype. B19's "nothing else" and B6's "a highlight is open" (line above) read against each other. **Decided 2026-10-30 (FS §20 S):** B6 holds; the owner sees "a highlight is open", nothing more
 
 ### R-010
 - **Statement:** A capture changes nothing that any reader can observe, the owner included: no "last captured", "active today", "captured this week", recent-activity mark or announcement.
@@ -511,7 +511,7 @@ Commit, capture, frames, highlights and the note.
 - **Type:** auto · **Applies to:** data, API
 - **Source:** P1:305–313
 - **How to check:** Run every cell of the §3.6 matrix as a test at baseline.
-- **Provisional default:** Decisions-Needed B2 (switchable, R-142): The network can read an unlocked journey from unlock (`P1:311`). The §3.6 matrix is written for this setting. Under "only after reveal finished", every network-reader cell for a Network-default photo in a journey whose reveal is not finished (Long Way Round #4) flips to refused; all other cells are unchanged. Run the matrix under both settings. How "only after reveal finished" combines with a photo set Public during an unfinished reveal (B3: choices take effect when made) is not stated in `Decisions-Needed.md`; no fixture has that case, and if one is needed it goes to the supervisor, not into the build
+- **Provisional default:** Decisions-Needed B2 (switchable, R-142): The network can read an unlocked journey from unlock (`P1:311`). The §3.6 matrix is written for this setting. Under "only after reveal finished", every network-reader cell for a Network-default photo in a journey whose reveal is not finished (Long Way Round #4) flips to refused; all other cells are unchanged. Run the matrix under both settings. How "only after reveal finished" combines with a photo set Public during an unfinished reveal (B3: choices take effect when made) is not stated in `Decisions-Needed.md`; no fixture has that case, and if one is needed it goes to the supervisor, not into the build. **Decided 2026-10-30 (FS §20 R):** under that setting a Public photo is refused too, until the reveal is finished
 
 ---
 
@@ -1005,7 +1005,7 @@ Commit, capture, frames, highlights and the note.
 
 ## 14. Provisional defaults and the options panel
 
-Added 2026-10-27 for the playable prototype (rule zero, CL:19–24; `Decisions-Needed.md` "Provisional defaults in force"). Seven defaults are switchable: B2, B4, B5, B9 (a), B11, B12, C6. Each switch must keep the banned list under **both** of its settings, so the user can compare them without the comparison itself breaking a rule.
+Added 2026-10-27 for the playable prototype (rule zero, CL:19–24; `Decisions-Needed.md` "Provisional defaults in force"). Seven defaults were switchable: B2, B4, B5, B9 (a), B11, B12, C6. **2026-10-30:** B9 (a) decided as text only (FS §20 Q); six remain. Each switch must keep the banned list under **both** of its settings, so the user can compare them without the comparison itself breaking a rule.
 
 ### R-141
 - **Statement:** The prototype options panel holds only the time control, the viewer switcher with the simulated date, and the seven switchable defaults. Each switch offers exactly its two documented settings, starts on the provisional default, and changes nothing but the behaviour its ID names.
@@ -1014,7 +1014,7 @@ Added 2026-10-27 for the playable prototype (rule zero, CL:19–24; `Decisions-N
 - **How to check:** List the panel's controls from the DOM and from code. Compare with the Switchable column: no extra switch, none missing, and no setting beyond the two listed (no "both", "auto" or free value). On first load each switch is on the first-listed setting, which is the default. Flip each switch alone and diff every read endpoint for every fixture user: only the behaviour named by that ID changes (R-142 to R-148). The panel is itself a data path under R-014: it shows no count, photo or field from a sealed journey, and the viewer switcher lists fixture users by name only, with no picture (C7).
 
 ### R-142
-- **Statement:** B2, under both settings ("from unlock" / "only after reveal finished"): nothing from a sealed journey is readable by anyone, and the setting changes only when the owner's network may read an unlocked journey's Network-default photos.
+- **Statement:** **Decided 2026-10-30 (FS §20 R): under "only after reveal finished", photos already set Public are refused to everyone but the owner too.** Original: B2, under both settings ("from unlock" / "only after reveal finished"): nothing from a sealed journey is readable by anyone, and the setting changes only when the owner's network may read an unlocked journey's Network-default photos.
 - **Type:** auto · **Applies to:** data, API
 - **Source:** DN B2, FS:151, FS:269, P1:311, CL:73 (nothing leaks), CL:24
 - **How to check:** Under each setting: R-001 to R-008 pass for Lantern #6 at 2026-12-31 23:59:59. As Open Hands at baseline, read a Long Way Round #4 photo (reveal never finished): "from unlock" allowed, "only after reveal finished" refused. Every Lantern #5 cell of the §3.6 matrix (reveal finished) is identical under both settings (R-068).
@@ -1032,7 +1032,7 @@ Added 2026-10-27 for the playable prototype (rule zero, CL:19–24; `Decisions-N
 - **How to check:** Under each setting R-011 passes, and the line twists into the circle only at reveal finished (none for Long Way Round #4). "Owner only": as Second Wind, request activity data for Lantern #5: none returned, no graph rendered. "Built from the photos the viewer can see": as Second Wind, the Lantern #5 graph equals one built from only the #5 photos Wind can read; changing a private photo's `captured_at` in a test copy leaves Wind's API response byte-identical. Under both, no axis label, tooltip or caption prints a number of photos (R-099 under B8).
 
 ### R-145
-- **Statement:** B9 (a), under both settings ("text only" / "with photographs"): the announcement feed shows no image, and the Positivity Feed meets B9 (b)–(f). The "with photographs" setting is reported as a finding against "No photo feed" until the user rules on G-8.
+- **Statement:** **Decided 2026-10-30 (FS §20 Q): text only; the "with photographs" setting no longer exists, and a Positivity Feed showing photographs in a stream is a violation of CL:72.** Original: B9 (a), under both settings ("text only" / "with photographs"): the announcement feed shows no image, and the Positivity Feed meets B9 (b)–(f). The "with photographs" setting is reported as a finding against "No photo feed" until the user rules on G-8.
 - **Type:** auto · **Applies to:** UI, API
 - **Source:** DN B9, CL:72 ("No photo feed ... never images"), FS:171, FS:202–204, CL:24 (strictest reading wins). See G-8
 - **How to check:** Under each setting: R-086 passes on the announcement feed, and the R-103 cases pass. "Text only": the Positivity Feed DOM has no `img`, `picture`, `canvas` or background image before an entry is opened, and opening one shows that one photo. "With photographs": the feed shows photographs in a stream. Under the strictest reading that is a photo feed, so every audit lists it as a finding against CL:72 until the user decides G-8. Rule zero point 4 (CL:24) says a provisional default may never break the banned list; the default here is "text only", and the panel must not start on "with photographs".
@@ -1161,7 +1161,9 @@ Since 2026-10-27 each gap carries a status line under it: **being fixed** by a `
 
 **G-8. The Positivity Feed and "no photo feed".** `CLAUDE.md:72` and `Master-Prompt.md:45` say "No photo feed. The feed carries announcements only, never images". The Positivity Feed is fed by public photos and their reflections (`FS:203–204`, `P1:317`). Open: does the Positivity Feed show photographs, and if so how does that fit the ban? Also `FS:203` says it draws from "journeys set to public", while visibility is per photo (`FS:141`); `MJC:375` and `MJC:379` show the same split. And `MJC:244` says "no feed", against `FS:169–177`.
 
-**Provisional default:** Decisions-Needed B9: (a) reflection text only, with the photo shown when opened, switchable to "with photographs"; (b) per-photo visibility; (c) drafted tag list only; (d) chapter filter; (e) newest first; (f) only after reveal finished. Covers the per-photo split (b, R-067) and, under the default, the image question (a, R-103). **Not covered:** whether the "with photographs" setting fits "No photo feed" (R-145 reports it as a finding), and the `MJC:244` "no feed" line, which no section A item corrects.
+**Decided 2026-10-30 (FS §20 Q):** "No photo feed" covers the Positivity Feed. Text only; a photo shows only when one entry is opened. The "with photographs" setting is removed.
+
+**Provisional default (before 2026-10-30):** Decisions-Needed B9: (a) reflection text only, with the photo shown when opened, switchable to "with photographs"; (b) per-photo visibility; (c) drafted tag list only; (d) chapter filter; (e) newest first; (f) only after reveal finished. Covers the per-photo split (b, R-067) and, under the default, the image question (a, R-103). **Not covered:** whether the "with photographs" setting fits "No photo feed" (R-145 reports it as a finding), and the `MJC:244` "no feed" line, which no section A item corrects.
 
 **G-9. Images in the announcement feed.** `CLAUDE.md:72` says "never images". `FS:171` says "No photographs in the stream". Open: may an announcement show the actor's profile picture?
 
@@ -1201,7 +1203,7 @@ Since 2026-10-27 each gap carries a status line under it: **being fixed** by a `
 
 **Provisional default:** Decisions-Needed C2: The unlock date is shown as a plain date, never relative ("in 64 days"). R-009 and R-013 are read under C2. B6 adds one more thing the owner may see of a sealed journey: that a highlight is open (R-009).
 
-**Provisional default (added 2026-10-27, fdb83d3):** Decisions-Needed B19: The owner of a sealed journey sees its type, commit date and unlock date and nothing else (`P1:84`; `FS:74` read as covering the contents). R-009 is read under B19. B19's "nothing else" and B6's highlight state read against each other: raised as an open question, not settled here.
+**Provisional default (added 2026-10-27, fdb83d3):** Decisions-Needed B19: The owner of a sealed journey sees its type, commit date and unlock date and nothing else (`P1:84`; `FS:74` read as covering the contents). R-009 is read under B19. B19's "nothing else" and B6's highlight state read against each other. **Decided 2026-10-30 (FS §20 S):** B6 holds.
 
 ### Rules that cannot be made testable yet
 

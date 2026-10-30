@@ -8,7 +8,7 @@ What this file does: names each screen, traces it to the spec by file and line, 
 
 Sources, in the order of trust set by `CLAUDE.md`: `Functional-Spec.md` §20 and `My-Journey-Concept.md` §29, then the rest of `Functional-Spec.md`, then `Phase-1-Proposal.md`, then `Master-Prompt.md`, `Build-Plan.md` and the rest of the Concept doc. `Overview.md` is not cited anywhere. File names below are shortened: **Spec** = `Functional-Spec.md`, **Proposal** = `Phase-1-Proposal.md`, **Plan** = `Build-Plan.md`, **Brief** = `Master-Prompt.md`, **Concept** = `My-Journey-Concept.md`, **Decisions** = `Decisions-Needed.md`, **Rubric** = `Rules-Rubric.md`. All are in `docs/`. Rubric checks (R-nnn) and gaps (G-n) are cited as rules a screen must not break; behaviour still traces to the spec.
 
-**Provisional defaults.** Where a screen depends on a question that Decisions answers with a provisional default ("Provisional defaults in force", B1–B19 and C1–C16), the screen is described under that default and labelled `PROVISIONAL: <ID>`. A provisional default is **not a decision**. It becomes one only when the user says so and it moves into Spec §20 (`CLAUDE.md`, rule zero). For the seven switchable defaults (B2, B4, B5, B9a, B11, B12, C6), both options are described and the default is marked. The user compares them in the prototype options panel, T-02. A question with no default stays open.
+**Provisional defaults.** Where a screen depends on a question that Decisions answers with a provisional default ("Provisional defaults in force", B1–B19 and C1–C16), the screen is described under that default and labelled `PROVISIONAL: <ID>`. A provisional default is **not a decision**. It becomes one only when the user says so and it moves into Spec §20 (`CLAUDE.md`, rule zero). For the six switchable defaults (B2, B4, B5, B11, B12, C6), both options are described and the default is marked. The user compares them in the prototype options panel, T-02. A question with no default stays open.
 
 ---
 
@@ -108,7 +108,7 @@ The tables below repeat the items most at risk on each screen. **An item missing
 | 4 | The unlock date, as a plain date, never relative to today (`PROVISIONAL: B19`, `C2`) | Proposal:84, Decisions B19, C2, Rubric R-013 |
 | 5 | The way to Capture (S-02), offered the same whether or not a frame is left (`PROVISIONAL: B7`; Rubric R-138) | Spec:53, Proposal:99 |
 | 6 | The way to start a highlight (S-13), offered the same whether or not a highlight is left, and whether or not one is open: never greyed or relabelled (Rubric R-138) | Spec:264, Proposal:135 |
-| 7 | Only in `sealed · highlight open`: the plain fact that a highlight is open, with no end time and no countdown (`PROVISIONAL: B6`) | Decisions B6, Rubric R-140 |
+| 7 | Only in `sealed · highlight open`: the plain fact that a highlight is open, with no end time and no countdown (decided 2026-10-30, Spec §20 S) | Decisions B6, Spec §20 S, Rubric R-140 |
 | 8 | The way to what the user does instead: other people's unlocked journeys, through the Positivity Feed, the Feed, Layers and profiles | Spec:76 ("The user's engagement during this period is other people's unlocked journeys, not their own"), Brief:71, Concept:446, Concept:555 |
 | 9 | Words that make the wait read as deliberate `[copy: copywriter]` | Plan:79 ("Microcopy for the moments that carry weight: Commit, sealed, …"), Brief:138 |
 
@@ -186,7 +186,7 @@ Under either option a ring is a record of time, not a reward. It never arrives a
 
 **Before the reveal is finished: `PROVISIONAL: B2` (switchable).** Concept:362 ("Only possible after unlock, and as a finished story or album") disagrees with Spec:151, Spec:269 and Proposal:311 (OQ-9).
 - **Default: from unlock.** Others read an unlocked journey from the moment of unlock, by each photo's visibility, Network by default (Proposal:25 D12, Proposal:311).
-- **Option: only after reveal finished.** No one but the owner reads it until the reveal is finished (strictest reading of the option, since it names only the network).
+- **Option: only after reveal finished.** No one but the owner reads it until the reveal is finished, Public photos included (decided 2026-10-30, Spec §20 R).
 
 **Where the reader appears: `PROVISIONAL: B12` (switchable).** Spec:196 ("The reader sees where they themselves appear") against Spec:164 and Spec:235 (OQ-19; Rubric G-12).
 - **Default: shown.** On photos the reader can already see (Proposal:288), those where the reader is tagged say so, in place, in journey order. No total, no grouping, no separate list of "your" photos (Decisions B12; Rubric R-139).
@@ -264,8 +264,7 @@ On every state, never: an image: "Announcements only. No photographs in the stre
 - **Reached from:** Sign up (day one, Spec:30; not in the prototype, `PROVISIONAL: C11`); The sealed year S-03; the app's navigation from Profile (own) S-05 (`PROVISIONAL: C12`). **Leads to:** A photo, followed forward S-17, Walking a path S-06, Another user's profile S-16
 
 **`PROVISIONAL: B9`.** (b) Visibility is per photo, not per journey (OQ-12). (c) Only the drafted tag list qualifies (Spec:207); a free-text tag such as Steady Lantern #5's "slow is still forward" does not. (d) A chapter filter is available. (e) Newest first. (f) A photo enters only after its journey's reveal is finished. Only (a) is switchable:
-- **(a) Default: text only.** Each entry is a reflection's text. The photograph is shown only when the reader opens the entry, in S-17.
-- **(a) Option: with photographs.** Each entry shows the photograph with its reflections. Brief:45 and Spec:171 ban a photo feed for the announcement feed; whether that covers this feed is what the switch compares (OQ-11; Rubric G-8).
+- **(a) Text only (decided 2026-10-30, Spec §20 Q).** Each entry is a reflection's text. The photograph is shown only when the reader opens the entry, in S-17.
 
 The table follows the state of the **source** journey. The reader's own state changes nothing: the same feed serves a new user (Spec:30) and a user in a sealed year (Concept:555).
 
@@ -273,7 +272,7 @@ The table follows the state of the **source** journey. The reader's own state ch
 |---|---|---|
 | `sealed` | Nothing from it | Anything (Spec:246) |
 | `unlock-day`, `reveal-open` | Nothing from it, even a photo already set Public (`PROVISIONAL: B9f`) | Network or private content |
-| `reveal-finished` | Reflections on public photos from journeys tagged with a drafted endurance or gratitude tag (Spec:202, Spec:207; Proposal:317; `PROVISIONAL: B9b`, `B9c`). Text only, or with the photograph, by B9(a). A chapter filter (`PROVISIONAL: B9d`). Newest first (`PROVISIONAL: B9e`) | Ordering or selection by popularity: "never by popularity" (Spec:202; Rubric R-103). "Public means readable, not commentable" (Spec:152). A tag outside the drafted list (`PROVISIONAL: B9c`). Tags surfaced, suggested or counted by popularity (`PROVISIONAL: B18`) |
+| `reveal-finished` | Reflections on public photos from journeys tagged with a drafted endurance or gratitude tag (Spec:202, Spec:207; Proposal:317; `PROVISIONAL: B9b`, `B9c`). Text only; the photograph only when one entry is opened (Spec §20 Q). A chapter filter (`PROVISIONAL: B9d`). Newest first (`PROVISIONAL: B9e`) | Ordering or selection by popularity: "never by popularity" (Spec:202; Rubric R-103). "Public means readable, not commentable" (Spec:152). A tag outside the drafted list (`PROVISIONAL: B9c`). Tags surfaced, suggested or counted by popularity (`PROVISIONAL: B18`) |
 | `later-years` | The same, with reflections written years after the moment, which is the feed's primary use (Spec:204) | As above |
 
 On every state, never: a prompt to capture a low point: "invited, never nudged" (Spec:209). Likes, reactions, views or counts (Proposal:180). **Endless or infinite scroll, autoplay, "more like this", or pull to refresh into new content** (Brief:49; Rubric R-104). An unread dot or "new" marker (Rubric R-096).
@@ -538,7 +537,6 @@ This table is for the reader of this inventory. The panel shows none of it.
 | Switch B2: reading a journey before its reveal is finished | **from unlock** / only after reveal finished | S-06, S-08, S-15, S-16, S-17 |
 | Switch B4: what adds a ring | **per finished reveal** / per year with the app | S-05, S-16, S-21 |
 | Switch B5: who sees the activity graph | **owner only** / built from the photos the viewer can see | S-16 (S-05 is always the owner) |
-| Switch B9a: Positivity Feed entries | **text only** / with photographs | S-09 |
 | Switch B11: "path crossed" | **named** / unnamed | S-08 |
 | Switch B12: where the reader appears | **shown** / hidden | S-06, S-17 |
 | Switch C6: people tags for readers | **hidden** / shown | S-17, S-06, S-16 |
@@ -594,11 +592,11 @@ Where two docs disagree, both lines are cited and neither is picked unless Decis
 8. **Spec journey states.** Spec:14 lists "committed / sealed / unlocked". Proposal:76–84 collapses committed into sealed and splits unlocked into revealing and revealed. Spec §1 was not updated. Confirm the time states above follow the Proposal.
    → Decisions A5: correction approved 2026-10-27, being applied. Spec:14 now follows the Proposal.
 9. **Who sees a journey before its reveal is finished.** Concept:362 says sharing is "Only possible after unlock, and as a finished story or album". Spec:151, Spec:269 and Proposal:311 (Open Hands reads Long Way Round #4, never revealed) let the network read every photo from the moment of unlock, before the owner has set anything Private. Is that intended? Affects S-06, S-16, S-17 at `unlock-day` and `reveal-open`.
-   → Decisions B2, provisional: the network can read from unlock (**switchable**: from unlock / only after reveal finished). Also affects S-08, S-15.
+   → Decisions B2, provisional: the network can read from unlock (**switchable**: from unlock / only after reveal finished). Under the option, Public photos wait too (decided 2026-10-30, Spec §20 R). Also affects S-08, S-15.
 10. **Engagement in the sealed year.** Spec:76: "other people's unlocked journeys, not their own". Spec:274 (§20 D) keeps reflection slots open on the owner's earlier journeys during a new sealed year (Proposal:294: lantern-1 slot 5 on 2026-02-20, while #6 is sealed; Proposal:241: Long Way Round reflects on 2026-09-10). Does the sealed-year screen point to the owner's own earlier journeys? Affects S-03.
     → Decisions C3, provisional: no; open slots are reached from the owner's profile. Not switchable.
 11. **Positivity Feed and "No photo feed".** Brief:45 says "No photo feed: The feed carries announcements only, never images"; Spec:171 says "No photographs in the stream". Proposal:317 fills the Positivity Feed with "Public photos (and their reflections)". Spec:204 speaks only of reading reflections. Does the Positivity Feed show the photograph? Affects S-09.
-    → Decisions B9(a), provisional: reflection text only, the photo shown when opened (**switchable**: text only / with photographs).
+    → Decided 2026-10-30 (Spec §20 Q): reflection text only, the photo shown when one entry is opened. Not switchable.
 12. **"Journeys set to public."** Spec:203 and Concept:375 say the Positivity Feed is fed "only by journeys set to public". Spec:141 and Concept:379 set visibility per photo, not per journey. Affects S-09.
     → Decisions B9(b), provisional: per photo. Not switchable.
 13. **The type arithmetic.** Spec:47, Concept:99 and Concept:128 say the three types sit on the old 24–48 range's "ceiling, middle and floor". 12 is outside that range, and the middle of 24–48 is 36. Concept:799 still says "Frame range 24–48". Affects S-01 copy.
@@ -660,9 +658,11 @@ Where two docs disagree, both lines are cited and neither is picked unless Decis
 38. **"Popular ones surface."** Spec:131 says popular feeling tags "surface over time and the best get promoted into official categories". Spec:202 says the Positivity Feed is "never by popularity". Does any screen surface or suggest popular tags, and by what measure? Affects S-19, S-09. (Audit finding 14; Rubric G-14.)
     → Decisions B18, provisional: tags never surface by popularity; no suggestions, no counts. Not switchable.
 39. **What the owner sees of a sealed journey besides the unlock date.** Spec:74 says nothing in a sealed journey is visible, "not to the user". Proposal:84 lets the owner see its type, commit date and unlock date. Do the type and commit date show on S-03, S-05 and S-06? Affects S-03, S-05, S-06. (Audit finding 2; Rubric G-17.)
-    → Decisions B19, provisional: the owner sees type, commit date and unlock date, nothing else (C2 sets the unlock date's form). Not switchable. Open conflict with B6 ("a highlight is open", S-03 element 7) raised for the user, not settled here.
+    → Decisions B19, provisional: the owner sees type, commit date and unlock date, nothing else (C2 sets the unlock date's form). Not switchable. Exception: "a highlight is open", S-03 element 7 (decided 2026-10-30, Spec §20 S).
 40. **The announcement feed's order.** No source states it (Rubric Question 1). Affects S-08. (Audit finding 11.)
     → Decisions C14, provisional: newest first. Not switchable.
+41. **"Jump to the next unlock" and another user's date.** T-01's jump plus the simulated date it shows (C16) tells the demoer when another user's journey unlocks (Rubric R-014, R-008). Is the demoer exempt as a prototype tool, or does the jump go to the chosen viewer's own next unlock? Affects T-01. (Re-audit N8.)
+    → **Still open, no ID.** Raised for the user.
 
 ---
 
@@ -704,3 +704,6 @@ The Commit moment and button (S-01). The capture refusal, with no number, and th
 | N11: label with no ID | Out-of-scope C11 row now `PROVISIONAL: C11` |
 
 **2026-10-30, round 2 follow-up.** Against `docs/reviews/2026-10-30-rules-screen-inventory-r2.md`: S-13 open state holds the start control and bans hiding it (N12). B18 applied to S-09; S-19's ban no longer limited to "while the owner writes" (N13). Source lists on S-03, S-05, S-06, S-09, S-19 carry B17–B19; unlock date labelled B19; Spec:74 wording follows the B19 row; log screen names corrected (N14).
+
+
+**2026-10-30, user rulings.** G-8: Positivity Feed text only, the B9a switch removed (S-09, T-02). B2 option: Public photos wait too (S-06, OQ-9). B6 holds over B19 on S-03 element 7. All recorded in Spec §20 Q–S. N8 raised as OQ-41.

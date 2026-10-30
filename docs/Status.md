@@ -2,7 +2,7 @@
 
 The blackboard. Every worker reads this before starting and every finished step is recorded here with its evidence. The phases, deliverables and gates come from `Build-Plan.md`; this file only tracks where they stand.
 
-Last updated: 2026-10-27
+Last updated: 2026-10-30
 
 Status values: `todo` · `in progress` · `in review` · `done` · `blocked`
 
@@ -11,8 +11,8 @@ Status values: `todo` · `in progress` · `in review` · `done` · `blocked`
 ## Where we are
 
 **Current phase:** 1 — Define (two deliverables left)
-**Next step:** Rules Rubric (rules-guardian) and Screen Inventory (ux), running in parallel
-**Waiting on you:** the stack decision below, before Phase 3 can start
+**Next step:** final rules audit of the Screen Inventory, then the Phase 1 gate check (qa)
+**Waiting on you:** OQ-41 (time-control jump, not blocking); passing the Phase 1 gate
 
 ---
 
@@ -52,7 +52,7 @@ Status values: `todo` · `in progress` · `in review` · `done` · `blocked`
 
 | Deliverable | Owner | Status | Evidence |
 |---|---|---|---|
-| Stack decision | You | blocked | See "Open decisions" |
+| Stack decision | You | done | Local Postgres first, in the cloud session (`Phase-1-Proposal.md` §2.1). Deploy choice later. User, 2026-10-30 |
 | Schema, append-only where required | developer | todo | |
 | Time control | lead-tech | todo | |
 | Fixture data loaded | fixture-designer + developer | todo | |
@@ -103,7 +103,7 @@ Can start any time after Phase 2.
 
 ## Open decisions
 
-1. **Stack, and where the database runs.** `Phase-1-Proposal.md` §2.1 says Postgres, local. A Vercel project (`myjourney`) also exists. Deploying there needs a hosted Postgres and a choice of web framework. Blocks Phase 3.
+1. **Where the app deploys.** Phase 3 builds on local Postgres (decided 2026-10-30). A hosted Postgres and web framework for the Vercel project (`myjourney`) are still to choose. Does not block Phase 3.
 
 ## Log
 
@@ -114,3 +114,4 @@ Can start any time after Phase 2.
 - 2026-10-27 — Phase 1 started: Rules Rubric and Screen Inventory dispatched.
 - 2026-10-30 — Screen Inventory re-audit after round 1: FAIL, 3 confirmed (N1–N3), R-150 added. Round 2 fixed N1, N4, N11. N2, N3 (G-8), N7 and N8 wait for the user. Not yet re-audited.
 - 2026-10-30 — Re-audit after round 2: FAIL on N2 and N3 only (both wait for the user). Follow-up fixed N12, N13, N14.
+- 2026-10-30 — User rulings: G-8 text only (Spec §20 Q), Public waits under B2's option (§20 R), B6 over B19 (§20 S), stack local Postgres. Restatements fixed in Decisions-Needed, Screen-Inventory, Rules-Rubric.
