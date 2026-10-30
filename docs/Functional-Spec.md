@@ -291,6 +291,13 @@ Feeling tags currently drafted: hang in there · it eventually pays off · thank
 - **R. Public before the reveal is finished.** Under B2's "only after reveal finished" setting, no one but the owner reads the journey until the reveal is finished, including photos already set Public (Decisions-Needed B2)
 - **S. An open highlight, to the owner.** While a journey is sealed, the owner sees the plain fact that a highlight is open, with no end time and no countdown. This holds over B19's "nothing else" (Decisions-Needed B6, B19)
 
+### Resolved 2026-10-30 (Phase 1 gate check, `docs/reviews/2026-10-30-gate-1.md`)
+
+- **T. Who reads a journey's type, dates, chapter and feeling tags after unlock.** The owner and the owner's network, never public, the same as the journey overview (gate-1 U1)
+- **U. Capture during a highlight.** A photo goes into the open highlight first. Once the highlight is full, capture uses a normal frame if one is left, otherwise it refuses (gate-1 U2)
+- **V. The prototype clock.** Simulated time runs at real speed from the last jump, so a note window or highlight closes on its own. Small jumps for testing edges are allowed (gate-1 U3)
+- **W. The drafted tag list for the Positivity Feed** is the four working tags: gratification, it eventually pays off, hang in there, thankful (`My-Journey-Concept.md:454–459`; Decisions-Needed B9 (c); gate-1 U4)
+
 ### Still open — can wait
 
 1. Export and data ownership, which the trust position depends on

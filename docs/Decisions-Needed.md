@@ -25,7 +25,7 @@ Approved approach (user, 2026-10-27): build the prototype with these defaults an
 | B6 | Others learn nothing about highlights. The owner sees only "a highlight is open", with no end time and no countdown. The owner part holds over B19 (**decided 2026-10-30**, Spec §20 S) | no |
 | B7 | Frames left are never shown. A refused capture says so with no number (copy in Phase 2) | no |
 | B8 | Counters and progress bars are banned at all times, not only while sealed | no |
-| B9 | Positivity Feed: (a) reflection text only, with the photo shown when opened; (b) per-photo visibility; (c) drafted tag list only; (d) chapter filter available; (e) newest first; (f) only after reveal finished | (a) **decided 2026-10-30: text only**, no longer switchable (Spec §20 Q). (b)–(f) provisional, no |
+| B9 | Positivity Feed: (a) reflection text only, with the photo shown when opened; (b) per-photo visibility; (c) drafted tag list only; (d) chapter filter available; (e) newest first; (f) only after reveal finished. (c) list **decided 2026-10-30**: the four working tags (Spec §20 W) | (a) **decided 2026-10-30: text only**, no longer switchable (Spec §20 Q). (b)–(f) provisional, no |
 | B10 | "Reflection left" reaches only the owner's network members who can see the photo, even when it is public | no |
 | B11 | "Path crossed" names both people and reaches the owner's network. It never says which ring | **yes**: named / unnamed |
 | B12 | Walking a path shows the photos where the reader appears, in journey order, with no total and no grouping | **yes**: shown / hidden |

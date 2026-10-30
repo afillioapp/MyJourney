@@ -12,7 +12,7 @@ Status values: `todo` · `in progress` · `in review` · `done` · `blocked`
 
 **Current phase:** 1 — Define (two deliverables left)
 **Next step:** answer the gate-1 blockers, then fix-ups by lead-tech and fixture-designer, then re-check the gate
-**Waiting on you:** gate-1 questions U1–U4 and model changes O3, O4 (`docs/reviews/2026-10-30-gate-1.md`); C17, C18
+**Waiting on you:** model changes O3, O4 once proposed (`docs/reviews/2026-10-30-gate-1.md`); C17, C18
 
 ---
 
@@ -117,3 +117,4 @@ Can start any time after Phase 2.
 - 2026-10-30 — User rulings: G-8 text only (Spec §20 Q), Public waits under B2's option (§20 R), B6 over B19 (§20 S), stack local Postgres. Restatements fixed in Decisions-Needed, Screen-Inventory, Rules-Rubric.
 - 2026-10-30 — Screen Inventory round 3 audit: PASS (0 violations). Leftovers N16–N18, N20 fixed; N5 and N8 raised as C18 and C17.
 - 2026-10-30 — Phase 1 gate check (qa): FAIL. 4 questions for the user (U1–U4), 6 for owner agents (O1–O6), fixture inconsistency CF-1. Stale stack lines fixed (CF-2–CF-4). `docs/reviews/2026-10-30-gate-1.md`.
+- 2026-10-30 — User rulings on gate-1 U1–U4 recorded as Spec §20 T–W.

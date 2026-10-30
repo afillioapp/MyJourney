@@ -263,7 +263,7 @@ On every state, never: an image: "Announcements only. No photographs in the stre
 - **Viewer:** any signed-in user (`PROVISIONAL: B14`). Content is public only, chosen per photo (Spec:147, Spec:203; `PROVISIONAL: B9b`)
 - **Reached from:** Sign up (day one, Spec:30; not in the prototype, `PROVISIONAL: C11`); The sealed year S-03; the app's navigation from Profile (own) S-05 (`PROVISIONAL: C12`). **Leads to:** A photo, followed forward S-17, Walking a path S-06, Another user's profile S-16
 
-**`PROVISIONAL: B9`.** (b) Visibility is per photo, not per journey (OQ-12). (c) Only the drafted tag list qualifies (Spec:207); a free-text tag such as Steady Lantern #5's "slow is still forward" does not. (d) A chapter filter is available. (e) Newest first. (f) A photo enters only after its journey's reveal is finished. (a) is decided, not switchable:
+**`PROVISIONAL: B9`.** (b) Visibility is per photo, not per journey (OQ-12). (c) Only the drafted tag list qualifies (Spec:207): the four working tags, gratification, it eventually pays off, hang in there, thankful (decided 2026-10-30, Spec §20 W); a free-text tag such as Steady Lantern #5's "slow is still forward" does not. (d) A chapter filter is available. (e) Newest first. (f) A photo enters only after its journey's reveal is finished. (a) is decided, not switchable:
 - **(a) Text only (decided 2026-10-30, Spec §20 Q).** Each entry is a reflection's text. The photograph is shown only when the reader opens the entry, in S-17.
 
 The table follows the state of the **source** journey. The reader's own state changes nothing: the same feed serves a new user (Spec:30) and a user in a sealed year (Concept:555).
