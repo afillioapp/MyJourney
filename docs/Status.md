@@ -129,3 +129,4 @@ Can start any time after Phase 2.
 - 2026-10-30 — User rulings §20 MM (close database statistics leak fully), NN (database refuses images with metadata).
 - 2026-10-30 — Lead-tech carried §20 MM (definer readers, catalog closures, one-database connect) and NN (metadata guard in capture()), tested on Postgres 16. Open for the user: Amendments OQ-21–OQ-24.
 - 2026-10-30 — User rulings §20 OO (definer readers for all content tables), PP (refusal never reaches the user; no retake), QQ (baseline JPEG), RR (timing residual accepted for now).
+- 2026-10-30 — Lead-tech carried §20 OO–RR: definer readers on all 15 user-content tables (264/264 rows identical to policies), baseline JPEG only, timing residual recorded. Open: Amendments OQ-25 (a–c), OQ-26.
