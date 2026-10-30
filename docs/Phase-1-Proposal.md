@@ -201,13 +201,15 @@ Each one fails the build:
 
 ### 3.2 Users
 
-| Key | Name | Who | At baseline |
-|---|---|---|---|
-| lantern | **Steady Lantern** | Primary demo persona, ME → ME | 5 revealed journeys, 1 sealed |
-| wind | **Second Wind** | The friend whose path crosses again | 5 revealed, 1 sealed |
-| hands | **Open Hands** | Parent, ME → YOU | 3 revealed, 1 sealed |
-| round | **Long Way Round** | Founder, ME → IT. The main source for the Positivity Feed | 3 revealed, 1 **unlocked but never revealed**, between journeys |
-| light | **First Light** | Joined 2026-10-01 | No journey. Can commit on any day during the demo (D2) |
+| Key | Name | Who | Joined (`joined_at`) | At baseline |
+|---|---|---|---|---|
+| lantern | **Steady Lantern** | Primary demo persona, ME → ME | 2021-01-01 | 5 revealed journeys, 1 sealed |
+| wind | **Second Wind** | The friend whose path crosses again | 2021-01-01 | 5 revealed, 1 sealed |
+| hands | **Open Hands** | Parent, ME → YOU | 2021-01-01 | 3 revealed, 1 sealed |
+| round | **Long Way Round** | Founder, ME → IT. The main source for the Positivity Feed | 2021-01-01 | 3 revealed, 1 **unlocked but never revealed**, between journeys |
+| light | **First Light** | Joined 2026-10-01 | 2026-10-01 | No journey. Can commit on any day during the demo (D2) |
+
+*(amended 2026-10-30, gate-1 O5/O6/CF-1)* **`joined_at`, how each value was set.** The fixture constrains `joined_at` from above only: a user exists before their first Commit, and before anyone tags them. Upper bounds: Lantern 2021-01-01 (#1 commit), Wind 2021-03-15 (#1 commit), Hands 2023-06-01 (#1 commit, which is earlier than Round's tag at the #1 reveal on 2023-09-12), Round 2022-09-01 (#1 commit). Nothing in the fixture sets a lower bound except where the fixture's own timeline starts, 2021-01-01, its earliest dated row. So Lantern's value is fixed by the fixture (both bounds are 2021-01-01). Wind, Hands and Round are free within their range, and each takes **the earliest date the fixture allows, 2021-01-01. This is a fixture choice, not product behaviour.** Times are 00:00:00 UTC (NB-6, B16), so Lantern joins and commits at the same instant; joining must come first in the load order. A side effect: Open Hands is a user with no journey from 2021-01-01 to 2023-06-01, which covers most of Round #1 (2022-09-01 to 2023-09-01; see the D14 row in §3.4).
 
 ### 3.3 Journeys
 
@@ -314,14 +316,49 @@ Most other photos have 0–2 reflections.
 
 ### 3.7 Positivity Feed
 
-Public photos (and their reflections) from journeys tagged with the drafted endurance and gratitude tags:
+*(amended 2026-10-30, gate-1 O5/O6/CF-1)* The earlier list here did not follow from §3.3 (gate-1 CF-1). It is recomputed from §3.3 under these rules:
 
-- Long Way Round #1–#3
-- Steady Lantern #1 and #3
-- Second Wind #3 and #4
-- Open Hands #2
+- **Tags:** the journey carries at least one of the four working tags: `gratification`, `it eventually pays off`, `hang in there`, `thankful` (Functional-Spec §20 W; Decisions-Needed B9 (c)). Other tags on the 8-item draft (`worth it`, `I almost quit`, `the hard part was the start`, `worried for nothing`) and free text do not qualify
+- **Reveal finished** at baseline (B9 (f))
+- **Per photo:** only that journey's photos set Public (B9 (b)). Entries are the reflections on those photos, text only (§20 Q)
 
-Steady Lantern #5's free-text tag tests a tag that isn't on the drafted list.
+Derivation, every journey in §3.3 at baseline 2026-10-25:
+
+| Journey | Feeling tags | Working tag? | Reveal finished? | Public photos | In the feed |
+|---|---|---|---|---|---|
+| Lantern #1 | the hard part was the start | no | yes | 5 | no |
+| Lantern #2 | thankful | **yes** | yes | 4 | **yes, 4** |
+| Lantern #3 | hang in there · worried for nothing | **yes** (hang in there) | yes | 5 | **yes, 5** |
+| Lantern #4 | worth it | no | yes | 3 | no |
+| Lantern #5 | slow is still forward *(free text)* | no | yes | 5 | no |
+| Lantern #6 | | | no (sealed) | | no |
+| Wind #1 | none | no | yes | 2 | no |
+| Wind #2 | none | no | yes | 1 | no |
+| Wind #3 | I almost quit | no | yes | 2 | no |
+| Wind #4 | it eventually pays off | **yes** | yes | 2 | **yes, 2** |
+| Wind #5 | worth it | no | yes | 2 | no |
+| Wind #6 | | | no (sealed) | | no |
+| Hands #1 | none | no | yes | 0 | no |
+| Hands #2 | thankful | **yes** | yes | 2 | **yes, 2** |
+| Hands #3 | gratification | **yes** | yes | 2 | **yes, 2** |
+| Hands #4 | | | no (sealed) | | no |
+| Round #1 | I almost quit · the hard part was the start | no | yes | 8 | no |
+| Round #2 | it eventually pays off | **yes** | yes | 8 | **yes, 8** |
+| Round #3 | worried for nothing | no | yes | 12 | no |
+| Round #4 | none | no | **no** (never finished) | 0 (all Network) | no |
+
+The Positivity Feed draws on the public photos (and their reflections) of:
+
+- Steady Lantern #2 and #3 (4 + 5 public photos)
+- Second Wind #4 (2)
+- Open Hands #2 and #3 (2 + 2)
+- Long Way Round #2 (8)
+
+That is 6 journeys and 23 public photos at baseline. All four working tags appear: `thankful` (Lantern #2, Hands #2), `hang in there` (Lantern #3), `it eventually pays off` (Wind #4, Round #2), `gratification` (Hands #3).
+
+What the exclusions test: Steady Lantern #5's free-text tag is not on the list. Lantern #4 and Wind #5 (`worth it`), Lantern #1, Wind #3 and Round #1 (`I almost quit`, `the hard part was the start`) and Round #3 (`worried for nothing`) carry tags from the 8-item draft that are not working tags. Lantern #3 qualifies through `hang in there` even though it also carries `worried for nothing`. Round #4 is unlocked but its reveal was never finished, so nothing from it enters (B9 (f)). Private and Network photos of qualifying journeys never enter (B9 (b)).
+
+The scripted future (§3.8) adds nothing: the Wind #6 and Hands #4 reveals script no feeling tags.
 
 ### 3.8 Scripted future (applied on jumps)
 
