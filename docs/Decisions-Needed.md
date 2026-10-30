@@ -25,7 +25,7 @@ Approved approach (user, 2026-10-27): build the prototype with these defaults an
 | B6 | Others learn nothing about highlights. The owner sees only "a highlight is open", with no end time and no countdown. The owner part holds over B19 (**decided 2026-10-30**, Spec §20 S) | no |
 | B7 | Frames left are never shown. A refused capture says so with no number (copy in Phase 2) | no |
 | B8 | Counters and progress bars are banned at all times, not only while sealed | no |
-| B9 | Positivity Feed: (a) reflection text only, with the photo shown when opened; (b) per-photo visibility; (c) drafted tag list only; (d) chapter filter available; (e) newest first; (f) only after reveal finished. (c) list **decided 2026-10-30**: the four working tags (Spec §20 W) | (a) **decided 2026-10-30: text only**, no longer switchable (Spec §20 Q). (b)–(f) provisional, no |
+| B9 | Positivity Feed: (a) reflection text only, with the photo shown when opened; (b) per-photo visibility; (c) drafted tag list only; (d) chapter filter available; (e) newest first; (f) only after reveal finished. (c) list **decided 2026-10-30**: the four working tags (Spec §20 W). (d) **replaced 2026-10-30: no chapter filter** (Spec §20 Y) | (a) **decided 2026-10-30: text only**, no longer switchable (Spec §20 Q). (b)–(f) provisional, no |
 | B10 | "Reflection left" reaches only the owner's network members who can see the photo, even when it is public | no |
 | B11 | "Path crossed" names both people and reaches the owner's network. It never says which ring | **yes**: named / unnamed |
 | B12 | Walking a path shows the photos where the reader appears, in journey order, with no total and no grouping | **yes**: shown / hidden |
@@ -52,6 +52,13 @@ Approved approach (user, 2026-10-27): build the prototype with these defaults an
 | C14 | Feed is newest first | no |
 | C15 | The app never asks for notification permission | no |
 | C16 | The prototype panel has a viewer switcher (fixture users) and shows the simulated date | no |
+| B20 | Clock jumps also include +1 minute and +1 hour (`Phase-1-Amendments.md` O1; added 2026-10-30) | no |
+| B21 | Baseline is 2026-10-25 00:00:00 UTC (Amendments OQ-4) | no |
+| B22 | Reset puts every option switch back to its default (Amendments OQ-6) | no |
+| B23 | Option switches are one global setting, not per viewer (Amendments OQ-7) | no |
+| B24 | After unlock, highlight rows are readable by the owner only (Amendments OQ-8) | no |
+| B25 | A highlight is closed at exactly its end time (Amendments OQ-9) | no |
+| B26 | A scripted action the running clock has already passed is applied at the next jump (Amendments OQ-2) | no |
 
 Section A was approved by the user on 2026-10-27 and is being applied.
 

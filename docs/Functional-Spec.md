@@ -298,6 +298,10 @@ Feeling tags currently drafted: hang in there · it eventually pays off · thank
 - **V. The prototype clock.** Simulated time runs at real speed from the last jump, so a note window or highlight closes on its own. Small jumps for testing edges are allowed (gate-1 U3)
 - **W. The drafted tag list for the Positivity Feed** is the four working tags: gratification, it eventually pays off, hang in there, thankful (`My-Journey-Concept.md:454–459`; Decisions-Needed B9 (c); gate-1 U4)
 
+- **X. Type, dates and tags under B2's "only after reveal finished" setting.** The network reads a journey's type, dates, chapter and feeling tags from unlock, as under §20 T. Only photos (and what follows them) wait for the reveal to finish (Phase-1-Amendments OQ-10)
+- **Y. No chapter filter on the Positivity Feed.** §20 T wins: chapters are never public. Replaces Decisions-Needed B9 (d) (Phase-1-Amendments OQ-11)
+- **Z. Option switches live in the database.** One `prototype_option` row holds the six switches, changed only through `set_option()` (Phase-1-Amendments O3, approved; a model change)
+
 ### Still open — can wait
 
 1. Export and data ownership, which the trust position depends on

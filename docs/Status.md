@@ -118,3 +118,4 @@ Can start any time after Phase 2.
 - 2026-10-30 — Screen Inventory round 3 audit: PASS (0 violations). Leftovers N16–N18, N20 fixed; N5 and N8 raised as C18 and C17.
 - 2026-10-30 — Phase 1 gate check (qa): FAIL. 4 questions for the user (U1–U4), 6 for owner agents (O1–O6), fixture inconsistency CF-1. Stale stack lines fixed (CF-2–CF-4). `docs/reviews/2026-10-30-gate-1.md`.
 - 2026-10-30 — User rulings on gate-1 U1–U4 recorded as Spec §20 T–W.
+- 2026-10-30 — Amendments: O3 approved (Spec §20 Z); OQ-10 → §20 X; chapter filter dropped (§20 Y); small items B20–B26 provisional. O4 and fixture O6 waiting on the user.
