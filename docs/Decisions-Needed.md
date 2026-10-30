@@ -18,7 +18,7 @@ Approved approach (user, 2026-10-27): build the prototype with these defaults an
 | ID | Provisional default | Switchable |
 |---|---|---|
 | B1 | "Publish" means "reveal finished". Docs use only "reveal finished" and "journey launched" | no |
-| B2 | The network can read an unlocked journey from unlock, as D12 and `Phase-1-Proposal.md:318` say. Under the option, no one but the owner reads it until the reveal is finished, Public photos included (**decided 2026-10-30**, Spec §20 R) | **yes**: from unlock / only after reveal finished |
+| B2 | The network can read an unlocked journey from unlock, as D12 and `Phase-1-Proposal.md:318` say. Under the option, no one but the owner reads it until the reveal is finished, Public photos included (**decided 2026-10-30**, Spec §20 R). The network still reads type, dates, chapter and tags from unlock (§20 X); the overview waits too (§20 HH) | **yes**: from unlock / only after reveal finished |
 | B3 | Each reveal choice takes effect when made. A reveal can be finished at any later time | no |
 | B4 | One ring per finished reveal (`Phase-1-Proposal.md:65`) | **yes**: per finished reveal / per year with the app |
 | B5 | Activity line twists in at reveal finished. The activity graph is visible to the owner only | **yes**: owner only / built from the photos the viewer can see |

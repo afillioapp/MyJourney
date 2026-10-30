@@ -33,7 +33,7 @@ Status values: `todo` · `in progress` · `in review` · `done` · `blocked`
 |---|---|---|---|
 | Data model | lead-tech | done | `Phase-1-Proposal.md` §2, approved 2026-10-25 |
 | Fixture design | fixture-designer | done | `Phase-1-Proposal.md` §3, approved 2026-10-25 |
-| Rules list as testable statements | rules-guardian | done | `Rules-Rubric.md`: R-001–R-150, every check has a how-to-check; all banned-list rows and §2.5 checks mapped (`docs/reviews/2026-10-30-gate-1.md`) |
+| Rules list as testable statements | rules-guardian | done | `Rules-Rubric.md`: R-001–R-154, every check has a how-to-check; all banned-list rows and §2.5 checks mapped (`docs/reviews/2026-10-30-gate-1.md`) |
 | Screen inventory | ux | done | `Screen-Inventory.md`; rules audit PASS `docs/reviews/2026-10-30-rules-screen-inventory-r3.md` |
 
 **Gate:** a developer can read the data model and the fixture design and know exactly what to build, with no questions left.

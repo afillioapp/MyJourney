@@ -152,9 +152,9 @@ Test fixtures named below come from `Phase-1-Proposal.md` §3. Steady Lantern #6
 - **Type:** auto · **Applies to:** data, API, UI
 - **Source:** FS §20 DD (`photo.highlight_id` owner only, also after unlock), DN B24 (highlight rows owner only after unlock), DN B6 ("Others learn nothing about highlights", with no time limit), FS §20 AA. R-008 covers only the sealed year. Found by `docs/reviews/2026-10-30-rules-phase-1-r4.md` finding V2 (`Phase-1-Amendments.md:226` still makes `highlight_id` "as readable as the photo itself")
 - **How to check:** At baseline, as Second Wind (on Lantern's map) and as First Light (public reader), read every Lantern #1 photo Wind or Light can read, 4 of Wind's tagged photos being inside the graduation-party highlight (P1:266): no response carries `highlight_id`, a highlight id, or any field that differs between highlight and normal photos; `highlight` rows return 0 rows. Repeat as Lantern: `highlight_id` and the highlight rows are present. UI review of Walking a path, A photo followed forward and Another user's profile as a non-owner: no "highlight" label, badge, border, grouping or section. Grep aid: `highlight` in reader-side components and serializers.
-- **Current implementation:** RLS on `highlight` with owner-only readers after unlock (B24); `photo.highlight_id` withheld from non-owners by a column grant or an owner-aware view, since row-level security alone cannot hide one column of a readable row. `P1:92` does not yet say how **Updated 2026-10-30:** now stated in `P1:48` (e) and `P1:92`: column grant without `highlight_id`, owner-only `photo_highlight_id()`, read view `photo_read` (Phase-1-Amendments §4 item 4).
+- **Current implementation:** RLS on `highlight` with owner-only readers after unlock (B24); `photo.highlight_id` withheld from non-owners by a column grant or an owner-aware view, since row-level security alone cannot hide one column of a readable row. Before 2026-10-30, `P1:92` did not say how. **Updated 2026-10-30:** now stated in `P1:48` (e) and `P1:92`: column grant without `highlight_id`, owner-only `photo_highlight_id()`, read view `photo_read` (Phase-1-Amendments §4 item 4).
 - **Provisional default:** Decisions-Needed B24: After unlock, highlight rows are readable by the owner only. Holds as written
-- **Residual (weakest point, reported by every audit until the user rules):** readers who can see `captured_at` of many photos from one day (Lantern #1: 19 in 24 hours) can infer a highlight. Neither DD nor B24 addresses it; it goes to the supervisor, not into the build
+- **Residual (weakest point, reported by every audit; narrowed by FS §20 GG on 2026-10-30, see next line):** readers who can see `captured_at` of many photos from one day (Lantern #1: 19 in 24 hours) can infer a highlight. Neither DD nor B24 addresses it; it goes to the supervisor, not into the build
 - **Decided 2026-10-30 (FS §20 GG, `FS:311`):** readers other than the owner see a photo's capture date, never its time (R-154). This narrows the residual above but does not close it: 19 Lantern #1 photos dated the same day still suggest a highlight. The residual stays reported until the user rules on it
 
 ---
@@ -891,7 +891,7 @@ Commit, capture, frames, highlights and the note.
 ### R-116
 - **Statement:** Every time rule follows the app clock: the seal, unlock, reflection slots, the note window, highlight ends, the cadence month and Commit.
 - **Type:** auto · **Applies to:** data, API
-- **Source:** P1:194, FS:321 (§21; before 2026-10-30 r4 this read `FS:299`, which §20's growth moved onto §20 W)
+- **Source:** P1:194, FS:325 (§21 "A time control"; heading at FS:321; before 2026-10-30 r4 this read `FS:299`, which §20's growth moved onto §20 W)
 - **How to check:** Set the app clock to a date far from the real one and run R-001, R-036, R-040, R-046 and R-121. Each must behave as of the app clock.
 
 ### R-117
