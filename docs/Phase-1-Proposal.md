@@ -1,6 +1,6 @@
 # Phase 1 Proposal: data model and fixtures
 
-Status: **APPROVED 2026-10-25.** The data model, the fixtures and readings R1–R5 were all approved as written. No code written yet.
+Status: **APPROVED 2026-10-25.** The data model, the fixtures and readings R1–R5 were all approved as written. **Amended 2026-10-30**: see `Phase-1-Amendments.md` and `Functional-Spec.md` §20 Q–DD; each amended line is tagged. No code written yet.
 Date: 2026-10-25
 
 This version folds in every decision made on 2026-10-25. They're listed in section 1 and recorded in `Functional-Spec.md` §20 and `My-Journey-Concept.md` §29. The five readings in section 4 were approved too.
@@ -45,7 +45,7 @@ Postgres, local. The rules sit in the database itself: grants, triggers, row-lev
 | Photo, note, journey, user name immutable | The same grant and trigger pair. No delete path exists anywhere (D7) |
 | Reveal choices lock at finish (D12) | Visibility, people tags, chapter and feeling tags are insert-only. A trigger also refuses any insert once that journey's reveal is finished |
 | One journey at a time (D3) | An exclusion constraint: no two journeys of one user may have overlapping `[committed_at, unlocks_at)` |
-| Sealed means unreadable | (a) Row-level security: photo, note, tag, reflection and highlight rows are readable only once `app_now() >= unlocks_at`, **including by the owner**, so `count(*)` returns 0. (b) Image blobs are encrypted with a per-journey key that only one function releases, and only after unlock. (c) The owner's only view of a highlight before unlock is `highlight_open(journey)`, true or false (FS §20 AA). (d) After unlock, journey, chapter and feeling-tag rows are readable by the owner and the owner's network only, never public (FS §20 T) *(amended 2026-10-30, `Phase-1-Amendments.md`)* |
+| Sealed means unreadable | (a) Row-level security: photo, note, tag, reflection and highlight rows are readable only once `app_now() >= unlocks_at`, **including by the owner**, so `count(*)` returns 0. (b) Image blobs are encrypted with a per-journey key that only one function releases, and only after unlock. (c) The owner's only view of a highlight before unlock is `highlight_open(journey)`, true or false (FS §20 AA). (d) After unlock, journey, chapter and feeling-tag rows are readable by the owner and the owner's network only, never public (FS §20 T). (e) After unlock, highlight rows are readable by the owner only (`PROVISIONAL: B24`), and `photo.highlight_id` by the owner only (FS §20 DD): the app role has no SELECT on that column, and every reader reads photos through one read view whose `highlight_id` is filled only for the owner (`Phase-1-Amendments.md` §4 item 4) *(amended 2026-10-30, `Phase-1-Amendments.md`)* |
 | No counters | `capture()` and `start_highlight()` return only `accepted` or `refused`. Frames used, frames left and highlights left are counted inside them and never stored or returned |
 | Activity graph only after unlock | It's built from `captured_at`, which is unreadable while sealed |
 | Layer invisibility | Layer rows are readable only where `owner = viewer`. Nothing callable takes a member and returns an owner |
@@ -89,7 +89,7 @@ The spec's separate "committed" state collapses into sealed under D1. Others see
 | id, journey_id | |
 | captured_at | `app_now()`, set inside `capture()` |
 | image | Sealed, encrypted blob |
-| highlight_id | Nullable |
+| highlight_id | Nullable. Readable by the owner only, also after unlock (FS §20 DD; §2.1 (e)) *(amended 2026-10-30)* |
 
 There's no caption, and no update or delete (D7). `capture()` accepts a photo in one of two cases:
 
@@ -130,7 +130,7 @@ Insert-only. Readable by the owner and the owner's network.
 |---|---|
 | id, journey_id | |
 | started_at | `app_now()` inside `start_highlight()` |
-| ends_at | `started_at` + 24 hours, cut off at `unlocks_at` (D6) |
+| ends_at | `started_at` + 24 hours, cut off at `unlocks_at` (D6). The window is `[started_at, ends_at)`: at exactly `ends_at` the highlight is closed (`PROVISIONAL: B25`) *(amended 2026-10-30)* |
 
 Only on a sealed journey, at most the type's allowance per journey.
 
@@ -167,7 +167,7 @@ B's own map never changes because of A's tags.
 - **journey_type**: constants. **chapter**: catalogue seeded from Concept §15.
 - **announcement**: (type limited to journey_launched, reflection_left and path_crossed; actor; subject; at). No media column, no count column. Who sees each one is worked out from visibility (see reading R2).
 - **sim_clock** (the last jump's time and when it was made; `app_now()` runs at real speed from it, FS §20 V) and **journey_key**.
-- **prototype_option**: one row, one column per switch (B2, B4, B5, B11, B12, C6), changed only through `set_option()` (FS §20 Z). *(amended 2026-10-30, `Phase-1-Amendments.md`)*
+- **prototype_option**: one row, one column per switch (B2, B4, B5, B11, B12, C6), changed only through `set_option()` (FS §20 Z). One global row, not per viewer (`PROVISIONAL: B23`). *(amended 2026-10-30, `Phase-1-Amendments.md`)*
 
 ### 2.5 Checks that ship with the schema
 
@@ -192,13 +192,13 @@ Each one fails the build:
 ### 3.1 Time control
 
 - **One clock:** `sim_clock`, read through `app_now()`.
-- **Controls:** +1 minute, +1 hour (`PROVISIONAL: B20`), +1 day, +1 month, +1 year, +5 years, jump to the next unlock, reset to baseline. The clock runs at real speed from the last jump (FS §20 V). *(amended 2026-10-30, `Phase-1-Amendments.md`)* Load and reset: the 2021–2026 history is replayed through the real functions as the app role, kept as a template database; reset clones the template (`Phase-1-Amendments.md` §2). **Forward only.** To look at an earlier moment, reset and jump again.
-- **On each jump, in this order:**
+- **Controls:** +1 minute, +1 hour (`PROVISIONAL: B20`), +1 day, +1 month, +1 year, +5 years, jump to the next unlock, reset to baseline. The clock runs at real speed from the last jump (FS §20 V). *(amended 2026-10-30, `Phase-1-Amendments.md`)* Load and reset: the 2021–2026 history is replayed through the real functions as the app role, kept as a template database; reset clones the template (`Phase-1-Amendments.md` §2), which also puts every option switch back to its default (`PROVISIONAL: B22`). **Forward only.** To look at an earlier moment, reset and jump again.
+- **On each jump, in this order** (`Phase-1-Amendments.md` §1.5):
   1. Unlocks need nothing to run, since state is derived from the clock.
-  2. Scripted fixture actions dated at or before the new time are applied.
+  2. Scripted fixture actions dated at or before the new time are applied, at 12:00 UTC on their dates (FS §20 BB). An action whose instant the running clock has already passed is applied at the next jump (`PROVISIONAL: B26`).
   3. Layers are computed for every reveal finished since the last jump.
   4. Announcements are emitted.
-- **Baseline: 2026-10-25.** The next interesting points are 2027-01-01 (Steady Lantern unlocks), 2027-04-12 (Second Wind unlocks) and 2027-06-05 (Open Hands unlocks).
+- **Baseline: 2026-10-25 00:00:00 UTC** (`PROVISIONAL: B21`). The next interesting points are 2027-01-01 (Steady Lantern unlocks), 2027-04-12 (Second Wind unlocks) and 2027-06-05 (Open Hands unlocks).
 
 ### 3.2 Users
 
