@@ -127,3 +127,4 @@ Can start any time after Phase 2.
 - 2026-10-30 — User rulings §20 II (loader as panel role, approved), JJ (no time order same-day; ids not sequential), KK (strip image metadata at capture), LL (note time never to non-owners).
 - 2026-10-30 — Lead-tech carried §20 II–LL: random uuid ids, fixed non-time order, metadata stripped at capture, highlight RLS/definer arrangement; tested on Postgres 16. New: Amendments OQ-20 (database statistics show sealed activity) for the user.
 - 2026-10-30 — User rulings §20 MM (close database statistics leak fully), NN (database refuses images with metadata).
+- 2026-10-30 — Lead-tech carried §20 MM (definer readers, catalog closures, one-database connect) and NN (metadata guard in capture()), tested on Postgres 16. Open for the user: Amendments OQ-21–OQ-24.
