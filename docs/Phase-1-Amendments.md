@@ -1,10 +1,10 @@
 # Phase 1 Amendments: gate-1 items O1–O4, and rulings T and U
 
-Status: **2026-10-30: O1, O2 accepted (no model change). O3 APPROVED by the user (Spec §20 Z). O4 APPROVED by the user (Spec §20 AA).** OQ-10 → Spec §20 X; OQ-11 → §20 Y; OQ-11 → §20 Y and CC; OQ-1, 2, 4, 6, 7, 8, 9 → Decisions-Needed B20, B26, B21, B22, B23, B24, B25 (provisional); OQ-8's `photo.highlight_id` half → §20 DD, enforced in §4 item 4 (rules r4 V2, gate r3 B-2). Owner: lead-tech.
+Status: **2026-10-30: O1, O2 accepted (no model change). O3 APPROVED by the user (Spec §20 Z). O4 APPROVED by the user (Spec §20 AA).** OQ-10 → Spec §20 X; OQ-11 → §20 Y and CC; OQ-16 → §20 EE, carried by the panel role (§2.1, §1.3; gate r4 B-3, rules r5 V1); OQ-17 → §20 FF (§5); OQ-1, 2, 4, 6, 7, 8, 9 → Decisions-Needed B20, B26, B21, B22, B23, B24, B25 (provisional); OQ-8's `photo.highlight_id` half → §20 DD, enforced in §4 item 4 (rules r4 V2, gate r3 B-2). §20 GG carried in §4 item 5 (gate r4 B-4, rules r5 V3); §20 HH in §3 and §5 (gate r4 CF-20, rules r5 V2). Owner: lead-tech.
 
 This file amends `Phase-1-Proposal.md` (P1, approved 2026-10-25) without editing it. Where P1 needs a matching line, §7 lists it for the supervisor to apply once the amendments are approved. Every amendment is the smallest change that closes its gate item. Nothing here redesigns §2.
 
-Sources: `docs/reviews/2026-10-30-gate-1.md` (GC), P1 §2–§3, `Functional-Spec.md` (FS) §20 Q–DD (`FS:290–308`), `Decisions-Needed.md` (DN) provisional defaults, `Rules-Rubric.md` (RR). Stack: local Postgres 16 (decided 2026-10-30, DN D1). No deploy host is assumed.
+Sources: `docs/reviews/2026-10-30-gate-1.md` (GC), P1 §2–§3, `Functional-Spec.md` (FS) §20 Q–HH (`FS:290–312`), `Decisions-Needed.md` (DN) provisional defaults, `Rules-Rubric.md` (RR). Stack: local Postgres 16 (decided 2026-10-30, DN D1). No deploy host is assumed.
 
 ---
 
@@ -13,11 +13,14 @@ Sources: `docs/reviews/2026-10-30-gate-1.md` (GC), P1 §2–§3, `Functional-Spe
 | Item | Amendment, in one line | Rubric checks served | Changes the approved model? |
 |---|---|---|---|
 | O1 | `app_now()` = the last jump's instant plus the real time elapsed since then, frozen per transaction. One forward-only primitive, `clock_jump(interval > 0)`, reaches any exact instant. The panel gains small jumps | R-001, R-040, R-046, R-116, R-115, R-117, R-118, R-119, R-120, R-123; §2.5 check 10 | No. The panel's small jump sizes are a provisional default (`PROVISIONAL: B20`) |
-| O2 | The fixture is loaded by replaying 2021–2026 through the real functions, as the app role, on a clock started at 2021-01-01. The result is kept as a template database. Reset clones the template. No role bypasses the rules and no row is ever deleted | R-117, R-120, R-002, R-003, R-119; P1:40 | No |
+| O2 | The fixture is loaded by replaying 2021–2026 through the real functions, on a clock started at 2021-01-01: the panel role jumps the clock and runs each action as the app role (FS §20 EE, §2.1). The result is kept as a template database. Reset clones the template. No role bypasses the rules and no row is ever deleted | R-117, R-120, R-002, R-003, R-119; P1:40 | No |
 | O3 | One new supporting record, `prototype_option`: a single row with one column per switchable default (B2, B4, B5, B11, B12, C6), two allowed values each. RLS reads B2 (and C6, B11) from it | R-141, R-142, R-068, R-144, R-146, R-147, R-148, R-149 | **Yes. APPROVED 2026-10-30** |
 | O4 | Highlight rows join the sealed list at P1:48 (a), owner included. One owner-only function, `highlight_open(journey)`, returns true or false and nothing else. After unlock, highlight rows (B24) and `photo.highlight_id` (FS §20 DD) reach the owner only | G-13, R-151, R-008, R-009, R-010, R-014, R-138, R-040, R-041 | **Yes. APPROVED 2026-10-30** |
 | §20 T | Journey, chapter and feeling-tag rows after unlock: owner and network only, never public. Before unlock, unchanged (owner: type and dates; others: `has_journey_underway()`) | R-008, R-009, R-063, R-068 | No. It records a decided ruling. P1 needs matching lines |
 | §20 U | `capture()` runs in a fixed order: the open highlight if not full, else a normal frame if one is left, else refuse | R-040, R-043, R-038, R-138 | No. P1:94–99 needs a matching line |
+| §20 EE | A third role, `mj_panel`, alone holds EXECUTE on `clock_jump()`, `clock_jump_to_next_unlock()` and `set_option()`. It acts as a fixture user only through a one-way `SET ROLE mj_app` (§1.3–§1.5, §2.1, §2.2, §3) | R-153, R-141, R-117, R-014 | No. Grants and one role; no table or field |
+| §20 GG | Non-owners get a photo's UTC capture date, never its time, and no part of a note's written time. Column grants plus owner-aware functions and views (§4 item 5) | R-154, R-151, R-144 | No. Grants, one view, four functions; no table or field |
+| §20 HH | `b2` also governs the overview, and (through the photo) notes and person tags (§3, §5) | R-142, R-063 | No. One function; no table or field |
 
 ---
 
@@ -52,15 +55,15 @@ app_now() = sim_at                                          if real_at is NULL
 
 **1.3 Jumps (forward only).**
 
-- **The primitive** is `clock_jump(d interval)`. It refuses `d <= 0`. It sets `sim_at = app_now() + d` (in UTC) and `real_at = transaction_timestamp()`, and leaves `real_at` NULL while the clock is not started. The loader calls it as `mj_app` (§2.2), so `mj_app` holds EXECUTE on it today; whether any acting viewer may call it in the running prototype is not settled (OQ-16).
+- **The primitive** is `clock_jump(d interval)`. It refuses `d <= 0`. It sets `sim_at = app_now() + d` (in UTC) and `real_at = transaction_timestamp()`, and leaves `real_at` NULL while the clock is not started. **Who may call it (FS §20 EE, `FS:309`; settles OQ-16):** only the panel role `mj_panel` (§2.1). `mj_app`, the acting viewer's role, holds no EXECUTE on it and cannot become `mj_panel`. The same holds for `clock_jump_to_next_unlock()` (EE names it) and `set_option()` (§3). `clock_start()` is not named in EE and does not move `app_now()` (§2.3), but under the strictest reading no acting viewer calls it either: only `mj_owner`, its owner, calls it, from the reset script; neither `mj_app` nor `mj_panel` holds EXECUTE on it. `app_now()` is read-only and stays executable by both. Postgres grants EXECUTE on every new function to PUBLIC by default, so the migrations revoke it (`ALTER DEFAULT PRIVILEGES FOR ROLE mj_owner REVOKE EXECUTE ON FUNCTIONS FROM PUBLIC`) and grant each function explicitly.
 - **Panel controls.** These are built on the primitive:
   - unchanged from P1:195: +1 day, +1 month, +1 year, +5 years, jump to the next unlock, reset
   - **added under §20 V:** +1 minute and +1 hour. §20 V allows small jumps but names none; these sizes are the provisional default (`PROVISIONAL: B20`, settles OQ-1)
   - "+1 month" uses the same UTC month arithmetic as journeys, so it is clamped under B16. For example, 01-31 + 1 month gives 02-28
-- **Jump to the next unlock** stays as P1:195 defines it: the global next `unlocks_at` after `app_now()`. DN C17 is still open and has no default.
+- **Jump to the next unlock** stays as P1:195 defines it: the global next `unlocks_at` after `app_now()`. DN C17 is still open and has no default. `clock_jump_to_next_unlock()` (SECURITY DEFINER, `mj_panel` only) jumps there and returns nothing; with no later unlock it refuses. To apply the §1.5 order the panel needs the target `t1` before it moves, so its transaction probes first: `SAVEPOINT probe; SELECT clock_jump_to_next_unlock(); SELECT app_now();` (this is `t1`) `ROLLBACK TO SAVEPOINT probe;`, then runs §1.5 to `t1` (tested, §1 evidence). The probe tells the panel nothing that the date it shows after the jump does not (C17 unchanged), and adds no function.
 - **Reset** is in §2.
 
-**1.4 How tests reach exact instants.** Each test case runs in **one transaction**. Inside it, `clock_jump(target - app_now())` lands exactly on `target`, and later jumps are exact offsets. For example: capture, then `clock_jump('15 minutes')`, then add the note. That puts the note at capture + 15:00.000 exactly (B16: refused).
+**1.4 How tests reach exact instants.** Each test case runs in **one transaction** on a connection logged in as `mj_panel` (FS §20 EE). It jumps as `mj_panel`, and acts as a viewer with `SET LOCAL ROLE mj_app` plus the acting-user setting, then `RESET ROLE` before the next jump. The switch goes one way only: `mj_panel` may become `mj_app`, `mj_app` is never a member of `mj_panel`, and while the role is `mj_app` a jump is refused (tested, §1 evidence). Inside the transaction, `clock_jump(target - app_now())` lands exactly on `target`, and later jumps are exact offsets. For example: capture, then `clock_jump('15 minutes')`, then add the note. That puts the note at capture + 15:00.000 exactly (B16: refused).
 
 | Rubric need | How it is reached |
 |---|---|
@@ -73,10 +76,10 @@ app_now() = sim_at                                          if real_at is NULL
 **1.5 Jump order under a running clock** (P1:196–200). A jump from `t0` to `t1` runs as follows:
 
 1. Unlocks need nothing to run (unchanged).
-2. Each scripted action (P1 §3.8) that has not been applied yet and is dated at or before `t1` is applied, in date order. For each one, the clock first jumps to the action's instant, if that instant is still ahead. The action then runs **through the same functions the app uses, as the acting fixture user**, so its rows carry the scripted times. Whether an action has been applied is read from the data (for example, Wind #6's `journey_reveal` row exists). No table records it.
+2. Each scripted action (P1 §3.8) that has not been applied yet and is dated at or before `t1` is applied, in date order. For each one, the clock first jumps to the action's instant, if that instant is still ahead. The action then runs **through the same functions the app uses, as the acting fixture user**, so its rows carry the scripted times. **How, under FS §20 EE:** the whole jump is one transaction on the panel's `mj_panel` connection. For each action: `clock_jump(action_at - app_now())` as `mj_panel`; `SET LOCAL ROLE mj_app`; set the acting user to the action's fixture user (`set_config(…, true)`, transaction-local); call the app functions; `RESET ROLE`. The action therefore has exactly a viewer's rights and no more, and `app_now()` is exactly `action_at` inside it. The script itself lives in the panel's fixture source, not in a table. Whether an action has been applied is read from the data (for example, Wind #6's `journey_reveal` row exists). No table records it.
 3. Layers are computed when a reveal is finished, inside the finish function (P1:154). This satisfies P1:199 as well (GC NB-11).
 4. Announcements are emitted by the same function, after the layer rows.
-5. The clock jumps to `t1`.
+5. The clock jumps to `t1`, as `mj_panel`. If the last action was at `t1` itself, the clock is already there and no jump is made (`clock_jump` refuses a zero interval).
 
 If real-time running has already carried the clock past an action's instant, the action is applied at `app_now()` at the start of the next jump, which is late. The clock cannot go back. This is the provisional default (`PROVISIONAL: B26`, settles OQ-2).
 
@@ -96,6 +99,29 @@ jump to 2026-12-31 23:59:59              -> 2026-12-31 23:59:59+00 (exact)
 generated unlocks_at, session tz Tehran  -> 2026-01-01 -> 2027-01-01 00:00:00+00; 2028-02-29 -> 2029-02-28
 ```
 
+**Evidence for FS §20 EE (throwaway database `mj_scratch_r5` on the local Postgres 16.15, 2026-10-30, since dropped; roles dropped, cluster stopped).** Roles as in §2.1: `GRANT mj_app TO mj_panel WITH INHERIT FALSE, SET TRUE`; EXECUTE revoked from PUBLIC by default privileges.
+
+```
+has_function_privilege: mj_app   clock_jump / clock_jump_to_next_unlock / set_option / clock_start -> f f f f ; finish_reveal -> t
+                        mj_panel clock_jump / clock_jump_to_next_unlock / set_option / clock_start -> t t t f ; finish_reveal -> f
+as mj_app:   clock_jump('1 day')                     -> ERROR: permission denied for function clock_jump
+             clock_jump_to_next_unlock()             -> ERROR: permission denied for function clock_jump_to_next_unlock
+             set_option('b2','after_reveal_finished') -> ERROR: permission denied for function set_option
+             clock_start()                           -> ERROR: permission denied for function clock_start
+             SET ROLE mj_panel                       -> ERROR: permission denied to set role "mj_panel"
+             afterwards: app_now(), b2               -> 2026-10-25 00:00:00+00 | from_unlock (unchanged)
+as mj_panel, no SET ROLE: SELECT FROM photo_read -> ERROR: permission denied for view photo_read
+                          finish_reveal(4)        -> ERROR: permission denied for function finish_reveal
+one txn as mj_panel, clock running: clock_jump to 2027-04-25 12:00; SET LOCAL ROLE mj_app; acting user 4;
+             current_user, finish_reveal(4), app_now() -> mj_app | accepted | 2027-04-25 12:00:00+00
+             clock_jump('1 minute') while mj_app        -> ERROR: permission denied for function clock_jump
+             RESET ROLE; current_user                   -> mj_panel ; pg_sleep(1.2) ; app_now() -> 2027-04-25 12:00:00+00
+             stored journey_reveal.finished_at          -> 2027-04-25 12:00:00+00 (exact) ; next txn app_now() -> 12:00:01.2
+next-unlock probe as mj_panel: app_now() 2026-10-25 00:00; SAVEPOINT; clock_jump_to_next_unlock(); app_now()
+             -> 2027-01-01 00:00:00+00 ; ROLLBACK TO SAVEPOINT ; app_now() -> 2026-10-25 00:00:00+00
+as mj_panel: set_option('b2','after_reveal_finished'); SELECT b2 -> after_reveal_finished (rolled back)
+```
+
 ---
 
 ## 2. O2: loading the 2021–2026 fixture, and reset
@@ -106,19 +132,20 @@ GC:64: `capture()` sets `captured_at = app_now()` (P1:90). Triggers refuse inser
 
 ### Amendment: replay, with no bypass role
 
-**2.1 Two roles.**
+**2.1 Three roles** (two until 2026-10-30; `mj_panel` added to carry FS §20 EE, `FS:309`).
 
 | Role | Used by | May do |
 |---|---|---|
-| `mj_owner` | Migrations and the reset script only. Never the app, never the loader | Owns the schema, functions and databases. Never writes a product row |
-| `mj_app` | The app **and the fixture loader** | Exactly the grants in P1 §2.1 (`P1:44` "the app role"). No UPDATE, DELETE or TRUNCATE anywhere. Every rule applies to it |
+| `mj_owner` | Migrations and the reset script only. Never the app, never the loader, never the panel's jumps | Owns the schema, functions and databases. Never writes a product row. The only caller of `clock_start()` (§2.3) |
+| `mj_app` | The app's viewer connections: every acting viewer, the C16 viewer switcher included | Exactly the grants in P1 §2.1 (`P1:44` "the app role"). No UPDATE, DELETE or TRUNCATE anywhere. Every rule applies to it. **No EXECUTE on `clock_jump()`, `clock_jump_to_next_unlock()`, `set_option()` or `clock_start()`, and not a member of `mj_panel`** (FS §20 EE) |
+| `mj_panel` | The prototype panel's control process (time control and switches, DN C16), the fixture loader (§2.2) and the schema tests (§1.4). LOGIN; its credentials never reach a product screen or route (R-153) | EXECUTE on `clock_jump()`, `clock_jump_to_next_unlock()`, `set_option()` and `app_now()`; SELECT on `prototype_option` (it holds no user data, §3). No other grant: on its own it reads and writes no product row. Membership `GRANT mj_app TO mj_panel WITH INHERIT FALSE, SET TRUE` (Postgres 16), so it gains a viewer's rights only after `SET ROLE mj_app`, and only for that span |
 
-The acting user is set per transaction (a session setting read by `viewer()`). The loader acts as each fixture user in the same way the C16 viewer switcher does. Acting as a user gives that user's rights and nothing more. A deployed build would need real authentication instead; OQ-12 records this, and it does not block Phase 3.
+The acting user is set per transaction (a session setting read by `viewer()`). The loader and the scripted actions act as each fixture user in the same way the C16 viewer switcher does, after `SET LOCAL ROLE mj_app` (§1.5). Acting as a user gives that user's rights and nothing more. A deployed build would need real authentication instead; OQ-12 records this, and it does not block Phase 3.
 
 **2.2 Building the baseline.**
 
 1. Create a fresh database from the migrations. `sim_clock` starts **stopped** at **2021-01-01 00:00:00 UTC**, the earliest fixture instant (Lantern's `joined_at` and first commit; the other users join at their first commit, P1 §3.2 as amended 2026-10-30 by user ruling).
-2. The loader (as `mj_app`) walks every fixture event in time order. For each: `clock_jump(event_at - app_now())`, then call the function the app would call, as that user:
+2. The loader, connected as `mj_panel` (lead-tech proposal 2026-10-30, derived from FS §20 EE and O2's "no role bypasses the rules"; EE itself says nothing about the loader), walks every fixture event in time order. For each, in one transaction: `clock_jump(event_at - app_now())` as `mj_panel`, then `SET LOCAL ROLE mj_app`, set the acting user, and call the function the app would call, as that user, then `RESET ROLE`. This is the same path as a scripted action on a panel jump (§1.5):
    - join (each user before their first action, P1 §3.2, P1:213). Each of the four users with a journey joins at the instant of their first commit, and the join comes before the commit: Steady Lantern 2021-01-01, Second Wind 2021-03-15, Long Way Round 2022-09-01, Open Hands 2023-06-01, all 00:00:00 UTC. First Light joins at 2026-10-01 00:00:00 UTC and commits nothing (P1:211)
    - `commit()`
    - `start_highlight()`, `capture()` (placeholder image) and the note within 15 minutes
@@ -141,17 +168,18 @@ This answers the rest of GC:64:
 2. `CREATE DATABASE … TEMPLATE myjourney_baseline`.
 3. Call `clock_start()`. This sets `real_at` from NULL to now. `app_now()` reads exactly the baseline both before and after, so it is not a backward move. The clone also carries the template's `prototype_option` row, so every switch is back at its default (`PROVISIONAL: B22`, settles OQ-6).
 
-No DELETE or TRUNCATE path exists on any product table. The panel's reset control reaches this script through the prototype's control process. The app role cannot call it.
+No DELETE or TRUNCATE path exists on any product table. The panel's reset control reaches this script through the prototype's control process. Neither `mj_app` nor `mj_panel` can call it or `clock_start()` (§1.3).
 
 **2.4 New check (proposed, for the rules-guardian to number).** These fail the build:
 
-- the fixture loader opens a connection as anything other than `mj_app`
+- the fixture loader opens a connection as anything other than `mj_panel` (it never connects as `mj_owner` or directly as `mj_app`)
+- a product function call by the loader runs with `current_user` other than `mj_app`. The database enforces this: `mj_panel` holds no EXECUTE on any product function, so such a call fails (tested: `finish_reveal(4)` as `mj_panel` is refused, §1 evidence). The check is a test that calls one product function as `mj_panel` without `SET ROLE` and expects the refusal
 - the loader's source contains an INSERT, UPDATE, DELETE, COPY or TRUNCATE statement against a product table
 - after load, the baseline differs from the P1 §3 expectations: the counts per journey, the §3.4 rings and the §3.6 matrix
 
 **Rubric served:** R-117 (reset equals the baseline load), R-120 (stored times come from the app clock, including during the load), R-002 and R-003 (sealed at load), R-119, P1:40.
 
-**Model change:** none. There is no new table or field. The roles follow P1:44's "app role". The template and reset script are infrastructure.
+**Model change:** none. There is no new table or field. The roles follow P1:44's "app role"; `mj_panel` is the separate panel role FS §20 EE requires. The template and reset script are infrastructure.
 
 **Needs from the fixture-designer** (P1 §3, not this file):
 
@@ -183,20 +211,21 @@ Add one supporting record to P1 §2.4:
 
 | Column | Settings (first = default) | Who reads it |
 |---|---|---|
-| `b2` | `from_unlock` / `after_reveal_finished` | RLS on photo, photo_visibility and reflection only. Not on journey, chapter or feeling-tag rows: the network reads those from unlock under both settings (FS §20 X, settles OQ-10) |
+| `b2` | `from_unlock` / `after_reveal_finished` | RLS on photo and on what follows a photo: photo_visibility, reflection, note and person_tag, all through `photo_readable()` (§4 item 5), and on `journey_overview` through `overview_readable()` (FS §20 HH, `FS:312`; §5). Not on journey, chapter or feeling-tag rows: the network reads those from unlock under both settings (FS §20 X, settles OQ-10). Before 2026-10-30 this cell said "photo, photo_visibility and reflection only" |
 | `b4` | `per_finished_reveal` / `per_year_with_app` | App (the circle is derived) |
 | `b5` | `owner_only` / `viewer_visible` | App (the activity graph) |
 | `b11` | `named` / `unnamed` | The announcement read function (under `unnamed`, readers get no subject, R-146) |
 | `b12` | `shown` / `hidden` | App (Walking a path) |
 | `c6` | `hidden` / `shown` | RLS on `person_tag` for non-owners (strictest reading, R-148: absent from the data, not only the UI) |
 
-- **Grants.** `mj_app` has SELECT on the row. Changes go only through `set_option(id, setting)` (SECURITY DEFINER). There is no INSERT, DELETE or TRUNCATE path. Who may EXECUTE `set_option()` is not settled (OQ-16).
+- **Grants.** `mj_app` and `mj_panel` have SELECT on the row. Changes go only through `set_option(id, setting)` (SECURITY DEFINER). There is no INSERT, DELETE or TRUNCATE path. **Only `mj_panel` holds EXECUTE on `set_option()`; `mj_app` does not** (FS §20 EE, `FS:309`; settles OQ-16; §2.1, tested in §1).
 - **Settings hold no user data,** so reading them leaks nothing (R-141 treats the panel as a data path under R-014).
 - **One row for the whole prototype,** like the one clock (P1:194; one options panel, DN C16, R-141). The settings are not per viewer (`PROVISIONAL: B23`, settles OQ-7).
 - **The B2 term in the photo read policy, for non-owners of an unlocked journey.** The policy reads the B2 setting from `prototype_option`:
   - when the setting is `after_reveal_finished`, the read is allowed only if a `journey_reveal` row exists for the journey (FS §20 R: Public photos included)
   - when it is `from_unlock`, the B2 term allows the read
   - the visibility, network and seal terms of P1:48 still apply in both cases
+  - the term is evaluated only inside the SECURITY DEFINER predicates `photo_readable()` (§4 item 5) and `overview_readable()` (§5, FS §20 HH). `mj_app` holds no EXECUTE on any helper they call and no grant on `journey_reveal` for this purpose, so no direct call tells a stranger whether a journey's reveal is finished (tested, §5)
 - **B4, B5 and B12** are enforced by the app, which reads the same row. They change no database grant.
 
 **Alternative considered and rejected:** a per-session setting (`SET mj.b2 = …`). Any client can override it, so the database would not be enforcing B2.
@@ -213,7 +242,7 @@ Add one supporting record to P1 §2.4:
 
 ### Problem
 
-GC:66 and RR G-13 (`RR:1185`): P1:48 seals photo, note, tag and reflection rows, but not highlight rows. A readable `highlight` row exposes `started_at` and `ends_at`. DN B6 (`DN:25`) and FS §20 S (`FS:292`) allow the owner only the plain fact that "a highlight is open", with no end time and no countdown, and allow everyone else nothing (R-008, `RR:97–103`).
+GC:66 and RR G-13 (`RR:1240` at `7f20c3d`; it was `RR:1185` when first cited): P1:48 seals photo, note, tag and reflection rows, but not highlight rows. A readable `highlight` row exposes `started_at` and `ends_at`. DN B6 (`DN:25`) and FS §20 S (`FS:292`) allow the owner only the plain fact that "a highlight is open", with no end time and no countdown, and allow everyone else nothing (R-008, `RR:97–103`).
 
 ### Amendment: **APPROVED 2026-10-30**
 
@@ -223,7 +252,8 @@ GC:66 and RR G-13 (`RR:1185`): P1:48 seals photo, note, tag and reflection rows,
    - **For the owner only.** For anyone else, and for a journey id that does not exist, it raises the same refusal. A non-owner therefore cannot tell another user's journey from no journey (R-008's comparison against First Light).
    - It returns no time, no count and no id.
 3. `capture()` and `start_highlight()` read highlight rows internally (SECURITY DEFINER) and still return only `accepted` or `refused` (P1:49).
-4. **`photo.highlight_id` is readable by the owner only, also after unlock (FS §20 DD).** Before unlock the whole row is sealed (P1:48 a). Row-level security works per row and every viewer runs as `mj_app`, so neither RLS nor a plain column grant can tell the owner from another reader of the same row. It is enforced with no table or field change, in three parts: (i) `mj_app` has a column grant on `photo` that leaves `highlight_id` out (`GRANT SELECT (id, journey_id, captured_at, image)`), so any statement that names the column, filters or sorts on it, or uses `SELECT *` on `photo` fails for every viewer; (ii) one SECURITY DEFINER function, `photo_highlight_id(photo_id)`, returns the id only when the viewer owns the photo's journey and `app_now() >= unlocks_at`, and NULL otherwise, including for an id that does not exist, so a non-owner gets the same NULL for a highlight photo, a normal photo and no photo; (iii) every reader, the owner included, reads photos through one view, `photo_read` (`security_invoker = true`, so P1:48's RLS applies unchanged), which returns the granted columns plus `photo_highlight_id(id) AS highlight_id`. Any other function that returns photo data returns `highlight_id` only through (ii). Highlight rows follow item 1 (B24). Residual, not covered by any ruling: `captured_at` clusters can still suggest a highlight (R-151).
+4. **`photo.highlight_id` is readable by the owner only, also after unlock (FS §20 DD).** Before unlock the whole row is sealed (P1:48 a). Row-level security works per row and every viewer runs as `mj_app`, so neither RLS nor a plain column grant can tell the owner from another reader of the same row. It is enforced with no table or field change, in three parts: (i) `mj_app` has a column grant on `photo` that leaves `highlight_id` out, and since FS §20 GG also `captured_at` (`GRANT SELECT (id, journey_id, image)`; item 5), so any statement that names the column, filters or sorts on it, or uses `SELECT *` on `photo` fails for every viewer; (ii) one SECURITY DEFINER function, `photo_highlight_id(photo_id)`, returns the id only when the viewer owns the photo's journey and `app_now() >= unlocks_at`, and NULL otherwise, including for an id that does not exist, so a non-owner gets the same NULL for a highlight photo, a normal photo and no photo; (iii) every reader, the owner included, reads photos through one view, `photo_read` (`security_invoker = true`, so P1:48's RLS applies unchanged), which returns the granted columns, the two capture columns of item 5, and `photo_highlight_id(id) AS highlight_id`. Any other function that returns photo data returns `highlight_id` only through (ii). Highlight rows follow item 1 (B24). Residual, not covered by any ruling: many photos on one capture date can still suggest a highlight (R-151; narrowed by FS §20 GG from times to dates, not closed).
+5. **A photo's capture time is readable by the owner only; everyone else gets the UTC date (FS §20 GG, `FS:311`; R-154).** Same pattern as item 4, no table or field change: (i) the column grants leave out `photo.captured_at` (item 4 (i)) and `note.written_at` (`GRANT SELECT (id, photo_id, image) ON note`), so naming, filtering or sorting on either fails for every viewer, the owner included; (ii) `photo_captured_at(photo_id) → timestamptz`, SECURITY DEFINER, returns the full time only when the viewer owns the photo's journey and `app_now() >= unlocks_at`, else NULL (also for an id that does not exist); (iii) `photo_captured_on(photo_id) → date`, SECURITY DEFINER, returns `(captured_at AT TIME ZONE 'UTC')::date` (B16: UTC) only when `photo_readable(photo_id)` is true, else NULL, so it is no oracle for sealed, private or missing photos; (iv) `photo_readable(photo_id) → boolean`, SECURITY DEFINER, is P1:48's photo read rule written once (seal, visibility, network, public, and the B2 term of §3). The photo SELECT policy is `USING (photo_readable(id))`, and the photo_visibility, reflection, note and person_tag policies use `photo_readable(photo_id)` (person_tag also C6, R-148), so the date function and the policies cannot drift. A direct call answers only what `SELECT … FROM photo_read WHERE id = …` already answers (the FS §20 FF reasoning). (v) `photo_read` returns `photo_captured_on(id) AS captured_on` and `photo_captured_at(id) AS captured_at` (NULL for anyone but the owner). (vi) **The note's written time goes to the owner only, and to no one else in any form, not even its date.** It is at most 15 minutes after capture (P1:108), so its time pins the capture time, and its date differs from the capture date when a photo is taken after 23:45 UTC, which pins that too. Notes are read through `note_read` (`security_invoker = true`): `id, photo_id, image, note_written_at(id) AS written_at`, where `note_written_at(note_id)` is SECURITY DEFINER and owner-only after unlock, like (ii). Screen-Inventory already shows no note written time or date to a non-owner (SI:54, :687). (vii) **Activity graph (B5, `PROVISIONAL: B5`).** Under `owner_only` only the owner sees it, built from the full time. Under `viewer_visible` it is built from the photos the viewer can read, through `photo_read`, so a non-owner's data has `captured_on` only: **no bucket finer than one UTC day** is possible from the data. Whether the graph shows days or something coarser is a Phase 4 display choice, not set here. Not settled here: the order within one day for a non-owner (§8 OQ-18) and time in image metadata (§8 OQ-19).
 
 The window is half-open, `[started_at, ends_at)`, matching the journey interval at P1:47. At exactly `ends_at` the highlight is closed (`PROVISIONAL: B25`, settles OQ-9).
 
@@ -237,7 +267,7 @@ The window is half-open, `[started_at, ends_at)`, matching the journey interval 
 - R-138 (the one DOM difference B6 allows)
 - R-040, R-041 (the window, and one at a time)
 
-**Model change: yes.** It changes the §2.1 sealing row (P1:48) and adds one function. **APPROVED 2026-10-30 (FS §20 AA).** There is no new table or field. Item 4 (FS §20 DD) adds a column grant, one view and one function, and changes no table or field.
+**Model change: yes.** It changes the §2.1 sealing row (P1:48) and adds one function. **APPROVED 2026-10-30 (FS §20 AA).** There is no new table or field. Item 4 (FS §20 DD) adds a column grant, one view and one function, and changes no table or field. Item 5 (FS §20 GG, a decided ruling) narrows two column grants and adds one view (`note_read`) and four functions (`photo_captured_at`, `photo_captured_on`, `photo_readable`, `note_written_at`), and changes no table or field.
 
 **Evidence (feasibility):**
 
@@ -263,8 +293,26 @@ any viewer:     SELECT highlight_id FROM photo           -> ERROR: permission de
                 SELECT * FROM photo                      -> ERROR: permission denied for table photo
                 ... WHERE highlight_id IS NOT NULL       -> ERROR: permission denied for table photo
                 ... ORDER BY highlight_id                -> ERROR: permission denied for table photo
-                SELECT id, captured_at FROM photo        -> 2 rows (granted columns still readable)
+                SELECT id, captured_at FROM photo        -> 2 rows (granted columns still readable; before item 5. Since FS §20 GG: refused, below)
 as owner (1), sealed J6: count(*) FROM photo_read        -> 0 ; photo_highlight_id(600) -> NULL
+```
+
+**Evidence for item 5 (FS §20 GG), throwaway database `mj_scratch_r5` on the local Postgres 16.15, 2026-10-30, since dropped; roles dropped, cluster stopped.** Viewer 1 owns J1 (unlocked, revealed): photos 100 (09:12, in highlight 10) and 101 (17:40), both 2025-08-09; 102 (2025-03-02 23:55, public, note written 2025-03-03 00:05); 103 (private). J6 is sealed (photo 600). Viewer 2 is on 1's map; viewer 3 is a public reader.
+
+```
+as owner (1):   SELECT id, captured_on, captured_at, highlight_id FROM photo_read
+                -> 100 | 2025-08-09 | 2025-08-09 09:12:00+00 | 10 ; 101 | 2025-08-09 | 2025-08-09 17:40:00+00 | NULL
+                   102 | 2025-03-02 | 2025-03-02 23:55:00+00 | NULL ; 103 | 2025-04-01 | 2025-04-01 08:00:00+00 | NULL   (600 absent: sealed)
+                note_read: 1 | 102 | 2025-03-03 00:05:00+00
+as network (2): photo_read -> 100 | 2025-08-09 | NULL | NULL ; 101 | 2025-08-09 | NULL | NULL ; 102 | 2025-03-02 | NULL | NULL
+                photo_captured_on(100), (103 private), (600 sealed), (999 none) -> 2025-08-09, NULL, NULL, NULL
+                photo_captured_at(100) -> NULL ; note_read: 1 | 102 | NULL
+                photos dated 2025-08-09: count(DISTINCT captured_on) = 1, count(DISTINCT captured_at) = 0
+as public (3):  photo_read -> 102 | 2025-03-02 | NULL | NULL ; photo_captured_on(100) -> NULL ; note_read: 1 | 102 | NULL
+any viewer:     SELECT captured_at FROM photo / SELECT * FROM photo / ORDER BY captured_at / WHERE captured_at > now()
+                -> ERROR: permission denied for table photo
+                SELECT written_at FROM note -> ERROR: permission denied for table note
+                SELECT id, journey_id FROM photo -> rows (granted columns still readable)
 ```
 
 ---
@@ -278,12 +326,12 @@ Ruling (`FS:296`): after unlock, the owner and the owner's network, never public
 | `journey` (type, `committed_at`, `unlocks_at`) | Owner: these three fields only (P1:84, B19). Others: only `has_journey_underway(user)` (D17) | Owner and network. Never anyone else |
 | `journey_chapter` | None exist: it is insert-only during the reveal (P1:143). It is sealed by RLS anyway | Owner and network |
 | `journey_feeling_tag` | Same as `journey_chapter` | Owner and network |
-| `journey_overview` | (unchanged, P1:126) | Owner and network |
+| `journey_overview` | (unchanged, P1:126) | Owner and network. **Under B2's `after_reveal_finished`, the network only once the reveal is finished** (FS §20 HH, `FS:312`); the owner from unlock. Policy `USING (overview_readable(journey_id))`: SECURITY DEFINER, true when `app_now() >= unlocks_at` and either the viewer owns the journey or `viewer_in_network(owner)` and the B2 term of §3 holds; false for a missing id |
 
 - **"Network"** means the users on the owner's current map (reading R2, P1 §3.8 / §2.3).
-- **Layer rows are readable only by their owner** (P1:51). So the policy uses a SECURITY DEFINER predicate, `viewer_in_network(owner_id)`. It answers only for the current viewer, returns a boolean, and never takes a member to return an owner (P1:51). **It cannot be made callable only inside policies:** Postgres checks EXECUTE (and USAGE, and SELECT on any view a policy reads) as the querying role, so `mj_app` must hold EXECUTE and a client can call it directly (tested, below). A direct call answers exactly what the policy already answers: whether the viewer can read that owner's unlocked journey rows (§20 T); an owner with a map always has one, since layers are written only when a reveal is finished. Whether that is acceptable under R-070 is OQ-17. No route exposes it. Its owning role must not fall under the layer table's owner-only policy (that policy applies `TO mj_app`), or under FORCE it reads no row and every answer is false (tested, below).
+- **Layer rows are readable only by their owner** (P1:51). So the policy uses a SECURITY DEFINER predicate, `viewer_in_network(owner_id)`. It answers only for the current viewer, returns a boolean, and never takes a member to return an owner (P1:51). **It cannot be made callable only inside policies:** Postgres checks EXECUTE (and USAGE, and SELECT on any view a policy reads) as the querying role, so `mj_app` must hold EXECUTE and a client can call it directly (tested, below). A direct call answers exactly what the policy already answers: whether the viewer can read that owner's unlocked journey rows (§20 T); an owner with a map always has one, since layers are written only when a reveal is finished. **Settled 2026-10-30, FS §20 FF (`FS:310`): it may stay directly callable** (was OQ-17). No route exposes it. `overview_readable(journey_id)` (row above) is callable for the same reason and adds no fact: for a stranger it is always false, as for a missing id; for a network member it adds only whether the reveal is finished, which the network already learns from "journey launched" (FS §20 J, M). Its owning role must not fall under the layer table's owner-only policy (that policy applies `TO mj_app`), or under FORCE it reads no row and every answer is false (tested, below).
 - **A reader of a Public photo who is not in the network** reads the photo row but no journey, chapter or tag row. `photo.journey_id` leads nowhere for them.
-- **Under B2's `after_reveal_finished` setting,** FS §20 R (`FS:291`) and DN B2 (`DN:21`) say "no one but the owner reads it until the reveal is finished". **Settled 2026-10-30, FS §20 X:** these rows are readable by the network from unlock under both settings. The `b2` switch does not govern them (§3).
+- **Under B2's `after_reveal_finished` setting,** FS §20 R (`FS:291`) and DN B2 (`DN:21`) say "no one but the owner reads it until the reveal is finished". **Settled 2026-10-30, FS §20 X:** the journey, chapter and feeling-tag rows are readable by the network from unlock under both settings. The `b2` switch does not govern them (§3). **The overview is the exception: FS §20 HH (`FS:312`) puts it under `b2`** (table above).
 - **Conflict, not picked:** DN B9 (d) (`DN:28`) gives the Positivity Feed, which public readers use, a chapter filter. FS §20 T (`FS:296`) says chapters are never public. **Settled 2026-10-30, FS §20 Y:** no chapter filter.
 
 **Evidence (throwaway database `mj_scratch_n6` on the local Postgres 16, 2026-10-30, since dropped; roles dropped, cluster stopped):**
@@ -295,7 +343,25 @@ policy reads a definer view instead; mj_app has no SELECT on it      -> SELECT j
 USAGE + EXECUTE; layer FORCEd, policy for all roles                   -> SELECT journey as Wind: 0 rows; direct call viewer_in_network(1) = f
 ```
 
-**Model change:** none. This records a decided ruling. P1 needs matching lines at P1:48, 84 and 143 (§7).
+**Notes and person tags under `b2` (gate r4 CF-20, rules r5 V2 "same line").** Both follow the photo, so `b2` governs them through `photo_readable()` (§4 item 5): FS:15 lists the handwritten note and the people tagged as parts of the Photo; FS §20 R (`FS:291`) says no one but the owner reads the journey until the reveal is finished; FS §20 X (`FS:301`) says photos "and what follows them" wait. Person tags are also hidden from non-owners under C6's default (`PROVISIONAL: C6`); under `shown`, only on photos the reader can read (R-148). Nothing here is unsettled.
+
+**Evidence for FS §20 HH (throwaway database `mj_scratch_r5`, as in §4 item 5, since dropped).** Viewer 4 owns J4 (unlocked, reveal not finished; one photo, its note, one person tag, one overview). Viewer 2 is on 4's map and on 1's; viewer 3 is a stranger. C6 set to `shown` so tags can be counted.
+
+```
+viewer | b2                    | J4 journey row | photos | notes | tags | overview | J1 overview (revealed)
+4      | from_unlock           | 1 | 1 | 1 | 1 | 1 | 0
+2      | from_unlock           | 1 | 1 | 1 | 1 | 1 | 1
+3      | from_unlock           | 0 | 0 | 0 | 0 | 0 | 0
+4      | after_reveal_finished | 1 | 1 | 1 | 1 | 1 | 0
+2      | after_reveal_finished | 1 | 0 | 0 | 0 | 0 | 1      <- journey row from unlock (§20 X); overview waits (§20 HH)
+3      | after_reveal_finished | 0 | 0 | 0 | 0 | 0 | 0
+panel jump to 12:00; SET LOCAL ROLE mj_app; acting user 4; finish_reveal(4) -> accepted
+2      | after_reveal_finished | 1 | 1 | 1 | 1 | 1 | 1
+direct calls: overview_readable(1, 4, 6 sealed, 999) as stranger 3 -> f f f f ; as network 2 -> t t f f
+              the B2 helper inside the predicates, called by mj_app -> ERROR: permission denied for function
+```
+
+**Model change:** none. This records a decided ruling. P1 needs matching lines at P1:48, 84 and 143 (§7). FS §20 HH adds one function (`overview_readable`) and no table or field.
 
 ---
 
@@ -333,6 +399,7 @@ Effects on the rubric:
 | 194 (§3.1) | Add the small jumps, the running clock (§20 V) and the replay order of 1.5 | O1 |
 | §3 (new) | Load by replay and reset by template, per §2 here | O2 |
 | 3, 48 (e), 92, 133, 170, 195, 196, 198, 201 | Applied 2026-10-30 by lead-tech, each inside its existing line so no P1 citation moves: status note; owner-only `highlight_id` and highlight rows; the `[started_at, ends_at)` window; one global options row; reset restores switches; pointer to §1.5; late actions at the next jump and 12:00 UTC; baseline 00:00:00 UTC | FS §20 DD, BB; B24, B25, B23, B22, B26, B21 (rules r4 V2, V3; gate r3 B-2, CF-19) |
+| 3, 48 (e), 50, 90, 106, 108, 126, 169, 170, 181, 195 | Applied 2026-10-30 (second round) by lead-tech, each inside its existing line, so P1 stays at 408 lines and no P1 citation moves: status note to §20 Q–HH; capture date only for non-owners, owner-only note written time; graph no finer than a day; note readers follow the photo; overview under `b2`; clock and switches moved by `mj_panel` only; check 6 token scan; load and jumps by `mj_panel` acting as `mj_app` | FS §20 EE, GG, HH (gate r4 B-3, B-4, CF-20, NB-10; rules r5 V1–V3) |
 
 §3 is being edited by another agent at the time of writing. The §3 lines go through the supervisor.
 
@@ -357,5 +424,60 @@ Effects on the rubric:
 | OQ-13 | DN C17 (the next-unlock jump and other users' dates) is still open, with no default. Built as P1:195 says | Panel acceptance |
 | OQ-14 | GC O6: **settled**, journey #6 (user ruling 2026-10-30) | Fixture load |
 | OQ-15 | The time of day of each scripted action in P1 §3.8 is not given (fixture-designer). **Settled 2026-10-30, FS §20 BB: 12:00 UTC.** | Nothing now (was: fixture load, OQ-2) |
-| OQ-16 | Who may EXECUTE `clock_jump()` (and `clock_jump_to_next_unlock()`) and `set_option()` in the running prototype? The docs give a panel (C16) and say the switches change only through `set_option()` (FS §20 Z), but not which role calls them. Today the loader needs `clock_jump()` as `mj_app` (§2.2), so as written any acting viewer can jump the clock and flip a switch. The other reading is a separate panel role that the app's viewer connection lacks. Not picked. Reset already runs only as `mj_owner` (§2.3) **Settled 2026-10-30, FS §20 EE: a separate panel role only; the loader runs as that role for clock_jump.** | Grants on three functions (Phase 3); panel acceptance |
+| OQ-16 | Who may EXECUTE `clock_jump()` (and `clock_jump_to_next_unlock()`) and `set_option()` in the running prototype? The docs give a panel (C16) and say the switches change only through `set_option()` (FS §20 Z), but not which role calls them. Today the loader needs `clock_jump()` as `mj_app` (§2.2), so as written any acting viewer can jump the clock and flip a switch. The other reading is a separate panel role that the app's viewer connection lacks. Not picked. Reset already runs only as `mj_owner` (§2.3). **Settled 2026-10-30, FS §20 EE (`FS:309`): a separate panel role only.** Carried as `mj_panel` (§2.1, §1.3, §3). How the loader, the scripted actions and the tests use it (connect as `mj_panel`, act through `SET LOCAL ROLE mj_app`, §1.4, §1.5, §2.2) is a lead-tech proposal derived from EE and O2; EE itself says nothing about the loader. Before this round the cell also said "the loader runs as that role for clock_jump", which was not in the ruling | Nothing now (was: grants on three functions, Phase 3; panel acceptance) |
 | OQ-17 | `viewer_in_network(owner_id)` cannot be limited to policies (§5, tested): any viewer can call it directly and, by looping over users, list whose maps they are on. R-070 forbids a call that takes a member and returns owners; this one takes an owner. The same answer already follows from reading each owner's journey rows under §20 T, so it adds no fact. Accept, or does the rules-guardian or the user want a different reading of R-070? **Settled 2026-10-30, FS §20 FF: accepted.** | R-070 test wording; nothing in the schema |
+| OQ-18 | **Order within one capture date, for a non-owner (FS §20 GG).** Non-owners get the date only (§4 item 5). Photo ids are sequential, so ordering a day's photos by id gives capture order; the docs do not say whether order counts as "time" (gate r4 NB-22, SI OQ-46). A sharper case: if ids come from one sequence shared by all users, a non-owner who knows the full times of their own photos can bound another user's capture time between two of their own ids. Not picked: neither the order rule nor the id type (P1 gives `id` no type) | Phase 4 path order (S-06, S-17); the id type of `photo` and `note` before Phase 3 if the shared-sequence case is to be closed |
+| OQ-19 | **Time in image metadata.** A device photo or a photographed note can carry its capture time inside the image file (for example EXIF). FS §20 GG gives non-owners no time. The fixture's generated placeholders carry none (P1:256), so the prototype's data does not leak. Whether real captures strip it at capture or when served to a non-owner is not settled; either satisfies GG, and they differ only in what the owner's stored file keeps | Real capture (Phase 4 or later); nothing in the Phase 3 schema |
+
+
+---
+
+## 9. §2.5 check 6 as a token scan (gate r4 NB-10)
+
+**Problem.** Check 6 (`P1:181`; R-100 `RR:772–776`) bans "view" among other words. A substring scan of the approved schema fails on `journey_overview`, `viewer()` and `viewer_in_network()` (tested below), and a scan of object kinds would fail on the SQL view `photo_read`, whose name has no banned word. A pure whole-token match misses names Postgres folds to lower case, such as an unquoted `viewCount` stored as `viewcount` (tested below).
+
+**Amendment (wording of the check; no schema change).** The scan reads every identifier in the catalog outside `pg_*` and `information_schema`: schemas, relations (tables, views, sequences, indexes, types), columns, functions and their argument names, types, enum labels, constraints, non-internal triggers and policies. It splits each into lower-case tokens at non-letters (`_`, digits) and at lower-to-upper case changes. A token fails if it **contains** one of check 6's words (`comment`, `repl(y|ie)`, `like`, `reaction`, `caption`, `score`, `rank`, `streak`, `badge`, `view`, `follower`), **unless the whole token is on a closed allow-list**: today `viewer` (`viewer()`, `viewer_in_network()`) and `overview` (`journey_overview`). Adding a token to the allow-list is a schema change reviewed by the rules-guardian. A SQL `VIEW` object is not itself a banned word; only names are scanned. R-100's extra words (`heart`, `impression`) are the rules-guardian's to add to the list.
+
+```sql
+WITH ids(kind, name) AS (
+  SELECT 'schema', nspname FROM pg_namespace WHERE nspname NOT LIKE 'pg\_%' AND nspname <> 'information_schema'
+  UNION ALL SELECT 'relation', c.relname FROM pg_class c JOIN pg_namespace n ON n.oid = c.relnamespace
+    WHERE n.nspname NOT LIKE 'pg\_%' AND n.nspname <> 'information_schema'
+  UNION ALL SELECT 'column', c.relname || '.' || a.attname FROM pg_attribute a JOIN pg_class c ON c.oid = a.attrelid
+    JOIN pg_namespace n ON n.oid = c.relnamespace
+    WHERE a.attnum > 0 AND NOT a.attisdropped AND n.nspname NOT LIKE 'pg\_%' AND n.nspname <> 'information_schema'
+  UNION ALL SELECT 'function', p.proname FROM pg_proc p JOIN pg_namespace n ON n.oid = p.pronamespace
+    WHERE n.nspname NOT LIKE 'pg\_%' AND n.nspname <> 'information_schema'
+  UNION ALL SELECT 'argument', p.proname || '(' || a || ')' FROM pg_proc p JOIN pg_namespace n ON n.oid = p.pronamespace,
+    unnest(p.proargnames) a WHERE n.nspname NOT LIKE 'pg\_%' AND n.nspname <> 'information_schema'
+  UNION ALL SELECT 'type', t.typname FROM pg_type t JOIN pg_namespace n ON n.oid = t.typnamespace
+    WHERE n.nspname NOT LIKE 'pg\_%' AND n.nspname <> 'information_schema'
+  UNION ALL SELECT 'enum label', enumlabel FROM pg_enum
+  UNION ALL SELECT 'constraint', c.conname FROM pg_constraint c JOIN pg_namespace n ON n.oid = c.connamespace
+    WHERE n.nspname NOT LIKE 'pg\_%' AND n.nspname <> 'information_schema'
+  UNION ALL SELECT 'trigger', tgname FROM pg_trigger WHERE NOT tgisinternal
+  UNION ALL SELECT 'policy', polname FROM pg_policy
+), tokens AS (
+  SELECT kind, name, lower(tok) AS tok FROM ids,
+    regexp_split_to_table(regexp_replace(name, '([a-z0-9])([A-Z])', '\1_\2', 'g'), '[^A-Za-z]+') AS tok
+  WHERE tok <> ''
+)
+SELECT kind, name, tok FROM tokens
+WHERE tok ~ '(comment|repl(y|ie)|like|reaction|caption|score|rank|streak|badge|view|follower)'
+  AND tok NOT IN ('viewer', 'overview')
+ORDER BY 1, 2;   -- the check passes when this returns no row
+```
+
+**Evidence (throwaway database `mj_scratch_r5`, as in §4 item 5, since dropped).**
+
+```
+schema with photo_read (view), note_read (view), viewer(), viewer_in_network(), overview_readable(),
+  journey_overview, photo_visibility                                    -> 0 rows (pass)
+substring scan of the same schema for 'view'                            -> journey_overview, journey_overview_pkey,
+                                                                           viewer, viewer_in_network (4 false failures)
+planted in one rolled-back transaction: table photo_like (viewCount, reply_to, "viewedAt"), table "Comments",
+  enum reaction_kind ('heart','liked'), function rank_users(), view photo_views, columns users.follower_ids, users.reviewer
+                                                                        -> every planted name fails, including viewcount
+                                                                           (folded), viewedAt, liked, photo_views; and
+                                                                           reviewer, which needs an allow-list review
+```
