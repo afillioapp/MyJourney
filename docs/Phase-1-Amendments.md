@@ -14,8 +14,8 @@ Sources: `docs/reviews/2026-10-30-gate-1.md` (GC), P1 §2–§3, `Functional-Spe
 |---|---|---|---|
 | O1 | `app_now()` = the last jump's instant plus the real time elapsed since then, frozen per transaction. One forward-only primitive, `clock_jump(interval > 0)`, reaches any exact instant. The panel gains small jumps | R-001, R-040, R-046, R-116, R-115, R-117, R-118, R-119, R-120, R-123; §2.5 check 10 | No. The panel's small jump sizes need user confirmation (OQ-1) |
 | O2 | The fixture is loaded by replaying 2021–2026 through the real functions, as the app role, on a clock started at 2021-01-01. The result is kept as a template database. Reset clones the template. No role bypasses the rules and no row is ever deleted | R-117, R-120, R-002, R-003, R-119; P1:40 | No |
-| O3 | One new supporting record, `prototype_option`: a single row with one column per switchable default (B2, B4, B5, B11, B12, C6), two allowed values each. RLS reads B2 (and C6, B11) from it | R-141, R-142, R-068, R-144, R-146, R-147, R-148, R-149 | **Yes. NEEDS USER APPROVAL** |
-| O4 | Highlight rows join the sealed list at P1:48 (a), owner included. One owner-only function, `highlight_open(journey)`, returns true or false and nothing else | G-13, R-008, R-009, R-010, R-014, R-138, R-040, R-041 | **Yes. NEEDS USER APPROVAL** |
+| O3 | One new supporting record, `prototype_option`: a single row with one column per switchable default (B2, B4, B5, B11, B12, C6), two allowed values each. RLS reads B2 (and C6, B11) from it | R-141, R-142, R-068, R-144, R-146, R-147, R-148, R-149 | **Yes. APPROVED 2026-10-30** |
+| O4 | Highlight rows join the sealed list at P1:48 (a), owner included. One owner-only function, `highlight_open(journey)`, returns true or false and nothing else | G-13, R-008, R-009, R-010, R-014, R-138, R-040, R-041 | **Yes. APPROVED 2026-10-30** |
 | §20 T | Journey, chapter and feeling-tag rows after unlock: owner and network only, never public. Before unlock, unchanged (owner: type and dates; others: `has_journey_underway()`) | R-008, R-009, R-063, R-068 | No. It records a decided ruling. P1 needs matching lines |
 | §20 U | `capture()` runs in a fixed order: the open highlight if not full, else a normal frame if one is left, else refuse | R-040, R-043, R-038, R-138 | No. P1:94–99 needs a matching line |
 
@@ -25,7 +25,7 @@ Sources: `docs/reviews/2026-10-30-gate-1.md` (GC), P1 §2–§3, `Functional-Spe
 
 ### Problem
 
-GC:63: P1's controls are +1 day, +1 month, +1 year, +5 years, next unlock and reset (`P1:194`). The rubric needs 2026-12-31 23:59:59 (R-001, `RR:55`), capture + 14:59, 15:00.000 and 15:01 (R-046, `RR:351–353`), highlight + 23:59 and + 24:01 and "2 hours before unlock" (R-040, `RR:314`), and "a date far from the real one" (R-116, `RR:860`). GC:56 (U3) asked whether the clock stands still between jumps. FS §20 V (`FS:298`) answers: "Simulated time runs at real speed from the last jump … Small jumps for testing edges are allowed."
+GC:63: P1's controls are +1 day, +1 month, +1 year, +5 years, next unlock and reset (`P1:195`). The rubric needs 2026-12-31 23:59:59 (R-001, `RR:55`), capture + 14:59, 15:00.000 and 15:01 (R-046, `RR:351–353`), highlight + 23:59 and + 24:01 and "2 hours before unlock" (R-040, `RR:314`), and "a date far from the real one" (R-116, `RR:860`). GC:56 (U3) asked whether the clock stands still between jumps. FS §20 V (`FS:298`) answers: "Simulated time runs at real speed from the last jump … Small jumps for testing edges are allowed."
 
 ### Amendment
 
@@ -54,10 +54,10 @@ app_now() = sim_at                                          if real_at is NULL
 
 - **The primitive** is `clock_jump(d interval)`. It refuses `d <= 0`. It sets `sim_at = app_now() + d` (in UTC) and `real_at = transaction_timestamp()`, and leaves `real_at` NULL while the clock is not started.
 - **Panel controls.** These are built on the primitive:
-  - unchanged from P1:194: +1 day, +1 month, +1 year, +5 years, jump to the next unlock, reset
+  - unchanged from P1:195: +1 day, +1 month, +1 year, +5 years, jump to the next unlock, reset
   - **added under §20 V:** +1 minute and +1 hour. *Proposed sizes; §20 V allows small jumps but names none (OQ-1)*
   - "+1 month" uses the same UTC month arithmetic as journeys, so it is clamped under B16. For example, 01-31 + 1 month gives 02-28
-- **Jump to the next unlock** stays as P1:194 defines it: the global next `unlocks_at` after `app_now()`. DN C17 is still open and has no default.
+- **Jump to the next unlock** stays as P1:195 defines it: the global next `unlocks_at` after `app_now()`. DN C17 is still open and has no default.
 - **Reset** is in §2.
 
 **1.4 How tests reach exact instants.** Each test case runs in **one transaction**. Inside it, `clock_jump(target - app_now())` lands exactly on `target`, and later jumps are exact offsets. For example: capture, then `clock_jump('15 minutes')`, then add the note. That puts the note at capture + 15:00.000 exactly (B16: refused).
@@ -70,11 +70,11 @@ app_now() = sim_at                                          if real_at is NULL
 | R-116: a date far from the real one | `clock_jump('5 years')` or more. The rules run as of the app clock |
 | R-121: 2023-12-31 and 2024-01-01 | Exact jumps |
 
-**1.5 Jump order under a running clock** (P1:195–199). A jump from `t0` to `t1` runs as follows:
+**1.5 Jump order under a running clock** (P1:196–200). A jump from `t0` to `t1` runs as follows:
 
 1. Unlocks need nothing to run (unchanged).
 2. Each scripted action (P1 §3.8) that has not been applied yet and is dated at or before `t1` is applied, in date order. For each one, the clock first jumps to the action's instant, if that instant is still ahead. The action then runs **through the same functions the app uses, as the acting fixture user**, so its rows carry the scripted times. Whether an action has been applied is read from the data (for example, Wind #6's `journey_reveal` row exists). No table records it.
-3. Layers are computed when a reveal is finished, inside the finish function (P1:154). This satisfies P1:198 as well (GC NB-11).
+3. Layers are computed when a reveal is finished, inside the finish function (P1:154). This satisfies P1:199 as well (GC NB-11).
 4. Announcements are emitted by the same function, after the layer rows.
 5. The clock jumps to `t1`.
 
@@ -102,7 +102,7 @@ generated unlocks_at, session tz Tehran  -> 2026-01-01 -> 2027-01-01 00:00:00+00
 
 ### Problem
 
-GC:64: `capture()` sets `captured_at = app_now()` (P1:90). Triggers refuse inserts after a reveal is finished (P1:46). The clock is forward-only from 2026-10-25 (P1:194, 200). So history cannot be inserted through the guarded path at baseline. A bulk insert by a role that bypasses the rules would create exactly what P1:40 says must not be needed. Reset (R-117) depends on the answer.
+GC:64: `capture()` sets `captured_at = app_now()` (P1:90). Triggers refuse inserts after a reveal is finished (P1:46). The clock is forward-only from 2026-10-25 (P1:195, 200). So history cannot be inserted through the guarded path at baseline. A bulk insert by a role that bypasses the rules would create exactly what P1:40 says must not be needed. Reset (R-117) depends on the answer.
 
 ### Amendment: replay, with no bypass role
 
@@ -117,7 +117,7 @@ The acting user is set per transaction (a session setting read by `viewer()`). T
 
 **2.2 Building the baseline.**
 
-1. Create a fresh database from the migrations. `sim_clock` starts **stopped** at **2021-01-01 00:00:00 UTC**, the earliest fixture instant (`joined_at` of Lantern, Wind, Hands and Round, P1 §3.2 as amended 2026-10-30).
+1. Create a fresh database from the migrations. `sim_clock` starts **stopped** at **2021-01-01 00:00:00 UTC**, the earliest fixture instant (Lantern's `joined_at` and first commit; the other users join at their first commit, P1 §3.2 as amended 2026-10-30 by user ruling).
 2. The loader (as `mj_app`) walks every fixture event in time order. For each: `clock_jump(event_at - app_now())`, then call the function the app would call, as that user:
    - join (each user before their first action; Lantern's join comes before Lantern's commit at the same instant, P1 §3.2)
    - `commit()`
@@ -125,7 +125,7 @@ The acting user is set per transaction (a session setting read by `viewer()`). T
    - after unlock: the visibility, person-tag, chapter and feeling-tag inserts
    - finishing the reveal, which computes layers and emits announcements (P1 §2.3)
    - reflections and overviews in their slots
-3. Stop with `clock_jump` to the **baseline instant, 2026-10-25 00:00:00 UTC** (P1:200; the time of day is OQ-4). The clock stays stopped. Mark the database as a template (`myjourney_baseline`, no connections allowed).
+3. Stop with `clock_jump` to the **baseline instant, 2026-10-25 00:00:00 UTC** (P1:201; the time of day is OQ-4). The clock stays stopped. Mark the database as a template (`myjourney_baseline`, no connections allowed).
 
 The clock stays stopped during the load so that every fixture timestamp is exact (for example, commits at 00:00:00, NB-6). The prototype never runs on a stopped clock. §20 V governs from `clock_start()` on.
 
@@ -135,7 +135,7 @@ This answers the rest of GC:64:
 - **Historical layers and announcements** are produced by the replay of each finished reveal. They are not inserted.
 - **The fixture passes the guards as designed**, given the §20 U order (§6). Highlight photos must be captured inside their windows (P1 §3.3). Lantern #5 fills its highlight to 12. Hands #2's 48 normal photos fit its cadence. Round's 2026-09-10 reflection, made before any reveal is finished, is allowed by P1:117.
 
-**2.3 Reset** (P1:194, R-117). The reset script runs as `mj_owner`:
+**2.3 Reset** (P1:195, R-117). The reset script runs as `mj_owner`:
 
 1. Drop the working database.
 2. `CREATE DATABASE … TEMPLATE myjourney_baseline`.
@@ -156,8 +156,8 @@ No DELETE or TRUNCATE path exists on any product table. The panel's reset contro
 **Needs from the fixture-designer** (P1 §3, not this file):
 
 - the exact instant of every event (NB-4, NB-6, generated with a fixed seed)
-- the time of day of the scripted actions (OQ-15)
-- the journey of Wind's 2027-04-25 overview (GC O6, still open per commit 0601bf5)
+- the time of day of the scripted actions: 12:00 UTC (FS §20 BB)
+- the journey of Wind's 2027-04-25 overview: journey #6 (user ruling 2026-10-30, P1 §3.8)
 
 **Evidence (feasibility, throwaway databases, since dropped):**
 
@@ -175,7 +175,7 @@ drop working DB (force); clone template again; clock_start()         -> 2026-10-
 
 GC:65: B2 changes who can read photos, and P1:48 enforces reading in RLS. P1 §2.4 (P1:162–169) has no record for the options panel, so the photo policy cannot follow the switch. Adding a record changes the approved model.
 
-### Amendment: **NEEDS USER APPROVAL**
+### Amendment: **APPROVED 2026-10-30**
 
 Add one supporting record to P1 §2.4:
 
@@ -192,7 +192,7 @@ Add one supporting record to P1 §2.4:
 
 - **Grants.** `mj_app` has SELECT on the row. Changes go only through `set_option(id, setting)` (SECURITY DEFINER). There is no INSERT, DELETE or TRUNCATE path.
 - **Settings hold no user data,** so reading them leaks nothing (R-141 treats the panel as a data path under R-014).
-- **One row for the whole prototype,** like the one clock (P1:193; one options panel, DN C16, R-141). The settings are not per viewer (OQ-7).
+- **One row for the whole prototype,** like the one clock (P1:194; one options panel, DN C16, R-141). The settings are not per viewer (OQ-7).
 - **The B2 term in the photo read policy, for non-owners of an unlocked journey.** The policy reads the B2 setting from `prototype_option`:
   - when the setting is `after_reveal_finished`, the read is allowed only if a `journey_reveal` row exists for the journey (FS §20 R: Public photos included)
   - when it is `from_unlock`, the B2 term allows the read
@@ -203,7 +203,7 @@ Add one supporting record to P1 §2.4:
 
 **Rubric served:** R-141 (exactly two settings, starts on the default), R-142 and R-068 (B2 under both settings), R-144, R-146, R-147, R-148, R-149.
 
-**Model change: yes**, one supporting record in §2.4. **NEEDS USER APPROVAL.**
+**Model change: yes**, one supporting record in §2.4. **APPROVED 2026-10-30 (FS §20 Z).**
 
 **Evidence (feasibility):** `set_option_b2('both')` gives `ERROR: … violates check constraint "prototype_option_b2_check"`. `DELETE FROM prototype_option` as `mj_app` gives `ERROR: permission denied`. The row reads `from_unlock`.
 
@@ -215,7 +215,7 @@ Add one supporting record to P1 §2.4:
 
 GC:66 and RR G-13 (`RR:1185`): P1:48 seals photo, note, tag and reflection rows, but not highlight rows. A readable `highlight` row exposes `started_at` and `ends_at`. DN B6 (`DN:25`) and FS §20 S (`FS:292`) allow the owner only the plain fact that "a highlight is open", with no end time and no countdown, and allow everyone else nothing (R-008, `RR:89–95`).
 
-### Amendment: **NEEDS USER APPROVAL**
+### Amendment: **APPROVED 2026-10-30**
 
 1. **Add `highlight` to P1:48 (a).** Highlight rows are readable only once `app_now() >= unlocks_at` of their journey, **the owner included**, so `count(*)` returns 0 before unlock. The RLS is FORCEd so that the table owner's connections are covered too. After unlock, the readers are the owner only (the strictest reading; OQ-8).
 2. **One new callable: `highlight_open(journey_id) → boolean`.** SECURITY DEFINER:
@@ -237,7 +237,7 @@ The window is half-open, `[started_at, ends_at)`, matching the journey interval 
 - R-138 (the one DOM difference B6 allows)
 - R-040, R-041 (the window, and one at a time)
 
-**Model change: yes.** It changes the §2.1 sealing row (P1:48) and adds one function. **NEEDS USER APPROVAL.** There is no new table or field.
+**Model change: yes.** It changes the §2.1 sealing row (P1:48) and adds one function. **APPROVED 2026-10-30 (FS §20 AA).** There is no new table or field.
 
 **Evidence (feasibility):**
 
@@ -264,11 +264,11 @@ Ruling (`FS:296`): after unlock, the owner and the owner's network, never public
 | `journey_feeling_tag` | Same as `journey_chapter` | Owner and network |
 | `journey_overview` | (unchanged, P1:126) | Owner and network |
 
-- **"Network"** means the users on the owner's current map (reading R2, `P1:381`).
+- **"Network"** means the users on the owner's current map (reading R2, P1 §3.8 / §2.3).
 - **Layer rows are readable only by their owner** (P1:51). So the policy uses a SECURITY DEFINER predicate, `viewer_in_network(owner_id)`. It answers only for the current viewer, returns a boolean, and never takes a member to return an owner (P1:51).
 - **A reader of a Public photo who is not in the network** reads the photo row but no journey, chapter or tag row. `photo.journey_id` leads nowhere for them.
-- **Under B2's `after_reveal_finished` setting,** FS §20 R (`FS:291`) and DN B2 (`DN:21`) say "no one but the owner reads it until the reveal is finished". Read strictly, that covers these rows too. **Confirm: OQ-10.**
-- **Conflict, not picked:** DN B9 (d) (`DN:28`) gives the Positivity Feed, which public readers use, a chapter filter. FS §20 T (`FS:296`) says chapters are never public. **OQ-11.**
+- **Under B2's `after_reveal_finished` setting,** FS §20 R (`FS:291`) and DN B2 (`DN:21`) say "no one but the owner reads it until the reveal is finished". **Settled 2026-10-30, FS §20 X:** these rows are readable by the network from unlock under both settings.
+- **Conflict, not picked:** DN B9 (d) (`DN:28`) gives the Positivity Feed, which public readers use, a chapter filter. FS §20 T (`FS:296`) says chapters are never public. **Settled 2026-10-30, FS §20 Y:** no chapter filter.
 
 **Model change:** none. This records a decided ruling. P1 needs matching lines at P1:48, 84 and 143 (§7).
 
@@ -295,7 +295,7 @@ Effects on the rubric:
 
 ---
 
-## 7. Matching lines P1 needs (for the supervisor, once approved; not applied here)
+## 7. Matching lines P1 needs (applied by the supervisor 2026-10-30, commit 080ccfd)
 
 | P1 line | Change | Carries |
 |---|---|---|
@@ -319,15 +319,15 @@ Effects on the rubric:
 | OQ-1 | Panel small jump sizes. §20 V allows small jumps but names none. Proposed: +1 minute and +1 hour. Tests use `clock_jump(interval)` directly | The panel only. Not the schema |
 | OQ-2 | A scripted action whose instant the running clock has already passed is applied late, at the next jump's starting `app_now()`. Accept? | Time control |
 | OQ-3 | R-119 expects announcements "with times after the map entry". Both are written at the same instant inside the finish function. Read "after" as "not before"? | R-119 test wording (rules-guardian) |
-| OQ-4 | Baseline time of day: 2026-10-25 **00:00:00 UTC**? P1:200 gives only the date | Fixture load, R-117 |
+| OQ-4 | Baseline time of day: 2026-10-25 **00:00:00 UTC**? P1:201 gives only the date | Fixture load, R-117 |
 | OQ-5 | How is `joined_at` set: `app_now()` at join, or given? P1:63 is blank. The replay works either way: it jumps to 2021-01-01 and joins | Schema default |
 | OQ-6 | Does reset put the option switches back to their defaults? The template clone does that. Keeping them means the reset script copies the row across | O3 behaviour |
 | OQ-7 | Options are one global row, not per viewer. Confirm | O3 |
-| OQ-8 | After unlock, who reads highlight rows (proposed: owner only), and may a photo's reader see that it was a highlight photo (`highlight_id`)? Nothing in the docs says | O4 policy |
+| OQ-8 | After unlock, who reads highlight rows (proposed: owner only), and may a photo's reader see that it was a highlight photo (`highlight_id`)? Nothing in the docs says | O4 policy | **Settled 2026-10-30: owner only (B24; FS §20 DD for `photo.highlight_id`).**
 | OQ-9 | At exactly `ends_at` the highlight is closed (half-open, like P1:47). Confirm (B16 settles only the note's 15:00 edge) | capture(), R-040 |
 | OQ-10 | Under B2 `after_reveal_finished`, does "no one but the owner reads it" (`FS:291`, `DN:21`) also cover the journey, chapter and feeling-tag rows that §20 T opens to the network at unlock? | RLS on 3 tables under one switch setting |
 | OQ-11 | **Conflict:** DN B9 (d) (`DN:28`, a chapter filter on the Positivity Feed, which public readers use) against FS §20 T (`FS:296`, chapters never public). Related: B9 (c) selects feed entries by feeling tag, so a public reader learns that a journey carries one of the four working tags. §20 wins under `CLAUDE.md`, but the user should rule on both | Positivity Feed query (Phase 4) |
 | OQ-12 | The prototype's viewer identity is a per-transaction setting, so anyone with the app role can act as any user (C11, C16). Acceptable for the local prototype. Real authentication is needed before any deploy | Deploy (host still open) |
-| OQ-13 | DN C17 (the next-unlock jump and other users' dates) is still open, with no default. Built as P1:194 says | Panel acceptance |
-| OQ-14 | GC O6 (the journey of Wind's 2027-04-25 overview) is still open with the fixture-designer | Fixture load |
-| OQ-15 | The time of day of each scripted action in P1 §3.8 is not given (fixture-designer) | Fixture load, OQ-2 |
+| OQ-13 | DN C17 (the next-unlock jump and other users' dates) is still open, with no default. Built as P1:195 says | Panel acceptance |
+| OQ-14 | GC O6: **settled**, journey #6 (user ruling 2026-10-30) | Fixture load |
+| OQ-15 | The time of day of each scripted action in P1 §3.8 is not given (fixture-designer) | Fixture load, OQ-2 | **Settled 2026-10-30, FS §20 BB: 12:00 UTC.**

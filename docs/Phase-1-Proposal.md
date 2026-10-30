@@ -288,7 +288,7 @@ Other crossings, each placed to test something:
 | Steady Lantern → Open Hands | Lantern #4 | 1 | Hands on Lantern's map, outer | **Asymmetry**: each sits on a different ring in the other's map, and neither can see it |
 | Long Way Round → Open Hands | Round #1 | 2 | Hands on Round's map, middle. Hands #1 was sealed then *(amended 2026-10-30, user ruling: the earlier "Hands had no journey then" was untrue)* | D14, a tagged user whose own journey is sealed. The "no journey" case is Open Hands → First Light, 2027-06-20, §3.8 *(amended 2026-10-30, user ruling)* |
 | Open Hands → "Ava" (typed name) | Hands #2 | 41 | No layer row | D13 |
-| Nobody → First Light | | | First Light's map is empty | An empty network |
+| Nobody → First Light | | | First Light's map is empty at baseline, until Hands tags her on 2027-06-20 (§3.8) *(amended 2026-10-30)* | An empty network |
 
 Lantern's 2 private photos of Wind check that **being tagged doesn't give access**.
 
@@ -381,6 +381,8 @@ So the Positivity Feed holds at least 6 entries at baseline, one per qualifying 
 The scripted future (§3.8) adds nothing: the Wind #6 and Hands #4 reveals script no feeling tags.
 
 ### 3.8 Scripted future (applied on jumps)
+
+Every scripted action happens at **12:00 UTC** on its date (FS §20 BB). Unlocks stay at 00:00 UTC. *(amended 2026-10-30, user ruling)*
 
 | Date | Action |
 |---|---|

@@ -10,9 +10,9 @@ Status values: `todo` · `in progress` · `in review` · `done` · `blocked`
 
 ## Where we are
 
-**Current phase:** 1 — Define (two deliverables left)
-**Next step:** answer the gate-1 blockers, then fix-ups by lead-tech and fixture-designer, then re-check the gate
-**Waiting on you:** model changes O3, O4 once proposed (`docs/reviews/2026-10-30-gate-1.md`); C17, C18
+**Current phase:** 1 — Define (all deliverables done; gate re-check pending)
+**Next step:** Phase 1 gate re-check (qa), then you pass or hold the gate
+**Waiting on you:** passing the Phase 1 gate; C17, C18 (not blocking)
 
 ---
 
@@ -120,3 +120,4 @@ Can start any time after Phase 2.
 - 2026-10-30 — User rulings on gate-1 U1–U4 recorded as Spec §20 T–W.
 - 2026-10-30 — Amendments: O3 approved (Spec §20 Z); OQ-10 → §20 X; chapter filter dropped (§20 Y); small items B20–B26 provisional. O4 and fixture O6 waiting on the user.
 - 2026-10-30 — Fixtures: D14 'no journey' case moved to a scripted Hands → First Light tag (2027-06-20); pre-join captures allowed; generator leaves the six feed photos alone. Restatements fixed in Rubric R-075 area and Screen-Inventory.
+- 2026-10-30 — User approved O4 (Spec §20 AA) and ruled O6 (Wind #6). Gate re-check r2: FAIL on scripted-action time; user ruled 12:00 UTC (§20 BB), feed may select by tag but never shows it (§20 CC), `highlight_id` owner only (§20 DD). Restatements CF-6–CF-9, CF-11–CF-13 fixed.

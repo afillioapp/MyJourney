@@ -303,6 +303,10 @@ Feeling tags currently drafted: hang in there · it eventually pays off · thank
 - **Z. Option switches live in the database.** One `prototype_option` row holds the six switches, changed only through `set_option()` (Phase-1-Amendments O3, approved; a model change)
 - **AA. Highlight rows are sealed**, owner included. The owner learns only yes/no "a highlight is open" through one owner-only function (Phase-1-Amendments O4, approved; a model change)
 
+- **BB. Scripted fixture actions happen at 12:00 UTC** on their dates, away from the 00:00 UTC unlock instant (gate-1 r2 B-1)
+- **CC. The Positivity Feed may select journeys by feeling tag**, but never shows the tag to a public reader: they see reflection text only (gate-1 r2 NB-15)
+- **DD. Whether a photo was taken in a highlight** (`photo.highlight_id`) is readable by the owner only, also after unlock (gate-1 r2 NB-13; matches Decisions-Needed B24)
+
 ### Still open — can wait
 
 1. Export and data ownership, which the trust position depends on

@@ -18,14 +18,14 @@ Approved approach (user, 2026-10-27): build the prototype with these defaults an
 | ID | Provisional default | Switchable |
 |---|---|---|
 | B1 | "Publish" means "reveal finished". Docs use only "reveal finished" and "journey launched" | no |
-| B2 | The network can read an unlocked journey from unlock, as D12 and `Phase-1-Proposal.md:311` say. Under the option, no one but the owner reads it until the reveal is finished, Public photos included (**decided 2026-10-30**, Spec §20 R) | **yes**: from unlock / only after reveal finished |
+| B2 | The network can read an unlocked journey from unlock, as D12 and `Phase-1-Proposal.md:318` say. Under the option, no one but the owner reads it until the reveal is finished, Public photos included (**decided 2026-10-30**, Spec §20 R) | **yes**: from unlock / only after reveal finished |
 | B3 | Each reveal choice takes effect when made. A reveal can be finished at any later time | no |
 | B4 | One ring per finished reveal (`Phase-1-Proposal.md:65`) | **yes**: per finished reveal / per year with the app |
 | B5 | Activity line twists in at reveal finished. The activity graph is visible to the owner only | **yes**: owner only / built from the photos the viewer can see |
 | B6 | Others learn nothing about highlights. The owner sees only "a highlight is open", with no end time and no countdown. The owner part holds over B19 (**decided 2026-10-30**, Spec §20 S) | no |
 | B7 | Frames left are never shown. A refused capture says so with no number (copy in Phase 2) | no |
 | B8 | Counters and progress bars are banned at all times, not only while sealed | no |
-| B9 | Positivity Feed: (a) reflection text only, with the photo shown when opened; (b) per-photo visibility; (c) drafted tag list only; (d) chapter filter available; (e) newest first; (f) only after reveal finished. (c) list **decided 2026-10-30**: the four working tags (Spec §20 W). (d) **replaced 2026-10-30: no chapter filter** (Spec §20 Y) | (a) **decided 2026-10-30: text only**, no longer switchable (Spec §20 Q). (b)–(f) provisional, no |
+| B9 | Positivity Feed: (a) reflection text only, with the photo shown when opened; (b) per-photo visibility; (c) drafted tag list only; (d) chapter filter available; (e) newest first; (f) only after reveal finished. (c) list **decided 2026-10-30**: the four working tags (Spec §20 W). (d) **replaced 2026-10-30: no chapter filter** (Spec §20 Y) | (a) and (d) decided 2026-10-30 (Spec §20 Q, Y); (c) list decided (§20 W). (b), (e), (f) provisional. No switch |
 | B10 | "Reflection left" reaches only the owner's network members who can see the photo, even when it is public | no |
 | B11 | "Path crossed" names both people and reaches the owner's network. It never says which ring | **yes**: named / unnamed |
 | B12 | Walking a path shows the photos where the reader appears, in journey order, with no total and no grouping | **yes**: shown / hidden |
@@ -93,7 +93,7 @@ The Phase 1 gate asks that a developer can build the data model "with no questio
 
 **B1. "Publish".** Does "published" (`Functional-Spec.md:141`, Concept 365–367, 424, 440) mean "the reveal is finished"? *Lean:* yes. Use only "reveal finished" and "journey launched". (Inv 3, G-2, LQ2)
 
-**B2. Reading a journey before its reveal is finished.** From unlock until the owner finishes, every photo is Network by default (`Functional-Spec.md:151, 269`, `Phase-1-Proposal.md:311`). Concept:362 says sharing happens "only … as a finished story". Can the network read an unlocked journey before its reveal is finished? (Inv 9)
+**B2. Reading a journey before its reveal is finished.** From unlock until the owner finishes, every photo is Network by default (`Functional-Spec.md:151, 269`, `Phase-1-Proposal.md:318`). Concept:362 says sharing happens "only … as a finished story". Can the network read an unlocked journey before its reveal is finished? (Inv 9)
 
 **B3. A reveal that is never finished.** Can the owner still finish it in later years? If they set a photo to Private and never finish, does that choice take effect? *Lean:* each choice takes effect when made (set-once, `Functional-Spec.md:286`), and the photos default to Network. (Inv 16, G-11)
 
