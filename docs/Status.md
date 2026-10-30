@@ -119,3 +119,4 @@ Can start any time after Phase 2.
 - 2026-10-30 — Phase 1 gate check (qa): FAIL. 4 questions for the user (U1–U4), 6 for owner agents (O1–O6), fixture inconsistency CF-1. Stale stack lines fixed (CF-2–CF-4). `docs/reviews/2026-10-30-gate-1.md`.
 - 2026-10-30 — User rulings on gate-1 U1–U4 recorded as Spec §20 T–W.
 - 2026-10-30 — Amendments: O3 approved (Spec §20 Z); OQ-10 → §20 X; chapter filter dropped (§20 Y); small items B20–B26 provisional. O4 and fixture O6 waiting on the user.
+- 2026-10-30 — Fixtures: D14 'no journey' case moved to a scripted Hands → First Light tag (2027-06-20); pre-join captures allowed; generator leaves the six feed photos alone. Restatements fixed in Rubric R-075 area and Screen-Inventory.

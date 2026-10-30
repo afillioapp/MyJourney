@@ -210,7 +210,9 @@ Each one fails the build:
 | round | **Long Way Round** | Founder, ME → IT. Round #2 (8 public photos) is the largest single journey in the Positivity Feed *(amended 2026-10-30, user ruling)* | 2022-09-01 | 3 revealed, 1 **unlocked but never revealed**, between journeys |
 | light | **First Light** | Joined 2026-10-01 | 2026-10-01 | No journey. Can commit on any day during the demo (D2) |
 
-*(amended 2026-10-30, user ruling)* **`joined_at`, how each value was set.** Each user's `joined_at` is the date of their first Commit: Steady Lantern 2021-01-01 (#1), Second Wind 2021-03-15 (#1), Open Hands 2023-06-01 (#1), Long Way Round 2022-09-01 (#1). First Light, who has no journey, stays 2026-10-01. This replaces the earlier choice (gate-1 O5) of the earliest date the fixture allowed. It is a fixture choice, not product behaviour. Times are 00:00:00 UTC (NB-6, B16), so each of the four joins and commits at the same instant; joining must come first in the load order. Every people tag in §3.4 and §3.8 is made at a reveal that finishes after the tagged user's `joined_at` (earliest: Lantern tags Wind at the Lantern #1 reveal, 2022-01-16, against Wind's 2021-03-15; Round tags Hands at the Round #1 reveal, 2023-09-12, against Hands' 2023-06-01). A side effect: Open Hands is never a user without a journey, since Hands #1 (2023-06-01 to 2024-06-01) is sealed when Round tags Hands at the Round #1 reveal (see the D14 row in §3.4).
+*(amended 2026-10-30, user ruling)* **`joined_at`, how each value was set.** Each user's `joined_at` is the date of their first Commit: Steady Lantern 2021-01-01 (#1), Second Wind 2021-03-15 (#1), Open Hands 2023-06-01 (#1), Long Way Round 2022-09-01 (#1). First Light, who has no journey, stays 2026-10-01. This replaces the earlier choice (gate-1 O5) of the earliest date the fixture allowed. It is a fixture choice, not product behaviour. Times are 00:00:00 UTC (NB-6, B16), so each of the four joins and commits at the same instant; joining must come first in the load order. Every people tag in §3.4 and §3.8 is made at a reveal that finishes after the tagged user's `joined_at` (earliest: Lantern tags Wind at the Lantern #1 reveal, 2022-01-16, against Wind's 2021-03-15; Round tags Hands at the Round #1 reveal, 2023-09-12, against Hands' 2023-06-01; latest: Hands tags First Light at the Hands #4 reveal, 2027-06-20, against First Light's 2026-10-01). A side effect: Open Hands is never a user without a journey, since Hands #1 (2023-06-01 to 2024-06-01) is sealed when Round tags Hands at the Round #1 reveal. The "no journey" case of D14 is therefore carried by Hands → First Light in §3.8 (amended 2026-10-30, user ruling).
+
+*(amended 2026-10-30, user ruling)* A photo may be captured before the person in it joined; only the tag must come after the tagged user's `joined_at`.
 
 ### 3.3 Journeys
 
@@ -284,7 +286,7 @@ Other crossings, each placed to test something:
 | Open Hands → Steady Lantern | Hands #2 | 2 | Lantern on Hands' map, middle | |
 | Open Hands → Steady Lantern | Hands #3 | 3 | Still middle | |
 | Steady Lantern → Open Hands | Lantern #4 | 1 | Hands on Lantern's map, outer | **Asymmetry**: each sits on a different ring in the other's map, and neither can see it |
-| Long Way Round → Open Hands | Round #1 | 2 | Hands on Round's map, middle. Hands had no journey then | D14: any user counts |
+| Long Way Round → Open Hands | Round #1 | 2 | Hands on Round's map, middle. Hands #1 was sealed then *(amended 2026-10-30, user ruling: the earlier "Hands had no journey then" was untrue)* | D14, a tagged user whose own journey is sealed. The "no journey" case is Open Hands → First Light, 2027-06-20, §3.8 *(amended 2026-10-30, user ruling)* |
 | Open Hands → "Ava" (typed name) | Hands #2 | 41 | No layer row | D13 |
 | Nobody → First Light | | | First Light's map is empty | An empty network |
 
@@ -299,7 +301,7 @@ Lantern's 2 private photos of Wind check that **being tagged doesn't give access
 | wind-3, 2023-04-06, "arrivals hall" | 3 | 2024-04-20, 2025-05-01, 2026-04-15 | network |
 | lantern-5, 2025-06-21 | **1** | 2026-01-18 | network |
 
-Most other photos have 0–2 reflections.
+Most other photos have 0–2 reflections, left to the generator. *(amended 2026-10-30, user ruling)* The generator adds no reflection, in any slot, to the six Positivity Feed photos fixed in §3.7.
 
 *(amended 2026-10-30, user ruling)* Six more reflections are fixed in the fixture, not left to the generator: one on a public photo of each Positivity Feed journey, listed in §3.7. With the four rows above, the fixture fixes 19 reflections (5 + 4 + 3 + 1 + 6).
 
@@ -372,6 +374,8 @@ What the exclusions test: Steady Lantern #5's free-text tag is not on the list. 
 | Open Hands #3 | hands-3, public photo 1 of 2 | 2026-06-20 | 2026-06-03 → 2027-06-03 | 2026-06-27 (1) | `[copy: copywriter]` |
 | Long Way Round #2 | round-2, public photo 1 of 8 | 2024-09-15 | 2024-09-04 → 2025-09-04 | 2024-09-22 (1) | `[copy: copywriter]` |
 
+*(amended 2026-10-30, user ruling)* The generator leaves these six photos alone: no generated reflection on any of them, in any slot. Each holds exactly its one fixed reflection.
+
 So the Positivity Feed holds at least 6 entries at baseline, one per qualifying journey and at least one from each of the four users with a revealed journey (Lantern 2, Hands 2, Wind 1, Round 1). Any generated reflections on other public photos of these journeys add to that. None of the four photos in §3.5 is in a qualifying journey (lantern-1, round-1, wind-3, lantern-5), so none of them enters the feed.
 
 The scripted future (§3.8) adds nothing: the Wind #6 and Hands #4 reveals script no feeling tags.
@@ -382,8 +386,10 @@ The scripted future (§3.8) adds nothing: the Wind #6 and Hands #4 reveals scrip
 |---|---|
 | 2027-01-01 | Steady Lantern #6 unlocks. **The reveal is left for whoever is demoing** |
 | 2027-04-25 | Second Wind finishes the #6 reveal, tagging Lantern in 4 photos (middle). Writes a reflection on wind-3 and an overview on journey #6, its first overview slot *(amended 2026-10-30, user ruling)* |
-| 2027-06-20 | Open Hands finishes the #4 reveal, tagging Lantern in 1 photo |
+| 2027-06-20 | Open Hands finishes the #4 reveal, tagging Lantern in 1 photo. *(amended 2026-10-30, user ruling)* Also tags First Light in 1 other photo: First Light goes on Hands' map, outer. First Light has no journey, since the script never commits for her, so this is the D14 "any user counts" test. First Light's own map stays empty (D14: tagger's map only) |
 | never | Long Way Round's #4 reveal stays unfinished. At +5 years it's still Network-by-default |
+
+*(amended 2026-10-30, user ruling)* **Why the Hands #4 reveal carries the First Light tag, and what it leaves unchanged.** Layers are per tagger and per tagged user (§2.3), so the new tag adds only one entry, First Light on Hands' map. Lantern on Hands' map still goes from middle to outer on 1 photo (R1); the "Ava" tags still give no layer row (D13); every ring in §3.4 is on another map or before 2027-06-20; §3.6 is at baseline; Hands #4 scripts no feeling tags, so §3.7 is unchanged. The Wind #6 reveal was not used: it also writes a network reflection on wind-3, and First Light on Wind's map would become a reader of that photo and its reflections. The tag comes after First Light's `joined_at`, 2026-10-01 (§3.2). The case holds only if whoever is demoing has not committed a journey for First Light before 2027-06-20.
 
 No fake user commits a new journey after baseline. From 2027 on the world goes quiet, apart from whoever is demoing, and +5 years shows that honestly.
 

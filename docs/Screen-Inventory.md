@@ -35,7 +35,7 @@ Calendar edges for every state: a commit on the 29th–31st uses the last day of
 |---|---|---|
 | owner | The user whose journey, photo or map it is | Spec:100, Spec:145 |
 | network | A user on the owner's map, any ring. "Network" and "a user on the owner's map" are the same set | Spec:146, Proposal:344 (R2) |
-| public | Any **signed-in** user, including one on no one's map (First Light). A signed-out visitor is not a public reader (`PROVISIONAL: B14`) | Spec:147, Proposal:313, Decisions B14 |
+| public | Any **signed-in** user, including one on no one's map (First Light, until the scripted 2027-06-20 tag). A signed-out visitor is not a public reader (`PROVISIONAL: B14`) | Spec:147, Proposal:313, Decisions B14 |
 | tagged | A user tagged in the owner's photos. Being tagged gives no access by itself. What a tagged reader sees of their own appearances is B12 (switchable) | Spec:196, Proposal:288, Decisions B12 |
 | demoer | Whoever runs the prototype. Only for T-01 and T-02 | Spec:299, Decisions C11, C16 |
 
@@ -522,7 +522,7 @@ This table is for the reader of this inventory. The panel shows none of it.
 | Baseline 2026-10-25 | Four sealed journeys (S-03, S-16 "exists only"). Long Way Round #4 unlocked, never revealed. First Light with no journey and an empty map | Proposal:200–210, Proposal:241, Proposal:286 |
 | 2027-01-01 | Steady Lantern #6 unlocks: `unlock-day`. "The reveal is left for whoever is demoing" | Proposal:200, Proposal:330 |
 | 2027-04-25 | Second Wind finishes #6: "path crossed", "journey launched", a reflection and an overview | Proposal:331 |
-| 2027-06-20 | Open Hands finishes #4, tagging Lantern once | Proposal:332 |
+| 2027-06-20 | Open Hands finishes #4, tagging Lantern once and First Light once (she has no journey: the D14 test, Proposal §3.8 amended 2026-10-30) | Proposal:332 |
 | +5 years | Long Way Round #4 still Network by default. The world goes quiet | Proposal:333–335 |
 
 ### T-02 Prototype options panel

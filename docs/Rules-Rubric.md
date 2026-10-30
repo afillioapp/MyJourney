@@ -560,7 +560,7 @@ Commit, capture, frames, highlights and the note.
 - **Statement:** Any user counts towards a ring, whether or not they have ever had a journey.
 - **Type:** auto · **Applies to:** data
 - **Source:** FS:163, FS:277, P1:27 (D14)
-- **How to check:** Long Way Round → Open Hands in Round #1 (Hands had no journey then): Hands on Round's map, middle.
+- **How to check:** Long Way Round → Open Hands in Round #1 (Hands #1 sealed then): Hands on Round's map, middle. The "no journey" case: Open Hands → First Light at the scripted Hands #4 reveal, 2027-06-20 (P1 §3.8, amended 2026-10-30): First Light on Hands' map, outer, while she has no journey; her own map stays empty.
 
 ### R-076
 - **Statement:** Tags in Private photos count towards rings.
