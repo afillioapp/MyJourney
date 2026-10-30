@@ -8,7 +8,7 @@ What this file does: names each screen, traces it to the spec by file and line, 
 
 Sources, in the order of trust set by `CLAUDE.md`: `Functional-Spec.md` §20 and `My-Journey-Concept.md` §29, then the rest of `Functional-Spec.md`, then `Phase-1-Proposal.md`, then `Master-Prompt.md`, `Build-Plan.md` and the rest of the Concept doc. `Overview.md` is not cited anywhere. File names below are shortened: **Spec** = `Functional-Spec.md`, **Proposal** = `Phase-1-Proposal.md`, **Plan** = `Build-Plan.md`, **Brief** = `Master-Prompt.md`, **Concept** = `My-Journey-Concept.md`, **Decisions** = `Decisions-Needed.md`, **Rubric** = `Rules-Rubric.md`. All are in `docs/`. Rubric checks (R-nnn) and gaps (G-n) are cited as rules a screen must not break; behaviour still traces to the spec.
 
-**Provisional defaults.** Where a screen depends on a question that Decisions answers with a provisional default ("Provisional defaults in force", B1–B16 and C1–C16), the screen is described under that default and labelled `PROVISIONAL: <ID>`. A provisional default is **not a decision**. It becomes one only when the user says so and it moves into Spec §20 (`CLAUDE.md`, rule zero). For the seven switchable defaults (B2, B4, B5, B9a, B11, B12, C6), both options are described and the default is marked. The user compares them in the prototype options panel, T-02. A question with no default stays open.
+**Provisional defaults.** Where a screen depends on a question that Decisions answers with a provisional default ("Provisional defaults in force", B1–B19 and C1–C16), the screen is described under that default and labelled `PROVISIONAL: <ID>`. A provisional default is **not a decision**. It becomes one only when the user says so and it moves into Spec §20 (`CLAUDE.md`, rule zero). For the seven switchable defaults (B2, B4, B5, B9a, B11, B12, C6), both options are described and the default is marked. The user compares them in the prototype options panel, T-02. A question with no default stays open.
 
 ---
 
@@ -103,11 +103,11 @@ The tables below repeat the items most at risk on each screen. **An item missing
 | # | Element | Source |
 |---|---|---|
 | 1 | That the owner has a journey underway | Proposal:84 ("The owner also sees type, commit date and unlock date. Nothing else."), Proposal:309 |
-| 2 | The journey's type, **by name only**. Not its photos per year, cadence or highlight allowance: at Commit those describe a choice, but beside a running year they read as a target (Spec:243; Rubric R-098). Spec:74 reads against showing it at all; see OQ-39 | Proposal:84 |
-| 3 | The commit date, as a plain date. Spec:74 reads against showing it at all; see OQ-39 | Proposal:84 |
+| 2 | The journey's type, **by name only**. Not its photos per year, cadence or highlight allowance: at Commit those describe a choice, but beside a running year they read as a target (Spec:243; Rubric R-098). Shown under `PROVISIONAL: B19`; Spec:74 reads against it (OQ-39) | Proposal:84, Decisions B19 |
+| 3 | The commit date, as a plain date (`PROVISIONAL: B19`; Spec:74 reads against it, OQ-39) | Proposal:84, Decisions B19 |
 | 4 | The unlock date, as a plain date, never relative to today (`PROVISIONAL: C2`) | Proposal:84, Decisions C2, Rubric R-013 |
 | 5 | The way to Capture (S-02), offered the same whether or not a frame is left (`PROVISIONAL: B7`; Rubric R-138) | Spec:53, Proposal:99 |
-| 6 | The way to start a highlight (S-13), offered the same whether or not a highlight is left (Rubric R-138) | Spec:264, Proposal:135 |
+| 6 | The way to start a highlight (S-13), offered the same whether or not a highlight is left, and whether or not one is open: never greyed or relabelled (Rubric R-138) | Spec:264, Proposal:135 |
 | 7 | Only in `sealed · highlight open`: the plain fact that a highlight is open, with no end time and no countdown (`PROVISIONAL: B6`) | Decisions B6, Rubric R-140 |
 | 8 | The way to what the user does instead: other people's unlocked journeys, through the Positivity Feed, the Feed, Layers and profiles | Spec:76 ("The user's engagement during this period is other people's unlocked journeys, not their own"), Brief:71, Concept:446, Concept:555 |
 | 9 | Words that make the wait read as deliberate `[copy: copywriter]` | Plan:79 ("Microcopy for the moments that carry weight: Commit, sealed, …"), Brief:138 |
@@ -168,7 +168,7 @@ Under either option a ring is a record of time, not a reward. It never arrives a
 | State | Holds | Must never show |
 |---|---|---|
 | `no-journey` · never committed | The owner's name in the circle, no rings (`PROVISIONAL: C7`, `B4`). "A person who joined this year is not behind; their circle is simply younger" (Concept:694). An empty circle is a plain statement (`PROVISIONAL: C9`) | "no scores, no levels, no leaderboard, no badges, no comparison between users" (Spec:185). Anything that "signals how the person looks or how well they are doing" (Spec:29). A profile picture (`PROVISIONAL: C7`) |
-| `sealed` (current journey) | Rings and activity lines of earlier journeys. The current journey as existing, with its type by name and its commit and unlock dates as plain dates (Proposal:84; `PROVISIONAL: C2`; see OQ-39) | The current year's activity graph: "Never during the sealed year. A visible grid being filled is a streak mechanic and is banned" (Spec:187). **A ring, arc or segment for the current year that is partial, growing, dated or filling**, or anything that changes with the date inside the sealed year (Rubric R-012). A countdown or relative unlock date (`PROVISIONAL: C2`; Rubric R-013). The type's photos per year, cadence or allowance (Rubric R-098). Any thumbnail or count from the sealed journey (Spec:75). A banner, dot or marker that reflections are open on an earlier journey (Spec:102; Rubric R-095, R-096) |
+| `sealed` (current journey) | Rings and activity lines of earlier journeys. The current journey as existing, with its type by name and its commit and unlock dates as plain dates (Proposal:84; `PROVISIONAL: B19`, `C2`; see OQ-39) | The current year's activity graph: "Never during the sealed year. A visible grid being filled is a streak mechanic and is banned" (Spec:187). **A ring, arc or segment for the current year that is partial, growing, dated or filling**, or anything that changes with the date inside the sealed year (Rubric R-012). A countdown or relative unlock date (`PROVISIONAL: C2`; Rubric R-013). The type's photos per year, cadence or allowance (Rubric R-098). Any thumbnail or count from the sealed journey (Spec:75). A banner, dot or marker that reflections are open on an earlier journey (Spec:102; Rubric R-095, R-096) |
 | `unlock-day`, `reveal-open` | "Your Journey is ready", on the owner's next open after unlock, as the way into Reveal S-04 (`PROVISIONAL: C1`, `C12`). The year's activity graph, to the owner: "only after the year unlocks" (Spec:187; `PROVISIONAL: B5`). The activity line is not twisted in yet (`PROVISIONAL: B5`). Under B4's default this journey has no ring yet; under the option, rings follow years with the app | As in `sealed`, for any other journey still sealed. A completion meter for the reveal (`PROVISIONAL: B8`). A reminder to finish (Spec:242) |
 | `reveal-finished` | Under B4's default, this journey's ring. The year's activity line twisted into the circle (Spec:186; `PROVISIONAL: B5`) | A ring presented as an achievement or a reward for finishing: "A record, not a rank" (Spec:185; Rubric R-102) |
 | `later-years` | Rings as B4 gives them. The overview stack, readable back to back (Spec:121). The way into earlier journeys, where slot *k* reflections are reached (`PROVISIONAL: C3`) | As above. **On the unlock anniversary, an in-app banner, dot, toast or "Year 3 reflections are open" marker** (Spec:102: "never pushed or reminded to write one"; Rubric R-095, R-096) |
@@ -196,7 +196,7 @@ Under either option a ring is a record of time, not a reward. It never arrives a
 
 | State (of each journey on the path) | Holds | Must never show |
 |---|---|---|
-| `sealed` | Owner: exists, type by name, commit date and unlock date as plain dates. Others: exists only (Spec:279, Proposal:84, Proposal:310) | "Reveal anything about a sealed journey, including its existence in detail" (Spec:246). Any photo, count, thumbnail or capture date (Spec:75). A countdown or relative unlock date (`PROVISIONAL: C2`). A partial or growing mark for the year (Rubric R-012) |
+| `sealed` | Owner: exists, type by name, commit date and unlock date as plain dates (`PROVISIONAL: B19`). Others: exists only (Spec:279, Proposal:84, Proposal:310) | "Reveal anything about a sealed journey, including its existence in detail" (Spec:246). Any photo, count, thumbnail or capture date (Spec:75). A countdown or relative unlock date (`PROVISIONAL: C2`). A partial or growing mark for the year (Rubric R-012) |
 | `unlock-day`, `reveal-open` | Owner: every photo. Under B2's default: network, every photo not yet set Private, because Network is the default (Spec:151, Proposal:311: Open Hands reads Long Way Round #4); public, only photos already set Public, since a choice takes effect when made (`PROVISIONAL: B3`). Under B2's option: others, nothing yet. No chapter or feeling tags until set | Private photos to anyone but the owner (Spec:145, Proposal:29) |
 | `reveal-finished` | Photos by their locked visibility. Reflections follow their photo (Spec:276). The overview, to the owner and network only (Spec:275; `PROVISIONAL: B13`). Chapter and feeling tags | As above |
 | `later-years` | As `reveal-finished`, with deeper reflection stacks and an overview stack (Spec:121) | As above. For the owner, a banner, dot or marker that slot *k* is open (Rubric R-095, R-096) |
@@ -341,7 +341,7 @@ On every state, never: a prompt to capture a low point: "invited, never nudged" 
 | State | Holds | Must never show |
 |---|---|---|
 | `sealed`, no highlight open | The way to start one, offered the same whether or not any highlight is left: availability is learned only by trying (Rubric R-138). Accepted, or refused once the type's allowance is used (Proposal:135). The window is 24 hours of elapsed time, cut off at unlock (Proposal:133; `PROVISIONAL: B16`) | Highlights left or used: "Frames used, frames left and highlights left are counted inside them and never stored or returned" (Proposal:49). A start control hidden, greyed out or relabelled because none is left (Rubric R-138). The season as a rule: "Explorer's 'one per season' is a description, not a rule" (Spec:264) |
-| `sealed · highlight open` | The plain fact that a highlight is open, with no end time (`PROVISIONAL: B6`). Starting another is refused (Spec:284) | As above. **The highlight's end time, "ends in", time left, a timer, or a shrinking bar or ring** (`PROVISIONAL: B6`; Rubric R-140). Highlight photos taken or left (Proposal:49). Anything about the highlight to anyone but the owner (`PROVISIONAL: B6`; Rubric R-008) |
+| `sealed · highlight open` | The plain fact that a highlight is open, with no end time (`PROVISIONAL: B6`). Starting another is refused (Spec:284) | As above, including a start control greyed out or relabelled because one is open (Rubric R-138). **The highlight's end time, "ends in", time left, a timer, or a shrinking bar or ring** (`PROVISIONAL: B6`; Rubric R-140). Highlight photos taken or left (Proposal:49). Anything about the highlight to anyone but the owner (`PROVISIONAL: B6`; Rubric R-008) |
 | `unlock-day` onward, `no-journey` | Not available: "Only on a sealed journey" (Proposal:135) | |
 
 - **Reads:** Highlight, Journey (Proposal §2.2), through `start_highlight()`'s accepted or refused only, and whether a highlight is open (`PROVISIONAL: B6`)
@@ -455,12 +455,12 @@ On every state, never: a comment, reply or like (Spec:230, Proposal:180). A capt
 - **Viewer:** owner
 - **Reached from:** Reveal S-04. **Leads to:** Reveal S-04
 
-**Two places the docs disagree, with no default (Rubric G-14):** Spec:131 writes feeling tags "inside a category", while Proposal:141 stores them on the journey as free text with no category (OQ-37). Spec:131 also says "Popular ones surface over time", while Spec:202 says the Positivity Feed is "never by popularity" (OQ-38). This screen is described without choosing either side.
+**Two places the docs disagree, each with a provisional default (Rubric G-14):** Spec:131 writes feeling tags "inside a category", while Proposal:141 stores them on the journey as free text with no category (OQ-37; `PROVISIONAL: B17` follows Proposal:141). Spec:131 also says "Popular ones surface over time", while Spec:202 says the Positivity Feed is "never by popularity" (OQ-38; `PROVISIONAL: B18`: tags never surface by popularity, no suggestions, no counts).
 
 | State | Holds | Must never show |
 |---|---|---|
 | `sealed` | Not available | |
-| `unlock-day`, `reveal-open` | One chapter, from fixed categories under ME → ME, ME → YOU, ME → IT (Spec:129). Feeling tags as free text, inside a category (Spec:131) or on the journey (Proposal:141): OQ-37. Each set once (Spec:286), with one line saying it can't be changed before it is saved (`PROVISIONAL: C5`). Neither is required to finish (`PROVISIONAL: C5`) | A second chapter: "One per journey" (Spec:129). A way to change a set tag. **Suggested, popular or trending feeling tags while the owner writes, or how many people use a tag**: whether popular tags surface at all is OQ-38, and no count is ever shown (Brief:42) |
+| `unlock-day`, `reveal-open` | One chapter, from fixed categories under ME → ME, ME → YOU, ME → IT (Spec:129). Feeling tags as free text on the journey, with no category (`PROVISIONAL: B17`; Proposal:141). Each set once (Spec:286), with one line saying it can't be changed before it is saved (`PROVISIONAL: C5`). Neither is required to finish (`PROVISIONAL: C5`) | A second chapter: "One per journey" (Spec:129). A way to change a set tag. **Suggested, popular or trending feeling tags while the owner writes, or how many people use a tag**: tags never surface by popularity (`PROVISIONAL: B18`), and no count is ever shown (Brief:42) |
 | `reveal-finished`, `later-years · finished` | The tags, read-only | Any change (Spec:276) |
 | `later-years · never finished` | None set yet unless the owner set them, which took effect when made. They can still be set, once each (`PROVISIONAL: B3`; Spec:269 says "There's no chapter, no tags", Rubric G-11) | |
 
@@ -562,7 +562,7 @@ Listed only so no screen is built for them.
 | Export and data ownership | Spec:290 |
 | Age gating and parental consent | Spec:291 |
 | Real authentication and real photo storage | Plan:228 |
-| Sign up and choosing a name, in the prototype only. S-10 and S-11 stay in the product inventory | Decisions C11 (`PROVISIONAL`) |
+| Sign up and choosing a name, in the prototype only. S-10 and S-11 stay in the product inventory | Decisions C11 (`PROVISIONAL: C11`) |
 
 ---
 
@@ -656,11 +656,11 @@ Where two docs disagree, both lines are cited and neither is picked unless Decis
 **Raised by the 2026-10-27 audit**
 
 37. **Feeling tags and categories.** Spec:131 says feeling tags are written "inside a category". Proposal:141 stores them as (journey, free text), with no category. Which shape does the tag step offer? Affects S-19. (Audit finding 14; Rubric G-14.)
-    → **Still open, no ID.** Decisions B9(c) covers only which tags qualify for the Positivity Feed.
+    → Decisions B17, provisional: free text on the journey, no category. Not switchable.
 38. **"Popular ones surface."** Spec:131 says popular feeling tags "surface over time and the best get promoted into official categories". Spec:202 says the Positivity Feed is "never by popularity". Does any screen surface or suggest popular tags, and by what measure? Affects S-19, S-09. (Audit finding 14; Rubric G-14.)
-    → **Still open, no ID.** S-19 holds no suggestion until this is answered.
+    → Decisions B18, provisional: tags never surface by popularity; no suggestions, no counts. Not switchable.
 39. **What the owner sees of a sealed journey besides the unlock date.** Spec:74 says nothing in a sealed journey is visible, "not to the user". Proposal:84 lets the owner see its type, commit date and unlock date. Do the type and commit date show on S-03, S-05 and S-06? Affects S-03, S-05, S-06. (Audit finding 2; Rubric G-17.)
-    → **Still open, no ID.** Decisions C2 settles only the unlock date's form. The screens above list type and commit date under Proposal:84, with Spec:74 cited against them.
+    → Decisions B19, provisional: the owner sees type, commit date and unlock date, nothing else (C2 sets the unlock date's form). Not switchable. Open conflict with B6 ("a highlight is open", S-03 element 7) raised for the user, not settled here.
 40. **The announcement feed's order.** No source states it (Rubric Question 1). Affects S-08. (Audit finding 11.)
     → Decisions C14, provisional: newest first. Not switchable.
 
@@ -694,3 +694,11 @@ The Commit moment and button (S-01). The capture refusal, with no number, and th
 | 14: feeling tags followed one doc; "popular ones surface" not raised | S-19 cites Spec:131 and Proposal:141 without picking; suggestions and popularity counts held out; OQ-37 and OQ-38 added (no ID) |
 | 15: wrong citations | "Reflection left" audience now cites Spec:280 (was Spec:282) on S-08, S-14 and OQ-22. S-08's popularity ban no longer cites Proposal:180; it cites Brief:44 and C14 and says no line names it for this feed |
 | 16: time control not shown to apply the seal | T-01 applies the seal (R-014), reports nothing from a sealed journey, labels "jump to the next unlock" without whose or when (R-008), and sits outside the product's screens and navigation. T-02 added |
+
+**2026-10-30, round 2 of 3.** Against `docs/reviews/2026-10-30-rules-screen-inventory-r1.md`. Clear findings only; N2, N3, N7 and N8 wait for the user:
+
+| Finding | What changed |
+|---|---|
+| N1: B17–B19 not applied | Range now B1–B19. S-19 follows B17 (free text on the journey, no category) and B18 (no popularity, suggestions or counts). Type and commit date on S-03, S-06 and the path labelled `PROVISIONAL: B19`. OQ-37, OQ-38, OQ-39 now point to B17, B18, B19 |
+| N4: start-highlight control while one is open | S-03 element 6 and S-13 `sealed · highlight open` ban greying or relabelling it (R-138) |
+| N11: label with no ID | Out-of-scope C11 row now `PROVISIONAL: C11` |

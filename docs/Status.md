@@ -112,3 +112,4 @@ Can start any time after Phase 2.
 - 2026-10-27 — Holding page (`site/index.html`) deployed to Vercel production at `myjourney-afillio.vercel.app`, at the user's request. It uses only lines already approved in `CLAUDE.md` and the README: no form, no tracking. It is a placeholder, not the Phase 5 site. Public access is pending a change to Vercel Authentication.
 - 2026-10-27 — Learner agent added. Phase 0 retrospective written (L-001 to L-006). The supervisor applied the process fixes to `CLAUDE.md`, the `phase` skill, rules-guardian, qa and developer. Product-doc fixes and commits are waiting on the user.
 - 2026-10-27 — Phase 1 started: Rules Rubric and Screen Inventory dispatched.
+- 2026-10-30 — Screen Inventory re-audit after round 1: FAIL, 3 confirmed (N1–N3), R-150 added. Round 2 fixed N1, N4, N11. N2, N3 (G-8), N7 and N8 wait for the user. Not yet re-audited.
