@@ -6,6 +6,8 @@ Version 1, 2026-10-27. No code exists yet. Nothing below has been audited.
 
 Last updated: 2026-10-27 (second pass). Aligned with the provisional defaults in `Decisions-Needed.md` (B1–B16, C1–C16, approved by the user on 2026-10-27 for the prototype). Added R-141 to R-149. Added "Provisional default" lines to checks and Gaps. Marked the Gaps that section A is fixing. Re-cited every `CL:` line after the 2026-10-27 rule zero rewrite moved `CLAUDE.md` down (old 15 → 17; old 21 onward +9). No check renumbered or removed.
 
+Updated 2026-10-30 (re-audit of `Screen-Inventory.md` round 1, `docs/reviews/2026-10-30-rules-screen-inventory-r1.md`): added R-150. Added `Provisional default` lines for B17, B18 and B19, which `Decisions-Needed.md` gained in commit fdb83d3, under R-009, R-103, G-14 and G-17. No check renumbered or removed.
+
 ---
 
 ## What this is for
@@ -36,7 +38,7 @@ The stack and database host are not decided yet (`Status.md` Open decisions 1, L
 | BP | `docs/Build-Plan.md` |
 | MJC | `docs/My-Journey-Concept.md` (cited only for §29 and under Gaps) |
 | RG | `.claude/agents/rules-guardian.md` |
-| DN | `docs/Decisions-Needed.md` (cited by ID: A1–A12, B1–B16, C1–C16) |
+| DN | `docs/Decisions-Needed.md` (cited by ID: A1–A12, B1–B19, C1–C16; B17–B19 added 2026-10-27 in fdb83d3) |
 
 `docs/Overview.md` is historical and is never cited.
 
@@ -106,6 +108,7 @@ Test fixtures named below come from `Phase-1-Proposal.md` §3. Steady Lantern #6
 - **Provisional default:** Decisions-Needed C2: The unlock date is shown as a plain date, never relative ("in 64 days"). The owner's unlock date is allowed as a date only (see R-013)
 - **Provisional default:** Decisions-Needed B6: The owner sees only "a highlight is open", with no end time and no countdown. Under B6 the check reads: type, commit date, unlock date and, while a highlight is open, the bare fact that one is open. Its start time, end time, elapsed or remaining time, how many highlights are used or left, and any photo count in it all fail
 - **Provisional default:** Decisions-Needed C3: The sealed-year screen does not point to earlier journeys. Nothing about an earlier journey, including an open reflection slot, appears on the sealed-year screen
+- **Provisional default:** Decisions-Needed B19: The owner of a sealed journey sees its type, commit date and unlock date and nothing else (`P1:84`; `FS:74` read as covering the contents). Holds as written; B19 settles the first half of G-17 for the prototype. B19's "nothing else" and B6's "a highlight is open" (line above) read against each other. That is raised as an open question for the user (`docs/reviews/2026-10-30-rules-screen-inventory-r1.md`) and is not settled here
 
 ### R-010
 - **Statement:** A capture changes nothing that any reader can observe, the owner included: no "last captured", "active today", "captured this week", recent-activity mark or announcement.
@@ -756,6 +759,7 @@ Commit, capture, frames, highlights and the note.
 - **Source:** FS:202–203, P1:317. See G-8 and G-14
 - **How to check:** As First Light, the feed holds only public photos with the listed tags. Its query uses no read, like, view or count measure for order or selection.
 - **Provisional default:** Decisions-Needed B9: Positivity Feed: (a) reflection text only, with the photo shown when opened; (b) per-photo visibility; (c) drafted tag list only; (d) chapter filter available; (e) newest first; (f) only after reveal finished. Under B9 the check reads: the feed holds only photos that are themselves Public (b), from journeys whose reveal is finished (f), tagged with a tag from the drafted list, never free text (c), newest first (e), and may be filtered by chapter (d). Any other reader-side filter has no default and goes to the supervisor, not into the build. Under (a) "text only" each entry shows reflection text and no image until the reader opens it; opening one shows one photo. The (a) setting is switchable (R-145). Add the cases: a Public photo in Long Way Round #4 (reveal never finished) is absent; a Network photo in a journey with other Public photos is absent; the feed order equals reverse time order with no other key
+- **Provisional default:** Decisions-Needed B18: Tags never "surface" by popularity. No suggestions and no counts (`FS:202` over `FS:131`). Firm under B18: no screen suggests, sorts, ranks or counts feeling tags by how often they are used, at the tag step or anywhere else, and no job promotes a tag by use. Grep aid: `popular`, `trending`, `suggest`, `most used`, `count(` over feeling tags
 
 ### R-104
 - **Statement:** No surface is designed to make a visit longer: low usage is the goal.
@@ -1065,6 +1069,18 @@ Added 2026-10-27 for the playable prototype (rule zero, CL:19–24; `Decisions-N
 
   A table ID with no label in code is not a failure: some defaults are an absence (B15, C15). `B9a`–`B9f` match row B9. Tested 2026-10-27 on a sample file: step 1 caught `A3` and `PROVISIONAL B2`, step 2 caught `B17`. Baseline 2026-10-27: no code labels yet. Review aid, not part of the auto result: for each label, the code beside it does what that table row says.
 
+  Note 2026-10-30: B17 has since been added to the table (fdb83d3), so the sample above no longer shows a missing ID. A fresh sample should use an ID past the table's last row.
+
+### R-150
+- **Statement:** A deliverable (doc or code) describes every question that `Decisions-Needed.md` answers with a provisional default under that default only, worded as the table row states it, and labelled `PROVISIONAL: <ID>`. It never calls such a question open or "no default", never states a default range that leaves out rows in the table, never describes the other side or a third reading as what the screen holds, and never extends a default or a switch setting to cases its row does not name.
+- **Type:** auto (labels and cross-references) and review (wording) · **Applies to:** copy, UI, data, API
+- **Source:** CL:19–24 (rule zero: "build that, and nothing else"), CL:30, DN "Provisional defaults in force". R-149 covers labels in code only; R-135 covers picking a side. Found by `docs/reviews/2026-10-30-rules-screen-inventory-r1.md` finding N1 (B17–B19 missing from `Screen-Inventory.md`) and N2 (B2's option extended to Public photos)
+- **How to check:** From the repo root, for a deliverable `F`:
+  1. Every table ID is labelled in `F` if `F` touches its question. List table IDs not labelled in `F`, then read each against `F`: `comm -13 <(grep -oE 'PROVISIONAL: [BC][0-9]{1,2}' F | grep -oE '[BC][0-9]+' | sort -u) <(grep -oE '^\| [BC][0-9]{1,2} \|' docs/Decisions-Needed.md | grep -oE '[BC][0-9]+' | sort -u)`
+  2. Every row that says "Raised as ... OQ-n" is named in `F`'s OQ-n status line. Must print nothing: `grep -oE '^\| [BC][0-9]+ \|.*Raised as[^|]*' docs/Decisions-Needed.md | while read -r l; do id=$(echo "$l" | grep -oE '^\| [BC][0-9]+' | grep -oE '[BC][0-9]+'); for n in $(echo "$l" | grep -oE 'OQ-[0-9]+' | grep -oE '[0-9]+'); do awk -v n="$n" -v id="$id" '$0 ~ "^"n"\\. "{f=1;next} f && /^[0-9]+\. /{exit} f && index($0,id){ok=1} END{if(!ok) print "OQ-"n" lacks "id}' F; done; done`
+  3. Grep `F` for `no default`, `still open, no ID` and `B1–B1[0-9]` ranges, and confirm each against the table.
+  4. Review: each labelled passage says what its row says, no more. A reading the row does not state (for example, what a switch setting does to a case the row does not name) is raised as a question, not built.
+
 ---
 
 ## Banned-list coverage
@@ -1086,6 +1102,8 @@ Every row of the banned list (`CLAUDE.md:64–74`, `Master-Prompt.md:37–47`) a
 | No layer is ever shown to the person on it | R-069, R-070, R-071, R-092, R-139, R-146, R-147, R-148 |
 
 R-141 and R-149 apply to every row: no switch setting may break any item above, and every provisional default in code is labelled and traceable. R-138 sits under two rows because a control hidden or greyed for lack of frames is both a counter and a leak of how much a sealed year holds (RG:28, "disabled-but-visible states").
+
+R-150 applies to every row as well: a deliverable that leaves out or stretches a provisional default can carry a banned item in by that route.
 
 ## `Phase-1-Proposal.md` §2.5 mapping
 
@@ -1169,6 +1187,8 @@ Since 2026-10-27 each gap carries a status line under it: **being fixed** by a `
 
 **Partly covered.** **Provisional default:** Decisions-Needed B9 (c) and (e): only the drafted tag list qualifies for the Positivity Feed, newest first, so the feed is never ordered by popularity (R-103). **Still open:** `FS:131` "inside a category" against `P1:141` (no category), and how popular feeling tags "surface over time" without a popularity measure. No default covers either; a build that surfaces tags by how often they are used fails R-134.
 
+**Provisional default (added 2026-10-27, fdb83d3):** Decisions-Needed B17: Feeling tags are free text on the journey, with no category, as in the approved model (`P1:141`). Decisions-Needed B18: Tags never "surface" by popularity; no suggestions and no counts (`FS:202` over `FS:131`). With B9 (c) and (e) these cover the whole gap for the prototype. A deliverable that still offers a category-bound feeling tag, or treats popular surfacing as open, fails R-135 and R-150.
+
 **G-15. When an overview is written.** `FS:118` (and `MJC:218`) says the overview is "written at reveal". `FS:275` (§20 E) says a new one every year on each journey. R-122 tests §20 E.
 
 **Being fixed by A6, 2026-10-27.** R-122 already tests §20 E. Decisions-Needed B13 adds when slot 1 may be written (R-122).
@@ -1180,6 +1200,8 @@ Since 2026-10-27 each gap carries a status line under it: **being fixed** by a `
 **G-17. What the owner sees of a sealed journey.** `FS:74` says nothing in a sealed journey is visible "not to the user". `P1:84` lets the owner see its type, commit date and unlock date. These may agree (dates are about the journey, not in it), but it is worth confirming, together with whether showing the unlock date is allowed at all given the countdown ban (R-013).
 
 **Provisional default:** Decisions-Needed C2: The unlock date is shown as a plain date, never relative ("in 64 days"). R-009 and R-013 are read under C2. B6 adds one more thing the owner may see of a sealed journey: that a highlight is open (R-009).
+
+**Provisional default (added 2026-10-27, fdb83d3):** Decisions-Needed B19: The owner of a sealed journey sees its type, commit date and unlock date and nothing else (`P1:84`; `FS:74` read as covering the contents). R-009 is read under B19. B19's "nothing else" and B6's highlight state read against each other: raised as an open question, not settled here.
 
 ### Rules that cannot be made testable yet
 
