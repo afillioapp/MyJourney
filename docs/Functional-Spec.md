@@ -314,6 +314,8 @@ Feeling tags currently drafted: hang in there · it eventually pays off · thank
 - **JJ. Same-day photos, for a non-owner, carry no time order.** They are shown in a fixed order that carries no time information, and photo ids are not sequential across users (Phase-1-Amendments OQ-18; Screen-Inventory OQ-46)
 - **KK. Time and location metadata are stripped from images at capture** (Phase-1-Amendments OQ-19)
 - **LL. A non-owner never sees when a note was written**, not even the date. The owner sees the full time (Screen-Inventory OQ-46)
+- **MM. Database statistics never leak activity.** The app role cannot read catalog statistics or row estimates that would show capture into a sealed journey (Phase-1-Amendments OQ-20; strictest option)
+- **NN. The database refuses an image that still carries time or location metadata**, as a second guard behind stripping at capture (§20 KK)
 
 ### Still open — can wait
 
