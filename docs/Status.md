@@ -144,3 +144,4 @@ Can start any time after Phase 2.
 - 2026-10-31 — Rules audit r8 FAIL (S-12 not carrying LLL/PPP; stale lines; loader zero-jump). User rulings §20 QQQ (lost press looks like the normal press it would have been), RRR (note closed after restart looks like window ended). Sent to lead-tech and ux.
 - 2026-10-31 — Lead-tech carried PPP–RRR and r8 N1 (loader only-if-ahead), N3, N4, N6 (Before real users list), tested. Open: AM OQ-36, OQ-37; SI OQ-24 residual, saved-page confirmation.
 - 2026-10-31 — User rulings §20 SSS, TTT (OQ-36/37 accepted, Before real users 7–8), UUU (note window end: nothing changes on screen), VVV (no saved confirmation). Supervisor updated Amendments status lines and the list; S-12 sent to ux.
+- 2026-10-31 — User rulings §20 WWW (skip ends the note step), XXX (C7 decided in full). Carried by the supervisor into Decisions-Needed, Screen-Inventory labels and OQ-24/49, Amendments/Proposal status ranges.

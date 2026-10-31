@@ -42,7 +42,7 @@ Approved approach (user, 2026-10-27): build the prototype with these defaults an
 | C4 | The note step is offered only inside the capture flow, straight after the photo, for up to 15 minutes. Leaving capture ends it, so there is no way back from the sealed screen (this resolves audit finding 1). The page is taken live, once, with no re-shoot | no |
 | C5 | Nothing is required before finishing a reveal. Each set-once choice shows a one-line "this can't be changed" before it is saved | no |
 | C6 | People tags are not shown to readers | **yes**: hidden / shown |
-| C7 | No profile picture is shown anywhere. The profile shows the name in the circle. Announcements carry no image | no |
+| C7 | No profile picture is shown anywhere. The profile shows the name in the circle. Announcements carry no image (**decided 2026-10-31**, Spec §20 XXX) | no |
 | C8 | The map shows current rings only: no counts, no history, no drift | no |
 | C9 | Empty states are a plain statement; copy in Phase 2 | no |
 | C10 | People are found by name search, plus typed names for non-users | no |

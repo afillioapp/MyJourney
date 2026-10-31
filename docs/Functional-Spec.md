@@ -356,8 +356,10 @@ Feeling tags currently drafted: hang in there · it eventually pays off · thank
 - **TTT. The note-save timing gap (about 5 ms) is accepted for the prototype**, on the "Before real users" list (Phase-1-Amendments OQ-37)
 - **UUU. When the note window ends while the user is on the note screen, nothing on screen changes on its own.** The next note press is simply not taken and the step quietly ends (Screen-Inventory OQ-24 residual)
 - **VVV. A saved note page shows no confirmation.** The step simply ends, as after capture, so a lost note looks identical (Screen-Inventory S-12)
+- **WWW. Skipping the note step ends it for good**; no note can be added later in the 15 minutes (Screen-Inventory OQ-24)
+- **XXX. Decisions-Needed C7 is decided in full**: no profile picture anywhere, the profile shows the owner's name in the circle, and announcements carry no image (Screen-Inventory OQ-49; extends YY)
 
-*AAA–VVV above were ruled on 2026-10-31.*
+*AAA–XXX above were ruled on 2026-10-31.*
 
 ### Still open — can wait
 
