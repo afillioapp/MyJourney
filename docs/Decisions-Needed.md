@@ -39,7 +39,7 @@ Approved approach (user, 2026-10-27): build the prototype with these defaults an
 | C1 | "Your Journey is ready" appears on next open, never as a notification | no |
 | C2 | The unlock date is shown as a plain date, never relative ("in 64 days") | no |
 | C3 | The sealed-year screen does not point to earlier journeys. Their open reflection slots are reached from the owner's profile | no |
-| C4 | The note step is offered only inside the capture flow, straight after the photo, for up to 15 minutes. Leaving capture ends it, so there is no way back from the sealed screen (this resolves audit finding 1). The page is taken live, once, with no re-shoot Skipping ends the step for good (**decided 2026-10-31**, Spec §20 WWW); the window ends at unlock (Spec §20 YYY) | no |
+| C4 | The note step is offered only inside the capture flow, straight after the photo, for up to 15 minutes. Leaving capture ends it, so there is no way back from the sealed screen (this resolves audit finding 1). The page is taken live, once, with no re-shoot. Skipping ends the step for good (**decided 2026-10-31**, Spec §20 WWW); the window ends at unlock (Spec §20 YYY) | no |
 | C5 | Nothing is required before finishing a reveal. Each set-once choice shows a one-line "this can't be changed" before it is saved | no |
 | C6 | People tags are not shown to readers | **yes**: hidden / shown |
 | C7 | No profile picture is shown anywhere. The profile shows the name in the circle. Announcements carry no image (**decided 2026-10-31**, Spec §20 XXX) | no |

@@ -149,3 +149,4 @@ Can start any time after Phase 2.
 - 2026-10-31 — Lead-tech carried WWW (skip request), YYY (window ends at unlock), ZZZ (same answer), N3 press timing; restored history row; tested. Open: AM OQ-38, OQ-39. S-12 skip already carried by ux.
 - 2026-10-31 — User rulings §20 AAAA (retry timing gap accepted), BBBB (skip bypass accepted with OQ-12; refusal answers 'closed').
 - 2026-10-31 — Lead-tech carried AAAA, BBBB (Before real users 9–10; one 'closed' answer tested).
+- 2026-10-31 — Rules audit r10 FAIL (S-12 leave-capture send, AAAA/BBBB not on screens). User rulings: YYY reworded; §20 CCCC (at unlock: quiet end, app goes to 'ready'), DDDD (leaving capture = in-app navigation only). Sent to ux and lead-tech.

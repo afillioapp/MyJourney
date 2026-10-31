@@ -358,12 +358,14 @@ Feeling tags currently drafted: hang in there · it eventually pays off · thank
 - **VVV. A saved note page shows no confirmation.** The step simply ends, as after capture, so a lost note looks identical (Screen-Inventory S-12)
 - **WWW. Skipping the note step ends it for good**; no note can be added later in the 15 minutes (Screen-Inventory OQ-24)
 - **XXX. Decisions-Needed C7 is decided in full**: no profile picture anywhere, the profile shows the owner's name in the circle, and announcements carry no image (Screen-Inventory OQ-49; extends YY)
-- **YYY. The note window ends at unlock.** Nothing is added to a journey once it unlocks; the note step ends then, and looks exactly like the window ending (UUU, RRR) (Rubric G-26)
+- **YYY. The note window ends at unlock.** No note is added once the journey unlocks (reworded 2026-10-31; the reveal is unaffected); the note step ends then, and looks exactly like the window ending (UUU, RRR) (Rubric G-26)
 - **ZZZ. A note lost twice gets the same answer as a saved note**, byte for byte, so nothing differs (VVV) (gate-1 r8 NB-31)
 - **AAAA. The retry's timing gap on an image-check bug (10–21 ms) is accepted for the prototype**, on the "Before real users" list (Phase-1-Amendments OQ-38)
 - **BBBB. Outside code that never sends the skip could still add a note in the window: accepted with OQ-12**, on the "Before real users" list. If the note step refuses after the route read the window as open, the device gets the one "closed" answer (Phase-1-Amendments OQ-39)
+- **CCCC. At the unlock instant, capture and the note step end quietly.** Nothing changes on screen on its own (as UUU); the next press is not taken, and the app goes to the profile, where "Your Journey is ready" appears (Decisions-Needed C1). No refusal about frames (Rubric G-27)
+- **DDDD. "Leaving capture" means moving to another screen inside the app.** Locking the phone, a call or the app going to the background do not end the note step; the 15-minute window and unlock still apply (Rubric G-28)
 
-*AAA–BBBB above were ruled on 2026-10-31.*
+*AAA–DDDD above were ruled on 2026-10-31.*
 
 ### Still open — can wait
 
