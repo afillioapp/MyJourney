@@ -320,6 +320,10 @@ Feeling tags currently drafted: hang in there · it eventually pays off · thank
 - **PP. A metadata refusal never reaches the user.** The app strips before saving; a refusal is a bug. One press is one photo, never a retake (Phase-1-Amendments OQ-22)
 - **QQ. Capture stores baseline JPEG**; the strip step re-encodes to it (Phase-1-Amendments OQ-23)
 - **RR. The query-timing residual is accepted for now** and revisited before real users (Phase-1-Amendments OQ-24)
+- **SS. Whether a reveal is finished** (`journey_reveal`) is readable by the owner and the owner's network after unlock, never public, as §20 T (Phase-1-Amendments OQ-25 b)
+- **TT. A user's join date** (`joined_at`) is readable by that user only; everyone reads names (OQ-25 a)
+- **UU. A user's own announcements.** As written in R2: a user sees their own "reflection left", not their own "journey launched" or "path crossed" (OQ-25 c)
+- **VV. If the metadata guard refuses anyway (a bug)**, the app strips again and saves that moment once; the stored time may be slightly later. One press is still one photo (Phase-1-Amendments OQ-26)
 
 ### Still open — can wait
 
