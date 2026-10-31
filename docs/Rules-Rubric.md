@@ -18,6 +18,8 @@ Updated 2026-10-31 (rules audit `docs/reviews/2026-10-31-rules-phase-1-r7.md`, a
 
 Updated 2026-10-31 (rules audit `docs/reviews/2026-10-31-rules-phase-1-r8.md`, after FS §20 III–PPP): added R-169 (the note handle never leaves the server route, FS §20 LLL), R-170 (a lost press and its note look and answer exactly like a saved one, FS §20 DDD, JJJ, NNN), R-171 (every note-route answer and every end of the note step has a screen row, FS §20 PPP) and G-25 (a lost press that would have been refused). Added `Decided` lines for FS §20 JJJ (R-160, closing G-24, and R-168), III, LLL, MMM, NNN and PPP (R-160), KKK (R-152), OOO (R-120, R-161). R-160's GGG line and its r7 (3) wording ("no S-12 offer") held the behaviour JJJ retired: they are kept as history and superseded by the JJJ line, not deleted. `Updated` lines on R-116 (§21 moved to FS:361), R-165 ((5) and (6)) and R-167 (scope). No check renumbered or removed.
 
+Updated 2026-10-31 (rules audit `docs/reviews/2026-10-31-rules-phase-1-r9.md`, after FS §20 QQQ–XXX): added R-172 (a dated record is appended to, never rewritten to cite a later ruling), R-173 (a note step that has ended on screen has ended at the server: no later note press for that press is taken, whatever the device sends, FS §20 WWW, III) and G-26 (a note window that crosses the journey's unlock). Added `Decided` lines for FS §20 QQQ (R-160, R-170, closing R-170's `Open` note and G-25), RRR, UUU, VVV and WWW (R-160, R-171), XXX (R-086, R-126, G-9, G-10), and `Accepted residual` lines for SSS (R-138, R-160) and TTT (R-170). `Updated` lines on R-116 (§21 moved to FS:371), R-159 (the guard now runs after the press is judged, FS §20 QQQ), R-170 ((3) read "a lost press does no strip", which r8 N3's carriage retired; added (4), the press's own timing) and R-171 (the ends list after WWW and UUU). Lead-tech flagged R-170 (3) and the R-170 G-25 `Open` line as stale; both are kept as history and superseded, not deleted. No check renumbered or removed.
+
 ---
 
 ## What this is for
@@ -431,6 +433,7 @@ Commit, capture, frames, highlights and the note.
 - **How to check:** List every route and function that reads a journey's photo or highlight rows: only capture and start-highlight may compute frames or highlights available. UI test as Steady Lantern on Lantern #6, once with a normal frame available and once with none, and once with highlights unused and once with all used: the sealed-year, capture and start-highlight screens render the same DOM before any tap.
 - **Provisional default:** Decisions-Needed B7: Frames left are never shown; a refused capture says so with no number (copy in Phase 2). Firm under B7: the camera is always offered and availability is learned only by trying. The supersede condition above does not arise while B7 is in force
 - **Provisional default:** Decisions-Needed B6: The owner sees only "a highlight is open", with no end time and no countdown. Under B6 the one allowed DOM difference is that plain "a highlight is open" state while one is open. Highlights unused and highlights all used must still render the same DOM, and the start-highlight control is not hidden, greyed or relabelled while one is open; a second start is refused on tap (R-041)
+- **Accepted residual (FS §20 SSS, `FS:355`; Before real users item 7):** since FS §20 QQQ, code that holds a product connection can call `capture()` with an image that fails the guard and learn whether a press would be accepted without using a frame (`Phase-1-Amendments.md` OQ-36 (b)). The device cannot reach it, because the server strips every image. This check's "no call other than capture" still holds: the probe is `capture()` itself. Revisit with OQ-12
 
 ### R-159
 - **Statement:** No stored image, photo or note, carries a time or a place inside its file, for anyone, the owner included. An image that would carry one is never stored.
@@ -438,6 +441,7 @@ Commit, capture, frames, highlights and the note.
 - **Source:** FS §20 KK (`FS:315`), NN (`FS:318`), QQ (`FS:321`); FS §20 GG; R-154, R-004. Proposed by `Phase-1-Amendments.md` §6 (line 446). Numbered by r6
 - **How to check:** Use the §6 sample set, generated with a fixed seed. A clean baseline JPEG is accepted by `capture()` and by the note step. Both refuse every other sample, storing no row and using no frame or highlight place: EXIF (date or GPS only), XMP, IPTC, ICC, COM, bytes after EOI, progressive, SOF1 or 12-bit frames, PNG (clean or with text, time or EXIF chunks), WebP and HEIC. Every fixture placeholder passes. After unlock, decrypt every fixture image and confirm it holds only the allowed baseline JPEG segments. The other half of PP is R-160.
 - **Current implementation:** before encryption, the strip step re-encodes the image to baseline JPEG, and `image_metadata_free()` runs as the first step of `capture()` and of the note step (`Phase-1-Amendments.md` §6; `P1:91`, `P1:105`, `P1:180`)
+- **Updated 2026-10-31 (r9; FS §20 QQQ, `FS:352`):** the line above held until QQQ. `capture()` now judges the press first (the §20 U steps 1–5) and runs `image_metadata_free()` only on a press judged accepted, still before encryption and the insert; the note step still runs it first (`Phase-1-Amendments.md` §6 lines 515 and 523; `P1:91`). The sample check therefore runs `capture()` as the owner of a sealed journey with a frame left; a press judged refused is answered `refused` whatever its image, and that is R-160's QQQ case, not a pass of this check
 
 ### R-160
 - **Statement:** One shutter press is one photo. A metadata refusal never reaches the user: no error, no "try again", nothing that invites a second press. If the guard refuses anyway, the app strips the same image again and saves it once, with no action from the user and no visible difference.
@@ -453,6 +457,9 @@ Commit, capture, frames, highlights and the note.
 - **Decided 2026-10-31 (FS §20 III, MMM, `FS:342`, `FS:346`), for (4):** a note lost twice ends the note step as after a page taken, and nothing offers it again. The database stores nothing about a lost note, so (4)'s "no route offers the note step again" is a route test only (Phase 4); the database accepting a later note-step call is an accepted residual, with OQ-12
 - **Decided 2026-10-31 (FS §20 LLL, NNN, `FS:345`, `FS:347`):** the note step finds its photo through a server-side handle the device never holds (R-169). After a lost press the note step closes 15 minutes after the press, as after a photo: at press + 14:59 and + 15:00.000 the lost press's note gets the same answer as a photo's
 - **Decided 2026-10-31 (FS §20 PPP, `FS:350`):** handles lost on a server restart end that note step early, and nothing wrong is stored. Accepted for the local prototype, with OQ-12. What the screen shows then is R-171
+- **Decided 2026-10-31 (FS §20 QQQ, `FS:352`), for (3):** a lost press looks like the normal press it would have been, judged first at the press instant. (3) is run in each of the six `Phase-1-Amendments.md` §6 QQQ states against a rolled-back normal press at the same instant: where that press is refused, the lost press gets the normal refusal, byte-identical, no log line and no note offer; where it is accepted, the S-12 offer as in the JJJ line above. A `capture()` with the guard first must be caught
+- **Decided 2026-10-31 (FS §20 RRR, UUU, VVV, WWW, `FS:353`, `FS:357`–`FS:359`), for (4) and the note step:** a note press answered "closed" looks exactly as when the window has ended; when the window ends while the user is on the step, nothing on screen changes on its own and the next note press is simply not taken; a saved page shows no confirmation; skipping ends the step for good. A UI test of S-12 must find no confirmation after a saved page, no change at press + 15:00 while idle, and no way back after a skip
+- **Accepted residual (FS §20 SSS, `FS:355`):** a strip fault on a press judged refused is neither detected nor logged, and the server log holds refusal lines only for presses judged accepted (`Phase-1-Amendments.md` OQ-36 (a), (c)). Before real users, item 7
 
 ### R-167
 - **Statement:** When a captured image or a note image is lost to the guard bug, the record of it carries nothing about the user: no image, no user, journey or photo id, no app time and no statement text. No product role can read it, and it never enters the product data.
@@ -477,6 +484,15 @@ Commit, capture, frames, highlights and the note.
 - **Source:** FS §20 DDD (`FS:337`), JJJ (`FS:343`), NNN (`FS:347`), PP (`FS:320`); CL:64 (no retakes: a visible difference invites a second press); R-160, R-168. Found by r8 (N3)
 - **How to check:** (1) For paired cases (saved press and lost press; their notes at + 1 minute, + 14:59 and + 15:00.000), compare the full device responses, status, headers other than `Date`, and body: identical. (2) UI test of S-02 and S-12 with the strip step forced to fail twice: the same sequence of screen states as a saved press, the same note offer, the same end. (3) Review: no S-12 transition, indicator or end waits on the server's note answer in a way that would end the step sooner after a lost press, which does no strip, seal or write (`Phase-1-Amendments.md` §6 line 517).
 - **Open:** a lost press that would have been refused (no frame left, highlight full) is answered `accepted` (`Phase-1-Amendments.md` §6 lines 516, 529). Whether "a normal press" there means an accepted one or the refusal it would have given is G-25
+- **Decided 2026-10-31 (FS §20 QQQ, `FS:352`); closes the `Open` note above and G-25:** "a normal press" is the press it would have been. A lost press is judged at the press instant before the guard reads its image; where a normal press would be refused it is answered `refused`, where accepted it is answered `accepted` with the note offer. (1) gains the six QQQ states, each compared with a rolled-back normal press at the same instant. The `Open` note stays as history
+- **Updated 2026-10-31 (r9):** (3)'s "which does no strip, seal or write" held until r8 N3 was carried. A lost press's note now strips its page and runs the same route shape as a saved note (`Phase-1-Amendments.md` §6 line 554); what remains is the note step's own database work, about 5 ms at the median (line 555). (3) now reads: no S-12 transition, indicator or end waits on the note answer in a way that would show that gap. Added (4): the same review for the **press**. A lost press strips and walks the guard twice and stores nothing; a saved press strips once, encrypts and inserts; a press saved by the retry strips twice and inserts. No S-02 transition into S-12 waits on the press answer in a way that shows the difference. The press timing is not measured in any evidence yet
+- **Accepted residual (FS §20 TTT, `FS:356`):** the note-save timing gap (about 5 ms) is accepted for the prototype; Before real users, item 8 (`Phase-1-Amendments.md` OQ-37)
+
+### R-173
+- **Statement:** A note step that has ended on screen has ended at the server. After a skip, leaving capture, a page taken or a page lost twice, no later note press for that press is taken, whatever the device sends, inside the 15 minutes or after.
+- **Type:** auto (route test) and review (client) · **Applies to:** API, UI
+- **Source:** FS §20 WWW (`FS:359`: "no note can be added later in the 15 minutes"), III (`FS:342`), K (`FS:281`); CL:78–83 (enforce rules in code, not by convention); `PROVISIONAL: C4`; R-020, R-169. Found by r9 (N2): `Phase-1-Amendments.md:552` drops the entry "when the route learns that the user skipped or left capture", but no line says how it learns, and S-12 (`Screen-Inventory.md:348`) sends only the page
+- **How to check:** (1) Route test on the stopped clock: a photo; the device's skip; a note press at press + 1 minute, sent directly to the route → `closed`, no note step called, no note row. The same after leaving capture, after a page taken, and after a page lost twice. (2) Review: the device's skip and its leaving capture each reach the route as a request before the camera returns, and the route drops the entry on it; or another server-side mechanism that holds WWW is named. A skip held only by the screen fails. (3) The skip request's answer is the same for a photo and a lost press (R-170).
 
 ---
 
@@ -812,6 +828,7 @@ Commit, capture, frames, highlights and the note.
 - **Source:** CL:72, MP:45, FS:171. See G-9 for avatars
 - **How to check:** UI test at several simulated dates: the feed DOM has no `img`, `picture`, `canvas` or background image sourced from a photo or note.
 - **Provisional default:** Decisions-Needed C7: No profile picture is shown anywhere; announcements carry no image. Firm under C7: an announcement shows no avatar, profile picture or other image of a person either. The UI test widens to any `img`, `picture`, `canvas` or background image inside an announcement, whatever its source (closes G-9)
+- **Decided 2026-10-31 (FS §20 XXX, `FS:360`):** C7 is decided in full. The provisional line above now holds as a decision; announcements carry no image
 
 ### R-087
 - **Statement:** "Journey launched" goes out exactly when a reveal is finished, never at Commit or unlock.
@@ -1033,6 +1050,7 @@ Commit, capture, frames, highlights and the note.
 - **Updated 2026-10-31:** FS §20 grew by II–VV, so §21 "A time control" is now FS:339 (heading FS:335). The source line above was correct at r5
 - **Updated 2026-10-31 (r7):** FS §20 grew again by WW–HHH, so §21 "A time control" is now FS:354 (heading FS:350). The lines above were correct when written
 - **Updated 2026-10-31 (r8):** FS §20 grew again by III–PPP and a date line, so §21 "A time control" is now FS:365 (heading FS:361). The lines above were correct when written
+- **Updated 2026-10-31 (r9):** FS §20 grew again by QQQ–XXX and blank lines, so §21 "A time control" is now FS:375 (heading FS:371). The lines above were correct when written
 
 ### R-117
 - **Statement:** The time control moves forward only. To see an earlier moment, it resets to the 2026-10-25 baseline and jumps again.
@@ -1109,6 +1127,7 @@ Commit, capture, frames, highlights and the note.
 - **Source:** FS:29, MP:113, MJC:696. See G-10
 - **How to check:** Review profile screens for status, success markers, counts and physical descriptors.
 - **Provisional default:** Decisions-Needed C7: No profile picture is shown anywhere. The profile shows the name in the circle. Firm under C7: no profile picture, avatar or uploaded image of a person appears on any profile, map, tag or announcement. Grep aid: `avatar`, `profile_picture`, `profilePicture`, `photoURL` rendered in UI (closes G-10 for the prototype)
+- **Decided 2026-10-31 (FS §20 XXX, `FS:360`; extends YY):** C7 is decided in full: no profile picture anywhere, and the profile shows the owner's name in the circle. The provisional line above now holds as a decision
 
 ### R-127
 - **Statement:** The name step asks for a name from within, not a handle and not a physical or earthly attribute, and says the name is kept.
@@ -1210,6 +1229,13 @@ Commit, capture, frames, highlights and the note.
 - **Type:** review · **Applies to:** UI, API
 - **Source:** CL:17–24 (rule zero: a builder never picks a behaviour); FS §20 PPP (`FS:350`), NNN, III, JJJ, K; R-165, R-168. Found by r8 V2
 - **How to check:** List the route's answers from `Phase-1-Amendments.md` §6 (press: accepted, refused; note press: saved, closed, and the no-entry case answered as closed) and the note step's ends (page taken, skip, leaving capture, 15 minutes, a page lost twice, the handles lost on restart under PPP). Match each to a row of S-02 or S-12. An answer or end with no row fails, until ux writes the row or the user rules. A row must not show anything its own never-list or R-160, R-170 bans.
+- **Updated 2026-10-31 (r9; FS §20 RRR, UUU, VVV, WWW):** the ends are now decided: a page taken ends with no confirmation (VVV); a skip ends the step for good (WWW, no longer a strictest reading of C4); at 15 minutes nothing changes on its own and the next note press is simply not taken (UUU); a "closed" answer for any reason looks like the window having ended (RRR). The list gains the skip request (R-173) and the note step's `refused` inside the window, which no route answer covers yet (G-26)
+
+### R-172
+- **Statement:** A dated record is appended to, never rewritten. A revision-log row, an OQ arrow, an "applied" row, a status-log line or an evidence block keeps the words it had on its date; a later ruling is added as a new line, never substituted into the old one.
+- **Type:** auto (diff scan) and review · **Applies to:** docs
+- **Source:** CL:30 (cite both lines, do not pick); R-134, R-165. Found by r8 N5 (evidence edited in place, disclosed) and r9 V3 (`Phase-1-Amendments.md:795`, lead-tech's tenth-round row, changed from "Q–RRR" to "Q–VVV" and then "Q–XXX" by the supervisor; `Screen-Inventory.md:718`, OQ-49's "Not picked" arrow, changed from "keep `PROVISIONAL: C7`" to "keep Spec §20 XXX", so it now says a decided label is not picked and still open)
+- **How to check:** (1) `git diff <last audit>..HEAD -- docs` and list every removed line (`^-`) that sits in a revision log, an OQ arrow (`→`), an §7 "Applied" row, a `Status.md` log line or a fenced evidence block. Each must be either a typo fix that changes no fact, or disclosed in the same line as a correction with its date. (2) Review: a blanket label replacement (for example every `PROVISIONAL: Cn` to `Spec §20 X`) touches state rows only, never history lines.
 
 ---
 
@@ -1320,7 +1346,7 @@ Every row of the banned list (`CLAUDE.md:64–74`, `Master-Prompt.md:37–47`) a
 
 | Banned item | Checks |
 |---|---|
-| No retakes | R-031, R-005, R-018, R-019, R-029, R-124, R-160, R-170 |
+| No retakes | R-031, R-005, R-018, R-019, R-029, R-124, R-160, R-170, R-173 |
 | No edits to reflections | R-015, R-016, R-124 |
 | No comments from anyone else | R-105, R-106, R-107, R-109, R-124 |
 | No face recognition | R-110, R-111, R-112 |
@@ -1343,6 +1369,8 @@ R-155 to R-165 (added 2026-10-31) carry FS §20 II–VV. Three of them sit under
 R-166 to R-168 (added 2026-10-31, r7) carry FS §20 WW–HHH. R-166 sits under "No streaks, counters" and "No ranking": the ring count reaches every viewer, so a numeral, total or comparison beside another user's circle would turn a record into a counter (CCC). R-167 sits under "Nothing leaks": a log line holding an image or a journey id beside a real time would record that a sealed journey's owner pressed then (DDD, FFF). R-168 applies to every row: a screen state that both holds and bans an element lets the builder pick, which is how a banned item gets in.
 
 R-169 to R-171 (added 2026-10-31, r8) carry FS §20 III–PPP. R-169 sits under "Nothing leaks": the note handle is a sealed photo's id held beside its press instant, so any copy of it outside the route records that a sealed journey's owner pressed then (LLL). R-170 sits under "No retakes": a lost press or note that looks or answers differently is the one sign that invites a second press (DDD, JJJ). R-171 applies to every row: an answer with no screen row is a behaviour the builder must pick, which is how a banned item gets in.
+
+R-172 and R-173 (added 2026-10-31, r9) carry FS §20 QQQ–XXX. R-173 sits under "No retakes": a note step that the screen has ended but the server still accepts is a way back to a second take (III, WWW, C4). R-172 applies to every row: a history line rewritten to cite a later ruling hides what was open when, which is how a decided label and an open question end up in one sentence.
 
 ## `Phase-1-Proposal.md` §2.5 mapping
 
@@ -1408,9 +1436,13 @@ Since 2026-10-27 each gap carries a status line under it: **being fixed** by a `
 
 **Provisional default:** Decisions-Needed C7: No profile picture is shown anywhere; announcements carry no image. R-086 is firm under C7.
 
+**Decided 2026-10-31.** FS §20 XXX (`FS:360`): C7 is decided in full; announcements carry no image. G-9 is closed.
+
 **G-10. Profile picture and looks.** `FS:13` and `P1:62` give each user a profile picture. `FS:29` and `Master-Prompt.md:113` say nothing on a profile signals how the person looks. Open: what may the profile picture be?
 
 **Provisional default:** Decisions-Needed C7: No profile picture is shown anywhere. The profile shows the name in the circle. R-126 is read under C7. The profile picture field in `FS:13` and `P1:62` still exists in the approved model; the default only stops it being shown.
+
+**Decided 2026-10-31.** FS §20 XXX (`FS:360`, extends YY): no profile picture anywhere; the profile shows the owner's name in the circle. G-10 is closed.
 
 **G-11. Choices made during a reveal that is never finished.** `FS:269` says an unfinished reveal has "no chapter, no tags", and `P1:25` and `MJC:855` say "the photos stay Network". But choices are inserted, once each, during the reveal (`FS:286` §20 P, `P1:46`, `P1:143`, `P1:165–166`, `P1:408`). Open: if the owner sets a photo to Private, or sets a chapter, and never finishes, does that choice take effect? R-054 tests only what all sources agree on.
 
@@ -1458,6 +1490,10 @@ Related: under FS §20 TT (`FS:324`), B4's other setting, "per year with the app
 **Decided 2026-10-31.** FS §20 JJJ (`FS:343`): the screen after a lost press looks exactly like a normal press, note offer included; DDD wins and GGG's "no note offer" is retired. A note written for a lost press is discarded. G-24 is closed; R-160 and R-168 carry it.
 
 **G-25. A lost press that would have been refused (added 2026-10-31, r8).** FS §20 JJJ (`FS:343`): "the screen looks exactly like a normal press, note offer included". The guard runs before the §20 U order, so whether the lost press would have been accepted is never computed, and the route answers `accepted` (`Phase-1-Amendments.md` §6 lines 516 and 529). When no frame is left, or the highlight is full, a normal press at that instant shows the capture refusal (`Screen-Inventory.md:92`; `PROVISIONAL: B7`), not a note offer. Amendments OQ-32 (a) raised exactly this ("different from an accepted press, or from what that press would have given?"), and its settlement answers only the accepted case. Not picked. Phase 3 is unaffected: nothing is stored either way. It blocks the S-02 lost-press row and R-170 (Phase 4).
+
+**Decided 2026-10-31.** FS §20 QQQ (`FS:352`): a lost press looks like the normal press it would have been, judged first at the press instant; one a normal press would refuse shows the normal refusal. Carried in `Phase-1-Amendments.md` §6 lines 515, 539 and `Screen-Inventory.md:94`, `:96`. G-25 is closed; R-170's `Open` line is superseded.
+
+**G-26. A note window that crosses the journey's unlock (added 2026-10-31, r9).** A photo captured less than 15 minutes before `unlocks_at` has a note window that runs past the unlock. `Phase-1-Amendments.md:551` says the note step accepts a handle "only ... while the journey is sealed", citing P1:104 and P1:108, but neither line says so: P1:108 gives only "within 15 minutes of the photo's `captured_at`" (D8), FS §20 K gives "up to 15 minutes after capture, never after", and the evidence stand-in checks only the owner and the window (`Phase-1-Amendments.md:643`). `Screen-Inventory.md:346` makes `unlock-day` onward "Not a writing step". Open: (a) may a note be added after the unlock, inside its 15 minutes, to a photo that is already readable? (b) If not, the route's window check (`:554`) passes and `add_note()` refuses, and no route answer (`saved`, `closed`) covers that refusal; a lost press at the same instant is answered `saved` (JJJ), so the device answers would differ (R-170 (1)). The prototype reaches it whenever the demoer jumps to the next unlock while S-12 is open (R-153). Not picked. It blocks `add_note()`'s refusal conditions (Phase 3) and the S-12 row (Phase 4).
 
 ### Rules that cannot be made testable yet
 
