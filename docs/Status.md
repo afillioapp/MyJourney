@@ -150,3 +150,4 @@ Can start any time after Phase 2.
 - 2026-10-31 — User rulings §20 AAAA (retry timing gap accepted), BBBB (skip bypass accepted with OQ-12; refusal answers 'closed').
 - 2026-10-31 — Lead-tech carried AAAA, BBBB (Before real users 9–10; one 'closed' answer tested).
 - 2026-10-31 — Rules audit r10 FAIL (S-12 leave-capture send, AAAA/BBBB not on screens). User rulings: YYY reworded; §20 CCCC (at unlock: quiet end, app goes to 'ready'), DDDD (leaving capture = in-app navigation only). Sent to ux and lead-tech.
+- 2026-10-31 — Lead-tech carried CF-46 (notes before unlock), r10 N3–N6, CCCC, DDDD; no behaviour change. Open: SI OQ-51, OQ-52; system closing the app; BBBB (b) timing as its own item.
