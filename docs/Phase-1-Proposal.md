@@ -1,6 +1,6 @@
 # Phase 1 Proposal: data model and fixtures
 
-Status: **APPROVED 2026-10-25.** The data model, the fixtures and readings R1–R5 were all approved as written. **Amended 2026-10-30 and 2026-10-31**: see `Phase-1-Amendments.md` and `Functional-Spec.md` §20 Q–ZZ; each amended line is tagged. No code written yet.
+Status: **APPROVED 2026-10-25.** The data model, the fixtures and readings R1–R5 were all approved as written. **Amended 2026-10-30 and 2026-10-31**: see `Phase-1-Amendments.md` and `Functional-Spec.md` §20 Q–DDD; each amended line is tagged. No code written yet.
 Date: 2026-10-25
 
 This version folds in every decision made on 2026-10-25. They're listed in section 1 and recorded in `Functional-Spec.md` §20 and `My-Journey-Concept.md` §29. The five readings in section 4 were approved too.
@@ -62,7 +62,7 @@ Postgres, local. The rules sit in the database itself: grants, triggers, row-lev
 | profile_picture | Unused: nothing sets or returns it (FS §20 YY; Decisions-Needed C7) *(amended 2026-10-31)* |
 | joined_at | Readable by that user only: `user_rows()` returns it on the viewer's own row and NULL on every other; names go to everyone (FS §20 TT) *(amended 2026-10-31)* |
 
-The circle is derived: one ring per journey whose reveal is finished. There is no stored counter. Under B4's "per year with the app" (`PROVISIONAL: B4`), the per-year rings are computed only for the user's own profile; every other viewer sees one ring per finished reveal (FS §20 WW) *(amended 2026-10-31)*
+The circle is derived: one ring per journey whose reveal is finished. There is no stored counter. Under B4's "per year with the app" (`PROVISIONAL: B4`), the per-year rings are computed only for the user's own profile; every other viewer sees one ring per finished reveal (FS §20 WW). Every viewer, public included, reads that number through `ring_count(profile_id uuid) → integer`, which returns the count of finished reveals and nothing else, no dates (FS §20 CCC; `Phase-1-Amendments.md` §11) *(amended 2026-10-31)*
 
 **Journey**
 | Field | Rule |
@@ -88,7 +88,7 @@ The spec's separate "committed" state collapses into sealed under D1. Others see
 |---|---|
 | id, journey_id | `id` a random uuid, not sequential across users (FS §20 JJ) *(amended 2026-10-30)* |
 | captured_at | `app_now()`, set inside `capture()`. The full time is readable by the owner only; anyone else reads its UTC date (FS §20 GG; §2.1 (f)) *(amended 2026-10-30)* |
-| image | Sealed, encrypted blob. Time and location metadata are stripped at capture, before encryption, for the note's image too; fixture placeholders carry none (FS §20 KK; P1:256). Stored as baseline JPEG: the strip step re-encodes to it (FS §20 QQ). As a second guard, `capture()` first refuses, before encryption, any image that is not a metadata-free baseline JPEG; PNG is no longer accepted (FS §20 NN, QQ). A refusal is a bug and never reaches the user: one press is one photo, never a retake (FS §20 PP; `Phase-1-Amendments.md` §6). If the guard refuses anyway, the same press's image is stripped again and saved once, inside the press's own transaction, so it is judged and stamped at the press instant; `capture()` takes no time argument (FS §20 VV, XX) *(amended 2026-10-30 and 2026-10-31)* |
+| image | Sealed, encrypted blob. Time and location metadata are stripped at capture, before encryption, for the note's image too; fixture placeholders carry none (FS §20 KK; P1:256). Stored as baseline JPEG: the strip step re-encodes to it (FS §20 QQ). As a second guard, `capture()` first refuses, before encryption, any image that is not a metadata-free baseline JPEG; PNG is no longer accepted (FS §20 NN, QQ). A refusal is a bug and never reaches the user: one press is one photo, never a retake (FS §20 PP; `Phase-1-Amendments.md` §6). If the guard refuses anyway, the same press's image is stripped again and saved once, inside the press's own transaction, so it is judged and stamped at the press instant, and that instant is the stored `captured_at` (FS §20 VV, XX, AAA); `capture()` takes no time argument. If the second strip fails too, both calls roll back: the press gives no photo, nothing is shown, and the two refusals are logged in the server log, which no product role can read and which carries no image (FS §20 DDD) *(amended 2026-10-30 and 2026-10-31)* |
 | highlight_id | Nullable. Readable by the owner only, also after unlock (FS §20 DD; §2.1 (e)) *(amended 2026-10-30)* |
 
 There's no caption, and no update or delete (D7). `capture()` accepts a photo in one of two cases:
@@ -114,7 +114,7 @@ Insert-only, and only within 15 minutes of the photo's `captured_at` (D8). Reade
 | text, written_at | |
 | year_index | Worked out from `app_now()` against `unlocks_at` (D9). Unique per (photo, year_index) |
 
-Insert-only, owner only, any time after unlock (reveal finished or not). Readers are the same as the photo's (D11).
+Insert-only, owner only, any time after unlock (reveal finished or not). Readers are the same as the photo's (D11). The Positivity Feed lists them newest first by `written_at`, ties by id, and returns text with no time (FS §20 Q, BBB) *(amended 2026-10-31)*
 
 **Journey overview**
 | Field | Rule |
@@ -161,7 +161,7 @@ B's own map never changes because of A's tags.
 
 ### 2.4 Supporting records (not new product objects)
 
-- **journey_reveal**: (journey_id primary key, finished_at). Insert-only, only after unlock. Its existence is what locks the reveal. Read only through `journey_reveal_rows()`: the owner and the owner's network after unlock, never public (FS §20 SS, ZZ) *(amended 2026-10-31)*
+- **journey_reveal**: (journey_id primary key, finished_at). Insert-only, only after unlock. Its existence is what locks the reveal. Read only through `journey_reveal_rows()`: the owner and the owner's network after unlock, never public (FS §20 SS, ZZ); counted for any viewer, with no date, by `ring_count()` (FS §20 CCC) *(amended 2026-10-31)*
 - **person_tag**: (photo_id, user_id **or** typed_name; exactly one is set). Insert-only during the reveal (D12, D13).
 - **photo_visibility**: (photo_id primary key, private / network / public). No row means Network (D12). Insert-only during the reveal.
 - **journey_type**: constants. **chapter**: catalogue seeded from Concept §15.
@@ -176,8 +176,8 @@ Each one fails the build:
 1. UPDATE or DELETE on reflection, overview, note, photo, journey, user name, journey_reveal or highlight raises an error *(highlight added 2026-10-31)*.
 2. Inserting visibility, tags or chapter after the reveal is finished raises an error.
 3. A second Commit while a journey is sealed raises an error.
-4. Before unlock, as the owner, photos return 0 rows, `count(*)` returns 0 and blobs are ciphertext, read through `photo_read` and `note_read`; on the tables themselves, and on every table with user content, the app role is refused, `EXPLAIN` included, every reader's estimate is fixed (FS §20 OO), and a differential catalog test shows no statistic, estimate, size or counter moving when another user captures into a sealed journey (FS §20 MM; `Phase-1-Amendments.md` §10) *(amended 2026-10-30)*
-5. `capture()` and `start_highlight()` return no number. `capture()` and the note step refuse every sample image carrying EXIF, XMP, IPTC, ICC, COM, trailing bytes, a non-baseline frame or another format, PNG included, and accept clean baseline JPEGs and the strip step's output for every sample (FS §20 NN, PP, QQ; `Phase-1-Amendments.md` §6). A refusal retried inside the press transaction stores one photo, stamped at the press instant, even when the highlight closes in between (FS §20 VV, XX) *(amended 2026-10-30 and 2026-10-31)*
+4. Before unlock, as the owner, photos return 0 rows, `count(*)` returns 0 and blobs are ciphertext, read through `photo_read` and `note_read`; on the tables themselves, and on every table with user content, the app role is refused, `EXPLAIN` included, every reader's estimate is fixed (FS §20 OO), and a differential catalog test shows no statistic, estimate, size or counter moving when another user captures into a sealed journey (FS §20 MM; `Phase-1-Amendments.md` §10); `ring_count()` moves only when a reveal is finished, exactly as the network's "journey launched" (FS §20 CCC) *(amended 2026-10-30 and 2026-10-31)*
+5. `capture()` and `start_highlight()` return no number. `capture()` and the note step refuse every sample image carrying EXIF, XMP, IPTC, ICC, COM, trailing bytes, a non-baseline frame or another format, PNG included, and accept clean baseline JPEGs and the strip step's output for every sample (FS §20 NN, PP, QQ; `Phase-1-Amendments.md` §6). A refusal retried inside the press transaction stores one photo, stamped at the press instant, even when the highlight closes in between (FS §20 VV, XX, AAA). Two refusals in one press store no photo and leave two server-log lines with no image, id or statement text (FS §20 DDD) *(amended 2026-10-30 and 2026-10-31)*
 6. A schema scan finds no comment, reply, like, reaction, caption, score, rank, streak, badge, view or follower. It reads every identifier in the catalog (schemas, relations, columns, functions and their argument names, types, enum labels, constraints, triggers, policies), splits each into lower-case tokens at non-letters and case changes, and fails on any token that contains one of these words, unless the whole token is on a closed allow-list, today `viewer` (`viewer()`, `viewer_in_network()`) and `overview` (`journey_overview`). A SQL view object such as `photo_read` is not a banned word; only names are scanned (`Phase-1-Amendments.md` §9) *(amended 2026-10-30, `Phase-1-Amendments.md`)*
 7. As B, no layer row with owner ≠ B is readable. A tag by A never creates a row on B's map.
 8. A typed-name tag never produces a layer row.

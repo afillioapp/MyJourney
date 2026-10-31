@@ -134,3 +134,4 @@ Can start any time after Phase 2.
 - 2026-10-31 — Rules audit r6 FAIL and gate r5 FAIL: SS, TT, VV were only noted in the OQ table, not carried (supervisor shortcut). User rulings §20 WW–ZZ. Sent to lead-tech and ux.
 - 2026-10-31 — Lead-tech carried SS–ZZ and B10 into readers and P1 lines with rule-oracle tests (48/48; planted faults caught). ux carried them to screens. Open for the user: AM OQ-27–29, SI OQ-47–49.
 - 2026-10-31 — User rulings §20 AAA (press instant wins over VV), BBB (feed sort: reflection written time), CCC (public ring count only), DDD (double strip failure: press lost, logged, nothing shown). UU wording fixed.
+- 2026-10-31 — Lead-tech carried §20 AAA–DDD (feed order reader, ring_count(), double-failure path with id-free log line), tested. B9 (e) marked decided. Open: AM OQ-30–32, SI OQ-50.
