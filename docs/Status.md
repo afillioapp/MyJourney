@@ -145,3 +145,4 @@ Can start any time after Phase 2.
 - 2026-10-31 — Lead-tech carried PPP–RRR and r8 N1 (loader only-if-ahead), N3, N4, N6 (Before real users list), tested. Open: AM OQ-36, OQ-37; SI OQ-24 residual, saved-page confirmation.
 - 2026-10-31 — User rulings §20 SSS, TTT (OQ-36/37 accepted, Before real users 7–8), UUU (note window end: nothing changes on screen), VVV (no saved confirmation). Supervisor updated Amendments status lines and the list; S-12 sent to ux.
 - 2026-10-31 — User rulings §20 WWW (skip ends the note step), XXX (C7 decided in full). Carried by the supervisor into Decisions-Needed, Screen-Inventory labels and OQ-24/49, Amendments/Proposal status ranges.
+- 2026-10-31 — User rulings §20 YYY (note window ends at unlock), ZZZ (lost note answer identical to saved). Decisions-Needed C4 marked for WWW, YYY. Fixes for gate r8 and rules r9 sent to lead-tech and ux; the supervisor no longer edits their files.

@@ -358,8 +358,10 @@ Feeling tags currently drafted: hang in there · it eventually pays off · thank
 - **VVV. A saved note page shows no confirmation.** The step simply ends, as after capture, so a lost note looks identical (Screen-Inventory S-12)
 - **WWW. Skipping the note step ends it for good**; no note can be added later in the 15 minutes (Screen-Inventory OQ-24)
 - **XXX. Decisions-Needed C7 is decided in full**: no profile picture anywhere, the profile shows the owner's name in the circle, and announcements carry no image (Screen-Inventory OQ-49; extends YY)
+- **YYY. The note window ends at unlock.** Nothing is added to a journey once it unlocks; the note step ends then, and looks exactly like the window ending (UUU, RRR) (Rubric G-26)
+- **ZZZ. A note lost twice gets the same answer as a saved note**, byte for byte, so nothing differs (VVV) (gate-1 r8 NB-31)
 
-*AAA–XXX above were ruled on 2026-10-31.*
+*AAA–ZZZ above were ruled on 2026-10-31.*
 
 ### Still open — can wait
 
