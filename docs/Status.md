@@ -140,3 +140,4 @@ Can start any time after Phase 2.
 - 2026-10-31 — Lead-tech carried EEE–KKK into Amendments/Proposal body with note-step tests (14:59 edge, JJJ discard). New: AM OQ-33 (how the note step knows its photo, Phase 3), OQ-34, OQ-5.
 - 2026-10-31 — User rulings §20 LLL (note step uses a server-side handle), MMM (III route-only, accepted), NNN (note window 15 min after a lost press), OOO (joined_at = app_now() at join).
 - 2026-10-31 — Lead-tech carried LLL–OOO (note handle via transaction-local setting, join_user() with app_now(), tests and planted faults). New: AM OQ-35 (handles lost on server restart).
+- 2026-10-31 — User ruling §20 PPP (note handles lost on restart accepted for the prototype).

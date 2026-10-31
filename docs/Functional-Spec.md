@@ -347,7 +347,9 @@ Feeling tags currently drafted: hang in there · it eventually pays off · thank
 - **NNN. After a lost press the note step closes 15 minutes after the press**, exactly as after a real photo (Screen-Inventory S-12 reading, confirmed)
 - **OOO. `joined_at` is set to `app_now()` at join**; nobody can back-date it. The loader joins each user at the right simulated time (Phase-1-Amendments OQ-5)
 
-*AAA–OOO above were ruled on 2026-10-31.*
+- **PPP. Note handles may be lost on a server restart** in the local prototype; that note step then ends early and nothing wrong is stored. Recorded as a residual next to OQ-12, solved before real users (Phase-1-Amendments OQ-35)
+
+*AAA–PPP above were ruled on 2026-10-31.*
 
 ### Still open — can wait
 
