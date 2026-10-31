@@ -342,8 +342,12 @@ Feeling tags currently drafted: hang in there · it eventually pays off · thank
 - **III. A note lost twice ends the note step**, as after a page taken. Nothing offers it again, so there is no re-shoot (gate-1 r6 NB-27)
 - **JJJ. After a lost press the screen looks exactly like a normal press, note offer included (DDD wins over GGG's "no note offer", which is retired).** A note written for a lost press has no photo to attach to and is quietly discarded; nothing invites a second press. No frame or highlight place is used (Rubric G-24)
 - **KKK. A public reader may see the order of journeys on a path.** EEE covers it; no dates are shown as fields (Screen-Inventory OQ-44)
+- **LLL. The note step finds its photo through a server-side handle**: `capture()` gives the server route a one-time handle for that photo, valid for the note window, never exposed to the device as a photo id. No model change to P1:49's accepted/refused result as seen by the user (Phase-1-Amendments OQ-33)
+- **MMM. III is enforced by the server route only**; the database stores nothing about a lost note. Accepted alongside OQ-12, revisit before real users (Phase-1-Amendments OQ-34)
+- **NNN. After a lost press the note step closes 15 minutes after the press**, exactly as after a real photo (Screen-Inventory S-12 reading, confirmed)
+- **OOO. `joined_at` is set to `app_now()` at join**; nobody can back-date it. The loader joins each user at the right simulated time (Phase-1-Amendments OQ-5)
 
-*AAA–KKK above were ruled on 2026-10-31.*
+*AAA–OOO above were ruled on 2026-10-31.*
 
 ### Still open — can wait
 
