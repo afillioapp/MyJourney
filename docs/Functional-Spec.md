@@ -337,8 +337,13 @@ Feeling tags currently drafted: hang in there · it eventually pays off · thank
 - **DDD. If stripping fails twice for one press**, the user sees nothing different; that press gives no photo and the bug is logged. No error, no "try again" (Phase-1-Amendments OQ-27; Screen-Inventory OQ-47)
 - **EEE. Inferring dates is allowed.** §20 T means journey dates are never shown or readable as fields to a public reader; narrowing them from capture and reflection dates the reader can already see is allowed, as ZZ (Phase-1-Amendments OQ-30)
 - **FFF. The bug log stays id-free**, and the trusted-code gap (a product connection changing a log setting) is accepted alongside OQ-12, to fix before real users (Phase-1-Amendments OQ-31)
-- **GGG. After a press is lost (DDD)** the camera returns as after any press, with no note offer; no frame or highlight place is used, because nothing was stored (Phase-1-Amendments OQ-32 a; Screen-Inventory OQ-50)
+- **GGG. After a press is lost (DDD)** ~~the camera returns as after any press, with no note offer~~ (note-offer part retired by JJJ); no frame or highlight place is used, because nothing was stored (Phase-1-Amendments OQ-32 a; Screen-Inventory OQ-50)
 - **HHH. The note step retries like capture**: strip again and save once at the original instant; if it fails twice, nothing is shown and the bug is logged (Phase-1-Amendments OQ-32 b)
+- **III. A note lost twice ends the note step**, as after a page taken. Nothing offers it again, so there is no re-shoot (gate-1 r6 NB-27)
+- **JJJ. After a lost press the screen looks exactly like a normal press, note offer included (DDD wins over GGG's "no note offer", which is retired).** A note written for a lost press has no photo to attach to and is quietly discarded; nothing invites a second press. No frame or highlight place is used (Rubric G-24)
+- **KKK. A public reader may see the order of journeys on a path.** EEE covers it; no dates are shown as fields (Screen-Inventory OQ-44)
+
+*AAA–KKK above were ruled on 2026-10-31.*
 
 ### Still open — can wait
 

@@ -136,3 +136,4 @@ Can start any time after Phase 2.
 - 2026-10-31 — User rulings §20 AAA (press instant wins over VV), BBB (feed sort: reflection written time), CCC (public ring count only), DDD (double strip failure: press lost, logged, nothing shown). UU wording fixed.
 - 2026-10-31 — Lead-tech carried §20 AAA–DDD (feed order reader, ring_count(), double-failure path with id-free log line), tested. B9 (e) marked decided. Open: AM OQ-30–32, SI OQ-50.
 - 2026-10-31 — User rulings §20 EEE (date inference allowed), FFF (log gap accepted), GGG (lost press: camera returns, no note offer, no frame used), HHH (note step retries like capture). Carried into Amendments §6 and Screen-Inventory S-02 by the supervisor.
+- 2026-10-31 — Rules audit r7 FAIL (V1, V2: supervisor's EEE–HHH edits incomplete). User rulings §20 III (lost note ends the step), JJJ (lost press looks normal, note offer included; GGG's no-offer retired), KKK (public path order allowed). Fixes sent to lead-tech and ux.
