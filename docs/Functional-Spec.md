@@ -349,7 +349,10 @@ Feeling tags currently drafted: hang in there · it eventually pays off · thank
 
 - **PPP. Note handles may be lost on a server restart** in the local prototype; that note step then ends early and nothing wrong is stored. Recorded as a residual next to OQ-12, solved before real users (Phase-1-Amendments OQ-35)
 
-*AAA–PPP above were ruled on 2026-10-31.*
+- **QQQ. A lost press looks like the normal press it would have been.** Whether the press would be accepted is judged first, at the press instant: if a normal press would be refused, the normal refusal shows; if it would be accepted, it looks accepted, note offer included (JJJ). Retires the "never computed" reading under GGG (Rubric G-25)
+- **RRR. A note press answered "closed" after a server restart (PPP) looks exactly as when the note window has ended**: the note step is simply not offered. No message, no timer, nothing inviting another photo (rules r8 V2)
+
+*AAA–RRR above were ruled on 2026-10-31.*
 
 ### Still open — can wait
 

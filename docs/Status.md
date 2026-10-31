@@ -141,3 +141,4 @@ Can start any time after Phase 2.
 - 2026-10-31 — User rulings §20 LLL (note step uses a server-side handle), MMM (III route-only, accepted), NNN (note window 15 min after a lost press), OOO (joined_at = app_now() at join).
 - 2026-10-31 — Lead-tech carried LLL–OOO (note handle via transaction-local setting, join_user() with app_now(), tests and planted faults). New: AM OQ-35 (handles lost on server restart).
 - 2026-10-31 — User ruling §20 PPP (note handles lost on restart accepted for the prototype).
+- 2026-10-31 — Rules audit r8 FAIL (S-12 not carrying LLL/PPP; stale lines; loader zero-jump). User rulings §20 QQQ (lost press looks like the normal press it would have been), RRR (note closed after restart looks like window ended). Sent to lead-tech and ux.
