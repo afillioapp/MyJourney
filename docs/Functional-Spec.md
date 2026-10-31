@@ -335,6 +335,10 @@ Feeling tags currently drafted: hang in there · it eventually pays off · thank
 - **BBB. The Positivity Feed sorts newest reflection first**, by the reflection's written time (Phase-1-Amendments OQ-28)
 - **CCC. Public viewers get a ring count only**: one reader returns the number of finished reveals for a profile, and nothing else, no dates (Phase-1-Amendments OQ-29)
 - **DDD. If stripping fails twice for one press**, the user sees nothing different; that press gives no photo and the bug is logged. No error, no "try again" (Phase-1-Amendments OQ-27; Screen-Inventory OQ-47)
+- **EEE. Inferring dates is allowed.** §20 T means journey dates are never shown or readable as fields to a public reader; narrowing them from capture and reflection dates the reader can already see is allowed, as ZZ (Phase-1-Amendments OQ-30)
+- **FFF. The bug log stays id-free**, and the trusted-code gap (a product connection changing a log setting) is accepted alongside OQ-12, to fix before real users (Phase-1-Amendments OQ-31)
+- **GGG. After a press is lost (DDD)** the camera returns as after any press, with no note offer; no frame or highlight place is used, because nothing was stored (Phase-1-Amendments OQ-32 a; Screen-Inventory OQ-50)
+- **HHH. The note step retries like capture**: strip again and save once at the original instant; if it fails twice, nothing is shown and the bug is logged (Phase-1-Amendments OQ-32 b)
 
 ### Still open — can wait
 
