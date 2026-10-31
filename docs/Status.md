@@ -2,7 +2,7 @@
 
 The blackboard. Every worker reads this before starting and every finished step is recorded here with its evidence. The phases, deliverables and gates come from `Build-Plan.md`; this file only tracks where they stand.
 
-Last updated: 2026-10-30
+Last updated: 2026-10-31
 
 Status values: `todo` · `in progress` · `in review` · `done` · `blocked`
 
@@ -33,7 +33,7 @@ Status values: `todo` · `in progress` · `in review` · `done` · `blocked`
 |---|---|---|---|
 | Data model | lead-tech | done | `Phase-1-Proposal.md` §2, approved 2026-10-25 |
 | Fixture design | fixture-designer | done | `Phase-1-Proposal.md` §3, approved 2026-10-25 |
-| Rules list as testable statements | rules-guardian | done | `Rules-Rubric.md`: R-001–R-154, every check has a how-to-check; all banned-list rows and §2.5 checks mapped (`docs/reviews/2026-10-30-gate-1.md`) |
+| Rules list as testable statements | rules-guardian | done | `Rules-Rubric.md`: R-001–R-165, every check has a how-to-check; all banned-list rows and §2.5 checks mapped (`docs/reviews/2026-10-30-gate-1.md`) |
 | Screen inventory | ux | done | `Screen-Inventory.md`; rules audit PASS `docs/reviews/2026-10-30-rules-screen-inventory-r3.md` |
 
 **Gate:** a developer can read the data model and the fixture design and know exactly what to build, with no questions left.
@@ -131,3 +131,4 @@ Can start any time after Phase 2.
 - 2026-10-30 — User rulings §20 OO (definer readers for all content tables), PP (refusal never reaches the user; no retake), QQ (baseline JPEG), RR (timing residual accepted for now).
 - 2026-10-30 — Lead-tech carried §20 OO–RR: definer readers on all 15 user-content tables (264/264 rows identical to policies), baseline JPEG only, timing residual recorded. Open: Amendments OQ-25 (a–c), OQ-26.
 - 2026-10-31 — User rulings §20 SS (reveal state: owner + network after unlock), TT (joined_at own row only), UU (own announcements as R2), VV (guard bug: strip again, save once).
+- 2026-10-31 — Rules audit r6 FAIL and gate r5 FAIL: SS, TT, VV were only noted in the OQ table, not carried (supervisor shortcut). User rulings §20 WW–ZZ. Sent to lead-tech and ux.

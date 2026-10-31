@@ -325,6 +325,13 @@ Feeling tags currently drafted: hang in there · it eventually pays off · thank
 - **UU. A user's own announcements.** As written in R2: a user sees their own "reflection left", not their own "journey launched" or "path crossed" (OQ-25 c)
 - **VV. If the metadata guard refuses anyway (a bug)**, the app strips again and saves that moment once; the stored time may be slightly later. One press is still one photo (Phase-1-Amendments OQ-26)
 
+*SS–VV above were ruled on 2026-10-31; WW–ZZ below also 2026-10-31.*
+
+- **WW. Rings under B4's "per year with the app" option show only on the user's own profile.** Others see one ring per finished reveal, so TT holds (gate-1 r5 NB-24)
+- **XX. The guard-bug retry is judged and stamped at the original press instant**, so the press always gives the photo it would have given (gate-1 r5 NB-25)
+- **YY. No profile picture.** The field stays unused, as Decisions-Needed C7 (gate-1 r5 NB-26)
+- **ZZ. SS means the reveal state is never shown or readable as a field to a public reader.** A public reader may infer it from the Positivity Feed, rings and photos appearing (Rubric G-23)
+
 ### Still open — can wait
 
 1. Export and data ownership, which the trust position depends on
