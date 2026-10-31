@@ -142,3 +142,4 @@ Can start any time after Phase 2.
 - 2026-10-31 — Lead-tech carried LLL–OOO (note handle via transaction-local setting, join_user() with app_now(), tests and planted faults). New: AM OQ-35 (handles lost on server restart).
 - 2026-10-31 — User ruling §20 PPP (note handles lost on restart accepted for the prototype).
 - 2026-10-31 — Rules audit r8 FAIL (S-12 not carrying LLL/PPP; stale lines; loader zero-jump). User rulings §20 QQQ (lost press looks like the normal press it would have been), RRR (note closed after restart looks like window ended). Sent to lead-tech and ux.
+- 2026-10-31 — Lead-tech carried PPP–RRR and r8 N1 (loader only-if-ahead), N3, N4, N6 (Before real users list), tested. Open: AM OQ-36, OQ-37; SI OQ-24 residual, saved-page confirmation.
