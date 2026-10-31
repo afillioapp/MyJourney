@@ -352,7 +352,12 @@ Feeling tags currently drafted: hang in there · it eventually pays off · thank
 - **QQQ. A lost press looks like the normal press it would have been.** Whether the press would be accepted is judged first, at the press instant: if a normal press would be refused, the normal refusal shows; if it would be accepted, it looks accepted, note offer included (JJJ). Retires the "never computed" reading under GGG (Rubric G-25)
 - **RRR. A note press answered "closed" after a server restart (PPP) looks exactly as when the note window has ended**: the note step is simply not offered. No message, no timer, nothing inviting another photo (rules r8 V2)
 
-*AAA–RRR above were ruled on 2026-10-31.*
+- **SSS. The gaps left by judging a press first are accepted for the prototype** (an unlogged strip fault on a refused press; trusted code testing acceptance without a frame; accepted-only log lines), on the "Before real users" list (Phase-1-Amendments OQ-36)
+- **TTT. The note-save timing gap (about 5 ms) is accepted for the prototype**, on the "Before real users" list (Phase-1-Amendments OQ-37)
+- **UUU. When the note window ends while the user is on the note screen, nothing on screen changes on its own.** The next note press is simply not taken and the step quietly ends (Screen-Inventory OQ-24 residual)
+- **VVV. A saved note page shows no confirmation.** The step simply ends, as after capture, so a lost note looks identical (Screen-Inventory S-12)
+
+*AAA–VVV above were ruled on 2026-10-31.*
 
 ### Still open — can wait
 

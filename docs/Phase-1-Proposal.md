@@ -1,6 +1,6 @@
 # Phase 1 Proposal: data model and fixtures
 
-Status: **APPROVED 2026-10-25.** The data model, the fixtures and readings R1–R5 were all approved as written. **Amended 2026-10-30 and 2026-10-31**: see `Phase-1-Amendments.md` and `Functional-Spec.md` §20 Q–RRR; each amended line is tagged. PPP, QQQ and RRR (the last three) bear on lines 91, 105, 108 and 180. No code written yet.
+Status: **APPROVED 2026-10-25.** The data model, the fixtures and readings R1–R5 were all approved as written. **Amended 2026-10-30 and 2026-10-31**: see `Phase-1-Amendments.md` and `Functional-Spec.md` §20 Q–VVV; each amended line is tagged. PPP, QQQ and RRR (the last three) bear on lines 91, 105, 108 and 180. No code written yet.
 Date: 2026-10-25
 
 This version folds in every decision made on 2026-10-25. They're listed in section 1 and recorded in `Functional-Spec.md` §20 and `My-Journey-Concept.md` §29. The five readings in section 4 were approved too.
