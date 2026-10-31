@@ -132,3 +132,4 @@ Can start any time after Phase 2.
 - 2026-10-30 — Lead-tech carried §20 OO–RR: definer readers on all 15 user-content tables (264/264 rows identical to policies), baseline JPEG only, timing residual recorded. Open: Amendments OQ-25 (a–c), OQ-26.
 - 2026-10-31 — User rulings §20 SS (reveal state: owner + network after unlock), TT (joined_at own row only), UU (own announcements as R2), VV (guard bug: strip again, save once).
 - 2026-10-31 — Rules audit r6 FAIL and gate r5 FAIL: SS, TT, VV were only noted in the OQ table, not carried (supervisor shortcut). User rulings §20 WW–ZZ. Sent to lead-tech and ux.
+- 2026-10-31 — Lead-tech carried SS–ZZ and B10 into readers and P1 lines with rule-oracle tests (48/48; planted faults caught). ux carried them to screens. Open for the user: AM OQ-27–29, SI OQ-47–49.
