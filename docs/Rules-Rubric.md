@@ -16,6 +16,8 @@ Updated 2026-10-31 (rules audit `docs/reviews/2026-10-31-rules-phase-1-r6.md`, a
 
 Updated 2026-10-31 (rules audit `docs/reviews/2026-10-31-rules-phase-1-r7.md`, after FS §20 WW–HHH): added R-166 (another user's circle comes from a count that moves only on a finished reveal and is never shown as a number, FS §20 CCC, WW), R-167 (the guard-bug log carries nothing about a user and no product role reads it, FS §20 DDD, FFF), R-168 (no screen state holds what its own never-list bans) and G-24 (DDD against GGG). Added `Decided` lines for FS §20 XX, AAA, DDD, GGG and HHH (R-160, whose r6 `Open` note is closed by XX and AAA), AAA, BBB and DDD (R-155 (d)), EEE (R-152), WW (R-161), ZZ and CCC (R-162, G-23). `Updated` lines on R-116 (§21 moved to FS:350), R-160 (note-step cases), R-161 and R-162 (implementation now specified) and R-165 (wider open-word list; OQ answers that name a screen). No check renumbered or removed.
 
+Updated 2026-10-31 (rules audit `docs/reviews/2026-10-31-rules-phase-1-r8.md`, after FS §20 III–PPP): added R-169 (the note handle never leaves the server route, FS §20 LLL), R-170 (a lost press and its note look and answer exactly like a saved one, FS §20 DDD, JJJ, NNN), R-171 (every note-route answer and every end of the note step has a screen row, FS §20 PPP) and G-25 (a lost press that would have been refused). Added `Decided` lines for FS §20 JJJ (R-160, closing G-24, and R-168), III, LLL, MMM, NNN and PPP (R-160), KKK (R-152), OOO (R-120, R-161). R-160's GGG line and its r7 (3) wording ("no S-12 offer") held the behaviour JJJ retired: they are kept as history and superseded by the JJJ line, not deleted. `Updated` lines on R-116 (§21 moved to FS:361), R-165 ((5) and (6)) and R-167 (scope). No check renumbered or removed.
+
 ---
 
 ## What this is for
@@ -447,6 +449,10 @@ Commit, capture, frames, highlights and the note.
 - **Decided 2026-10-31 (FS §20 DDD, GGG, `FS:337`, `FS:340`), for (3):** if the second strip also fails, the press gives no photo, no frame or highlight place is used, nothing is shown, there is no third call, and the bug is logged (R-167). The camera returns as after any press, with no note offer. "No visible difference" in the statement is read against GGG: see G-24
 - **Decided 2026-10-31 (FS §20 HHH, `FS:341`):** the note step retries the same way: strip again and save once at the note press's instant; on a second refusal nothing is stored, nothing is shown, and the bug is logged
 - **Updated 2026-10-31 (r7):** (3) now reads: with the strip step forced to fail twice, zero new photos, no prompt, no copy, no S-12 offer, the frame and highlight counts unchanged (a later capture is accepted exactly as if the press never happened), and two refusal lines with one transaction id in the server log. Added (4), the note step: with its strip step forced to fail once, exactly one note, `written_at` equal to the note press's `app_now()`, even when the 15-minute window closes during the retry; forced to fail twice, no note row, nothing shown, the step ends as after a page taken, and no route offers the note step again for that photo (C4, R-020). The DB-level half of (4) runs in Phase 3 with the §6 sample set; the screen half in Phase 4
+- **Decided 2026-10-31 (FS §20 JJJ, `FS:343`); supersedes the GGG line above and the "no S-12 offer" in (3):** after a lost press the screen looks exactly like a normal press, note offer included; GGG's "no note offer" is retired. (3) now reads: zero new photos, no prompt, no copy, **the S-12 offer shown exactly as after a saved press**, the frame and highlight counts unchanged, and two refusal lines with one transaction id. A note written for a lost press stores nothing, attaches to no other photo (a planted "latest photo without a note" route must be caught) and is answered exactly as a saved note (R-170). The two lines above are history
+- **Decided 2026-10-31 (FS §20 III, MMM, `FS:342`, `FS:346`), for (4):** a note lost twice ends the note step as after a page taken, and nothing offers it again. The database stores nothing about a lost note, so (4)'s "no route offers the note step again" is a route test only (Phase 4); the database accepting a later note-step call is an accepted residual, with OQ-12
+- **Decided 2026-10-31 (FS §20 LLL, NNN, `FS:345`, `FS:347`):** the note step finds its photo through a server-side handle the device never holds (R-169). After a lost press the note step closes 15 minutes after the press, as after a photo: at press + 14:59 and + 15:00.000 the lost press's note gets the same answer as a photo's
+- **Decided 2026-10-31 (FS §20 PPP, `FS:350`):** handles lost on a server restart end that note step early, and nothing wrong is stored. Accepted for the local prototype, with OQ-12. What the screen shows then is R-171
 
 ### R-167
 - **Statement:** When a captured image or a note image is lost to the guard bug, the record of it carries nothing about the user: no image, no user, journey or photo id, no app time and no statement text. No product role can read it, and it never enters the product data.
@@ -455,6 +461,22 @@ Commit, capture, frames, highlights and the note.
 - **How to check:** In one press, force the strip step to fail twice, with a fixed marker byte sequence in the image sent as a bind parameter. The server log then holds exactly two refusal lines with one transaction id (one line for a press saved by the retry), no `STATEMENT` line, the marker nowhere in hex or text, and no uuid in the refusal lines. Repeat for the note step. As the viewer role and the panel role, natively and after the role switch: the file-reading and log-listing functions, server-side large-object import and `COPY … FROM` a file are refused, neither role is a member of the file-reading or monitoring roles, and setting `log_min_error_statement` is refused. No table, view or reader in the product schema holds log content.
 - **Accepted residual (FS §20 FFF):** `log_parameter_max_length_on_error` is user-settable, so code that holds a product connection can write its own image into the log (Phase-1-Amendments OQ-31 (a)). Accepted with OQ-12 until real authentication; it must be revisited before any deploy
 - **Current implementation:** role settings and `%v` in `log_line_prefix`, set by the cluster script (`Phase-1-Amendments.md` §6, lines 482–484, evidence 541–570)
+- **Updated 2026-10-31 (r8):** this check covers the database server's log only. The route's own logs, traces and error output are R-169's, since under FS §20 LLL the route holds a sealed photo's id and its press instant
+
+### R-169
+- **Statement:** Nothing that ties a press to its sealed photo leaves the server route. The device never receives the note handle or any photo id, no log, trace, store or response holds it, it serves one note transaction, and it is gone once that transaction ends or 15 minutes after the press, whichever comes first.
+- **Type:** auto (responses, logs, planted faults) and review (route code) · **Applies to:** API, data, dependencies
+- **Source:** FS §20 LLL (`FS:345`), MMM (`FS:346`), NNN (`FS:347`), PPP (`FS:350`); CL:73 (nothing leaks); P1:48 (a), P1:49, P1:108; R-002, R-010, R-167. Found by r8 (N4; V1: `Screen-Inventory.md:345` still has S-12 read "Photo (id only)")
+- **How to check:** (1) Run the capture and note flows (saved, retried, lost press, lost note, closed window) and scan every byte the device receives, status lines and headers included, for a uuid: none. (2) In the same run, scan the route's stdout, stderr, access log, error output and any trace for each handle value and for each press instant at sub-second precision: none. (3) No table, file, cache, cookie or client storage holds a handle; after a note transaction ends, and after press + 15:00.000 on the app clock, the route holds no entry for that press. (4) The `Phase-1-Amendments.md` §6 planted faults are caught: handle in the press response, entry kept after a lost note, no window check for a lost press, a session-level handle. Add: a route that logs the handle is caught by (2). (5) Review: no screen spec or client code reads a photo id during the sealed year.
+- **Current implementation:** `capture()` sets the transaction-local `mj.note_handle`; the route keeps it in process memory keyed by device session and acting user; `add_note(handle uuid, img bytea)` (`Phase-1-Amendments.md` §6 lines 526–532, evidence 653–682; `P1:49`, `P1:105`, `P1:108`, `P1:180`)
+- **Accepted residual (FS §20 MMM, PPP):** code holding a product connection and a handle can call the note step again inside the 15 minutes, and a restart drops every handle. Both are revisited before real users, with OQ-12
+
+### R-170
+- **Statement:** A press lost to the guard bug, and a note written after it, cannot be told apart by the user from a saved press and a saved note: the device gets the same answers, the screen goes to the same next state, and nothing on screen depends on a difference in how the server handled them.
+- **Type:** auto (responses) and review (UI timing) · **Applies to:** API, UI
+- **Source:** FS §20 DDD (`FS:337`), JJJ (`FS:343`), NNN (`FS:347`), PP (`FS:320`); CL:64 (no retakes: a visible difference invites a second press); R-160, R-168. Found by r8 (N3)
+- **How to check:** (1) For paired cases (saved press and lost press; their notes at + 1 minute, + 14:59 and + 15:00.000), compare the full device responses, status, headers other than `Date`, and body: identical. (2) UI test of S-02 and S-12 with the strip step forced to fail twice: the same sequence of screen states as a saved press, the same note offer, the same end. (3) Review: no S-12 transition, indicator or end waits on the server's note answer in a way that would end the step sooner after a lost press, which does no strip, seal or write (`Phase-1-Amendments.md` §6 line 517).
+- **Open:** a lost press that would have been refused (no frame left, highlight full) is answered `accepted` (`Phase-1-Amendments.md` §6 lines 516, 529). Whether "a normal press" there means an accepted one or the refusal it would have given is G-25
 
 ---
 
@@ -609,6 +631,7 @@ Commit, capture, frames, highlights and the note.
 - **Decided 2026-10-31 (FS §20 TT, `FS:324`):** a user's join date is readable by that user only (R-161). In the fixture each join date is the first Commit date (P1:213), so a join date shown to First Light would give Lantern #1's commit date, which this check forbids
 - **Decided 2026-10-31 (FS §20 SS, `FS:323`):** whether a reveal is finished joins this list: readable by the owner and the owner's network after unlock, never public (R-162; see G-23)
 - **Decided 2026-10-31 (FS §20 EEE, `FS:338`):** "never sees them" means never shown and never readable as a field. A public reader may narrow a journey's dates from capture dates and reflection dates they can already read (Phase-1-Amendments OQ-30), as ZZ allows for the reveal state. The test above is unchanged: no type, date, chapter or tag field in any response or on any screen. A screen or reader that adds a new date field for a public reader, or computes the bracket for them ("about 2025"), still fails
+- **Decided 2026-10-31 (FS §20 KKK, `FS:344`):** a public reader may see the order of the journeys on a path, under EEE. The order carries no commit date, unlock date, year or date label, and no reader returns a journey date to support it. A path screen that labels journeys "2023", "Year 2" or by a date range for a public reader still fails
 
 ### R-154
 - **Statement:** Anyone but the owner learns a photo's capture date, never its time of day: not on any screen, not in any response, and not through another field that pins it, such as the handwritten note's written time (at most 15 minutes after capture) or an activity graph finer than one day. The owner sees the full time.
@@ -1009,6 +1032,7 @@ Commit, capture, frames, highlights and the note.
 - **How to check:** Set the app clock to a date far from the real one and run R-001, R-036, R-040, R-046 and R-121. Each must behave as of the app clock.
 - **Updated 2026-10-31:** FS §20 grew by II–VV, so §21 "A time control" is now FS:339 (heading FS:335). The source line above was correct at r5
 - **Updated 2026-10-31 (r7):** FS §20 grew again by WW–HHH, so §21 "A time control" is now FS:354 (heading FS:350). The lines above were correct when written
+- **Updated 2026-10-31 (r8):** FS §20 grew again by III–PPP and a date line, so §21 "A time control" is now FS:365 (heading FS:361). The lines above were correct when written
 
 ### R-117
 - **Statement:** The time control moves forward only. To see an earlier moment, it resets to the 2026-10-25 baseline and jumps again.
@@ -1039,6 +1063,8 @@ Commit, capture, frames, highlights and the note.
 - **Type:** auto · **Applies to:** API
 - **Source:** P1:73, P1:90, P1:115, P1:132
 - **How to check:** Send each write with a client timestamp a year off. The stored time equals the app clock.
+- **Decided 2026-10-31 (FS §20 OOO, `FS:348`):** the join joins this list. `joined_at` is `app_now()` at join and nobody can back-date it. Add to the check: the join function has no argument of a time type, a call that passes a date fails, and a `user` row whose `joined_at` is not `app_now()` is refused, also for the table owner (R-164). The loader reaches each fixture join instant by jumping the clock, never by passing a time. Where an event falls at the clock's current instant (each fixture join and first Commit share one instant, P1:213), the loader makes no jump; it never weakens the forward-only jump to do so (R-117; r8 N1)
+- **Current implementation:** `join_user(name text) → uuid` plus a `BEFORE INSERT` trigger on `user` (`Phase-1-Amendments.md` §2.2 line 177, evidence 226–246; `P1:63`, `P1:176`, `P1:213`)
 
 ### R-121
 - **Statement:** All photos of a journey share reflection slots: slot k runs from unlock + (k − 1) years to unlock + k years, and each photo takes at most one reflection per slot. The slot is worked out from the app clock, never chosen by the client.
@@ -1170,12 +1196,20 @@ Commit, capture, frames, highlights and the note.
 - **Source:** CL:28–30 (FS §20 wins); R-134; R-150 (the same rule for provisional defaults). Found by r5 V1–V3 and r6 V1, V2 and V4: the same kind of finding in two rounds running
 - **How to check:** (1) For `Phase-1-Amendments.md`, list body lines that name an OQ marked "Settled" in the §8 table together with an open word. It must print nothing: `F=docs/Phase-1-Amendments.md; for n in $(grep -oE '^\| OQ-[0-9]+ \|.*Settled' $F | grep -oE '^\| OQ-[0-9]+' | grep -oE '[0-9]+'); do grep -nE "OQ-$n\b" $F | grep -vE "^[0-9]+:\| OQ-$n \|" | grep -iE "not settled|not picked|waits? on|none yet|confirm|still open|left open"; done`. Read each hit: a line that is only history ("was OQ-n") passes. (2) Each build doc's status line names the §20 range up to the latest letter, or says why the later letters do not bear on it. (3) Review: each §20 item recorded since the doc's last edit is either carried, with its letter cited, or stated as not bearing on the doc.
 - **Updated 2026-10-31 (r7):** the word list in (1) also takes `not ruled`, `open from`, `left open` and `open:`. r7 found `Phase-1-Amendments.md:484` ("is not ruled (OQ-32)") and `:572` ("Open from DDD: OQ-31, OQ-32"), which the r6 list missed. Run (1) also on `Phase-1-Proposal.md` and on `Screen-Inventory.md` outside its Open questions section. Added (4): where an OQ answer, in any doc, says a ruling is handled on a named screen or section, that screen's table or that section carries it. r7 found `Screen-Inventory.md:711` ("handled the same way on S-12 (Spec §20 HHH)") with nothing on S-12
+- **Updated 2026-10-31 (r8):** added (5): a ruling recorded as an accepted residual or "no build change" is still checked under (3) against every screen whose behaviour its words state. r8 found FS §20 PPP ("that note step then ends early") recorded only in two OQ cells, with S-12 listing no such end. Added (6): after any edit to FS §20, every `Spec:` and `FS:` line citation in the build docs that points at or after the edit is re-checked by the editor, not only by the doc's owner. r8 found `Screen-Inventory.md:577` citing Spec:350 for export, which since PPP is a ruling line
 
 ### R-168
 - **Statement:** No screen state holds anything that its own "must never show" column, or another state of the same screen, bans. Where two rulings force a state to do both, the build stops and the conflict goes to the user; neither side is built by choice.
 - **Type:** review · **Applies to:** UI, copy
 - **Source:** CL:30 ("When two docs disagree, do not pick"); CL:24 (strictest reading); R-134, R-165. Found by r7 (`Screen-Inventory.md:94` holds "no note offer (no S-12)" and bans "Any sign that this press gave no photo", while `:87` sends every accepted press to S-12; G-24)
 - **How to check:** For each screen in `Screen-Inventory.md`, read each state's "Holds" against the same row's "Must never show" and against the screen's "Leads to" line and its other states. Any element that is both required and banned, or whose absence is itself something banned, fails until the user rules.
+- **Decided 2026-10-31 (FS §20 JJJ, `FS:343`):** the r7 case is settled: DDD wins, the note offer is shown after a lost press, and a note written for it is discarded. `Screen-Inventory.md:94` and `:341` now hold it, and the missing offer is in `:94`'s never-list
+
+### R-171
+- **Statement:** Every answer the server can give to a capture or note press, and every way the note step can end, has a screen row saying what the user sees. No answer reaches a screen that has no row for it.
+- **Type:** review · **Applies to:** UI, API
+- **Source:** CL:17–24 (rule zero: a builder never picks a behaviour); FS §20 PPP (`FS:350`), NNN, III, JJJ, K; R-165, R-168. Found by r8 V2
+- **How to check:** List the route's answers from `Phase-1-Amendments.md` §6 (press: accepted, refused; note press: saved, closed, and the no-entry case answered as closed) and the note step's ends (page taken, skip, leaving capture, 15 minutes, a page lost twice, the handles lost on restart under PPP). Match each to a row of S-02 or S-12. An answer or end with no row fails, until ux writes the row or the user rules. A row must not show anything its own never-list or R-160, R-170 bans.
 
 ---
 
@@ -1286,7 +1320,7 @@ Every row of the banned list (`CLAUDE.md:64–74`, `Master-Prompt.md:37–47`) a
 
 | Banned item | Checks |
 |---|---|
-| No retakes | R-031, R-005, R-018, R-019, R-029, R-124, R-160 |
+| No retakes | R-031, R-005, R-018, R-019, R-029, R-124, R-160, R-170 |
 | No edits to reflections | R-015, R-016, R-124 |
 | No comments from anyone else | R-105, R-106, R-107, R-109, R-124 |
 | No face recognition | R-110, R-111, R-112 |
@@ -1295,7 +1329,7 @@ Every row of the banned list (`CLAUDE.md:64–74`, `Master-Prompt.md:37–47`) a
 | No re-engagement notifications | R-094, R-095, R-096 |
 | No ranking, levels, badges, leaderboards | R-101, R-102, R-103, R-124, R-143, R-166 |
 | No photo feed | R-084, R-085, R-086, R-145 |
-| Nothing leaks from a sealed year | R-001 to R-014, R-091, R-138, R-142, R-144, R-156, R-157, R-158, R-161, R-167 |
+| Nothing leaks from a sealed year | R-001 to R-014, R-091, R-138, R-142, R-144, R-156, R-157, R-158, R-161, R-167, R-169 |
 | No layer is ever shown to the person on it | R-069, R-070, R-071, R-092, R-139, R-146, R-147, R-148 |
 
 R-141 and R-149 apply to every row: no switch setting may break any item above, and every provisional default in code is labelled and traceable. R-138 sits under two rows because a control hidden or greyed for lack of frames is both a counter and a leak of how much a sealed year holds (RG:28, "disabled-but-visible states").
@@ -1307,6 +1341,8 @@ R-151 to R-154 carry dated rulings (FS §20 DD, T, CC, EE, GG) rather than banne
 R-155 to R-165 (added 2026-10-31) carry FS §20 II–VV. Three of them sit under banned rows: R-160 under "No retakes" (PP, VV); R-156, R-157 and R-158 under "Nothing leaks", since a stray highlight reader, a catalog statistic or a row estimate shows activity in a sealed year (AA, MM, OO); and R-161 under "Nothing leaks" too, since a join date can be a sealed journey's commit date (TT). R-155, R-159 and R-162 narrow what a reader can infer after unlock (JJ, KK/NN/QQ, SS). R-163 keeps the loader inside a viewer's rights (II). R-164 and R-165 apply to every row: a guard tested only by a privilege refusal, or a ruling not carried, can let any banned item through.
 
 R-166 to R-168 (added 2026-10-31, r7) carry FS §20 WW–HHH. R-166 sits under "No streaks, counters" and "No ranking": the ring count reaches every viewer, so a numeral, total or comparison beside another user's circle would turn a record into a counter (CCC). R-167 sits under "Nothing leaks": a log line holding an image or a journey id beside a real time would record that a sealed journey's owner pressed then (DDD, FFF). R-168 applies to every row: a screen state that both holds and bans an element lets the builder pick, which is how a banned item gets in.
+
+R-169 to R-171 (added 2026-10-31, r8) carry FS §20 III–PPP. R-169 sits under "Nothing leaks": the note handle is a sealed photo's id held beside its press instant, so any copy of it outside the route records that a sealed journey's owner pressed then (LLL). R-170 sits under "No retakes": a lost press or note that looks or answers differently is the one sign that invites a second press (DDD, JJJ). R-171 applies to every row: an answer with no screen row is a behaviour the builder must pick, which is how a banned item gets in.
 
 ## `Phase-1-Proposal.md` §2.5 mapping
 
@@ -1418,6 +1454,10 @@ Related: under FS §20 TT (`FS:324`), B4's other setting, "per year with the app
 **Decided 2026-10-31.** FS §20 ZZ (`FS:333`): SS covers the reveal state as a field; inferring it from the Positivity Feed, rings and photos appearing is allowed. FS §20 WW (`FS:330`): B4's per-year rings show only on the user's own profile. FS §20 CCC (`FS:336`): public viewers get a ring count only, no dates (R-166). FS §20 EEE (`FS:338`) applies the same reading to journey dates (R-152). G-23 is closed; R-161 and R-162 now read under these rulings.
 
 **G-24. A press lost to the guard bug: "nothing different" against "no note offer" (added 2026-10-31, r7).** FS §20 DDD (`FS:337`): "the user sees nothing different; that press gives no photo". FS §20 GGG (`FS:340`): "the camera returns as after any press, with no note offer". `Screen-Inventory.md:87` and `:96` send every accepted press straight to the note step S-12 (`PROVISIONAL: C4`), so the missing offer is the one sign that the press gave no photo, which `Screen-Inventory.md:94` bans in the same row. Seeing no offer, the user may press again for the same moment, which PP (`FS:320`) bans ("nothing invites a second press"). Not picked. Open: does GGG mean the press may look different from an accepted one, or is S-12 to be offered and then end with nothing stored? R-160 (3) and R-168 hold this open until the user rules. It blocks the S-02 and S-12 flows (Phase 2) and screens (Phase 4), not the Phase 3 schema.
+
+**Decided 2026-10-31.** FS §20 JJJ (`FS:343`): the screen after a lost press looks exactly like a normal press, note offer included; DDD wins and GGG's "no note offer" is retired. A note written for a lost press is discarded. G-24 is closed; R-160 and R-168 carry it.
+
+**G-25. A lost press that would have been refused (added 2026-10-31, r8).** FS §20 JJJ (`FS:343`): "the screen looks exactly like a normal press, note offer included". The guard runs before the §20 U order, so whether the lost press would have been accepted is never computed, and the route answers `accepted` (`Phase-1-Amendments.md` §6 lines 516 and 529). When no frame is left, or the highlight is full, a normal press at that instant shows the capture refusal (`Screen-Inventory.md:92`; `PROVISIONAL: B7`), not a note offer. Amendments OQ-32 (a) raised exactly this ("different from an accepted press, or from what that press would have given?"), and its settlement answers only the accepted case. Not picked. Phase 3 is unaffected: nothing is stored either way. It blocks the S-02 lost-press row and R-170 (Phase 4).
 
 ### Rules that cannot be made testable yet
 
