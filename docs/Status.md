@@ -147,3 +147,4 @@ Can start any time after Phase 2.
 - 2026-10-31 — User rulings §20 WWW (skip ends the note step), XXX (C7 decided in full). Carried by the supervisor into Decisions-Needed, Screen-Inventory labels and OQ-24/49, Amendments/Proposal status ranges.
 - 2026-10-31 — User rulings §20 YYY (note window ends at unlock), ZZZ (lost note answer identical to saved). Decisions-Needed C4 marked for WWW, YYY. Fixes for gate r8 and rules r9 sent to lead-tech and ux; the supervisor no longer edits their files.
 - 2026-10-31 — Lead-tech carried WWW (skip request), YYY (window ends at unlock), ZZZ (same answer), N3 press timing; restored history row; tested. Open: AM OQ-38, OQ-39. S-12 skip already carried by ux.
+- 2026-10-31 — User rulings §20 AAAA (retry timing gap accepted), BBBB (skip bypass accepted with OQ-12; refusal answers 'closed').
