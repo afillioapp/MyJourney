@@ -2,7 +2,7 @@
 
 Build reference. Every behaviour below traces to a decision in `My-Journey-Concept.md`. Anything not decided is in section 20, marked as blocking or not. Nothing here is invented to fill a gap.
 
-Last updated: 2026-10-27
+Last updated: 2026-10-30
 
 ---
 
@@ -284,6 +284,88 @@ Feeling tags currently drafted: hang in there · it eventually pays off · thank
 - **N. One highlight at a time.** Starting one while another is open is refused
 - **O. Overviews are optional**, like reflections. A reveal can be finished without one
 - **P. Each reveal choice is set once**, even before the reveal is finished
+
+### Resolved 2026-10-30 (Screen Inventory audits)
+
+- **Q. The Positivity Feed is text only.** Each entry is a reflection's text. A photograph is shown only when the reader opens one entry. "No photo feed" covers the Positivity Feed (Decisions-Needed B9 (a), Rubric G-8)
+- **R. Public before the reveal is finished.** Under B2's "only after reveal finished" setting, no one but the owner reads the journey until the reveal is finished, including photos already set Public (Decisions-Needed B2)
+- **S. An open highlight, to the owner.** While a journey is sealed, the owner sees the plain fact that a highlight is open, with no end time and no countdown. This holds over B19's "nothing else" (Decisions-Needed B6, B19)
+
+### Resolved 2026-10-30 (Phase 1 gate check, `docs/reviews/2026-10-30-gate-1.md`)
+
+- **T. Who reads a journey's type, dates, chapter and feeling tags after unlock.** The owner and the owner's network, never public, the same as the journey overview (gate-1 U1)
+- **U. Capture during a highlight.** A photo goes into the open highlight first. Once the highlight is full, capture uses a normal frame if one is left, otherwise it refuses (gate-1 U2)
+- **V. The prototype clock.** Simulated time runs at real speed from the last jump, so a note window or highlight closes on its own. Small jumps for testing edges are allowed (gate-1 U3)
+- **W. The drafted tag list for the Positivity Feed** is the four working tags: gratification, it eventually pays off, hang in there, thankful (`My-Journey-Concept.md:454–459`; Decisions-Needed B9 (c); gate-1 U4)
+
+- **X. Type, dates and tags under B2's "only after reveal finished" setting.** The network reads a journey's type, dates, chapter and feeling tags from unlock, as under §20 T. Only photos (and what follows them) wait for the reveal to finish (Phase-1-Amendments OQ-10)
+- **Y. No chapter filter on the Positivity Feed.** §20 T wins: chapters are never public. Replaces Decisions-Needed B9 (d) (Phase-1-Amendments OQ-11)
+- **Z. Option switches live in the database.** One `prototype_option` row holds the six switches, changed only through `set_option()` (Phase-1-Amendments O3, approved; a model change)
+- **AA. Highlight rows are sealed**, owner included. The owner learns only yes/no "a highlight is open" through one owner-only function (Phase-1-Amendments O4, approved; a model change)
+
+- **BB. Scripted fixture actions happen at 12:00 UTC** on their dates, away from the 00:00 UTC unlock instant (gate-1 r2 B-1)
+- **CC. The Positivity Feed may select journeys by feeling tag**, but never shows the tag to a public reader: they see reflection text only (gate-1 r2 NB-15)
+- **DD. Whether a photo was taken in a highlight** (`photo.highlight_id`) is readable by the owner only, also after unlock (gate-1 r2 NB-13; matches Decisions-Needed B24)
+- **EE. Only the prototype panel moves time or flips switches.** `clock_jump()`, the jump to the next unlock and `set_option()` are callable only by a separate panel role, never by the acting viewer (Phase-1-Amendments OQ-16)
+- **FF. `viewer_in_network()` may stay directly callable.** It reveals nothing beyond what §20 T journey rows already give a network member (Phase-1-Amendments OQ-17; Rubric R-070)
+- **GG. Readers other than the owner see a photo's capture date, never its time.** The owner sees the full time (Screen-Inventory OQ-45)
+- **HH. The journey overview waits too.** Under B2's "only after reveal finished" setting, the network reads the overview only once the reveal is finished (§20 X "what follows them")
+- **II. The loader and the tests run as the panel role** and act as a user only through a one-way switch to the app role; the app role can never become the panel role (Phase-1-Amendments §2.1, approved)
+- **JJ. Same-day photos, for a non-owner, carry no time order.** They are shown in a fixed order that carries no time information, and photo ids are not sequential across users (Phase-1-Amendments OQ-18; Screen-Inventory OQ-46)
+- **KK. Time and location metadata are stripped from images at capture** (Phase-1-Amendments OQ-19)
+- **LL. A non-owner never sees when a note was written**, not even the date. The owner sees the full time (Screen-Inventory OQ-46)
+- **MM. Database statistics never leak activity.** The app role cannot read catalog statistics or row estimates that would show capture into a sealed journey (Phase-1-Amendments OQ-20; strictest option)
+- **NN. The database refuses an image that still carries time or location metadata**, as a second guard behind stripping at capture (§20 KK)
+- **OO. Every table with user content is read only through definer readers with fixed row estimates**, not only sealed content (Phase-1-Amendments OQ-21)
+- **PP. A metadata refusal never reaches the user.** The app strips before saving; a refusal is a bug. One press is one photo, never a retake (Phase-1-Amendments OQ-22)
+- **QQ. Capture stores baseline JPEG**; the strip step re-encodes to it (Phase-1-Amendments OQ-23)
+- **RR. The query-timing residual is accepted for now** and revisited before real users (Phase-1-Amendments OQ-24)
+- **SS. Whether a reveal is finished** (`journey_reveal`) is readable by the owner and the owner's network after unlock, never public, as §20 T (Phase-1-Amendments OQ-25 b)
+- **TT. A user's join date** (`joined_at`) is readable by that user only; everyone reads names (OQ-25 a)
+- **UU. A user's own announcements.** As the model carried it (Phase-1-Amendments OQ-25 c; R2 covers launched and crossed): a user sees their own "reflection left", not their own "journey launched" or "path crossed" (OQ-25 c)
+- **VV. If the metadata guard refuses anyway (a bug)**, the app strips again and saves that moment once; the stored time may be slightly later. One press is still one photo (Phase-1-Amendments OQ-26)
+
+*SS–VV above were ruled on 2026-10-31; WW–ZZ below also 2026-10-31.*
+
+- **WW. Rings under B4's "per year with the app" option show only on the user's own profile.** Others see one ring per finished reveal, so TT holds (gate-1 r5 NB-24)
+- **XX. The guard-bug retry is judged and stamped at the original press instant**, so the press always gives the photo it would have given (gate-1 r5 NB-25)
+- **YY. No profile picture.** The field stays unused, as Decisions-Needed C7 (gate-1 r5 NB-26)
+- **ZZ. SS means the reveal state is never shown or readable as a field to a public reader.** A public reader may infer it from the Positivity Feed, rings and photos appearing (Rubric G-23)
+- **AAA. The press instant wins.** A guard-bug retry is stored at the original press instant (XX). VV's "the stored time may be slightly later" is retired (Screen-Inventory OQ-48)
+- **BBB. The Positivity Feed sorts newest reflection first**, by the reflection's written time (Phase-1-Amendments OQ-28)
+- **CCC. Public viewers get a ring count only**: one reader returns the number of finished reveals for a profile, and nothing else, no dates (Phase-1-Amendments OQ-29)
+- **DDD. If stripping fails twice for one press**, the user sees nothing different; that press gives no photo and the bug is logged. No error, no "try again" (Phase-1-Amendments OQ-27; Screen-Inventory OQ-47)
+- **EEE. Inferring dates is allowed.** §20 T means journey dates are never shown or readable as fields to a public reader; narrowing them from capture and reflection dates the reader can already see is allowed, as ZZ (Phase-1-Amendments OQ-30)
+- **FFF. The bug log stays id-free**, and the trusted-code gap (a product connection changing a log setting) is accepted alongside OQ-12, to fix before real users (Phase-1-Amendments OQ-31)
+- **GGG. After a press is lost (DDD)** ~~the camera returns as after any press, with no note offer~~ (note-offer part retired by JJJ); no frame or highlight place is used, because nothing was stored (Phase-1-Amendments OQ-32 a; Screen-Inventory OQ-50)
+- **HHH. The note step retries like capture**: strip again and save once at the original instant; if it fails twice, nothing is shown and the bug is logged (Phase-1-Amendments OQ-32 b)
+- **III. A note lost twice ends the note step**, as after a page taken. Nothing offers it again, so there is no re-shoot (gate-1 r6 NB-27)
+- **JJJ. After a lost press the screen looks exactly like a normal press, note offer included (DDD wins over GGG's "no note offer", which is retired).** A note written for a lost press has no photo to attach to and is quietly discarded; nothing invites a second press. No frame or highlight place is used (Rubric G-24)
+- **KKK. A public reader may see the order of journeys on a path.** EEE covers it; no dates are shown as fields (Screen-Inventory OQ-44)
+- **LLL. The note step finds its photo through a server-side handle**: `capture()` gives the server route a one-time handle for that photo, valid for the note window, never exposed to the device as a photo id. No model change to P1:49's accepted/refused result as seen by the user (Phase-1-Amendments OQ-33)
+- **MMM. III is enforced by the server route only**; the database stores nothing about a lost note. Accepted alongside OQ-12, revisit before real users (Phase-1-Amendments OQ-34)
+- **NNN. After a lost press the note step closes 15 minutes after the press**, exactly as after a real photo (Screen-Inventory S-12 reading, confirmed)
+- **OOO. `joined_at` is set to `app_now()` at join**; nobody can back-date it. The loader joins each user at the right simulated time (Phase-1-Amendments OQ-5)
+
+- **PPP. Note handles may be lost on a server restart** in the local prototype; that note step then ends early and nothing wrong is stored. Recorded as a residual next to OQ-12, solved before real users (Phase-1-Amendments OQ-35)
+
+- **QQQ. A lost press looks like the normal press it would have been.** Whether the press would be accepted is judged first, at the press instant: if a normal press would be refused, the normal refusal shows; if it would be accepted, it looks accepted, note offer included (JJJ). Retires the "never computed" reading under GGG (Rubric G-25)
+- **RRR. A note press answered "closed" after a server restart (PPP) looks exactly as when the note window has ended**: the note step is simply not offered. No message, no timer, nothing inviting another photo (rules r8 V2)
+
+- **SSS. The gaps left by judging a press first are accepted for the prototype** (an unlogged strip fault on a refused press; trusted code testing acceptance without a frame; accepted-only log lines), on the "Before real users" list (Phase-1-Amendments OQ-36)
+- **TTT. The note-save timing gap (about 5 ms) is accepted for the prototype**, on the "Before real users" list (Phase-1-Amendments OQ-37)
+- **UUU. When the note window ends while the user is on the note screen, nothing on screen changes on its own.** The next note press is simply not taken and the step quietly ends (Screen-Inventory OQ-24 residual)
+- **VVV. A saved note page shows no confirmation.** The step simply ends, as after capture, so a lost note looks identical (Screen-Inventory S-12)
+- **WWW. Skipping the note step ends it for good**; no note can be added later in the 15 minutes (Screen-Inventory OQ-24)
+- **XXX. Decisions-Needed C7 is decided in full**: no profile picture anywhere, the profile shows the owner's name in the circle, and announcements carry no image (Screen-Inventory OQ-49; extends YY)
+- **YYY. The note window ends at unlock.** No note is added once the journey unlocks (reworded 2026-10-31; the reveal is unaffected); the note step ends then, and looks exactly like the window ending (UUU, RRR) (Rubric G-26)
+- **ZZZ. A note lost twice gets the same answer as a saved note**, byte for byte, so nothing differs (VVV) (gate-1 r8 NB-31)
+- **AAAA. The retry's timing gap on an image-check bug (10–21 ms) is accepted for the prototype**, on the "Before real users" list (Phase-1-Amendments OQ-38)
+- **BBBB. Outside code that never sends the skip could still add a note in the window: accepted with OQ-12**, on the "Before real users" list. If the note step refuses after the route read the window as open, the device gets the one "closed" answer (Phase-1-Amendments OQ-39)
+- **CCCC. At the unlock instant, capture and the note step end quietly.** Nothing changes on screen on its own (as UUU); the next press is not taken, and the app goes to the profile, where "Your Journey is ready" appears (Decisions-Needed C1). No refusal about frames (Rubric G-27)
+- **DDDD. "Leaving capture" means moving to another screen inside the app.** Locking the phone, a call or the app going to the background do not end the note step; the 15-minute window and unlock still apply (Rubric G-28)
+
+*AAA–DDDD above were ruled on 2026-10-31.*
 
 ### Still open — can wait
 

@@ -6,6 +6,22 @@ Version 1, 2026-10-27. No code exists yet. Nothing below has been audited.
 
 Last updated: 2026-10-27 (second pass). Aligned with the provisional defaults in `Decisions-Needed.md` (B1–B16, C1–C16, approved by the user on 2026-10-27 for the prototype). Added R-141 to R-149. Added "Provisional default" lines to checks and Gaps. Marked the Gaps that section A is fixing. Re-cited every `CL:` line after the 2026-10-27 rule zero rewrite moved `CLAUDE.md` down (old 15 → 17; old 21 onward +9). No check renumbered or removed.
 
+Updated 2026-10-30 (re-audit of `Screen-Inventory.md` round 1, `docs/reviews/2026-10-30-rules-screen-inventory-r1.md`): added R-150. Added `Provisional default` lines for B17, B18 and B19, which `Decisions-Needed.md` gained in commit fdb83d3, under R-009, R-103, G-14 and G-17. No check renumbered or removed.
+
+Updated 2026-10-30 (rules audit `docs/reviews/2026-10-30-rules-phase-1-r4.md`, after FS §20 T–DD and Decisions-Needed B20–B26): added R-151 (highlight facts after unlock, FS §20 DD, B24) and R-152 (journey type, dates, chapter and feeling tags never public, FS §20 T, CC). Added `Decided` lines for FS §20 U (R-040, R-043), X (R-068, R-142) and Z (R-141), and `Provisional default` lines for B20–B26 under R-040, R-117, R-119 and R-141. Corrected R-103's B9 reading, which still said "may be filtered by chapter" after FS §20 Y, and R-116's source `FS:299` (now §20 W) to `FS:321` (§21). No check renumbered or removed.
+
+Updated 2026-10-30 (rules audit `docs/reviews/2026-10-30-rules-phase-1-r5.md`, after FS §20 EE–HH): added R-153 (only the panel moves time or flips switches, FS §20 EE) and R-154 (non-owners see a capture date, never its time, FS §20 GG). Added `Decided` lines for FS §20 EE (R-141), FF (R-070), GG (R-151 residual) and HH (R-063, R-142). No check renumbered or removed.
+
+Updated 2026-10-31 (rules audit `docs/reviews/2026-10-31-rules-phase-1-r6.md`, after FS §20 II–VV): added R-155 to R-165 and G-23. FS §20 MM and OO leave the product roles with no privilege on any user-content table, so a direct `count(*)` is refused rather than 0. `Updated 2026-10-31` how-to-check lines therefore move each affected test onto the readers and the table owner (R-164 lists them). Added `Decided` lines for FS §20 TT (R-008, R-152), SS (R-152), LL and JJ (R-154), UU (R-088, R-089), and PP and VV (R-031). Corrected R-116's source: §21 moved to FS:335 when §20 grew. The highlight list proposed in `Phase-1-Amendments.md` §4 item 1, now including `highlight_rows`, is R-156. The id and sequence check of §4 item 6 is R-155. No check renumbered or removed.
+
+Updated 2026-10-31 (rules audit `docs/reviews/2026-10-31-rules-phase-1-r7.md`, after FS §20 WW–HHH): added R-166 (another user's circle comes from a count that moves only on a finished reveal and is never shown as a number, FS §20 CCC, WW), R-167 (the guard-bug log carries nothing about a user and no product role reads it, FS §20 DDD, FFF), R-168 (no screen state holds what its own never-list bans) and G-24 (DDD against GGG). Added `Decided` lines for FS §20 XX, AAA, DDD, GGG and HHH (R-160, whose r6 `Open` note is closed by XX and AAA), AAA, BBB and DDD (R-155 (d)), EEE (R-152), WW (R-161), ZZ and CCC (R-162, G-23). `Updated` lines on R-116 (§21 moved to FS:350), R-160 (note-step cases), R-161 and R-162 (implementation now specified) and R-165 (wider open-word list; OQ answers that name a screen). No check renumbered or removed.
+
+Updated 2026-10-31 (rules audit `docs/reviews/2026-10-31-rules-phase-1-r8.md`, after FS §20 III–PPP): added R-169 (the note handle never leaves the server route, FS §20 LLL), R-170 (a lost press and its note look and answer exactly like a saved one, FS §20 DDD, JJJ, NNN), R-171 (every note-route answer and every end of the note step has a screen row, FS §20 PPP) and G-25 (a lost press that would have been refused). Added `Decided` lines for FS §20 JJJ (R-160, closing G-24, and R-168), III, LLL, MMM, NNN and PPP (R-160), KKK (R-152), OOO (R-120, R-161). R-160's GGG line and its r7 (3) wording ("no S-12 offer") held the behaviour JJJ retired: they are kept as history and superseded by the JJJ line, not deleted. `Updated` lines on R-116 (§21 moved to FS:361), R-165 ((5) and (6)) and R-167 (scope). No check renumbered or removed.
+
+Updated 2026-10-31 (rules audit `docs/reviews/2026-10-31-rules-phase-1-r9.md`, after FS §20 QQQ–XXX): added R-172 (a dated record is appended to, never rewritten to cite a later ruling), R-173 (a note step that has ended on screen has ended at the server: no later note press for that press is taken, whatever the device sends, FS §20 WWW, III) and G-26 (a note window that crosses the journey's unlock). Added `Decided` lines for FS §20 QQQ (R-160, R-170, closing R-170's `Open` note and G-25), RRR, UUU, VVV and WWW (R-160, R-171), XXX (R-086, R-126, G-9, G-10), and `Accepted residual` lines for SSS (R-138, R-160) and TTT (R-170). `Updated` lines on R-116 (§21 moved to FS:371), R-159 (the guard now runs after the press is judged, FS §20 QQQ), R-170 ((3) read "a lost press does no strip", which r8 N3's carriage retired; added (4), the press's own timing) and R-171 (the ends list after WWW and UUU). Lead-tech flagged R-170 (3) and the R-170 G-25 `Open` line as stale; both are kept as history and superseded, not deleted. No check renumbered or removed.
+
+Updated 2026-10-31 (rules audit `docs/reviews/2026-10-31-rules-phase-1-r10.md`, after FS §20 YYY–BBBB): added R-174 (a ruling's general words are carried only with the thing it rules, so "nothing is added to a journey once it unlocks" never bars a reveal write), R-175 (a client act that a server rule depends on is stated on the screen that performs it, for every trigger the server design names), G-27 (capture or the note step open at the unlock instant) and G-28 (what counts as leaving capture). Closed G-26 (FS §20 YYY, BBBB). Added `Decided` lines for YYY (R-170, R-171, G-26), ZZZ (R-160, R-170), BBBB (R-171) and `Accepted residual` lines for AAAA (R-170) and BBBB (a) (R-173). `Updated` lines on R-116 (§21 moved to FS:375, "A time control" FS:379), R-165 ((4) also covers body lines that assign a behaviour to a named screen), R-169 ((2) also scans for the journey id, which the route entry now holds) and R-170 ((4): a busy indicator shown only after a delay fails). No check renumbered or removed.
+
 ---
 
 ## What this is for
@@ -15,7 +31,7 @@ Every later audit and every rules test runs against this list. Each check states
 - **auto**: a test, scan or script can decide it. These must run in the build and fail it (R-137)
 - **review**: a person has to read the screen, copy or design to decide it
 
-The stack and database host are not decided yet (`Status.md` Open decisions 1, L-004). Each statement describes behaviour. Where a check names Postgres grants, triggers or row-level security, that is the **current implementation** from `Phase-1-Proposal.md` §2.1, recorded so the test author knows where the rule lives today. If the stack changes, the statement stays and the mechanism changes.
+The stack was decided 2026-10-30: local Postgres first (`Status.md`); the deploy host is still open (L-004). Each statement describes behaviour. Where a check names Postgres grants, triggers or row-level security, that is the **current implementation** from `Phase-1-Proposal.md` §2.1, recorded so the test author knows where the rule lives today. If the stack changes, the statement stays and the mechanism changes.
 
 ## How the rubric grows
 
@@ -36,7 +52,7 @@ The stack and database host are not decided yet (`Status.md` Open decisions 1, L
 | BP | `docs/Build-Plan.md` |
 | MJC | `docs/My-Journey-Concept.md` (cited only for §29 and under Gaps) |
 | RG | `.claude/agents/rules-guardian.md` |
-| DN | `docs/Decisions-Needed.md` (cited by ID: A1–A12, B1–B16, C1–C16) |
+| DN | `docs/Decisions-Needed.md` (cited by ID: A1–A12, B1–B26, C1–C18 (C17, C18 added 2026-10-30); B17–B19 added 2026-10-27 in fdb83d3) |
 
 `docs/Overview.md` is historical and is never cited.
 
@@ -52,6 +68,7 @@ Test fixtures named below come from `Phase-1-Proposal.md` §3. Steady Lantern #6
 - **Source:** CL:73, CL:81, FS:74–75, FS:234, P1:48. **= §2.5 check 4** (rows and count)
 - **How to check:** As Steady Lantern at simulated 2026-12-31 23:59:59, list Lantern #6 photos (expect 0 rows), count them (expect 0), and fetch a known photo id from the fixture (expect not found or refused). Repeat at 2027-01-01 00:00:00 and expect the rows. Run the same as the app's own database role, not only through the API.
 - **Current implementation:** row-level security on photo rows, readable only when `app_now() >= unlocks_at`, owner included (P1:48a).
+- **Updated 2026-10-31 (FS §20 MM, OO; R-164):** the viewer role holds no privilege on any user-content table, so "list" and "count" are read through `photo_read` and `note_read` (expect 0 rows, `count(*)` 0), and the same statements on the tables themselves, `EXPLAIN` included, must be refused (`permission denied`). The refusal on the table does not stand in for the 0-row half: both are required. `EXPLAIN` on each reader shows the fixed estimate before and after (R-157)
 
 ### R-002
 - **Statement:** Before unlock, every stored image of a sealed journey, photo and note alike, is ciphertext to everyone, and nothing releases its key until unlock.
@@ -59,12 +76,14 @@ Test fixtures named below come from `Phase-1-Proposal.md` §3. Steady Lantern #6
 - **Source:** FS:234, P1:48b, P1:105. **= §2.5 check 4** (blobs)
 - **How to check:** Read the raw stored bytes of a Lantern #6 photo and note before unlock. They must not start with any image signature (JPEG `FF D8 FF`, PNG `89 50 4E 47`, WebP `RIFF....WEBP`, HEIC `ftyp`). Call the key-release path before unlock: refused. Call it at unlock: key returned.
 - **Current implementation:** per-journey key released by one function, only after unlock (P1:48b).
+- **Updated 2026-10-31 (FS §20 MM, OO; R-164):** no product role can read the stored bytes (the tables refuse, and before unlock the readers return no row), so the test reads the raw bytes as the table's owning role, outside any product connection, and runs the signature check on those. Added: after unlock, the decrypted image has no metadata segment (R-159)
 
 ### R-003
 - **Statement:** Before unlock, no handwritten note, tag, person tag or reflection belonging to a sealed journey is readable by anyone, the owner included.
 - **Type:** auto · **Applies to:** data, API
 - **Source:** FS:74, FS:234, P1:48a. **= §2.5 check 4** (extended to the other sealed rows P1:48 names)
 - **How to check:** The R-001 access test, run against every table and endpoint that holds note, tag, person-tag or reflection data for Lantern #6.
+- **Updated 2026-10-31 (FS §20 OO; R-164):** "every table and endpoint" now means every reader (`note_read`, `person_tag_rows()`, `journey_chapter_rows()`, `journey_feeling_tag_rows()`, `reflection_rows()`, `photo_visibility_rows()`, `highlight_rows()`) and every route: 0 rows for Lantern #6. Each of those tables refuses the viewer role directly
 
 ### R-004
 - **Statement:** No plaintext copy, thumbnail, resized preview or other derivative of a sealed photo or note exists anywhere: server storage, CDN, logs, browser cache, IndexedDB, local storage, service-worker cache or a live object URL.
@@ -96,7 +115,8 @@ Test fixtures named below come from `Phase-1-Proposal.md` §3. Steady Lantern #6
 - **Source:** FS:246, FS:279 (§20 I), P1:30 (D17), P1:84, CL:101
 - **How to check:** As Second Wind, call every endpoint and open every screen about Steady Lantern during Lantern #6. Compare with the same calls about First Light (no journey). The only difference allowed is the journey-underway flag.
 - **Current implementation:** `has_journey_underway(user)` returns true or false (P1:84).
-- **Provisional default:** Decisions-Needed B6: Others learn nothing about highlights. Holds as written, and now explicitly covers the highlight record, which `P1:48` does not seal: no endpoint or screen tells anyone but the owner that a highlight was started, is open, or when. Add to the comparison a run where Steady Lantern has a highlight open: Second Wind's responses must still match the First Light run apart from the journey-underway flag (closes G-13 for others)
+- **Provisional default:** Decisions-Needed B6: Others learn nothing about highlights. Holds as written, and now explicitly covers the highlight record, which `P1:48` did not seal until FS §20 AA (2026-10-30) sealed it: no endpoint or screen tells anyone but the owner that a highlight was started, is open, or when. Add to the comparison a run where Steady Lantern has a highlight open: Second Wind's responses must still match the First Light run apart from the journey-underway flag (closes G-13 for others)
+- **Decided 2026-10-31 (FS §20 TT, `FS:324`):** others never learn a user's join date (R-161). A join date can equal the commit date of a journey that is still sealed
 
 ### R-009
 - **Statement:** The owner of a sealed journey sees its type, commit date and unlock date, and nothing else about it.
@@ -106,12 +126,14 @@ Test fixtures named below come from `Phase-1-Proposal.md` §3. Steady Lantern #6
 - **Provisional default:** Decisions-Needed C2: The unlock date is shown as a plain date, never relative ("in 64 days"). The owner's unlock date is allowed as a date only (see R-013)
 - **Provisional default:** Decisions-Needed B6: The owner sees only "a highlight is open", with no end time and no countdown. Under B6 the check reads: type, commit date, unlock date and, while a highlight is open, the bare fact that one is open. Its start time, end time, elapsed or remaining time, how many highlights are used or left, and any photo count in it all fail
 - **Provisional default:** Decisions-Needed C3: The sealed-year screen does not point to earlier journeys. Nothing about an earlier journey, including an open reflection slot, appears on the sealed-year screen
+- **Provisional default:** Decisions-Needed B19: The owner of a sealed journey sees its type, commit date and unlock date and nothing else (`P1:84`; `FS:74` read as covering the contents). Holds as written; B19 settles the first half of G-17 for the prototype. B19's "nothing else" and B6's "a highlight is open" (line above) read against each other. **Decided 2026-10-30 (FS §20 S):** B6 holds; the owner sees "a highlight is open", nothing more
 
 ### R-010
 - **Statement:** A capture changes nothing that any reader can observe, the owner included: no "last captured", "active today", "captured this week", recent-activity mark or announcement.
 - **Type:** auto · **Applies to:** API, UI
 - **Source:** FS:246, FS:74, CL:73
 - **How to check:** As Lantern, Second Wind and First Light, snapshot every read endpoint about Lantern. Capture a photo as Lantern. Snapshot again. Every snapshot must match its earlier one. The capture call's own `accepted` reply is the only thing that differs.
+- **Updated 2026-10-31 (FS §20 MM, OO):** the snapshots cover every reader's output for each of the three viewers, plus the R-157 differential catalog fingerprint. A direct `count(*)` on a table is refused and does not count as a snapshot
 
 ### R-011
 - **Statement:** The activity graph for a journey is never shown or returned while that journey is sealed. It appears only after the year unlocks.
@@ -140,6 +162,39 @@ Test fixtures named below come from `Phase-1-Proposal.md` §3. Steady Lantern #6
 - **Source:** CL:81 ("unreadable, not merely hidden in the UI"), FS:234
 - **How to check:** Build the route list from the code. Run the R-001 and R-008 tests against every route. Trigger each capture refusal and confirm the error text holds no number and no photo data.
 
+### R-151
+- **Statement:** After unlock, only the owner learns anything about the journey's highlights: whether a photo was taken in a highlight, when a highlight started or ended, and how many there were. No other reader, network or public, learns it from any row, column, field, marker or grouping.
+- **Type:** auto · **Applies to:** data, API, UI
+- **Source:** FS §20 DD (`photo.highlight_id` owner only, also after unlock), DN B24 (highlight rows owner only after unlock), DN B6 ("Others learn nothing about highlights", with no time limit), FS §20 AA. R-008 covers only the sealed year. Found by `docs/reviews/2026-10-30-rules-phase-1-r4.md` finding V2 (`Phase-1-Amendments.md:226` still makes `highlight_id` "as readable as the photo itself")
+- **How to check:** At baseline, as Second Wind (on Lantern's map) and as First Light (public reader), read every Lantern #1 photo Wind or Light can read, 4 of Wind's tagged photos being inside the graduation-party highlight (P1:266): no response carries `highlight_id`, a highlight id, or any field that differs between highlight and normal photos; `highlight` rows return 0 rows. Repeat as Lantern: `highlight_id` and the highlight rows are present. UI review of Walking a path, A photo followed forward and Another user's profile as a non-owner: no "highlight" label, badge, border, grouping or section. Grep aid: `highlight` in reader-side components and serializers.
+- **Current implementation:** RLS on `highlight` with owner-only readers after unlock (B24); `photo.highlight_id` withheld from non-owners by a column grant or an owner-aware view, since row-level security alone cannot hide one column of a readable row. Before 2026-10-30, `P1:92` did not say how. **Updated 2026-10-30:** now stated in `P1:48` (e) and `P1:92`: column grant without `highlight_id`, owner-only `photo_highlight_id()`, read view `photo_read` (Phase-1-Amendments §4 item 4).
+- **Provisional default:** Decisions-Needed B24: After unlock, highlight rows are readable by the owner only. Holds as written
+- **Residual (weakest point, reported by every audit; narrowed by FS §20 GG on 2026-10-30, see next line):** readers who can see `captured_at` of many photos from one day (Lantern #1: 19 in 24 hours) can infer a highlight. Neither DD nor B24 addresses it; it goes to the supervisor, not into the build
+- **Decided 2026-10-30 (FS §20 GG, `FS:311`):** readers other than the owner see a photo's capture date, never its time (R-154). This narrows the residual above but does not close it: 19 Lantern #1 photos dated the same day still suggest a highlight. The residual stays reported until the user rules on it
+- **Updated 2026-10-31 (FS §20 MM, OO):** "`highlight` rows return 0 rows" is read through `highlight_rows()`; the `highlight` table refuses every product role. The only ways highlight rows can be reached are fixed by R-156
+
+### R-156
+- **Statement:** Highlight rows can be reached by a product session in four ways only: `capture()` and `start_highlight()` (which answer accepted or refused), `highlight_open()` (true or false, owner only, R-009) and the owner's reader after unlock. No other function, view, policy, rule or trigger can read or write them.
+- **Type:** auto · **Applies to:** data
+- **Source:** FS §20 AA, DD, MM; DN B6, B24; R-008, R-151. Proposed by `Phase-1-Amendments.md` §4 item 1 (line 264), with the list extended to `highlight_rows` for FS §20 MM (§10). Numbered by `docs/reviews/2026-10-31-rules-phase-1-r6.md`
+- **How to check:** As the table owner, list every object whose definition names the relation `highlight` as a whole identifier, not as part of another name (`highlight_id`, `highlight_open`, `start_highlight`). Scan `pg_get_functiondef()` for every function, `pg_get_viewdef()` for every view and materialised view, `pg_policies.qual` and `with_check` for policies on every other table, `pg_rewrite` rules and trigger functions, and, for SQL-standard bodies, `pg_depend` rows on `'highlight'::regclass`. The set must equal {`capture`, `start_highlight`, `highlight_open`, `highlight_rows`}. A name scan cannot see a table named at run time, so the check also fails on any function owned by the table owner whose body builds SQL at run time (PL/pgSQL `EXECUTE`, `format(` used to build a statement, `query_to_xml`, `dblink`), unless the rules-guardian has reviewed it onto a closed list. The R-151 and R-008 tests must then pass.
+- **Current implementation:** highlight RLS is FORCEd, and the `highlight_rules` policy lets any table-owner definer function called from an app or panel session see every row (`Phase-1-Amendments.md` §4 item 1, lines 260–265). That policy is why this check exists: a new definer function or owner-owned view that names `highlight` would read every user's highlights
+
+### R-157
+- **Statement:** Nobody can tell from the database's own bookkeeping that anyone captured, started a highlight, reflected, tagged or committed in content they cannot read. No statistic, row estimate, table size, transaction or WAL counter, lock, session list or other database changes in a way they can see.
+- **Type:** auto · **Applies to:** data
+- **Source:** FS §20 MM (`FS:317`), OO (`FS:319`), RR (`FS:322`); R-006 ("a response whose size grows with the count"), R-010. Proposed by `Phase-1-Amendments.md` §10 checks 1–4 (lines 638–643) and §11 check 4 (line 721). Numbered by r6
+- **How to check:** (1) The differential catalog test of `Phase-1-Amendments.md` §10 check 1, with targets extended to every user-content table and its primary key (§11 check 4). Run it as the viewer role, then as the panel role both directly and after its switch to the viewer role. Only the fixed allow-list of clock and random functions may differ. (2) The named refusals of §10 check 2. (3) After reset, the working database's ACL grants CONNECT to the two product roles only, and neither role can connect to any other database. (4) No statistics extension is installed or preloaded (§10 (d)). (5) `EXPLAIN` on every reader shows the same fixed estimate before and after the activity in (1).
+- **Accepted residual (FS §20 RR, `FS:322`):** the time a read takes may still depend slightly on rows the viewer cannot read. This is accepted for the prototype on dummy data and must be revisited before any real user's data enters the system. A reader that scans a whole table and then filters is not covered by the residual, and it fails R-158
+- **Current implementation:** the product roles hold no table privilege; the cluster superuser closes the catalog; the one-database CONNECT grant is re-applied after every clone (`Phase-1-Amendments.md` §10, §2.3; `P1:48` (h), `P1:179`)
+
+### R-158
+- **Statement:** Every read of user content goes through a reader that returns exactly what that content's read rule allows. Beyond the accepted timing residual, it says nothing about the size, shape or timing of what it holds back. No product role reads or writes a user-content table directly.
+- **Type:** auto · **Applies to:** data
+- **Source:** FS §20 OO (`FS:319`), MM, RR. Proposed by `Phase-1-Amendments.md` §11 checks 1–3 (lines 716–720). Numbered by r6
+- **How to check:** (1) The viewer role, the panel role and PUBLIC hold no table or column privilege on any table in the product schema, except SELECT on `journey_type`, `chapter` and `prototype_option`. A new table fails until it is listed there or given a reader. (2) Every set-returning function the viewer role may execute is a definer function with a fixed row estimate. With sequential scans disabled, the plan of its body has no sequential scan on any user-content table other than `user`. (3) For each fixture viewer, at several clock points and under every setting of `b2` and `c6`, each reader returns exactly the rows its read rule allows. The read rule is checked against this rubric and the provisional defaults, not only against the table's policy: an equivalence test against a wrong policy still passes (r6 V3, B10). (4) Every write goes through a definer function whose body carries the check its insert policy carried. The refusal cases of R-026, R-046, R-052, R-057 and R-122 are run through those functions (R-164).
+- **Current implementation:** `Phase-1-Amendments.md` §11 (one reader per table, `ROWS 1000`, journey first), `P1:44–45`, `P1:48` (h)
+
 ---
 
 ## 2. Immutability and append-only
@@ -150,6 +205,7 @@ Test fixtures named below come from `Phase-1-Proposal.md` §3. Steady Lantern #6
 - **Source:** CL:65, CL:80, MP:38, FS:99, FS:229, P1:44. **= §2.5 check 1**
 - **How to check:** As the app role, run UPDATE, DELETE and TRUNCATE on the reflection store: each raises. Confirm no API route accepts an edit or delete of a reflection.
 - **Current implementation:** INSERT and SELECT grants only, plus a trigger that raises on UPDATE, DELETE and TRUNCATE (P1:44).
+- **Updated 2026-10-31 (FS §20 OO; R-164):** the viewer role now holds no privilege on the reflection table, so its UPDATE, DELETE and TRUNCATE fail on privilege before the trigger runs. Run them also as the table's owning role: the append-only trigger must raise its own error
 
 ### R-016
 - **Statement:** No screen offers to edit, delete, undo or replace a saved reflection.
@@ -168,6 +224,7 @@ Test fixtures named below come from `Phase-1-Proposal.md` §3. Steady Lantern #6
 - **Type:** auto · **Applies to:** data, API
 - **Source:** FS:266 (§20 mechanics 6), P1:20 (D7), P1:45, CL:99. **= §2.5 check 1**
 - **How to check:** UPDATE, DELETE and TRUNCATE on photo rows and their images raise. No API route deletes a photo or swaps its image.
+- **Updated 2026-10-31 (FS §20 OO; R-164):** run the UPDATE, DELETE and TRUNCATE also as the table's owning role; the trigger, not a missing privilege, must raise
 
 ### R-019
 - **Statement:** No screen offers to delete, remove or replace a photo.
@@ -186,18 +243,21 @@ Test fixtures named below come from `Phase-1-Proposal.md` §3. Steady Lantern #6
 - **Type:** auto · **Applies to:** data, API, UI
 - **Source:** FS:44, CL:87, MP:55, P1:76. **= §2.5 check 1**
 - **How to check:** UPDATE and DELETE on journey rows raise. No route or screen changes a journey's type.
+- **Updated 2026-10-31 (FS §20 OO; R-164):** run the UPDATE and DELETE also as the table's owning role; the trigger, not a missing privilege, must raise
 
 ### R-022
 - **Statement:** A user's name is chosen once and never changes.
 - **Type:** auto · **Applies to:** data, API, UI
 - **Source:** FS:268 (§20 mechanics 8), P1:32 (D19), P1:61. **= §2.5 check 1**
 - **How to check:** UPDATE on the user name raises. No settings screen offers a rename.
+- **Updated 2026-10-31 (FS §20 OO; R-164):** run the UPDATE also as the table's owning role; the trigger, not a missing privilege, must raise
 
 ### R-023
 - **Statement:** A finished reveal cannot be un-finished or re-opened.
 - **Type:** auto · **Applies to:** data, API
 - **Source:** P1:164, FS:151. **= §2.5 check 1**
 - **How to check:** UPDATE and DELETE on the reveal-finished record raise. No route re-opens a reveal.
+- **Updated 2026-10-31 (FS §20 OO; R-164):** run the UPDATE and DELETE also as the table's owning role; the trigger, not a missing privilege, must raise
 
 ---
 
@@ -224,11 +284,12 @@ Commit, capture, frames, highlights and the note.
 - **Source:** FS:273 (§20 C), P1:16 (D3), CL:87. **= §2.5 check 3**
 - **How to check:** As Steady Lantern at baseline, call Commit: refused. Also try inserting a second journey directly as the app role: raises.
 - **Current implementation:** exclusion constraint on overlapping `[committed_at, unlocks_at)` per user (P1:47).
+- **Updated 2026-10-31 (FS §20 OO; R-164):** a direct insert by the viewer role is now refused for lack of privilege, which no longer tests the one-journey rule. Call `commit()` as Lantern (refused), and insert an overlapping journey as the table's owning role (the exclusion constraint raises)
 
 ### R-027
 - **Statement:** Once the current journey has unlocked, the next Commit is accepted, whether or not that journey's reveal is finished.
 - **Type:** auto · **Applies to:** API
-- **Source:** FS:273, P1:16 (D3), P1:209 (Long Way Round between journeys)
+- **Source:** FS:273, P1:16 (D3), P1:210 (Long Way Round between journeys)
 - **How to check:** As Long Way Round at baseline (#4 unlocked, reveal never finished), Commit: accepted. As Steady Lantern at exactly 2027-01-01 00:00:00: accepted.
 
 ### R-028
@@ -254,6 +315,7 @@ Commit, capture, frames, highlights and the note.
 - **Type:** auto · **Applies to:** API, UI, copy
 - **Source:** CL:64, MP:37, FS:55, FS:228
 - **How to check:** UI test: after the shutter tap, no control returns to the viewfinder for the same frame. Grep for `retake`, `re-take`, `try again`, `redo`, `discard`, `undo`, `use photo`. No API route replaces a photo (R-018).
+- **Decided 2026-10-30 and 2026-10-31 (FS §20 PP, `FS:320`; VV, `FS:326`):** a metadata refusal never reaches the user, and the app's single automatic re-save of the same press is not a retake. Covered by R-160
 
 ### R-032
 - **Statement:** Capture never refuses or warns because of image quality: blur, darkness, composition or framing.
@@ -310,11 +372,13 @@ Commit, capture, frames, highlights and the note.
 - **Source:** FS:264 (§20 mechanics 4), P1:19 (D6), P1:133, CL:97
 - **How to check:** No job or rule starts a highlight. Start one and capture at +23:59 (accepted as highlight) and +24:01 (treated as normal frame or refused). Start one 2 hours before unlock: it ends at unlock.
 - **Provisional default:** Decisions-Needed B16: A highlight lasts 24 hours of elapsed time; one time zone (UTC). The end is start + 86,400 seconds on the app clock, never a wall-clock "same time tomorrow"
+- **Decided 2026-10-30 (FS §20 U):** a capture at +24:01 is no longer "normal frame or refused" by choice: it takes a normal frame if one is left, otherwise it is refused. Test both states
+- **Provisional default:** Decisions-Needed B25: A highlight is closed at exactly its end time. Add the case: a capture at exactly start + 24:00:00.000 is not a highlight photo, and `highlight_open()` returns false at that instant
 
 ### R-041
 - **Statement:** Only one highlight can be open at a time. Starting another while one is open is refused.
 - **Type:** auto · **Applies to:** API
-- **Source:** FS:284 (§20 N), P1:345 (R3), CL:97, MP:65
+- **Source:** FS:284 (§20 N), P1:406 (R3), CL:97, MP:65
 - **How to check:** Start a highlight, then start a second inside the 24 hours: refused.
 
 ### R-042
@@ -328,6 +392,7 @@ Commit, capture, frames, highlights and the note.
 - **Type:** auto · **Applies to:** API
 - **Source:** FS:265 (§20 mechanics 5), P1:19 (D6), P1:96, CL:97
 - **How to check:** Fill a Contemplator highlight to 12 (Lantern #5 shape), try a 13th: refused as a highlight photo. After the highlight, normal frames are still available at the same count as before it.
+- **Decided 2026-10-30 (FS §20 U):** inside an open highlight, capture uses the highlight first; once it is full, a normal frame if one is left, otherwise refused. The 13th photo above is accepted as a normal frame when one is left and refused when none is; it is never a highlight photo. In both cases the reply is only `accepted` or `refused` (R-038)
 
 ### R-044
 - **Statement:** A highlight can only be started on a sealed journey.
@@ -370,6 +435,78 @@ Commit, capture, frames, highlights and the note.
 - **How to check:** List every route and function that reads a journey's photo or highlight rows: only capture and start-highlight may compute frames or highlights available. UI test as Steady Lantern on Lantern #6, once with a normal frame available and once with none, and once with highlights unused and once with all used: the sealed-year, capture and start-highlight screens render the same DOM before any tap.
 - **Provisional default:** Decisions-Needed B7: Frames left are never shown; a refused capture says so with no number (copy in Phase 2). Firm under B7: the camera is always offered and availability is learned only by trying. The supersede condition above does not arise while B7 is in force
 - **Provisional default:** Decisions-Needed B6: The owner sees only "a highlight is open", with no end time and no countdown. Under B6 the one allowed DOM difference is that plain "a highlight is open" state while one is open. Highlights unused and highlights all used must still render the same DOM, and the start-highlight control is not hidden, greyed or relabelled while one is open; a second start is refused on tap (R-041)
+- **Accepted residual (FS §20 SSS, `FS:355`; Before real users item 7):** since FS §20 QQQ, code that holds a product connection can call `capture()` with an image that fails the guard and learn whether a press would be accepted without using a frame (`Phase-1-Amendments.md` OQ-36 (b)). The device cannot reach it, because the server strips every image. This check's "no call other than capture" still holds: the probe is `capture()` itself. Revisit with OQ-12
+
+### R-159
+- **Statement:** No stored image, photo or note, carries a time or a place inside its file, for anyone, the owner included. An image that would carry one is never stored.
+- **Type:** auto · **Applies to:** data
+- **Source:** FS §20 KK (`FS:315`), NN (`FS:318`), QQ (`FS:321`); FS §20 GG; R-154, R-004. Proposed by `Phase-1-Amendments.md` §6 (line 446). Numbered by r6
+- **How to check:** Use the §6 sample set, generated with a fixed seed. A clean baseline JPEG is accepted by `capture()` and by the note step. Both refuse every other sample, storing no row and using no frame or highlight place: EXIF (date or GPS only), XMP, IPTC, ICC, COM, bytes after EOI, progressive, SOF1 or 12-bit frames, PNG (clean or with text, time or EXIF chunks), WebP and HEIC. Every fixture placeholder passes. After unlock, decrypt every fixture image and confirm it holds only the allowed baseline JPEG segments. The other half of PP is R-160.
+- **Current implementation:** before encryption, the strip step re-encodes the image to baseline JPEG, and `image_metadata_free()` runs as the first step of `capture()` and of the note step (`Phase-1-Amendments.md` §6; `P1:91`, `P1:105`, `P1:180`)
+- **Updated 2026-10-31 (r9; FS §20 QQQ, `FS:352`):** the line above held until QQQ. `capture()` now judges the press first (the §20 U steps 1–5) and runs `image_metadata_free()` only on a press judged accepted, still before encryption and the insert; the note step still runs it first (`Phase-1-Amendments.md` §6 lines 515 and 523; `P1:91`). The sample check therefore runs `capture()` as the owner of a sealed journey with a frame left; a press judged refused is answered `refused` whatever its image, and that is R-160's QQQ case, not a pass of this check
+
+### R-160
+- **Statement:** One shutter press is one photo. A metadata refusal never reaches the user: no error, no "try again", nothing that invites a second press. If the guard refuses anyway, the app strips the same image again and saves it once, with no action from the user and no visible difference.
+- **Type:** auto · **Applies to:** API, UI, copy
+- **Source:** FS §20 PP (`FS:320`), VV (`FS:326`); CL:64 (no retakes); R-031, R-005. Found by r6 V4 (`Phase-1-Amendments.md:445` still calls the case "not settled")
+- **How to check:** (1) Build: every decodable §6 sample, after the strip step, is accepted by `capture()` and by the note step, so the bug cannot be reached with any sample (PP). (2) UI test with the strip step forced to emit a refused image on its first pass. One press stores exactly one photo (read through the owner's reader after unlock, or by the test as the table owner). No refusal copy appears. No control returns to the viewfinder for that frame. The camera after the press is identical to an ordinary accepted press. (3) With the strip step forced to fail twice: still at most one row, and no prompt to the user. Grep aid: retry loops around `capture(` in the client, and user-facing error strings on the capture path.
+- **Open (raised by r6, not decided here):** the re-save is a second `capture()` call at a later instant. If the highlight closes, the month's frames lapse or the journey unlocks between the two calls, the re-save is refused or lands as a normal frame. "One press is still one photo" cannot hold as worded in that case. This goes to the supervisor
+- **Decided 2026-10-31 (FS §20 XX, AAA, `FS:331`, `FS:334`); closes the `Open` note above:** the retry runs inside the press's own transaction, so it is judged and stamped at the press instant. If the highlight closes, the month turns or the journey unlocks while the retry runs, the press still lands where it would have landed, and the stored `captured_at` is the press instant (`Phase-1-Amendments.md` §6, lines 473–479, evidence 526–539 and 545–547). The `Open` note stays as history
+- **Decided 2026-10-31 (FS §20 DDD, GGG, `FS:337`, `FS:340`), for (3):** if the second strip also fails, the press gives no photo, no frame or highlight place is used, nothing is shown, there is no third call, and the bug is logged (R-167). The camera returns as after any press, with no note offer. "No visible difference" in the statement is read against GGG: see G-24
+- **Decided 2026-10-31 (FS §20 HHH, `FS:341`):** the note step retries the same way: strip again and save once at the note press's instant; on a second refusal nothing is stored, nothing is shown, and the bug is logged
+- **Updated 2026-10-31 (r7):** (3) now reads: with the strip step forced to fail twice, zero new photos, no prompt, no copy, no S-12 offer, the frame and highlight counts unchanged (a later capture is accepted exactly as if the press never happened), and two refusal lines with one transaction id in the server log. Added (4), the note step: with its strip step forced to fail once, exactly one note, `written_at` equal to the note press's `app_now()`, even when the 15-minute window closes during the retry; forced to fail twice, no note row, nothing shown, the step ends as after a page taken, and no route offers the note step again for that photo (C4, R-020). The DB-level half of (4) runs in Phase 3 with the §6 sample set; the screen half in Phase 4
+- **Decided 2026-10-31 (FS §20 JJJ, `FS:343`); supersedes the GGG line above and the "no S-12 offer" in (3):** after a lost press the screen looks exactly like a normal press, note offer included; GGG's "no note offer" is retired. (3) now reads: zero new photos, no prompt, no copy, **the S-12 offer shown exactly as after a saved press**, the frame and highlight counts unchanged, and two refusal lines with one transaction id. A note written for a lost press stores nothing, attaches to no other photo (a planted "latest photo without a note" route must be caught) and is answered exactly as a saved note (R-170). The two lines above are history
+- **Decided 2026-10-31 (FS §20 III, MMM, `FS:342`, `FS:346`), for (4):** a note lost twice ends the note step as after a page taken, and nothing offers it again. The database stores nothing about a lost note, so (4)'s "no route offers the note step again" is a route test only (Phase 4); the database accepting a later note-step call is an accepted residual, with OQ-12
+- **Decided 2026-10-31 (FS §20 LLL, NNN, `FS:345`, `FS:347`):** the note step finds its photo through a server-side handle the device never holds (R-169). After a lost press the note step closes 15 minutes after the press, as after a photo: at press + 14:59 and + 15:00.000 the lost press's note gets the same answer as a photo's
+- **Decided 2026-10-31 (FS §20 PPP, `FS:350`):** handles lost on a server restart end that note step early, and nothing wrong is stored. Accepted for the local prototype, with OQ-12. What the screen shows then is R-171
+- **Decided 2026-10-31 (FS §20 QQQ, `FS:352`), for (3):** a lost press looks like the normal press it would have been, judged first at the press instant. (3) is run in each of the six `Phase-1-Amendments.md` §6 QQQ states against a rolled-back normal press at the same instant: where that press is refused, the lost press gets the normal refusal, byte-identical, no log line and no note offer; where it is accepted, the S-12 offer as in the JJJ line above. A `capture()` with the guard first must be caught
+- **Decided 2026-10-31 (FS §20 RRR, UUU, VVV, WWW, `FS:353`, `FS:357`–`FS:359`), for (4) and the note step:** a note press answered "closed" looks exactly as when the window has ended; when the window ends while the user is on the step, nothing on screen changes on its own and the next note press is simply not taken; a saved page shows no confirmation; skipping ends the step for good. A UI test of S-12 must find no confirmation after a saved page, no change at press + 15:00 while idle, and no way back after a skip
+- **Accepted residual (FS §20 SSS, `FS:355`):** a strip fault on a press judged refused is neither detected nor logged, and the server log holds refusal lines only for presses judged accepted (`Phase-1-Amendments.md` OQ-36 (a), (c)). Before real users, item 7
+- **Decided 2026-10-31 (FS §20 ZZZ, `FS:362`), for (4):** a note lost twice gets the same answer as a saved note, byte for byte. (4) gains: the device response to a note lost twice is compared with a saved note's, status line, headers and body, and must be identical (`Phase-1-Amendments.md:577`; planted fault (h))
+
+### R-167
+- **Statement:** When a captured image or a note image is lost to the guard bug, the record of it carries nothing about the user: no image, no user, journey or photo id, no app time and no statement text. No product role can read it, and it never enters the product data.
+- **Type:** auto · **Applies to:** data, dependencies
+- **Source:** FS §20 DDD (`FS:337`), FFF (`FS:339`), HHH (`FS:341`); CL:73 (nothing leaks); R-160, R-155. Proposed by `Phase-1-Amendments.md` §6 "What the build runs" (line 487). Numbered by r7
+- **How to check:** In one press, force the strip step to fail twice, with a fixed marker byte sequence in the image sent as a bind parameter. The server log then holds exactly two refusal lines with one transaction id (one line for a press saved by the retry), no `STATEMENT` line, the marker nowhere in hex or text, and no uuid in the refusal lines. Repeat for the note step. As the viewer role and the panel role, natively and after the role switch: the file-reading and log-listing functions, server-side large-object import and `COPY … FROM` a file are refused, neither role is a member of the file-reading or monitoring roles, and setting `log_min_error_statement` is refused. No table, view or reader in the product schema holds log content.
+- **Accepted residual (FS §20 FFF):** `log_parameter_max_length_on_error` is user-settable, so code that holds a product connection can write its own image into the log (Phase-1-Amendments OQ-31 (a)). Accepted with OQ-12 until real authentication; it must be revisited before any deploy
+- **Current implementation:** role settings and `%v` in `log_line_prefix`, set by the cluster script (`Phase-1-Amendments.md` §6, lines 482–484, evidence 541–570)
+- **Updated 2026-10-31 (r8):** this check covers the database server's log only. The route's own logs, traces and error output are R-169's, since under FS §20 LLL the route holds a sealed photo's id and its press instant
+
+### R-169
+- **Statement:** Nothing that ties a press to its sealed photo leaves the server route. The device never receives the note handle or any photo id, no log, trace, store or response holds it, it serves one note transaction, and it is gone once that transaction ends or 15 minutes after the press, whichever comes first.
+- **Type:** auto (responses, logs, planted faults) and review (route code) · **Applies to:** API, data, dependencies
+- **Source:** FS §20 LLL (`FS:345`), MMM (`FS:346`), NNN (`FS:347`), PPP (`FS:350`); CL:73 (nothing leaks); P1:48 (a), P1:49, P1:108; R-002, R-010, R-167. Found by r8 (N4; V1: `Screen-Inventory.md:345` still has S-12 read "Photo (id only)")
+- **How to check:** (1) Run the capture and note flows (saved, retried, lost press, lost note, closed window) and scan every byte the device receives, status lines and headers included, for a uuid: none. (2) In the same run, scan the route's stdout, stderr, access log, error output and any trace for each handle value and for each press instant at sub-second precision: none. (3) No table, file, cache, cookie or client storage holds a handle; after a note transaction ends, and after press + 15:00.000 on the app clock, the route holds no entry for that press. (4) The `Phase-1-Amendments.md` §6 planted faults are caught: handle in the press response, entry kept after a lost note, no window check for a lost press, a session-level handle. Add: a route that logs the handle is caught by (2). (5) Review: no screen spec or client code reads a photo id during the sealed year.
+- **Current implementation:** `capture()` sets the transaction-local `mj.note_handle`; the route keeps it in process memory keyed by device session and acting user; `add_note(handle uuid, img bytea)` (`Phase-1-Amendments.md` §6 lines 526–532, evidence 653–682; `P1:49`, `P1:105`, `P1:108`, `P1:180`)
+- **Accepted residual (FS §20 MMM, PPP):** code holding a product connection and a handle can call the note step again inside the 15 minutes, and a restart drops every handle. Both are revisited before real users, with OQ-12
+- **Updated 2026-10-31 (r10; FS §20 YYY):** the route's entry now also holds the id of the journey the press was into (`Phase-1-Amendments.md:562`). A sealed journey's id beside a real time records that its owner pressed then (`Phase-1-Amendments.md:946`, FFF). (2) also scans every route output for each journey id in the run, in any form: none. "What the route writes" (`:563`) must list the journey id with the handle, the press instant and the user id
+
+### R-170
+- **Statement:** A press lost to the guard bug, and a note written after it, cannot be told apart by the user from a saved press and a saved note: the device gets the same answers, the screen goes to the same next state, and nothing on screen depends on a difference in how the server handled them.
+- **Type:** auto (responses) and review (UI timing) · **Applies to:** API, UI
+- **Source:** FS §20 DDD (`FS:337`), JJJ (`FS:343`), NNN (`FS:347`), PP (`FS:320`); CL:64 (no retakes: a visible difference invites a second press); R-160, R-168. Found by r8 (N3)
+- **How to check:** (1) For paired cases (saved press and lost press; their notes at + 1 minute, + 14:59 and + 15:00.000), compare the full device responses, status, headers other than `Date`, and body: identical. (2) UI test of S-02 and S-12 with the strip step forced to fail twice: the same sequence of screen states as a saved press, the same note offer, the same end. (3) Review: no S-12 transition, indicator or end waits on the server's note answer in a way that would end the step sooner after a lost press, which does no strip, seal or write (`Phase-1-Amendments.md` §6 line 517).
+- **Open:** a lost press that would have been refused (no frame left, highlight full) is answered `accepted` (`Phase-1-Amendments.md` §6 lines 516, 529). Whether "a normal press" there means an accepted one or the refusal it would have given is G-25
+- **Decided 2026-10-31 (FS §20 QQQ, `FS:352`); closes the `Open` note above and G-25:** "a normal press" is the press it would have been. A lost press is judged at the press instant before the guard reads its image; where a normal press would be refused it is answered `refused`, where accepted it is answered `accepted` with the note offer. (1) gains the six QQQ states, each compared with a rolled-back normal press at the same instant. The `Open` note stays as history
+- **Updated 2026-10-31 (r9):** (3)'s "which does no strip, seal or write" held until r8 N3 was carried. A lost press's note now strips its page and runs the same route shape as a saved note (`Phase-1-Amendments.md` §6 line 554); what remains is the note step's own database work, about 5 ms at the median (line 555). (3) now reads: no S-12 transition, indicator or end waits on the note answer in a way that would show that gap. Added (4): the same review for the **press**. A lost press strips and walks the guard twice and stores nothing; a saved press strips once, encrypts and inserts; a press saved by the retry strips twice and inserts. No S-02 transition into S-12 waits on the press answer in a way that shows the difference. The press timing is not measured in any evidence yet
+- **Accepted residual (FS §20 TTT, `FS:356`):** the note-save timing gap (about 5 ms) is accepted for the prototype; Before real users, item 8 (`Phase-1-Amendments.md` OQ-37)
+- **Decided 2026-10-31 (FS §20 YYY, ZZZ, `FS:361`, `FS:362`):** (1) gains the unlock edge (a photo and a lost press at U − 5:00, note presses at U − 1:00, U + 0:00.000 and U + 1:00: identical answers per instant) and a note lost twice answered byte for byte as a saved note. A press at or after unlock, normal or lost, is `refused` with no entry
+- **Accepted residual (FS §20 AAAA, `FS:363`):** the extra strip after a guard refusal makes a lost press 16.7 ms and a press saved by the retry 21.1 ms slower than a saved press at the median, and a note lost twice 10.8 ms and a note saved by the retry 14.4 ms slower than a saved note (`Phase-1-Amendments.md:578–600`). Before real users, item 9
+- **Updated 2026-10-31 (r10):** since AAAA, (4) is what keeps the accepted gap off the screen. (4) now also reads: no busy, wait or "saving" indicator on any press or note press that appears only after a delay, or only when the answer is slow. A delayed indicator turns a 17–21 ms gap into something the user sees on exactly the presses that met the bug. An indicator shown identically on every press, from the press, is not this failure. UI test: with the strip step forced to fail once and twice, the S-02 and S-12 frames from press to next state match a saved press's
+
+### R-173
+- **Statement:** A note step that has ended on screen has ended at the server. After a skip, leaving capture, a page taken or a page lost twice, no later note press for that press is taken, whatever the device sends, inside the 15 minutes or after.
+- **Type:** auto (route test) and review (client) · **Applies to:** API, UI
+- **Source:** FS §20 WWW (`FS:359`: "no note can be added later in the 15 minutes"), III (`FS:342`), K (`FS:281`); CL:78–83 (enforce rules in code, not by convention); `PROVISIONAL: C4`; R-020, R-169. Found by r9 (N2): `Phase-1-Amendments.md:552` drops the entry "when the route learns that the user skipped or left capture", but no line says how it learns, and S-12 (`Screen-Inventory.md:348`) sends only the page
+- **How to check:** (1) Route test on the stopped clock: a photo; the device's skip; a note press at press + 1 minute, sent directly to the route → `closed`, no note step called, no note row. The same after leaving capture, after a page taken, and after a page lost twice. (2) Review: the device's skip and its leaving capture each reach the route as a request before the camera returns, and the route drops the entry on it; or another server-side mechanism that holds WWW is named. A skip held only by the screen fails. (3) The skip request's answer is the same for a photo and a lost press (R-170).
+- **Accepted residual (FS §20 BBBB (a), `FS:364`):** a client that never sends the skip request can have a note taken inside the 15 minutes; accepted with OQ-12 until real users (Before real users item 10). (2) still applies to the product's own client: S-12 sends the request on every trigger the server design names (R-175)
+
+### R-175
+- **Statement:** A client act that a server rule depends on is stated on the screen that performs it, for every trigger the server design names. No server rule is held by a request the screen inventory never asks the client to send.
+- **Type:** review · **Applies to:** UI, API, docs
+- **Source:** CL:78–83 (enforce rules in code); CL:17–24 (rule zero: a builder never picks); FS §20 WWW, BBBB; `PROVISIONAL: C4`; R-165 (4), R-173 (2). Found by r10 (V1): `Phase-1-Amendments.md:566` has S-12 send the skip request when the user skips **and** when it leaves capture; S-12 end (3) (`Screen-Inventory.md:340`) and Reads (`:348`) send it on skip only
+- **How to check:** For each request the route design receives from the device (`Phase-1-Amendments.md` §6: press, note press, skip request), list every trigger the design names. Each trigger appears on the sending screen's row in `Screen-Inventory.md`, with the request named. A trigger in one doc and not the other fails until the two owners agree it or the user rules. Phase 4: the client sends the request on each listed trigger (UI test)
 
 ---
 
@@ -390,7 +527,7 @@ Commit, capture, frames, highlights and the note.
 ### R-051
 - **Statement:** Each reveal choice is set once, even before the reveal is finished. A photo's visibility, each people tag, the chapter and each feeling tag cannot be changed or removed after it is set.
 - **Type:** auto · **Applies to:** data, API, UI
-- **Source:** FS:286 (§20 P), P1:347 (R5), CL:103, MP:73
+- **Source:** FS:286 (§20 P), P1:408 (R5), CL:103, MP:73
 - **How to check:** On Lantern #6 after unlock, set a photo's visibility, then try to change it: refused. Add a people tag, try to remove it: refused. Set the chapter, try another: refused. No UI control offers change or removal.
 - **Current implementation:** these records are insert-only (P1:46).
 - **Provisional default:** Decisions-Needed C5: Each set-once choice shows a one-line "this can't be changed" before it is saved. Holds as written. Under C5 that line is a statement, not a second chance: after the choice is saved there is still no change or undo control
@@ -402,13 +539,14 @@ Commit, capture, frames, highlights and the note.
 - **Source:** FS:151, FS:276 (§20 F), P1:25 (D12), P1:46, CL:103. **= §2.5 check 2**
 - **How to check:** On a revealed fixture journey (Lantern #5), insert each kind: each raises.
 - **Current implementation:** trigger refuses inserts once the journey's reveal-finished record exists (P1:46).
+- **Updated 2026-10-31 (FS §20 OO; R-164):** insert each kind through its reveal-choice writer function (refused) and as the table's owning role (the trigger raises its own error). A permission error alone does not pass
 
 ### R-053
 - **Statement:** A photo with no visibility choice is Network: once unlocked, the owner's network can read it.
 - **Type:** auto · **Applies to:** data, API
 - **Source:** FS:151, FS:276 (§20 F), P1:25 (D12), P1:166, CL:103
 - **How to check:** As Open Hands (on Round's map) at baseline, read a Long Way Round #4 photo: allowed. As First Light: refused.
-- **Provisional default:** Decisions-Needed B2 (switchable, R-142): The network can read an unlocked journey from unlock, as D12 and `P1:311` say (other setting: only after reveal finished). Holds as written under the default. Under "only after reveal finished" it reads: a photo with no visibility choice is Network, and the owner's network can read it once the reveal is finished; the Open Hands read of Long Way Round #4 (reveal never finished) is refused
+- **Provisional default:** Decisions-Needed B2 (switchable, R-142): The network can read an unlocked journey from unlock, as D12 and `P1:318` say (other setting: only after reveal finished). Holds as written under the default. Under "only after reveal finished" it reads: a photo with no visibility choice is Network, and the owner's network can read it once the reveal is finished; the Open Hands read of Long Way Round #4 (reveal never finished) is refused
 
 ### R-054
 - **Statement:** If the reveal is never finished, the journey still unlocks on its date, no "journey launched" goes out, and the owner's map is not recomputed.
@@ -421,7 +559,7 @@ Commit, capture, frames, highlights and the note.
 - **Statement:** The owner can write reflections any time after unlock, whether or not the reveal is finished.
 - **Type:** auto · **Applies to:** API
 - **Source:** P1:117
-- **How to check:** As Long Way Round, write a reflection on a #4 photo: accepted (fixture: round reflected on 2026-09-10, P1:241).
+- **How to check:** As Long Way Round, write a reflection on a #4 photo: accepted (fixture: round reflected on 2026-09-10, P1:246).
 
 ### R-056
 - **Statement:** A journey has at most one chapter, and it comes from the fixed catalogue under ME → ME, ME → YOU or ME → IT.
@@ -434,11 +572,12 @@ Commit, capture, frames, highlights and the note.
 - **Type:** auto · **Applies to:** data, API
 - **Source:** FS:267 (§20 mechanics 7), P1:26 (D13), P1:165
 - **How to check:** Insert a tag with both set, and with neither: each refused.
+- **Updated 2026-10-31 (FS §20 OO; R-164):** run both cases through the person-tag writer function (refused) and as the table's owning role (the constraint raises)
 
 ### R-058
 - **Statement:** The overview is optional. A reveal can be finished without one.
 - **Type:** auto · **Applies to:** API, UI
-- **Source:** FS:285 (§20 O), P1:346 (R4), CL:105
+- **Source:** FS:285 (§20 O), P1:407 (R4), CL:105
 - **How to check:** Finish a reveal with no overview: accepted. The finish control is not blocked by a missing overview, reflection or tag.
 - **Provisional default:** Decisions-Needed C5: Nothing is required before finishing a reveal. Under C5 the check widens: a reveal with no chapter, no feeling tag, no people tag, no visibility choice, no reflection and no overview can be finished. Nothing on the finish screen lists what is "missing" or "left to do" (R-095, R-099)
 
@@ -450,12 +589,12 @@ Commit, capture, frames, highlights and the note.
 - **Statement:** A Private photo, and its reflections, can be read by its owner and nobody else.
 - **Type:** auto · **Applies to:** data, API
 - **Source:** FS:145, FS:278 (§20 H), P1:29 (D16)
-- **How to check:** As every fixture user except Lantern, read a Lantern #5 private photo: refused (P1:309–313).
+- **How to check:** As every fixture user except Lantern, read a Lantern #5 private photo: refused (P1:316–320).
 
 ### R-060
 - **Statement:** A Network photo can be read by its owner and by every user on the owner's map, whatever their ring, and by nobody else.
 - **Type:** auto · **Applies to:** data, API
-- **Source:** FS:146, P1:311 ("outer ring is still network")
+- **Source:** FS:146, P1:318 ("outer ring is still network")
 - **How to check:** Lantern #5 network photo: Second Wind and Open Hands allowed, Long Way Round and First Light refused.
 
 ### R-061
@@ -477,6 +616,7 @@ Commit, capture, frames, highlights and the note.
 - **Source:** FS:275 (§20 E), P1:23 (D10), P1:126, CL:105. See G-19 for everyone else
 - **How to check:** As Second Wind, read a Lantern overview: allowed, even where every photo of that journey is private.
 - **Provisional default:** Decisions-Needed B13: The slot 1 overview can be written after the reveal is finished, within the slot. Readable by the network only. Under B13 the statement reads "by its owner and the owner's network, and nobody else". Add the case: as First Light (not on Lantern's map), read a Lantern overview of a journey with public photos: refused, and the overview does not appear beside those photos in the Positivity Feed (closes G-19)
+- **Decided 2026-10-30 (FS §20 HH, `FS:312`):** under B2's "only after reveal finished" setting the network reads the overview only once the reveal is finished; under "from unlock", as written. Add the case: under "only after reveal finished", a slot 1 overview written on Long Way Round #4 (reveal never finished, in a test copy) is refused to Open Hands and readable by the owner; Lantern overviews are readable by Second Wind under both settings (R-142)
 
 ### R-064
 - **Statement:** Close friends see nothing beyond the rest of the network. There is no close-friends access level, list or grant.
@@ -487,7 +627,7 @@ Commit, capture, frames, highlights and the note.
 ### R-065
 - **Statement:** Being tagged in a photo gives no access to it. A user tagged in someone's Private photo cannot read that photo.
 - **Type:** auto · **Applies to:** data, API
-- **Source:** P1:288, FS:145
+- **Source:** P1:293, FS:145
 - **How to check:** As Second Wind, read Lantern #1's two private photos tagging Wind: refused.
 
 ### R-066
@@ -500,15 +640,74 @@ Commit, capture, frames, highlights and the note.
 - **Statement:** Visibility is set per photo, not per journey.
 - **Type:** auto · **Applies to:** data, UI
 - **Source:** FS:141, MJC:379 (decided 2026-10-18)
-- **How to check:** Schema: visibility is keyed by photo. Fixture journeys hold mixed levels (P1:218–237). See G-8 on "journeys set to public".
+- **How to check:** Schema: visibility is keyed by photo. Fixture journeys hold mixed levels (P1:223–242). See G-8 on "journeys set to public".
 - **Provisional default:** Decisions-Needed B9 (b): Positivity Feed visibility is per photo. Holds as written, including for the Positivity Feed: no control sets a whole journey public, and the feed selects photo by photo (R-103)
 
 ### R-068
 - **Statement:** The baseline access matrix holds.
 - **Type:** auto · **Applies to:** data, API
-- **Source:** P1:305–313
+- **Source:** P1:312–320
 - **How to check:** Run every cell of the §3.6 matrix as a test at baseline.
-- **Provisional default:** Decisions-Needed B2 (switchable, R-142): The network can read an unlocked journey from unlock (`P1:311`). The §3.6 matrix is written for this setting. Under "only after reveal finished", every network-reader cell for a Network-default photo in a journey whose reveal is not finished (Long Way Round #4) flips to refused; all other cells are unchanged. Run the matrix under both settings. How "only after reveal finished" combines with a photo set Public during an unfinished reveal (B3: choices take effect when made) is not stated in `Decisions-Needed.md`; no fixture has that case, and if one is needed it goes to the supervisor, not into the build
+- **Provisional default:** Decisions-Needed B2 (switchable, R-142): The network can read an unlocked journey from unlock (`P1:318`). The §3.6 matrix is written for this setting. Under "only after reveal finished", every network-reader cell for a Network-default photo in a journey whose reveal is not finished (Long Way Round #4) flips to refused; all other cells are unchanged. Run the matrix under both settings. How "only after reveal finished" combines with a photo set Public during an unfinished reveal (B3: choices take effect when made) is not stated in `Decisions-Needed.md`; no fixture has that case, and if one is needed it goes to the supervisor, not into the build. **Decided 2026-10-30 (FS §20 R):** under that setting a Public photo is refused too, until the reveal is finished
+- **Decided 2026-10-30 (FS §20 X):** under "only after reveal finished" the network still reads the journey's type, dates, chapter and feeling tags from unlock (as FS §20 T gives); only photos, and what follows them, wait for the reveal to finish. Public readers never read those rows under either setting (R-152)
+
+### R-152
+- **Statement:** A journey's type, commit and unlock dates, chapter and feeling tags are readable after unlock by the owner and the owner's network only. A reader who is not on the owner's map, including a reader of a Public photo and a Positivity Feed reader, never sees them, on any screen or in any response.
+- **Type:** auto · **Applies to:** data, API, UI
+- **Source:** FS §20 T, FS §20 CC (feeling tag selects Positivity Feed entries but is never shown to a public reader), FS §20 Y (no chapter filter), FS §20 X (network reads these from unlock under both B2 settings), P1:48 (d), P1:84, P1:143. Found by `docs/reviews/2026-10-30-rules-phase-1-r4.md` finding V1 (`Screen-Inventory.md:201` lists chapter and feeling tags for every reader of Walking a path, public included)
+- **How to check:** At baseline as First Light (on no one's map), open Lantern #2 from the Positivity Feed, then Walking a path, A photo followed forward and Another user's profile for Lantern: no type, commit date, unlock date, chapter or feeling tag in the DOM or any API response, and `journey`, `journey_chapter` and `journey_feeling_tag` return 0 rows for Lantern's journeys. `photo.journey_id` leads to nothing readable. Repeat as Second Wind (network): all are readable. Positivity Feed list endpoint: no tag, chapter or journey field in any entry. Under both B2 settings (R-142).
+- **Current implementation:** RLS on the three tables with the `viewer_in_network(owner_id)` predicate (`Phase-1-Amendments.md` §5); the Positivity Feed selects by tag inside a SECURITY DEFINER function that returns reflection text only
+- **Updated 2026-10-31 (FS §20 OO):** the 0 rows are read through `journey_rows()`, `journey_chapter_rows()` and `journey_feeling_tag_rows()`; the tables refuse the viewer role
+- **Decided 2026-10-31 (FS §20 TT, `FS:324`):** a user's join date is readable by that user only (R-161). In the fixture each join date is the first Commit date (P1:213), so a join date shown to First Light would give Lantern #1's commit date, which this check forbids
+- **Decided 2026-10-31 (FS §20 SS, `FS:323`):** whether a reveal is finished joins this list: readable by the owner and the owner's network after unlock, never public (R-162; see G-23)
+- **Decided 2026-10-31 (FS §20 EEE, `FS:338`):** "never sees them" means never shown and never readable as a field. A public reader may narrow a journey's dates from capture dates and reflection dates they can already read (Phase-1-Amendments OQ-30), as ZZ allows for the reveal state. The test above is unchanged: no type, date, chapter or tag field in any response or on any screen. A screen or reader that adds a new date field for a public reader, or computes the bracket for them ("about 2025"), still fails
+- **Decided 2026-10-31 (FS §20 KKK, `FS:344`):** a public reader may see the order of the journeys on a path, under EEE. The order carries no commit date, unlock date, year or date label, and no reader returns a journey date to support it. A path screen that labels journeys "2023", "Year 2" or by a date range for a public reader still fails
+
+### R-154
+- **Statement:** Anyone but the owner learns a photo's capture date, never its time of day: not on any screen, not in any response, and not through another field that pins it, such as the handwritten note's written time (at most 15 minutes after capture) or an activity graph finer than one day. The owner sees the full time.
+- **Type:** auto · **Applies to:** data, API, UI
+- **Source:** FS §20 GG (`FS:311`), `Screen-Inventory.md` OQ-45, R-151 (residual), FS §20 DD. Found by `docs/reviews/2026-10-30-rules-phase-1-r5.md` finding V3 (`Phase-1-Amendments.md:226` (iii) and `Phase-1-Proposal.md:48` (e) give every reader the full `captured_at` through `photo_read`; `Phase-1-Proposal.md:106` gives every note reader `written_at`)
+- **How to check:** At baseline, as Second Wind (network) and as First Light (public), read every Lantern #1 photo and note each can read, through every read path (view, function, route): no value derived from `captured_at` carries an hour, minute or second (every photo of one UTC day returns the same value), and no note returns a time of day. Under B5's "viewer" setting, the activity data for Lantern's journeys has no bucket finer than one day. Repeat as Lantern: the full `captured_at` is returned. DOM review of Walking a path, A photo followed forward and Another user's profile as a non-owner: no hh:mm. Grep aid: `captured_at`, `written_at` in reader-side serializers and views.
+- **Current implementation:** not yet specified. `photo_read` (`Phase-1-Amendments.md` §4 item 4) returns the granted `captured_at` unchanged to every reader; the owner-aware view or function pattern of item 4 is one way to give non-owners the date only
+- **Decided 2026-10-30 (FS §20 LL, `FS:316`):** a non-owner gets no part of a note's written time, not even its date. "No note returns a time of day" above now reads "no note returns any part of its written time"
+- **Decided 2026-10-30 (FS §20 JJ, `FS:314`):** same-day photos reach a non-owner in an order that carries no time, and ids are not sequential (R-155)
+- **Updated 2026-10-31:** the implementation is now specified: `photo_captured_on()`, `photo_captured_at()` and `note_written_at()`, through read views over definer readers (`Phase-1-Amendments.md` §4 item 5, §10; `P1:48` (f), `P1:90`, `P1:106`)
+
+### R-155
+- **Statement:** No identifier and no default order tells a non-owner when anything happened. Every id is random, nothing uses a sequence or a time-ordered id, and photos from one day reach a non-owner in an order that carries no time of day.
+- **Type:** auto · **Applies to:** data, API, UI
+- **Source:** FS §20 JJ (`FS:314`); FS §20 GG, LL, T; R-154. Proposed by `Phase-1-Amendments.md` §4 item 6 (line 275). Numbered by r6
+- **How to check:** (a) Schema, as the table owner: no sequence in the product schemas (`pg_sequences` outside `pg_catalog` and `information_schema` is empty); no column is an identity column or defaults to `nextval(`; no default calls a time-ordered generator (`uuidv7`, `uuid_generate_v1`, `uuid_generate_v1mc`, ULID or snowflake functions); every `id` column is `uuid`. (b) Data, after the baseline load and after the JJ case: every stored `id` in every product table is version 4 (`substr(id::text, 15, 1) = '4'`) with variant `8`–`b`. (c) Order: as First Light on Lantern's public photos and as Second Wind on Lantern #1 (19 photos on one date), read photos through every reader and route twice, and once more after a reset. The order is the same each time, and within one date it has no relation to capture time (the Amendments test: 30 + 30 interleaved captures, correlation near 0). (d) Grep reader-side code and the Positivity Feed query for `ORDER BY` on `captured_at`, a note's `written_at`, `ctid` or `xmin`. Any sort of a non-owner's photo list by those fails. The Positivity Feed's "newest first" (DN B9 (e), C14) sorts by something the reader already reads, never by `captured_at`.
+- **Current implementation:** `uuid DEFAULT gen_random_uuid()` on every surrogate id; `photo_read` ends `ORDER BY photo_captured_on(id), id` (`Phase-1-Amendments.md` §4 item 6; `P1:48` (g), `P1:89`, `P1:104`). `journey.seq` (P1:71) is a per-user field, not an id
+- **Decided 2026-10-31 (FS §20 BBB, `FS:335`), restating (d):** the Positivity Feed sorts newest reflection first by the reflection's `written_at`, ties by the random `id`. (d) now reads: the feed reader's body ends `ORDER BY r.written_at DESC, r.id` and orders by nothing else; it returns no time-typed column; the app shows rows in the order returned and re-sorts by nothing. A sort by `captured_at`, `captured_on`, a note's `written_at`, `ctid`, `xmin`, `journey_reveal.finished_at`, `unlocks_at` or `committed_at` fails. The test reads the reader `WITH ORDINALITY` against a plain-SQL oracle, with a planted `captured_at` sort that must be caught (`Phase-1-Amendments.md` §11 check 3, evidence at line 917). C14 (the announcement feed's order) is still provisional
+- **Decided 2026-10-31 (FS §20 AAA, `FS:334`), for (c):** a photo saved by the guard-bug retry is stored at the press instant, so its `captured_at`, its date and its place in any order are exactly what the press would have given. No column, id or order marks a photo as retried. Add to (c): one press saved by the retry, read by the owner and by a network reader, sits where an ordinary press at that instant sits
+- **Decided 2026-10-31 (FS §20 DDD, FFF, `FS:337`, `FS:339`):** the bug log's line prefix carries a real time and a virtual transaction id, which is a server counter. It lives outside the product data and no product role can read it (R-167), so (a) and (b) do not reach it. They do reach anything that copies it in: no table, column or reader may hold a log line, a virtual or real transaction id, or a log time
+
+### R-161
+- **Statement:** A user's join date is readable by that user only. Everyone else reads names, never when someone joined.
+- **Type:** auto · **Applies to:** data, API, UI
+- **Source:** FS §20 TT (`FS:324`); R-008, R-152 (a join date can equal a first Commit date, P1:213). Found by r6 V1 (`Phase-1-Amendments.md:679`)
+- **How to check:** As First Light and as Second Wind, read every user through every reader and route. No `joined_at`, and nothing derived from it ("member since", year joined, "new here"), appears for anyone but oneself. As each user, one's own `joined_at` is present. Under B4's "per year with the app" setting, a ring count shown to others gives the join year: see G-23. UI review: Another user's profile and the name search.
+- **Current implementation:** not yet specified. `user_rows()` returns every row, `joined_at` included, to every viewer (`Phase-1-Amendments.md:679`)
+- **Decided 2026-10-31 (FS §20 WW, `FS:330`):** under B4's "per year with the app" setting the per-year rings show only on the user's own profile. Everyone else sees one ring per finished reveal under both settings (R-166). The G-23 sentence in the how-to-check above is settled by WW
+- **Updated 2026-10-31 (r7):** the implementation is now specified: `user_rows()` returns `joined_at` only on the viewer's own row and NULL on every other, and no `profile_picture` (FS §20 YY); the person-tag writer reads it inside its definer body and returns nothing of it (`Phase-1-Amendments.md` §11, lines 774 and 793; `P1:62`, `P1:63`). The mask is tested over whole tuples against a plain-SQL oracle (§11 check 3)
+
+### R-162
+- **Statement:** Whether a journey's reveal is finished is known only to the owner and, after unlock, the owner's network. A public reader or a stranger never learns it, whether from a record, from a field or from a change in what they can read.
+- **Type:** auto · **Applies to:** data, API, UI
+- **Source:** FS §20 SS (`FS:323`), FS §20 T; R-152; P1:45. Found by r6 V2
+- **How to check:** At baseline, as Long Way Round, #4 reads as not finished and #3 as finished. As Open Hands (network), the same. As First Light (public, on no one's map), no reader or route about Round returns a reveal state or a finish time, and nothing else differs between #3 and #4. G-23 lists the paths that still differ (the Positivity Feed, rings, Public photos under B2's option). Before unlock no reveal state exists, so none can be read.
+- **Current implementation:** not yet specified. The `journey_reveal` reader is missing (`Phase-1-Amendments.md:692`)
+- **Decided 2026-10-31 (FS §20 ZZ, `FS:333`):** "never learns it" means never shown or readable as a field. A public reader may infer it from Positivity Feed entries, rings and photos appearing. The how-to-check above reads under ZZ: no reader or route returns a reveal state, finish time or "finished" marker to First Light; the paths in G-23 may differ between #3 and #4, and nothing else may
+- **Decided 2026-10-31 (FS §20 CCC, `FS:336`):** one reader, for every viewer, returns how many of a user's reveals are finished and nothing else. It is the only reveal-derived value a public reader receives (R-166)
+- **Updated 2026-10-31 (r7):** the implementation is now specified: `journey_reveal_rows()` with the policy changed to the same rule, its predicate not executable by any product role (`Phase-1-Amendments.md` §11, lines 787 and 794; `P1:164`)
+
+### R-166
+- **Statement:** Another user's circle tells the viewer only how many reveals that user has finished. The number moves only when a reveal is finished, carries no date, year or journey, and is drawn as rings, never shown as a number, total or comparison.
+- **Type:** auto (data) and review (UI) · **Applies to:** data, API, UI
+- **Source:** FS §20 CCC (`FS:336`), WW (`FS:330`), ZZ, TT; CL:69 (counters), CL:71 (ranking); FS:185; R-102, R-162. Proposed by `Phase-1-Amendments.md` §11 checks 2 and 5 ("for the rules-guardian to number"). Numbered by r7
+- **How to check:** (1) The count reader is a definer function returning one integer, not a set and with no OUT column; its estimate is constant (§11 check 2). (2) For every viewer and every profile, a missing id and NULL included, it equals the plain count of that profile's finished reveals; for a network viewer it equals the owner's `journey_reveal_rows()`. (3) Polling as First Light across a capture into a sealed journey, a commit, an unlock, a reflection and finished reveals: between any two polls the change equals the change in a network member's count of that owner's "journey launched". Planted faults (count from unlock, count from commit, a date-returning variant) are caught. (4) UI review of Another user's profile, and of Profile (own) under both B4 settings: no numeral, "n journeys", "n years", total, "since" or comparison beside the circle, and no ring carries a date, year or journey label for a public viewer.
+- **Current implementation:** `ring_count(profile_id uuid) → integer`, EXECUTE for the viewer role only (`Phase-1-Amendments.md` §11, lines 804–809, evidence 918–939; §3 `b4`, line 234; `P1:65`)
 
 ---
 
@@ -520,12 +719,14 @@ Commit, capture, frames, highlights and the note.
 - **Source:** CL:74, CL:82, MP:47, FS:164, FS:235, P1:51. **= §2.5 check 7** (first half)
 - **How to check:** As Second Wind, query every table and endpoint that holds layer data: only rows where Wind is the owner return.
 - **Current implementation:** layer rows readable only where `owner = viewer` (P1:51).
+- **Updated 2026-10-31 (FS §20 OO; R-164):** the layer table refuses the viewer role; read through `layer_rows()` and every other reader and route: only rows where Wind is the owner. The internal helper that takes a member and returns owners (`Phase-1-Amendments.md` §11, line 702) must not be executable by any product role (R-070). R-072, R-073, R-074 and R-080 read their map snapshots the same way, through `layer_rows()` as the map's owner
 
 ### R-070
 - **Statement:** Nothing can be called that takes a member and returns whose maps they are on.
 - **Type:** auto · **Applies to:** API
 - **Source:** P1:51, FS:235
 - **How to check:** List every function and route that takes a user id and touches layer data. None may return owners for a given member.
+- **Decided 2026-10-30 (FS §20 FF, `FS:310`):** `viewer_in_network(owner_id)` may stay directly callable. It takes an owner and answers only for the current viewer, which reveals nothing beyond what §20 T journey rows already give a network member. The check above still fails any call that takes a member and returns owners, and any route that exposes the predicate
 
 ### R-071
 - **Statement:** No screen or copy shows a person their ring on someone else's map, directly or by implication: no "you're in X's inner circle", no closeness badge or colour on their own avatar in someone else's view, no "you moved closer" or "further away", no ordering of someone else's content by the viewer's ring.
@@ -557,7 +758,7 @@ Commit, capture, frames, highlights and the note.
 - **Statement:** Any user counts towards a ring, whether or not they have ever had a journey.
 - **Type:** auto · **Applies to:** data
 - **Source:** FS:163, FS:277, P1:27 (D14)
-- **How to check:** Long Way Round → Open Hands in Round #1 (Hands had no journey then): Hands on Round's map, middle.
+- **How to check:** Long Way Round → Open Hands in Round #1 (Hands #1 sealed then): Hands on Round's map, middle. The "no journey" case: Open Hands → First Light at the scripted Hands #4 reveal, 2027-06-20 (P1 §3.8, amended 2026-10-30): First Light on Hands' map, outer, while she has no journey; her own map stays empty.
 
 ### R-076
 - **Statement:** Tags in Private photos count towards rings.
@@ -569,7 +770,7 @@ Commit, capture, frames, highlights and the note.
 - **Statement:** In each finished journey, a user tagged in 5 or more photos is tight, 2 to 4 is middle, 1 is outer.
 - **Type:** auto · **Applies to:** data
 - **Source:** FS:161, FS:277, P1:28 (D15), CL:107
-- **How to check:** Boundary cases 1, 2, 4, 5. Fixture: Lantern's map of Wind across #1–#5 (P1:259–265).
+- **How to check:** Boundary cases 1, 2, 4, 5. Fixture: Lantern's map of Wind across #1–#5 (P1:264–270).
 
 ### R-078
 - **Statement:** Someone on the map who is not tagged in a finished journey moves out one ring. Outer stays outer. Nobody is ever removed from a map.
@@ -580,7 +781,7 @@ Commit, capture, frames, highlights and the note.
 ### R-079
 - **Statement:** Someone tagged again with fewer photos goes straight to the ring that count gives.
 - **Type:** auto · **Applies to:** data
-- **Source:** FS:282 (§20 L), P1:343 (R1)
+- **Source:** FS:282 (§20 L), P1:404 (R1)
 - **How to check:** Tight last journey, tagged once this journey: outer.
 
 ### R-080
@@ -592,7 +793,7 @@ Commit, capture, frames, highlights and the note.
 ### R-081
 - **Statement:** Closeness is earned by tags, never chosen. There is no follow, friend request or hand-picked list of close people.
 - **Type:** auto · **Applies to:** data, API, UI
-- **Source:** FS:160, P1:180 ("follower"). Part of **§2.5 check 6**
+- **Source:** FS:160, P1:181 ("follower"). Part of **§2.5 check 6**
 - **How to check:** Schema scan for `follow`, `follower`, `friend_request`, `close_friend`. No UI control adds a person to a ring.
 
 ### R-082
@@ -627,6 +828,7 @@ Commit, capture, frames, highlights and the note.
 - **Type:** auto · **Applies to:** data, API
 - **Source:** FS:171–175, CL:109, MP:83, P1:31 (D18), P1:168. **= §2.5 check 9** (types)
 - **How to check:** Schema: the announcement type allows exactly these three values. Inserting any other raises.
+- **Updated 2026-10-31 (FS §20 OO; R-164):** the "insert any other" case runs as the table's owning role (the type constraint raises); no writer function can produce another type
 
 ### R-085
 - **Statement:** An announcement holds no image, media or count.
@@ -640,6 +842,7 @@ Commit, capture, frames, highlights and the note.
 - **Source:** CL:72, MP:45, FS:171. See G-9 for avatars
 - **How to check:** UI test at several simulated dates: the feed DOM has no `img`, `picture`, `canvas` or background image sourced from a photo or note.
 - **Provisional default:** Decisions-Needed C7: No profile picture is shown anywhere; announcements carry no image. Firm under C7: an announcement shows no avatar, profile picture or other image of a person either. The UI test widens to any `img`, `picture`, `canvas` or background image inside an announcement, whatever its source (closes G-9)
+- **Decided 2026-10-31 (FS §20 XXX, `FS:360`):** C7 is decided in full. The provisional line above now holds as a decision; announcements carry no image
 
 ### R-087
 - **Statement:** "Journey launched" goes out exactly when a reveal is finished, never at Commit or unlock.
@@ -653,12 +856,14 @@ Commit, capture, frames, highlights and the note.
 - **Source:** FS:280 (§20 J), P1:31 (D18), CL:109
 - **How to check:** Wind reflects on a private photo: no other user's feed shows it. On a network photo: only the network sees it.
 - **Provisional default:** Decisions-Needed B10: "Reflection left" reaches only the owner's network members who can see the photo, even when it is public. Under B10 the statement reads "only to users on the owner's map who can read that photo". Add the case: Lantern reflects on a Lantern #5 public photo: First Light and Long Way Round (not on Lantern's map) get no announcement, although both can read the photo
+- **Decided 2026-10-31 (FS §20 UU, `FS:325`):** the actor sees their own "reflection left". For the actor only, this is an exception to B10's reading, since FS §20 outranks a provisional default (CL:30). B10 still holds for every other reader: on a public photo, no reader outside the owner's network gets the announcement. `Phase-1-Amendments.md:691` leaves B10 out (r6 V3). UU's "as written in R2" is a loose citation: R2 (`P1:405`) covers only "journey launched" and "path crossed"
 
 ### R-089
 - **Statement:** "Journey launched" and "path crossed" are shown to the owner's network.
 - **Type:** auto · **Applies to:** data, API
-- **Source:** FS:282 (§20 M), P1:344 (R2)
+- **Source:** FS:282 (§20 M), P1:405 (R2)
 - **How to check:** For a fixture reveal finish, the set of feeds containing each announcement equals the owner's map members.
+- **Decided 2026-10-31 (FS §20 UU, `FS:325`):** the actor does not see their own "journey launched" or "path crossed". The recipients are the map members, and the map never includes the actor (R-074)
 
 ### R-090
 - **Statement:** "Path crossed" goes out for every crossing: one per tagged user in each finished reveal.
@@ -714,7 +919,7 @@ Commit, capture, frames, highlights and the note.
 ### R-097
 - **Statement:** There are no streaks: no count of consecutive days, weeks or months, no "don't break the chain", no flame.
 - **Type:** auto · **Applies to:** data, UI, copy
-- **Source:** CL:69, MP:42, FS:233, P1:180. Part of **§2.5 check 6** (streak)
+- **Source:** CL:69, MP:42, FS:233, P1:181. Part of **§2.5 check 6** (streak)
 - **How to check:** Schema scan and copy grep for `streak`, `chain`, `consecutive`, `in a row`, `🔥`.
 
 ### R-098
@@ -735,13 +940,13 @@ Commit, capture, frames, highlights and the note.
 ### R-100
 - **Statement:** There are no likes, reactions or view counts on anything.
 - **Type:** auto · **Applies to:** data, API, UI
-- **Source:** P1:53, P1:180, CL:69. Part of **§2.5 check 6** (like, reaction, view)
+- **Source:** P1:53, P1:181, CL:69. Part of **§2.5 check 6** (like, reaction, view)
 - **How to check:** Schema scan for `like`, `reaction`, `heart`, `view`, `view_count`, `impression`. UI review for heart or reaction controls.
 
 ### R-101
 - **Statement:** No user has a score, rank, level, tier, badge or position on a leaderboard, and no data compares users.
 - **Type:** auto · **Applies to:** data, API
-- **Source:** CL:71, MP:44, FS:185, FS:244, P1:53, P1:180. Part of **§2.5 check 6** (score, rank, badge)
+- **Source:** CL:71, MP:44, FS:185, FS:244, P1:53, P1:181. Part of **§2.5 check 6** (score, rank, badge)
 - **How to check:** Schema scan for `score`, `rank`, `level`, `tier`, `badge`, `achievement`, `points`, `leaderboard`, `xp`.
 
 ### R-102
@@ -753,9 +958,11 @@ Commit, capture, frames, highlights and the note.
 ### R-103
 - **Statement:** The Positivity Feed draws only on Public photos and is filtered by endurance and gratitude tags, never ordered or filtered by popularity.
 - **Type:** auto · **Applies to:** data, API
-- **Source:** FS:202–203, P1:317. See G-8 and G-14
+- **Source:** FS:202–203, P1:324. See G-8 and G-14
 - **How to check:** As First Light, the feed holds only public photos with the listed tags. Its query uses no read, like, view or count measure for order or selection.
-- **Provisional default:** Decisions-Needed B9: Positivity Feed: (a) reflection text only, with the photo shown when opened; (b) per-photo visibility; (c) drafted tag list only; (d) chapter filter available; (e) newest first; (f) only after reveal finished. Under B9 the check reads: the feed holds only photos that are themselves Public (b), from journeys whose reveal is finished (f), tagged with a tag from the drafted list, never free text (c), newest first (e), and may be filtered by chapter (d). Any other reader-side filter has no default and goes to the supervisor, not into the build. Under (a) "text only" each entry shows reflection text and no image until the reader opens it; opening one shows one photo. The (a) setting is switchable (R-145). Add the cases: a Public photo in Long Way Round #4 (reveal never finished) is absent; a Network photo in a journey with other Public photos is absent; the feed order equals reverse time order with no other key
+- **Decided 2026-10-30 (FS §20 W):** the drafted tag list is the four working tags (`MJC:454–459`). **(FS §20 Y):** no chapter filter on the Positivity Feed; B9 (d) is replaced.
+- **Provisional default:** Decisions-Needed B9: Positivity Feed: (a) reflection text only, with the photo shown when opened; (b) per-photo visibility; (c) drafted tag list only; (d) ~~chapter filter available~~ no chapter filter (FS §20 Y); (e) newest first; (f) only after reveal finished. Selection by feeling tag is allowed but the tag is never shown to a public reader (FS §20 CC). Under B9 the check reads: the feed holds only photos that are themselves Public (b), from journeys whose reveal is finished (f), tagged with a tag from the drafted list, never free text (c), newest first (e), with no chapter filter (d; FS §20 Y. Before the r4 audit of 2026-10-30 this line read "and may be filtered by chapter (d)", which FS §20 Y had already replaced). Any other reader-side filter has no default and goes to the supervisor, not into the build. Under (a) "text only" each entry shows reflection text and no image until the reader opens it; opening one shows one photo. (a) was decided 2026-10-30 (FS §20 Q): text only, not switchable (R-145; before 2026-10-30 this line read "The (a) setting is switchable"). Add the cases: a Public photo in Long Way Round #4 (reveal never finished) is absent; a Network photo in a journey with other Public photos is absent; the feed order equals reverse time order with no other key
+- **Provisional default:** Decisions-Needed B18: Tags never "surface" by popularity. No suggestions and no counts (`FS:202` over `FS:131`). Firm under B18: no screen suggests, sorts, ranks or counts feeling tags by how often they are used, at the tag step or anywhere else, and no job promotes a tag by use. Grep aid: `popular`, `trending`, `suggest`, `most used`, `count(` over feeling tags
 
 ### R-104
 - **Statement:** No surface is designed to make a visit longer: low usage is the goal.
@@ -846,39 +1053,51 @@ Commit, capture, frames, highlights and the note.
 ### R-115
 - **Statement:** Nothing outside the clock module reads the system clock.
 - **Type:** auto · **Applies to:** data, API, UI
-- **Source:** P1:184, P1:193. **= §2.5 check 10**
+- **Source:** P1:185, P1:194. **= §2.5 check 10**
 - **How to check:** Grep outside the clock module for `Date.now(`, `new Date()` with no argument, `performance.now`, `time.time`, `datetime.now`, and in SQL `now()`, `CURRENT_TIMESTAMP`, `CURRENT_DATE`, `LOCALTIMESTAMP`, `clock_timestamp`, `statement_timestamp`, `transaction_timestamp`, including column defaults.
 
 ### R-116
 - **Statement:** Every time rule follows the app clock: the seal, unlock, reflection slots, the note window, highlight ends, the cadence month and Commit.
 - **Type:** auto · **Applies to:** data, API
-- **Source:** P1:193, FS:299
+- **Source:** P1:194, FS:325 (§21 "A time control"; heading at FS:321; before 2026-10-30 r4 this read `FS:299`, which §20's growth moved onto §20 W)
 - **How to check:** Set the app clock to a date far from the real one and run R-001, R-036, R-040, R-046 and R-121. Each must behave as of the app clock.
+- **Updated 2026-10-31:** FS §20 grew by II–VV, so §21 "A time control" is now FS:339 (heading FS:335). The source line above was correct at r5
+- **Updated 2026-10-31 (r7):** FS §20 grew again by WW–HHH, so §21 "A time control" is now FS:354 (heading FS:350). The lines above were correct when written
+- **Updated 2026-10-31 (r8):** FS §20 grew again by III–PPP and a date line, so §21 "A time control" is now FS:365 (heading FS:361). The lines above were correct when written
+- **Updated 2026-10-31 (r9):** FS §20 grew again by QQQ–XXX and blank lines, so §21 "A time control" is now FS:375 (heading FS:371). The lines above were correct when written
+- **Updated 2026-10-31 (r10):** FS §20 grew again by YYY–BBBB, so §21 "A time control" is now FS:379 (heading FS:375). The lines above were correct when written
 
 ### R-117
 - **Statement:** The time control moves forward only. To see an earlier moment, it resets to the 2026-10-25 baseline and jumps again.
 - **Type:** auto · **Applies to:** API, UI
-- **Source:** P1:194, P1:200
+- **Source:** P1:195, P1:201
 - **How to check:** Request a backward jump: refused. Reset: clock equals baseline and fixture state equals the baseline load.
+- **Provisional default:** Decisions-Needed B21: Baseline is 2026-10-25 00:00:00 UTC. After reset, `app_now()` reads 2026-10-25 00:00:00 UTC plus only the real time elapsed since the reset (FS §20 V)
+- **Provisional default:** Decisions-Needed B22: Reset puts every option switch back to its default. Add the case: flip every switch, reset, and each reads its first-listed setting (R-141)
 
 ### R-118
 - **Statement:** A journey unlocks exactly 12 months after its commit moment, and at any app-clock time its state matches the clock with no job having to run.
 - **Type:** auto · **Applies to:** data
-- **Source:** FS:36, FS:273 (§20 C), P1:14 (D1), P1:74, P1:196, CL:87
+- **Source:** FS:36, FS:273 (§20 C), P1:14 (D1), P1:74, P1:197, CL:87
 - **How to check:** For each fixture journey, unlock = commit + 12 months. Jump to unlocks_at with all scheduled jobs disabled: the journey reads as unlocked. See G-18.
 - **Provisional default:** Decisions-Needed B16: A commit on the 29th–31st uses the last day of shorter months. One time zone for the prototype (UTC). Add the cases, all in UTC: commit 2026-01-31 → month 2 starts 2026-02-28; commit 2028-02-29 → unlock 2029-02-28; the unlock moment carries the commit's time of day
 
 ### R-119
 - **Statement:** On each clock jump, scripted fixture actions dated up to the new time are applied first, then maps are computed for reveals finished since the last jump, then announcements go out.
 - **Type:** auto · **Applies to:** data
-- **Source:** P1:195–199
+- **Source:** P1:196–200
 - **How to check:** Jump from baseline to 2027-05-01. Second Wind's #6 reveal (2027-04-25) is applied, Lantern is on Wind's map at middle, then the announcements exist with times after the map entry.
+- **Decided 2026-10-30 (FS §20 BB):** scripted actions run at 12:00 UTC on their dates; unlocks stay at 00:00 UTC. Second Wind's reveal above is at 2027-04-25 12:00:00 UTC
+- **Provisional default:** Decisions-Needed B26: A scripted action the running clock has already passed is applied at the next jump. Add the case: let the running clock pass 2027-04-25 12:00 UTC with no jump; before the next jump nothing of the Wind #6 reveal exists; after it, the reveal, the map entry and the announcements exist
+- **Open (`Phase-1-Amendments.md` OQ-3, raised to the supervisor by the r4 audit, not decided here):** the finish function writes the layer entry and the announcements at the same instant, so "times after the map entry" cannot hold as worded. Whether the test reads "not before" is for the user; the check is not weakened until then
 
 ### R-120
 - **Statement:** Capture times, reflection and overview times, highlight starts and Commit times come from the app clock, never from the client.
 - **Type:** auto · **Applies to:** API
 - **Source:** P1:73, P1:90, P1:115, P1:132
 - **How to check:** Send each write with a client timestamp a year off. The stored time equals the app clock.
+- **Decided 2026-10-31 (FS §20 OOO, `FS:348`):** the join joins this list. `joined_at` is `app_now()` at join and nobody can back-date it. Add to the check: the join function has no argument of a time type, a call that passes a date fails, and a `user` row whose `joined_at` is not `app_now()` is refused, also for the table owner (R-164). The loader reaches each fixture join instant by jumping the clock, never by passing a time. Where an event falls at the clock's current instant (each fixture join and first Commit share one instant, P1:213), the loader makes no jump; it never weakens the forward-only jump to do so (R-117; r8 N1)
+- **Current implementation:** `join_user(name text) → uuid` plus a `BEFORE INSERT` trigger on `user` (`Phase-1-Amendments.md` §2.2 line 177, evidence 226–246; `P1:63`, `P1:176`, `P1:213`)
 
 ### R-121
 - **Statement:** All photos of a journey share reflection slots: slot k runs from unlock + (k − 1) years to unlock + k years, and each photo takes at most one reflection per slot. The slot is worked out from the app clock, never chosen by the client.
@@ -890,8 +1109,9 @@ Commit, capture, frames, highlights and the note.
 - **Statement:** Each journey takes at most one overview per slot, on the same slot windows as reflections.
 - **Type:** auto · **Applies to:** data, API
 - **Source:** FS:117, FS:275 (§20 E), P1:23 (D10), P1:124. See G-15
-- **How to check:** Second overview in one slot: refused. Fixture count: Steady Lantern has 15 (P1:301).
+- **How to check:** Second overview in one slot: refused. Fixture count: Steady Lantern has 15 (P1:308).
 - **Provisional default:** Decisions-Needed B13: The slot 1 overview can be written after the reveal is finished, within the slot. Readable by the network only. Add the case: Steady Lantern writes a slot 1 overview on Lantern #5 after its reveal is finished and before unlock + 1 year: accepted. G-15 is being fixed by A6 (2026-10-27); this check already tests the corrected wording
+- **Updated 2026-10-31 (FS §20 OO; R-164):** run the second overview through the overview writer function (refused) and as the table's owning role (the uniqueness constraint raises)
 
 ### R-123
 - **Statement:** The months that set the frame limit are counted from the journey's own commit date, not from calendar months.
@@ -922,6 +1142,7 @@ Commit, capture, frames, highlights and the note.
 - **Source:** FS:29, MP:113, MJC:696. See G-10
 - **How to check:** Review profile screens for status, success markers, counts and physical descriptors.
 - **Provisional default:** Decisions-Needed C7: No profile picture is shown anywhere. The profile shows the name in the circle. Firm under C7: no profile picture, avatar or uploaded image of a person appears on any profile, map, tag or announcement. Grep aid: `avatar`, `profile_picture`, `profilePicture`, `photoURL` rendered in UI (closes G-10 for the prototype)
+- **Decided 2026-10-31 (FS §20 XXX, `FS:360`; extends YY):** C7 is decided in full: no profile picture anywhere, and the profile shows the owner's name in the circle. The provisional line above now holds as a decision
 
 ### R-127
 - **Statement:** The name step asks for a name from within, not a handle and not a physical or earthly attribute, and says the name is kept.
@@ -940,7 +1161,7 @@ Commit, capture, frames, highlights and the note.
 - **Statement:** Copy stays positive and hopeful, even in hard chapters.
 - **Type:** review · **Applies to:** copy
 - **Source:** FS:135
-- **How to check:** Read copy shown with hard-chapter journeys (Long Way Round #1–#2, P1:234–235).
+- **How to check:** Read copy shown with hard-chapter journeys (Long Way Round #1–#2, P1:239–240).
 
 ### R-130
 - **Statement:** The site and the product say plainly and early that we are not trying to get users onto the app.
@@ -994,26 +1215,75 @@ Commit, capture, frames, highlights and the note.
 ### R-137
 - **Statement:** Every auto check in this rubric runs in the build and fails it when broken.
 - **Type:** auto · **Applies to:** data, API, UI, dependencies
-- **Source:** P1:173 ("Each one fails the build"), BP:203, CL:78
+- **Source:** P1:174 ("Each one fails the build"), BP:203, CL:78
 - **How to check:** Map each auto R-ID to a test in the suite. An auto check without a test is a finding.
+
+### R-164
+- **Statement:** A test of a rule's guard passes only on the path that could otherwise succeed. A refusal caused by a missing privilege does not prove the rule. Where the product roles hold no privilege on a table, each guard (trigger, constraint, insert-only rule, seal) is also tested through the definer function that writes or reads that table, and as the role that owns the table. Both must refuse for the rule's own reason.
+- **Type:** auto · **Applies to:** data
+- **Source:** FS §20 MM, OO; `Phase-1-Amendments.md` §11, "Where OO meets an existing rule", item 2 (line 710); R-137. Found by r6: lead-tech flagged that direct-table tests now pass by refusal
+- **How to check:** Every auto check whose test touches a table has three cases: (a) the product-role refusal (`permission denied`); (b) the writer or reader function case, with the expected refusal or 0 rows; (c) where the guard is a trigger or constraint, the table-owner case, raising the trigger's or constraint's own error, not `permission denied`. A test with only (a) fails. Counts are read through the readers, never by `count(*)` on a table as a product role. Checks updated for this on 2026-10-31: R-001, R-002, R-003, R-010, R-015, R-018, R-021, R-022, R-023, R-026, R-052, R-057, R-069 (with R-072, R-073, R-074, R-080), R-084, R-122, R-151, R-152, and §2.5 check 4
+
+### R-165
+- **Statement:** Every dated ruling in FS §20 is carried in each build doc it bears on. No build doc calls a decided question open, "not picked", "waits on", "none yet" or "confirm", and none keeps a behaviour the ruling replaced.
+- **Type:** auto (open-word scan) and review (carriage) · **Applies to:** data, API, UI, copy
+- **Source:** CL:28–30 (FS §20 wins); R-134; R-150 (the same rule for provisional defaults). Found by r5 V1–V3 and r6 V1, V2 and V4: the same kind of finding in two rounds running
+- **How to check:** (1) For `Phase-1-Amendments.md`, list body lines that name an OQ marked "Settled" in the §8 table together with an open word. It must print nothing: `F=docs/Phase-1-Amendments.md; for n in $(grep -oE '^\| OQ-[0-9]+ \|.*Settled' $F | grep -oE '^\| OQ-[0-9]+' | grep -oE '[0-9]+'); do grep -nE "OQ-$n\b" $F | grep -vE "^[0-9]+:\| OQ-$n \|" | grep -iE "not settled|not picked|waits? on|none yet|confirm|still open|left open"; done`. Read each hit: a line that is only history ("was OQ-n") passes. (2) Each build doc's status line names the §20 range up to the latest letter, or says why the later letters do not bear on it. (3) Review: each §20 item recorded since the doc's last edit is either carried, with its letter cited, or stated as not bearing on the doc.
+- **Updated 2026-10-31 (r7):** the word list in (1) also takes `not ruled`, `open from`, `left open` and `open:`. r7 found `Phase-1-Amendments.md:484` ("is not ruled (OQ-32)") and `:572` ("Open from DDD: OQ-31, OQ-32"), which the r6 list missed. Run (1) also on `Phase-1-Proposal.md` and on `Screen-Inventory.md` outside its Open questions section. Added (4): where an OQ answer, in any doc, says a ruling is handled on a named screen or section, that screen's table or that section carries it. r7 found `Screen-Inventory.md:711` ("handled the same way on S-12 (Spec §20 HHH)") with nothing on S-12
+- **Updated 2026-10-31 (r8):** added (5): a ruling recorded as an accepted residual or "no build change" is still checked under (3) against every screen whose behaviour its words state. r8 found FS §20 PPP ("that note step then ends early") recorded only in two OQ cells, with S-12 listing no such end. Added (6): after any edit to FS §20, every `Spec:` and `FS:` line citation in the build docs that points at or after the edit is re-checked by the editor, not only by the doc's owner. r8 found `Screen-Inventory.md:577` citing Spec:350 for export, which since PPP is a ruling line
+- **Updated 2026-10-31 (r10):** (4) also covers a body line, in any build doc, that assigns a behaviour to a named screen ("S-12 sends …", "the screen row is ux's"). That screen's rows carry the behaviour with every trigger the line names. r10 found `Phase-1-Amendments.md:566` and OQ-39 `:954` ("S-12 sends it on skip and on leaving capture"), while S-12 (`Screen-Inventory.md:340` end (3), `:348`) sends it on skip only. (3) is run per doc against the order of commits: a ruling recorded after a doc's last edit (here AAAA, BBBB after `Screen-Inventory.md`'s b89299a) is either carried there or stated as not bearing
+
+### R-168
+- **Statement:** No screen state holds anything that its own "must never show" column, or another state of the same screen, bans. Where two rulings force a state to do both, the build stops and the conflict goes to the user; neither side is built by choice.
+- **Type:** review · **Applies to:** UI, copy
+- **Source:** CL:30 ("When two docs disagree, do not pick"); CL:24 (strictest reading); R-134, R-165. Found by r7 (`Screen-Inventory.md:94` holds "no note offer (no S-12)" and bans "Any sign that this press gave no photo", while `:87` sends every accepted press to S-12; G-24)
+- **How to check:** For each screen in `Screen-Inventory.md`, read each state's "Holds" against the same row's "Must never show" and against the screen's "Leads to" line and its other states. Any element that is both required and banned, or whose absence is itself something banned, fails until the user rules.
+- **Decided 2026-10-31 (FS §20 JJJ, `FS:343`):** the r7 case is settled: DDD wins, the note offer is shown after a lost press, and a note written for it is discarded. `Screen-Inventory.md:94` and `:341` now hold it, and the missing offer is in `:94`'s never-list
+
+### R-171
+- **Statement:** Every answer the server can give to a capture or note press, and every way the note step can end, has a screen row saying what the user sees. No answer reaches a screen that has no row for it.
+- **Type:** review · **Applies to:** UI, API
+- **Source:** CL:17–24 (rule zero: a builder never picks a behaviour); FS §20 PPP (`FS:350`), NNN, III, JJJ, K; R-165, R-168. Found by r8 V2
+- **How to check:** List the route's answers from `Phase-1-Amendments.md` §6 (press: accepted, refused; note press: saved, closed, and the no-entry case answered as closed) and the note step's ends (page taken, skip, leaving capture, 15 minutes, a page lost twice, the handles lost on restart under PPP). Match each to a row of S-02 or S-12. An answer or end with no row fails, until ux writes the row or the user rules. A row must not show anything its own never-list or R-160, R-170 bans.
+- **Updated 2026-10-31 (r9; FS §20 RRR, UUU, VVV, WWW):** the ends are now decided: a page taken ends with no confirmation (VVV); a skip ends the step for good (WWW, no longer a strictest reading of C4); at 15 minutes nothing changes on its own and the next note press is simply not taken (UUU); a "closed" answer for any reason looks like the window having ended (RRR). The list gains the skip request (R-173) and the note step's `refused` inside the window, which no route answer covers yet (G-26)
+- **Decided 2026-10-31 (FS §20 YYY, BBBB, `FS:361`, `FS:364`):** the ends list gains (7), the journey's unlock, which looks exactly like (4). The note step's `refused` inside a window the route read as open is answered with the one `closed` (BBBB (b)), so G-26 (b) is closed. Still open under this check: a press at or after unlock is answered `refused` (`Phase-1-Amendments.md:574`), and S-02's only refusal row is "no frame, or the highlight's quota reached" while its `unlock-day` row is "Not available"; and S-12 end (7) leads to a camera that is not available (G-27)
+
+### R-172
+- **Statement:** A dated record is appended to, never rewritten. A revision-log row, an OQ arrow, an "applied" row, a status-log line or an evidence block keeps the words it had on its date; a later ruling is added as a new line, never substituted into the old one.
+- **Type:** auto (diff scan) and review · **Applies to:** docs
+- **Source:** CL:30 (cite both lines, do not pick); R-134, R-165. Found by r8 N5 (evidence edited in place, disclosed) and r9 V3 (`Phase-1-Amendments.md:795`, lead-tech's tenth-round row, changed from "Q–RRR" to "Q–VVV" and then "Q–XXX" by the supervisor; `Screen-Inventory.md:718`, OQ-49's "Not picked" arrow, changed from "keep `PROVISIONAL: C7`" to "keep Spec §20 XXX", so it now says a decided label is not picked and still open)
+- **How to check:** (1) `git diff <last audit>..HEAD -- docs` and list every removed line (`^-`) that sits in a revision log, an OQ arrow (`→`), an §7 "Applied" row, a `Status.md` log line or a fenced evidence block. Each must be either a typo fix that changes no fact, or disclosed in the same line as a correction with its date. (2) Review: a blanket label replacement (for example every `PROVISIONAL: Cn` to `Spec §20 X`) touches state rows only, never history lines.
+
+### R-174
+- **Statement:** A ruling's general words are carried only together with the thing it rules. A line that bars writes after unlock bars the photo and the note, never a reveal write: tags, chapters, feelings, visibility, reflections and the overview are still added to an unlocked journey.
+- **Type:** review (docs, schema) and auto (schema test) · **Applies to:** docs, data
+- **Source:** FS §20 YYY (`FS:361`: "Nothing is added to a journey once it unlocks"), against the reveal (`CLAUDE.md:103`; FS §20 A); CL:30 (do not pick between two lines). Found by r10 (N3): the phrase is repeated as a reason at `Screen-Inventory.md:340` end (7) and `:346`
+- **How to check:** (1) Grep the build docs and code comments for "nothing is added", "once it unlocks" and "after unlock": each hit names the photo or the note, or sits in a sentence about them. (2) Schema test: after unlock and before the reveal is finished, every reveal write the reveal allows succeeds as the owner; only `capture()`, `add_note()` and the `note` trigger refuse on `unlocks_at`. A trigger that refuses any insert under an unlocked journey fails
 
 ---
 
 ## 14. Provisional defaults and the options panel
 
-Added 2026-10-27 for the playable prototype (rule zero, CL:19–24; `Decisions-Needed.md` "Provisional defaults in force"). Seven defaults are switchable: B2, B4, B5, B9 (a), B11, B12, C6. Each switch must keep the banned list under **both** of its settings, so the user can compare them without the comparison itself breaking a rule.
+Added 2026-10-27 for the playable prototype (rule zero, CL:19–24; `Decisions-Needed.md` "Provisional defaults in force"). Seven defaults were switchable: B2, B4, B5, B9 (a), B11, B12, C6. **2026-10-30:** B9 (a) decided as text only (FS §20 Q); six remain. Each switch must keep the banned list under **both** of its settings, so the user can compare them without the comparison itself breaking a rule.
 
 ### R-141
-- **Statement:** The prototype options panel holds only the time control, the viewer switcher with the simulated date, and the seven switchable defaults. Each switch offers exactly its two documented settings, starts on the provisional default, and changes nothing but the behaviour its ID names.
+- **Statement:** The prototype options panel holds only the time control, the viewer switcher with the simulated date, and the six switchable defaults (B2, B4, B5, B11, B12, C6; B9 (a) was decided 2026-10-30, FS §20 Q, and has no switch; before 2026-10-30 this read "seven"). Each switch offers exactly its two documented settings, starts on the provisional default, and changes nothing but the behaviour its ID names.
 - **Type:** auto · **Applies to:** UI, API
 - **Source:** CL:23, DN "Provisional defaults in force" (Switchable column), DN C16, CL:24
 - **How to check:** List the panel's controls from the DOM and from code. Compare with the Switchable column: no extra switch, none missing, and no setting beyond the two listed (no "both", "auto" or free value). On first load each switch is on the first-listed setting, which is the default. Flip each switch alone and diff every read endpoint for every fixture user: only the behaviour named by that ID changes (R-142 to R-148). The panel is itself a data path under R-014: it shows no count, photo or field from a sealed journey, and the viewer switcher lists fixture users by name only, with no picture (C7).
+- **Decided 2026-10-30 (FS §20 Z):** the switches live in one `prototype_option` row, changed only through `set_option()`; each column allows exactly its two settings (current implementation)
+- **Provisional default:** Decisions-Needed B20: The clock jumps also include +1 minute and +1 hour. They are the only additions to the time control; any other size, or a free date field, fails
+- **Provisional default:** Decisions-Needed B23: Option switches are one global setting, not per viewer. Switching the viewer in the panel changes no switch
+- **Provisional default:** Decisions-Needed B22: Reset puts every option switch back to its default (R-117)
+- **Decided 2026-10-30 (FS §20 EE, `FS:309`):** only the panel moves time or flips switches. `clock_jump()`, the jump to the next unlock and `set_option()` are callable by a separate panel role, never by the acting viewer (R-153)
 
 ### R-142
-- **Statement:** B2, under both settings ("from unlock" / "only after reveal finished"): nothing from a sealed journey is readable by anyone, and the setting changes only when the owner's network may read an unlocked journey's Network-default photos.
+- **Statement:** B2, under both settings ("from unlock" / "only after reveal finished"): nothing from a sealed journey is readable by anyone. The setting changes only who besides the owner may read an unlocked journey whose reveal is not finished: under "from unlock", the network reads photos not set Private and anyone signed in reads photos already set Public (B3, B14); under "only after reveal finished", no one but the owner reads any of it, Public photos included (**decided 2026-10-30, FS §20 R**). Before 2026-10-30 the statement read: "B2, under both settings ("from unlock" / "only after reveal finished"): nothing from a sealed journey is readable by anyone, and the setting changes only when the owner's network may read an unlocked journey's Network-default photos."
 - **Type:** auto · **Applies to:** data, API
-- **Source:** DN B2, FS:151, FS:269, P1:311, CL:73 (nothing leaks), CL:24
-- **How to check:** Under each setting: R-001 to R-008 pass for Lantern #6 at 2026-12-31 23:59:59. As Open Hands at baseline, read a Long Way Round #4 photo (reveal never finished): "from unlock" allowed, "only after reveal finished" refused. Every Lantern #5 cell of the §3.6 matrix (reveal finished) is identical under both settings (R-068).
+- **Source:** DN B2, FS §20 R, FS:151, FS:269, P1:318, CL:73 (nothing leaks), CL:24
+- **How to check:** Under each setting: R-001 to R-008 pass for Lantern #6 at 2026-12-31 23:59:59. As Open Hands at baseline, read a Long Way Round #4 photo (reveal never finished): "from unlock" allowed, "only after reveal finished" refused. In a test copy, set one Long Way Round #4 photo Public (B3: takes effect when made) and read it as Open Hands and as First Light: "from unlock" allowed to both, "only after reveal finished" refused to both (FS §20 R); the owner reads it under both. This is a test-copy change, not a fixture change: the approved fixtures (P1 §3) are not edited, and a standing fixture for this case goes to the supervisor. Every Lantern #5 cell of the §3.6 matrix (reveal finished) is identical under both settings (R-068).
+- **Decided 2026-10-30 (FS §20 X):** "no one but the owner reads any of it" covers photos and what follows them (reflections, notes, people tags). The journey's type, dates, chapter and feeling tags are read by the network from unlock under both settings, and never by a public reader (FS §20 T, R-152). Add the case: under "only after reveal finished", as Open Hands at baseline, read Long Way Round #4's type and dates: allowed; read any #4 photo: refused
+- **Decided 2026-10-30 (FS §20 HH, `FS:312`):** "what follows them" includes the journey overview. Under "only after reveal finished" the network reads the overview only once the reveal is finished (R-063)
 
 ### R-143
 - **Statement:** B4, under both settings ("per finished reveal" / "per year with the app"): the circle is a record, not a rank, and nothing on it fills, grows or advances during a sealed year.
@@ -1028,10 +1298,10 @@ Added 2026-10-27 for the playable prototype (rule zero, CL:19–24; `Decisions-N
 - **How to check:** Under each setting R-011 passes, and the line twists into the circle only at reveal finished (none for Long Way Round #4). "Owner only": as Second Wind, request activity data for Lantern #5: none returned, no graph rendered. "Built from the photos the viewer can see": as Second Wind, the Lantern #5 graph equals one built from only the #5 photos Wind can read; changing a private photo's `captured_at` in a test copy leaves Wind's API response byte-identical. Under both, no axis label, tooltip or caption prints a number of photos (R-099 under B8).
 
 ### R-145
-- **Statement:** B9 (a), under both settings ("text only" / "with photographs"): the announcement feed shows no image, and the Positivity Feed meets B9 (b)–(f). The "with photographs" setting is reported as a finding against "No photo feed" until the user rules on G-8.
+- **Statement:** The Positivity Feed is text only (**decided 2026-10-30, FS §20 Q**): each entry is a reflection's text, no photograph appears in the list, and opening one entry shows that one photo. B9 (a) has no switch. The announcement feed shows no image (R-086), and the Positivity Feed meets B9 (b)–(f). Before 2026-10-30 the statement read: "B9 (a), under both settings ("text only" / "with photographs"): the announcement feed shows no image, and the Positivity Feed meets B9 (b)–(f). The "with photographs" setting is reported as a finding against "No photo feed" until the user rules on G-8."
 - **Type:** auto · **Applies to:** UI, API
-- **Source:** DN B9, CL:72 ("No photo feed ... never images"), FS:171, FS:202–204, CL:24 (strictest reading wins). See G-8
-- **How to check:** Under each setting: R-086 passes on the announcement feed, and the R-103 cases pass. "Text only": the Positivity Feed DOM has no `img`, `picture`, `canvas` or background image before an entry is opened, and opening one shows that one photo. "With photographs": the feed shows photographs in a stream. Under the strictest reading that is a photo feed, so every audit lists it as a finding against CL:72 until the user decides G-8. Rule zero point 4 (CL:24) says a provisional default may never break the banned list; the default here is "text only", and the panel must not start on "with photographs".
+- **Source:** FS §20 Q, DN B9, CL:72 ("No photo feed ... never images"), FS:171, FS:202–204, CL:24. See G-8
+- **How to check:** R-086 passes on the announcement feed, and the R-103 cases pass. The Positivity Feed DOM has no `img`, `picture`, `canvas`, `video` or background image before an entry is opened, and its list endpoint returns no image URL or media field; opening one entry shows that one photo. From that opened photo there is no next, previous or swipe control that steps to another feed entry's photo: stepping photo to photo through the feed's results is a photo feed shown one image at a time (strictest reading of FS §20 Q with CL:72, CL:24; added 2026-10-30 by `docs/reviews/2026-10-30-rules-screen-inventory-r3.md` N20). The options panel has no B9 control (R-141). Any photograph in the feed list, or a setting that adds one, is a violation of CL:72 and FS §20 Q, not a finding awaiting the user. Before 2026-10-30 this check ran under both settings and reported "with photographs" as a finding against CL:72 until the user decided G-8.
 
 ### R-146
 - **Statement:** B11, under both settings ("named" / "unnamed"): a "path crossed" announcement reaches only the owner's network, and never says which ring, how many photos, or anything that orders or ranks.
@@ -1065,6 +1335,32 @@ Added 2026-10-27 for the playable prototype (rule zero, CL:19–24; `Decisions-N
 
   A table ID with no label in code is not a failure: some defaults are an absence (B15, C15). `B9a`–`B9f` match row B9. Tested 2026-10-27 on a sample file: step 1 caught `A3` and `PROVISIONAL B2`, step 2 caught `B17`. Baseline 2026-10-27: no code labels yet. Review aid, not part of the auto result: for each label, the code beside it does what that table row says.
 
+  Note 2026-10-30: B17 has since been added to the table (fdb83d3), so the sample above no longer shows a missing ID. A fresh sample should use an ID past the table's last row.
+
+### R-150
+- **Statement:** A deliverable (doc or code) describes every question that `Decisions-Needed.md` answers with a provisional default under that default only, worded as the table row states it, and labelled `PROVISIONAL: <ID>`. It never calls such a question open or "no default", never states a default range that leaves out rows in the table, never describes the other side or a third reading as what the screen holds, and never extends a default or a switch setting to cases its row does not name.
+- **Type:** auto (labels and cross-references) and review (wording) · **Applies to:** copy, UI, data, API
+- **Source:** CL:19–24 (rule zero: "build that, and nothing else"), CL:30, DN "Provisional defaults in force". R-149 covers labels in code only; R-135 covers picking a side. Found by `docs/reviews/2026-10-30-rules-screen-inventory-r1.md` finding N1 (B17–B19 missing from `Screen-Inventory.md`) and N2 (B2's option extended to Public photos)
+- **How to check:** From the repo root, for a deliverable `F`:
+  1. Every table ID is labelled in `F` if `F` touches its question. List table IDs not labelled in `F`, then read each against `F`: `comm -13 <(grep -oE 'PROVISIONAL: [BC][0-9]{1,2}' F | grep -oE '[BC][0-9]+' | sort -u) <(grep -oE '^\| [BC][0-9]{1,2} \|' docs/Decisions-Needed.md | grep -oE '[BC][0-9]+' | sort -u)`
+  2. Every row that says "Raised as ... OQ-n" is named in `F`'s OQ-n status line. Must print nothing: `grep -oE '^\| [BC][0-9]+ \|.*Raised as[^|]*' docs/Decisions-Needed.md | while read -r l; do id=$(echo "$l" | grep -oE '^\| [BC][0-9]+' | grep -oE '[BC][0-9]+'); for n in $(echo "$l" | grep -oE 'OQ-[0-9]+' | grep -oE '[0-9]+'); do awk -v n="$n" -v id="$id" '$0 ~ "^"n"\\. "{f=1;next} f && /^[0-9]+\. /{exit} f && index($0,id){ok=1} END{if(!ok) print "OQ-"n" lacks "id}' F; done; done`
+  3. Grep `F` for `no default`, `still open, no ID` and `B1–B1[0-9]` ranges, and confirm each against the table.
+  4. Review: each labelled passage says what its row says, no more. A reading the row does not state (for example, what a switch setting does to a case the row does not name) is raised as a question, not built.
+
+### R-153
+- **Statement:** Only the prototype panel can move the clock or change an option switch. No acting viewer, through any route, function or direct database call, can jump time, jump to the next unlock or flip a switch.
+- **Type:** auto · **Applies to:** data, API
+- **Source:** FS §20 EE (`FS:309`), FS §20 Z, DN C16, R-141, R-117. Found by `docs/reviews/2026-10-30-rules-phase-1-r5.md` finding V1 (`Phase-1-Amendments.md:55` says `mj_app` holds EXECUTE on `clock_jump()` and calls the question unsettled; `:193` calls `set_option()` EXECUTE unsettled)
+- **How to check:** Connected as the viewer role with each fixture user set as the acting viewer, call `clock_jump('1 day')`, the next-unlock jump and `set_option('b2', 'after_reveal_finished')`: each is refused, and `app_now()` and `prototype_option` are unchanged. `has_function_privilege(<viewer role>, <fn>, 'EXECUTE')` is false for all three. No API route reachable from a product screen calls them. As the panel role: each succeeds.
+- **Current implementation:** a separate panel role holds EXECUTE on the three functions; the viewer role (`mj_app`) holds none
+
+### R-163
+- **Statement:** The fixture loader and the schema tests act as a user only the way a viewer does. They connect as the panel role and switch, one way, to the viewer role for each action. They never write a product row any other way, and the viewer role can never become the panel role.
+- **Type:** auto · **Applies to:** data, dependencies
+- **Source:** FS §20 II (`FS:313`), EE; R-117, R-120, R-153; P1:40. Proposed by `Phase-1-Amendments.md` §2.4 (lines 183–188). r5 left it unnumbered because II was not yet ruled. Numbered by r6
+- **How to check:** (1) The loader and the test harness open connections as the panel role only, never as the table owner or directly as the viewer role. (2) As the panel role without the role switch, calling one product function (for example `finish_reveal`) is refused. (3) The loader's source contains no INSERT, UPDATE, DELETE, COPY or TRUNCATE on a product table. (4) After load, the baseline matches P1 §3: counts per journey, the §3.4 rings and the §3.6 matrix. (5) `pg_auth_members`: the viewer role is not a member of the panel role, and the panel role's membership in the viewer role is non-inheriting. As the viewer role, `SET ROLE` to the panel role is refused.
+- **Current implementation:** `GRANT mj_app TO mj_panel WITH INHERIT FALSE, SET TRUE`, and `SET LOCAL ROLE mj_app` for each action (`Phase-1-Amendments.md` §1.4, §1.5, §2.1, §2.2; `P1:195`)
+
 ---
 
 ## Banned-list coverage
@@ -1073,35 +1369,49 @@ Every row of the banned list (`CLAUDE.md:64–74`, `Master-Prompt.md:37–47`) a
 
 | Banned item | Checks |
 |---|---|
-| No retakes | R-031, R-005, R-018, R-019, R-029, R-124 |
+| No retakes | R-031, R-005, R-018, R-019, R-029, R-124, R-160, R-170, R-173, R-175 |
 | No edits to reflections | R-015, R-016, R-124 |
 | No comments from anyone else | R-105, R-106, R-107, R-109, R-124 |
 | No face recognition | R-110, R-111, R-112 |
 | No ads anywhere | R-113 |
-| No streaks, counters, progress bars, reminders | R-097, R-098, R-099, R-038, R-039, R-012, R-013, R-095, R-096, R-124, R-138, R-140, R-143, R-144 |
+| No streaks, counters, progress bars, reminders | R-097, R-098, R-099, R-038, R-039, R-012, R-013, R-095, R-096, R-124, R-138, R-140, R-143, R-144, R-166 |
 | No re-engagement notifications | R-094, R-095, R-096 |
-| No ranking, levels, badges, leaderboards | R-101, R-102, R-103, R-124, R-143 |
+| No ranking, levels, badges, leaderboards | R-101, R-102, R-103, R-124, R-143, R-166 |
 | No photo feed | R-084, R-085, R-086, R-145 |
-| Nothing leaks from a sealed year | R-001 to R-014, R-091, R-138, R-142, R-144 |
+| Nothing leaks from a sealed year | R-001 to R-014, R-091, R-138, R-142, R-144, R-156, R-157, R-158, R-161, R-167, R-169 |
 | No layer is ever shown to the person on it | R-069, R-070, R-071, R-092, R-139, R-146, R-147, R-148 |
 
 R-141 and R-149 apply to every row: no switch setting may break any item above, and every provisional default in code is labelled and traceable. R-138 sits under two rows because a control hidden or greyed for lack of frames is both a counter and a leak of how much a sealed year holds (RG:28, "disabled-but-visible states").
+
+R-150 applies to every row as well: a deliverable that leaves out or stretches a provisional default can carry a banned item in by that route.
+
+R-151 to R-154 carry dated rulings (FS §20 DD, T, CC, EE, GG) rather than banned items. R-153 keeps the time control from becoming a way round the seal (R-014); R-154 narrows what a reader can infer from capture times (R-151 residual). R-151 extends the "Nothing leaks" row's intent past unlock for highlights (DN B6: others learn nothing about highlights).
+
+R-155 to R-165 (added 2026-10-31) carry FS §20 II–VV. Three of them sit under banned rows: R-160 under "No retakes" (PP, VV); R-156, R-157 and R-158 under "Nothing leaks", since a stray highlight reader, a catalog statistic or a row estimate shows activity in a sealed year (AA, MM, OO); and R-161 under "Nothing leaks" too, since a join date can be a sealed journey's commit date (TT). R-155, R-159 and R-162 narrow what a reader can infer after unlock (JJ, KK/NN/QQ, SS). R-163 keeps the loader inside a viewer's rights (II). R-164 and R-165 apply to every row: a guard tested only by a privilege refusal, or a ruling not carried, can let any banned item through.
+
+R-166 to R-168 (added 2026-10-31, r7) carry FS §20 WW–HHH. R-166 sits under "No streaks, counters" and "No ranking": the ring count reaches every viewer, so a numeral, total or comparison beside another user's circle would turn a record into a counter (CCC). R-167 sits under "Nothing leaks": a log line holding an image or a journey id beside a real time would record that a sealed journey's owner pressed then (DDD, FFF). R-168 applies to every row: a screen state that both holds and bans an element lets the builder pick, which is how a banned item gets in.
+
+R-169 to R-171 (added 2026-10-31, r8) carry FS §20 III–PPP. R-169 sits under "Nothing leaks": the note handle is a sealed photo's id held beside its press instant, so any copy of it outside the route records that a sealed journey's owner pressed then (LLL). R-170 sits under "No retakes": a lost press or note that looks or answers differently is the one sign that invites a second press (DDD, JJJ). R-171 applies to every row: an answer with no screen row is a behaviour the builder must pick, which is how a banned item gets in.
+
+R-172 and R-173 (added 2026-10-31, r9) carry FS §20 QQQ–XXX. R-173 sits under "No retakes": a note step that the screen has ended but the server still accepts is a way back to a second take (III, WWW, C4). R-172 applies to every row: a history line rewritten to cite a later ruling hides what was open when, which is how a decided label and an open question end up in one sentence.
+
+R-174 and R-175 (added 2026-10-31, r10) carry FS §20 YYY–BBBB. R-175 sits under "No retakes": a skip request the screen never sends leaves the note step open at the server, which is a way back to a second take (WWW, C4). R-174 applies to every row: a ruling's words lifted out of their subject become a rule nobody ruled on.
 
 ## `Phase-1-Proposal.md` §2.5 mapping
 
 | §2.5 check | Line | R-IDs |
 |---|---|---|
-| 1. No UPDATE or DELETE on reflection, overview, note, photo, journey, user name, journey_reveal | P1:175 | R-015, R-017, R-018, R-020, R-021, R-022, R-023 |
-| 2. No visibility, tag or chapter insert after reveal finished | P1:176 | R-052 |
-| 3. No second Commit while sealed | P1:177 | R-026 |
-| 4. Owner before unlock: 0 rows, count 0, ciphertext | P1:178 | R-001, R-002, R-003 |
-| 5. capture() and start_highlight() return no number | P1:179 | R-038 |
-| 6. No comment, reply, like, reaction, caption, score, rank, streak, badge, view, follower | P1:180 | R-105 (comment, reply), R-100 (like, reaction, view), R-108 (caption), R-101 (score, rank, badge), R-097 (streak), R-081 (follower) |
-| 7. B reads no layer row with owner ≠ B; A's tag never touches B's map | P1:181 | R-069, R-072 |
-| 8. Typed-name tag never makes a layer row | P1:182 | R-073 |
-| 9. Announcements: no media, three types | P1:183 | R-084, R-085 |
-| 10. Only the clock module reads the system clock | P1:184 | R-115 |
-| 11. No face or vision library | P1:185 | R-110 |
+| 1. No UPDATE or DELETE on reflection, overview, note, photo, journey, user name, journey_reveal | P1:176 | R-015, R-017, R-018, R-020, R-021, R-022, R-023; tested per R-164 (2026-10-31) |
+| 2. No visibility, tag or chapter insert after reveal finished | P1:177 | R-052; tested per R-164 (2026-10-31) |
+| 3. No second Commit while sealed | P1:178 | R-026; tested per R-164 (2026-10-31) |
+| 4. Owner before unlock: 0 rows, count 0, ciphertext | P1:179 | R-001, R-002, R-003. Since 2026-10-31 (FS §20 MM, OO): the 0 rows and count 0 are read through the readers, the tables refuse every product role, and the estimate and catalog halves are R-157 and R-158; tested per R-164 |
+| 5. capture() and start_highlight() return no number | P1:180 | R-038; image samples (amended P1:180) R-159, R-160 |
+| 6. No comment, reply, like, reaction, caption, score, rank, streak, badge, view, follower | P1:181 | R-105 (comment, reply), R-100 (like, reaction, view), R-108 (caption), R-101 (score, rank, badge), R-097 (streak), R-081 (follower) |
+| 7. B reads no layer row with owner ≠ B; A's tag never touches B's map | P1:182 | R-069, R-072 (through `layer_rows()` since FS §20 OO) |
+| 8. Typed-name tag never makes a layer row | P1:183 | R-073 |
+| 9. Announcements: no media, three types | P1:184 | R-084, R-085 |
+| 10. Only the clock module reads the system clock | P1:185 | R-115 |
+| 11. No face or vision library | P1:186 | R-110 |
 
 ---
 
@@ -1141,19 +1451,25 @@ Since 2026-10-27 each gap carries a status line under it: **being fixed** by a `
 
 **Provisional default:** Decisions-Needed B4 (switchable): One ring per finished reveal (`P1:65`); other setting: per year with the app. R-143 must pass under both settings. The contradiction stays open until the user decides.
 
-**G-8. The Positivity Feed and "no photo feed".** `CLAUDE.md:72` and `Master-Prompt.md:45` say "No photo feed. The feed carries announcements only, never images". The Positivity Feed is fed by public photos and their reflections (`FS:203–204`, `P1:317`). Open: does the Positivity Feed show photographs, and if so how does that fit the ban? Also `FS:203` says it draws from "journeys set to public", while visibility is per photo (`FS:141`); `MJC:375` and `MJC:379` show the same split. And `MJC:244` says "no feed", against `FS:169–177`.
+**G-8. The Positivity Feed and "no photo feed".** `CLAUDE.md:72` and `Master-Prompt.md:45` say "No photo feed. The feed carries announcements only, never images". The Positivity Feed is fed by public photos and their reflections (`FS:203–204`, `P1:324`). Open: does the Positivity Feed show photographs, and if so how does that fit the ban? Also `FS:203` says it draws from "journeys set to public", while visibility is per photo (`FS:141`); `MJC:375` and `MJC:379` show the same split. And `MJC:244` says "no feed", against `FS:169–177`.
 
-**Provisional default:** Decisions-Needed B9: (a) reflection text only, with the photo shown when opened, switchable to "with photographs"; (b) per-photo visibility; (c) drafted tag list only; (d) chapter filter; (e) newest first; (f) only after reveal finished. Covers the per-photo split (b, R-067) and, under the default, the image question (a, R-103). **Not covered:** whether the "with photographs" setting fits "No photo feed" (R-145 reports it as a finding), and the `MJC:244` "no feed" line, which no section A item corrects.
+**Decided 2026-10-30 (FS §20 Q):** "No photo feed" covers the Positivity Feed. Text only; a photo shows only when one entry is opened. The "with photographs" setting is removed.
+
+**Provisional default (before 2026-10-30):** Decisions-Needed B9: (a) reflection text only, with the photo shown when opened, switchable to "with photographs"; (b) per-photo visibility; (c) drafted tag list only; (d) chapter filter; (e) newest first; (f) only after reveal finished. Covers the per-photo split (b, R-067) and, under the default, the image question (a, R-103). **Not covered:** whether the "with photographs" setting fits "No photo feed" (R-145 reports it as a finding), and the `MJC:244` "no feed" line, which no section A item corrects.
 
 **G-9. Images in the announcement feed.** `CLAUDE.md:72` says "never images". `FS:171` says "No photographs in the stream". Open: may an announcement show the actor's profile picture?
 
 **Provisional default:** Decisions-Needed C7: No profile picture is shown anywhere; announcements carry no image. R-086 is firm under C7.
 
+**Decided 2026-10-31.** FS §20 XXX (`FS:360`): C7 is decided in full; announcements carry no image. G-9 is closed.
+
 **G-10. Profile picture and looks.** `FS:13` and `P1:62` give each user a profile picture. `FS:29` and `Master-Prompt.md:113` say nothing on a profile signals how the person looks. Open: what may the profile picture be?
 
 **Provisional default:** Decisions-Needed C7: No profile picture is shown anywhere. The profile shows the name in the circle. R-126 is read under C7. The profile picture field in `FS:13` and `P1:62` still exists in the approved model; the default only stops it being shown.
 
-**G-11. Choices made during a reveal that is never finished.** `FS:269` says an unfinished reveal has "no chapter, no tags", and `P1:25` and `MJC:855` say "the photos stay Network". But choices are inserted, once each, during the reveal (`FS:286` §20 P, `P1:46`, `P1:143`, `P1:165–166`, `P1:347`). Open: if the owner sets a photo to Private, or sets a chapter, and never finishes, does that choice take effect? R-054 tests only what all sources agree on.
+**Decided 2026-10-31.** FS §20 XXX (`FS:360`, extends YY): no profile picture anywhere; the profile shows the owner's name in the circle. G-10 is closed.
+
+**G-11. Choices made during a reveal that is never finished.** `FS:269` says an unfinished reveal has "no chapter, no tags", and `P1:25` and `MJC:855` say "the photos stay Network". But choices are inserted, once each, during the reveal (`FS:286` §20 P, `P1:46`, `P1:143`, `P1:165–166`, `P1:408`). Open: if the owner sets a photo to Private, or sets a chapter, and never finishes, does that choice take effect? R-054 tests only what all sources agree on.
 
 **Provisional default:** Decisions-Needed B3: Each reveal choice takes effect when made. A reveal can be finished at any later time. R-051 and R-054 are read under B3.
 
@@ -1161,13 +1477,15 @@ Since 2026-10-27 each gap carries a status line under it: **being fixed** by a `
 
 **Provisional default:** Decisions-Needed B12 (switchable): Walking a path shows the photos where the reader appears, in journey order, with no total and no grouping; other setting: hidden. **Partly covered:** under "shown" a reader can still count by scrolling, so the floor estimate this gap describes remains. R-139 and R-147 report it as the weakest point until the user decides. Under "hidden" the gap does not arise.
 
-**G-13. Highlights during the sealed year.** `P1:48` seals photo, note, tag and reflection rows, but not highlight rows. A readable highlight record would tell others that, and when, a user started one, against `FS:246` and `FS:279` (§20 I). R-008 already requires that others see nothing, so the gap is in the current implementation. Open for the owner: may the owner see that a highlight is open and when it ends? A running "ends in 3h" would be a counter (`CLAUDE.md:69`); a plain open-or-closed is not addressed anywhere.
+**G-13. Highlights during the sealed year.** `P1:48` sealed photo, note, tag and reflection rows, but not highlight rows. **Closed 2026-10-30: FS §20 AA seals highlight rows (P1:48 amended).** A readable highlight record would tell others that, and when, a user started one, against `FS:246` and `FS:279` (§20 I). R-008 already requires that others see nothing, so the gap is in the current implementation. ~~Open for the owner: may the owner see that a highlight is open and when it ends?~~ **Settled 2026-10-30 (FS §20 S): the owner sees only that a highlight is open, never when it ends.** Original question: A running "ends in 3h" would be a counter (`CLAUDE.md:69`); a plain open-or-closed is not addressed anywhere.
 
-**Provisional default:** Decisions-Needed B6: Others learn nothing about highlights. The owner sees only "a highlight is open", with no end time and no countdown. Covers both halves: R-008 (others) and R-009, R-138, R-140 (owner) are read under B6. The implementation gap remains: `P1:48` does not seal highlight rows, so the build must keep them unreadable to others without changing the approved model (CL:28); any model change goes to the supervisor.
+**Provisional default:** Decisions-Needed B6: Others learn nothing about highlights. The owner sees only "a highlight is open", with no end time and no countdown. Covers both halves: R-008 (others) and R-009, R-138, R-140 (owner) are read under B6. The implementation gap was closed 2026-10-30 by FS §20 AA. Before that: `P1:48` does not seal highlight rows, so the build must keep them unreadable to others without changing the approved model (CL:28); any model change goes to the supervisor.
 
 **G-14. Feeling tags.** `FS:131` says feeling tags are written "inside a category", and `P1:141` stores them as (journey, free text) with no category. `FS:131` also says popular feeling tags "surface over time", while `FS:202` says the Positivity Feed is "never by popularity". Open: how a tag surfaces, and whether that uses any measure of popularity.
 
 **Partly covered.** **Provisional default:** Decisions-Needed B9 (c) and (e): only the drafted tag list qualifies for the Positivity Feed, newest first, so the feed is never ordered by popularity (R-103). **Still open:** `FS:131` "inside a category" against `P1:141` (no category), and how popular feeling tags "surface over time" without a popularity measure. No default covers either; a build that surfaces tags by how often they are used fails R-134.
+
+**Provisional default (added 2026-10-27, fdb83d3):** Decisions-Needed B17: Feeling tags are free text on the journey, with no category, as in the approved model (`P1:141`). Decisions-Needed B18: Tags never "surface" by popularity; no suggestions and no counts (`FS:202` over `FS:131`). With B9 (c) and (e) these cover the whole gap for the prototype. A deliverable that still offers a category-bound feeling tag, or treats popular surfacing as open, fails R-135 and R-150.
 
 **G-15. When an overview is written.** `FS:118` (and `MJC:218`) says the overview is "written at reveal". `FS:275` (§20 E) says a new one every year on each journey. R-122 tests §20 E.
 
@@ -1180,6 +1498,33 @@ Since 2026-10-27 each gap carries a status line under it: **being fixed** by a `
 **G-17. What the owner sees of a sealed journey.** `FS:74` says nothing in a sealed journey is visible "not to the user". `P1:84` lets the owner see its type, commit date and unlock date. These may agree (dates are about the journey, not in it), but it is worth confirming, together with whether showing the unlock date is allowed at all given the countdown ban (R-013).
 
 **Provisional default:** Decisions-Needed C2: The unlock date is shown as a plain date, never relative ("in 64 days"). R-009 and R-013 are read under C2. B6 adds one more thing the owner may see of a sealed journey: that a highlight is open (R-009).
+
+**Provisional default (added 2026-10-27, fdb83d3):** Decisions-Needed B19: The owner of a sealed journey sees its type, commit date and unlock date and nothing else (`P1:84`; `FS:74` read as covering the contents). R-009 is read under B19. B19's "nothing else" and B6's highlight state read against each other. **Decided 2026-10-30 (FS §20 S):** B6 holds.
+
+**G-23. What else tells a public reader that a reveal is finished (added 2026-10-31, r6).** FS §20 SS (`FS:323`) says whether a reveal is finished is "never public". Three other lines let a public reader infer it:
+- DN B9 (f) (`DN:28`): the Positivity Feed, which public readers use, carries only journeys whose reveal is finished. An entry there therefore says the reveal is finished (Round #2 to First Light).
+- DN B4 (`DN:23`), default "one ring per finished reveal": S-16 shows rings to a public viewer (`Screen-Inventory.md:405`), so a new ring says a reveal was finished. `Screen-Inventory.md` OQ-44 is still open on rings for public viewers.
+- FS §20 R (`FS:291`), under B2's option: a Public photo becomes readable only once the reveal is finished.
+
+Related: under FS §20 TT (`FS:324`), B4's other setting, "per year with the app", shows others one ring per year since joining, which gives the join year. Open: does SS cover only the `journey_reveal` record, or the fact however it is learned? And may B4's second setting show a ring count to others? Not decided here. The strictest reading (CL:24) is the fact. R-162 and R-161 run on that reading until the user rules.
+
+**Decided 2026-10-31.** FS §20 ZZ (`FS:333`): SS covers the reveal state as a field; inferring it from the Positivity Feed, rings and photos appearing is allowed. FS §20 WW (`FS:330`): B4's per-year rings show only on the user's own profile. FS §20 CCC (`FS:336`): public viewers get a ring count only, no dates (R-166). FS §20 EEE (`FS:338`) applies the same reading to journey dates (R-152). G-23 is closed; R-161 and R-162 now read under these rulings.
+
+**G-24. A press lost to the guard bug: "nothing different" against "no note offer" (added 2026-10-31, r7).** FS §20 DDD (`FS:337`): "the user sees nothing different; that press gives no photo". FS §20 GGG (`FS:340`): "the camera returns as after any press, with no note offer". `Screen-Inventory.md:87` and `:96` send every accepted press straight to the note step S-12 (`PROVISIONAL: C4`), so the missing offer is the one sign that the press gave no photo, which `Screen-Inventory.md:94` bans in the same row. Seeing no offer, the user may press again for the same moment, which PP (`FS:320`) bans ("nothing invites a second press"). Not picked. Open: does GGG mean the press may look different from an accepted one, or is S-12 to be offered and then end with nothing stored? R-160 (3) and R-168 hold this open until the user rules. It blocks the S-02 and S-12 flows (Phase 2) and screens (Phase 4), not the Phase 3 schema.
+
+**Decided 2026-10-31.** FS §20 JJJ (`FS:343`): the screen after a lost press looks exactly like a normal press, note offer included; DDD wins and GGG's "no note offer" is retired. A note written for a lost press is discarded. G-24 is closed; R-160 and R-168 carry it.
+
+**G-25. A lost press that would have been refused (added 2026-10-31, r8).** FS §20 JJJ (`FS:343`): "the screen looks exactly like a normal press, note offer included". The guard runs before the §20 U order, so whether the lost press would have been accepted is never computed, and the route answers `accepted` (`Phase-1-Amendments.md` §6 lines 516 and 529). When no frame is left, or the highlight is full, a normal press at that instant shows the capture refusal (`Screen-Inventory.md:92`; `PROVISIONAL: B7`), not a note offer. Amendments OQ-32 (a) raised exactly this ("different from an accepted press, or from what that press would have given?"), and its settlement answers only the accepted case. Not picked. Phase 3 is unaffected: nothing is stored either way. It blocks the S-02 lost-press row and R-170 (Phase 4).
+
+**Decided 2026-10-31.** FS §20 QQQ (`FS:352`): a lost press looks like the normal press it would have been, judged first at the press instant; one a normal press would refuse shows the normal refusal. Carried in `Phase-1-Amendments.md` §6 lines 515, 539 and `Screen-Inventory.md:94`, `:96`. G-25 is closed; R-170's `Open` line is superseded.
+
+**G-26. A note window that crosses the journey's unlock (added 2026-10-31, r9).** A photo captured less than 15 minutes before `unlocks_at` has a note window that runs past the unlock. `Phase-1-Amendments.md:551` says the note step accepts a handle "only ... while the journey is sealed", citing P1:104 and P1:108, but neither line says so: P1:108 gives only "within 15 minutes of the photo's `captured_at`" (D8), FS §20 K gives "up to 15 minutes after capture, never after", and the evidence stand-in checks only the owner and the window (`Phase-1-Amendments.md:643`). `Screen-Inventory.md:346` makes `unlock-day` onward "Not a writing step". Open: (a) may a note be added after the unlock, inside its 15 minutes, to a photo that is already readable? (b) If not, the route's window check (`:554`) passes and `add_note()` refuses, and no route answer (`saved`, `closed`) covers that refusal; a lost press at the same instant is answered `saved` (JJJ), so the device answers would differ (R-170 (1)). The prototype reaches it whenever the demoer jumps to the next unlock while S-12 is open (R-153). Not picked. It blocks `add_note()`'s refusal conditions (Phase 3) and the S-12 row (Phase 4).
+
+**Decided 2026-10-31.** FS §20 YYY (`FS:361`): the note window ends at unlock, and that end looks exactly like the window ending (UUU, RRR); this answers (a). FS §20 BBBB (`FS:364`) answers (b): a note-step refusal inside a window the route read as open gets the one `closed`. Carried in `Phase-1-Amendments.md` §0 `:61`, `:64`, §6 `:561`, `:564`, `:567–576`, evidence `:807`, `:856`; P1:108, P1:180; `Screen-Inventory.md:340` end (7), `:346`, `:348`. G-26 is closed.
+
+**G-27. Capture or the note step open at the unlock instant (added 2026-10-31, r10).** YYY rules the note step: at unlock it ends as at 15 minutes, and nothing on it changes on its own (`Screen-Inventory.md:340` end (7)). Nothing rules what follows. S-12 "leads to the camera S-02" (`:336`), but S-02's `unlock-day` row is "Not available" (`:99`). A press made on an open camera at or after unlock is answered `refused` (`Phase-1-Amendments.md:574`), and S-02's one refusal row is for "no frame, or the highlight's quota reached" (`:94`). S-12's never-list bans "nothing that sets end (7) apart from end (4)" (`:340`), yet after (4) the camera works and after (7) it does not. Decisions-Needed C1 says "Your Journey is ready" appears on next open. Open: (a) does an open camera change at the unlock instant, or only on the next open (C1)? (b) does a press refused for unlock show the B7 refusal, which then reads as "no frame"? (c) where does S-12 end (7) lead? Not picked. It does not block Phase 3 (`capture()` already refuses after unlock, P1:99). It blocks the S-02 and S-12 flows (Phase 2) and screens (Phase 4). The prototype reaches it whenever the demoer jumps to the next unlock with capture open (R-153).
+
+**G-28. What counts as leaving capture (added 2026-10-31, r10).** `PROVISIONAL: C4` says leaving capture ends the note step, and since WWW the client tells the route by sending the skip request on it (`Phase-1-Amendments.md:566`). No doc says whether the app going to the background, the screen locking, an incoming call or the app being closed by the system is leaving capture. A normal app resumes the step on return; under C4 that would be a way back. Not picked. Phase 4 (and the S-12 flow in Phase 2).
 
 ### Rules that cannot be made testable yet
 
