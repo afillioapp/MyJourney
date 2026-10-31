@@ -11,8 +11,8 @@ Status values: `todo` · `in progress` · `in review` · `done` · `blocked`
 ## Where we are
 
 **Current phase:** 1 — Define (all deliverables done; gate re-check pending)
-**Next step:** Phase 1 gate re-check (qa), then you pass or hold the gate
-**Waiting on you:** passing the Phase 1 gate; C17, C18 (not blocking)
+**Next step:** ON HOLD (user, 2026-10-31). The user wants to see the application first, review it, then resume.
+**Waiting on you:** how to show the application (nothing is built yet). Parked questions: SI OQ-51, OQ-52; system closing the app during the note window; BBBB (b) timing item. Phase 1 gate: last checks found no Phase 3 blockers; rules r10 and gate r9 fixes are in but not re-audited.
 
 ---
 
@@ -151,3 +151,4 @@ Can start any time after Phase 2.
 - 2026-10-31 — Lead-tech carried AAAA, BBBB (Before real users 9–10; one 'closed' answer tested).
 - 2026-10-31 — Rules audit r10 FAIL (S-12 leave-capture send, AAAA/BBBB not on screens). User rulings: YYY reworded; §20 CCCC (at unlock: quiet end, app goes to 'ready'), DDDD (leaving capture = in-app navigation only). Sent to ux and lead-tech.
 - 2026-10-31 — Lead-tech carried CF-46 (notes before unlock), r10 N3–N6, CCCC, DDDD; no behaviour change. Open: SI OQ-51, OQ-52; system closing the app; BBBB (b) timing as its own item.
+- 2026-10-31 — ON HOLD at the user's request. All work committed and pushed. Not re-audited after the r10/r9 fixes. Four questions parked (above).
