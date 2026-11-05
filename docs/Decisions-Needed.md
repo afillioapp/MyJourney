@@ -59,6 +59,21 @@ Approved approach (user, 2026-10-27): build the prototype with these defaults an
 | B24 | After unlock, highlight rows are readable by the owner only (Amendments OQ-8) | no |
 | B25 | A highlight is closed at exactly its end time (Amendments OQ-9) | no |
 | B26 | A scripted action the running clock has already passed is applied at the next jump (Amendments OQ-2) | no |
+| B27 | Day marks in identity rings are drawn for the owner only, under both B5 settings. Every other viewer sees plain rings (`Art-Direction.md` AD-1; added 2026-11-05 from the art director's proposal) | no |
+| B28 | Under B4's "per year with the app", the owner's per-year rings are drawn plain, with no day marks. A year's ring is added at the join anniversary, unless a journey is sealed then, when it is added at that journey's unlock. A ring never appears inside a sealed year. **Proposed rule, not a reading of the docs**: the art director invented the timing as the strictest option (`Art-Direction.md` AD-2; added 2026-11-05 from the art director's proposal) | no |
+| B29 | No bend animation. At reveal finished, the ring is drawn complete the next time the circle is drawn (`Art-Direction.md` AD-3; added 2026-11-05 from the art director's proposal) | no |
+| B30 | Light theme only in the prototype. Dark tokens exist, with no control and no device switch (`Art-Direction.md` AD-4; added 2026-11-05 from the art director's proposal) | no |
+| B31 | The flat graph shows from unlock until the reveal is finished, then is not shown. The ring carries the line from then on (`Art-Direction.md` AD-6; added 2026-11-05 from the art director's proposal) | no |
+| B32 | No words on layer rings (`Art-Direction.md` AD-7; added 2026-11-05 from the art director's proposal) | no |
+| B33 | The activity line records capture dates only (SI OQ-7) (`Art-Direction.md` AD-8; added 2026-11-05 from the art director's proposal) | no |
+| B34 | A ring is added outermost, in the order reveals are finished (`Art-Direction.md` AD-9; added 2026-11-05 from the art director's proposal) | no |
+| B35 | Rings and the circle have no press or hover state (`Art-Direction.md` AD-10; added 2026-11-05 from the art director's proposal) | no |
+| B36 | No flat graph for a public viewer, under either B5 setting (`Art-Direction.md` AD-12; added 2026-11-05 from the art director's proposal) | no |
+| B37 | Identity rings are drawn only on Profile (own) S-05 and Another user's profile S-16 (`Art-Direction.md` AD-13; added 2026-11-05 from the art director's proposal) | no |
+| B38 | No year, date or journey label on any ring, for any viewer (`Art-Direction.md` AD-14; added 2026-11-05 from the art director's proposal) | no |
+| B39 | On S-16 and S-06, "a journey exists" is shown as words only, the same for every viewer, never as a drawing. Copy and placement to come (copywriter, ux) (`Art-Direction.md` AD-15; added 2026-11-05 from the art director's proposal) | no |
+| B40 | On a map with anyone on it, all three layer rings are drawn. An empty map is the core alone (`Art-Direction.md` AD-16; added 2026-11-05 from the art director's proposal) | no |
+| B41 | No navigation mark for Reveal S-04. The way in is C1's "Your Journey is ready" line only (`Art-Direction.md` AD-18; added 2026-11-05 from the art director's proposal) | no |
 
 Section A was approved by the user on 2026-10-27 and is being applied.
 

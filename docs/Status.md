@@ -2,7 +2,7 @@
 
 The blackboard. Every worker reads this before starting and every finished step is recorded here with its evidence. The phases, deliverables and gates come from `Build-Plan.md`; this file only tracks where they stand.
 
-Last updated: 2026-10-31
+Last updated: 2026-11-04
 
 Status values: `todo` · `in progress` · `in review` · `done` · `blocked`
 
@@ -10,9 +10,9 @@ Status values: `todo` · `in progress` · `in review` · `done` · `blocked`
 
 ## Where we are
 
-**Current phase:** 1 — Define (all deliverables done; gate re-check pending)
-**Next step:** ON HOLD (user, 2026-10-31). The user wants to see the application first, review it, then resume.
-**Waiting on you:** how to show the application (nothing is built yet). Parked questions: SI OQ-51, OQ-52; system closing the app during the note window; BBBB (b) timing item. Phase 1 gate: last checks found no Phase 3 blockers; rules r10 and gate r9 fixes are in but not re-audited.
+**Current phase:** 2 — Look, started at the user's request (2026-11-04). The Phase 1 gate has not been passed; see the Log.
+**Next step:** Flows (ux), then art direction and microcopy, then a private preview on Vercel.
+**Waiting on you:** the Phase 1 gate (rules r10 and gate r9 fixes are in but not re-audited). Parked questions: SI OQ-51, OQ-52; system closing the app during the note window; BBBB (b) timing item.
 
 ---
 
@@ -42,9 +42,9 @@ Status values: `todo` · `in progress` · `in review` · `done` · `blocked`
 
 | Deliverable | Owner | Status | Evidence |
 |---|---|---|---|
-| Art direction | art-director | todo | Target: `Art-Direction.md` |
-| Flows on paper | ux | todo | Target: `Flows.md` |
-| Microcopy for the weighted moments | copywriter | todo | Target: `Microcopy.md` |
+| Art direction | art-director | in review | `Art-Direction.md`; audit r1 FAIL (`reviews/2026-11-04-rules-art-microcopy.md`, ART-1 to ART-12), round 1 fixed; re-audit r2 running. Open questions AD-1 to AD-18 there; drawn states are provisional defaults B27 to B41 |
+| Flows on paper | ux | in review | `Flows.md`; audits r1 FAIL (13), r2 FAIL (6), r3 FAIL (1: `reviews/2026-11-05-rules-flows-r3.md` V1, C2 labelled as open). Revision cap reached; best attempt goes to the user with V1 flagged. Open questions FQ-1 to FQ-12 and DC-1 to DC-14 listed there |
+| Microcopy for the weighted moments | copywriter | in review | `Microcopy.md`; audit r1 FAIL (`reviews/2026-11-04-rules-art-microcopy.md`, COPY-1 to COPY-9), round 1 fixed; re-audit r2 running. Open questions renamed MQ-1 to MQ-8 (R-177) |
 
 **Gate:** someone who has never heard of the product can follow the flows and understand the ritual.
 
@@ -153,3 +153,8 @@ Can start any time after Phase 2.
 - 2026-10-31 — Lead-tech carried CF-46 (notes before unlock), r10 N3–N6, CCCC, DDDD; no behaviour change. Open: SI OQ-51, OQ-52; system closing the app; BBBB (b) timing as its own item.
 - 2026-10-31 — ON HOLD at the user's request. All work committed and pushed. Not re-audited after the r10/r9 fixes. Four questions parked (above).
 - 2026-10-31 — Quick clickable prototype built for the user's review (`prototype/index.html`, private artifact link). Browser-only, fixture data, not the Phase 4 build; not rules-audited. Work stays on hold until the user's review.
+- 2026-11-04 — Hold lifted by the user, who asked for the next phase to be completed and then made live to preview. Exception to plan order, chosen by the user: Phase 2 starts with the Phase 1 gate not passed and the r10/r9 fixes not re-audited. Phase 1 gate stays open. Deploy preflight (L-005), read from Vercel: project and team IDs from the register; Vercel Authentication on for all except custom domains, no password protection, no custom domain, so every `.vercel.app` URL needs a team login; project is connected to GitHub (`afillioapp/MyJourney`), so a branch push makes a preview deployment. Only the user can switch the authentication off.
+- 2026-11-04 — Phase 2 drafts written: `Flows.md` (ux), `Art-Direction.md` (art-director), `Microcopy.md` (copywriter). Rules audits: Flows r1 FAIL (13), fixed; r2 FAIL (6). Art direction FAIL (12) and microcopy FAIL (9), in one report. Rubric R-176 to R-178 added by the guardian. Preview page (`preview/`) part built by developer. All workers stopped at 22:30 on the account's 5-hour usage limit.
+- 2026-11-05 — Resumed. Supervisor added R-179 to R-186 (guardian's P-1 to P-8). Fixes sent: Flows round 3 of 3, art direction and microcopy round 1. Cross-doc: "12 months from today" removed from Flows:156 and M-02 by the strictest reading (CL:24, C2); Microcopy Q-n renamed MQ-n (R-177). Learner not yet dispatched for the failed audits; batched to the end of the phase to save usage.
+- 2026-11-05 — Flows round 3 of 3 done; re-audit r3 FAIL on one labelling violation (V1: the plain unlock date marked `PROVISIONAL: C2` though C2's other option is a countdown R-013 bars). Cap reached: to the user, not to another round. Microcopy round 1 fixes and two syncs with the final flows done.
+- 2026-11-05 — Art direction round 1 fixed (new ring geometry, tier names removed, AD-11 to AD-18). Supervisor added provisional defaults B27 to B41 to `Decisions-Needed.md` from the art director's proposals (B28 marked as an invented rule) and linked them in `Art-Direction.md`. Art and microcopy re-audit r2 running.

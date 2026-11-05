@@ -22,6 +22,12 @@ Updated 2026-10-31 (rules audit `docs/reviews/2026-10-31-rules-phase-1-r9.md`, a
 
 Updated 2026-10-31 (rules audit `docs/reviews/2026-10-31-rules-phase-1-r10.md`, after FS §20 YYY–BBBB): added R-174 (a ruling's general words are carried only with the thing it rules, so "nothing is added to a journey once it unlocks" never bars a reveal write), R-175 (a client act that a server rule depends on is stated on the screen that performs it, for every trigger the server design names), G-27 (capture or the note step open at the unlock instant) and G-28 (what counts as leaving capture). Closed G-26 (FS §20 YYY, BBBB). Added `Decided` lines for YYY (R-170, R-171, G-26), ZZZ (R-160, R-170), BBBB (R-171) and `Accepted residual` lines for AAAA (R-170) and BBBB (a) (R-173). `Updated` lines on R-116 (§21 moved to FS:375, "A time control" FS:379), R-165 ((4) also covers body lines that assign a behaviour to a named screen), R-169 ((2) also scans for the journey id, which the route entry now holds) and R-170 ((4): a busy indicator shown only after a delay fails). No check renumbered or removed.
 
+Updated 2026-11-04 (rules audit `docs/reviews/2026-11-04-rules-flows.md`, of `Flows.md`): added R-176 (a doc's "what you see" holds only what that viewer's screen may show) and R-177 (a new ID is declared as new and cannot be misread as an ID from another family). Added R-176 to two rows of Banned-list coverage. No check renumbered or removed.
+
+Updated 2026-11-04 (rules re-audit `docs/reviews/2026-11-04-rules-flows-r2.md`, of `Flows.md` revision round 1): added R-178 (a word marking something undecided is never attached to a banned-list rule or a §20 ruling) and an `Updated` line on R-176 (a blanket "never on any screen" fails). Added R-178 to two rows of Banned-list coverage. No check renumbered or removed.
+
+Updated 2026-11-05 (supervisor, from rules audit `docs/reviews/2026-11-04-rules-art-microcopy.md` P-1 to P-8): added R-179 to R-186 after R-178. Each names its area, because they were added in one place to keep numbering in order. No check renumbered or removed.
+
 ---
 
 ## What this is for
@@ -1260,6 +1266,81 @@ Commit, capture, frames, highlights and the note.
 - **Source:** FS §20 YYY (`FS:361`: "Nothing is added to a journey once it unlocks"), against the reveal (`CLAUDE.md:103`; FS §20 A); CL:30 (do not pick between two lines). Found by r10 (N3): the phrase is repeated as a reason at `Screen-Inventory.md:340` end (7) and `:346`
 - **How to check:** (1) Grep the build docs and code comments for "nothing is added", "once it unlocks" and "after unlock": each hit names the photo or the note, or sits in a sentence about them. (2) Schema test: after unlock and before the reveal is finished, every reveal write the reveal allows succeeds as the owner; only `capture()`, `add_note()` and the `note` trigger refuse on `unlocks_at`. A trigger that refuses any insert under an unlocked journey fails
 
+### R-176
+- **Statement:** A doc's description of what a viewer sees holds only what that viewer's screen may show. A fixture fact that the screen must never show (a photo count, a month number, a total of tags, a private photo's existence, a past ring) is never written as something the viewer sees, and a table that carries such facts says plainly that they are for the reader of the doc and appear on no screen.
+- **Type:** review · **Applies to:** docs, copy
+- **Source:** CL:73–74, R-006, R-012, R-098, R-139, R-147, DN C8. The precedent is `Screen-Inventory.md:537` ("This table is for the reader of this inventory. The panel shows none of it"). Found by `docs/reviews/2026-11-04-rules-flows.md` V1, V2 and V4 (`Flows.md:133`, `:137`, `:140`)
+- **How to check:** Find every table column or sentence that says what a person sees, tries or gets when viewing as a named user. Run the R-006 (a) and R-139 grep aids over it, then read each line as that viewer in the screen's own "must never show" column. A hit fails unless the line states that the fact appears on no screen. A sealed journey's or another person's fact listed as something "you see" fails
+- **Updated 2026-11-04 (r2 of the same audit, V1):** the statement's "appear on no screen" covers only facts no screen may show. A blanket "never on any screen" over a column that also holds facts a screen does show, or that a ruling lets a viewer read, is false and fails: `Flows.md:151` covers `:160` (B11's named announcement) and `:164` (FS §20 SS). The first wording of this check invited that reading. Each row of such a column is read against its viewer
+
+### R-177
+- **Statement:** An ID a doc introduces is declared as new in that doc and cannot be misread as an ID from another family. No doc mints an ID that differs from an existing one by punctuation alone, and none calls its own new IDs "existing".
+- **Type:** auto (scan) and review · **Applies to:** docs
+- **Source:** L-002 (every cross-reference matches); CL:21–23 and R-149 (a `PROVISIONAL:` ID must be findable); R-150. Found by `docs/reviews/2026-11-04-rules-flows.md` V11: `Flows.md:685–699` mints C-1 to C-13 beside Decisions-Needed C1 to C18, and `Flows.md:649` calls them existing
+- **How to check:** For a doc `F`: `grep -oE '\b[A-Z]{1,3}-[0-9]+\b' F | sort -u`, strip the hyphen from each, and compare with the IDs in `docs/Decisions-Needed.md`. Any match fails (R-nnn and G-n are the rubric's own and match nothing there). Review: every new prefix is named as new in `F`, and `grep -rlE '\b<prefix>-[0-9]+\b' docs` shows no earlier owner
+
+### R-178
+- **Statement:** A word that marks something as undecided ("for now", "still being compared", "the plan is") is never attached to a banned-list rule or a §20 ruling, even where a provisional default's row repeats that rule. A reader never learns from such a word that a banned thing might yet appear, or that a decided thing might yet change.
+- **Type:** review · **Applies to:** docs, copy
+- **Source:** CL:24 (a default may never break the banned list), this rubric's "How the rubric grows" (no default may weaken a banned-list check), R-165, R-038, P1:49. Found by `docs/reviews/2026-11-04-rules-flows-r2.md` V2 and V3 (`Flows.md:21`, `:25`), both made while fixing the missing labels of r1 V5
+- **How to check:** Grep the doc for its undecided words. For each hit, name what is marked as undecided. It fails if that thing is on the banned list (`CLAUDE.md:64–74`), is checked by `P1` §2.5, or is ruled in FS §20. The default's own label on the same fact is not a defence: label the open part only
+
+### R-179
+- **Statement:** No position, length or scale in a drawing shown to a public reader is computed from a journey date that reader may not read. Nothing a public viewer can see appears or disappears at reveal finished, other than the paths named in FS §20 ZZ.
+- **Type:** review, then auto · **Applies to:** UI, API
+- **Area:** 5. Visibility and access
+- **Source:** R-152, R-162, FS §20 T, ZZ, EEE. Found as ART-1 (`Art-Direction.md:137`, `:158`, `:180`). Proposed in `docs/reviews/2026-11-04-rules-art-microcopy.md` as P-1, numbered by the supervisor 2026-11-05
+- **How to check:** For each drawing a public viewer receives, take one element the viewer can date from a field they can read, and try to recover the commit or unlock date from its position. Any success fails. The reader behind the drawing returns no day index or commit date to a public viewer.
+
+### R-180
+- **Statement:** A deliverable holds no buildable interim behaviour outside `Decisions-Needed.md`. A doc-local question ID (AD-n, Q-n, FQ-n, DC-n) may raise a question, but may not carry a state the build draws, because no valid code label can name it (R-149).
+- **Type:** review · **Applies to:** docs
+- **Area:** 13. Across every area
+- **Source:** Rule zero (CL:19–24), R-134, R-149, R-150. Found as ART-3 (`Art-Direction.md` §12). Proposed in `docs/reviews/2026-11-04-rules-art-microcopy.md` as P-2, numbered by the supervisor 2026-11-05
+- **How to check:** List every "until answered", "for now" and "drawn as" cell. Each one names a Decisions-Needed ID, or is blank, or says the build stops there.
+
+### R-181
+- **Statement:** An art-direction or taste label (such as `[AD]`) covers colour, type, geometry and texture only. A line under it saying who sees something, on which screen, when it appears or disappears, or what a press does is a behaviour and goes to the open questions.
+- **Type:** review · **Applies to:** docs
+- **Area:** 13. Across every area
+- **Source:** R-134, CL:17. Found as ART-4. Proposed in `docs/reviews/2026-11-04-rules-art-microcopy.md` as P-3, numbered by the supervisor 2026-11-05
+- **How to check:** Read every `[AD]` line against that list. Any line that decides visibility, placement on a screen, timing or a press fails.
+
+### R-182
+- **Statement:** Strings that can show in the same screen state do not contradict each other, and a string's "where it sits" note agrees with the states it shows in.
+- **Type:** review · **Applies to:** copy
+- **Area:** 12. Copy and tone
+- **Source:** R-168, R-134, SI:94, FS §20 U, QQQ. Found as COPY-2 (`Microcopy.md:60–61`). Proposed in `docs/reviews/2026-11-04-rules-art-microcopy.md` as P-4, numbered by the supervisor 2026-11-05
+- **How to check:** For each screen state in `Screen-Inventory.md`, list every string the copy file places there and read them together.
+
+### R-183
+- **Statement:** A line is true in every state that reaches it: the bug paths (lost press, lost page), both settings of every switchable default it touches, and the clock at +5 years. A line about a sealed year says nothing about its contents, including reassurance that is the same for everyone.
+- **Type:** review · **Applies to:** copy
+- **Area:** 12. Copy and tone
+- **Source:** R-009, B19, FS §20 DDD, HHH, R-141, R-143. Found as COPY-3, COPY-7. Proposed in `docs/reviews/2026-11-04-rules-art-microcopy.md` as P-5, numbered by the supervisor 2026-11-05
+- **How to check:** Run each weighted line against First Light at +5 years under B4's option, a lost press, a lost page, and a journey with no photos. Grep aid on S-03 copy: `missing`, `safe`, `kept`, `waiting`, `nothing has gone wrong`.
+
+### R-184
+- **Statement:** A type's cadence, yearly photos and highlight numbers appear on S-01 only, and on no screen reachable while a journey is sealed.
+- **Type:** auto · **Applies to:** copy, UI
+- **Area:** 1. Sealing and leaks
+- **Source:** R-006, SI:76, SI:78, SI:118. Found in testing M-01 (`Microcopy.md:46`). Proposed in `docs/reviews/2026-11-04-rules-art-microcopy.md` as P-6, numbered by the supervisor 2026-11-05
+- **How to check:** Grep the app's copy for the M-01 strings and fail on any file outside S-01's components. R-006 (a) hits on those strings inside S-01 are expected and pass.
+
+### R-185
+- **Statement:** The ring-count states have no user-facing or code-facing names that read as levels, and each "do" in the art rules holds for every value its own formulas allow.
+- **Type:** review, then auto · **Applies to:** docs, UI, code
+- **Area:** 8. Engagement mechanics
+- **Source:** R-102, R-143, MJC:693 ("no tier name"), art-director brief. Found as ART-6 (`Art-Direction.md:193–195`). Proposed in `docs/reviews/2026-11-04-rules-art-microcopy.md` as P-7, numbered by the supervisor 2026-11-05
+- **How to check:** Grep code and fixtures for `established`, `veteran`, `young` as a state name keyed to ring count. Read the art direction's "never read" rules against the worked values at n = 1, 5, 9, 10, 17, 25, 40.
+
+### R-186
+- **Statement:** A navigation way exists only where a `Screen-Inventory.md` "Leads to" row names it from that screen, and no way appears, disappears or changes because of content.
+- **Type:** review · **Applies to:** docs, UI
+- **Area:** 8. Engagement mechanics
+- **Source:** R-096, R-134, R-168. Found as ART-8 (`Art-Direction.md:285–296`). Proposed in `docs/reviews/2026-11-04-rules-art-microcopy.md` as P-8, numbered by the supervisor 2026-11-05
+- **How to check:** Compare the navigation marks with each screen's "Leads to" row in every state, `no-journey` included. A way appearing on the day a reveal opens is reported under R-096 until the user rules.
+
 ---
 
 ## 14. Provisional defaults and the options panel
@@ -1374,12 +1455,12 @@ Every row of the banned list (`CLAUDE.md:64–74`, `Master-Prompt.md:37–47`) a
 | No comments from anyone else | R-105, R-106, R-107, R-109, R-124 |
 | No face recognition | R-110, R-111, R-112 |
 | No ads anywhere | R-113 |
-| No streaks, counters, progress bars, reminders | R-097, R-098, R-099, R-038, R-039, R-012, R-013, R-095, R-096, R-124, R-138, R-140, R-143, R-144, R-166 |
+| No streaks, counters, progress bars, reminders | R-097, R-098, R-099, R-038, R-039, R-012, R-013, R-095, R-096, R-124, R-138, R-140, R-143, R-144, R-166, R-178 |
 | No re-engagement notifications | R-094, R-095, R-096 |
 | No ranking, levels, badges, leaderboards | R-101, R-102, R-103, R-124, R-143, R-166 |
 | No photo feed | R-084, R-085, R-086, R-145 |
-| Nothing leaks from a sealed year | R-001 to R-014, R-091, R-138, R-142, R-144, R-156, R-157, R-158, R-161, R-167, R-169 |
-| No layer is ever shown to the person on it | R-069, R-070, R-071, R-092, R-139, R-146, R-147, R-148 |
+| Nothing leaks from a sealed year | R-001 to R-014, R-091, R-138, R-142, R-144, R-156, R-157, R-158, R-161, R-167, R-169, R-176, R-178 |
+| No layer is ever shown to the person on it | R-069, R-070, R-071, R-092, R-139, R-146, R-147, R-148, R-176 |
 
 R-141 and R-149 apply to every row: no switch setting may break any item above, and every provisional default in code is labelled and traceable. R-138 sits under two rows because a control hidden or greyed for lack of frames is both a counter and a leak of how much a sealed year holds (RG:28, "disabled-but-visible states").
 
