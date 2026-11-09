@@ -227,9 +227,9 @@ Whatever is chosen, close friends still never see a sealed year, never see anyon
 
 **E3. Things that still tell someone they are on a map (raised 2026-11-09, `Phase-1-Amendments.md` §12.10).** (a) OQ-40: "path crossed" goes to friends (§20 KKKK e). If the tagged person is a friend and B11 names them, they learn they are on the map. (b) OQ-46: under the "shown" settings of B12 and C6, a tagged reader sees that they are tagged. For the user. (c) Added 2026-11-09 (`docs/reviews/2026-11-09-rules-kkkk.md` V1): should a new friend see the owner's earlier announcements, including old "path crossed" lines that named who was on the map? Built meanwhile: no (B48).
 
-**E5. Blocking (raised 2026-11-09, audit N2).** Under B50 and B51 a declined sender can withdraw and send again without limit, landing at the top of the list each time. Instagram has blocking. A block would be a new record in the data model, so it is raised rather than built. For the user.
-
 **E4. Friend lists (OQ-43).** Can anyone see another user's friends? Built for now: no one can. For the user, because it is about who sees what.
+
+**E5. Blocking (raised 2026-11-09, audit N2).** Under B50 and B51 a declined sender can withdraw and send again without limit, landing at the top of the list each time. Instagram has blocking. A block would be a new record in the data model, so it is raised rather than built. For the user.
 
 ## D. Already open elsewhere
 

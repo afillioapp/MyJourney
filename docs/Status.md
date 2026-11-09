@@ -103,7 +103,7 @@ Can start any time after Phase 2.
 
 ## Open decisions
 
-0. **Carry §20 KKKK (network by friend request) before Phase 3.** The data model (`Phase-1-Proposal.md` §2, `Phase-1-Amendments.md`: `viewer_in_network()`, RLS), fixtures and rubric still compute the network from layers. Flows and Screen-Inventory need a pass for "network" read as the map. Owners: lead-tech, fixture-designer, ux, then rules-guardian.
+0. **Carry §20 KKKK (network by friend request) before Phase 3.** Data model (`Phase-1-Amendments.md` §12) and fixtures (§13) done on paper, 2026-11-09; rules audit r2 fixed (`reviews/2026-11-09-rules-kkkk-r2.md`). Untested until Phase 3 (no Postgres here). **Still to do:** a ux pass on Flows and Screen-Inventory for the friend screens (the requests list, sending, removing, the close-friends list) and for "network" read as the map.
 
 1. **Where the app deploys.** Phase 3 builds on local Postgres (decided 2026-10-30). A hosted Postgres and web framework for the Vercel project (`myjourney`) are still to choose. Does not block Phase 3.
 
@@ -172,3 +172,4 @@ Can start any time after Phase 2.
 - 2026-11-09 — E2: user leans yes, close friends get something extra, what is undecided. The prototype keeps "nothing extra" until then.
 - 2026-11-09 — Carrying §20 KKKK started (Open decisions 0). Supervisor added Instagram-reference provisional defaults B43 to B47 (send, answer, remove, no limit or count, close-friends list). Lead-tech dispatched for a Phase-1-Amendments section on paper: no Postgres on this Mac, so it is untested until Phase 3. Fixture-designer and the rules audit follow.
 - 2026-11-09 — Lead-tech wrote `Phase-1-Amendments.md` §12 (KKKK on paper; untested, no Postgres). Its open questions: generic ones became Instagram-reference defaults B48 to B53 (B52 changes §12's request order, for lead-tech to carry); E3 (what still gives a map place away) and E4 (friend lists) go to the user; OQ-49 (rubric rows KKKK replaced) goes to the rules audit.
+- 2026-11-09 — KKKK carriage: rules audit r1 FAIL (4) fixed: B43 way in, B48 event-time audience, B55, B56, E3 (c), E5, §20 H half reopened, P1 notes, lead-tech §11/§12 (K13, K14), fixture audiences at event time (13/9/5/2/0, matched three ways). Re-audit r2 FAIL on one low item (K8) plus a K14 gap, both fixed by lead-tech. Guardian added R-188 to R-197. Not re-audited after the last two-line fix.

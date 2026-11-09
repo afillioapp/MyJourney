@@ -36,6 +36,8 @@ Updated 2026-11-09 (supervisor, user rulings FS §20 EEEE–HHHH): C2's checks n
 
 Updated 2026-11-09 (rules audit `docs/reviews/2026-11-09-rules-kkkk.md`, of FS §20 KKKK's carriage: `Phase-1-Amendments.md` §12–§13, Decisions-Needed E1–E4 and B43–B54, and the FS, Concept, P1 and CLAUDE.md lines): added R-188 to R-196 after R-187, each naming its area, from §12.7's proposed K2–K7, K10, K12 and the audit's own V1 and V4. Added R-188, R-192, R-193 and R-194 to three rows of Banned-list coverage. Added `Updated` lines for KKKK on R-053, R-060, R-061, R-063, R-064, R-065, R-066, R-069, R-070, R-081, R-088, R-089, R-142, R-146, R-155, R-157, R-162 and G-3 (OQ-49, OQ-53, and R-053, R-142, R-162, which OQ-53 missed). No check renumbered or removed.
 
+Updated 2026-11-09 (rules re-audit `docs/reviews/2026-11-09-rules-kkkk-r2.md`, after the fixes for the KKKK audit): added R-197 after R-196 (the event-time announcement audience, K13). Second-pass `Updated` lines on R-064, R-088, R-089 and R-146, because `PROVISIONAL: B48` changed from read time to event time after this rubric's first-pass lines were written; those lines are kept as history and superseded, not rewritten (R-172). `Updated` line on R-194 (the way in is always present; no read state inside the list). Added R-197 to Banned-list coverage. No check renumbered or removed.
+
 ---
 
 ## What this is for
@@ -644,6 +646,7 @@ Commit, capture, frames, highlights and the note.
 - **How to check:** For every photo, a tight-ring member and an outer-ring member of the same owner have identical access. Schema scan for `close_friend`, `inner_circle`, `favourite` access grants.
 
 - **Updated 2026-11-09 (FS §20 KKKK, `FS:378`; `docs/reviews/2026-11-09-rules-kkkk.md`):** KKKK (f) replaces the ring half: close friends are now **a list the owner chooses from among current friends** (`close_friend_entry`, `close_friend_exit`), shown to the owner only (`PROVISIONAL: B47`). So "no close-friends … list" in the statement above is superseded; "no close-friends access level or grant" still holds until the user rules DN E2. The statement now reads: a close friend reads exactly what any other current friend of the same owner reads, and adding or removing someone changes nothing they read. How to check: `Phase-1-Amendments.md` §12.7 K8 (Wind on Lantern's list against Hands and Round, Q-F7); the R-156-style scan on the two close-friend relations finds only their writers and `close_friend_rows()`. The `close_friend` schema-scan hit is now expected for exactly those two tables, their writers and reader. Whether the second half of FS §20 H ("see nothing beyond") is still decided is raised in the KKKK audit (V2)
+- **Updated 2026-11-09, second pass (`PROVISIONAL: B48` changed to event time; `docs/reviews/2026-11-09-rules-kkkk-r2.md`):** under B48 two friends whose friendships began at different instants read different announcement rows, so "reads exactly what any other current friend reads" is compared only over what both could read: content, and announcements after the later of the two accepts. Better: in the scratch test make f1 and f2 friends of o in one panel transaction, as `Phase-1-Amendments.md` Q-F7 restricts the fixture case. The earlier line's wording stands for content
 ### R-065
 - **Statement:** Being tagged in a photo gives no access to it. A user tagged in someone's Private photo cannot read that photo.
 - **Type:** auto · **Applies to:** data, API
@@ -886,6 +889,7 @@ Commit, capture, frames, highlights and the note.
 - **Decided 2026-10-31 (FS §20 UU, `FS:325`):** the actor sees their own "reflection left". For the actor only, this is an exception to B10's reading, since FS §20 outranks a provisional default (CL:30). B10 still holds for every other reader: on a public photo, no reader outside the owner's network gets the announcement. `Phase-1-Amendments.md:691` leaves B10 out (r6 V3). UU's "as written in R2" is a loose citation: R2 (`P1:405`) covers only "journey launched" and "path crossed"
 
 - **Updated 2026-11-09 (FS §20 KKKK, `FS:378`; `docs/reviews/2026-11-09-rules-kkkk.md`):** "users on the owner's map" (the B10 reading) now reads "the owner's current friends who can read that photo". The B10 case changes: Lantern reflects on a Lantern #5 public photo; **Long Way Round, now Lantern's friend (fr-4), receives it**; First Light, who can read the photo but is not a friend, does not. Audiences are worked out when read (`PROVISIONAL: B48`)
+- **Updated 2026-11-09, second pass (`PROVISIONAL: B48` changed to event time; `docs/reviews/2026-11-09-rules-kkkk-r2.md`):** the earlier line's "Audiences are worked out when read" is superseded. "Reflection left" reaches the actor and otherwise a current friend whose friendship began strictly before the reflection was written and who can read the photo now (R-197). The B10 case on a Lantern #5 public photo reflected after 2025-10-02 still reaches Long Way Round; on lantern-1's 2025-02-14 reflection it does not
 ### R-089
 - **Statement:** "Journey launched" and "path crossed" are shown to the owner's network.
 - **Type:** auto · **Applies to:** data, API
@@ -894,6 +898,7 @@ Commit, capture, frames, highlights and the note.
 - **Decided 2026-10-31 (FS §20 UU, `FS:325`):** the actor does not see their own "journey launched" or "path crossed". The recipients are the map members, and the map never includes the actor (R-074)
 
 - **Updated 2026-11-09 (FS §20 KKKK, `FS:378`; `docs/reviews/2026-11-09-rules-kkkk.md`):** "shown to the owner's network" means current friends. How to check: the feeds holding each announcement equal the actor's current friends at read time (`PROVISIONAL: B48`), never the map members. Test with `Phase-1-Amendments.md` §13.4: at baseline the five fixture viewers read 17, 9, 9, 9 and 0 "journey launched" and "path crossed" rows (Q-F9). Whether the person tagged receives "path crossed" when a friend is open with the user (DN E3 (a)); built as KKKK (e), all friends
+- **Updated 2026-11-09, second pass (`PROVISIONAL: B48` changed to event time; `docs/reviews/2026-11-09-rules-kkkk-r2.md`):** the earlier line's "at read time" and its counts are superseded. Recipients are the actor's current friends whose friendship began strictly before the event (R-197). At baseline the five fixture viewers read 13, 9, 5, 2 and 0 "journey launched" and "path crossed" rows (`Phase-1-Amendments.md` §13.4.1, Q-F9); the read-time body, planted, gives 17, 9, 9, 9, 0 and must be caught
 ### R-090
 - **Statement:** "Path crossed" goes out for every crossing: one per tagged user in each finished reveal.
 - **Type:** auto · **Applies to:** data
@@ -1425,6 +1430,7 @@ Commit, capture, frames, highlights and the note.
 - **Source:** FS §20 KKKK (c) ("no notification"); CL:69–70; R-095, R-096, R-186; `PROVISIONAL: B43`; rule zero step 5 (the banned list wins over the Instagram reference). The reference product shows its requests entry only while requests wait. Found by `docs/reviews/2026-11-09-rules-kkkk.md` V4
 - **How to check:** Render every screen that leads to the requests list, as a viewer with 0 and with 3 incoming requests: identical DOM apart from the list's own rows. No "Requests" entry, line or section appears only when one waits, and none takes bold, a dot, a number or new copy. Grep aid: `pending`, `request` near conditional rendering
 
+- **Updated 2026-11-09, second pass (`PROVISIONAL: B48` changed to event time; `docs/reviews/2026-11-09-rules-kkkk-r2.md`):** `Phase-1-Amendments.md` §12.7 K14 tests the "looks the same" half. Two more halves are part of this check: (1) the way in is **present** in every state, so a render with 0 requests must contain it (a way drawn nowhere also passes K14's comparison); (2) inside the list, a request seen before and one not yet seen render the same: no read state, "new" divider or bold unseen row (R-096). The way must also be named in `Screen-Inventory.md` S-05's "Leads to" before it is built (R-186)
 ### R-195
 - **Statement:** Friendship records are append-only, and every time they hold comes from the app clock at the moment of the act.
 - **Type:** auto · **Applies to:** data
@@ -1438,6 +1444,14 @@ Commit, capture, frames, highlights and the note.
 - **Area:** 14. Provisional defaults and the options panel
 - **Source:** CL rule zero step 5 ("Questions about what makes My Journey itself, such as … layers, visibility … go to the user"); R-150, R-187. Found by `docs/reviews/2026-11-09-rules-kkkk.md` V1 (`PROVISIONAL: B48` decides that a new friend reads the whole earlier announcement history, a visibility question)
 - **How to check:** For each row marked "Instagram reference", name what it decides. It fails if it sets an audience, a reader, a visibility or what a layer or close friend gets, or if it rests on a reading of a §20 ruling. Such a row needs a user answer, or a strictest-reading default under steps 1 to 4, labelled as such
+
+
+### R-197
+- **Statement:** An announcement reaches a viewer other than the actor only through a current friendship with the actor that began strictly before the event. A later friend never receives earlier announcements, a removed friend stops receiving them, and a friendship that ends and starts again counts from its new start. Who received an announcement is stored nowhere, and no reader tells anyone when anyone else's friendship began.
+- **Type:** auto · **Applies to:** data, API
+- **Area:** 7. Feed and notifications
+- **Source:** FS §20 J, M, UU, KKKK (e); `PROVISIONAL: B48` (strictest reading, raised to the user as DN E3 (c)); R-196. Proposed by `Phase-1-Amendments.md` §12.7 as K13; numbered by `docs/reviews/2026-11-09-rules-kkkk-r2.md`
+- **How to check:** K13's oracle against every viewer's `announcement_rows()` at several clock points, with its scratch case (finish, accept, finish, remove, re-friend, finish), the same-instant tie (not received), and its planted faults (read time, "a friend at the event" without the current friendship, "ever friends at the event and friends now", `<=`). A catalog and result scan finds no recipient list and no time-typed column in `announcement_rows()` other than `at`. In the fixture: 13 / 9 / 5 / 2 / 0 at baseline (Q-F9). Under `c6 = shown` a later friend can still read the person tags on older photos, which B48 does not cover; that is DN E3 (b), not a failure of this check. Not yet run
 
 ---
 
@@ -1490,6 +1504,7 @@ Added 2026-10-27 for the playable prototype (rule zero, CL:19–24; `Decisions-N
 - **How to check:** Jump from baseline to 2027-05-01 (Second Wind finishes #6 on 2027-04-25, tagging Lantern). "Named": the announcement names Wind and Lantern. "Unnamed": it names Wind only, and the payload sent to readers has no subject. Under both: the recipients equal Wind's map members (R-089); the text has no digits and no ring words (R-092); Lantern's own view of it says nothing about Lantern's ring, closeness or count (R-071).
 
 - **Updated 2026-11-09 (FS §20 KKKK, `FS:378`; `docs/reviews/2026-11-09-rules-kkkk.md`):** "recipients equal Wind's map members" now reads "Wind's current friends at read time". At 2027-05-01 those are Steady Lantern and Open Hands, who became friends on 2026-11-14 by script (`Phase-1-Amendments.md` §13.5)
+- **Updated 2026-11-09, second pass (`PROVISIONAL: B48` changed to event time; `docs/reviews/2026-11-09-rules-kkkk-r2.md`):** "Wind's current friends at read time" now reads "Wind's current friends whose friendship began before the event". At 2027-05-01 these are still Steady Lantern and Open Hands, since the 2026-11-14 accept predates the 2027-04-25 finish
 ### R-147
 - **Statement:** B12, under both settings ("shown" / "hidden"): Walking a path never gives a reader a total, grouping or ordering of the photos they appear in, and never shows a photo the reader cannot otherwise read.
 - **Type:** auto · **Applies to:** API, UI, copy
@@ -1560,7 +1575,7 @@ Every row of the banned list (`CLAUDE.md:64–74`, `Master-Prompt.md:37–47`) a
 | No ranking, levels, badges, leaderboards | R-101, R-102, R-103, R-124, R-143, R-166 |
 | No photo feed | R-084, R-085, R-086, R-145 |
 | Nothing leaks from a sealed year | R-001 to R-014, R-091, R-138, R-142, R-144, R-156, R-157, R-158, R-161, R-167, R-169, R-176, R-178 |
-| No layer is ever shown to the person on it | R-069, R-070, R-071, R-092, R-139, R-146, R-147, R-148, R-176, R-188, R-193 |
+| No layer is ever shown to the person on it | R-069, R-070, R-071, R-092, R-139, R-146, R-147, R-148, R-176, R-188, R-193, R-197 |
 
 R-141 and R-149 apply to every row: no switch setting may break any item above, and every provisional default in code is labelled and traceable. R-138 sits under two rows because a control hidden or greyed for lack of frames is both a counter and a leak of how much a sealed year holds (RG:28, "disabled-but-visible states").
 
