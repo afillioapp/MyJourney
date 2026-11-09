@@ -63,6 +63,7 @@ Sources: `docs/reviews/2026-10-30-gate-1.md` (GC), P1 §2–§3, `Functional-Spe
 | §20 AAAA | The extra strip after a guard refusal is accepted for the prototype: at the median a lost press answers 16.7 ms and a press saved by the retry 21.1 ms later than a saved press, and a note lost twice 10.8 ms and a note saved by the retry 14.4 ms later than a saved note. No padded wait is built and the retry stays (`FS:363`; §6 "The press's own timing"; settles OQ-38; "Before real users" item 9) | R-170 | No. No change |
 | §20 BBBB | (a) A client that never sends the skip request can still have a note taken inside the 15 minutes: accepted with OQ-12 until real users ("Before real users" item 10). (b) If `add_note()` refuses after the route read the window as open, the device gets the one `closed` answer, byte for byte as RRR's; the test stand-in's "scaffolding only" wording is retired (`FS:364`; §6 "The note press", "The skip request"; settles OQ-39) | R-171, R-173 | No. No change |
 | §20 KKKK | The network is the owner's current friends, made by a request that both people agree to. The map still comes only from tags, and no read rule, policy or audience consults it. Six insert-only records (requests, answers, closes, removals, close-friend entries and exits); `viewer_in_network()` keeps its name and becomes a friendship test; every network term moves to it, with B10, B11, B14 and B43 to B47 labelled. A decline reads as pending to its sender; no reader returns a count, a time value or anyone else's friends; the incoming requests list is ordered newest first with no time returned (`PROVISIONAL: B52`); close friends get nothing extra (E2). **On paper, untested: no Postgres on this machine; testing is due in Phase 3.** OQ-41, 42, 44, 45, 47, 48 settled as DN B48–B53; OQ-40, 46 with the user (DN E3), OQ-43 (DN E4); OQ-49 to the rules audit (§12.10) | R-060, R-061, R-063, R-064, R-065, R-066, R-070, R-081, R-088, R-089, R-092, R-152, R-157, R-158, R-162 | **Yes.** Six supporting records in P1 §2.4, writers and readers, and a new `viewer_in_network()` body; no field of the nine objects changes. Required by FS §20 KKKK (`FS:378`). P1:29 and P1:51 carry status notes (§12.8) |
+| §20 KKKK fixtures | Friendships for the P1 §3 fixture, replayed through §12's writers. At baseline: Lantern–Wind friends since 2021, with Wind on Lantern's close-friends list; Lantern–Hands since 2023; Lantern–Round friends in 2022, removed in 2024 and friends again in 2025, and his close-friends place not restored (B49). First Light has a pending, a declined and a withdrawn request. Wind and Hands have crossed requests, which a script accepts on 2026-11-14. Hands stays on Round's map with no friendship. §3.6 changes in three cells: Lantern now reads Round #4, Round reads Lantern #5 Network, and Hands no longer reads Round #4. P1:291 still holds, for a new reason. P1:394's Wind #6 reason no longer holds, and the tag stays on Hands #4. **On paper, untested: no Postgres on this machine; testing is due in Phase 3** (§13). OQ-50 to OQ-54 (§13.8) | R-060, R-061, R-063, R-064, R-065, R-066, R-088, R-089, R-146; proposed K1, K2, K3, K4, K5, K7, K8 (§12.7) | No. Fixture data only. No table, field, user, journey, crossing or ring is added or changed |
 
 ---
 
@@ -1542,3 +1543,432 @@ No field of the nine objects changes. The layer computation, `prototype_option`,
 | OQ-47 | **Settled 2026-11-09 as DN B52 (newest first, no time or date shown); carried in §12.1, §12.6 and K6.** **The requests list: times and order.** Does it show when a request was sent, or sort by it? | No time is returned; the order is the random id (§12.1). **Changed by B52:** incoming newest first, still with no time returned (§12.1, §12.6, K6) | Supervisor (Instagram reference), ux |
 | OQ-48 | **Settled 2026-11-09 as DN B53 (allowed; accepting either makes them friends; as built).** **Crossed requests.** The database accepts a request to someone who has already sent you one, because refusing it would show a decline (§12.1). Confirm. Whether the screen offers "accept" in that state belongs to ux | Both requests stay open; the first accept forms the friendship and closes the other | Supervisor, ux |
 | OQ-49 | **To the rules audit (2026-11-09).** **Rubric and P1 rows that KKKK replaced:** R-060 ("every user on the owner's map"), R-064 (no close-friends list; `close_friend` scan), R-066 ("Access must come only from Hands being on Lantern's map"), R-081 ("no … friend request or hand-picked list"; `friend_request`, `close_friend` scan), R-088 and R-089 (map members), R-070's FF note, G-3, and P1 reading R2 (`P1:405`) | This section follows KKKK, since FS §20 wins (CLAUDE.md "When two docs disagree") | Rules-guardian (rubric), supervisor (P1 §4) |
+
+---
+
+## 13. Fixtures under FS §20 KKKK: friendships
+
+**Status: written on paper 2026-11-09. Untested.** This machine has no Postgres: `psql`, `initdb`, `postgres` and `pg_ctl` are absent, and nothing was installed. No query in this section has been run, and nothing here counts as evidence. Testing is due in Phase 3, together with §12, on local Postgres first (DN D1). Owner: fixture-designer.
+
+This section adds fixture data only. It changes no table, field, user, journey, crossing, photo, reflection, overview or ring of P1 §3. Every friendship act goes through §12's writers in the replay (§2.2), so no row is inserted directly. It answers §12.9 item by item.
+
+Sources: FS §20 KKKK (`FS:378`), G (`FS:277`), H (`FS:278`), I (`FS:279`), J (`FS:280`), M (`FS:283`), R (`FS:291`), BB (`FS:306`), UU (`FS:325`); FS §13 (`FS:175`); DN B10 to B14 (`DN:29–33`), C6 (`DN:44`), B43 to B53 (`DN:78–88`), E2 (`DN:213`), E3 (`DN:225`), E4 (`DN:227`); §2 and §12 of this file; P1 §3 (`P1:190–396`).
+
+### 13.1 Friendships at baseline
+
+**Labels.** fr-1 to fr-9 and ce-1, ce-2 name the acts in this section and in the fixture source only. Stored ids are random uuids (FS §20 JJ), and no label reaches a column.
+
+**Times.** Every friendship act is at **12:00:00 UTC** on its date. For scripted actions FS §20 BB fixes that time (`FS:306`: "away from the 00:00 UTC unlock instant"). For the acts before baseline it is a fixture choice made for the same reason, since joins, commits, unlocks and the fixed reflections are all at 00:00:00 (P1:213, P1:366). Each writer reads `app_now()` and takes no time argument (§12.1). So the loader jumps the stopped clock to the act's instant and calls the writer as the acting user, as §2.2 step 2 does for every event. Every act below must return `accepted`. A `refused` stops the load, as a note after unlock does (§2.2).
+
+**Requests.**
+
+| Label | Sender → recipient | Sent | Then | Writer calls, in order (acting user) | State at baseline |
+|---|---|---|---|---|---|
+| fr-1 | Second Wind → Steady Lantern | 2021-03-16 | accepted 2021-03-17 | `send_friend_request(Lantern)` (Wind); `answer_friend_request(fr-1, true)` (Lantern) | Friends |
+| fr-2 | Long Way Round → Steady Lantern | 2022-09-20 | accepted 2022-09-21; removed 2024-03-10 | send (Round); answer, accept (Lantern); `remove_friend(Lantern)` (Round) | A past friendship |
+| fr-3 | Steady Lantern → Open Hands | 2023-06-10 | accepted 2023-06-11 | send (Lantern); answer, accept (Hands) | Friends |
+| fr-4 | Long Way Round → Steady Lantern | 2025-10-01 | accepted 2025-10-02 | send (Round); answer, accept (Lantern) | Friends again |
+| fr-5 | First Light → Open Hands | 2026-10-03 | withdrawn 2026-10-04 | send (First Light); `withdraw_friend_request(fr-5)` (First Light) | Closed, `withdrawn` |
+| fr-6 | First Light → Long Way Round | 2026-10-06 | declined 2026-10-08 | send (First Light); answer, decline (Round) | Declined: open on First Light's side only (B44) |
+| fr-7 | Open Hands → Second Wind | 2026-10-10 | none by baseline | send (Hands) | Open; crossed with fr-8 |
+| fr-8 | Second Wind → Open Hands | 2026-10-12 | none by baseline | send (Wind) | Open; crossed with fr-7 (B53) |
+| fr-9 | First Light → Steady Lantern | 2026-10-20 | none, ever, by script | send (First Light) | Pending, waiting for whoever is demoing |
+
+**Close-friend entries.**
+
+| Label | Owner, friendship | Entered | Writer call | State at baseline |
+|---|---|---|---|---|
+| ce-1 | Steady Lantern, on fr-1 (Second Wind) | 2021-07-20 | `add_close_friend(Wind)` (Lantern) | On Lantern's list |
+| ce-2 | Steady Lantern, on fr-2 (Long Way Round) | 2023-02-01 | `add_close_friend(Round)` (Lantern) | Ended by the removal of fr-2 on 2024-03-10 (`PROVISIONAL: B49`). No `close_friend_exit` row is written: the entry is keyed to a friendship that is no longer current (§12.1). fr-4 does not restore it, and Lantern never adds Round again |
+
+No one is ever taken off the list with `remove_close_friend()`; K8 tests that writer in a scratch copy (§12.7). Who removed fr-2 is stored nowhere (§12.1, `friend_removal`). The loader acts as Round, and that fact lives in the fixture source only.
+
+**Derived state at baseline (2026-10-25 00:00:00 UTC).**
+
+- Current friendships: Lantern–Wind (fr-1), Lantern–Hands (fr-3), Lantern–Round (fr-4). No other pair
+- Lantern's close-friends list: Wind. Nobody else has a list
+- Open on the recipient's side: fr-7 (Wind's list), fr-8 (Hands' list), fr-9 (Lantern's list)
+- Open on the sender's side: fr-6 (First Light's list, shown as pending), fr-7 (Hands'), fr-8 (Wind's), fr-9 (First Light's)
+
+**Each instant after both users' `joined_at`** (P1 §3.2). The later join of each pair, then the first act on it: Wind 2021-03-15 → fr-1 2021-03-16. Round 2022-09-01 → fr-2 2022-09-20. Hands 2023-06-01 → fr-3 2023-06-10. Wind and Hands 2023-06-01 → fr-7 2026-10-10. First Light 2026-10-01 → fr-5 2026-10-03. ce-1 and ce-2 come after the friendships they sit on.
+
+**Clear of P1's fixed instants.** No act falls on a date P1 §3 fixes for any other event. The nearest are Wind's join and first commit (2021-03-15), the graduation-party highlight (2021-07-17 10:00 to 07-18 10:00), Round's join (2022-09-01), lantern-1's slot 2 reflection (2023-02-10), Hands' join (2023-06-01), the Lantern #3 and Wind #3 reveals (2024-01-20, 2024-04-20), the Round #3 reveal (2025-09-21), First Light's join (2026-10-01) and the baseline. Generated captures and notes may fall at any instant. A coincidence is harmless: no friendship writer reads or writes a journey, photo, note or highlight row (§12.6), so the order of two events at one instant changes nothing.
+
+**Why these pairs.**
+
+- **Lantern and Wind** stay friends without a break from 2021, and Wind stays on Lantern's list through the years apart. The map drifts and comes back (P1 §3.4) while the friendship does not move, so the crossing again reaches them both and their friends (§13.4.4)
+- **Lantern and Hands** are friends, and each is on the other's map: the ordinary case
+- **Lantern and Round** are friends who are on neither map. The removal and the return put B45 and both halves of B49 in the data without leaving Round #4, "every photo visible to the network by default" (P1:246), with no reader but Round
+- **Hands and Round** never exchange a request, so Hands stays on Round's map with no friendship
+- **First Light**, new on 2026-10-01, sends three requests in her first weeks. They give the pending, declined and withdrawn cases, and none grants anything (§12.2), so she is still the public reader that P1 §3, §11 and the rubric use
+- **Wind and Hands** cross requests before baseline, and the script resolves them (§13.5)
+
+### 13.2 The KKKK cases
+
+| Case | Shown by | When | How to see it (viewer switcher, DN C16) | Serves |
+|---|---|---|---|---|
+| A map member who is not a friend | Open Hands, on Long Way Round's map (outer, P1 §3.4). No request between them, ever | Baseline on | As Hands: Round #4 unreadable (§13.3); `viewer_in_network(Round)` false | KKKK (d); K1, K2 |
+| | First Light, on Open Hands' map (outer) | From 2027-06-20 | As First Light: Hands' Public photos only, and no announcement from Hands | KKKK (d); P1:394 (§13.3) |
+| A friend who is not on the map | Long Way Round and Steady Lantern (fr-4). Neither is on the other's map | Baseline on | As Round: Lantern #5 Network readable. As Lantern: Round #4 readable | KKKK (a), (d); K1 |
+| | Second Wind and Open Hands | From 2026-11-14 | Each reads the other's Network photos | K1 |
+| A pending request | fr-9, First Light → Steady Lantern | Baseline on, until the demoer answers it | As Lantern: one incoming request. As First Light: one outgoing | B43; K3 |
+| A declined request that looks pending to its sender | fr-6, First Light → Long Way Round | From 2026-10-08 | As First Light: fr-6 and fr-9 are two outgoing rows of the same shape. As Round: no row | B44, B50; K3 |
+| A withdrawn request | fr-5, First Light → Open Hands | From 2026-10-04 | No row for either of them | B44, B51 |
+| A removed friendship | fr-2, Long Way Round and Steady Lantern | Removed 2024-03-10 | No reader shows a removal (§12.6). It shows in Lantern's list (ce-2, below). K5 runs on a scratch replay stopped on either side of the instant (§13.6, Q-F8) | B45; K5 |
+| Crossed requests | fr-7 and fr-8, Open Hands and Second Wind | Baseline until 2026-11-14 12:00, then resolved by script | As Wind: an incoming request from Hands and an outgoing one to Hands; as Hands, the same in reverse. After 2026-11-14: friends, no open request | B53; K4 |
+| A close-friends list | Steady Lantern's: Second Wind (ce-1) | From 2021-07-20 | As Lantern: `close_friend_rows()` returns Wind. No one else reads it | B47; K7, K8 |
+| A removed friend who was on the list | Long Way Round (ce-2) | Place ended 2024-03-10; not restored by fr-4 on 2025-10-02 | As Lantern at baseline: Round is in `friend_rows()` and not in `close_friend_rows()` | B49; K5 |
+| Close friends get nothing extra | Wind (on the list), Hands and Round (not on it) | Baseline on | Their rows in the Lantern columns of §13.3 are identical | FS §20 H; DN E2; K8 |
+
+**The cases hold only while the demoer leaves them alone**, as P1:394 says of First Light's journey. The pending and declined cases end if the demoer answers fr-9 as Lantern, or withdraws fr-6 or fr-9 as First Light. The crossed case ends early if the demoer answers or withdraws fr-7 or fr-8 before 2026-11-14 (OQ-52). The removal and ce-2 are history, which the demoer cannot change.
+
+### 13.3 The access matrix at baseline, amended (P1 §3.6)
+
+The network is now the owner's current friends (§12.2). Lantern #5's Network column is Lantern's friends (Wind, Hands, Round). Round #4's column is Round's friends (Lantern). These are read under `b2 = from_unlock`, the default, as P1 §3.6 is.
+
+| Viewer → content | Lantern #5 private | Lantern #5 network | Lantern #5 public | Round #4 (default Network) | Any sealed journey |
+|---|---|---|---|---|---|
+| Steady Lantern | yes | yes | yes | **yes** *(Round's friend, fr-4; not on Round's map)* | own: exists + type + dates only |
+| Second Wind | no | yes *(Lantern's friend, fr-1)* | yes | no *(not Round's friend)* | exists only |
+| Open Hands | no | yes *(Lantern's friend, fr-3)* | yes | **no** *(on Round's map, but not his friend)* | exists only |
+| Long Way Round | no | **yes** *(Lantern's friend again, fr-4; not on her map)* | yes | own | exists only |
+| First Light | no | no *(fr-9 pending: grants nothing)* | yes | no *(fr-6 declined; to her it looks pending)* | exists only |
+
+**Cell by cell, against P1:316–320.**
+
+| Cell | P1 §3.6 | Now | Why |
+|---|---|---|---|
+| Lantern, Round #4 | no *(not on Round's map)* | **yes** | Round's friend through fr-4. Being on the map was never the right test (§12.2): she is still not on it |
+| Round, Lantern #5 network | no | **yes** | Lantern's friend through fr-4, while on neither map. The case K1 needs |
+| Hands, Round #4 | **yes** *(on Round's map)* | **no** | On Round's map but not his friend. Being on the map grants nothing (KKKK (d), §12.4) |
+| Hands, Lantern #5 network | yes *(outer ring is still network)* | yes | The same answer for a new reason: friendship (fr-3). Her outer ring on Lantern's map no longer counts |
+| Wind, Lantern #5 network | yes | yes | Friendship (fr-1), no longer her tight ring |
+| Wind, Round #4 | no | no | Not Round's friend, and still not on his map |
+| First Light, Lantern #5 network | no | no | No friendship. Her pending fr-9 grants nothing (§12.2) |
+| First Light, Round #4 | no | no | No friendship. Her declined fr-6 grants nothing, and to her it reads as pending |
+| Private column | owner only | owner only | Unchanged (`FS:145`). Wind is tagged in Lantern's private photos and still cannot read them (P1:293) |
+| Public column | everyone | everyone | Unchanged: every joined user (`PROVISIONAL: B14`; K9) |
+| Sealed column | owner: exists + type + dates; others: exists | unchanged | Friends get only `has_journey_underway()`, as everyone does (FS §20 I; §12.3, §12.5) |
+| Owner cells (Lantern #5 for Lantern, Round #4 for Round) | yes / own | unchanged | Owner term |
+
+Three cells change their answer, and five keep it for a new reason. Wind is on Lantern's close-friends list, and Hands and Round are not. In the Lantern columns their rows are the same, which is FS §20 H with E2 open (K8).
+
+**When the matrix holds.** Under `b2 = after_reveal_finished`, Round #4 is unreadable to everyone but Round, since its reveal is never finished (FS §20 R). Lantern's and Hands' Round #4 cells then both read no, and the two changes in that column show only under the default. The matrix holds unchanged at every scripted point after baseline: the only scripted friendship act (§13.5) involves neither Lantern's friends nor Round's. Acts by the demoer can change it.
+
+**P1:291 re-checked** ("Nobody → First Light … First Light's map is empty at baseline, until Hands tags her on 2027-06-20 … An empty network"). **It holds, for a new reason.** Before KKKK, First Light's empty network followed from the map: nobody's map held her, and hers held nobody. Under KKKK these are two separate facts, and the fixture keeps both at baseline:
+
+- Her **map** is empty. She has no journey and has tagged no one, and under the script it stays empty for good (FS §20 G; P1:391). On 2027-06-20 it is Hands' map that gains her
+- Her **network** is empty: no current friendship. Her three requests (fr-5 withdrawn, fr-6 declined, fr-9 pending) grant nothing (§12.2). So she reads no one's Network content, nobody reads hers (she has none), and her feed carries no announcement (§13.4)
+
+The empty network lasts as long as no request involving her is accepted. The script never accepts one, so it lasts through +5 years. If the demoer accepts fr-9 as Lantern, First Light has a network but still no map, which is KKKK's point and can be played. P1:291's phrase "First Light's map is empty … until Hands tags her" does not match P1:391 ("First Light's own map stays empty (D14: tagger's map only)"). FS §20 G settles it in P1:391's favour, so this is a wording line for the supervisor (§13.7), not a choice.
+
+**P1:394 re-checked** (why the First Light tag is on Hands #4). **The stated reason for not using the Wind #6 reveal no longer holds:** "First Light on Wind's map would become a reader of that photo and its reflections". Under KKKK a place on Wind's map grants nothing (§12.2, §12.4), and she is not Wind's friend. Every other reason in P1:394 still holds as written:
+
+- The tag adds only one layer entry, First Light on Hands' map (§2.3)
+- Lantern on Hands' map still goes from middle to outer on 1 photo (R1)
+- The "Ava" tags still give no layer row (D13)
+- §3.4's other rings and §3.6 are untouched, and Hands #4 scripts no feeling tag, so §3.7 is unchanged
+- The tag comes after First Light's `joined_at`
+
+KKKK adds two points. (i) The "path crossed" naming First Light goes to Hands' friends (Lantern, and Wind from 2026-11-14), not to First Light, who is not Hands' friend (fr-5 was withdrawn). So it puts no E3 (a) question to her (§13.4.3). Under the map model she would have received it, and with it every earlier announcement of Hands, at read time. (ii) From 2027-06-20 First Light is a second map member who is not a friend, and reads only Hands' Public photos. Under KKKK Wind #6 would now serve as well. The tag stays on Hands #4: the approved fixture already has it there, moving it gains nothing, and it is outside this brief.
+
+### 13.4 Audiences
+
+The rule, from §12.3. "Journey launched" and "path crossed" go to the actor's current friends, never to the actor (FS §20 M, UU; KKKK (e)). "Reflection left" goes to the actor, and otherwise only to a friend who can read the photo, even when the photo is public (`PROVISIONAL: B10`). All three are worked out when they are read (`PROVISIONAL: B48`).
+
+**13.4.1 Announcements already made by baseline.** From P1 §3.3 and §3.4, the finished reveals give 16 "journey launched" (Lantern 5, Wind 5, Hands 3, Round 3). One "path crossed" is given per tagged user per reveal, 10 in all: Lantern → Wind on #1, #2 and #5, and Lantern → Hands on #4; Wind → Lantern on #1, #2 and #5; Hands → Lantern on #2 and #3; Round → Hands on #1. The "Ava" tags give none (R-090). The rows each viewer reads at baseline are below. They are test expectations, never shown in the product.
+
+| Viewer | Friends at baseline | "Journey launched" + "path crossed" rows read (KKKK) | Before KKKK (map members) |
+|---|---|---|---|
+| Steady Lantern | Wind, Hands, Round | 17: Wind 5 + 3, Hands 3 + 2, Round 3 + 1 | 13: Wind 8, Hands 5 (not on Round's map) |
+| Second Wind | Lantern | 9: Lantern 5 + 4 | 9: Lantern |
+| Open Hands | Lantern | 9: Lantern | 13: Lantern 9, Round 4 |
+| Long Way Round | Lantern | 9: Lantern | 0 |
+| First Light | none | 0 | 0 |
+
+"Reflection left" depends on the generated reflections, so only the 19 fixed ones (P1 §3.5, §3.7) are given:
+
+- lantern-1 (5, public), lantern-5 (1, network), lantern-2 and lantern-3 (public): Wind, Hands, Round. Before: Wind, Hands
+- round-1 (4, public, Round's 2026-09-10 reflection included) and round-2 (public): Lantern. Before: Hands
+- wind-3 (3, network) and wind-4 (public): Lantern, the same as before. Hands too from 2026-11-14
+- hands-2 and hands-3 (public): Lantern, the same as before. Wind too from 2026-11-14
+- First Light, and every non-friend, gets none, although she can read every public one (B10)
+
+**13.4.2 The scripted announcements** (P1 §3.8, with §13.5's friendship act applied first).
+
+| When | Announcement | Recipients now | Before KKKK | Why |
+|---|---|---|---|---|
+| 2027-04-25 | "Journey launched", Wind #6 | Lantern, Hands | Lantern | Wind's friends. Hands since 2026-11-14 |
+| 2027-04-25 | "Path crossed", Wind → Lantern (4 photos, middle) | Lantern, Hands | Lantern | Wind's friends, the subject included (E3 (a), §13.4.3) |
+| 2027-04-25 | "Reflection left", Wind on wind-3 (network) | Wind (actor), Lantern, Hands | Wind, Lantern | B10: friends who can read wind-3. Wind #3's reveal is finished, so both `b2` settings agree |
+| 2027-06-20 | "Journey launched", Hands #4 | Lantern, Wind | Lantern, First Light | Hands' friends. Under the map model First Light would have read it, at read time, once the reveal put her on Hands' map |
+| 2027-06-20 | "Path crossed", Hands → Lantern (1 photo, outer) | Lantern, Wind | Lantern, First Light | Hands' friends, the subject included |
+| 2027-06-20 | "Path crossed", Hands → First Light (1 photo, outer) | Lantern, Wind | Lantern, First Light | Hands' friends. The subject is not a friend and does not receive it |
+| any time after 2027-01-01, by the demoer | Lantern #6: "journey launched", one "path crossed" per user tagged, reflections | Wind, Hands, Round; First Light too if the demoer has accepted fr-9 | Wind, Hands | Lantern's friends at the time of reading (B48) |
+
+From 2026-11-14 Wind also reads Hands' 3 "journey launched" and 2 "path crossed" from before baseline, and Hands reads Wind's 5 and 3. Both also read the "reflection left" rows on each other's photos that they can read (B48: a new friend reads earlier announcements).
+
+**13.4.3 "Path crossed" naming: B11 and E3 (a), shown and not settled.** The model builds KKKK (e) as written: every friend of the actor receives it, the subject included when the subject is a friend (§12.3, OQ-40). Under `b11 = named` (`PROVISIONAL: B11`, the default) the announcement names both people, so a subject who is a friend learns that they are on the actor's map, and every other friend learns it too. It never says which ring (R-092). Under `b11 = unnamed` there is no subject, so no reader learns whose path it was. The subject learns only that the actor crossed someone's path. The last column below shows what the user would get if E3 (a) were ruled to leave the subject out. It is not built, and it is not a recommendation.
+
+| "Path crossed" | Subject a friend of the actor? | Recipients as built | If the subject were left out (not built) |
+|---|---|---|---|
+| Lantern → Wind (#1, #2, #5) | yes | Wind, Hands, Round | Hands, Round |
+| Lantern → Hands (#4) | yes | Wind, Hands, Round | Wind, Round |
+| Wind → Lantern (#1, #2, #5) | yes | Lantern; Hands too from 2026-11-14 | nobody at baseline; Hands from 2026-11-14 |
+| Hands → Lantern (#2, #3) | yes | Lantern; Wind too from 2026-11-14 | nobody at baseline; Wind from 2026-11-14 |
+| Round → Hands (#1) | no | Lantern | Lantern |
+| Wind → Lantern (#6, 2027-04-25) | yes | Lantern, Hands | Hands |
+| Hands → Lantern (#4, 2027-06-20) | yes | Lantern, Wind | Wind |
+| Hands → First Light (#4, 2027-06-20) | no | Lantern, Wind | Lantern, Wind |
+
+Two of these are crossings with someone who is not the actor's friend: Round → Hands and Hands → First Light. Under FS §20 J ("for every crossing", `FS:280`) they are emitted. Under a literal reading of `FS:175` ("A path has crossed with a friend") they would not exist. That is already OQ-40, and the fixture shows the difference.
+
+**13.4.4 Steady Lantern and Second Wind.** The paths cross again in 2025 after two years apart (P1 §3.4). Since the two stay friends without a break, the crossing reaches the people it should under KKKK: the two of them, and their friends.
+
+- **In the feed** (as built, `b11 = named`). Lantern reads Wind's "path crossed" naming her from Wind #1 (2022-03-30), #2 (2023-04-02) and #5 (2026-04-26), and nothing from #3 or #4, whose reveals tagged nobody. The gap shows as the absence. Wind reads Lantern's from #1 (2022-01-16), #2 (2023-01-14) and #5 (2026-01-25) in the same way. Hands and Round read Lantern's three naming Wind. From 2026-11-14 Hands also reads Wind's three naming Lantern, and on 2027-04-25 Wind #6's
+- **On Walking a path.** Wind reads Lantern #1 to #5 in order, as her friend, through the Network and Public photos, and Lantern reads Wind's journeys the same way. Under `b12 = shown` each sees where they appear (`PROVISIONAL: B12`; this is E3 (b)). It needs at least one readable photo of the other in Lantern #5 and in Wind #5, which P1 §3 does not fix (OQ-50)
+- **On the map.** Lantern's own map shows Wind tight, middle, outer, outer, then tight again, and Wind's shows Lantern the same way (P1 §3.4). Each sees only their own map. No friendship act changes either map (§12.5; Q-F11)
+
+Under `b11 = unnamed` the feed loses the names: Lantern reads "Second Wind's path crossed" with no subject, and the crossing again shows only on the two maps and paths. If E3 (a) left the subject out, Lantern and Wind would not read the announcements naming themselves. Lantern's would still reach Hands and Round, and Wind's would reach nobody until Hands befriends Wind on 2026-11-14.
+
+### 13.5 Scripted future (friendship acts, P1 §3.8 style)
+
+Every act is at **12:00 UTC** (FS §20 BB). As §1.5 describes, it runs through the app's own function as the acting fixture user, and whether it has been applied is read from the data.
+
+| Date | Action |
+|---|---|
+| 2026-11-14 | Second Wind accepts Open Hands' request fr-7 with `answer_friend_request(fr-7, true)`, acting as Wind. The script finds fr-7 as the incoming row from Hands in Wind's `friend_request_rows()`. The same transaction closes Wind's own fr-8 with cause `befriended` (§12.1; `PROVISIONAL: B53`). From then Wind and Hands are friends who are on neither's map, and each reads the other's earlier announcements (`PROVISIONAL: B48`). Applied when Wind's `friend_rows()` holds Hands |
+| never | fr-9 waits in Lantern's requests list for whoever is demoing. The script never answers it, just as it never finishes the Lantern #6 reveal (P1:389) |
+| never | No other friendship act. fr-6 stays declined and open on First Light's side. Lantern never puts Round back on her list. Nobody is removed after baseline |
+
+**Why 2026-11-14.** The crossed pair is visible for 20 days after baseline. The friendship is in place before both later scripted reveals (2027-04-25, 2027-06-20), so their audiences include the new friend (§13.4.2). The date is clear of every P1 §3.8 date. "+1 month", "jump to the next unlock" and "+1 year" all pass it.
+
+**Why no removal after baseline.** A removal between Lantern and Round would leave Round #4's "Network by default" (P1:246, P1:392) with no reader but Round at +5 years. One between Lantern and Wind or Lantern and Hands would cut the composition or the ordinary case. The demoer can remove a friend directly, as any viewer (B45).
+
+P1:396 still holds: no fake user commits a journey after baseline, and the one friendship act is in 2026.
+
+### 13.6 The queries (written for the §12 readers; **not yet run**)
+
+Conventions, as in §12.7. "As v" means one `mj_panel` transaction: `SET LOCAL ROLE mj_app`, the acting user set to v (§1.5), the statements, then `ROLLBACK`. "As the test superuser" means plain SQL on the tables, calling no schema function, like the K1 oracle `oracle_friend` (§12.7), which these queries reuse. Users are found by name, which is unique and set once (D19). A query run at a clock point means one run on a replay jumped to that point. Expected results are given as comments. **None of these has been run, and none has output.**
+
+```sql
+-- Q-F1, as the test superuser, at baseline (not yet run): every friendship act, its instant, and the two checks
+WITH u AS (SELECT id, name, joined_at FROM mj."user"),
+act AS (
+  SELECT r.id AS request_id, 'send' AS act, r.sent_at AS at FROM mj.friend_request r
+  UNION ALL SELECT a.request_id, CASE WHEN a.accepted THEN 'accept' ELSE 'decline' END, a.answered_at FROM mj.friend_answer a
+  UNION ALL SELECT c.request_id, c.cause::text, c.closed_at FROM mj.friend_request_close c
+  UNION ALL SELECT x.request_id, 'removal', x.removed_at FROM mj.friend_removal x
+  UNION ALL SELECT e.request_id, 'close-friend entry', e.entered_at FROM mj.close_friend_entry e
+  UNION ALL SELECT e.request_id, 'close-friend exit', x.exited_at
+              FROM mj.close_friend_exit x JOIN mj.close_friend_entry e ON e.id = x.entry_id)
+SELECT s.name AS sender, t.name AS recipient, act.act, act.at,
+       act.at > greatest(s.joined_at, t.joined_at)       AS after_both_joined,
+       (act.at AT TIME ZONE 'UTC')::time = time '12:00'  AS at_noon_utc
+FROM act JOIN mj.friend_request r ON r.id = act.request_id
+JOIN u s ON s.id = r.sender_id JOIN u t ON t.id = r.recipient_id
+ORDER BY act.at, act.act;
+-- expected: 18 rows, the acts of §13.1 in date order (9 sends; accepts of fr-1 to fr-4; the decline of fr-6;
+--   'withdrawn' on fr-5; the removal of fr-2; ce-1 and ce-2), after_both_joined t and at_noon_utc t on every row,
+--   no 'befriended' and no exit. After the 2026-11-14 act: 20 rows, adding fr-7's accept and fr-8's 'befriended',
+--   both at 2026-11-14 12:00:00+00
+```
+
+```sql
+-- Q-F2, as the test superuser, at baseline (not yet run): current friendships and the close-friends list
+SELECT a.name, b.name FROM oracle_friend f
+JOIN mj."user" a ON a.id = f.a JOIN mj."user" b ON b.id = f.b
+WHERE a.name < b.name ORDER BY 1, 2;
+-- expected: Long Way Round | Steady Lantern ; Open Hands | Steady Lantern ; Second Wind | Steady Lantern
+
+SELECT o.name AS owner, fr.name AS friend, e.entered_at,
+       EXISTS (SELECT 1 FROM mj.friend_answer an WHERE an.request_id = e.request_id AND an.accepted)
+       AND NOT EXISTS (SELECT 1 FROM mj.friend_removal x WHERE x.request_id = e.request_id) AS friendship_current,
+       EXISTS (SELECT 1 FROM mj.close_friend_exit x WHERE x.entry_id = e.id)                AS exited
+FROM mj.close_friend_entry e
+JOIN mj.friend_request r ON r.id = e.request_id
+JOIN mj."user" o  ON o.id = e.owner_id
+JOIN mj."user" fr ON fr.id = CASE WHEN r.sender_id = e.owner_id THEN r.recipient_id ELSE r.sender_id END
+ORDER BY e.entered_at;
+-- expected: Steady Lantern | Second Wind    | 2021-07-20 12:00:00+00 | t | f
+--           Steady Lantern | Long Way Round | 2023-02-01 12:00:00+00 | f | f    (fr-2 removed: B49)
+```
+
+```sql
+-- Q-F3, as each of the five fixture users in turn, at baseline (not yet run): what each one's own readers return
+SELECT 'friend' AS list, u.name, NULL::boolean AS incoming FROM friend_rows() f JOIN user_rows() u ON u.id = f.friend_id
+UNION ALL SELECT 'request', u.name, q.incoming FROM friend_request_rows() q JOIN user_rows() u ON u.id = q.other_id
+UNION ALL SELECT 'close friend', u.name, NULL FROM close_friend_rows() c JOIN user_rows() u ON u.id = c.friend_id
+ORDER BY 1, 2;
+SELECT u.name, viewer_in_network(u.id) FROM user_rows() u ORDER BY u.name;
+-- expected (lists; network true for exactly the friends):
+--   Steady Lantern: friend Long Way Round, Open Hands, Second Wind ; request First Light (incoming t) ; close friend Second Wind
+--   Second Wind:    friend Steady Lantern ; request Open Hands (t), Open Hands (f)
+--   Open Hands:     friend Steady Lantern ; request Second Wind (t), Second Wind (f)
+--   Long Way Round: friend Steady Lantern ; no request (fr-6's decline has left his list) ; no close friend
+--   First Light:    no friend ; request Long Way Round (f), Steady Lantern (f) ; no row for Open Hands (fr-5 withdrawn)
+-- K7: every returned row names the viewer's own pair. After the 2026-11-14 act, Wind and Hands each list the other
+--   as a friend, and neither has a request row
+```
+
+```sql
+-- Q-F4, as the test superuser (not yet run): K1's planted fault (the old map test) in the fixture data.
+-- On the map = any layer row, since nobody drops off (P1 §2.3 step 2)
+WITH u AS (SELECT id, name FROM mj."user")
+SELECT v.name AS viewer, o.name AS owner,
+       EXISTS (SELECT 1 FROM oracle_friend f WHERE f.a = v.id AND f.b = o.id)                AS friends,
+       EXISTS (SELECT 1 FROM mj.layer l WHERE l.owner_id = o.id AND l.member_id = v.id)     AS on_owners_map
+FROM u v JOIN u o ON o.id <> v.id
+WHERE EXISTS (SELECT 1 FROM oracle_friend f WHERE f.a = v.id AND f.b = o.id)
+   <> EXISTS (SELECT 1 FROM mj.layer l WHERE l.owner_id = o.id AND l.member_id = v.id)
+ORDER BY 1, 2;
+-- expected at baseline:   Long Way Round | Steady Lantern | t | f
+--                         Open Hands     | Long Way Round | f | t
+--                         Steady Lantern | Long Way Round | t | f
+-- from 2026-11-14 also:   Open Hands | Second Wind | t | f ;  Second Wind | Open Hands | t | f
+-- from 2027-06-20 also:   First Light | Open Hands | f | t
+-- and, as each viewer at each of these points, viewer_in_network(o) equals the friends column for all 20 pairs
+```
+
+```sql
+-- Q-F5, as First Light, at baseline, all in one rolled-back transaction (not yet run): K3's twin, in the fixture
+SELECT u.name, q.incoming FROM friend_request_rows() q JOIN user_rows() u ON u.id = q.other_id ORDER BY q.request_id;
+  -- expected: Long Way Round | f and Steady Lantern | f, in random-id order, with nothing else to tell them apart
+SELECT send_friend_request(u.id) FROM user_rows() u WHERE u.name IN ('Long Way Round', 'Steady Lantern');
+  -- expected: refused ; refused
+SAVEPOINT s1;
+SELECT withdraw_friend_request(q.request_id) FROM friend_request_rows() q JOIN user_rows() u ON u.id = q.other_id
+ WHERE u.name = 'Long Way Round';                  -- expected: accepted
+ROLLBACK TO SAVEPOINT s1;                          -- the same for 'Steady Lantern': accepted
+SELECT u.name, viewer_in_network(u.id) FROM user_rows() u WHERE u.name IN ('Long Way Round', 'Steady Lantern');
+  -- expected: f ; f
+ROLLBACK;
+-- as Long Way Round: friend_request_rows() -> 0 rows. As Steady Lantern: one incoming row, First Light
+```
+
+```sql
+-- Q-F6, the access matrix (§13.3), at baseline under b2 = from_unlock, then under after_reveal_finished (not yet run)
+-- setup, as the test superuser: the cells' photos and the sealed journeys
+CREATE TEMP TABLE cell_photo AS
+SELECT p.id AS photo_id,
+       CASE WHEN o.name = 'Steady Lantern' THEN 'Lantern #5 ' || coalesce(v.level::text, 'network') ELSE 'Round #4' END AS cell
+FROM mj.photo p JOIN mj.journey j ON j.id = p.journey_id JOIN mj."user" o ON o.id = j.user_id
+LEFT JOIN mj.photo_visibility v ON v.photo_id = p.id
+WHERE (o.name = 'Steady Lantern' AND j.seq = 5) OR (o.name = 'Long Way Round' AND j.seq = 4);
+CREATE TEMP TABLE sealed_journey AS
+SELECT j.id AS journey_id, o.name AS owner FROM mj.journey j JOIN mj."user" o ON o.id = j.user_id
+WHERE (o.name, j.seq) IN (('Steady Lantern', 6), ('Second Wind', 6), ('Open Hands', 4));
+GRANT SELECT ON cell_photo, sealed_journey TO mj_app;
+-- then as each fixture user:
+SELECT c.cell, bool_and(r.id IS NOT NULL) AS reads_every_photo, bool_or(r.id IS NOT NULL) AS reads_any_photo
+FROM cell_photo c LEFT JOIN photo_read r ON r.id = c.photo_id GROUP BY c.cell ORDER BY c.cell;
+SELECT s.owner, EXISTS (SELECT 1 FROM journey_rows() j WHERE j.id = s.journey_id) AS reads_journey_row,
+       has_journey_underway(u.id) AS exists_flag
+FROM sealed_journey s JOIN user_rows() u ON u.name = s.owner ORDER BY s.owner;
+-- expected: §13.3, with reads_every_photo = reads_any_photo in every cell. Sealed: reads_journey_row t only for the
+--   owner's own journey (type and dates), exists_flag t for all three, for every viewer.
+-- under after_reveal_finished: Round #4 f for Lantern (and for everyone but Round); the Lantern #5 cells unchanged
+```
+
+```sql
+-- Q-F7, as each of Second Wind, Open Hands and Long Way Round, at baseline (not yet run):
+-- K8 in the fixture (close friend = other friends) and K2 in the fixture (map member = stranger)
+-- uses K2's fingerprint (§12.7), restricted to one owner's content by a superuser-built set of that owner's ids
+-- (journeys, photos, announcements with actor = owner), granted to mj_app as in Q-F6
+--   owner Lantern: Wind (on her list) = Hands = Round (not on it)                                -> equal md5s
+--   owner Round:   Hands (on his map) = Wind (not on it), neither a friend, under both c6 settings -> equal md5s
+--   owner Hands:   at 2027-06-21, First Light (on her map) = a test-only stranger joined in the replay -> equal md5s
+```
+
+```sql
+-- Q-F8, K5 in the fixture, on a scratch replay (not yet run): the removal of fr-2 and B49
+-- replay to 2024-03-10 11:59:59, then to 12:00:00 (the removal), then to baseline
+--   as Long Way Round, K2 fingerprint over Lantern's content: before = a friend's ; after = a test-only stranger's
+--   as the test superuser: md5 of every layer row identical before and after the removal (§12.5)
+--   as Steady Lantern, close_friend_rows(): before {Wind, Round} ; after {Wind} ; at baseline, after fr-4, still {Wind}
+--   no reader result before or after has a time-typed column or a friend_removal value
+```
+
+```sql
+-- Q-F9, announcements (§13.4), as the test superuser, then as each viewer, at baseline and after each scripted act
+-- (not yet run). Expected recipients of every "journey launched" and "path crossed":
+SELECT an.type, ac.name AS actor, su.name AS subject_user, an.at,
+       string_agg(rc.name, ', ' ORDER BY rc.name) AS recipients
+FROM mj.announcement an
+JOIN mj."user" ac ON ac.id = an.actor
+LEFT JOIN mj."user" su ON an.type = 'path_crossed' AND su.id = an.subject
+LEFT JOIN oracle_friend f ON f.a = an.actor
+LEFT JOIN mj."user" rc ON rc.id = f.b
+WHERE an.type IN ('journey_launched', 'path_crossed')
+GROUP BY an.id, an.type, ac.name, su.name, an.at ORDER BY an.at, an.type, su.name;
+-- then as each viewer v: the rows of announcement_rows() other than 'reflection_left' equal the rows above whose
+--   recipients contain v, tuples compared as in §11 check 3, under both b11 settings (subject as the setting returns it).
+-- expected at baseline: 26 rows; per viewer 17 / 9 / 9 / 9 / 0 (§13.4.1). At 2027-06-21: 31 rows; §13.4.2's recipients.
+-- 'reflection_left': as each viewer, the rows for the 19 fixed reflections match §13.4.1 (B10); First Light reads none
+```
+
+```sql
+-- Q-F10, as each of the five fixture users, at baseline (not yet run): the Positivity Feed is not touched
+SELECT md5(string_agg(x::text, '|' ORDER BY n)) FROM positivity_feed_rows() WITH ORDINALITY AS x(reflection_id, photo_id, text, n);
+-- expected: one md5 for all five viewers, equal to the §11 plain-SQL oracle over P1 §3.7's 23 public photos
+```
+
+```sql
+-- Q-F11, as the test superuser (not yet run): friendship never touches the map or the stored announcements
+-- build a second baseline from the same fixture with §13.1's acts left out, then in each database:
+SELECT md5(string_agg(t::text, '|' ORDER BY t::text)) FROM (
+  SELECT o.name, m.name, j.seq, l.ring, l.computed_at FROM mj.layer l
+  JOIN mj."user" o ON o.id = l.owner_id JOIN mj."user" m ON m.id = l.member_id JOIN mj.journey j ON j.id = l.journey_id) t;
+SELECT md5(string_agg(t::text, '|' ORDER BY t::text)) FROM (
+  SELECT an.type, ac.name, an.at FROM mj.announcement an JOIN mj."user" ac ON ac.id = an.actor) t;
+-- expected: equal md5s in the two databases (ids are random, so they are left out)
+```
+
+```sql
+-- Q-F12, at 2026-11-14 12:00:01, after the scripted act (not yet run)
+--   as the test superuser: fr-7 'accept' and fr-8 'befriended', both at 2026-11-14 12:00:00+00 (Q-F1)
+--   as Second Wind and as Open Hands: friend_rows() holds the other ; friend_request_rows() -> 0 rows
+--   as Second Wind: announcement_rows() gains Hands' 3 'journey_launched' and 2 'path_crossed' (B48),
+--     and as Open Hands it gains Wind's 5 and 3
+```
+
+```sql
+-- Q-F13, at 2027-06-21, P1:394 re-checked (not yet run)
+--   as First Light: viewer_in_network(Hands) f ; photo_read over Hands' photos = Hands' Public photos only ;
+--                   announcement_rows() -> 0 rows ; layer_rows() -> 0 rows (her own map stays empty)
+--   as Open Hands:  layer_rows() holds First Light, outer, and Lantern, outer
+```
+
+How these serve §2.4's load check ("after load, the baseline differs from the P1 §3 expectations … the §3.6 matrix"): Q-F6 is that check for the amended matrix, and Q-F1 to Q-F3 add the friendship expectations to it.
+
+### 13.7 Lines other files need (not edited here)
+
+For the supervisor, as §7 and §12.8 list them:
+
+| Where | Change |
+|---|---|
+| P1:246 | "every photo is visible to the network by default": that network is now Round's friends, Lantern at baseline (§13.3) |
+| P1:291 | "An empty network" holds for a new reason (§13.3). "First Light's map is empty at baseline, until Hands tags her" should match P1:391 and FS §20 G: her own map stays empty, and Hands' map gains her |
+| P1:312–320 | §3.6 as §13.3 |
+| P1:383–396 | §3.8 gains the 2026-11-14 row of §13.5. P1:394's Wind #6 reason is replaced as in §13.3 |
+| P1 §3 | A pointer to §13.1 for the friendships, beside §3.4 |
+| This file, §2.2 "Needs from the fixture-designer" | Friendship instants: §13.1 |
+
+For the rules audit, with OQ-49: see OQ-53.
+
+### 13.8 Open questions (stopped, not guessed; numbered on from §12.10)
+
+| # | Question | Built meanwhile | Who |
+|---|---|---|---|
+| OQ-50 | **The crossing again on Walking a path rests on generated visibility.** P1 §3.4 fixes the visibility of Lantern #1's six photos of Wind and of no other crossing photo. If the generator made all of Lantern #5's five photos of Wind, or all of Wind #5's six of Lantern, Private, the other would not see the crossing again on that path. This was true before KKKK. Proposed: fix at least one of each as Network in §3.4. Not written here, since it amends §3.4, not the friendships | Nothing fixed. The generator chooses, as before | Supervisor |
+| OQ-51 | **B52's order cannot be seen in the fixture.** At baseline no viewer has two open incoming requests: Lantern has fr-9, Wind fr-7, Hands fr-8. With existing users it would take two more requests, for example Wind → Round and Hands → Round, both left unanswered. Not added, since the brief does not list B52 | Not shown. K6 tests the order on a scratch copy (§12.7) | Supervisor |
+| OQ-52 | **A scripted act that the demoer has made impossible.** If the demoer answers or withdraws fr-7 or fr-8 before 2026-11-14, there is no open fr-7 left for Wind to accept. §1.5 reads from the data whether an action has been applied, but not what happens to one that can no longer apply. The same question already stands, unasked, for P1 §3.8's reveals if the demoer acts as Wind or Hands first | Nothing. The script as written expects fr-7 to be open | Supervisor, lead-tech |
+| OQ-53 | **To the rules audit, with OQ-49: rubric and §11 cases that name the old fixture facts.** R-060's how-to-check ("Long Way Round … refused": Round is now Lantern's friend, so allowed). R-063's FS §20 HH case ("refused to Open Hands" on Round #4: Hands is refused under both `b2` settings now, so the viewer whose answer depends on `b2` is Lantern). R-064 (now K8: Wind against Hands or Round, §13.3). R-065 (add Hands, tagged by Round, who is not his friend). R-066 (Hands' access to Lantern's photos comes from fr-3; the tagger case under KKKK is Round, who tagged Hands and does not read her Network photos). R-088's B10 case ("First Light and Long Way Round": Round is now Lantern's friend and gets the announcement, so First Light alone). R-089 and R-146 (recipients at 2027-05-01 are Wind's friends, Lantern and Hands, not just Lantern). §11 check 5 ("a member of each owner's network": Wind for Lantern, Lantern for Wind, Hands and Round; this holds at every scripted point, since there is no removal after baseline) | This section's facts | Rules-guardian |
+| OQ-54 | **R-065 under KKKK with a Network photo.** "Being tagged gives no access" is shown today only by Private photos (Wind in Lantern #1, P1:293). The case of a person tagged in a Network photo by someone who is not their friend would be Round #1's two photos of Hands. P1 §3.4 does not fix their visibility. Proposed, if the rules-guardian wants the case: fix one of them as Network | Not fixed | Supervisor, rules-guardian |
+
+**Still with the user, and shown here, not settled:**
+
+- **E3 (a), OQ-40.** Who receives "path crossed" and whether it names them: §13.4.3, with every fixture announcement and the effect of both answers
+- **E3 (b), OQ-46.** Under `b12 = shown` or `c6 = shown`, a reader sees that they are tagged only on photos they can read, so under KKKK that means friends, or Public photos. In the fixture that is Wind on Lantern #1, #2 and #5, Lantern on Wind #1, #2 and #5 and on Hands #2 and #3, and Hands on Lantern #4, each where the photo is not Private. Hands on Round #1 and First Light on Hands #4 see it only where the photo is Public
+- **E2.** If close friends get something extra, Wind (ce-1) is the fixture's close friend, Hands and Round are the ordinary friends to compare, and Round's ended place (ce-2) tests B49 against it. Nothing is built for it
+- **E4, OQ-43.** No one reads another user's friends, and nothing in the fixture depends on that answer

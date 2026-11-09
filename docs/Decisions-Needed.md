@@ -86,6 +86,7 @@ Approved approach (user, 2026-10-27): build the prototype with these defaults an
 | B51 | **No limit on withdrawing and sending again.** Instagram reference (CLAUDE.md rule zero step 5; added 2026-11-09 from `Phase-1-Amendments.md` §12.10 OQ-45; no block exists in the docs) | no |
 | B52 | **The requests list shows newest first**, with no time or date shown beside a request. Instagram reference (CLAUDE.md rule zero step 5; added 2026-11-09 from `Phase-1-Amendments.md` §12.10 OQ-47; replaces the random order built in §12, so lead-tech carries it) | no |
 | B53 | **Crossed requests are allowed.** If both people have sent one, accepting either makes them friends. Instagram reference (CLAUDE.md rule zero step 5; added 2026-11-09 from `Phase-1-Amendments.md` §12.10 OQ-48) | no |
+| B54 | **A scripted fixture act that the demoer has already made impossible is skipped**, and the clock jump goes on. For example, a request the demoer already answered is not answered again. This is prototype tooling, not product behaviour. The same holds for P1 §3.8's scripted reveals (supervisor, 2026-11-09, from `Phase-1-Amendments.md` §13.8 OQ-52; strictest reading: the script never overrides what the demoer did) | no |
 
 Section A was approved by the user on 2026-10-27 and is being applied.
 
