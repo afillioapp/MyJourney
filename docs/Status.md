@@ -12,7 +12,7 @@ Status values: `todo` · `in progress` · `in review` · `done` · `blocked`
 
 **Current phase:** 2 — Look, started at the user's request (2026-11-04). The Phase 1 gate has not been passed; see the Log.
 **Next step:** private preview of Phase 2 on Vercel (`preview/`), then the user's answers to the open questions, then the Phase 2 gate.
-**Waiting on you:** the Phase 1 gate (rules r10 and gate r9 fixes are in but not re-audited). Parked questions: SI OQ-51, OQ-52; system closing the app during the note window; BBBB (b) timing item.
+**Waiting on you:** review the Phase 2 preview, then the open questions: C2 (plain unlock date), B11, B28, C18, AD-18, AD-19, MQ-5, FQ-11 first. Then the Phase 1 gate (r10/r9 fixes not re-audited) and the Phase 2 gate. Parked: SI OQ-51, OQ-52; system closing the app during the note window; BBBB (b).
 
 ---
 
@@ -162,3 +162,5 @@ Can start any time after Phase 2.
 - 2026-11-05 — Art and microcopy final audit r3 (`reviews/2026-11-05-rules-art-microcopy-r3.md`): **Microcopy PASS**. Art FAIL on 2 (ART-R3-1 medium: B28 left a gap under B4's option; ART-R3-2: a range missing B42). Run stopped on the 5-hour usage limit after writing the report.
 - 2026-11-09 — Resumed. Supervisor revised B28 (flat graph stays under B4's option until the year's ring exists) and B31 (points to the exception). Art round 3 of 3 sent for the matching edits.
 - 2026-11-09 — Art round 3 of 3 fixed (B28 carried, B42 range). Checked by the supervisor against ART-R3-1 and ART-R3-2; no further audit run, to save usage. All three Phase 2 deliverables are `in review`, waiting on the user's answers. Preview regenerated.
+- 2026-11-09 — Pushed `2b2079e` to `claude/wizardly-planck-77eo2h`; Vercel preview `dpl_256FnLoD9w7WcQf2N6qsk7sE77W1` READY at `myjourney-dkv21qbhn-afillio.vercel.app/preview/`. Logged out it returns 302 to Vercel login, the same at the branch alias, so it is private. Production untouched. Not checked behind the login (that needs a share link).
+- 2026-11-09 — Project moved from `~/Documents/Business/Retro-Gram` to `~/Projects/Retro-Gram` at the user's choice, out of Google Drive's backup of `~/Documents`. Git, graph root and Claude memory carried. Markdown files updated for the new location and current status: `CLAUDE.md`, `README.md`, `Learnings/index.md`, `Decisions-Needed.md`; B36 carried into `Screen-Inventory.md` S-16.

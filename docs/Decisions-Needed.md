@@ -7,7 +7,7 @@ Every open question raised in Phase 1, merged and with duplicates removed. Sourc
 
 Only the user decides these. Where the docs lean one way, the lean is noted, but a lean is not a decision. Record each answer here with its date. The supervisor then writes it into `Functional-Spec.md` §20 and fixes every restatement (L-002).
 
-Last updated: 2026-10-30
+Last updated: 2026-11-09. Provisional defaults B27 to B42 were added in Phase 2 (2026-11-05), from the art direction and its audits
 
 ---
 

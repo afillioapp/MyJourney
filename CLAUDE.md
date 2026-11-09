@@ -40,6 +40,8 @@ In this order:
 
 `docs/Overview.md` is historical (2026-10-21, before the decisions). Never build or audit from it.
 
+The Phase 2 drafts, `docs/Flows.md`, `docs/Art-Direction.md` and `docs/Microcopy.md`, are in review (2026-11-09) and wait on the user's answers. They are not decisions. Where they rest on a provisional default, the default in `docs/Decisions-Needed.md` is what to build.
+
 ## Names and IDs
 
 The only place to take these from. Never find an external resource by matching a name.
@@ -47,10 +49,12 @@ The only place to take these from. Never find an external resource by matching a
 | What | Value |
 |---|---|
 | Product | My Journey (formerly Retrogram) |
-| Folder | `Retro-Gram/myjourney` |
+| Folder | `Retro-Gram/myjourney`, at `~/Projects/Retro-Gram/myjourney`. Moved out of `~/Documents/Business/` on 2026-11-09 so Google Drive no longer backs it up. Keep it out of `~/Documents` and `~/Desktop` |
 | Vercel team | `team_eD0tvc1w4vZhmrNBOUb5F8Q0` (slug `afillio`) |
 | Vercel project | `myjourney`, `prj_5Cw4kvcC5aCVNQJPlf1irWVJb2b8` |
 | Production URL | `myjourney-afillio.vercel.app`. `myjourney.vercel.app` is **not ours** |
+| Phase 2 preview | `/preview/` on preview deployments of branch `claude/wizardly-planck-77eo2h`; stable alias `myjourney-git-claude-wizardly-planck-77eo2h-afillio.vercel.app/preview/`. Private: Vercel team login. Regenerate with `python3 preview/build.py` |
+| Storage | Local and GitHub only. Never Google Drive, its connector or its folders (user, 2026-11-04) |
 | Search terms | my journey, myjourney, retrogram, retro-gram |
 
 "Phase n" always means a build phase from `docs/Build-Plan.md`. The business's printing stage is "the album phase".

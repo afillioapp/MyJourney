@@ -2,7 +2,7 @@
 
 The project's learning space. It records mistakes, near-misses and what changed so they do not happen twice. The learner agent keeps it. Each learning is a page, `L-NNN-slug.md`, numbered in order. Pages are never renumbered and never deleted.
 
-Last updated: 2026-10-27, after the Phase 0 retrospective, which covers Phase 0 and the setup on 2026-10-25 to 2026-10-27.
+Last updated: 2026-11-09 (supervisor: stale trap list and answered questions marked; no new learning). Before that 2026-10-27, after the Phase 0 retrospective, which covers Phase 0 and the setup on 2026-10-25 to 2026-10-27.
 
 ---
 
@@ -11,7 +11,7 @@ Last updated: 2026-10-27, after the Phase 0 retrospective, which covers Phase 0 
 Every brief carries this list. Each line is the rule; the page has the evidence.
 
 1. **[L-001](L-001-stale-docs-must-say-so.md):** Build and audit only from the authoritative docs. `docs/Overview.md` is out of date (lines 63, 70, 125, 133, 210, 257–259 contradict the 2026-10-25 decisions). Never cite it.
-2. **[L-002](L-002-decisions-propagate-everywhere.md):** When two docs disagree, do not pick. `Functional-Spec.md` §20 and `My-Journey-Concept.md` §29 win. Cite both lines under Open questions. Known traps: the reflection example at `Functional-Spec.md:104–111` uses per-photo dates (wrong, see §20 D); "publish" names no real step; `My-Journey-Concept.md:807` says close friends "get everything" (wrong, see §20 H).
+2. **[L-002](L-002-decisions-propagate-everywhere.md):** When two docs disagree, do not pick. `Functional-Spec.md` §20 and `My-Journey-Concept.md` §29 win. Cite both lines under Open questions. Known traps: the reflection example at `Functional-Spec.md:104–111` uses per-photo dates (wrong, see §20 D); "publish" names no real step; `My-Journey-Concept.md:807` says close friends "get everything" (wrong, see §20 H). *Checked 2026-11-04 (`docs/reviews/2026-11-04-rules-flows-r2.md`): the `Functional-Spec.md:104–111` and `My-Journey-Concept.md:807` traps are fixed in those docs, fixed as of 2026-11-04; keep the rule.*
 3. **[L-003](L-003-names-and-ids-register.md):** The product is My Journey, formerly Retrogram, in folder `Retro-Gram/myjourney`. "Phase n" means a build phase, never the business's printing stage. Take external IDs only from the register, never by name match.
 4. **[L-004](L-004-environment-is-a-decision.md):** Stack decided 2026-10-30: local Postgres first. The deploy host is still open (`Status.md` Open decisions 1). State every check as behaviour, not as a database feature.
 5. **[L-006](L-006-history-and-graph-freshness.md):** The graph may be stale, so read the cited section itself. Edit nothing while a graph build runs.
@@ -56,4 +56,4 @@ Raised by the learnings above. Only the user can settle these.
 4. **`docs/Overview.md`.** Mark it historical, update it to match, or move it out of `docs/`? Is the live doc it was exported from (line 3) still being edited, and if so, which copy wins? (L-001)
 5. **Stack and database host.** Stack decided 2026-10-30: local Postgres first. Deploy host still open (`Status.md` Open decisions 1); it does not block Phase 3. (L-004)
 6. **Vercel Authentication** on project `myjourney`. Switch it off so the holding page is public, or keep the page private for now? This has to be done by hand in the Vercel dashboard. (L-005)
-7. **Commits.** May the supervisor commit after each recorded step, as L-006 proposes? (L-006)
+7. **Commits.** May the supervisor commit after each recorded step, as L-006 proposes? (L-006) **Answered 2026-10-27: yes. Pushing still needs the user.**
