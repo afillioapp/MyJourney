@@ -81,7 +81,7 @@ The row is immutable once inserted, which is what makes Commit final. Its state 
 | revealing | Unlocked, reveal not finished |
 | revealed | Reveal finished |
 
-The spec's separate "committed" state collapses into sealed under D1. Others see only `has_journey_underway(user)`, a true/false (D17). The owner also sees type, commit date and unlock date. Nothing else, except whether a highlight is open (FS §20 S). After unlock, the owner and the owner's network read type and dates; never public (FS §20 T). *(amended 2026-10-30, `Phase-1-Amendments.md`)*
+The spec's separate "committed" state collapses into sealed under D1. Others see only `has_journey_underway(user)`, a true/false (D17). The owner also sees type, commit date and unlock date. Nothing else, except whether a highlight is open (FS §20 S). After unlock, the owner and the owner's network read type and dates; never public (FS §20 T). *(amended 2026-10-30, `Phase-1-Amendments.md`)* *(2026-11-09: who counts as "others" and the network is now set by friendship, FS §20 KKKK; `Phase-1-Amendments.md` §12.3)*
 
 **Photo**
 | Field | Rule |
@@ -123,7 +123,7 @@ Insert-only, owner only, any time after unlock (reveal finished or not). Readers
 | text, written_at | |
 | year_index | Same windows as reflections. Unique per (journey, year_index) (D10) |
 
-Insert-only. Readable by the owner and the owner's network. Under B2's "only after reveal finished" (`PROVISIONAL: B2`), the network reads it only once the reveal is finished (FS §20 HH) *(amended 2026-10-30, `Phase-1-Amendments.md`)*
+Insert-only. Readable by the owner and the owner's network. Under B2's "only after reveal finished" (`PROVISIONAL: B2`), the network reads it only once the reveal is finished (FS §20 HH) *(amended 2026-10-30, `Phase-1-Amendments.md`)* *(2026-11-09: "network" here now means the owner's friends, FS §20 KKKK; see `Phase-1-Amendments.md` §12.3)*
 
 **Highlight**
 | Field | Rule |
@@ -140,7 +140,7 @@ Only on a sealed journey, at most the type's allowance per journey.
 | Chapter | `journey_chapter` (journey_id primary key, so one per journey) → catalogue (label, relationship) |
 | Feeling | `journey_feeling_tag` (journey_id, free text) |
 
-Both are insert-only during the reveal and locked at finish (D12). Readable after unlock by the owner and the owner's network only (FS §20 T). *(amended 2026-10-30, `Phase-1-Amendments.md`)*
+Both are insert-only during the reveal and locked at finish (D12). Readable after unlock by the owner and the owner's network only (FS §20 T). *(amended 2026-10-30, `Phase-1-Amendments.md`)* *(2026-11-09: "network" here now means the owner's friends, FS §20 KKKK; see `Phase-1-Amendments.md` §12.3)*
 
 **Layer**
 | Field | Rule |
@@ -161,11 +161,11 @@ B's own map never changes because of A's tags.
 
 ### 2.4 Supporting records (not new product objects)
 
-- **journey_reveal**: (journey_id primary key, finished_at). Insert-only, only after unlock. Its existence is what locks the reveal. Read only through `journey_reveal_rows()`: the owner and the owner's network after unlock, never public (FS §20 SS, ZZ); counted for any viewer, with no date, by `ring_count()` (FS §20 CCC) *(amended 2026-10-31)*
+- **journey_reveal**: (journey_id primary key, finished_at). Insert-only, only after unlock. Its existence is what locks the reveal. Read only through `journey_reveal_rows()`: the owner and the owner's network after unlock, never public (FS §20 SS, ZZ); counted for any viewer, with no date, by `ring_count()` (FS §20 CCC) *(amended 2026-10-31)* *(2026-11-09: "network" here now means the owner's friends, FS §20 KKKK; see `Phase-1-Amendments.md` §12.3)*
 - **person_tag**: (photo_id, user_id **or** typed_name; exactly one is set). Insert-only during the reveal (D12, D13).
 - **photo_visibility**: (photo_id primary key, private / network / public). No row means Network (D12). Insert-only during the reveal.
 - **journey_type**: constants. **chapter**: catalogue seeded from Concept §15.
-- **announcement**: (type limited to journey_launched, reflection_left and path_crossed; actor; subject; at). No media column, no count column. Who sees each one is worked out from visibility (see reading R2), read only through `announcement_rows()` (FS §20 OO). "Reflection left" reaches the actor (FS §20 UU) and otherwise only the owner's network members who can see the photo, even when it is public (`PROVISIONAL: B10`) *(amended 2026-10-30 and 2026-10-31)*.
+- **announcement**: (type limited to journey_launched, reflection_left and path_crossed; actor; subject; at). No media column, no count column. Who sees each one is worked out from visibility (see reading R2), read only through `announcement_rows()` (FS §20 OO). "Reflection left" reaches the actor (FS §20 UU) and otherwise only the owner's network members who can see the photo, even when it is public (`PROVISIONAL: B10`) *(amended 2026-10-30 and 2026-10-31)*. *(2026-11-09: "network" here now means the owner's friends, FS §20 KKKK; see `Phase-1-Amendments.md` §12.3)*
 - **sim_clock** (the last jump's time and when it was made; `app_now()` runs at real speed from it, FS §20 V; moved only by the panel role, never by the acting viewer, FS §20 EE *(amended 2026-10-30, `Phase-1-Amendments.md`)*) and **journey_key**.
 - **prototype_option**: one row, one column per switch (B2, B4, B5, B11, B12, C6), changed only through `set_option()` (FS §20 Z), which only the panel role may call (FS §20 EE). One global row, not per viewer (`PROVISIONAL: B23`). *(amended 2026-10-30, `Phase-1-Amendments.md`)*
 
@@ -402,7 +402,7 @@ No fake user commits a new journey after baseline, and the only scripted friends
 Each one followed from the decisions without being stated outright. All five were approved as written.
 
 - **R1.** If someone is crossed again with a lower count, they move straight to the ring that count gives. For example, tight last year and 1 photo this year puts them on the outer ring. The one-ring drift only applies when they aren't tagged at all.
-- **R2.** "Journey launched" and "path crossed" are shown to the owner's network, meaning everyone on the owner's map, per Concept §14 ("visible to the user's network").
+- **R2.** "Journey launched" and "path crossed" are shown to the owner's network, meaning everyone on the owner's map, per Concept §14 ("visible to the user's network"). *Superseded 2026-11-09 by FS §20 KKKK (e): the network is the owner's friends, not the map; who sees an announcement is set as `Decisions-Needed.md` B48 says.*
 - **R3.** Only one highlight can be open at a time. Starting one while another is open is refused.
 - **R4.** Overviews are optional, like reflections. A reveal can be finished without writing one.
 - **R5.** Reveal choices are set once each, even during the reveal. A visibility or tag can't be changed before finish either. This is the stricter reading of D12. The looser one would let the owner change choices freely until finishing the reveal.

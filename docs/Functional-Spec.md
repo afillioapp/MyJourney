@@ -275,7 +275,7 @@ Feeling tags currently drafted: hang in there · it eventually pays off · thank
 - **E. Overviews.** A new overview every year on each journey, stacking. Readable by the owner's network
 - **F. Visibility.** Network is the default, until the owner chooses. Reflections follow their photo's visibility. Reveal choices (visibility, people tags, chapter, feeling tags) lock when the reveal is finished
 - **G. Layers.** A tag puts the tagged user on the tagger's map only. The tagged person's map doesn't change. Any user counts, whether or not they have a journey. Private photos count. Three rings: tight 5+ shared photos, middle 2–4, outer 1. A journey with no crossing moves someone out one ring, and nobody ever drops off the map
-- **H. Close friends** are the innermost ring *(ring part superseded 2026-11-09 by KKKK: close friends are now chosen from among friends)*. They see nothing beyond the rest of the network, and Private stays owner-only
+- **H. Close friends** are the innermost ring *(ring part superseded 2026-11-09 by KKKK: close friends are now chosen from among friends)*. They see nothing beyond the rest of the network *(reopened 2026-11-09: the user wants close friends to get something extra, not yet chosen, Decisions-Needed E2; meanwhile provisional default B55)*, and Private stays owner-only
 - **I. Sealed journeys.** Others may know only that one exists
 - **J. Feed.** "Journey launched" goes out when the reveal is finished. "Reflection left" reaches only people who can see that photo. "Path crossed" goes out for every crossing
 - **K. Handwritten note.** It can be added up to 15 minutes after capture, never after

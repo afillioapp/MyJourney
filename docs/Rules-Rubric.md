@@ -30,7 +30,11 @@ Updated 2026-11-05 (supervisor, from rules audit `docs/reviews/2026-11-04-rules-
 
 Updated 2026-11-05 (rules re-audit `docs/reviews/2026-11-05-rules-art-microcopy-r2.md`, of `Art-Direction.md`, `Microcopy.md` and Decisions-Needed B27–B41): added R-187 after R-186, in area 14 (provisional defaults hold when read together). Added `Updated` lines on R-177 (cited IDs after another doc renames its family) and R-180 (a cell naming only an AD-n, or following one side "until the user rules"). No check renumbered or removed.
 
+Updated 2026-11-05 (rules re-audit `docs/reviews/2026-11-05-rules-art-microcopy-r3.md`, final round of `Art-Direction.md` and `Microcopy.md`): an `Updated` line on R-187 (compare at more than one clock point). No new check. No check renumbered or removed.
+
 Updated 2026-11-09 (supervisor, user rulings FS §20 EEEE–HHHH): C2's checks now read as decided (EEEE); R-130 gains an `Updated` line (HHHH). No check renumbered or removed.
+
+Updated 2026-11-09 (rules audit `docs/reviews/2026-11-09-rules-kkkk.md`, of FS §20 KKKK's carriage: `Phase-1-Amendments.md` §12–§13, Decisions-Needed E1–E4 and B43–B54, and the FS, Concept, P1 and CLAUDE.md lines): added R-188 to R-196 after R-187, each naming its area, from §12.7's proposed K2–K7, K10, K12 and the audit's own V1 and V4. Added R-188, R-192, R-193 and R-194 to three rows of Banned-list coverage. Added `Updated` lines for KKKK on R-053, R-060, R-061, R-063, R-064, R-065, R-066, R-069, R-070, R-081, R-088, R-089, R-142, R-146, R-155, R-157, R-162 and G-3 (OQ-49, OQ-53, and R-053, R-142, R-162, which OQ-53 missed). No check renumbered or removed.
 
 ---
 
@@ -198,6 +202,7 @@ Test fixtures named below come from `Phase-1-Proposal.md` §3. Steady Lantern #6
 - **Accepted residual (FS §20 RR, `FS:322`):** the time a read takes may still depend slightly on rows the viewer cannot read. This is accepted for the prototype on dummy data and must be revisited before any real user's data enters the system. A reader that scans a whole table and then filters is not covered by the residual, and it fails R-158
 - **Current implementation:** the product roles hold no table privilege; the cluster superuser closes the catalog; the one-database CONNECT grant is re-applied after every clone (`Phase-1-Amendments.md` §10, §2.3; `P1:48` (h), `P1:179`)
 
+- **Updated 2026-11-09 (FS §20 KKKK, `FS:378`; `docs/reviews/2026-11-09-rules-kkkk.md`):** friendship acts are activity too. The differential catalog test gains the six friendship tables as targets, and a send, an answer, a decline, a withdrawal, a removal and a close-friend entry and exit between two other users as the watched activity (`Phase-1-Amendments.md` §12.7 K11)
 ### R-158
 - **Statement:** Every read of user content goes through a reader that returns exactly what that content's read rule allows. Beyond the accepted timing residual, it says nothing about the size, shape or timing of what it holds back. No product role reads or writes a user-content table directly.
 - **Type:** auto · **Applies to:** data
@@ -558,6 +563,7 @@ Commit, capture, frames, highlights and the note.
 - **How to check:** As Open Hands (on Round's map) at baseline, read a Long Way Round #4 photo: allowed. As First Light: refused.
 - **Provisional default:** Decisions-Needed B2 (switchable, R-142): The network can read an unlocked journey from unlock, as D12 and `P1:318` say (other setting: only after reveal finished). Holds as written under the default. Under "only after reveal finished" it reads: a photo with no visibility choice is Network, and the owner's network can read it once the reveal is finished; the Open Hands read of Long Way Round #4 (reveal never finished) is refused
 
+- **Updated 2026-11-09 (FS §20 KKKK, `FS:378`; `docs/reviews/2026-11-09-rules-kkkk.md`):** the network is now the owner's current friends (`Phase-1-Amendments.md` §12.2). Open Hands is on Round's map but not his friend, so she is **refused** Round #4 under both B2 settings (§13.3, `P1:318`). The allowed case is now Steady Lantern, Round's friend (fr-4), who is on neither map. First Light stays refused. Under B2's option the Lantern read is refused (FS §20 R)
 ### R-054
 - **Statement:** If the reveal is never finished, the journey still unlocks on its date, no "journey launched" goes out, and the owner's map is not recomputed.
 - **Type:** auto · **Applies to:** data, API
@@ -607,6 +613,7 @@ Commit, capture, frames, highlights and the note.
 - **Source:** FS:146, P1:318 ("outer ring is still network")
 - **How to check:** Lantern #5 network photo: Second Wind and Open Hands allowed, Long Way Round and First Light refused.
 
+- **Updated 2026-11-09 (FS §20 KKKK, `FS:378`; `docs/reviews/2026-11-09-rules-kkkk.md`):** the statement now reads: a Network photo can be read by its owner and by the owner's **current friends** (people with an accepted friend request, not since removed), and by nobody else. Being on the owner's map, at any ring, grants nothing (KKKK (d)). How to check, at baseline: Lantern #5 Network photo: Wind (fr-1), Hands (fr-3) and **Long Way Round (fr-4) allowed**; First Light (fr-9 pending) refused. Plus `Phase-1-Amendments.md` §12.7 K1: `viewer_in_network()` equals the plain-SQL friendship oracle for every fixture pair at several clock points, and the old map-based body, planted, is caught (Q-F4's three map-only and friend-only pairs). The old statement is kept above as history
 ### R-061
 - **Statement:** A Public photo can be read by any user.
 - **Type:** auto · **Applies to:** data, API
@@ -614,6 +621,7 @@ Commit, capture, frames, highlights and the note.
 - **How to check:** Every fixture user reads a Lantern #5 public photo: allowed.
 - **Provisional default:** Decisions-Needed B14: "Public" means signed-in users only. Under B14 the statement reads "any signed-in user". Add the case: a signed-out request for a Lantern #5 public photo, its reflections, and any share or direct URL to it: refused, with no image bytes in the reply (closes G-20)
 
+- **Updated 2026-11-09 (FS §20 KKKK, `FS:378`; `docs/reviews/2026-11-09-rules-kkkk.md`):** `Phase-1-Amendments.md` §12.7 K9 states B14 for the database: with no acting user, or one that names no joined user, no photo or anything that follows one is readable, and every friendship writer returns `refused`
 ### R-062
 - **Statement:** A reflection is readable by exactly the people who can read its photo.
 - **Type:** auto · **Applies to:** data, API
@@ -628,24 +636,28 @@ Commit, capture, frames, highlights and the note.
 - **Provisional default:** Decisions-Needed B13: The slot 1 overview can be written after the reveal is finished, within the slot. Readable by the network only. Under B13 the statement reads "by its owner and the owner's network, and nobody else". Add the case: as First Light (not on Lantern's map), read a Lantern overview of a journey with public photos: refused, and the overview does not appear beside those photos in the Positivity Feed (closes G-19)
 - **Decided 2026-10-30 (FS §20 HH, `FS:312`):** under B2's "only after reveal finished" setting the network reads the overview only once the reveal is finished; under "from unlock", as written. Add the case: under "only after reveal finished", a slot 1 overview written on Long Way Round #4 (reveal never finished, in a test copy) is refused to Open Hands and readable by the owner; Lantern overviews are readable by Second Wind under both settings (R-142)
 
+- **Updated 2026-11-09 (FS §20 KKKK, `FS:378`; `docs/reviews/2026-11-09-rules-kkkk.md`):** "the owner's network" means current friends. The FS §20 HH case changes viewer: Open Hands is refused Round #4's overview under **both** B2 settings (not Round's friend), so the viewer whose answer depends on B2 is Steady Lantern: under "from unlock", allowed; under "only after reveal finished", refused. Lantern overviews stay readable by Second Wind (fr-1) under both settings. Add the K2 case: Hands, on Round's map, reads no Round overview
 ### R-064
 - **Statement:** Close friends see nothing beyond the rest of the network. There is no close-friends access level, list or grant.
 - **Type:** auto · **Applies to:** data, API, UI
 - **Source:** FS:150, FS:278 (§20 H), P1:29 (D16), CL:107, MP:81, MJC:864. See G-3
 - **How to check:** For every photo, a tight-ring member and an outer-ring member of the same owner have identical access. Schema scan for `close_friend`, `inner_circle`, `favourite` access grants.
 
+- **Updated 2026-11-09 (FS §20 KKKK, `FS:378`; `docs/reviews/2026-11-09-rules-kkkk.md`):** KKKK (f) replaces the ring half: close friends are now **a list the owner chooses from among current friends** (`close_friend_entry`, `close_friend_exit`), shown to the owner only (`PROVISIONAL: B47`). So "no close-friends … list" in the statement above is superseded; "no close-friends access level or grant" still holds until the user rules DN E2. The statement now reads: a close friend reads exactly what any other current friend of the same owner reads, and adding or removing someone changes nothing they read. How to check: `Phase-1-Amendments.md` §12.7 K8 (Wind on Lantern's list against Hands and Round, Q-F7); the R-156-style scan on the two close-friend relations finds only their writers and `close_friend_rows()`. The `close_friend` schema-scan hit is now expected for exactly those two tables, their writers and reader. Whether the second half of FS §20 H ("see nothing beyond") is still decided is raised in the KKKK audit (V2)
 ### R-065
 - **Statement:** Being tagged in a photo gives no access to it. A user tagged in someone's Private photo cannot read that photo.
 - **Type:** auto · **Applies to:** data, API
 - **Source:** P1:293, FS:145
 - **How to check:** As Second Wind, read Lantern #1's two private photos tagging Wind: refused.
 
+- **Updated 2026-11-09 (FS §20 KKKK, `FS:378`; `docs/reviews/2026-11-09-rules-kkkk.md`):** friendship gives no access through a tag either. Add the case: Open Hands, tagged by Long Way Round in Round #1 and not his friend, reads only those of the tagged photos that are Public. `P1` §3.4 fixes none of them as Network, so the Network half of the case is untested until one is fixed (`Phase-1-Amendments.md` OQ-54, declined for now)
 ### R-066
 - **Statement:** Tagging someone gives the tagger no access to that person's photos.
 - **Type:** auto · **Applies to:** data, API
 - **Source:** FS:277 (§20 G), MJC:860
 - **How to check:** As Open Hands, read Lantern's network photos from a journey where Lantern did not tag Hands. Access must come only from Hands being on Lantern's map, never from Hands' own tags of Lantern.
 
+- **Updated 2026-11-09 (FS §20 KKKK, `FS:378`; `docs/reviews/2026-11-09-rules-kkkk.md`):** "Access must come only from Hands being on Lantern's map" is superseded: Hands' access to Lantern's Network photos comes only from the friendship fr-3. The tagger case is now Long Way Round, who tagged Hands in Round #1 and is not her friend: he reads only her Public photos
 ### R-067
 - **Statement:** Visibility is set per photo, not per journey.
 - **Type:** auto · **Applies to:** data, UI
@@ -693,6 +705,7 @@ Commit, capture, frames, highlights and the note.
 - **Decided 2026-10-31 (FS §20 AAA, `FS:334`), for (c):** a photo saved by the guard-bug retry is stored at the press instant, so its `captured_at`, its date and its place in any order are exactly what the press would have given. No column, id or order marks a photo as retried. Add to (c): one press saved by the retry, read by the owner and by a network reader, sits where an ordinary press at that instant sits
 - **Decided 2026-10-31 (FS §20 DDD, FFF, `FS:337`, `FS:339`):** the bug log's line prefix carries a real time and a virtual transaction id, which is a server counter. It lives outside the product data and no product role can read it (R-167), so (a) and (b) do not reach it. They do reach anything that copies it in: no table, column or reader may hold a log line, a virtual or real transaction id, or a log time
 
+- **Updated 2026-11-09 (FS §20 KKKK, `FS:378`; `docs/reviews/2026-11-09-rules-kkkk.md`):** the order clause covers photos, notes and journeys. One time-decided order is allowed, by `PROVISIONAL: B52`: a viewer's own incoming friend requests, newest first by that request's own `sent_at`, with no time value returned. It must never take its key from another table's time (R-192)
 ### R-161
 - **Statement:** A user's join date is readable by that user only. Everyone else reads names, never when someone joined.
 - **Type:** auto · **Applies to:** data, API, UI
@@ -712,6 +725,7 @@ Commit, capture, frames, highlights and the note.
 - **Decided 2026-10-31 (FS §20 CCC, `FS:336`):** one reader, for every viewer, returns how many of a user's reveals are finished and nothing else. It is the only reveal-derived value a public reader receives (R-166)
 - **Updated 2026-10-31 (r7):** the implementation is now specified: `journey_reveal_rows()` with the policy changed to the same rule, its predicate not executable by any product role (`Phase-1-Amendments.md` §11, lines 787 and 794; `P1:164`)
 
+- **Updated 2026-11-09 (FS §20 KKKK, `FS:378`; `docs/reviews/2026-11-09-rules-kkkk.md`):** "As Open Hands (network), the same" is stale: Hands is not Round's friend. The network viewer is now Steady Lantern (fr-4). Hands, on Round's map with no friendship, reads no reveal state for #3 or #4, as First Light does (R-188)
 ### R-166
 - **Statement:** Another user's circle tells the viewer only how many reveals that user has finished. The number moves only when a reveal is finished, carries no date, year or journey, and is drawn as rings, never shown as a number, total or comparison.
 - **Type:** auto (data) and review (UI) · **Applies to:** data, API, UI
@@ -731,6 +745,7 @@ Commit, capture, frames, highlights and the note.
 - **Current implementation:** layer rows readable only where `owner = viewer` (P1:51).
 - **Updated 2026-10-31 (FS §20 OO; R-164):** the layer table refuses the viewer role; read through `layer_rows()` and every other reader and route: only rows where Wind is the owner. The internal helper that takes a member and returns owners (`Phase-1-Amendments.md` §11, line 702) must not be executable by any product role (R-070). R-072, R-073, R-074 and R-080 read their map snapshots the same way, through `layer_rows()` as the map's owner
 
+- **Updated 2026-11-09 (FS §20 KKKK, `FS:378`; `docs/reviews/2026-11-09-rules-kkkk.md`):** `Phase-1-Amendments.md` §12.7 K10 tightens this: no access decision reads the map at all. The R-156 scan pointed at the relation `layer` returns exactly {`finish_reveal`, `layer_rows`}; a policy, view or dynamic-SQL function naming `layer` is a failure. Numbered as R-188's how-to-check (2)
 ### R-070
 - **Statement:** Nothing can be called that takes a member and returns whose maps they are on.
 - **Type:** auto · **Applies to:** API
@@ -738,6 +753,7 @@ Commit, capture, frames, highlights and the note.
 - **How to check:** List every function and route that takes a user id and touches layer data. None may return owners for a given member.
 - **Decided 2026-10-30 (FS §20 FF, `FS:310`):** `viewer_in_network(owner_id)` may stay directly callable. It takes an owner and answers only for the current viewer, which reveals nothing beyond what §20 T journey rows already give a network member. The check above still fails any call that takes a member and returns owners, and any route that exposes the predicate
 
+- **Updated 2026-11-09 (FS §20 KKKK, `FS:378`; `docs/reviews/2026-11-09-rules-kkkk.md`):** FS §20 FF's reason is replaced. `viewer_in_network(owner)` now answers whether the viewer and that owner are current friends, which `friend_rows()` already tells the viewer; it no longer reflects the map. The member-to-owners helper is gone (`Phase-1-Amendments.md` §12.1); the check above still fails any function or route that takes a member and returns owners
 ### R-071
 - **Statement:** No screen or copy shows a person their ring on someone else's map, directly or by implication: no "you're in X's inner circle", no closeness badge or colour on their own avatar in someone else's view, no "you moved closer" or "further away", no ordering of someone else's content by the viewer's ring.
 - **Type:** review · **Applies to:** UI, copy
@@ -806,6 +822,7 @@ Commit, capture, frames, highlights and the note.
 - **Source:** FS:160, P1:181 ("follower"). Part of **§2.5 check 6**
 - **How to check:** Schema scan for `follow`, `follower`, `friend_request`, `close_friend`. No UI control adds a person to a ring.
 
+- **Updated 2026-11-09 (FS §20 KKKK, `FS:378`; `docs/reviews/2026-11-09-rules-kkkk.md`):** superseded in part by FS §20 KKKK. Mutual friend requests and an owner-only close-friends list now exist (§12.1). What still holds: **the map's rings are earned by tags only, never chosen**, and no UI control adds a person to a ring; there is no one-way **follow**. The schema scan now fails on `follow` and `follower` anywhere, and on `friend_request` or `close_friend` only outside the six §12.1 tables, their writers and their readers
 ### R-082
 - **Statement:** The map is drawn as concentric rings with the user at the core, not as a list.
 - **Type:** review · **Applies to:** UI
@@ -868,6 +885,7 @@ Commit, capture, frames, highlights and the note.
 - **Provisional default:** Decisions-Needed B10: "Reflection left" reaches only the owner's network members who can see the photo, even when it is public. Under B10 the statement reads "only to users on the owner's map who can read that photo". Add the case: Lantern reflects on a Lantern #5 public photo: First Light and Long Way Round (not on Lantern's map) get no announcement, although both can read the photo
 - **Decided 2026-10-31 (FS §20 UU, `FS:325`):** the actor sees their own "reflection left". For the actor only, this is an exception to B10's reading, since FS §20 outranks a provisional default (CL:30). B10 still holds for every other reader: on a public photo, no reader outside the owner's network gets the announcement. `Phase-1-Amendments.md:691` leaves B10 out (r6 V3). UU's "as written in R2" is a loose citation: R2 (`P1:405`) covers only "journey launched" and "path crossed"
 
+- **Updated 2026-11-09 (FS §20 KKKK, `FS:378`; `docs/reviews/2026-11-09-rules-kkkk.md`):** "users on the owner's map" (the B10 reading) now reads "the owner's current friends who can read that photo". The B10 case changes: Lantern reflects on a Lantern #5 public photo; **Long Way Round, now Lantern's friend (fr-4), receives it**; First Light, who can read the photo but is not a friend, does not. Audiences are worked out when read (`PROVISIONAL: B48`)
 ### R-089
 - **Statement:** "Journey launched" and "path crossed" are shown to the owner's network.
 - **Type:** auto · **Applies to:** data, API
@@ -875,6 +893,7 @@ Commit, capture, frames, highlights and the note.
 - **How to check:** For a fixture reveal finish, the set of feeds containing each announcement equals the owner's map members.
 - **Decided 2026-10-31 (FS §20 UU, `FS:325`):** the actor does not see their own "journey launched" or "path crossed". The recipients are the map members, and the map never includes the actor (R-074)
 
+- **Updated 2026-11-09 (FS §20 KKKK, `FS:378`; `docs/reviews/2026-11-09-rules-kkkk.md`):** "shown to the owner's network" means current friends. How to check: the feeds holding each announcement equal the actor's current friends at read time (`PROVISIONAL: B48`), never the map members. Test with `Phase-1-Amendments.md` §13.4: at baseline the five fixture viewers read 17, 9, 9, 9 and 0 "journey launched" and "path crossed" rows (Q-F9). Whether the person tagged receives "path crossed" when a friend is open with the user (DN E3 (a)); built as KKKK (e), all friends
 ### R-090
 - **Statement:** "Path crossed" goes out for every crossing: one per tagged user in each finished reveal.
 - **Type:** auto · **Applies to:** data
@@ -1354,6 +1373,71 @@ Commit, capture, frames, highlights and the note.
 - **Area:** 14. Provisional defaults and the options panel
 - **Source:** R-141 (a switch changes nothing but its own behaviour), rule zero (CL:19–24: a builder never picks; a question with no default is not answered by another row), R-150, R-168. Found by `docs/reviews/2026-11-05-rules-art-microcopy-r2.md`. ART-R2-1: B41 makes C1's line the only way into Reveal S-04, which forces C18 and can strand an unfinished reveal against `Screen-Inventory.md:151`. ART-R2-3: B28 with B31 removes the owner's activity line under B4's option, so flipping B4 changes B5's behaviour
 - **How to check:** (1) For each new or changed Decisions-Needed row, list every other row and every switch setting touching the same screen, drawing or data. For each switch, compare what each screen shows under its two settings with every other default in force: anything that changes beyond the switch's own ID fails. (2) For each row, list the open questions (no default) its behaviour depends on. Read the row under each possible answer. If one answer leaves a screen unreachable that a "Reached from" row requires, or turns the row into a banned mechanic (R-095, R-096), the row has forced that question and fails
+- **Updated 2026-11-05 (`docs/reviews/2026-11-05-rules-art-microcopy-r3.md` ART-R3-1):** a default can hold at one clock point and fail in between. Run (1) at more than one clock point: at each scripted fixture event the row touches, at the day after it, and at the next event that completes the behaviour (for example the next anniversary or unlock). Found when revised B28 put a finished journey's day marks on a ring not drawn until the next join anniversary, so from Second Wind's 2027-04-25 finish the line showed nowhere under B4's per-year option and on ring n+1 under the default
+
+
+### R-188
+- **Statement:** Being on someone's map grants nothing. A person on the owner's map who is not the owner's friend reads exactly what a stranger reads, and no read rule, policy or audience consults the map.
+- **Type:** auto · **Applies to:** data, API
+- **Area:** 5. Visibility and access
+- **Source:** FS §20 KKKK (d); CL:74; R-069. Proposed by `Phase-1-Amendments.md` §12.7 as K2 and K10; numbered by `docs/reviews/2026-11-09-rules-kkkk.md`
+- **How to check:** (1) K2: two test users, m on owner o's map and s on no map, neither a friend; at several clock points and under both settings of `b2` and `c6`, the fingerprint of every reader is equal for m and s once the viewer's own `user_rows()` row is masked. Planted fault: a "friend or map member" body. In the fixture: Hands against Wind on Round's content (Q-F7). (2) K10: the R-156 scan on the relation `layer` returns exactly {`finish_reveal`, `layer_rows`}. Not yet run: no database exists on this machine
+
+### R-189
+- **Statement:** A declined friend request never shows to its sender. Nothing the sender can read or do differs between a declined request and a pending one, before, during or after any later friendship.
+- **Type:** auto · **Applies to:** data, API, UI
+- **Area:** 5. Visibility and access
+- **Source:** FS §20 KKKK (a); `PROVISIONAL: B44`, `B50`, `B53`. Proposed by `Phase-1-Amendments.md` §12.7 as K3; numbered by `docs/reviews/2026-11-09-rules-kkkk.md`
+- **How to check:** K3's twin run: reader rows, a second send (refused both), a withdrawal (accepted both), `viewer_in_network()` (false both), a crossed request from the decliner (accepted), and the differential catalog test around the decline. Planted faults as listed in K3. UI: the sender's screen for a declined request is the pending screen, byte for byte. Not yet run
+
+### R-190
+- **Statement:** A friendship exists only after the recipient of a request accepts it. At most one friendship is current per pair, and no request is open while the pair are friends.
+- **Type:** auto · **Applies to:** data, API
+- **Area:** 5. Visibility and access
+- **Source:** FS §20 KKKK (a); `PROVISIONAL: B53`. Proposed by `Phase-1-Amendments.md` §12.7 as K4; numbered by `docs/reviews/2026-11-09-rules-kkkk.md`
+- **How to check:** K4's cases, including two sessions accepting crossed requests at once (one friendship, one `refused`). Not yet run
+
+### R-191
+- **Statement:** Removing a friend takes effect at once and touches nothing else. From the next statement the removed person reads the remover's content as a stranger does. Nobody else's reads change, both maps stay as they were, and no record says who removed whom.
+- **Type:** auto · **Applies to:** data, API
+- **Area:** 5. Visibility and access
+- **Source:** FS §20 KKKK; `PROVISIONAL: B45`, `B48`, `B49`. Proposed by `Phase-1-Amendments.md` §12.7 as K5; numbered by `docs/reviews/2026-11-09-rules-kkkk.md`
+- **How to check:** K5 (Q-F8 in the fixture). Read "no record says who removed whom" exactly: between the two friends the person who did not remove can always tell by elimination. The check is that no stored value and no reader adds to that, and that no third party learns anything. Not yet run
+
+### R-192
+- **Statement:** No friend count, request count, friendship limit or friendship time value reaches anyone. The one order a time decides is a viewer's own incoming requests, newest first, keyed on each request's own send instant and nothing else.
+- **Type:** auto · **Applies to:** data, API, UI
+- **Area:** 8. Engagement mechanics
+- **Source:** CL:69 (counters); FS §20 KKKK (c); `PROVISIONAL: B46`, `B51`, `B52`; R-155. Proposed by `Phase-1-Amendments.md` §12.7 as K6; numbered by `docs/reviews/2026-11-09-rules-kkkk.md`
+- **How to check:** K6: reader result types hold no integer, numeric or time-typed column; the `ORDER BY` of `friend_request_rows()` names `friend_request.sent_at` as its only time; planted faults (a returned `sent_at`, a key from another table's time) are caught. UI: no screen prints a number of friends or requests, or a request's time ("2d", "new"). Not yet run
+
+### R-193
+- **Statement:** Only the two people involved can read a friendship or a friend request. Only the owner can read their close-friends list. No one can ask for another user's friends.
+- **Type:** auto · **Applies to:** data, API, UI
+- **Area:** 5. Visibility and access
+- **Source:** FS §20 KKKK; `PROVISIONAL: B47`; DN E4 (built: no one can, while open with the user). Proposed by `Phase-1-Amendments.md` §12.7 as K7; numbered by `docs/reviews/2026-11-09-rules-kkkk.md`
+- **How to check:** K7. A signature scan finds no set reader on the six friendship tables that takes an argument. UI: no screen shows another user's friends, mutual friends or close friends. Not yet run
+
+### R-194
+- **Statement:** The friend requests list carries no marker. The way to it looks the same whether no request or many are waiting, and a request arriving changes nothing outside that list's rows.
+- **Type:** review, then auto · **Applies to:** UI, copy
+- **Area:** 8. Engagement mechanics
+- **Source:** FS §20 KKKK (c) ("no notification"); CL:69–70; R-095, R-096, R-186; `PROVISIONAL: B43`; rule zero step 5 (the banned list wins over the Instagram reference). The reference product shows its requests entry only while requests wait. Found by `docs/reviews/2026-11-09-rules-kkkk.md` V4
+- **How to check:** Render every screen that leads to the requests list, as a viewer with 0 and with 3 incoming requests: identical DOM apart from the list's own rows. No "Requests" entry, line or section appears only when one waits, and none takes bold, a dot, a number or new copy. Grep aid: `pending`, `request` near conditional rendering
+
+### R-195
+- **Statement:** Friendship records are append-only, and every time they hold comes from the app clock at the moment of the act.
+- **Type:** auto · **Applies to:** data
+- **Area:** 2. Immutability and append-only
+- **Source:** FS §20 KKKK; FS §20 OOO (the same pattern as `joined_at`); R-164. Proposed by `Phase-1-Amendments.md` §12.7 as K12, with §2.5 check 1's six tables; numbered by `docs/reviews/2026-11-09-rules-kkkk.md`
+- **How to check:** As R-164 (a) to (c): UPDATE, DELETE and TRUNCATE on each of the six tables raise an error as the product role, through a planted definer function and as the table owner. An insert with a time other than `app_now()` is refused. Not yet run
+
+### R-196
+- **Statement:** An "Instagram reference" default (CLAUDE.md rule zero step 5) settles only a generic app question. A row that decides who reads My Journey's own objects (announcements, journeys, photos, reflections, layers, close friends' access), or that reopens or reads a §20 ruling, goes to the user, however the reference product behaves.
+- **Type:** review · **Applies to:** docs
+- **Area:** 14. Provisional defaults and the options panel
+- **Source:** CL rule zero step 5 ("Questions about what makes My Journey itself, such as … layers, visibility … go to the user"); R-150, R-187. Found by `docs/reviews/2026-11-09-rules-kkkk.md` V1 (`PROVISIONAL: B48` decides that a new friend reads the whole earlier announcement history, a visibility question)
+- **How to check:** For each row marked "Instagram reference", name what it decides. It fails if it sets an audience, a reader, a visibility or what a layer or close friend gets, or if it rests on a reading of a §20 ruling. Such a row needs a user answer, or a strictest-reading default under steps 1 to 4, labelled as such
 
 ---
 
@@ -1380,6 +1464,7 @@ Added 2026-10-27 for the playable prototype (rule zero, CL:19–24; `Decisions-N
 - **Decided 2026-10-30 (FS §20 X):** "no one but the owner reads any of it" covers photos and what follows them (reflections, notes, people tags). The journey's type, dates, chapter and feeling tags are read by the network from unlock under both settings, and never by a public reader (FS §20 T, R-152). Add the case: under "only after reveal finished", as Open Hands at baseline, read Long Way Round #4's type and dates: allowed; read any #4 photo: refused
 - **Decided 2026-10-30 (FS §20 HH, `FS:312`):** "what follows them" includes the journey overview. Under "only after reveal finished" the network reads the overview only once the reveal is finished (R-063)
 
+- **Updated 2026-11-09 (FS §20 KKKK, `FS:378`; `docs/reviews/2026-11-09-rules-kkkk.md`):** the Open Hands cases are stale: Hands is not Round's friend, so she is refused Round #4 under both settings. Use Steady Lantern (fr-4): under "from unlock", allowed; under "only after reveal finished", refused. In the test-copy Public case, First Light and Hands are both public readers. The FS §20 X case likewise moves to Lantern: as Lantern at baseline under "only after reveal finished", Round #4's type and dates allowed, any #4 photo refused. Hands now reads neither
 ### R-143
 - **Statement:** B4, under both settings ("per finished reveal" / "per year with the app"): the circle is a record, not a rank, and nothing on it fills, grows or advances during a sealed year.
 - **Type:** auto · **Applies to:** UI, copy
@@ -1404,6 +1489,7 @@ Added 2026-10-27 for the playable prototype (rule zero, CL:19–24; `Decisions-N
 - **Source:** DN B11, FS:164, FS:282 (§20 M), P1:168, CL:74
 - **How to check:** Jump from baseline to 2027-05-01 (Second Wind finishes #6 on 2027-04-25, tagging Lantern). "Named": the announcement names Wind and Lantern. "Unnamed": it names Wind only, and the payload sent to readers has no subject. Under both: the recipients equal Wind's map members (R-089); the text has no digits and no ring words (R-092); Lantern's own view of it says nothing about Lantern's ring, closeness or count (R-071).
 
+- **Updated 2026-11-09 (FS §20 KKKK, `FS:378`; `docs/reviews/2026-11-09-rules-kkkk.md`):** "recipients equal Wind's map members" now reads "Wind's current friends at read time". At 2027-05-01 those are Steady Lantern and Open Hands, who became friends on 2026-11-14 by script (`Phase-1-Amendments.md` §13.5)
 ### R-147
 - **Statement:** B12, under both settings ("shown" / "hidden"): Walking a path never gives a reader a total, grouping or ordering of the photos they appear in, and never shows a photo the reader cannot otherwise read.
 - **Type:** auto · **Applies to:** API, UI, copy
@@ -1469,12 +1555,12 @@ Every row of the banned list (`CLAUDE.md:64–74`, `Master-Prompt.md:37–47`) a
 | No comments from anyone else | R-105, R-106, R-107, R-109, R-124 |
 | No face recognition | R-110, R-111, R-112 |
 | No ads anywhere | R-113 |
-| No streaks, counters, progress bars, reminders | R-097, R-098, R-099, R-038, R-039, R-012, R-013, R-095, R-096, R-124, R-138, R-140, R-143, R-144, R-166, R-178 |
-| No re-engagement notifications | R-094, R-095, R-096 |
+| No streaks, counters, progress bars, reminders | R-097, R-098, R-099, R-038, R-039, R-012, R-013, R-095, R-096, R-124, R-138, R-140, R-143, R-144, R-166, R-178, R-192, R-194 |
+| No re-engagement notifications | R-094, R-095, R-096, R-194 |
 | No ranking, levels, badges, leaderboards | R-101, R-102, R-103, R-124, R-143, R-166 |
 | No photo feed | R-084, R-085, R-086, R-145 |
 | Nothing leaks from a sealed year | R-001 to R-014, R-091, R-138, R-142, R-144, R-156, R-157, R-158, R-161, R-167, R-169, R-176, R-178 |
-| No layer is ever shown to the person on it | R-069, R-070, R-071, R-092, R-139, R-146, R-147, R-148, R-176 |
+| No layer is ever shown to the person on it | R-069, R-070, R-071, R-092, R-139, R-146, R-147, R-148, R-176, R-188, R-193 |
 
 R-141 and R-149 apply to every row: no switch setting may break any item above, and every provisional default in code is labelled and traceable. R-138 sits under two rows because a control hidden or greyed for lack of frames is both a counter and a leak of how much a sealed year holds (RG:28, "disabled-but-visible states").
 
@@ -1529,6 +1615,8 @@ Since 2026-10-27 each gap carries a status line under it: **being fixed** by a `
 **G-3. Close friends.** `MJC:807` says close friends "get everything", and `MJC:383` says "everything for the people closest to you". `FS:278` (§20 H), `FS:150` and `MJC:864` say they see nothing beyond the rest of the network. R-064 tests §20 H.
 
 **Being fixed by A3, 2026-10-27.** R-064 already tests §20 H.
+
+**Updated 2026-11-09 (FS §20 KKKK; `docs/reviews/2026-11-09-rules-kkkk.md`).** Close friends are now a list chosen from among friends (KKKK (f)). The 2026-10-27 contradiction is replaced by a new one: FS §20 H still says they "see nothing beyond the rest of the network" (`FS:278`, only its ring part marked superseded), while KKKK, `FS:150`, `CLAUDE.md:114` and DN E2 call it open, and the user has said close friends should get something extra. Until the supervisor marks which holds, R-064 runs under B47's "nothing extra".
 
 **G-4. When reminders, counters and progress bars are banned.** `FS:233` says "No visible counters, no progress bars, no reminders **during the sealed year**". `CLAUDE.md:69` and `Master-Prompt.md:42` ban them with no time limit, and `FS:242` bans reminders to capture, reflect or return at any time. Open: is a counter or progress bar allowed after unlock, for example "12 of 24 reflected" during the reveal? R-099 is provisional on this.
 
