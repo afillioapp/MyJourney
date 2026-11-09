@@ -243,7 +243,7 @@ Photos are normal frames, plus highlight photos where shown. P / N / U is the pr
 
 Every month stays within cadence once carry-forward is counted, and every sealed "so far" count stays within `cadence × months elapsed`.
 
-The sealed journeys are where the empty state can be seen. Long Way Round #4 shows a reveal that was never finished. Round still came back on 2026-09-10 to reflect on an older photo, but the journey just unlocked, every photo is visible to the network by default, there's no chapter and no "journey launched", and the map hasn't been recomputed.
+The sealed journeys are where the empty state can be seen. Long Way Round #4 shows a reveal that was never finished. Round still came back on 2026-09-10 to reflect on an older photo, but the journey just unlocked, every photo is visible to the network by default (that is, to Round's friends: Steady Lantern at baseline, *amended 2026-11-09, FS §20 KKKK, `Phase-1-Amendments.md` §13.3*), there's no chapter and no "journey launched", and the map hasn't been recomputed.
 
 Highlights:
 
@@ -257,7 +257,7 @@ Photos are generated placeholders with the scene drawn into the image. Scene des
 
 ### 3.4 Crossing paths
 
-Each map counts only its owner's own tags (D14).
+Each map counts only its owner's own tags (D14). *(amended 2026-11-09, FS §20 KKKK)* Friendships are separate from the map and never change it; the fixture's friendships are in `Phase-1-Amendments.md` §13.1.
 
 **On Steady Lantern's map, Second Wind:**
 
@@ -267,7 +267,7 @@ Each map counts only its owner's own tags (D14).
 | #2 (2022) | 2 | Middle |
 | #3 (2023) | 0 *(Wind emigrated)* | Outer, drifted |
 | #4 (2024) | 0 | Outer, the floor |
-| #5 (2025) | 5 *(Wind moved back)* | **Tight again: the path crosses again after two years** |
+| #5 (2025) | 5 *(Wind moved back; at least 1 fixed as network, not left to the generator, so Wind sees the crossing again on Walking a path: amended 2026-11-09, `Phase-1-Amendments.md` §13 OQ-50)* | **Tight again: the path crosses again after two years** |
 
 **On Second Wind's map, Steady Lantern:**
 
@@ -277,7 +277,7 @@ Each map counts only its owner's own tags (D14).
 | #2 | 2 | Middle |
 | #3 | 0 | Outer |
 | #4 | 0 | Outer |
-| #5 | 6 | Tight |
+| #5 | 6 *(at least 1 fixed as network, not left to the generator, so Lantern sees the crossing again on Walking a path: amended 2026-11-09, `Phase-1-Amendments.md` §13 OQ-50)* | Tight |
 
 Other crossings, each placed to test something:
 
@@ -288,7 +288,7 @@ Other crossings, each placed to test something:
 | Steady Lantern → Open Hands | Lantern #4 | 1 | Hands on Lantern's map, outer | **Asymmetry**: each sits on a different ring in the other's map, and neither can see it |
 | Long Way Round → Open Hands | Round #1 | 2 | Hands on Round's map, middle. Hands #1 was sealed then *(amended 2026-10-30, user ruling: the earlier "Hands had no journey then" was untrue)* | D14, a tagged user whose own journey is sealed. The "no journey" case is Open Hands → First Light, 2027-06-20, §3.8 *(amended 2026-10-30, user ruling)* |
 | Open Hands → "Ava" (typed name) | Hands #2 | 41 | No layer row | D13 |
-| Nobody → First Light | | | First Light's map is empty at baseline, until Hands tags her on 2027-06-20 (§3.8) *(amended 2026-10-30)* | An empty network |
+| Nobody → First Light | | | First Light is on no map at baseline, until Hands tags her on 2027-06-20 (§3.8) *(amended 2026-10-30)*. Her own map stays empty for good, since a tag puts the tagged user on the tagger's map only (FS §20 G; §3.8) *(amended 2026-11-09: the earlier "First Light's map is empty … until Hands tags her" did not match FS §20 G)* | An empty map. Also an empty network, now for its own reason: no current friendship, since her three requests grant nothing (FS §20 KKKK; `Phase-1-Amendments.md` §13.3) *(amended 2026-11-09)* |
 
 Lantern's 2 private photos of Wind check that **being tagged doesn't give access**.
 
@@ -309,15 +309,15 @@ Most other photos have 0–2 reflections, left to the generator. *(amended 2026-
 
 **Notes:** about one photo in three has a note, each written within 15 minutes of its capture and before its journey's `unlocks_at` (FS §20 YYY; P1:108) *(amended 2026-10-31, gate r9 CF-46)*.
 
-### 3.6 Access matrix (at baseline)
+### 3.6 Access matrix (at baseline; amended 2026-11-09 for FS §20 KKKK: the network is the owner's friends, `Phase-1-Amendments.md` §13.3, under `b2 = from_unlock`)
 
 | Viewer → content | Lantern #5 private | Lantern #5 network | Lantern #5 public | Round #4 (default Network) | Any sealed journey |
 |---|---|---|---|---|---|
-| Steady Lantern | yes | yes | yes | no *(not on Round's map)* | own: exists + type + dates only |
-| Second Wind | no | yes | yes | no | exists only |
-| Open Hands | no | yes *(outer ring is still network)* | yes | **yes** *(on Round's map)* | exists only |
-| Long Way Round | no | no | yes | own | exists only |
-| First Light | no | no | yes | no | exists only |
+| Steady Lantern | yes | yes | yes | **yes** *(Round's friend; not on Round's map. Was no, amended 2026-11-09)* | own: exists + type + dates only |
+| Second Wind | no | yes *(Lantern's friend)* | yes | no *(not Round's friend)* | exists only |
+| Open Hands | no | yes *(Lantern's friend; her ring no longer counts, amended 2026-11-09)* | yes | **no** *(on Round's map but not his friend. Was yes, amended 2026-11-09)* | exists only |
+| Long Way Round | no | **yes** *(Lantern's friend; not on her map. Was no, amended 2026-11-09)* | yes | own | exists only |
+| First Light | no | no *(request pending)* | yes | no *(request declined, looks pending to her)* | exists only |
 
 ### 3.7 Positivity Feed
 
@@ -382,18 +382,18 @@ The scripted future (§3.8) adds nothing: the Wind #6 and Hands #4 reveals scrip
 
 ### 3.8 Scripted future (applied on jumps)
 
-Every scripted action happens at **12:00 UTC** on its date (FS §20 BB). Unlocks stay at 00:00 UTC. *(amended 2026-10-30, user ruling)*
+Every scripted action happens at **12:00 UTC** on its date (FS §20 BB). Unlocks stay at 00:00 UTC. *(amended 2026-10-30, user ruling)* *(amended 2026-11-09, FS §20 KKKK)* **One friendship act is scripted, before the table's first date:** on 2026-11-14 Second Wind accepts Open Hands' open request, which closes Wind's crossed request to Hands (`PROVISIONAL: B53`), so from then on the two are friends who are on neither's map (`Phase-1-Amendments.md` §13.5). First Light's request to Steady Lantern is left for whoever is demoing, and is never answered by the script. A scripted act that the demoer has already made impossible is skipped, and the jump goes on; this applies to the reveals below too (`PROVISIONAL: B54`).
 
 | Date | Action |
 |---|---|
 | 2027-01-01 | Steady Lantern #6 unlocks. **The reveal is left for whoever is demoing** |
 | 2027-04-25 | Second Wind finishes the #6 reveal, tagging Lantern in 4 photos (middle). Writes a reflection on wind-3 and an overview on journey #6, its first overview slot *(amended 2026-10-30, user ruling)* |
 | 2027-06-20 | Open Hands finishes the #4 reveal, tagging Lantern in 1 photo. *(amended 2026-10-30, user ruling)* Also tags First Light in 1 other photo: First Light goes on Hands' map, outer. First Light has no journey, since the script never commits for her, so this is the D14 "any user counts" test. First Light's own map stays empty (D14: tagger's map only) |
-| never | Long Way Round's #4 reveal stays unfinished. At +5 years it's still Network-by-default |
+| never | Long Way Round's #4 reveal stays unfinished. At +5 years it's still Network-by-default, readable by Round's friend Steady Lantern *(amended 2026-11-09, `Phase-1-Amendments.md` §13.3)* |
 
-*(amended 2026-10-30, user ruling)* **Why the Hands #4 reveal carries the First Light tag, and what it leaves unchanged.** Layers are per tagger and per tagged user (§2.3), so the new tag adds only one entry, First Light on Hands' map. Lantern on Hands' map still goes from middle to outer on 1 photo (R1); the "Ava" tags still give no layer row (D13); every ring in §3.4 is on another map or before 2027-06-20; §3.6 is at baseline; Hands #4 scripts no feeling tags, so §3.7 is unchanged. The Wind #6 reveal was not used: it also writes a network reflection on wind-3, and First Light on Wind's map would become a reader of that photo and its reflections. The tag comes after First Light's `joined_at`, 2026-10-01 (§3.2). The case holds only if whoever is demoing has not committed a journey for First Light before 2027-06-20.
+*(amended 2026-10-30, user ruling)* **Why the Hands #4 reveal carries the First Light tag, and what it leaves unchanged.** Layers are per tagger and per tagged user (§2.3), so the new tag adds only one entry, First Light on Hands' map. Lantern on Hands' map still goes from middle to outer on 1 photo (R1); the "Ava" tags still give no layer row (D13); every ring in §3.4 is on another map or before 2027-06-20; §3.6 is at baseline; Hands #4 scripts no feeling tags, so §3.7 is unchanged. The Wind #6 reveal was not used: it also writes a network reflection on wind-3, and First Light on Wind's map would become a reader of that photo and its reflections. *(amended 2026-11-09, FS §20 KKKK: that reason no longer holds, since a place on a map grants nothing and First Light is not Wind's friend. The other reasons hold, and the tag stays on Hands #4. The "path crossed" naming First Light goes to Hands' friends, not to her, since she is not Hands' friend; `Phase-1-Amendments.md` §13.3)* The tag comes after First Light's `joined_at`, 2026-10-01 (§3.2). The case holds only if whoever is demoing has not committed a journey for First Light before 2027-06-20.
 
-No fake user commits a new journey after baseline. From 2027 on the world goes quiet, apart from whoever is demoing, and +5 years shows that honestly.
+No fake user commits a new journey after baseline, and the only scripted friendship act is the one on 2026-11-14 *(amended 2026-11-09)*. From 2027 on the world goes quiet, apart from whoever is demoing, and +5 years shows that honestly.
 
 ---
 
