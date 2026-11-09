@@ -293,7 +293,7 @@ The drawing contains no words, numbers or dates.
 
 Type styles for the words on S-03, which belong to the copywriter and ux:
 
-- Type name and the two plain dates (SI:118–120; `PROVISIONAL: B19`, `C2`): `label` style, `--mj-ink-soft`.
+- Type name and the two plain dates (SI:118–120; `PROVISIONAL: B19`; Spec §20 EEEE): `label` style, `--mj-ink-soft`.
 - The sealed line: `display-m`, `--mj-ink` `[copy: copywriter]`.
 - An open highlight (Spec §20 S; SI:123): `body` style. No icon, ring, bar or timer, and the envelope does not change (SI:138).
 
@@ -358,7 +358,7 @@ Each mark is the same circle holding a small plain sign. On a 24 grid, centre (1
 | Start a highlight S-13 | **S-03 only** (SI:111, element 6) | Circle r 9.5; circle r 3; rays (12, 5.5)–(12, 7), (12, 17)–(12, 18.5), (5.5, 12)–(7, 12), (17, 12)–(18.5, 12). Shown the same whether or not a highlight is left or open (SI:122) |
 | The sealed year S-03 | S-05, present while a journey is sealed (SI:170; `PROVISIONAL: B42`) | Circle r 9.5; rectangle (6.5, 8.5)–(17.5, 15.5); flap lines (6.5, 8.5)–(12, 12.5)–(17.5, 8.5) |
 | Commit S-01 | S-05, present in `no-journey` (SI:170; `PROVISIONAL: B42`) | Circle r 9.5; line (7, 12)–(17, 12) |
-| Reveal S-04 | S-05, present while a reveal is open (SI:151, SI:170; `PROVISIONAL: B41`) | **No mark of its own.** A plain way in `label` style, styled like every other way, with no emphasis. C1's "Your Journey is ready" line is a second way in (`PROVISIONAL: C1`). How long that line stays is C18, which has no default and which B41 does not answer |
+| Reveal S-04 | S-05, present while a reveal is open (SI:151, SI:170; `PROVISIONAL: B41`) | **No mark of its own.** A plain way in `label` style, styled like every other way, with no emphasis. C1's "Your Journey is ready" line is a second way in (`PROVISIONAL: C1`). That line shows once, on the first open after unlock (Spec §20 FFFF), so the plain way is what reaches an unfinished reveal afterwards |
 
 How every mark is drawn [AD]:
 
@@ -588,7 +588,7 @@ Rules:
 - **A hand font is for names beside people, and nothing else** (Concept:310; Spec:217). No sentences in it.
 - **Reflections and overviews are typed, so they are set in `body`** (Concept:803).
 - **The handwritten note is a photograph of a real page, shown as a print.** Never reset it in a font (Concept:311; Spec:16).
-- Dates are plain dates in `label`, never relative (`PROVISIONAL: C2`).
+- Dates are plain dates in `label`, never relative (Spec §20 EEEE).
 - No "@", no handles (Concept:310).
 - Sentence case. No all-caps labels: they belong to apps, not albums. [AD]
 
@@ -655,7 +655,7 @@ Each "do" holds for every value the formulas allow (R-185).
 | **Nothing signals looks or doing well** (Brief:113; Spec:29) | A name in a circle | A picture, an avatar, initials on colour, verified ticks, status words |
 | **No profile picture** (Spec §20 XXX) | The name in the core | A photo in the frame, even a landscape, even the person's own journey photo |
 | **No markers** (SI:49; R-096) | A mark looks the same every day | A dot, number, "new", a bold unread line, a tinted way when something is ready, an app-icon badge |
-| **No countdown** (`PROVISIONAL: C2`; R-013) | A plain date in `label` | Rings ticking round, a shrinking arc, "in 64 days", an hourglass, a moon phase, a calendar filling |
+| **No countdown** (Spec §20 EEEE; R-013) | A plain date in `label` | Rings ticking round, a shrinking arc, "in 64 days", an hourglass, a moon phase, a calendar filling |
 | **No pull back** (CL:69–70, 76) | Still screens that can be left | A pulse, shimmer, breathing circle, anniversary treatment, seasonal art or celebration |
 | **No reward** (SI:185; Flows:514, 523) | At finish, the ring is there | Confetti, a glow, a sound, a vibration, "you earned", a burst on the seal |
 | **Sealed shows nothing** (CL:73; Spec:75) | One identical shut envelope on S-03 | A thicker envelope, blurred thumbnails, empty frames, a film strip, a tally, a dimmed grid |

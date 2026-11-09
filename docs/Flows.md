@@ -20,7 +20,7 @@ My Journey is a photo app with one unusual rule: you cannot see the photos you t
 
 Photos you do not use in a month carry over to later months, and whatever is left when the year ends is gone. If you have none left, the app refuses the picture, without saying how many you have used. Depending on the kind of year you chose, you can also open a 24-hour window in which the monthly limit is lifted: four times for an Explorer, twice for a Wanderer, once for a Contemplator.
 
-**You wait.** Open the app during that year and your year looks the same on every date. For now it shows what you chose, the day you started and the day it opens, as plain dates. No pictures, no count, no countdown. Nothing is wrong. That emptiness is what you committed to. The app never reminds you to take a photo or to come back. If you do come, what there is to do is read other people's years that have already opened. All that anyone else can tell about your year is that you have one under way.
+**You wait.** Open the app during that year and your year looks the same on every date. It shows what you chose, the day you started and the day it opens, always as plain dates. For now that is all it shows. No pictures, no count, no countdown. Nothing is wrong. That emptiness is what you committed to. The app never reminds you to take a photo or to come back. If you do come, what there is to do is read other people's years that have already opened. All that anyone else can tell about your year is that you have one under way.
 
 **It opens.** On 14 March the whole year opens at once. Nothing pings you. For now, the plan is that a line tells you your journey is ready the next time you happen to open the app. This is the one real piece of work in the year. Writing is optional, and you may leave the whole thing unfinished. For now, nothing else is required either, not even a chapter, and there is no deadline. You read your photos and the pages you wrote. You can write a typed reflection on a photo. You name, by hand, who is in each picture: someone on the app, or a name you type for someone who is not. You give the year a chapter and whatever feelings fit. You can write how you changed across the year. And for each photo you decide who may read it: only you, the people on your map, or anyone using the app, which for now means anyone with an account. Until you decide, a photo stays open to the people on your map. Whether they can read it before you have finished is an option still being compared: for now they can, and the other option is that nobody but you reads your photos until you finish. Each choice can be made only once, and for now the app says so before it saves.
 
@@ -42,7 +42,7 @@ Other people can walk your path. They read your years from the beginning to now,
 |---|---|
 | One go at the page | `PROVISIONAL: C4` |
 | How the refusal is worded. That it carries no number is not open | `PROVISIONAL: B7` |
-| What the sealed year shows, and its plain dates | `PROVISIONAL: B19`, `C2` |
+| What the sealed year shows | `PROVISIONAL: B19`. Its dates are always plain dates: decided, Spec §20 EEEE |
 | The line that your journey is ready, on the next open | `PROVISIONAL: C1` |
 | Nothing else required before finishing, such as a chapter; the line before each choice is saved. Writing being optional, and leaving a reveal unfinished, are decided (Spec §20 O, §20 9; Spec §8) | `PROVISIONAL: C5` |
 | No deadline | `PROVISIONAL: B3` |
@@ -101,7 +101,7 @@ Other people can walk your path. They read your years from the beginning to now,
 | Map, ring | The owner's own picture of who has crossed their journeys: tight, middle, outer (Spec §12) |
 | Path | A person's journeys, read from the beginning to now, in order (Spec §15) |
 
-**True in every flow.** SI's "Applies to every screen" list holds throughout and is not repeated: nothing on the banned list, no counter, progress mark or percentage at any time (`PROVISIONAL: B8`), no unread dot or "new" marker (R-096), no in-app nudge (R-095), no countdown or relative date (`PROVISIONAL: C2`), no profile picture (Spec §20 XXX), no notification permission request (`PROVISIONAL: C15`), no analytics (`PROVISIONAL: B15`). The app opens on the owner's Profile in every state (`PROVISIONAL: C12`).
+**True in every flow.** SI's "Applies to every screen" list holds throughout and is not repeated: nothing on the banned list, no counter, progress mark or percentage at any time (`PROVISIONAL: B8`), no unread dot or "new" marker (R-096), no in-app nudge (R-095), no countdown or relative date (Spec §20 EEEE), no profile picture (Spec §20 XXX), no notification permission request (`PROVISIONAL: C15`), no analytics (`PROVISIONAL: B15`). The app opens on the owner's Profile in every state (`PROVISIONAL: C12`).
 
 ### The flows at a glance
 
@@ -151,10 +151,10 @@ The time control (T-01) and the viewer switcher (T-02) are not part of the produ
 | Flow | View as | At | On screen | Fixture setup | Source |
 |---|---|---|---|---|---|
 | 1 | First Light | Baseline | Her name in the circle and the way to Commit (`PROVISIONAL: C12`) | She has never committed | Proposal:211 |
-| 1 | Long Way Round | Baseline | The profile, the way to Commit and the way into the open reveal (`PROVISIONAL: C12`, `B3`). "Your Journey is ready", if it still shows: how long it stays is C18, which is open (`PROVISIONAL: C1`) | Between journeys. #4 unlocked on 2026-09-06 and its reveal is not finished. Round came back on 2026-09-10 (Proposal:246) | Proposal:210, 242, 246 |
-| 2, 3, 4 | Steady Lantern | Baseline | The sealed year: type by name and two plain dates (`PROVISIONAL: B19`, `C2`). The camera, the same before and after every press. A press leads to the note offer, or to a refusal with no number (`PROVISIONAL: B7`) | **Never shown:** journey #6 holds 9 photos, one a month, in its tenth month, so the first press is accepted and the next is refused | Proposal:97, 228 |
-| 5 | Steady Lantern | 2027-01-01 | Journey #6 unlocked: "Your Journey is ready" on the profile (`PROVISIONAL: C1`; C18 open), then the whole journey | The reveal is left for whoever is demoing | Proposal:389 |
-| 5 | Long Way Round | Baseline | "Your Journey is ready", if it still shows (`PROVISIONAL: C1`; C18 open). The reveal of the last journey, with each choice still to make (`PROVISIONAL: B3`) | #4's reveal was never finished | Proposal:246, 392 |
+| 1 | Long Way Round | Baseline | The profile, the way to Commit and the way into the open reveal (`PROVISIONAL: C12`, `B3`). No "Your Journey is ready": it showed once, on Round's first open after unlock (Spec §20 FFFF) | Between journeys. #4 unlocked on 2026-09-06 and its reveal is not finished. Round came back on 2026-09-10 (Proposal:246) | Proposal:210, 242, 246 |
+| 2, 3, 4 | Steady Lantern | Baseline | The sealed year: type by name and two plain dates (`PROVISIONAL: B19`; Spec §20 EEEE). The camera, the same before and after every press. A press leads to the note offer, or to a refusal with no number (`PROVISIONAL: B7`) | **Never shown:** journey #6 holds 9 photos, one a month, in its tenth month, so the first press is accepted and the next is refused | Proposal:97, 228 |
+| 5 | Steady Lantern | 2027-01-01 | Journey #6 unlocked: "Your Journey is ready" on the profile (`PROVISIONAL: C1`; shown this once, Spec §20 FFFF), then the whole journey | The reveal is left for whoever is demoing | Proposal:389 |
+| 5 | Long Way Round | Baseline | The plain way into the reveal from the profile (`PROVISIONAL: B41`); the ready line has already shown once (Spec §20 FFFF). The reveal of the last journey, with each choice still to make (`PROVISIONAL: B3`) | #4's reveal was never finished | Proposal:246, 392 |
 | 6 | Steady Lantern, photo lantern-1 | Baseline, then +1 year | The photo, its note and its five reflections in order, with no count printed (`PROVISIONAL: B8`). No way to write another at baseline. A way to write one after the jump, with nothing marking that it opened | The current slot was used at baseline | Proposal:299 |
 | 7 | Steady Lantern | Baseline | The map, with Second Wind on the tight ring: the current ring only (`PROVISIONAL: C8`) | **Never shown:** Wind's earlier rings, which are pre-baseline history, as in Flow 7 part B. The clock only goes forward (Proposal:195), so a ring is seen to move only as two current states, either side of a finished reveal | Proposal:264–270 |
 | 7 | First Light | Baseline, and after 2027-06-20 | Her own map: the core only, at both points (`PROVISIONAL: C9`). After 2027-06-20 her feed holds Hands' "journey launched" and "path crossed", because she is now on Hands' map and so in Hands' network (Spec §20 J, M). "Path crossed" names her under `PROVISIONAL: B11`, switchable (named / unnamed), so under "named" she learns she is on Hands' map. Never which ring | Open Hands tags her once on 2027-06-20, which puts her on Hands' map, outer, and leaves her own unchanged (Spec §20 G; DC-13). **Never shown:** the ring | Proposal:391 |
@@ -176,7 +176,7 @@ The time control (T-01) and the viewer switcher (T-02) are not part of the produ
 1. The user goes from S-05 to Commit S-01 on purpose. Nothing prompts them: no banner, no marker that Commit is open again (Spec §19; R-095, R-096).
 2. S-01 shows the three types with difficulty, cadence, photos per year and highlights. Here these describe a choice, before any year is running (Spec §3; S-01). `[copy: copywriter]` *Type descriptions: describe how strict each year is, without making any type sound better or more worthy.*
 3. The user picks one. No type is pre-selected (Spec §3). They can pick a different one until they press Commit, because only the press locks anything (Spec §3; Proposal:76).
-4. The user presses Commit. `[copy: copywriter]` *The Commit moment and button: keep the word Commit (Spec §3; Concept:115) and make its weight felt: this year, this type, a journey that runs 12 months, no changing it, no stepping out. No relative form of the unlock date (`PROVISIONAL: C2`). It must not sell or congratulate.*
+4. The user presses Commit. `[copy: copywriter]` *The Commit moment and button: keep the word Commit (Spec §3; Concept:115) and make its weight felt: this year, this type, a journey that runs 12 months, no changing it, no stepping out. No relative form of the unlock date (Spec §20 EEEE). It must not sell or congratulate.*
 5. The journey now exists, dated today, unlocking 12 months on (Spec §20 C). Type is fixed for that year (Spec §3). A journey always runs its full 12 months (Spec §20 3). A commit on the 29th to 31st uses the last day of shorter months, and the prototype uses one time zone (`PROVISIONAL: B16`).
 6. The app goes to the sealed year S-03 (S-01). Continue at Flow 4.
 
@@ -318,7 +318,7 @@ This is the hardest state in the product. Underneath, the owner's journey return
    1. That the owner has a journey under way (Proposal:84).
    2. Its type, by name only: not its photos per year, cadence or highlights, which beside a running year read as a target (`PROVISIONAL: B19`; Spec §19; R-098).
    3. The commit date, as a plain date (`PROVISIONAL: B19`).
-   4. The unlock date, as a plain date, never relative to today (`PROVISIONAL: B19`, `C2`).
+   4. The unlock date, as a plain date, never relative to today (`PROVISIONAL: B19`; Spec §20 EEEE).
    5. The way to capture.
    6. The way to start a highlight.
    7. Only while one is open: that a highlight is open (Spec §20 S).
@@ -370,7 +370,7 @@ This is the hardest state in the product. Underneath, the owner's journey return
 
 **Steps**
 
-1. S-05 shows "Your Journey is ready", the way into the reveal (`PROVISIONAL: C1`). `[copy: copywriter]` *"Your Journey is ready": say this year has opened and nothing more. Nothing shown with it may ask the owner to reflect, tag, choose or finish (R-095). No deadline.* How long the line stays is C18, which has no default: not picked here.
+1. S-05 shows "Your Journey is ready", the way into the reveal (`PROVISIONAL: C1`). `[copy: copywriter]` *"Your Journey is ready": say this year has opened and nothing more. Nothing shown with it may ask the owner to reflect, tag, choose or finish (R-095). No deadline.* The line shows once, on the first open after unlock (Spec §20 FFFF). After that the reveal is reached by the plain way on S-05 (`PROVISIONAL: B41`).
 2. The owner goes into Reveal S-04. The whole journey is there at once, every photo with its note. Photos do not open one by one (Spec §6, §20 A). Each photo is Network until the owner chooses (Spec §20 F). `[copy: copywriter]` *The reveal itself: mark a meeting with a past self. Do not hand out tasks and do not celebrate.* In what order the owner meets the photos is not stated: FQ-4.
 3. From S-04, in any order, the owner can do any of the following. Each comes back to S-04. Reflections and the overview are optional by ruling (Spec §8, §20 O), and nothing else is required before finishing either (`PROVISIONAL: C5`). There is no checklist, tick, summary or "12 of 24" (`PROVISIONAL: B8`; R-099).
    - **Reflect** on a photo: S-14, Flow 6.
@@ -545,8 +545,8 @@ Lantern sees only the current ring, never this table (`PROVISIONAL: C8`).
 | State of the owner's journeys | S-05 adds |
 |---|---|
 | `no-journey` · never committed | Name, the way to Commit. Rings by `PROVISIONAL: B4`, switchable: none per finished reveal; per year with the app, by years since joining (Spec §20 WW; R-143). `[copy: copywriter]` as above |
-| `sealed` (current journey) | The current journey as existing, its type by name, its two dates as plain dates (`PROVISIONAL: B19`, `C2`). No partial or growing mark for this year (R-012). No sign of open slots on earlier journeys |
-| `unlock-day`, `reveal-open` | "Your Journey is ready" (`PROVISIONAL: C1`; C18 open), the year's activity graph, no line twisted in yet (`PROVISIONAL: B5`). No ring yet per finished reveal; per year with the app, rings follow years (`PROVISIONAL: B4`, switchable). No reminder to finish |
+| `sealed` (current journey) | The current journey as existing, its type by name, its two dates as plain dates (`PROVISIONAL: B19`; Spec §20 EEEE). No partial or growing mark for this year (R-012). No sign of open slots on earlier journeys |
+| `unlock-day`, `reveal-open` | "Your Journey is ready" (`PROVISIONAL: C1`; on the first open after unlock only, Spec §20 FFFF), the year's activity graph, no line twisted in yet (`PROVISIONAL: B5`). No ring yet per finished reveal; per year with the app, rings follow years (`PROVISIONAL: B4`, switchable). No reminder to finish |
 | `reveal-finished` | The line twisted in (`PROVISIONAL: B5`). This journey's ring per finished reveal; per year with the app, finishing adds nothing here (`PROVISIONAL: B4`, switchable). No celebration |
 | `later-years` | The overview stack, the way into earlier journeys. Nothing marks an anniversary |
 | `no-journey` · between journeys | As for the last journey's state, plus the way to Commit. No prompt |
@@ -615,7 +615,7 @@ Lantern sees only the current ring, never this table (`PROVISIONAL: C8`).
 
 | State of each journey on the path | What it shows |
 |---|---|
-| `sealed` | Owner: exists, type by name, two plain dates (`PROVISIONAL: B19`, `C2`). Others: exists only |
+| `sealed` | Owner: exists, type by name, two plain dates (`PROVISIONAL: B19`; Spec §20 EEEE). Others: exists only |
 | `unlock-day`, `reveal-open` | Owner: every photo. Others by `PROVISIONAL: B2`, switchable, above. Chapter and feeling tags once set, to owner and network |
 | `reveal-finished` | Photos by locked visibility, with reflections and overview as the table above |
 | `later-years` | The same, with deeper stacks |
@@ -679,7 +679,7 @@ Nothing below was picked. Each flow adds nothing at these points. **New IDs:** F
 
 | ID | Question | Flow | Source |
 |---|---|---|---|
-| C18 / SI OQ-42 | How long "Your Journey is ready" stays: once, on the next open, or on every open until the reveal is finished? Shown on every open for a year it risks becoming a nudge. | 5, 8 | Decisions C18; R-095 |
+| C18 / SI OQ-42 | How long "Your Journey is ready" stays: once, on the next open, or on every open until the reveal is finished? Shown on every open for a year it risks becoming a nudge. | 5, 8 | **Decided 2026-11-09: once, on the first open after unlock (Spec §20 FFFF).** Decisions C18; R-095 |
 | C17 / SI OQ-41 | "Jump to the next unlock" tells the demoer when another user's journey unlocks. Is the demoer exempt, or does it go to the chosen viewer's own next unlock? | Prototype route into 5 | Decisions C17 |
 | SI OQ-51 | How the app tells a press not taken because of unlock from an ordinary refusal, to go to S-05 and not show the refusal. `Phase-1-Amendments.md:576` suggests the app reads the owner's own unlock date. SI OQ-51 still asks whether that read may differ in timing or shape from the press. | 2, 3 | SI OQ-51; Spec §20 CCCC |
 | SI OQ-52 | Whether a skip press after the unlock instant is CCCC's "next press". | 3 | SI OQ-52 |

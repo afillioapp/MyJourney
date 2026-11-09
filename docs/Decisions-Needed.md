@@ -37,7 +37,7 @@ Approved approach (user, 2026-10-27): build the prototype with these defaults an
 | B18 | Tags never "surface" by popularity. No suggestions and no counts (`Functional-Spec.md:202` over `:131`). Raised as OQ-38 and G-14 | no |
 | B19 | The owner of a sealed journey sees its type, commit date and unlock date and nothing else (`Phase-1-Proposal.md:84`; `Functional-Spec.md:74` read as covering the contents). Raised as OQ-39 and G-17. Exception: B6's "a highlight is open" (**decided 2026-10-30**, Spec §20 S) | no |
 | C1 | "Your Journey is ready" appears on next open, never as a notification | no |
-| C2 | The unlock date is shown as a plain date, never relative ("in 64 days") | no |
+| C2 | The unlock date is shown as a plain date, never relative ("in 64 days") **Decided 2026-11-09 (Spec §20 EEEE).** | no |
 | C3 | The sealed-year screen does not point to earlier journeys. Their open reflection slots are reached from the owner's profile | no |
 | C4 | The note step is offered only inside the capture flow, straight after the photo, for up to 15 minutes. Leaving capture ends it, so there is no way back from the sealed screen (this resolves audit finding 1). The page is taken live, once, with no re-shoot. Skipping ends the step for good (**decided 2026-10-31**, Spec §20 WWW); the window ends at unlock (Spec §20 YYY) | no |
 | C5 | Nothing is required before finishing a reveal. Each set-once choice shows a one-line "this can't be changed" before it is saved | no |
@@ -60,7 +60,7 @@ Approved approach (user, 2026-10-27): build the prototype with these defaults an
 | B25 | A highlight is closed at exactly its end time (Amendments OQ-9) | no |
 | B26 | A scripted action the running clock has already passed is applied at the next jump (Amendments OQ-2) | no |
 | B27 | Day marks in identity rings are drawn for the owner only, under both B5 settings. Every other viewer sees plain rings (`Art-Direction.md` AD-1; added 2026-11-05 from the art director's proposal) | no |
-| B28 | Under B4's "per year with the app", each finished journey's day marks are drawn on the owner's ring for the year that holds that journey's reveal-finished date, so B5 shows the same activity line under both B4 settings (R-141, R-187). Until that year's ring is drawn, the journey's flat graph stays shown to the owner, under this option only, so the activity is never missing between finish and the ring (exception to B31; revised 2026-11-05 after `docs/reviews/2026-11-05-rules-art-microcopy-r3.md` ART-R3-1). A year's ring is added at the join anniversary, unless a journey is sealed then, when it is added at that journey's unlock. A ring never appears inside a sealed year. **The timing is a proposed rule, not a reading of the docs** (`Art-Direction.md` AD-2; added 2026-11-05 from the art director's proposal. Revised 2026-11-05 after `docs/reviews/2026-11-05-rules-art-microcopy-r2.md`, ART-R2-3) | no |
+| B28 | **Decided 2026-11-09 (Spec §20 GGGG): the timing below is kept.** Under B4's "per year with the app", each finished journey's day marks are drawn on the owner's ring for the year that holds that journey's reveal-finished date, so B5 shows the same activity line under both B4 settings (R-141, R-187). Until that year's ring is drawn, the journey's flat graph stays shown to the owner, under this option only, so the activity is never missing between finish and the ring (exception to B31; revised 2026-11-05 after `docs/reviews/2026-11-05-rules-art-microcopy-r3.md` ART-R3-1). A year's ring is added at the join anniversary, unless a journey is sealed then, when it is added at that journey's unlock. A ring never appears inside a sealed year. **The timing is a proposed rule, not a reading of the docs** (`Art-Direction.md` AD-2; added 2026-11-05 from the art director's proposal. Revised 2026-11-05 after `docs/reviews/2026-11-05-rules-art-microcopy-r2.md`, ART-R2-3) | no |
 | B29 | No bend animation. At reveal finished, the ring is drawn complete the next time the circle is drawn (`Art-Direction.md` AD-3; added 2026-11-05 from the art director's proposal) | no |
 | B30 | Light theme only in the prototype. Dark tokens exist, with no control and no device switch (`Art-Direction.md` AD-4; added 2026-11-05 from the art director's proposal) | no |
 | B31 | The flat graph shows from unlock until the reveal is finished, then is not shown. The ring carries the line from then on. Exception under B4's "per year with the app": see B28 (`Art-Direction.md` AD-6; added 2026-11-05 from the art director's proposal) | no |
@@ -159,7 +159,7 @@ The Phase 1 gate asks that a developer can build the data model "with no questio
 
 **C1. Unlock day.** How does the owner learn the journey has unlocked, with no notifications? Is "Your Journey is ready" text shown on next open, or a notification? *Lean:* text on next open only. (Inv 15, G-16)
 
-**C2. The unlock date.** May the owner see it? As a date only, or as "in 64 days" (a countdown)? *Lean:* a plain date, no relative time. (Inv 27, G-17)
+**C2. The unlock date.** May the owner see it? As a date only, or as "in 64 days" (a countdown)? *Lean:* a plain date, no relative time. (Inv 27, G-17) **Decided 2026-11-09: a plain date, never relative (Spec §20 EEEE).**
 
 **C3. The sealed-year screen and earlier journeys.** May the sealed-year screen point the owner to reflection slots still open on their earlier journeys? (Inv 10)
 
@@ -193,7 +193,7 @@ The Phase 1 gate asks that a developer can build the data model "with no questio
 
 **C17. Time-control jump and another user's unlock date.** "Jump to the next unlock" plus the shown date tells the demoer when another user's journey unlocks. Is the demoer exempt, or does the jump go to the chosen viewer's own next unlock? (Inv OQ-41; re-audit N8.) No default.
 
-**C18. How long "Your Journey is ready" stays.** Once, on the next open, or on every open until the reveal is finished? (Inv OQ-42; re-audit N5.) C1 says "next open". No default.
+**C18. How long "Your Journey is ready" stays.** Once, on the next open, or on every open until the reveal is finished? (Inv OQ-42; re-audit N5.) C1 says "next open". **Decided 2026-11-09: once, on the first open after unlock (Spec §20 FFFF).**
 
 ## D. Already open elsewhere
 

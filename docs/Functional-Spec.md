@@ -2,7 +2,7 @@
 
 Build reference. Every behaviour below traces to a decision in `My-Journey-Concept.md`. Anything not decided is in section 20, marked as blocking or not. Nothing here is invented to fill a gap.
 
-Last updated: 2026-10-30
+Last updated: 2026-11-09
 
 ---
 
@@ -366,6 +366,13 @@ Feeling tags currently drafted: hang in there · it eventually pays off · thank
 - **DDDD. "Leaving capture" means moving to another screen inside the app.** Locking the phone, a call or the app going to the background do not end the note step; the 15-minute window and unlock still apply (Rubric G-28)
 
 *AAA–DDDD above were ruled on 2026-10-31.*
+
+- **EEEE. The unlock date is always shown as a plain date, never relative** ("in 64 days", "unlocks in", days to go). Decisions-Needed C2 is decided. What the sealed year shows besides it stays under B19 (Flows r3 V1)
+- **FFFF. "Your Journey is ready" shows once, on the first open after unlock** (Decisions-Needed C18). Afterwards an unfinished reveal is reached by the plain way on the profile (Decisions-Needed B41). It is never a notification (Spec §18)
+- **GGGG. The per-year ring timing in Decisions-Needed B28 is kept.** Under B4's "per year with the app", a year's ring is added at the join anniversary, or at the unlock of a journey sealed then, never inside a sealed year. Each finished journey's day marks go on the ring for the year that holds its reveal-finished date, and its flat graph stays for the owner until that ring is drawn. B4 itself remains a switchable provisional default
+- **HHHH. "We want you here less, not more." belongs on the website**, the Phase 5 marketing site, not in the app's profile (Microcopy MQ-5). Rubric R-130 is met by the site. The app is not required to carry it in first-run copy
+
+*EEEE–HHHH above were ruled on 2026-11-09.*
 
 ### Still open — can wait
 

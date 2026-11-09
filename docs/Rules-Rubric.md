@@ -30,6 +30,8 @@ Updated 2026-11-05 (supervisor, from rules audit `docs/reviews/2026-11-04-rules-
 
 Updated 2026-11-05 (rules re-audit `docs/reviews/2026-11-05-rules-art-microcopy-r2.md`, of `Art-Direction.md`, `Microcopy.md` and Decisions-Needed B27–B41): added R-187 after R-186, in area 14 (provisional defaults hold when read together). Added `Updated` lines on R-177 (cited IDs after another doc renames its family) and R-180 (a cell naming only an AD-n, or following one side "until the user rules"). No check renumbered or removed.
 
+Updated 2026-11-09 (supervisor, user rulings FS §20 EEEE–HHHH): C2's checks now read as decided (EEEE); R-130 gains an `Updated` line (HHHH). No check renumbered or removed.
+
 ---
 
 ## What this is for
@@ -131,7 +133,7 @@ Test fixtures named below come from `Phase-1-Proposal.md` §3. Steady Lantern #6
 - **Type:** auto · **Applies to:** API, UI
 - **Source:** P1:84, FS:74. See G-17
 - **How to check:** As Steady Lantern before 2027-01-01, list every field returned about Lantern #6. Anything beyond type, commit date, unlock date and identifiers fails.
-- **Provisional default:** Decisions-Needed C2: The unlock date is shown as a plain date, never relative ("in 64 days"). The owner's unlock date is allowed as a date only (see R-013)
+- **Decided 2026-11-09 (FS §20 EEEE, was Decisions-Needed C2):** The unlock date is shown as a plain date, never relative ("in 64 days"). The owner's unlock date is allowed as a date only (see R-013)
 - **Provisional default:** Decisions-Needed B6: The owner sees only "a highlight is open", with no end time and no countdown. Under B6 the check reads: type, commit date, unlock date and, while a highlight is open, the bare fact that one is open. Its start time, end time, elapsed or remaining time, how many highlights are used or left, and any photo count in it all fail
 - **Provisional default:** Decisions-Needed C3: The sealed-year screen does not point to earlier journeys. Nothing about an earlier journey, including an open reflection slot, appears on the sealed-year screen
 - **Provisional default:** Decisions-Needed B19: The owner of a sealed journey sees its type, commit date and unlock date and nothing else (`P1:84`; `FS:74` read as covering the contents). Holds as written; B19 settles the first half of G-17 for the prototype. B19's "nothing else" and B6's "a highlight is open" (line above) read against each other. **Decided 2026-10-30 (FS §20 S):** B6 holds; the owner sees "a highlight is open", nothing more
@@ -162,7 +164,7 @@ Test fixtures named below come from `Phase-1-Proposal.md` §3. Steady Lantern #6
 - **Type:** auto · **Applies to:** UI, copy
 - **Source:** CL:69 (counters), FS:233 ("No visible counters"), RG:28 ("timers counting down to unlock"), P1:84 (date shown to owner). See G-17
 - **How to check:** Grep copy and code for `days? (left|to go|until|remaining)`, `unlocks? in`, `countdown`, `time left`, `\d+\s*d\s*\d+\s*h`, and any `setInterval` or `requestAnimationFrame` that formats a time until `unlocks_at`.
-- **Provisional default:** Decisions-Needed C2: The unlock date is shown as a plain date, never relative ("in 64 days"). Firm under C2: any relative form of the unlock date fails, including "next month", "soon", "in a few weeks", "this winter" and `Intl.RelativeTimeFormat` or a library's `fromNow`/`formatDistance` applied to `unlocks_at`. Add those to the grep
+- **Decided 2026-11-09 (FS §20 EEEE, was Decisions-Needed C2):** The unlock date is shown as a plain date, never relative ("in 64 days"). Firm under C2: any relative form of the unlock date fails, including "next month", "soon", "in a few weeks", "this winter" and `Intl.RelativeTimeFormat` or a library's `fromNow`/`formatDistance` applied to `unlocks_at`. Add those to the grep
 
 ### R-014
 - **Statement:** Every path that can return data applies the seal: search, export, error messages, logs shown to users, debug and admin routes, and the time-control panel.
@@ -1176,6 +1178,7 @@ Commit, capture, frames, highlights and the note.
 - **Type:** review · **Applies to:** copy
 - **Source:** CL:76, MP:49, MP:138, BP:126
 - **How to check:** Check the site's first screen and the app's first-run copy.
+- **Updated 2026-11-09 (FS §20 HHHH):** met by the website (Phase 5). "We want you here less, not more." belongs on the site; the app is not required to carry it in first-run copy.
 - **Provisional default:** Decisions-Needed C11 and C12: No onboarding in the prototype; the app opens on the Profile. The prototype has no first-run copy, so the app half of this check is read on the Profile as first opened; the site half is unchanged
 
 ### R-131
@@ -1589,7 +1592,7 @@ Since 2026-10-27 each gap carries a status line under it: **being fixed** by a `
 
 **G-17. What the owner sees of a sealed journey.** `FS:74` says nothing in a sealed journey is visible "not to the user". `P1:84` lets the owner see its type, commit date and unlock date. These may agree (dates are about the journey, not in it), but it is worth confirming, together with whether showing the unlock date is allowed at all given the countdown ban (R-013).
 
-**Provisional default:** Decisions-Needed C2: The unlock date is shown as a plain date, never relative ("in 64 days"). R-009 and R-013 are read under C2. B6 adds one more thing the owner may see of a sealed journey: that a highlight is open (R-009).
+**Decided 2026-11-09 (FS §20 EEEE, was Decisions-Needed C2):** The unlock date is shown as a plain date, never relative ("in 64 days"). R-009 and R-013 are read under C2. B6 adds one more thing the owner may see of a sealed journey: that a highlight is open (R-009).
 
 **Provisional default (added 2026-10-27, fdb83d3):** Decisions-Needed B19: The owner of a sealed journey sees its type, commit date and unlock date and nothing else (`P1:84`; `FS:74` read as covering the contents). R-009 is read under B19. B19's "nothing else" and B6's highlight state read against each other. **Decided 2026-10-30 (FS §20 S):** B6 holds.
 
