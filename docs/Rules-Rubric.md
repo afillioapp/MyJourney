@@ -38,6 +38,8 @@ Updated 2026-11-09 (rules audit `docs/reviews/2026-11-09-rules-kkkk.md`, of FS �
 
 Updated 2026-11-09 (rules re-audit `docs/reviews/2026-11-09-rules-kkkk-r2.md`, after the fixes for the KKKK audit): added R-197 after R-196 (the event-time announcement audience, K13). Second-pass `Updated` lines on R-064, R-088, R-089 and R-146, because `PROVISIONAL: B48` changed from read time to event time after this rubric's first-pass lines were written; those lines are kept as history and superseded, not rewritten (R-172). `Updated` line on R-194 (the way in is always present; no read state inside the list). Added R-197 to Banned-list coverage. No check renumbered or removed.
 
+Updated 2026-11-09 (rules audit `docs/reviews/2026-11-09-rules-friend-screens.md`, of the ux pass for FS §20 KKKK (`Screen-Inventory.md` S-05, S-16, S-22 to S-24, OQ-55 to OQ-57; `Flows.md` Flow 10, opening, prototype table, DC-15, DC-16) and Decisions-Needed B57–B61): `Updated` lines on R-150 (step 2 also finds rows added "from Screen-Inventory OQ-n" or that "settle" an OQ or DC) and R-176 (prototype "On screen" cells checked against the fixture's derived state, untouched rows included). No new check. No check renumbered or removed.
+
 ---
 
 ## What this is for
@@ -1302,6 +1304,7 @@ Commit, capture, frames, highlights and the note.
 - **How to check:** Find every table column or sentence that says what a person sees, tries or gets when viewing as a named user. Run the R-006 (a) and R-139 grep aids over it, then read each line as that viewer in the screen's own "must never show" column. A hit fails unless the line states that the fact appears on no screen. A sealed journey's or another person's fact listed as something "you see" fails
 - **Updated 2026-11-04 (r2 of the same audit, V1):** the statement's "appear on no screen" covers only facts no screen may show. A blanket "never on any screen" over a column that also holds facts a screen does show, or that a ruling lets a viewer read, is false and fails: `Flows.md:151` covers `:160` (B11's named announcement) and `:164` (FS §20 SS). The first wording of this check invited that reading. Each row of such a column is read against its viewer
 
+- **Updated 2026-11-09 (`docs/reviews/2026-11-09-rules-friend-screens.md` V2):** a prototype table's "On screen" cell is checked against the fixture's derived state at that clock point (`Phase-1-Amendments.md` §13.1, §13.5 and the Q-F queries), including what a scripted act leaves untouched. A cell that says a list is empty, or that something is gone, when the fixture still holds a row for that viewer, fails. Found at `Flows.md:181`: after 2026-11-14 Second Wind's requests list still holds her outgoing request to Long Way Round (fr-10; Q-F12)
 ### R-177
 - **Statement:** An ID a doc introduces is declared as new in that doc and cannot be misread as an ID from another family. No doc mints an ID that differs from an existing one by punctuation alone, and none calls its own new IDs "existing".
 - **Type:** auto (scan) and review · **Applies to:** docs
@@ -1543,6 +1546,7 @@ Added 2026-10-27 for the playable prototype (rule zero, CL:19–24; `Decisions-N
   3. Grep `F` for `no default`, `still open, no ID` and `B1–B1[0-9]` ranges, and confirm each against the table.
   4. Review: each labelled passage says what its row says, no more. A reading the row does not state (for example, what a switch setting does to a case the row does not name) is raised as a question, not built.
 
+- **Updated 2026-11-09 (`docs/reviews/2026-11-09-rules-friend-screens.md` V1):** step 2's pattern finds only rows that say "Raised as … OQ-n". Rows added later name their source differently ("added … from Screen-Inventory OQ-55", "settles Screen-Inventory OQ-57 and Flows DC-15"). Step 2 now also takes every Decisions-Needed row matching `from (Screen-Inventory|SI) OQ-[0-9]+` or `settles [^|]*(OQ|DC)-[0-9]+`. For each, the named OQ or DC line in the deliverable that raised it, and every body line that sends a reader to that OQ ("… is OQ-55", "Not set", "not picked"), must name the B-row and describe the screen under it. A deliverable that still calls such a question open, or still says "not set", fails. Run it on both the doc that raised the question and every doc that cites it (here `Screen-Inventory.md` and `Flows.md`)
 ### R-153
 - **Statement:** Only the prototype panel can move the clock or change an option switch. No acting viewer, through any route, function or direct database call, can jump time, jump to the next unlock or flip a switch.
 - **Type:** auto · **Applies to:** data, API
