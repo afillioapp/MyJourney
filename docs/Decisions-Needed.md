@@ -7,7 +7,7 @@ Every open question raised in Phase 1, merged and with duplicates removed. Sourc
 
 Only the user decides these. Where the docs lean one way, the lean is noted, but a lean is not a decision. Record each answer here with its date. The supervisor then writes it into `Functional-Spec.md` §20 and fixes every restatement (L-002).
 
-Last updated: 2026-10-27
+Last updated: 2026-10-30
 
 ---
 
@@ -18,14 +18,14 @@ Approved approach (user, 2026-10-27): build the prototype with these defaults an
 | ID | Provisional default | Switchable |
 |---|---|---|
 | B1 | "Publish" means "reveal finished". Docs use only "reveal finished" and "journey launched" | no |
-| B2 | The network can read an unlocked journey from unlock, as D12 and `Phase-1-Proposal.md:311` say | **yes**: from unlock / only after reveal finished |
+| B2 | The network can read an unlocked journey from unlock, as D12 and `Phase-1-Proposal.md:318` say. Under the option, no one but the owner reads it until the reveal is finished, Public photos included (**decided 2026-10-30**, Spec §20 R). The network still reads type, dates, chapter and tags from unlock (§20 X); the overview waits too (§20 HH) | **yes**: from unlock / only after reveal finished |
 | B3 | Each reveal choice takes effect when made. A reveal can be finished at any later time | no |
 | B4 | One ring per finished reveal (`Phase-1-Proposal.md:65`) | **yes**: per finished reveal / per year with the app |
 | B5 | Activity line twists in at reveal finished. The activity graph is visible to the owner only | **yes**: owner only / built from the photos the viewer can see |
-| B6 | Others learn nothing about highlights. The owner sees only "a highlight is open", with no end time and no countdown | no |
+| B6 | Others learn nothing about highlights. The owner sees only "a highlight is open", with no end time and no countdown. The owner part holds over B19 (**decided 2026-10-30**, Spec §20 S) | no |
 | B7 | Frames left are never shown. A refused capture says so with no number (copy in Phase 2) | no |
 | B8 | Counters and progress bars are banned at all times, not only while sealed | no |
-| B9 | Positivity Feed: (a) reflection text only, with the photo shown when opened; (b) per-photo visibility; (c) drafted tag list only; (d) chapter filter available; (e) newest first; (f) only after reveal finished | **yes** (a): text only / with photographs |
+| B9 | Positivity Feed: (a) reflection text only, with the photo shown when opened; (b) per-photo visibility; (c) drafted tag list only; (d) chapter filter available; (e) newest first; (f) only after reveal finished. (c) list **decided 2026-10-30**: the four working tags (Spec §20 W). (d) **replaced 2026-10-30: no chapter filter** (Spec §20 Y) | (a), (d), (e) decided (Spec §20 Q, Y, BBB); (c) list decided (§20 W). (b), (f) provisional. No switch |
 | B10 | "Reflection left" reaches only the owner's network members who can see the photo, even when it is public | no |
 | B11 | "Path crossed" names both people and reaches the owner's network. It never says which ring | **yes**: named / unnamed |
 | B12 | Walking a path shows the photos where the reader appears, in journey order, with no total and no grouping | **yes**: shown / hidden |
@@ -35,14 +35,14 @@ Approved approach (user, 2026-10-27): build the prototype with these defaults an
 | B16 | A commit on the 29th–31st uses the last day of shorter months. One time zone for the prototype (UTC). Exactly 15:00 is out. A highlight lasts 24 hours of elapsed time | no |
 | B17 | Feeling tags are free text on the journey, with no category, as in the approved model (`Phase-1-Proposal.md:141`). Raised as Screen-Inventory OQ-37 and rubric G-14 | no |
 | B18 | Tags never "surface" by popularity. No suggestions and no counts (`Functional-Spec.md:202` over `:131`). Raised as OQ-38 and G-14 | no |
-| B19 | The owner of a sealed journey sees its type, commit date and unlock date and nothing else (`Phase-1-Proposal.md:84`; `Functional-Spec.md:74` read as covering the contents). Raised as OQ-39 and G-17 | no |
+| B19 | The owner of a sealed journey sees its type, commit date and unlock date and nothing else (`Phase-1-Proposal.md:84`; `Functional-Spec.md:74` read as covering the contents). Raised as OQ-39 and G-17. Exception: B6's "a highlight is open" (**decided 2026-10-30**, Spec §20 S) | no |
 | C1 | "Your Journey is ready" appears on next open, never as a notification | no |
 | C2 | The unlock date is shown as a plain date, never relative ("in 64 days") | no |
 | C3 | The sealed-year screen does not point to earlier journeys. Their open reflection slots are reached from the owner's profile | no |
-| C4 | The note step is offered only inside the capture flow, straight after the photo, for up to 15 minutes. Leaving capture ends it, so there is no way back from the sealed screen (this resolves audit finding 1). The page is taken live, once, with no re-shoot | no |
+| C4 | The note step is offered only inside the capture flow, straight after the photo, for up to 15 minutes. Leaving capture ends it, so there is no way back from the sealed screen (this resolves audit finding 1). The page is taken live, once, with no re-shoot. Skipping ends the step for good (**decided 2026-10-31**, Spec §20 WWW); the window ends at unlock (Spec §20 YYY) | no |
 | C5 | Nothing is required before finishing a reveal. Each set-once choice shows a one-line "this can't be changed" before it is saved | no |
 | C6 | People tags are not shown to readers | **yes**: hidden / shown |
-| C7 | No profile picture is shown anywhere. The profile shows the name in the circle. Announcements carry no image | no |
+| C7 | No profile picture is shown anywhere. The profile shows the name in the circle. Announcements carry no image (**decided 2026-10-31**, Spec §20 XXX) | no |
 | C8 | The map shows current rings only: no counts, no history, no drift | no |
 | C9 | Empty states are a plain statement; copy in Phase 2 | no |
 | C10 | People are found by name search, plus typed names for non-users | no |
@@ -52,6 +52,29 @@ Approved approach (user, 2026-10-27): build the prototype with these defaults an
 | C14 | Feed is newest first | no |
 | C15 | The app never asks for notification permission | no |
 | C16 | The prototype panel has a viewer switcher (fixture users) and shows the simulated date | no |
+| B20 | Clock jumps also include +1 minute and +1 hour (`Phase-1-Amendments.md` O1; added 2026-10-30) | no |
+| B21 | Baseline is 2026-10-25 00:00:00 UTC (Amendments OQ-4) | no |
+| B22 | Reset puts every option switch back to its default (Amendments OQ-6) | no |
+| B23 | Option switches are one global setting, not per viewer (Amendments OQ-7) | no |
+| B24 | After unlock, highlight rows are readable by the owner only (Amendments OQ-8) | no |
+| B25 | A highlight is closed at exactly its end time (Amendments OQ-9) | no |
+| B26 | A scripted action the running clock has already passed is applied at the next jump (Amendments OQ-2) | no |
+| B27 | Day marks in identity rings are drawn for the owner only, under both B5 settings. Every other viewer sees plain rings (`Art-Direction.md` AD-1; added 2026-11-05 from the art director's proposal) | no |
+| B28 | Under B4's "per year with the app", each finished journey's day marks are drawn on the owner's ring for the year that holds that journey's reveal-finished date, so B5 shows the same activity line under both B4 settings (R-141, R-187). Until that year's ring is drawn, the journey's flat graph stays shown to the owner, under this option only, so the activity is never missing between finish and the ring (exception to B31; revised 2026-11-05 after `docs/reviews/2026-11-05-rules-art-microcopy-r3.md` ART-R3-1). A year's ring is added at the join anniversary, unless a journey is sealed then, when it is added at that journey's unlock. A ring never appears inside a sealed year. **The timing is a proposed rule, not a reading of the docs** (`Art-Direction.md` AD-2; added 2026-11-05 from the art director's proposal. Revised 2026-11-05 after `docs/reviews/2026-11-05-rules-art-microcopy-r2.md`, ART-R2-3) | no |
+| B29 | No bend animation. At reveal finished, the ring is drawn complete the next time the circle is drawn (`Art-Direction.md` AD-3; added 2026-11-05 from the art director's proposal) | no |
+| B30 | Light theme only in the prototype. Dark tokens exist, with no control and no device switch (`Art-Direction.md` AD-4; added 2026-11-05 from the art director's proposal) | no |
+| B31 | The flat graph shows from unlock until the reveal is finished, then is not shown. The ring carries the line from then on. Exception under B4's "per year with the app": see B28 (`Art-Direction.md` AD-6; added 2026-11-05 from the art director's proposal) | no |
+| B32 | No words on layer rings (`Art-Direction.md` AD-7; added 2026-11-05 from the art director's proposal) | no |
+| B33 | The activity line records capture dates only (SI OQ-7) (`Art-Direction.md` AD-8; added 2026-11-05 from the art director's proposal) | no |
+| B34 | A ring is added outermost, in the order reveals are finished (`Art-Direction.md` AD-9; added 2026-11-05 from the art director's proposal) | no |
+| B35 | Rings and the circle have no press or hover state (`Art-Direction.md` AD-10; added 2026-11-05 from the art director's proposal) | no |
+| B36 | No flat graph for a public viewer, under either B5 setting (`Art-Direction.md` AD-12; added 2026-11-05 from the art director's proposal) | no |
+| B37 | Identity rings are drawn only on Profile (own) S-05 and Another user's profile S-16 (`Art-Direction.md` AD-13; added 2026-11-05 from the art director's proposal) | no |
+| B38 | No year, date or journey label on any ring, for any viewer (`Art-Direction.md` AD-14; added 2026-11-05 from the art director's proposal) | no |
+| B39 | On S-16 and S-06, "a journey exists" is shown as words only, the same for every viewer, never as a drawing. Copy and placement to come (copywriter, ux) (`Art-Direction.md` AD-15; added 2026-11-05 from the art director's proposal) | no |
+| B40 | On a map with anyone on it, all three layer rings are drawn. An empty map is the core alone (`Art-Direction.md` AD-16; added 2026-11-05 from the art director's proposal) | no |
+| B41 | Reveal S-04 is reached from Profile (own) S-05 by a plain way, present while a reveal is open (SI:151, SI:170), and by C1's "Your Journey is ready" line. The way has no mark of its own and no emphasis, and is styled like every other way. Whether a way that appears by journey state is itself a marker is for the user (`Art-Direction.md` AD-18; R-186). Does not answer C18 (`Art-Direction.md` AD-18; added 2026-11-05. Revised 2026-11-05 after `docs/reviews/2026-11-05-rules-art-microcopy-r2.md`, ART-R2-1) | no |
+| B42 | The sealed-year S-03 and Commit S-01 ways on Profile (own) S-05 follow SI:170: present while a journey is sealed, and in `no-journey`, respectively. Each is drawn like every other way, with no emphasis, no "new" marker and nothing that announces the change (SI:77; R-095, R-096). Whether their appearing by state is itself a marker is for the user (`Art-Direction.md` AD-18; R-186; added 2026-11-05 after `docs/reviews/2026-11-05-rules-art-microcopy-r2.md` ART-R2-2) | no |
 
 Section A was approved by the user on 2026-10-27 and is being applied.
 
@@ -86,7 +109,7 @@ The Phase 1 gate asks that a developer can build the data model "with no questio
 
 **B1. "Publish".** Does "published" (`Functional-Spec.md:141`, Concept 365–367, 424, 440) mean "the reveal is finished"? *Lean:* yes. Use only "reveal finished" and "journey launched". (Inv 3, G-2, LQ2)
 
-**B2. Reading a journey before its reveal is finished.** From unlock until the owner finishes, every photo is Network by default (`Functional-Spec.md:151, 269`, `Phase-1-Proposal.md:311`). Concept:362 says sharing happens "only … as a finished story". Can the network read an unlocked journey before its reveal is finished? (Inv 9)
+**B2. Reading a journey before its reveal is finished.** From unlock until the owner finishes, every photo is Network by default (`Functional-Spec.md:151, 269`, `Phase-1-Proposal.md:318`). Concept:362 says sharing happens "only … as a finished story". Can the network read an unlocked journey before its reveal is finished? (Inv 9)
 
 **B3. A reveal that is never finished.** Can the owner still finish it in later years? If they set a photo to Private and never finish, does that choice take effect? *Lean:* each choice takes effect when made (set-once, `Functional-Spec.md:286`), and the photos default to Network. (Inv 16, G-11)
 
@@ -168,11 +191,15 @@ The Phase 1 gate asks that a developer can build the data model "with no questio
 
 ---
 
+**C17. Time-control jump and another user's unlock date.** "Jump to the next unlock" plus the shown date tells the demoer when another user's journey unlocks. Is the demoer exempt, or does the jump go to the chosen viewer's own next unlock? (Inv OQ-41; re-audit N8.) No default.
+
+**C18. How long "Your Journey is ready" stays.** Once, on the next open, or on every open until the reveal is finished? (Inv OQ-42; re-audit N5.) C1 says "next open". No default.
+
 ## D. Already open elsewhere
 
 | # | Decision | Blocks |
 |---|---|---|
-| D1 | Stack and database host (`Status.md` Open decisions 1) | Phase 3 |
+| D1 | Stack: **decided 2026-10-30, local Postgres first**. Deploy host still open (`Status.md` Open decisions 1) | Before deploy |
 | D2 | Vercel Authentication on `myjourney`: make the holding page public or keep it private (a dashboard change) | The holding page |
 | D3 | May the supervisor commit after each recorded step? (LQ7) | Nothing; the working tree stays uncommitted until then |
 | D4 | Export and data ownership | Phase 6 |

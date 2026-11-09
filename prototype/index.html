@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>My Journey Prototype</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* Layout idea: a prototype panel on the left, the phone on the right; on a phone they stack. Faded family-album colours, one ring motif. */
+:root {
+  --paper: #f3eee4;
+  --ink: #2b2a27;
+  --muted: #6e6a62;
+  --teal: #2f6f73;
+  --mustard: #c8962e;
+  --rose: #b4553f;
+  --card: #fbf8f2;
+  --line: #d9d1c2;
+  --panel: #e7e1d4;
+  --display: "Young Serif", Georgia, "Times New Roman", serif;
+  --body: "Work Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #1f1d1a; --ink: #ece6da; --muted: #a59f93; --teal: #6fb0b3; --mustard: #d9ac4f;
+    --rose: #d98a74; --card: #2a2724; --line: #403b34; --panel: #171513; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #1f1d1a; --ink: #ece6da; --muted: #a59f93; --teal: #6fb0b3; --mustard: #d9ac4f;
+  --rose: #d98a74; --card: #2a2724; --line: #403b34; --panel: #171513; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; }
+body { background: var(--panel); color: var(--ink); font: 15px/1.5 var(--body); }
+button { font: inherit; color: inherit; cursor: pointer; }
+button:focus-visible, select:focus-visible, input:focus-visible { outline: 2px solid var(--teal); outline-offset: 2px; }
+.wrap { display: grid; grid-template-columns: 300px 1fr; gap: 24px; padding: 24px; max-width: 1100px; margin: 0 auto; align-items: start; }
+@media (max-width: 760px) { .wrap { grid-template-columns: 1fr; padding: 16px; } }
+.panel { display: grid; gap: 16px; }
+.panel h1 { font: 24px/1.2 var(--display); margin: 0; text-wrap: balance; }
+.panel p { margin: 0; color: var(--muted); font-size: 13px; }
+.box { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 14px; display: grid; gap: 10px; }
+.box h2 { font-size: 12px; text-transform: uppercase; letter-spacing: .08em; margin: 0; color: var(--muted); font-weight: 600; }
+.row { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { border: 1px solid var(--line); background: transparent; border-radius: 999px; padding: 4px 10px; font-size: 13px; }
+.chip[aria-pressed="true"] { background: var(--teal); border-color: var(--teal); color: var(--paper); }
+.date { font: 20px/1.2 var(--display); font-variant-numeric: tabular-nums; }
+.phone { background: var(--paper); border: 1px solid var(--line); border-radius: 28px; max-width: 420px; width: 100%; min-height: 720px; display: flex; flex-direction: column; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,.08); justify-self: center; }
+.screen { flex: 1; padding: 20px 18px; display: grid; gap: 16px; align-content: start; overflow-y: auto; }
+.nav { display: grid; grid-template-columns: repeat(5, 1fr); border-top: 1px solid var(--line); background: var(--card); }
+.nav button { border: 0; background: transparent; padding: 10px 4px; font-size: 12px; color: var(--muted); }
+.nav button[aria-current="page"] { color: var(--teal); font-weight: 600; }
+h3 { font: 22px/1.25 var(--display); margin: 0; text-wrap: balance; }
+h4 { font-size: 13px; margin: 0; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); font-weight: 600; }
+.lead { color: var(--muted); margin: 0; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 14px; display: grid; gap: 8px; }
+.btn { border: 1px solid var(--teal); background: var(--teal); color: var(--paper); border-radius: 999px; padding: 10px 16px; font-weight: 600; justify-self: start; }
+.btn.ghost { background: transparent; color: var(--teal); }
+.btn:disabled { opacity: .5; cursor: default; }
+.link { border: 0; background: none; padding: 0; color: var(--teal); text-decoration: underline; justify-self: start; }
+.grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
+.tile { aspect-ratio: 1; border-radius: 4px; border: 4px solid #fff; box-shadow: 0 1px 2px rgba(0,0,0,.2); position: relative; padding: 0; }
+.tile span { position: absolute; left: 4px; bottom: 2px; font-size: 10px; color: #fff; text-shadow: 0 1px 2px rgba(0,0,0,.6); }
+.meta { font-size: 13px; color: var(--muted); }
+.list { display: grid; gap: 8px; }
+.item { display: grid; gap: 2px; padding: 10px 0; border-bottom: 1px solid var(--line); }
+.quote { font-family: var(--display); font-size: 16px; }
+.draft { font-size: 11px; color: var(--rose); border: 1px dashed var(--rose); border-radius: 4px; padding: 0 4px; margin-left: 4px; white-space: nowrap; }
+.circle { justify-self: center; }
+.dialog { position: fixed; inset: 0; background: rgba(0,0,0,.35); display: grid; place-items: center; padding: 16px; }
+.dialog .card { max-width: 360px; }
+label { font-size: 13px; color: var(--muted); display: grid; gap: 4px; }
+select, input[type="text"] { font: inherit; padding: 8px; border: 1px solid var(--line); border-radius: 8px; background: var(--paper); color: var(--ink); }
+.ring-tight { color: var(--teal); } .ring-middle { color: var(--mustard); } .ring-outer { color: var(--rose); }
+@media (prefers-reduced-motion: no-preference) { .screen { animation: fade .2s ease; } @keyframes fade { from { opacity: .6 } to { opacity: 1 } } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <aside class="panel" aria-label="Prototype panel">
+    <h1>My Journey prototype</h1>
+    <p>Fake data from the fixture design. This panel is the demoer's, not the product's. Wording marked <span class="draft">draft</span> is a placeholder until the copywriter writes it.</p>
+    <div class="box">
+      <h2>View the app as</h2>
+      <div class="row" id="viewers"></div>
+    </div>
+    <div class="box">
+      <h2>Simulated date</h2>
+      <div class="date" id="simdate"></div>
+      <div class="row">
+        <button class="chip" data-jump="day">+1 day</button>
+        <button class="chip" data-jump="month">+1 month</button>
+        <button class="chip" data-jump="year">+1 year</button>
+        <button class="chip" data-jump="5y">+5 years</button>
+        <button class="chip" data-jump="reset">Reset</button>
+      </div>
+      <p>Forward only. Reset goes back to 25 Oct 2026 and clears what you did. Scripted fixture actions apply as you pass their dates.</p>
+    </div>
+    <div class="box">
+      <h2>Not in this quick demo</h2>
+      <p>Option switches, jump to next unlock (C17 is still open), the activity line and graph, reflections on old photos, real photos and handwriting. No database: everything lives in this page and resets on reload.</p>
+    </div>
+  </aside>
+  <main class="phone" aria-label="The app">
+    <div class="screen" id="screen"></div>
+    <nav class="nav" id="nav"></nav>
+  </main>
+</div>
+<div id="dialog"></div>
+<script>
+"use strict";
+// ---------- time ----------
+const DAY = 86400000;
+const BASE = Date.UTC(2026, 9, 25);
+const d = s => Date.parse(s + "T00:00:00Z");
+const fmt = t => new Date(t).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" });
+const addMonths = (t, n) => { const x = new Date(t); x.setUTCMonth(x.getUTCMonth() + n); return x.getTime(); };
+let clock, jumpedAt, state;
+
+// ---------- fixtures (Phase-1-Proposal §3) ----------
+const USERS = { lantern: "Steady Lantern", wind: "Second Wind", hands: "Open Hands", round: "Long Way Round", light: "First Light" };
+const TYPES = { E: { name: "Explorer", cadence: 4, highlights: 4, quota: 48 }, W: { name: "Wanderer", cadence: 2, highlights: 2, quota: 24 }, C: { name: "Contemplator", cadence: 1, highlights: 1, quota: 12 } };
+const J = [
+  ["lantern",1,"2021-01-01","E",60,[32,23,5],"first year in a new city",["the hard part was the start"],"2022-01-16"],
+  ["lantern",2,"2022-01-01","E",37,[20,13,4],"first year in a new job",["thankful"],"2023-01-14"],
+  ["lantern",3,"2023-01-01","W",22,[10,7,5],"first year of job hunting",["hang in there","worried for nothing"],"2024-01-20"],
+  ["lantern",4,"2024-01-01","W",24,[12,9,3],"first year of starting over",["worth it"],"2025-01-11"],
+  ["lantern",5,"2025-01-01","C",24,[9,10,5],"first year living alone",["slow is still forward"],"2026-01-25"],
+  ["lantern",6,"2026-01-01","C",9,null,null,[],null],
+  ["wind",1,"2021-03-15","W",23,[9,12,2],"first year after graduating",[],"2022-03-30"],
+  ["wind",2,"2022-03-20","W",20,[8,11,1],"first year in a new job",[],"2023-04-02"],
+  ["wind",3,"2023-04-02","E",44,[20,22,2],"first year in a new country",["I almost quit"],"2024-04-20"],
+  ["wind",4,"2024-04-05","E",39,[18,19,2],"first year of a career change",["it eventually pays off"],"2025-04-19"],
+  ["wind",5,"2025-04-10","W",24,[10,12,2],"first year in a new city",["worth it"],"2026-04-26"],
+  ["wind",6,"2026-04-12","W",11,null,null,[],"2027-04-25"],
+  ["hands",1,"2023-06-01","W",24,[14,10,0],"first year of marriage",[],"2024-06-15"],
+  ["hands",2,"2024-06-03","E",78,[52,24,2],"baby's first year",["thankful"],"2025-06-22"],
+  ["hands",3,"2025-06-03","E",46,[28,16,2],"first year of parenthood",["gratification"],"2026-06-20"],
+  ["hands",4,"2026-06-05","E",17,null,null,[],"2027-06-20"],
+  ["round",1,"2022-09-01","C",12,[2,2,8],"first year of a business",["I almost quit","the hard part was the start"],"2023-09-12"],
+  ["round",2,"2023-09-04","C",11,[1,2,8],"first year of rebuilding after a failure",["it eventually pays off"],"2024-09-15"],
+  ["round",3,"2024-09-05","W",21,[5,4,12],"the year a side project became real",["worried for nothing"],"2025-09-21"],
+  ["round",4,"2025-09-06","W",24,null,null,[],null]
+];
+// Maps: who is on whose map, from each reveal (§3.4). [owner, date, person, ring]
+const MAP0 = [
+  ["lantern","2022-01-16","wind","tight"],["lantern","2023-01-14","wind","middle"],["lantern","2024-01-20","wind","outer"],
+  ["lantern","2025-01-11","hands","outer"],["lantern","2026-01-25","wind","tight"],
+  ["wind","2022-03-30","lantern","tight"],["wind","2023-04-02","lantern","middle"],["wind","2024-04-20","lantern","outer"],
+  ["wind","2026-04-26","lantern","tight"],["wind","2027-04-25","lantern","middle"],
+  ["hands","2025-06-22","lantern","middle"],["hands","2027-06-20","lantern","outer"],["hands","2027-06-20","light","outer"],
+  ["round","2023-09-12","hands","middle"],["round","2024-09-15","hands","outer"]
+];
+const CROSS0 = [["lantern","2022-01-16","wind"],["lantern","2023-01-14","wind"],["lantern","2025-01-11","hands"],["lantern","2026-01-25","wind"],
+  ["wind","2022-03-30","lantern"],["wind","2023-04-02","lantern"],["wind","2026-04-26","lantern"],["wind","2027-04-25","lantern"],
+  ["hands","2025-06-22","lantern"],["hands","2026-06-20","lantern"],["hands","2027-06-20","lantern"],["hands","2027-06-20","light"],
+  ["round","2023-09-12","hands"]];
+const FEED_JOURNEYS = ["lantern2","lantern3","wind4","hands2","hands3","round2"]; // four working tags, §20 W
+
+function seeded(n) { let x = n * 9301 + 49297; return () => (x = (x * 9301 + 49297) % 233280) / 233280; }
+function build() {
+  const journeys = {}, photos = [];
+  let pid = 0;
+  for (const [owner, n, commit, type, count, split, chapter, tags, finished] of J) {
+    const id = owner + n, c = d(commit);
+    journeys[id] = { id, owner, n, commit: c, unlock: addMonths(c, 12), type, chapter, tags: [...tags], finished: finished ? d(finished) : null, scripted: n === 6 || (owner === "hands" && n === 4), highlights: [], photoIds: [] };
+    const vis = [];
+    if (split) { for (const [k, v] of [["private", split[0]], ["network", split[1]], ["public", split[2]]]) for (let i = 0; i < v; i++) vis.push(k); }
+    const r = seeded(pid + 7);
+    const order = vis.map((v, i) => [r(), v]).sort((a, b) => a[0] - b[0]).map(x => x[1]);
+    for (let i = 0; i < count; i++) {
+      const p = { id: "p" + (pid++), journey: id, captured: c + Math.floor((i + 0.5) * 360 / count) * DAY + Math.floor(r() * 50000) * 1000, vis: split ? order[i] : "network", visSet: !!split, hue: Math.floor(r() * 360), title: null, note: false, reflections: [], tags: [] };
+      photos.push(p); journeys[id].photoIds.push(p.id);
+    }
+  }
+  const byId = Object.fromEntries(photos.map(p => [p.id, p]));
+  const first = (j, vis) => journeys[j].photoIds.map(i => byId[i]).find(p => p.vis === vis);
+  const l1 = first("lantern1", "public"); l1.title = "first night in the new flat"; l1.note = true; l1.captured = d("2021-03-14") + 20 * 3600000;
+  l1.reflections = ["2022-02-02", "2023-02-10", "2024-02-12", "2025-02-14", "2026-02-20"].map(x => ({ at: d(x) + 43200000 }));
+  const r1 = first("round1", "public"); r1.title = "the empty office after the co-founder left"; r1.note = true; r1.captured = d("2022-11-08") + 18 * 3600000;
+  r1.reflections = ["2023-09-20", "2024-10-01", "2025-09-15", "2026-09-10"].map(x => ({ at: d(x) + 43200000 }));
+  for (const j of FEED_JOURNEYS) first(j, "public").reflections.push({ at: journeys[j].finished + 7 * DAY + 43200000 });
+  return { journeys, photos: byId, map: MAP0.map(([o, t, p, r]) => ({ owner: o, at: d(t), person: p, ring: r })), cross: CROSS0.map(([o, t, p]) => ({ owner: o, at: d(t), person: p })), viewer: "lantern", tab: "profile", sub: null, notice: null, note: null };
+}
+function reset() { state = build(); clock = BASE; jumpedAt = Date.now(); render(); }
+const now = () => clock + (Date.now() - jumpedAt);
+
+// ---------- rules ----------
+const isSealed = (j, t = now()) => t < j.unlock;
+const isFinished = (j, t = now()) => j.finished !== null && j.finished <= t;
+const userJourneys = u => Object.values(state.journeys).filter(j => j.owner === u).sort((a, b) => a.commit - b.commit);
+const current = u => userJourneys(u).find(j => j.commit <= now() && isSealed(j));
+function mapOf(owner, t = now()) {
+  const m = {};
+  for (const e of state.map.filter(e => e.owner === owner && e.at <= t).sort((a, b) => a.at - b.at)) m[e.person] = e.ring;
+  return m;
+}
+const inNetwork = (viewer, owner, t = now()) => viewer !== owner && !!mapOf(owner, t)[viewer];
+function canSeePhoto(viewer, p, t = now()) {
+  const j = state.journeys[p.journey];
+  if (p.captured > t || isSealed(j, t)) return false; // sealed: unreadable, owner included
+  if (viewer === j.owner) return true;
+  if (p.vis === "private") return false;
+  if (p.vis === "public" && (p.visSet || isFinished(j, t))) return true;
+  return inNetwork(viewer, j.owner, t); // B2 default: network reads from unlock
+}
+const factsVisible = (viewer, j) => viewer === j.owner || inNetwork(viewer, j.owner); // §20 T: type, dates, chapter, tags
+const ringCount = u => userJourneys(u).filter(j => isFinished(j)).length; // B4 default; §20 CCC: count only
+function framesAllowed(j, t) { const m = Math.min(12, Math.floor((new Date(t).getUTCFullYear() - new Date(j.commit).getUTCFullYear()) * 12 + new Date(t).getUTCMonth() - new Date(j.commit).getUTCMonth()) + 1); return TYPES[j.type].cadence * m; }
+function openHighlight(j, t = now()) { return j.highlights.find(h => t >= h.start && t < Math.min(h.start + DAY, j.unlock)); }
+
+// scripted reveals: apply when passed (Wind #6, Hands #4). Visibility stays Network by default; no chapter or tags scripted.
+function applyScript() {
+  for (const j of Object.values(state.journeys)) if (j.scripted && j.finished && j.finished <= now() && !j.scriptDone) j.scriptDone = true;
+}
+
+// ---------- capture ----------
+function press() {
+  const u = state.viewer, j = current(u), t = now();
+  if (!j) return;
+  const normal = j.photoIds.map(i => state.photos[i]).filter(p => !p.inHighlight).length;
+  const h = openHighlight(j, t);
+  let accepted = false, inHighlight = false;
+  if (h && h.count < TYPES[j.type].quota) { accepted = true; inHighlight = true; h.count++; }
+  else if (normal < framesAllowed(j, t)) accepted = true;
+  if (!accepted) { state.notice = { kind: "refused" }; return render(); }
+  const p = { id: "p" + Object.keys(state.photos).length + "x", journey: j.id, captured: t, vis: "network", visSet: false, hue: Math.floor(Math.random() * 360), title: null, note: false, reflections: [], tags: [], inHighlight };
+  state.photos[p.id] = p; j.photoIds.push(p.id);
+  state.note = { photo: p.id, until: Math.min(t + 15 * 60000, j.unlock) };
+  state.notice = null; state.sub = "note"; render();
+}
+function startHighlight() {
+  const j = current(state.viewer), t = now();
+  if (!j) return;
+  if (openHighlight(j, t) || j.highlights.length >= TYPES[j.type].highlights) { state.notice = { kind: "hl-refused" }; return render(); }
+  j.highlights.push({ start: t, count: 0 }); state.notice = { kind: "hl-started" }; render();
+}
+
+// ---------- reveal ----------
+function finishReveal(j) {
+  const t = now();
+  j.finished = t;
+  const counts = {};
+  for (const p of j.photoIds.map(i => state.photos[i])) for (const who of p.tags) counts[who] = (counts[who] || 0) + 1;
+  const before = mapOf(j.owner, t - 1);
+  const ring = c => c >= 5 ? "tight" : c >= 2 ? "middle" : "outer";
+  const drift = { tight: "middle", middle: "outer", outer: "outer" };
+  for (const person of new Set([...Object.keys(before), ...Object.keys(counts)])) {
+    const r = counts[person] ? ring(counts[person]) : drift[before[person]];
+    state.map.push({ owner: j.owner, at: t, person, ring: r });
+    if (counts[person]) state.cross.push({ owner: j.owner, at: t, person });
+  }
+  state.sub = null; render();
+}
+
+// ---------- announcements (feed carries no images) ----------
+function feedFor(viewer) {
+  const t = now(), items = [];
+  for (const j of Object.values(state.journeys)) if (isFinished(j) && j.owner !== viewer && inNetwork(viewer, j.owner, j.finished)) items.push({ at: j.finished, text: `${USERS[j.owner]} launched a journey.` });
+  for (const c of state.cross) if (c.at <= t && c.owner !== viewer && inNetwork(viewer, c.owner, c.at)) items.push({ at: c.at, text: `Paths crossed: ${USERS[c.owner]} and ${c.person === viewer ? "you" : USERS[c.person]}.` });
+  for (const p of Object.values(state.photos)) for (const r of p.reflections) {
+    const owner = state.journeys[p.journey].owner;
+    if (r.at <= t && owner !== viewer && inNetwork(viewer, owner, r.at) && canSeePhoto(viewer, p)) items.push({ at: r.at, text: `${USERS[owner]} left a reflection.`, photo: p.id });
+  }
+  return items.sort((a, b) => b.at - a.at);
+}
+function positivity() {
+  const t = now(), out = [];
+  for (const id of FEED_JOURNEYS) {
+    const j = state.journeys[id];
+    if (!isFinished(j)) continue;
+    for (const pid of j.photoIds) { const p = state.photos[pid]; if (p.vis !== "public") continue; for (const r of p.reflections) if (r.at <= t) out.push({ at: r.at, photo: pid }); }
+  }
+  return out.sort((a, b) => b.at - a.at);
+}
+
+// ---------- render ----------
+const el = (h) => { const t = document.createElement("template"); t.innerHTML = h.trim(); return t.content; };
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const draft = '<span class="draft">draft</span>';
+function tile(p) { return `<button class="tile" data-photo="${p.id}" style="background:linear-gradient(135deg,hsl(${p.hue} 35% 55%),hsl(${(p.hue + 40) % 360} 40% 38%))" aria-label="Photo from ${fmt(p.captured)}"><span>${fmt(p.captured).replace(/ \d{4}$/, "")}</span></button>`; }
+function circleSvg(name, rings) {
+  const size = 220, c = size / 2, out = [];
+  for (let i = 0; i < rings; i++) { const r = 44 + i * (60 / Math.max(rings, 1)) + 6; out.push(`<circle cx="${c}" cy="${c}" r="${Math.min(r, 104)}" fill="none" stroke="currentColor" stroke-opacity="${0.35 + 0.1 * (i % 3)}" stroke-width="3"/>`); }
+  return `<svg class="circle" width="${size}" height="${size}" viewBox="0 0 ${size} ${size}" role="img" aria-label="${esc(name)}'s circle" style="color:var(--teal)"><circle cx="${c}" cy="${c}" r="40" fill="var(--card)" stroke="var(--line)"/>${out.join("")}<text x="${c}" y="${c + 5}" text-anchor="middle" font-family="Young Serif, Georgia, serif" font-size="13" fill="var(--ink)">${esc(name.split(" ")[0])}</text><text x="${c}" y="${c + 20}" text-anchor="middle" font-family="Young Serif, Georgia, serif" font-size="13" fill="var(--ink)">${esc(name.split(" ").slice(1).join(" "))}</text></svg>`;
+}
+function navItems() {
+  const items = [["profile", "Profile"], ["feed", "Feed"], ["positivity", "Positivity"], ["layers", "Layers"], ["people", "People"]];
+  return items.map(([k, l]) => `<button data-tab="${k}" ${state.tab === k && !state.sub ? 'aria-current="page"' : ""}>${l}</button>`).join("");
+}
+
+function screenProfile() {
+  const u = state.viewer, js = userJourneys(u).filter(j => j.commit <= now());
+  const cur = current(u), ready = js.find(j => !isSealed(j) && !isFinished(j));
+  let h = `<h3>${esc(USERS[u])}</h3>${circleSvg(USERS[u], ringCount(u))}`;
+  if (ready) h += `<div class="card"><p class="quote">Your Journey is ready.</p><button class="btn" data-go="reveal" data-j="${ready.id}">Open it</button></div>`;
+  if (cur) {
+    h += `<div class="card"><h4>Your journey is underway</h4><p>${TYPES[cur.type].name}. Committed ${fmt(cur.commit)}. Unlocks ${fmt(cur.unlock)}.</p>`;
+    if (openHighlight(cur)) h += `<p class="meta">A highlight is open.</p>`;
+    h += `<p class="lead">Nothing from this year can be seen, not even by you, until it unlocks.</p><div class="row"><button class="btn" data-go="capture">Capture</button><button class="btn ghost" data-act="highlight">Start a highlight</button></div></div>`;
+  }
+  if (!cur) {
+    h += `<div class="card"><h4>No journey underway</h4><p class="lead">It's not about attention. It's about intention.</p><button class="btn" data-go="commit">Commit to a journey</button></div>`;
+  }
+  if (state.notice?.kind === "hl-refused") h += `<p class="meta">A highlight can't start now. ${draft}</p>`;
+  if (state.notice?.kind === "hl-started") h += `<p class="meta">A highlight is open. ${draft}</p>`;
+  const past = js.filter(j => !isSealed(j));
+  if (past.length) h += `<h4>Your path</h4><div class="list">${past.reverse().map(j => journeyRow(u, j)).join("")}</div>`;
+  h += `<p class="meta">We want you here less, not more.</p>`;
+  return h;
+}
+function journeyRow(viewer, j) {
+  const facts = factsVisible(viewer, j);
+  const vis = j.photoIds.map(i => state.photos[i]).filter(p => canSeePhoto(viewer, p));
+  let h = `<div class="item">`;
+  h += facts ? `<strong>${esc(j.chapter || "No chapter")}</strong><span class="meta">${TYPES[j.type].name} · ${fmt(j.commit)} to ${fmt(j.unlock)}${j.tags.length ? " · " + j.tags.map(esc).join(", ") : ""}</span>` : `<strong>A journey</strong>`;
+  h += vis.length ? `<button class="link" data-go="journey" data-j="${j.id}">Walk this journey</button>` : `<span class="meta">Nothing here you can see.</span>`;
+  return h + `</div>`;
+}
+function screenOther(u) {
+  const viewer = state.viewer, js = userJourneys(u).filter(j => j.commit <= now());
+  let h = `<button class="link" data-tab="people">Back</button><h3>${esc(USERS[u])}</h3>${circleSvg(USERS[u], ringCount(u))}`;
+  if (js.some(j => isSealed(j))) h += `<div class="card"><p>A journey is underway.</p></div>`;
+  const past = js.filter(j => !isSealed(j));
+  h += past.length ? `<h4>Path</h4><div class="list">${past.reverse().map(j => journeyRow(viewer, j)).join("")}</div>` : `<p class="lead">No unlocked journeys yet.</p>`;
+  return h;
+}
+function screenJourney(id) {
+  const j = state.journeys[id], viewer = state.viewer;
+  const ps = j.photoIds.map(i => state.photos[i]).filter(p => canSeePhoto(viewer, p)).sort((a, b) => viewer === j.owner ? a.captured - b.captured : (Math.floor(a.captured / DAY) - Math.floor(b.captured / DAY)) || a.id.localeCompare(b.id));
+  let h = `<button class="link" data-back>Back</button><h3>${factsVisible(viewer, j) ? esc(j.chapter || "A journey") : "A journey"}</h3>`;
+  if (factsVisible(viewer, j)) h += `<p class="meta">${esc(USERS[j.owner])} · ${TYPES[j.type].name} · ${fmt(j.commit)} to ${fmt(j.unlock)}</p>`;
+  return h + `<div class="grid">${ps.map(tile).join("")}</div>`;
+}
+function screenPhoto(pid) {
+  const p = state.photos[pid], j = state.journeys[p.journey], own = state.viewer === j.owner;
+  let h = `<button class="link" data-back>Back</button><div class="tile" style="aspect-ratio:4/3;background:linear-gradient(135deg,hsl(${p.hue} 35% 55%),hsl(${(p.hue + 40) % 360} 40% 38%))"></div>`;
+  if (p.title) h += `<p class="quote">${esc(p.title)}</p>`;
+  h += `<p class="meta">${own ? new Date(p.captured).toLocaleString("en-GB", { timeZone: "UTC", dateStyle: "long", timeStyle: "short" }) + " UTC" : fmt(p.captured)}</p>`;
+  if (p.note) h += `<div class="card"><h4>On the back</h4><p class="lead">A handwritten note (an image of the page in the real app).</p></div>`;
+  if (p.reflections.length) h += `<h4>Reflections</h4><div class="list">${p.reflections.filter(r => r.at <= now()).map(r => `<div class="item"><span class="meta">${fmt(r.at)}</span><span class="lead">Reflection text to come from the fixture copy.</span></div>`).join("")}</div>`;
+  return h;
+}
+function screenCommit() {
+  let h = `<button class="link" data-tab="profile">Back</button><h3>Commit to a journey</h3><p class="lead">Pick one. It can't be changed afterwards. The journey runs 12 months from today, and the whole year unlocks at once.</p>`;
+  for (const [k, t] of Object.entries(TYPES)) h += `<div class="card"><strong>${t.name}</strong><p class="meta">${t.cadence} a month · ${t.quota} photos a year · ${t.highlights} highlight${t.highlights > 1 ? "s" : ""}</p><button class="btn ghost" data-pick="${k}">Choose ${t.name}</button></div>`;
+  return h;
+}
+function screenCapture() {
+  const j = current(state.viewer);
+  if (!j) { state.sub = null; return screenProfile(); }
+  let h = `<button class="link" data-tab="profile">Back</button><h3>Capture</h3><p class="lead">No retakes. That moment is gone.</p><div class="tile" style="aspect-ratio:3/4;background:#222"></div><button class="btn" data-act="press">Press</button>`;
+  if (state.notice?.kind === "refused") h += `<p class="meta">This moment can't be taken now. ${draft}</p>`;
+  h += `<p class="meta">This demo has no camera: a press stores a placeholder photo, sealed at once.</p>`;
+  return h;
+}
+function screenNote() {
+  const n = state.note;
+  if (!n || now() >= n.until) { state.sub = "capture"; state.note = null; return screenCapture(); }
+  return `<h3>On the back</h3><p class="lead">You can add one handwritten page to this photo, now or within 15 minutes. ${draft}</p><div class="row"><button class="btn" data-act="page">Photograph a page</button><button class="btn ghost" data-act="skip">Skip</button></div>`;
+}
+function screenReveal(id) {
+  const j = state.journeys[id];
+  if (isFinished(j)) { state.sub = null; return screenProfile(); }
+  const ps = j.photoIds.map(i => state.photos[i]);
+  let h = `<button class="link" data-tab="profile">Back</button><h3>Your journey, ${fmt(j.commit)} to ${fmt(j.unlock)}</h3><p class="lead">Strict at capture. Generous at reflect. Each choice is set once.</p>`;
+  h += `<div class="card"><h4>Chapter</h4>${j.chapter ? `<p>${esc(j.chapter)}</p>` : `<label for="chap">Pick one ${draft}<select id="chap"><option value="">Choose</option>${[...new Set(J.map(x => x[6]).filter(Boolean))].map(c => `<option>${esc(c)}</option>`).join("")}</select></label><button class="btn ghost" data-act="chapter">Set chapter</button>`}</div>`;
+  h += `<div class="card"><h4>Feeling tags</h4><p>${j.tags.length ? j.tags.map(esc).join(", ") : '<span class="meta">None yet</span>'}</p><label for="ftag">Write one<input id="ftag" type="text" maxlength="40"></label><button class="btn ghost" data-act="ftag">Add tag</button></div>`;
+  h += `<h4>Photos</h4><div class="list">${ps.map(p => `<div class="item"><div style="display:grid;grid-template-columns:72px 1fr;gap:10px;align-items:center">${tile(p)}<div class="row">${["private", "network", "public"].map(v => `<button class="chip" aria-pressed="${p.vis === v}" ${p.visSet ? "disabled" : ""} data-vis="${v}" data-p="${p.id}">${v[0].toUpperCase() + v.slice(1)}</button>`).join("")}<select data-tagp="${p.id}" aria-label="Tag a person"><option value="">Tag a person</option>${Object.entries(USERS).filter(([k]) => k !== j.owner).map(([k, n]) => `<option value="${k}">${n}</option>`).join("")}</select>${p.tags.length ? `<span class="meta">Tagged: ${p.tags.map(t => USERS[t]).join(", ")}</span>` : ""}</div></div></div>`).join("")}</div>`;
+  h += `<button class="btn" data-act="finish" data-j="${j.id}">Finish the reveal</button>`;
+  return h;
+}
+function screenFeed() {
+  const f = feedFor(state.viewer);
+  return `<h3>Feed</h3><p class="lead">Announcements only. Never photos.</p>` + (f.length ? `<div class="list">${f.map(i => `<div class="item"><span>${esc(i.text)}</span><span class="meta">${fmt(i.at)}</span></div>`).join("")}</div>` : `<p class="lead">Nothing yet.</p>`);
+}
+function screenPositivity() {
+  const f = positivity();
+  return `<h3>Positivity Feed</h3><p class="lead">Reflections people chose to share. Text only; open one to see its photo.</p>` + (f.length ? `<div class="list">${f.map(i => `<div class="item"><span class="lead">Reflection text to come from the fixture copy.</span><button class="link" data-photo="${i.photo}">Open</button></div>`).join("")}</div>` : `<p class="lead">Nothing yet.</p>`);
+}
+function screenLayers() {
+  const m = mapOf(state.viewer);
+  let h = `<h3>Your layers</h3><p class="lead">Who your path has crossed. A record, not a rank. Only you see this map.</p>`;
+  for (const r of ["tight", "middle", "outer"]) { const ppl = Object.entries(m).filter(([, x]) => x === r).map(([p]) => USERS[p]); h += `<div class="card"><h4 class="ring-${r}">${r[0].toUpperCase() + r.slice(1)}</h4><p>${ppl.length ? ppl.join(", ") : '<span class="meta">No one</span>'}</p></div>`; }
+  return h;
+}
+function screenPeople() {
+  return `<h3>People</h3><p class="lead">For the demo: open anyone's profile as ${esc(USERS[state.viewer])} would see it.</p><div class="list">${Object.entries(USERS).filter(([k]) => k !== state.viewer).map(([k, n]) => `<div class="item"><button class="link" data-user="${k}">${n}</button></div>`).join("")}</div>`;
+}
+
+let navStack = [];
+function render() {
+  applyScript();
+  document.getElementById("simdate").textContent = fmt(now());
+  document.getElementById("viewers").innerHTML = Object.entries(USERS).map(([k, n]) => `<button class="chip" data-viewer="${k}" aria-pressed="${state.viewer === k}">${n}</button>`).join("");
+  const s = state.sub;
+  let h;
+  if (s === "commit") h = screenCommit();
+  else if (s === "capture") h = screenCapture();
+  else if (s === "note") h = screenNote();
+  else if (s?.startsWith("reveal:")) h = screenReveal(s.slice(7));
+  else if (s?.startsWith("journey:")) h = screenJourney(s.slice(8));
+  else if (s?.startsWith("photo:")) h = screenPhoto(s.slice(6));
+  else if (s?.startsWith("user:")) h = screenOther(s.slice(5));
+  else h = { profile: screenProfile, feed: screenFeed, positivity: screenPositivity, layers: screenLayers, people: screenPeople }[state.tab]();
+  document.getElementById("screen").innerHTML = h;
+  document.getElementById("nav").innerHTML = navItems();
+}
+function go(sub) { navStack.push(state.sub); state.sub = sub; state.notice = null; render(); }
+function dialog(text, onYes) {
+  const box = document.getElementById("dialog");
+  box.innerHTML = `<div class="dialog" role="dialog" aria-modal="true"><div class="card"><p>${text}</p><div class="row"><button class="btn" id="dyes">Yes</button><button class="btn ghost" id="dno">Not yet</button></div></div></div>`;
+  document.getElementById("dno").onclick = () => box.innerHTML = "";
+  document.getElementById("dyes").onclick = () => { box.innerHTML = ""; onYes(); };
+}
+document.addEventListener("click", e => {
+  const b = e.target.closest("button"); if (!b) return;
+  const ds = b.dataset;
+  if (ds.viewer) { state.viewer = ds.viewer; state.sub = null; state.tab = "profile"; state.notice = null; navStack = []; return render(); }
+  if (ds.jump) {
+    if (ds.jump === "reset") return reset();
+    const t = now(); clock = ds.jump === "day" ? t + DAY : ds.jump === "month" ? addMonths(t, 1) : ds.jump === "year" ? addMonths(t, 12) : addMonths(t, 60); jumpedAt = Date.now(); state.notice = null; return render();
+  }
+  if (ds.tab) { state.tab = ds.tab; state.sub = null; state.notice = null; navStack = []; return render(); }
+  if (ds.back !== undefined) { state.sub = navStack.pop() ?? null; return render(); }
+  if (ds.user) return go("user:" + ds.user);
+  if (ds.photo) return go("photo:" + ds.photo);
+  if (ds.go === "journey") return go("journey:" + ds.j);
+  if (ds.go === "reveal") return go("reveal:" + ds.j);
+  if (ds.go) return go(ds.go);
+  if (ds.pick) return dialog(`Commit to ${TYPES[ds.pick].name}? This can't be changed afterwards.`, () => {
+    const u = state.viewer, n = userJourneys(u).length + 1, t = now(), id = u + n;
+    state.journeys[id] = { id, owner: u, n, commit: t, unlock: addMonths(t, 12), type: ds.pick, chapter: null, tags: [], finished: null, highlights: [], photoIds: [] };
+    state.sub = null; state.tab = "profile"; render();
+  });
+  if (ds.act === "press") return press();
+  if (ds.act === "highlight") return startHighlight();
+  if (ds.act === "page") { state.photos[state.note.photo].note = true; state.note = null; state.sub = "capture"; return render(); }
+  if (ds.act === "skip") { state.note = null; state.sub = "capture"; return render(); }
+  const rj = state.sub?.startsWith("reveal:") ? state.journeys[state.sub.slice(7)] : null;
+  if (rj && ds.act === "chapter") { const v = document.getElementById("chap").value; if (v) dialog(`Set the chapter to "${esc(v)}"? It can't be changed.`, () => { rj.chapter = v; render(); }); return; }
+  if (rj && ds.act === "ftag") { const v = document.getElementById("ftag").value.trim(); if (v) dialog(`Add "${esc(v)}"? It can't be changed.`, () => { rj.tags.push(v); render(); }); return; }
+  if (rj && ds.vis) { const p = state.photos[ds.p]; return dialog(`Set this photo to ${ds.vis}? It can't be changed.`, () => { p.vis = ds.vis; p.visSet = true; render(); }); }
+  if (rj && ds.act === "finish") return dialog("Finish the reveal? Everything you set locks, and your network hears the journey launched.", () => finishReveal(rj));
+});
+document.addEventListener("change", e => {
+  const s = e.target.closest("select[data-tagp]"); if (!s || !s.value) return;
+  const p = state.photos[s.dataset.tagp], who = s.value;
+  dialog(`Tag ${USERS[who]} in this photo? It can't be changed.`, () => { if (!p.tags.includes(who)) p.tags.push(who); render(); });
+  s.value = "";
+});
+reset();
+setInterval(() => { document.getElementById("simdate").textContent = fmt(now()); }, 30000); // the screen never changes on its own (§20 UUU)
+</script>
+</body>
+</html>
