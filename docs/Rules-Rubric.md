@@ -28,6 +28,8 @@ Updated 2026-11-04 (rules re-audit `docs/reviews/2026-11-04-rules-flows-r2.md`, 
 
 Updated 2026-11-05 (supervisor, from rules audit `docs/reviews/2026-11-04-rules-art-microcopy.md` P-1 to P-8): added R-179 to R-186 after R-178. Each names its area, because they were added in one place to keep numbering in order. No check renumbered or removed.
 
+Updated 2026-11-05 (rules re-audit `docs/reviews/2026-11-05-rules-art-microcopy-r2.md`, of `Art-Direction.md`, `Microcopy.md` and Decisions-Needed B27–B41): added R-187 after R-186, in area 14 (provisional defaults hold when read together). Added `Updated` lines on R-177 (cited IDs after another doc renames its family) and R-180 (a cell naming only an AD-n, or following one side "until the user rules"). No check renumbered or removed.
+
 ---
 
 ## What this is for
@@ -1278,6 +1280,7 @@ Commit, capture, frames, highlights and the note.
 - **Type:** auto (scan) and review · **Applies to:** docs
 - **Source:** L-002 (every cross-reference matches); CL:21–23 and R-149 (a `PROVISIONAL:` ID must be findable); R-150. Found by `docs/reviews/2026-11-04-rules-flows.md` V11: `Flows.md:685–699` mints C-1 to C-13 beside Decisions-Needed C1 to C18, and `Flows.md:649` calls them existing
 - **How to check:** For a doc `F`: `grep -oE '\b[A-Z]{1,3}-[0-9]+\b' F | sort -u`, strip the hyphen from each, and compare with the IDs in `docs/Decisions-Needed.md`. Any match fails (R-nnn and G-n are the rubric's own and match nothing there). Review: every new prefix is named as new in `F`, and `grep -rlE '\b<prefix>-[0-9]+\b' docs` shows no earlier owner
+- **Updated 2026-11-05 (`docs/reviews/2026-11-05-rules-art-microcopy-r2.md` COPY-R2-3):** the check also covers IDs a doc *cites* from another doc. Once a doc renames an ID family, every other doc citing the old IDs fails until it is updated, because the old ID now points at nothing, or at a Decisions-Needed ID. Found at `Microcopy.md:5`, `:211–216`, still citing Flows C-n after `Flows.md` renamed them DC-n. Run the scan above on every doc that cites the renamed doc
 
 ### R-178
 - **Statement:** A word that marks something as undecided ("for now", "still being compared", "the plan is") is never attached to a banned-list rule or a §20 ruling, even where a provisional default's row repeats that rule. A reader never learns from such a word that a banned thing might yet appear, or that a decided thing might yet change.
@@ -1298,6 +1301,7 @@ Commit, capture, frames, highlights and the note.
 - **Area:** 13. Across every area
 - **Source:** Rule zero (CL:19–24), R-134, R-149, R-150. Found as ART-3 (`Art-Direction.md` §12). Proposed in `docs/reviews/2026-11-04-rules-art-microcopy.md` as P-2, numbered by the supervisor 2026-11-05
 - **How to check:** List every "until answered", "for now" and "drawn as" cell. Each one names a Decisions-Needed ID, or is blank, or says the build stops there.
+- **Updated 2026-11-05 (`docs/reviews/2026-11-05-rules-art-microcopy-r2.md` ART-R2-2, ART-R2-4):** (1) a table cell that names only an AD-n (or other doc-local ID) whose Decisions-Needed row exists fails: the builder reads the cell, so the cell carries the `PROVISIONAL:` label. (2) "follows one side until the user rules", where the two sides are a raised conflict and no Decisions-Needed row covers it, is a buildable interim state and fails, as R-135 does. Found at `Art-Direction.md:218–223`, `:247` and `:364`
 
 ### R-181
 - **Statement:** An art-direction or taste label (such as `[AD]`) covers colour, type, geometry and texture only. A line under it saying who sees something, on which screen, when it appears or disappears, or what a press does is a behaviour and goes to the open questions.
@@ -1340,6 +1344,13 @@ Commit, capture, frames, highlights and the note.
 - **Area:** 8. Engagement mechanics
 - **Source:** R-096, R-134, R-168. Found as ART-8 (`Art-Direction.md:285–296`). Proposed in `docs/reviews/2026-11-04-rules-art-microcopy.md` as P-8, numbered by the supervisor 2026-11-05
 - **How to check:** Compare the navigation marks with each screen's "Leads to" row in every state, `no-journey` included. A way appearing on the day a reveal opens is reported under R-096 until the user rules.
+
+### R-187
+- **Statement:** Provisional defaults hold when read together. Flipping one switch, with every other default in force, changes only the behaviour that switch names. No default forces the answer to a question that has no default, and none leaves a screen without a way in that its "Reached from" row requires, under any answer to such a question.
+- **Type:** review · **Applies to:** docs, UI
+- **Area:** 14. Provisional defaults and the options panel
+- **Source:** R-141 (a switch changes nothing but its own behaviour), rule zero (CL:19–24: a builder never picks; a question with no default is not answered by another row), R-150, R-168. Found by `docs/reviews/2026-11-05-rules-art-microcopy-r2.md`. ART-R2-1: B41 makes C1's line the only way into Reveal S-04, which forces C18 and can strand an unfinished reveal against `Screen-Inventory.md:151`. ART-R2-3: B28 with B31 removes the owner's activity line under B4's option, so flipping B4 changes B5's behaviour
+- **How to check:** (1) For each new or changed Decisions-Needed row, list every other row and every switch setting touching the same screen, drawing or data. For each switch, compare what each screen shows under its two settings with every other default in force: anything that changes beyond the switch's own ID fails. (2) For each row, list the open questions (no default) its behaviour depends on. Read the row under each possible answer. If one answer leaves a screen unreachable that a "Reached from" row requires, or turns the row into a banned mechanic (R-095, R-096), the row has forced that question and fails
 
 ---
 

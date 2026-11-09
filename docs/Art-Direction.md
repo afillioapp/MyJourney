@@ -7,7 +7,7 @@ Phase 2 deliverable (`Build-Plan.md:77`), owner art-director. Written 2026-11-04
 - **[AD]** marks an art-direction choice. It covers colour, type, geometry and texture only (R-181). The docs give the look but not the value, so the Art Director picked it, for the user to review.
 - Anything that says who sees something, on which screen, or when it appears is not [AD]. It either rests on the line cited beside it or is an open question, AD-n, in [§12](#12-open-questions).
 - `PROVISIONAL: <ID>` is a default from `Decisions-Needed.md`, not a decision. Rule zero applies, and the code that draws it carries the same label (`CLAUDE.md:17–24`).
-- **An AD-n is a question, never a default** (R-180). Where the build has to draw something before the user answers, the art director has proposed a default to the supervisor for `Decisions-Needed.md`. Those rows are B27 to B41 (added by the supervisor 2026-11-05), and this file names each one with its `PROVISIONAL: B<n>` label.
+- **An AD-n is a question, never a default** (R-180). Where the build has to draw something before the user answers, the art director has proposed a default to the supervisor for `Decisions-Needed.md`. Those rows are B27 to B42 (added by the supervisor 2026-11-05), and this file names each one with its `PROVISIONAL: B<n>` label.
 - Short names: **CL** `CLAUDE.md`, **Brief** `Master-Prompt.md`, **Concept** `My-Journey-Concept.md`, **Spec** `Functional-Spec.md`, **SI** `Screen-Inventory.md`, **DN** `Decisions-Needed.md`, **Proposal** `Phase-1-Proposal.md`, **Flows** `Flows.md`, **R-n** a check in `Rules-Rubric.md`. Spec §20 rulings are cited by letter, as SI does.
 
 ---
@@ -101,6 +101,16 @@ Logo rules [AD]:
 A ring is a record, like a tree ring: "a ring tells you the age, it does not claim the tree is better" (Concept:689). What adds a ring is `PROVISIONAL: B4`, switchable: one ring per finished reveal by default (Proposal:65), one per year with the app as the option, on the owner's own profile only (Spec §20 WW).
 
 The geometry is the same under both settings. Only the number of rings, `n`, differs, and who sees which `n` is set out in [§3.6](#36-who-sees-what-on-a-circle).
+
+The owner sees the same activity under both settings (R-141, R-187). Only what carries it differs (`PROVISIONAL: B28`):
+
+- Under the default, the journey's ring carries the line from reveal finished.
+- Under the per-year option, each finished journey's day marks go on the owner's ring for the year that holds that journey's reveal-finished date.
+- That ring is drawn only later, so until it exists the journey's flat graph stays shown to the owner. This applies under this option only, as an exception to `PROVISIONAL: B31`.
+
+- That ring's day 0 is still the journey's commit date, at the ring's own start angle `θ_k`, so the line is drawn exactly as under the default.
+- A per-year ring that holds no finished journey is a plain ring.
+- Two reveals finished in the same year (possible under `PROVISIONAL: B3`) both put their marks on that year's ring, each from its own day 0, merged by `max`. Whether that is wanted is part of AD-2.
 
 Rings work like a tree's: each new ring is a little finer than the one before, so the circle keeps growing, by a smaller step each year, and never reaches an edge. [AD]
 
@@ -197,7 +207,7 @@ Between unlock and reveal finished, the owner sees the year as a straight line (
 - A public viewer may not read journey dates (Spec §20 T; R-152). From one dated photo they could recover the commit date.
 - Whether a public viewer gets a flat graph at all under B5's option, and if so what it may be anchored to: **AD-12**, provisional default `PROVISIONAL: B36`.
 
-Whether the flat graph stays once the line has twisted in: **AD-6**, provisional default `PROVISIONAL: B31`.
+Whether the flat graph stays once the line has twisted in: **AD-6**, provisional default `PROVISIONAL: B31`. Under B4's per-year option it stays until the year's ring is drawn (`PROVISIONAL: B28`, an exception to B31).
 
 ### 3.5 How the line twists in
 
@@ -211,16 +221,16 @@ Whether the line visibly bends is **AD-3**, provisional default `PROVISIONAL: B2
 
 ### 3.6 Who sees what on a circle
 
-What each viewer sees comes from the docs. Where they are silent, the AD-n is named.
+What each viewer sees comes from the docs. Where they are silent, the cell names the provisional default in `Decisions-Needed.md` the build follows, with its AD-n question beside it (R-180).
 
 | Viewer | B4 setting | Rings on the profile | B5 setting | Day marks in rings | Flat graph |
 |---|---|---|---|---|---|
-| Owner, S-05 | per finished reveal (default) | One per finished reveal (Proposal:65; SI:173) | either | Yes, after reveal finished (SI:178, 185) | From unlock (SI:184); after finish: AD-6 |
-| Owner, S-05 | per year with the app | One per year with the app, own profile only (Spec §20 WW; SI:174). Date and line placement: AD-2 | either | As above, for rings that carry a journey: AD-2 | As above |
-| Network, S-16 | **either** | One per finished reveal (Spec §20 WW; SI:412). Never per year, which would give the join date (Spec §20 TT) | owner only (default) | AD-1 | None (SI:412) |
-| Network, S-16 | either | As above | built from photos the viewer can see | AD-1 | From photos this viewer can read, one-day resolution (SI:412; Spec §20 GG). Anchored to the commit date, which the network reads (Spec §20 T). After finish: AD-6 |
+| Owner, S-05 | per finished reveal (default) | One per finished reveal (Proposal:65; SI:173) | either | Yes, after reveal finished (SI:178, 185) | From unlock (SI:184) until reveal finished, then not shown (`PROVISIONAL: B31`; AD-6) |
+| Owner, S-05 | per year with the app | One per year with the app, own profile only (Spec §20 WW; SI:174). When a ring appears: `PROVISIONAL: B28` (AD-2) | either | Yes, after reveal finished: each finished journey's marks on the ring for the year holding its reveal-finished date (`PROVISIONAL: B28`; AD-2). Rings holding no finished journey are plain | From unlock, and after reveal finished until the year's ring is drawn (`PROVISIONAL: B28`, an exception to B31; AD-2, AD-6) |
+| Network, S-16 | **either** | One per finished reveal (Spec §20 WW; SI:412). Never per year, which would give the join date (Spec §20 TT) | owner only (default) | None: plain rings (`PROVISIONAL: B27`; AD-1) | None (SI:412) |
+| Network, S-16 | either | As above | built from photos the viewer can see | None: plain rings (`PROVISIONAL: B27`; AD-1) | From photos this viewer can read, one-day resolution (SI:412; Spec §20 GG). Anchored to the commit date, which the network reads (Spec §20 T). From unlock until reveal finished, then not shown (`PROVISIONAL: B31`; AD-6) |
 | Public, S-16 | **either** | One per finished reveal, from the count alone, no date (Spec §20 CCC, WW; SI:412) | owner only (default) | None: a public viewer's rings come from the count alone (Spec §20 CCC) | None (SI:412) |
-| Public, S-16 | either | As above | built from photos the viewer can see | None (Spec §20 CCC) | AD-12 |
+| Public, S-16 | either | As above | built from photos the viewer can see | None (Spec §20 CCC) | None (`PROVISIONAL: B36`; AD-12) |
 
 **Drawing facts that follow from the geometry, not decisions.**
 
@@ -241,10 +251,10 @@ States are named by ring count and journey state only, never by a name for a sta
 | **1 or more rings** | Rings `1…n` as [§3.2](#32-the-rings) gives them. Every count is drawn by the same formula | Concept:687, 689 |
 | **A journey sealed** | The circle is unchanged. The current year adds nothing to it: no ring, arc, segment, tick or dash | SI:183; R-012; R-143 |
 | **Unlocked, reveal not finished** | The circle is unchanged. The flat graph, to the owner | SI:184; `PROVISIONAL: B4`, `B5` |
-| **Reveal finished** | Ring `n + 1` is added outside; its day marks to the owner | SI:185; `PROVISIONAL: B4`, `B5` |
+| **Reveal finished** | Under B4's default, ring `n + 1` is added outside, in order of finishing; its day marks to the owner. Under the option, the day marks go on the ring for that year; until that ring is drawn, the flat graph stays shown to the owner | SI:185; `PROVISIONAL: B4`, `B5`, `B28`, `B34` |
 | **Reveal never finished** | No ring for that journey, under B4's default. Nothing marks the absence | SI:173; Proposal:65; `PROVISIONAL: B4` |
 
-Under B4's per-year option the owner's ring count follows years with the app (SI:174). When such a ring appears is AD-2.
+Under B4's per-year option the owner's ring count follows years with the app (SI:174). When such a ring appears, which ring carries a journey's day marks, and the flat graph staying shown until that ring is drawn, all follow `PROVISIONAL: B28` (AD-2).
 
 An empty circle states what is there and offers no button or suggestion (`PROVISIONAL: C9`; R-095). Its words are the copywriter's (SI:190).
 
@@ -256,7 +266,7 @@ An empty circle states what is there and offers no button or suggestion (`PROVIS
 
 ### The drawing: one shut envelope
 
-A kraft film envelope, shut with the circle. You dropped your film off, and it is not back yet (Concept:323). This drawing is for The sealed year S-03. [AD]
+A kraft film envelope, shut with the circle. You dropped your film off, and it is not back yet (Concept:323). On The sealed year S-03 it is the picture of element 1, "That the owner has a journey underway" (SI:117). The drawing itself is [AD].
 
 Drawn in a 280 × 196 box, displayed at `min(280px, available width)`, with `--mj-texture-grain` over the paper:
 
@@ -346,9 +356,9 @@ Each mark is the same circle holding a small plain sign. On a 24 grid, centre (1
 | Positivity Feed S-09 | S-05 (SI:170), S-03 (SI:111) | Circle r 9.5; line (6, 15.5)–(18, 15.5); half circle r 3.5 on that line, centre (12, 15.5) |
 | Capture S-02 | **S-03 only** (SI:111, element 5) | Circles r 9.5, 5. Shown the same whether or not a frame is left (SI:121; R-138; `PROVISIONAL: B7`) |
 | Start a highlight S-13 | **S-03 only** (SI:111, element 6) | Circle r 9.5; circle r 3; rays (12, 5.5)–(12, 7), (12, 17)–(12, 18.5), (5.5, 12)–(7, 12), (17, 12)–(18.5, 12). Shown the same whether or not a highlight is left or open (SI:122) |
-| The sealed year S-03 | S-05, while sealed (SI:170) | Circle r 9.5; rectangle (6.5, 8.5)–(17.5, 15.5); flap lines (6.5, 8.5)–(12, 12.5)–(17.5, 8.5) |
-| Commit S-01 | S-05, in `no-journey` (SI:170) | Circle r 9.5; line (7, 12)–(17, 12) |
-| Reveal S-04 | S-05, "when a reveal is open" (SI:170) | **No mark.** AD-18 |
+| The sealed year S-03 | S-05, present while a journey is sealed (SI:170; `PROVISIONAL: B42`) | Circle r 9.5; rectangle (6.5, 8.5)–(17.5, 15.5); flap lines (6.5, 8.5)–(12, 12.5)–(17.5, 8.5) |
+| Commit S-01 | S-05, present in `no-journey` (SI:170; `PROVISIONAL: B42`) | Circle r 9.5; line (7, 12)–(17, 12) |
+| Reveal S-04 | S-05, present while a reveal is open (SI:151, SI:170; `PROVISIONAL: B41`) | **No mark of its own.** A plain way in `label` style, styled like every other way, with no emphasis. C1's "Your Journey is ready" line is a second way in (`PROVISIONAL: C1`). How long that line stays is C18, which has no default and which B41 does not answer |
 
 How every mark is drawn [AD]:
 
@@ -361,8 +371,15 @@ How every mark is drawn [AD]:
 
 **Behaviour this file does not settle:**
 
-- **Ways that appear and disappear by journey state.** SI:170 makes three of S-05's ways conditional: the sealed year (while sealed), Commit (in `no-journey`) and Reveal (when a reveal is open). R-186 says no way appears, disappears or changes because of content. Reveal is the plainest case, because it appears on the day a reveal opens. **AD-18**, provisional default pending for Reveal: see report. Commit and the sealed year follow SI's rows until the user rules.
-- **Where the ways sit, and whether a ring can be pressed:** **AD-10**.
+- **Ways that appear and disappear by journey state.** SI:170 makes three of S-05's ways conditional:
+  - the sealed year, while a journey is sealed;
+  - Commit, in `no-journey`;
+  - Reveal, while a reveal is open.
+
+  The build follows `PROVISIONAL: B41` for Reveal and `PROVISIONAL: B42` for Commit and the sealed year. Each such way is drawn like every other way, with no emphasis, no "new" marker and nothing that announces the change (SI:77; R-095, R-096).
+
+  R-186 says no way appears, disappears or changes because of content. So whether a way appearing by state is itself a marker stays **AD-18**, for the user. It is sharpest at unlock: the sealed-year way goes and the Commit and Reveal ways come on the same day as "Your Journey is ready".
+- **Where the ways sit, and whether a ring can be pressed:** **AD-10**. Rings have no press or hover state (`PROVISIONAL: B35`). Where the ways sit is for ux.
 
 ---
 
@@ -629,7 +646,7 @@ Each "do" holds for every value the formulas allow (R-185).
 | **No tiers** (Concept:693; R-185) | One formula for every ring count; states named only by count and journey state | A name for a range of counts, a style that changes at a count, gold at year 5, a new look at a milestone |
 | **Tone and weight do not rise with count** (R-185) | The same 22% ink share at every count; each ring's stroke fixed by its place, not by the count | Heavier or darker circles for more rings, strokes that thicken as rings are added |
 | **No "higher is better" in colour** (Concept:691) | Ink only | A warm-to-hot ramp, metal tones, saturation by age or by activity |
-| **Size is not capacity** (Concept:687, 694) | Growth by a smaller step each year, toward no drawn edge, in the same box for everyone | A boundary the rings approach, equal steps to a full band, circles lined up to compare |
+| **Size is not capacity** (Concept:687, 694) | Growth by a smaller step each year, toward no drawn edge, in the same box for everyone | A drawn boundary, track or band for the rings to reach (the formula's limit at radius 155 is never drawn and has no token), equal steps to a full band, circles lined up to compare |
 | **The activity line prints no count** (R-144; `PROVISIONAL: B8`) | One same-height rise per day with a photo | Peaks by count, heat colours, a grid, totals. A fuller line can still read as better: AD-11 |
 | **Difficulty is not drawn** (CL:89–93) | Types shown by name in plain text | A colour, icon, star or stripe per type, on a ring or anywhere near a person |
 | **Layers are not rank** (Spec:185; Concept:691) | Same line and same name style on all three rings | Larger names near the core, a glow on the inner ring, "close friends" colour, fading with distance |
@@ -669,14 +686,14 @@ Each can be seen or run:
 
 ## 12. Open questions
 
-Nothing below is picked. Where the build has to draw something before the user answers, the art director has proposed a provisional default to the supervisor. Each now names its row in `Decisions-Needed.md` (B27 to B41, added 2026-11-05). The build follows that row, never this file (R-180).
+Nothing below is picked. Where the build has to draw something before the user answers, the art director has proposed a provisional default to the supervisor. Each now names its row in `Decisions-Needed.md` (B27 to B42, added 2026-11-05). The build follows that row, never this file (R-180).
 
 ### A. Unspecified, and implies a behaviour
 
 | ID | Question | Why it is a behaviour | Default |
 |---|---|---|---|
 | **AD-1** | **Does anyone but the owner see the day marks in a ring?** Spec:186 and Concept:706 say the line twists into the circle and name no viewer. DN B5 limits "the activity graph", and SI:178 and SI:412 treat the graph apart from the line. Under B5's option, should a network viewer's rings carry marks from photos they can read? Read with AD-11 first | The marks show which days photos were taken. Spec §20 CCC settles public viewers only | Provisional default `PROVISIONAL: B27` (`Decisions-Needed.md`) |
-| **AD-2** | **Under B4's "per year with the app": on which date does a year's ring appear, and which ring holds which journey's line?** Years with the app and journeys need not line up: gaps, a first year without a journey, a never-finished reveal. A ring must never appear or change inside a sealed year (R-012, R-143; Flows:514) | When a ring appears, and what it means | Provisional default `PROVISIONAL: B28` (`Decisions-Needed.md`) |
+| **AD-2** | **Under B4's "per year with the app": on which date does a year's ring appear, and which ring holds which journey's line?** Years with the app and journeys need not line up: gaps, a first year without a journey, a never-finished reveal. A ring must never appear or change inside a sealed year (R-012, R-143; Flows:514). B28 puts each finished journey's marks on the ring for the year holding its reveal-finished date, so the line survives under both B4 settings (R-187). Still open: the ring timing, which B28 states as a proposed rule; whether two reveals finished in the same year should share one ring, as B28 makes them; and how the activity is carried between finish and that year's ring. B28 keeps the flat graph shown until the ring exists. The other reading is to draw the marks on the newest existing ring until the year's own ring arrives | When a ring appears, and what it means | Provisional default `PROVISIONAL: B28` (`Decisions-Needed.md`) |
 | **AD-3** | **Does the line visibly bend, once, when the owner finishes a reveal?** "Twisted and turned" (Concept:706) suggests it. "Never arrives as an achievement" (SI:176) and "no celebration" (Flows:523) warn against it. Flows:362 takes the app to S-05 straight after finish | Motion at the weightiest moment can read as a reward, and playing it on a later open would be a marker | Provisional default `PROVISIONAL: B29` (`Decisions-Needed.md`) |
 | **AD-4** | **How is the dark theme chosen?** Following the device, a setting, or not at all in the prototype | A setting is a new control, and a prototype switch would join T-02 | Provisional default `PROVISIONAL: B30` (`Decisions-Needed.md`) |
 | **AD-5** | **Is there a limit on a name's length?** Proposal:61 and SI S-11 say set once, and give no length. A name must fit in the core | A limit is a rule at sign-up | None needed in the prototype: all fixture names fit, and sign-up is not built (`PROVISIONAL: C11`) |
@@ -692,7 +709,8 @@ Nothing below is picked. Where the build has to draw something before the user a
 | **AD-15** | **How is "a journey exists" shown to others on S-16 and S-06: words, a drawing, or both, and where?** SI:419 holds the fact and nothing else. A drawing beside a name, present only while a journey is under way, works as a status flag | What is shown and where | Provisional default `PROVISIONAL: B39` (`Decisions-Needed.md`) |
 | **AD-16** | **On a map with people, is a layer ring with nobody on it drawn?** Flows:455 says "three rings". Drawing only occupied rings makes a ring vanish when its last person drifts out, which shows drift (`PROVISIONAL: C8`). Drawing it empty may read as a slot to fill | What appears and disappears on the map | Provisional default `PROVISIONAL: B40` (`Decisions-Needed.md`) |
 | **AD-17** | **Fine outer rings fall below a device pixel.** At 240 px on a 1× screen, strokes go under 0.5 px from ring 10; at 320 px, from ring 13. On a 2× screen, from about ring 18 and 21. There the lines blur into the band's tone, 1.54 (light) and 1.88 (dark) against the page, below 3:1. The owner's day marks sit on those rings: from about ring 17 the rise is under 0.45 units, so that year's activity is no longer readable. Fixtures reach about 11 rings with the clock's +5 years. Options: accept for the prototype; a larger first pitch or slower ratio, which makes the circle grow further; or a smallest display size above 240 | It decides what an older user can still read on their own profile | None needed: the build draws the formula. For the user to review |
-| **AD-18** | **Ways that appear by journey state.** S-05 leads to Reveal "when a reveal is open", to Commit in `no-journey`, and to the sealed year while sealed (SI:170). R-186 says no way appears, disappears or changes because of content. A way that appears on the day a reveal opens works as a marker | When a way appears | Reveal: provisional default `PROVISIONAL: B41`. Commit and the sealed year follow SI's rows until the user rules |
+| **AD-18** | **Is a way that appears by journey state a marker?** S-05 leads to Reveal while a reveal is open, to Commit in `no-journey`, and to the sealed year while sealed (SI:151, SI:170). R-186 says no way appears, disappears or changes because of content, and SI:77 bans "a banner or marker that Commit is open again". On the day of unlock the sealed-year way goes and the Commit and Reveal ways come | When a way appears | Reveal: `PROVISIONAL: B41`. Commit and the sealed year: `PROVISIONAL: B42`. Whether appearing by state is a marker: for the user |
+| **AD-19** | **The newest ring is always the finest** ([§3.2](#32-the-rings)). On the owner's own circle the most recent year is the faintest line, which could read as fading. A geometry within R-185 that avoids it: put the newest ring next to the frame and push older rings out one place at each finish. The tone stays 22% at every count, but every ring then moves at each finish, which contradicts `PROVISIONAL: B34` ("added outermost") and the tree reading (Concept:689). For the user to look at in the preview at +5 years | It changes where a ring sits and whether rings move | None needed: the build draws the formula and B34 |
 
 ### B. Where the docs disagree
 

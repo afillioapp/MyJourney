@@ -2,7 +2,7 @@
 
 The blackboard. Every worker reads this before starting and every finished step is recorded here with its evidence. The phases, deliverables and gates come from `Build-Plan.md`; this file only tracks where they stand.
 
-Last updated: 2026-11-04
+Last updated: 2026-11-09
 
 Status values: `todo` · `in progress` · `in review` · `done` · `blocked`
 
@@ -11,7 +11,7 @@ Status values: `todo` · `in progress` · `in review` · `done` · `blocked`
 ## Where we are
 
 **Current phase:** 2 — Look, started at the user's request (2026-11-04). The Phase 1 gate has not been passed; see the Log.
-**Next step:** Flows (ux), then art direction and microcopy, then a private preview on Vercel.
+**Next step:** private preview of Phase 2 on Vercel (`preview/`), then the user's answers to the open questions, then the Phase 2 gate.
 **Waiting on you:** the Phase 1 gate (rules r10 and gate r9 fixes are in but not re-audited). Parked questions: SI OQ-51, OQ-52; system closing the app during the note window; BBBB (b) timing item.
 
 ---
@@ -42,9 +42,9 @@ Status values: `todo` · `in progress` · `in review` · `done` · `blocked`
 
 | Deliverable | Owner | Status | Evidence |
 |---|---|---|---|
-| Art direction | art-director | in review | `Art-Direction.md`; audit r1 FAIL (`reviews/2026-11-04-rules-art-microcopy.md`, ART-1 to ART-12), round 1 fixed; re-audit r2 running. Open questions AD-1 to AD-18 there; drawn states are provisional defaults B27 to B41 |
-| Flows on paper | ux | in review | `Flows.md`; audits r1 FAIL (13), r2 FAIL (6), r3 FAIL (1: `reviews/2026-11-05-rules-flows-r3.md` V1, C2 labelled as open). Revision cap reached; best attempt goes to the user with V1 flagged. Open questions FQ-1 to FQ-12 and DC-1 to DC-14 listed there |
-| Microcopy for the weighted moments | copywriter | in review | `Microcopy.md`; audit r1 FAIL (`reviews/2026-11-04-rules-art-microcopy.md`, COPY-1 to COPY-9), round 1 fixed; re-audit r2 running. Open questions renamed MQ-1 to MQ-8 (R-177) |
+| Art direction | art-director | in review | `Art-Direction.md`. Audits r1 FAIL (12), r2 FAIL (5), r3 FAIL (2); round 3 of 3 fixed and checked by the supervisor, not re-audited. Waits on the user: AD-1 to AD-19, defaults B27 to B42 |
+| Flows on paper | ux | in review | `Flows.md`. Audits r1 FAIL (13), r2 FAIL (6), r3 FAIL (1: C2 label, `reviews/2026-11-05-rules-flows-r3.md`). Cap reached. Waits on the user: C2, FQ-1 to FQ-13, DC-1 to DC-14 |
+| Microcopy for the weighted moments | copywriter | in review | `Microcopy.md`. Audit r3 **PASS** (`reviews/2026-11-05-rules-art-microcopy-r3.md`). Waits on the user: MQ-1 to MQ-11 |
 
 **Gate:** someone who has never heard of the product can follow the flows and understand the ritual.
 
@@ -158,3 +158,7 @@ Can start any time after Phase 2.
 - 2026-11-05 — Resumed. Supervisor added R-179 to R-186 (guardian's P-1 to P-8). Fixes sent: Flows round 3 of 3, art direction and microcopy round 1. Cross-doc: "12 months from today" removed from Flows:156 and M-02 by the strictest reading (CL:24, C2); Microcopy Q-n renamed MQ-n (R-177). Learner not yet dispatched for the failed audits; batched to the end of the phase to save usage.
 - 2026-11-05 — Flows round 3 of 3 done; re-audit r3 FAIL on one labelling violation (V1: the plain unlock date marked `PROVISIONAL: C2` though C2's other option is a countdown R-013 bars). Cap reached: to the user, not to another round. Microcopy round 1 fixes and two syncs with the final flows done.
 - 2026-11-05 — Art direction round 1 fixed (new ring geometry, tier names removed, AD-11 to AD-18). Supervisor added provisional defaults B27 to B41 to `Decisions-Needed.md` from the art director's proposals (B28 marked as an invented rule) and linked them in `Art-Direction.md`. Art and microcopy re-audit r2 running.
+- 2026-11-05 — Art and microcopy re-audit r2: both FAIL (art 5, copy 3; none leaks, shows a layer or ranks), all 21 r1 findings fixed (`reviews/2026-11-05-rules-art-microcopy-r2.md`); guardian added R-187. Three art findings traced to the supervisor's new rows: B41 revised (plain way to Reveal while open, does not answer C18), B28 revised (activity line kept under both B4 settings), B42 added (sealed-year and Commit ways per SI:170). Round 2 of 3 sent to art-director and copywriter. Preview page built (`preview/`, `python3 preview/build.py`); checkpoint commit a618960, not pushed.
+- 2026-11-05 — Art and microcopy final audit r3 (`reviews/2026-11-05-rules-art-microcopy-r3.md`): **Microcopy PASS**. Art FAIL on 2 (ART-R3-1 medium: B28 left a gap under B4's option; ART-R3-2: a range missing B42). Run stopped on the 5-hour usage limit after writing the report.
+- 2026-11-09 — Resumed. Supervisor revised B28 (flat graph stays under B4's option until the year's ring exists) and B31 (points to the exception). Art round 3 of 3 sent for the matching edits.
+- 2026-11-09 — Art round 3 of 3 fixed (B28 carried, B42 range). Checked by the supervisor against ART-R3-1 and ART-R3-2; no further audit run, to save usage. All three Phase 2 deliverables are `in review`, waiting on the user's answers. Preview regenerated.
