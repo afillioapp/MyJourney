@@ -80,6 +80,12 @@ Approved approach (user, 2026-10-27): build the prototype with these defaults an
 | B45 | **Removing a friend.** Either friend can remove the other at any time, silently. Access follows the current friendship at once: a removed friend reads only Public from then on. Removal never touches the map, which comes from tags (§20 KKKK). Instagram reference (CLAUDE.md rule zero step 5; added 2026-11-09 for Spec §20 KKKK) | no |
 | B46 | **No limit and no number.** There is no cap on friends, and no friend count is shown to anyone, anywhere (banned list: counters). No "people you may know" (§20 KKKK c). Instagram reference (CLAUDE.md rule zero step 5; added 2026-11-09 for Spec §20 KKKK) | no |
 | B47 | **The close-friends list.** The owner adds or removes close friends from among their friends at any time, silently. Nobody is told they were added or removed, the list is shown to no one but the owner, and there is no count. What close friends get is E2, so for now they get nothing extra. Instagram reference (CLAUDE.md rule zero step 5; added 2026-11-09 for Spec §20 KKKK f) | no |
+| B48 | **Who sees an announcement is worked out when it is read.** A new friend sees the owner's earlier announcements, and a removed friend stops seeing them. Instagram reference (CLAUDE.md rule zero step 5; added 2026-11-09 from `Phase-1-Amendments.md` §12.10 OQ-41) | no |
+| B49 | **Removing a friend also removes them from the close-friends list.** Becoming friends again does not restore their place. Instagram reference (CLAUDE.md rule zero step 5; added 2026-11-09 from `Phase-1-Amendments.md` §12.10 OQ-42) | no |
+| B50 | **An answer to a request is final.** A decline cannot be undone by the person who declined. The sender can withdraw it, since a decline looks pending to them (B44), and send a new request. Instagram reference (CLAUDE.md rule zero step 5; added 2026-11-09 from `Phase-1-Amendments.md` §12.10 OQ-44, OQ-45) | no |
+| B51 | **No limit on withdrawing and sending again.** Instagram reference (CLAUDE.md rule zero step 5; added 2026-11-09 from `Phase-1-Amendments.md` §12.10 OQ-45; no block exists in the docs) | no |
+| B52 | **The requests list shows newest first**, with no time or date shown beside a request. Instagram reference (CLAUDE.md rule zero step 5; added 2026-11-09 from `Phase-1-Amendments.md` §12.10 OQ-47; replaces the random order built in §12, so lead-tech carries it) | no |
+| B53 | **Crossed requests are allowed.** If both people have sent one, accepting either makes them friends. Instagram reference (CLAUDE.md rule zero step 5; added 2026-11-09 from `Phase-1-Amendments.md` §12.10 OQ-48) | no |
 
 Section A was approved by the user on 2026-10-27 and is being applied.
 
@@ -214,7 +220,11 @@ Options to consider (supervisor, 2026-11-09). Not decided, and none is built. Ea
 | E2-b | **Reflections:** close friends can read the owner's reflections on a photo even when the photo itself is Network |
 | E2-c | **Overviews:** the yearly journey overview can be shared with close friends only |
 
-Whatever is chosen, close friends still never see a sealed year, never see anyone's layer, and get no extra notification, count or marker.
+Whatever is chosen, close friends still never see a sealed year, never see anyone's layer, and get no extra notification, count or marker. *Note from lead-tech (`Phase-1-Amendments.md` §12.10): whatever close friends get will let a close friend work out that they are on the list, the same way network access used to give away a place on the map.*
+
+**E3. Things that still tell someone they are on a map (raised 2026-11-09, `Phase-1-Amendments.md` §12.10).** (a) OQ-40: "path crossed" goes to friends (§20 KKKK e). If the tagged person is a friend and B11 names them, they learn they are on the map. (b) OQ-46: under the "shown" settings of B12 and C6, a tagged reader sees that they are tagged. For the user.
+
+**E4. Friend lists (OQ-43).** Can anyone see another user's friends? Built for now: no one can. For the user, because it is about who sees what.
 
 ## D. Already open elsewhere
 
