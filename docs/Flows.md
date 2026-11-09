@@ -249,9 +249,9 @@ The steps from app open to a taken photo are three presses: to S-03, to the came
 - **Refused:** the type's allowance is used (Explorer 4, Wanderer 2, Contemplator 1; Spec §5), or another highlight is already open (Spec §20 N). One refusal, no number (S-13). `[copy: copywriter]` *The highlight refusal: say it did not start, with no number and nothing about when.*
 - No step is described before the press, though a press uses up the allowance: FQ-2.
 - Not offered after unlock or with no journey (Proposal:135).
-- **Refused, or decides not to start.** No doc names a way out of S-13 other than the camera (SI S-13 "Leads to"). Not picked: FQ-11.
+- **Refused, or decides not to start.** Back to the sealed year S-03 (decided 2026-11-09, Spec §20 JJJJ).
 
-**Ends:** at the camera S-02, the only way on that SI gives this screen. Any other way out is FQ-11.
+**Ends:** at the camera S-02 when a highlight is started, or back at the sealed year S-03 after a refusal or when the owner does not start one (Spec §20 JJJJ).
 
 ---
 
@@ -705,7 +705,7 @@ Nothing below was picked. Each flow adds nothing at these points. **New IDs:** F
 | FQ-8 | **Whether the "can't be changed" line needs answering, and what act saves a set-once choice.** One question. C5 answers repetition: the line shows before each set-once choice is saved (`Decisions-Needed.md:43`; `PROVISIONAL: C5`). C5 does not say whether that line needs answering, or what act saves the choice: the press that picks it, with the line already in view, or a separate act after the line. A typed feeling tag or name needs some act to end it; a visibility choice may not. **For the user, as a challenge to C5:** a journey can hold many photos, so this line can show many times over. | 5 | Decisions C5; S-18, S-19, S-20, S-21 |
 | FQ-9 | **Where a path opens when reached from an announcement or a Positivity Feed entry.** Spec §15 says from the beginning to now. S-06 is reached from S-08 and S-09. Does it open at the beginning, or at that journey? | 9 | Spec §15; S-06, S-08, S-09 |
 | FQ-10 | **Leaving the camera or the note step after the unlock instant.** §20 CCCC says the next press is not taken and the app goes to the profile. A press on the way out of S-02 or S-12 is a press. Is it CCCC's "next press", going to S-05, or does it go where it points? S-03 is gone by then (Flow 4, time-state table). It also leaves open which applies when ends 3 and 7 of the note step overlap. Same family as SI OQ-51, SI OQ-52 and FQ-3. | 2, 3 | Spec §20 CCCC, DDDD; S-02, S-12; SI OQ-52 |
-| FQ-11 | **The way out of Start a highlight.** S-13's only "Leads to" is the camera. No doc says where an owner goes who is refused a highlight, or who reaches S-13 and decides not to start. | 2a | SI S-13; Proposal:135 |
+| FQ-11 | **The way out of Start a highlight.** S-13's only "Leads to" is the camera. No doc says where an owner goes who is refused a highlight, or who reaches S-13 and decides not to start. | 2a | SI S-13; Proposal:135 **Decided 2026-11-09: back to the sealed year S-03 (Spec §20 JJJJ).** |
 | FQ-12 | **Whether the note offer may state the 15 minutes.** R-140 bans a timer and a countdown, not the length. No source says whether a fixed statement of the 15 minutes is allowed. As written, someone writing slowly can press after the window, see the step simply end (Spec §20 UUU) and never have been told there was a limit. The same goes for a skip being final (Spec §20 WWW). Same question as `Microcopy.md` MQ-1. | 3 | Spec §20 K, UUU, WWW; R-140; S-12 |
 | FQ-13 | **Whether Start a highlight may state the window's length.** The window is 24 hours of elapsed time, cut off at unlock (SI S-13; Proposal:133; `PROVISIONAL: B16`). A flat "24 hours" is false for a highlight started less than 24 hours before unlock, and S-13 must look the same in every state (R-138). No source says whether the length may be stated, and if so, with its cut-off. Same family as FQ-12. | 2a | SI S-13; Proposal:133; R-138, R-140 |
 

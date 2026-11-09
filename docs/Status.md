@@ -12,7 +12,7 @@ Status values: `todo` · `in progress` · `in review` · `done` · `blocked`
 
 **Current phase:** 2 — Look, started at the user's request (2026-11-04). The Phase 1 gate has not been passed; see the Log.
 **Next step:** private preview of Phase 2 on Vercel (`preview/`), then the user's answers to the open questions, then the Phase 2 gate.
-**Waiting on you:** B11 (follow-up), AD-19 (follow-up), FQ-11 (re-asked), AD-18 (not sure; B41 and B42 stand). Then the Phase 1 and Phase 2 gates. Parked: SI OQ-51, OQ-52; system closing the app during the note window; BBBB (b).
+**Waiting on you:** E1, network by friend request (confirm, with sub-questions); AD-18 (not sure; B41 and B42 stand); whether to push the updated preview. Then the Phase 1 and Phase 2 gates. Parked: SI OQ-51, OQ-52; system closing the app during the note window; BBBB (b).
 
 ---
 
@@ -165,3 +165,4 @@ Can start any time after Phase 2.
 - 2026-11-09 — Pushed `2b2079e` to `claude/wizardly-planck-77eo2h`; Vercel preview `dpl_256FnLoD9w7WcQf2N6qsk7sE77W1` READY at `myjourney-dkv21qbhn-afillio.vercel.app/preview/`. Logged out it returns 302 to Vercel login, the same at the branch alias, so it is private. Production untouched. Not checked behind the login (that needs a share link).
 - 2026-11-09 — Project moved from `~/Documents/Business/Retro-Gram` to `~/Projects/Retro-Gram` at the user's choice, out of Google Drive's backup of `~/Documents`. Git, graph root and Claude memory carried. Markdown files updated for the new location and current status: `CLAUDE.md`, `README.md`, `Learnings/index.md`, `Decisions-Needed.md`; B36 carried into `Screen-Inventory.md` S-16.
 - 2026-11-09 — User rulings: §20 EEEE (unlock date always plain; clears Flows r3 V1), FFFF ("Your Journey is ready" once), GGGG (B28 timing kept), HHHH ("We want you here less, not more." on the website; R-130 met by the site). Carried by the supervisor into Flows, Microcopy, Art-Direction, Screen-Inventory, Rubric and Decisions-Needed (L-002). AD-18: user not sure, stays open under B41 and B42. B11 "no" and AD-19 "yes" need a follow-up; FQ-11 to be re-asked. Preview regenerated.
+- 2026-11-09 — User rulings §20 IIII (newest ring thinnest and brightest; AD-19) and JJJJ (Start a highlight leads back to S-03; FQ-11), carried into Flows, Microcopy, Screen-Inventory and Art-Direction. The tone for IIII is still to be specified by art-director. User direction on B11: network by friend request, map by tags (Decisions-Needed E1), to be confirmed before the data model is touched.

@@ -372,7 +372,10 @@ Feeling tags currently drafted: hang in there · it eventually pays off · thank
 - **GGGG. The per-year ring timing in Decisions-Needed B28 is kept.** Under B4's "per year with the app", a year's ring is added at the join anniversary, or at the unlock of a journey sealed then, never inside a sealed year. Each finished journey's day marks go on the ring for the year that holds its reveal-finished date, and its flat graph stays for the owner until that ring is drawn. B4 itself remains a switchable provisional default
 - **HHHH. "We want you here less, not more." belongs on the website**, the Phase 5 marketing site, not in the app's profile (Microcopy MQ-5). Rubric R-130 is met by the site. The app is not required to carry it in first-run copy
 
-*EEEE–HHHH above were ruled on 2026-11-09.*
+- **IIII. The newest ring is the thinnest and the brightest.** The thinning by age stays as drawn (Art-Direction AD-19); the newest ring is also drawn the brightest of the rings. It is how a ring looks by its place, never a marker that something is new, and it never reads as a level (Rubric R-096, R-185)
+- **JJJJ. The way out of Start a highlight is back to the sealed year S-03**, after a refusal or when the owner decides not to start (Flows FQ-11). Starting one still leads to the camera S-02
+
+*EEEE–JJJJ above were ruled on 2026-11-09.*
 
 ### Still open — can wait
 

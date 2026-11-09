@@ -354,7 +354,7 @@ On every state, never: a prompt to capture a low point: "invited, never nudged" 
 - **Purpose:** the user opens a 24-hour window in which the frame limit does not apply.
 - **Spec source:** Spec:63–67 (§5); Spec §20 4, 5, N; Proposal:19 (D6); Proposal:128–135; Brief:65; Decisions B6, B16
 - **Viewer:** owner. Others learn nothing about highlights (`PROVISIONAL: B6`; Spec §20 I)
-- **Reached from:** The sealed year S-03. **Leads to:** Capture S-02
+- **Reached from:** The sealed year S-03. **Leads to:** Capture S-02; back to the sealed year S-03 after a refusal or when the owner does not start one (decided 2026-11-09, Spec §20 JJJJ)
 
 | State | Holds | Must never show |
 |---|---|---|

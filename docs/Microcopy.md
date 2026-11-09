@@ -205,7 +205,7 @@ Nothing below was picked by the wording. Each entry says how the copy stays clea
 | FQ-8 | One question in Flows: whether the "can't be changed" line needs answering, and what act saves a set-once choice. C5 answers repetition only. M-16 is one line, the same each time; it names no act and is not worded as a question, so it does not settle either half |
 | FQ-9 | No wording says where a path opens |
 | FQ-10 | No line on the way out of S-02 or S-12 after the unlock instant. Nothing written |
-| FQ-11 | M-07 names no way out of S-13. Nothing written |
+| FQ-11 | **Decided 2026-11-09: back to the sealed year S-03 (Spec §20 JJJJ).** M-07 needs no line for the way back |
 | FQ-12 | Same question as MQ-1. M-08 stays silent on the 15 minutes |
 | FQ-13 | Whether S-13 may state the window's length, with its cut-off at unlock. M-05 states no length, so it settles nothing. M-01 on S-01 keeps Spec §20 4's "24 hours" as part of describing a choice before any year runs; if FQ-13 rules that a stated length must carry the cut-off, M-01 follows |
 | DC-1, DC-3 | No line says what adds a ring. M-17's "as it stands" holds under `PROVISIONAL: B3`; DC-3 is still the user's to confirm |

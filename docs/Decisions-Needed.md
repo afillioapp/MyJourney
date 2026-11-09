@@ -195,6 +195,10 @@ The Phase 1 gate asks that a developer can build the data model "with no questio
 
 **C18. How long "Your Journey is ready" stays.** Once, on the next open, or on every open until the reveal is finished? (Inv OQ-42; re-audit N5.) C1 says "next open". **Decided 2026-11-09: once, on the first open after unlock (Spec §20 FFFF).**
 
+## E. Raised by the user in Phase 2
+
+**E1. Network by friend request (user direction, 2026-11-09, to be confirmed).** In answer to B11, the user said no to people being able to work out that they are on someone's map. Instead: "you could have friend request like normal social media, but being on the map or being on the timeline is when they add you in the photos." Today the network is "everyone in the owner's layers" (`Functional-Spec.md:146`), so access tells a person they are on the map. Under E1, the network would be the people who accepted a friend request, and the map would come from tags alone. This changes Spec:146, §20 H, M and T, the approved data model (`viewer_in_network()`, Phase-1-Proposal §2), fixtures and rubric checks, so it waits on the user's answers to the sub-questions before anything is reworked. Not a decision until the user confirms it.
+
 ## D. Already open elsewhere
 
 | # | Decision | Blocks |
