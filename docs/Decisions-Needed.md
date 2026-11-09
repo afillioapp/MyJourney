@@ -201,6 +201,16 @@ The Phase 1 gate asks that a developer can build the data model "with no questio
 
 **E2. What close friends get.** Close friends are now a list the owner chooses from among friends (§20 KKKK f). Do they see anything that other friends do not, for example a Close-friends visibility level beside Private, Network and Public? Until answered, §20 H's "nothing extra" stands as the provisional reading. **User, 2026-11-09: yes, close friends should get something extra, but what is not decided yet; the user is thinking about it.** Nothing is built for it until then, and the prototype keeps "nothing extra".
 
+Options to consider (supervisor, 2026-11-09). Not decided, and none is built. Each keeps the banned list:
+
+| Option | What close friends get |
+|---|---|
+| E2-a | A **Close friends** visibility level for photos, beside Private, Network and Public. Set once at the reveal, like the others |
+| E2-b | **Reflections:** close friends can read the owner's reflections on a photo even when the photo itself is Network |
+| E2-c | **Overviews:** the yearly journey overview can be shared with close friends only |
+
+Whatever is chosen, close friends still never see a sealed year, never see anyone's layer, and get no extra notification, count or marker.
+
 ## D. Already open elsewhere
 
 | # | Decision | Blocks |
