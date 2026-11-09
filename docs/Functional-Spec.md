@@ -143,11 +143,11 @@ Set **per photo**, chosen at publish time, not at capture.
 | Level | Who sees it |
 |---|---|
 | Private | Only the owner |
-| Network | Everyone in the owner's layers |
+| Network | The owner's friends: people who accepted a friend request (§20 KKKK; before 2026-11-09, everyone in the owner's layers) |
 | Public | Anyone. This is the pool the Positivity Feed draws from |
 
 - Opening someone's profile gives access to their journey
-- Close friends are the innermost ring. They see nothing beyond the rest of the network (§20 H)
+- Close friends are a list the owner chooses from among their friends (§20 KKKK, replacing the ring part of §20 H). Whether they see anything more than other friends is open (Decisions-Needed E2)
 - Network is the default until the owner chooses, and choices lock when the reveal is finished (§20 F)
 - Public means **readable, not commentable**
 
@@ -275,7 +275,7 @@ Feeling tags currently drafted: hang in there · it eventually pays off · thank
 - **E. Overviews.** A new overview every year on each journey, stacking. Readable by the owner's network
 - **F. Visibility.** Network is the default, until the owner chooses. Reflections follow their photo's visibility. Reveal choices (visibility, people tags, chapter, feeling tags) lock when the reveal is finished
 - **G. Layers.** A tag puts the tagged user on the tagger's map only. The tagged person's map doesn't change. Any user counts, whether or not they have a journey. Private photos count. Three rings: tight 5+ shared photos, middle 2–4, outer 1. A journey with no crossing moves someone out one ring, and nobody ever drops off the map
-- **H. Close friends** are the innermost ring. They see nothing beyond the rest of the network, and Private stays owner-only
+- **H. Close friends** are the innermost ring *(ring part superseded 2026-11-09 by KKKK: close friends are now chosen from among friends)*. They see nothing beyond the rest of the network, and Private stays owner-only
 - **I. Sealed journeys.** Others may know only that one exists
 - **J. Feed.** "Journey launched" goes out when the reveal is finished. "Reflection left" reaches only people who can see that photo. "Path crossed" goes out for every crossing
 - **K. Handwritten note.** It can be added up to 15 minutes after capture, never after
@@ -375,7 +375,9 @@ Feeling tags currently drafted: hang in there · it eventually pays off · thank
 - **IIII. The newest ring is the thinnest and the brightest.** The thinning by age stays as drawn (Art-Direction AD-19); the newest ring is also drawn the brightest of the rings. It is how a ring looks by its place, never a marker that something is new, and it never reads as a level (Rubric R-096, R-185)
 - **JJJJ. The way out of Start a highlight is back to the sealed year S-03**, after a refusal or when the owner decides not to start (Flows FQ-11). Starting one still leads to the camera S-02
 
-*EEEE–JJJJ above were ruled on 2026-11-09.*
+- **KKKK. The network is made by friend requests; the map is made by tags** (Decisions-Needed E1; replaces the network part of Spec:146 and the ring part of §20 H). (a) A friend request must be accepted by both people. (b) Anyone can be tagged by typing their name: a user found by name, or a typed name for someone not on the app, which never counts towards layers, as now. (c) Requests arrive inside the app only, with no notification, no friend count and no "people you may know". (d) Someone on your map who is not your friend sees only your Public photos. (e) "Journey launched" and "path crossed" go to your friends. (f) Close friends become a list the owner chooses from among their friends, and are no longer the inner ring. The map keeps its three rings from shared photos and is still never shown to the person on it. Whether close friends see anything more than other friends is still open (Decisions-Needed E2). The approved data model needs an amendment before Phase 3 (lead-tech)
+
+*EEEE–KKKK above were ruled on 2026-11-09.*
 
 ### Still open — can wait
 

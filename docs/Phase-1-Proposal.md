@@ -26,7 +26,7 @@ This version folds in every decision made on 2026-10-25. They're listed in secti
 | D13 | People tags: **users, or a typed name.** Typed names never count towards crossings or rings |
 | D14 | A tag puts the tagged user **on the tagger's map only**. Any user counts, whether or not they've ever had a journey. Private photos count |
 | D15 | **Three rings:** tight 5+ shared photos, middle 2–4, outer 1. A journey with no crossing moves someone **out one ring**. Nobody ever drops off the map |
-| D16 | Close friends **are** the innermost ring. They see nothing beyond the rest of the network. Private is owner-only |
+| D16 | Close friends **are** the innermost ring. They see nothing beyond the rest of the network. Private is owner-only. *Superseded 2026-11-09 by Functional-Spec §20 KKKK: the network is made by accepted friend requests and close friends are chosen from among friends. The data model in §2 still computes the network from layers and needs an amendment before Phase 3 (lead-tech)* |
 | D17 | Others may know **only that a sealed journey exists** |
 | D18 | Feed: "journey launched" goes out when the reveal is finished. "Reflection left" reaches only people who can see that photo. "Path crossed" goes out for every crossing |
 | D19 | One name, chosen once and kept |

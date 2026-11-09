@@ -22,6 +22,7 @@ When the docs do not settle something (rule as of 2026-10-27):
 2. If it is not listed, stop and ask the supervisor. Do not pick
 3. Every provisional default is labelled in the code (`// PROVISIONAL: Decisions-Needed B4`) so it can be found and changed. The ones marked "switchable" are wired to the prototype options panel, so the user can compare options in the app
 4. A provisional default may never break the banned list. When unsure, the strictest reading wins
+5. **Which questions reach the user** (user, 2026-11-09). Questions about what makes My Journey itself, such as the ritual, sealing, the reveal, rings, layers, visibility and the product's voice, go to the user. Generic app questions, such as notification settings, account basics, search or how a friend request is accepted, are not asked: the supervisor takes Instagram's behaviour as the reference, labels it `PROVISIONAL` in `docs/Decisions-Needed.md` as "Instagram reference", and tells the user afterwards. The banned list and steps 1 to 4 still win: where Instagram does something the banned list rules out, such as push notifications, counts, suggestions or streaks, the reference is dropped
 
 `docs/Functional-Spec.md` section 20 records what was decided. A provisional default becomes a decision only when the user says so, and then it moves into §20.
 
@@ -108,7 +109,9 @@ A highlight is a limited window where the frame limit does not apply. The user s
 
 **Reflect** — one per photo per year, immutable, stacking forever. All photos of a journey move to their next slot together, on the journey's unlock anniversary. The overview stacks the same way, one per journey per year, readable by the network. Both are optional.
 
-**Layers** — concentric rings with the user at the core: tight (5+ shared photos), middle (2–4), outer (1). A tag puts the tagged user on the tagger's map only. A journey with no crossing moves someone out one ring, and nobody drops off. Close friends are the innermost ring and see nothing extra. A layer is never shown to the person on it.
+**Layers** — concentric rings with the user at the core: tight (5+ shared photos), middle (2–4), outer (1). A tag puts the tagged user on the tagger's map only. A journey with no crossing moves someone out one ring, and nobody drops off. A layer is never shown to the person on it.
+
+**Network and friends** (decided 2026-11-09, `docs/Functional-Spec.md` §20 KKKK) — the network is your friends: people who accepted a friend request, which both must agree to. Requests arrive inside the app only, with no notification, no friend count and no "people you may know". The map comes only from tags, so being someone's friend says nothing about being on their map. Someone on your map who is not a friend sees only your Public photos. Close friends are a list you choose from among your friends; whether they see anything extra is still open (`docs/Decisions-Needed.md` E2). The data model still computes the network from layers and needs an amendment before Phase 3.
 
 **The feed** — announcements only, on three events: journey launched (when the reveal is finished), reflection left (only to people who can see that photo), path crossed (every crossing).
 

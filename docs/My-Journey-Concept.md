@@ -369,7 +369,7 @@ Visibility is chosen **when the Journey is published**, not when photos are capt
 Three levels:
 
 - **Private** — only you
-- **Network** — everyone in your layers. The default
+- **Network** — everyone in your layers. The default *(superseded 2026-11-09: the network is your friends, people who accepted a friend request; the map comes from tags. See Functional-Spec §20 KKKK)*
 - **Public** — a deliberate choice the user makes
 
 Consequence: the Positivity Feed is fed **only by Journeys set to public**. That pool is what strangers draw hope from, so its size matters.
@@ -861,7 +861,7 @@ Settled while defining the data model and fixtures. These close the Phase 0 "nee
 - **Any user counts**, whether or not they've ever had a journey. Private photos count
 - **Three rings.** Tight is 5+ shared photos in a journey, middle 2–4, outer 1
 - **Drift.** A journey with no crossing moves someone out one ring. Nobody ever drops off the map
-- **Close friends** are the innermost ring. They see nothing beyond the rest of the network, and Private stays owner-only
+- **Close friends** are the innermost ring. They see nothing beyond the rest of the network, and Private stays owner-only *(superseded 2026-11-09: close friends are chosen from among friends; Functional-Spec §20 KKKK)*
 
 ### Sealed journeys and the feed
 
