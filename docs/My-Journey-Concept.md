@@ -192,15 +192,15 @@ Public means **readable, not commentable**. No one can reply on your photo.
 
 - **One reflection per photo, per year.** That is the limit
 - Plenty of time to think. No one-week pressure
-- Proposed window: the slot for a photo stays open until that photo's **next anniversary**. Generous, no deadline, and still one per year. *(Superseded 2026-10-25: all photos of a journey move to their next slot together, on the journey's unlock anniversary. See §29.)*
+- Proposed window: the slot for a photo stays open until that photo's **next anniversary**. Generous, no deadline, and still one per year. *(Superseded 2026-10-25: all photos of a journey move to their next slot together, on the journey's unlock anniversary. See §29.)* *(Restored 2026-11-10 by Functional-Spec §20 VVVV: slots follow each photo's own capture anniversary again.)*
 
 ### Sealed and stacked — decided 2026-10-18
 
 - **No edits.** An old reflection is sealed, exactly like the photo. You never rewrite your past self
-- **You add a new one instead**, on the photo's anniversary *(superseded 2026-10-25: all photos of a journey move to their next slot together, on the journey's unlock anniversary. See §29 and Functional-Spec §20 D)*
+- **You add a new one instead**, on the photo's anniversary *(superseded 2026-10-25: all photos of a journey move to their next slot together, on the journey's unlock anniversary. See §29 and Functional-Spec §20 D)* *(Restored 2026-11-10 by Functional-Spec §20 VVVV: slots follow each photo's own capture anniversary again.)*
 - **Nobody can comment.** The only voice on a photo is yours. Others may read a Journey; they cannot write on it
 
-Example: *(superseded 2026-10-25: slots follow the journey's unlock anniversary, not the photo's, so these dates no longer apply. See §29 and Functional-Spec §8)*
+Example: *(superseded 2026-10-25: slots follow the journey's unlock anniversary, not the photo's, so these dates no longer apply. See §29 and Functional-Spec §8)* *(Restored 2026-11-10 by Functional-Spec §20 VVVV: slots follow each photo's own capture anniversary again.)*
 
 | | |
 |---|---|
@@ -849,7 +849,7 @@ Settled while defining the data model and fixtures. These close the Phase 0 "nee
 
 ### Reveal and after
 
-- **Reflection slots.** All photos of a journey move to their next slot together, on the journey's unlock anniversary
+- **Reflection slots.** All photos of a journey move to their next slot together, on the journey's unlock anniversary *(replaced 2026-11-10, Functional-Spec §20 VVVV: each photo moves on its own capture anniversary)*
 - **Overviews.** A new one every year on each journey, stacking. Readable by the owner's network
 - **Visibility.** Network is the default until the owner chooses. Reflections follow their photo's visibility
 - **Reveal choices are final.** Visibility, people tags, chapter and feeling tags lock when the reveal is finished. If it's never finished, the photos stay Network, with no tags, no "journey launched" and no layer update

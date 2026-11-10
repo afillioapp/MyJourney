@@ -79,9 +79,9 @@ The user picks one of three types and presses Commit, on any day. The journey ru
 
 ## 7. Reveal
 
-When a journey unlocks, this is the single engagement moment of the year. The user:
+When a journey unlocks, this is the single engagement moment of the year. The user: *(2026-11-10: reflecting is no longer a reveal step; each photo's reflection opens on the anniversary of the day it was taken, §20 VVVV. Before, step 1 read "Writes reflections on photos")*
 
-1. Writes reflections on photos
+1. Meets the photos, one at a time, in the order they were taken (§20 PPPP)
 2. Tags the people in each photo, by hand
 3. Applies the chapter tag and any feeling tags
 4. Writes the journey overview
@@ -95,10 +95,10 @@ Layers are recalculated at this point, never during the sealed year.
 ## 8. Reflect
 
 - One reflection per photo, per year
-- Written only once the journey has unlocked, in yearly slots counted from the unlock date (§20 D)
-- **Immutable.** No edits, ever. A new reflection is added instead, in the next slot, which opens on the journey's unlock anniversary
+- Written in yearly slots counted from the day the photo was taken: the first opens on its first anniversary, which always falls after unlock (§20 VVVV, replacing §20 D)
+- **Immutable.** No edits, ever. A new reflection is added instead, in the next slot, which opens on the photo's next anniversary *(2026-11-10, §20 VVVV)*
 - **No comments from others.** Others may read; only the owner writes
-- The window is generous: each slot stays open for a full year, and all photos of a journey move to their next slot together, on the journey's unlock anniversary (§20 D)
+- The window is generous: each slot stays open for a full year, from one anniversary of the photo to the next. Photos of a journey move to their next slot one by one, each on its own anniversary (§20 VVVV, replacing §20 D). Nothing marks a slot opening
 - The user is never pushed or reminded to write one
 
 Example stack on one photo, in a journey committed 1 Sep 2018 that unlocks 1 Sep 2019:
@@ -106,16 +106,16 @@ Example stack on one photo, in a journey committed 1 Sep 2018 that unlocks 1 Sep
 | Event | When |
 |---|---|
 | Photo captured | 7 Jan 2019, sealed until 1 Sep 2019 |
-| First reflection | Any time in slot 1, 1 Sep 2019 to 1 Sep 2020 |
-| Second reflection | Any time in slot 2, 1 Sep 2020 to 1 Sep 2021 |
-| … | one slot per unlock anniversary, indefinitely |
+| First reflection | Any time in slot 1, 7 Jan 2020 to 7 Jan 2021 |
+| Second reflection | Any time in slot 2, 7 Jan 2021 to 7 Jan 2022 |
+| … | one slot per anniversary of the photo, indefinitely *(2026-11-10, §20 VVVV)* |
 
 ---
 
 ## 9. Journey overview
 
 - One per journey, per year
-- A new one every year on each journey, stacking, in the same yearly slots as reflections. Readable by the owner's network (§20 E). Optional (§20 O)
+- A new one every year on each journey, stacking, in yearly slots counted from the unlock date (§20 E; reflections follow each photo's own date since §20 VVVV). Readable by the owner's network (§20 E). Optional (§20 O)
 - Covers how the user's views changed across that year
 - Immutable, like everything else
 - Stacks across years so a user can read five overviews back to back
@@ -271,7 +271,7 @@ Feeling tags currently drafted: hang in there · it eventually pays off · thank
 ### Also resolved 2026-10-25 (gaps found in Phase 1)
 
 - **C. Journey timing.** A journey runs 12 months from its own commit date and unlocks then, as one event. Commit can be pressed on any day. One journey at a time: the next Commit is only possible once the current one has unlocked
-- **D. Reflection slots.** All photos of a journey open together, on the journey's unlock anniversary. Slot *k* runs from unlock + (k−1) years to unlock + k years
+- **D. Reflection slots.** All photos of a journey open together, on the journey's unlock anniversary. Slot *k* runs from unlock + (k−1) years to unlock + k years *(replaced 2026-11-10 by §20 VVVV: each photo's slots follow its own capture date)*
 - **E. Overviews.** A new overview every year on each journey, stacking. Readable by the owner's network
 - **F. Visibility.** Network is the default, until the owner chooses. Reflections follow their photo's visibility. Reveal choices (visibility, people tags, chapter, feeling tags) lock when the reveal is finished
 - **G. Layers.** A tag puts the tagged user on the tagger's map only. The tagged person's map doesn't change. Any user counts, whether or not they have a journey. Private photos count. Three rings: tight 5+ shared photos, middle 2–4, outer 1. A journey with no crossing moves someone out one ring, and nobody ever drops off the map
@@ -392,7 +392,11 @@ Feeling tags currently drafted: hang in there · it eventually pays off · thank
 - **TTTT. The owner is told what goes out at finish** (Microcopy MQ-8). One plain line on Finish the reveal says the owner's friends will see that the journey launched. Words by the copywriter, true under both B2 settings
 - **UUUU. The app states its time limits** (Flows FQ-12, FQ-13; Microcopy MQ-1, MQ-2): the 15-minute note window and the highlight's 24 hours, shown with a circle. *Whether the circle is a fixed drawing or one that runs down is being clarified with the user (Decisions-Needed E9): a running-down circle would be a countdown, which the banned list and §20 S rule out*
 
-*LLLL to UUUU above were ruled on 2026-11-10. E2 (what close friends get) is deferred by the user; B55 stands until then.*
+- **VVVV. Each photo's reflections follow its own capture date** (Decisions-Needed E7; replaces §20 D's shared slots, and takes reflecting out of the reveal). A photo's first reflection slot opens on the first anniversary of the day it was taken and stays open until the next anniversary; slot *k* runs from capture date + *k* years to capture date + (*k*+1) years. Every slot opens after unlock, since a photo is taken inside its journey's year. Nothing marks a slot opening: no dot, count or notice (banned list). One reflection per photo per slot, immutable, as before. The journey overview keeps §20 E (one per journey per year, from unlock)
+- **WWWW. A highlight can be dismissed within 3 hours of starting it, only while no photo has been taken in it** (Decisions-Needed E8). Dismissing gives the highlight back to the allowance. Once a photo is taken in it, or after 3 hours, it runs its course. Commit has no grace
+- **XXXX. The time-limit circle is a fixed drawing** (Decisions-Needed E9). It shows the length of a window (the 15-minute note window, the highlight's 24 hours, the 3-hour grace) like a clock face marked at that length. It never moves, fills or empties, and never shows time left. §20 S and the banned list stand
+
+*LLLL to XXXX above were ruled on 2026-11-10. E2 (what close friends get) is deferred by the user; B55 stands until then.*
 
 ### Still open — can wait
 

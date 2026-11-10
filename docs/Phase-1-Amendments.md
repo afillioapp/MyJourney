@@ -1614,7 +1614,7 @@ No one is ever taken off the list with `remove_close_friend()`; K8 tests that wr
 
 **Each instant after both users' `joined_at`** (P1 §3.2). The later join of each pair, then the first act on it: Wind 2021-03-15 → fr-1 2021-03-16. Round 2022-09-01 → fr-2 2022-09-20. Hands 2023-06-01 → fr-3 2023-06-10. Wind and Hands 2023-06-01 → fr-7 2026-10-10. Wind and Round 2022-09-01 → fr-10 2026-10-14. Hands and Round 2023-06-01 → fr-11 2026-10-16. First Light 2026-10-01 → fr-5 2026-10-03. ce-1 and ce-2 come after the friendships they sit on.
 
-**Clear of P1's fixed instants.** No act falls on a date P1 §3 fixes for any other event. The nearest are Wind's join and first commit (2021-03-15), the graduation-party highlight (2021-07-17 10:00 to 07-18 10:00), Round's join (2022-09-01), lantern-1's slot 2 reflection (2023-02-10), Hands' join (2023-06-01), the Lantern #3 and Wind #3 reveals (2024-01-20, 2024-04-20), the Round #3 reveal (2025-09-21), First Light's join (2026-10-01) and the baseline. Generated captures and notes may fall at any instant. A coincidence is harmless: no friendship writer reads or writes a journey, photo, note or highlight row (§12.6), so the order of two events at one instant changes nothing.
+**Clear of P1's fixed instants.** No act falls on a date P1 §3 fixes for any other event. The nearest are Wind's join and first commit (2021-03-15), the graduation-party highlight (2021-07-17 10:00 to 07-18 10:00), Round's join (2022-09-01), lantern-1's slot 2 reflection (2023-03-22 since 2026-11-10; was 2023-02-10), Hands' join (2023-06-01), the Lantern #3 and Wind #3 reveals (2024-01-20, 2024-04-20), the Round #3 reveal (2025-09-21), First Light's join (2026-10-01) and the baseline. Generated captures and notes may fall at any instant. A coincidence is harmless: no friendship writer reads or writes a journey, photo, note or highlight row (§12.6), so the order of two events at one instant changes nothing.
 
 **Why these pairs.**
 
@@ -1711,11 +1711,11 @@ The rule, from §12.3. "Journey launched" and "path crossed" go to the actor's f
 
 These agree with lead-tech's hand-worked 13 / 9 / 5 / 2 / 0 (§12.9), checked here against the dates, cell by cell. Lantern's 13 equals the old map-based 13 by coincidence: Wind 8 and Hands 5 in both, for different reasons.
 
-"Reflection left" depends on the generated reflections, so only the 19 fixed ones (P1 §3.5, §3.7) are given. Each is at 00:00 UTC on its date, and the reader must also be able to read the photo now (B10):
+"Reflection left" depends on the generated reflections, so only the 18 fixed ones (P1 §3.5, §3.7; 19 until 2026-11-10, FS §20 VVVV) are given. Each is at 00:00 UTC on its date, and the reader must also be able to read the photo now (B10):
 
-- lantern-1 (public: 2022-02-02, 2023-02-10, 2024-02-12, 2025-02-14, 2026-02-20): Wind all 5; Hands the last 3; Round the last 1. Before: Wind and Hands, all 5
-- lantern-2 (public, 2023-01-21): Wind only. lantern-3 (public, 2024-01-27): Wind, Hands. lantern-5 (network, 2026-01-18): Wind, Hands, Round. Before: Wind, Hands for each
-- round-1 (public: 2023-09-20, 2024-10-01, 2025-09-15, 2026-09-10): Lantern reads only 2026-09-10. round-2 (public, 2024-09-22): nobody. Before: Hands, all of them
+- lantern-1 (public: 2022-03-20, 2023-03-22, 2024-03-18, 2025-03-24, 2026-03-20, moved 2026-11-10 for FS §20 VVVV): Wind all 5; Hands the last 3 (fr-3 from 2023-06-11); Round the last 1 (fr-4 from 2025-10-02). Unchanged by the move. Before: Wind and Hands, all 5
+- lantern-2 (public, 2023-01-21): Wind only. lantern-3 (public, 2024-01-27): Wind, Hands. lantern-5 (network, 2026-07-05, moved 2026-11-10): Wind, Hands, Round, unchanged. Before: Wind, Hands for each
+- round-1 (public: 2023-11-20, 2024-11-15, 2026-09-10, three since 2026-11-10): Lantern reads only 2026-09-10, unchanged. round-2 (public, 2024-09-22): nobody. Before: Hands, all of them
 - wind-3 (network: 2024-04-20, 2025-05-01, 2026-04-15) and wind-4 (public, 2025-04-26): Lantern, the same as before. Hands never reads these, though a friend from 2026-11-14
 - hands-2 (2025-06-29) and hands-3 (2026-06-27), both public: Lantern, the same as before. Wind never reads these
 - First Light, and every non-friend, gets none, although she can read every public one (B10)
@@ -1947,7 +1947,7 @@ GROUP BY an.id, an.type, ac.name, su.name, an.at ORDER BY an.at, an.type, su.nam
 --   Round -> Hands (#1) has no recipient. At 2027-06-21: 31 rows; §13.4.2's recipients.
 -- planted, each caught on the fixture: the read-time body (current friendship only) gives 17 / 9 / 9 / 9 / 0;
 --   "ever friends at the event and friends now" hands Lantern Round #1's 2 rows through fr-2 then fr-4
--- 'reflection_left': as each viewer, the rows for the 19 fixed reflections match §13.4.1 (B10 and the same time term);
+-- 'reflection_left': as each viewer, the rows for the 18 fixed reflections (19 until 2026-11-10) match §13.4.1 (B10 and the same time term);
 --   First Light reads none
 ```
 
@@ -2150,3 +2150,32 @@ One internal predicate, `block_between(a uuid, b uuid) → boolean` (SECURITY DE
 ### 15.7 Model change
 
 **Yes**, required by FS §20 MMMM: two insert-only records, one new `friend_request_close.cause` value, one internal predicate added to the readers above, one owner-only reader. No field of the nine product objects changes. P1:170's list of supporting records needs a line (to carry with lead-tech's review).
+
+---
+
+## 16. FS §20 VVVV and WWWW: reflections by capture date; dismissing a highlight
+
+**Status: written on paper 2026-11-10 by the supervisor, at the user's go-ahead. Untested** (no Postgres here; testing is due in Phase 3). Owner: lead-tech, to review before Phase 3. The fixture dates are applied in P1 §3.5 and §3.7 and in §13.4.1 above.
+
+### 16.1 Reflection slots follow the photo (FS §20 VVVV, replaces D9)
+
+- **Rule.** For a photo captured on UTC date *c*, slot *k* (k ≥ 1) runs from *c* + *k* years, 00:00 UTC, to *c* + (*k*+1) years, 00:00 UTC. A photo captured on 29 February has its anniversary on 28 February in a year with no 29th (`PROVISIONAL: B70`).
+- **`add_reflection(photo, text)`** works out `year_index` from `app_now()` against the photo's capture date, inside the function, and refuses slot 0 (before the first anniversary) with the same `refused` answer it gives a second reflection in one slot. The unique key (photo, year_index) is unchanged. The function reads `captured_at` as a definer; it returns no slot number and no date.
+- **Always after unlock.** Capture happens inside `[committed_at, unlocks_at)` and the journey runs 12 months, so *c* + 1 year ≥ `unlocks_at`. The seal rules (P1:48) are unchanged.
+- **Reveal not needed.** As before, reflecting does not wait for the reveal to finish (P1, Reflection, "reveal finished or not"). It is no longer a reveal step (FS §7, §20 PPPP).
+- **Overviews keep the unlock-based windows** of the old D9 (FS §20 E). `add_overview()` is unchanged.
+- **Leak review.** `year_index` now derives from the capture date, which non-owners already read as a date (FS §20 GG), so it tells them nothing new; it no longer brackets the unlock date (eases §8 OQ-30). Nothing marks a slot opening: no reader returns "open slots" for anyone but the owner's own Reflect screen, and no count.
+- **Checks (not yet run).** (1) As Lantern, `add_reflection(lantern-5)` at 2026-06-20 23:59:59 refused, at 2026-06-21 00:00:00 accepted with `year_index = 1`. (2) A second at 2027-06-20 refused, at 2027-06-21 accepted with 2. (3) A 29 February test photo in a throwaway copy reflects from 28 February the next year (`PROVISIONAL: B70`). (4) The 18 fixed reflections load (P1 §3.5, §3.7), each inside its slot.
+
+### 16.2 Dismissing a highlight (FS §20 WWWW)
+
+- **New insert-only record `highlight_dismissal`**: `highlight_id` (primary key), `dismissed_at` from `app_now()`. Written only by `dismiss_highlight(journey)` (SECURITY DEFINER, owned by `mj_owner`, joins §4 item 1's list of the only functions that may name `highlight`, Rubric R-156). Sealed like the highlight row (FS §20 AA): no reader returns it, owner included.
+- **`dismiss_highlight(journey)`** acts on the journey's open highlight and returns only `accepted` or `refused`, as `start_highlight()` does (P1:49). It accepts only when: the caller owns the journey; a highlight is open; `app_now() < started_at + 3 hours` (`PROVISIONAL: B71`: the window is `[started_at, started_at + 3h)`, cut off at `ends_at`); and no photo has that `highlight_id`.
+- **Effect.** The highlight closes at once. `highlight_open()` returns false. The allowance counted inside `start_highlight()` skips dismissed highlights, so the highlight is given back, and the owner may start another (FS §20 N still: one at a time). `capture()` treats a dismissed highlight as closed (§20 U order).
+- **Leak review.** Nothing leaves the owner: no announcement, no count, no time. The owner learns only `accepted` / `refused`. Whether the dismiss way is shown is the app's, owner only, and S-13's "looks the same in every state" (R-138) is read in Screen-Inventory.
+- **Model change: yes**, required by FS §20 WWWW. One supporting record, one writer; `start_highlight()`, `capture()` and `highlight_open()` read it.
+- **Checks (not yet run).** (1) Start, dismiss at +2:59:59, accepted; `highlight_open()` false; start again, accepted. (2) Start, dismiss at +3:00:00, refused. (3) Start, capture one photo, dismiss, refused. (4) An Explorer who dismisses one still starts four more in the journey (the allowance holds four non-dismissed). (5) No `mj_app` grant on `highlight_dismissal`.
+
+### 16.3 Fixture effect
+
+VVVV: dates moved as above; no new row. WWWW: none; no fixture highlight is dismissed, and the demoer can try it.

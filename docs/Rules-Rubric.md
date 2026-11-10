@@ -42,6 +42,8 @@ Updated 2026-11-09 (rules audit `docs/reviews/2026-11-09-rules-friend-screens.md
 
 Updated 2026-11-10 (supervisor, carrying FS §20 NNNN, LLLL, MMMM; not an audit): `Updated` lines on R-071, R-092, R-139, R-141, R-146, R-147, R-148, R-149, the §14 intro and G-12. B11, B12 and C6 are no longer switches: B11 is always unnamed, B12 and C6 always hidden. No check added, renumbered or removed. The rules-guardian should re-read these on the next audit.
 
+Updated 2026-11-10, second pass (supervisor, carrying FS §20 MMMM, OOOO to XXXX; not an audit): `Updated` lines on R-121, R-122, R-138, R-140 and the C5 line; G-1 closed. Blocking (MMMM, Phase-1-Amendments §15) has no check yet: §15.5 lists the cases for the rules-guardian to turn into checks.
+
 ---
 
 ## What this is for
@@ -457,6 +459,7 @@ Commit, capture, frames, highlights and the note.
 - **Provisional default:** Decisions-Needed B7: Frames left are never shown; a refused capture says so with no number (copy in Phase 2). Firm under B7: the camera is always offered and availability is learned only by trying. The supersede condition above does not arise while B7 is in force
 - **Provisional default:** Decisions-Needed B6: The owner sees only "a highlight is open", with no end time and no countdown. Under B6 the one allowed DOM difference is that plain "a highlight is open" state while one is open. Highlights unused and highlights all used must still render the same DOM, and the start-highlight control is not hidden, greyed or relabelled while one is open; a second start is refused on tap (R-041)
 - **Accepted residual (FS §20 SSS, `FS:355`; Before real users item 7):** since FS §20 QQQ, code that holds a product connection can call `capture()` with an image that fails the guard and learn whether a press would be accepted without using a frame (`Phase-1-Amendments.md` OQ-36 (b)). The device cannot reach it, because the server strips every image. This check's "no call other than capture" still holds: the probe is `capture()` itself. Revisit with OQ-12
+- **Updated 2026-11-10 (FS §20 WWWW; `PROVISIONAL: B76`):** S-13's dismiss way is present and identical for the whole open highlight; its refusal after 3 hours and after a photo is the same words, with no time or number
 
 ### R-159
 - **Statement:** No stored image, photo or note, carries a time or a place inside its file, for anyone, the owner included. An image that would carry one is never stored.
@@ -552,6 +555,7 @@ Commit, capture, frames, highlights and the note.
 - **How to check:** On Lantern #6 after unlock, set a photo's visibility, then try to change it: refused. Add a people tag, try to remove it: refused. Set the chapter, try another: refused. No UI control offers change or removal.
 - **Current implementation:** these records are insert-only (P1:46).
 - **Provisional default:** Decisions-Needed C5: Each set-once choice shows a one-line "this can't be changed" before it is saved. Holds as written. Under C5 that line is a statement, not a second chance: after the choice is saved there is still no change or undo control
+- **Updated 2026-11-10 (FS §20 QQQQ):** the line shows once per step, never once per photo; the press that picks a choice saves it; no "are you sure" anywhere except removing a friend (B60) and blocking (B62). A line repeated per photo fails
 - **Provisional default:** Decisions-Needed B3: Each reveal choice takes effect when made. Under B3 a choice set during a reveal not yet finished is live at once: a photo set to Private is readable by its owner only from that moment (R-059), not from reveal finished
 
 ### R-052
@@ -1019,6 +1023,7 @@ Commit, capture, frames, highlights and the note.
 - **Provisional default:** Decisions-Needed B6: Others learn nothing about highlights. The owner sees only "a highlight is open", with no end time and no countdown. Firm under B6: the plain open state is the only highlight display allowed, and it is identical at start + 1 h and start + 23 h. No end time, start time, "until 3 pm" or "tomorrow" appears (closes G-13 for the owner). Decisions-Needed C4 does not change the note half: the window still runs up to 15 minutes inside capture, and no timer is shown for it
 
 ---
+- **Updated 2026-11-10 (FS §20 UUUU, XXXX):** stating a window's length is allowed, once, in words and with the fixed circle drawing (`PROVISIONAL: B77`). Check: render S-12 and S-13 at several instants of a window; the circle and the words are byte-identical at every one. Any drawing that moves, fills, empties or shows time left fails
 
 ## 9. Comments and voice
 
@@ -1145,6 +1150,7 @@ Commit, capture, frames, highlights and the note.
 - **Type:** auto · **Applies to:** data, API
 - **Source:** FS:97, FS:101, FS:274 (§20 D), P1:22 (D9), P1:115, CL:105. See G-1
 - **How to check:** For Lantern #1 (unlock 2022-01-01), a reflection on 2023-12-31 is slot 2 and one on 2024-01-01 is slot 3, for every photo regardless of capture date. A second reflection in the same slot is refused. A client-supplied slot is ignored.
+- **Updated 2026-11-10 (FS §20 VVVV, replacing §20 D; `Phase-1-Amendments.md` §16.1):** the statement now reads "Each photo's reflection slots follow its own capture date: slot k runs from capture date + k years to + (k+1) years, 00:00 UTC; slot 0 is refused". New how-to-check: as Lantern, reflect on lantern-5 (captured 2025-06-21) at 2026-06-20 23:59:59, refused; at 2026-06-21 00:00:00, accepted, slot 1. The 18 fixed reflections (P1 §3.5, §3.7) each load inside their slot. `PROVISIONAL: B70` for 29 February. The old case (Lantern #1, slots by unlock) is retired. G-1 is closed: FS:104–111's capture-date example was right
 
 ### R-122
 - **Statement:** Each journey takes at most one overview per slot, on the same slot windows as reflections.
@@ -1153,6 +1159,7 @@ Commit, capture, frames, highlights and the note.
 - **How to check:** Second overview in one slot: refused. Fixture count: Steady Lantern has 15 (P1:308).
 - **Provisional default:** Decisions-Needed B13: The slot 1 overview can be written after the reveal is finished, within the slot. Readable by the network only. Add the case: Steady Lantern writes a slot 1 overview on Lantern #5 after its reveal is finished and before unlock + 1 year: accepted. G-15 is being fixed by A6 (2026-10-27); this check already tests the corrected wording
 - **Updated 2026-10-31 (FS §20 OO; R-164):** run the second overview through the overview writer function (refused) and as the table's owning role (the uniqueness constraint raises)
+- **Updated 2026-11-10 (FS §20 VVVV):** "the same slot windows as reflections" now reads "the unlock-based windows (FS §20 E)"; reflections no longer share them
 
 ### R-123
 - **Statement:** The months that set the frame limit are counted from the journey's own commit date, not from calendar months.
@@ -1634,7 +1641,7 @@ Since 2026-10-27 each gap carries a status line under it: **being fixed** by a `
 
 ### Contradictions between sources
 
-**G-1. Reflection slot dates.** The example at `FS:104–111` dates reflections from the photo's own capture date (7 Jan each year). `FS:101` and `FS:274` (§20 D) say all photos of a journey move slot together on the journey's unlock anniversary, and `MJC:852` agrees. The same per-photo example is in `MJC:200` and `MJC:203–210`. R-121 tests the §20 D wording; the example needs correcting or confirming.
+**G-1. Reflection slot dates.** **Closed 2026-11-10 (FS §20 VVVV): slots now follow each photo's capture date, as the FS:104–111 example had them.** The example at `FS:104–111` dates reflections from the photo's own capture date (7 Jan each year). `FS:101` and `FS:274` (§20 D) say all photos of a journey move slot together on the journey's unlock anniversary, and `MJC:852` agrees. The same per-photo example is in `MJC:200` and `MJC:203–210`. R-121 tests the §20 D wording; the example needs correcting or confirming.
 
 **Being fixed by A1, 2026-10-27** (`Decisions-Needed.md` section A, approved). R-121 already tests the corrected wording. Kept here because the rubric never shrinks.
 

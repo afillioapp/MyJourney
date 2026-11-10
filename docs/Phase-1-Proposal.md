@@ -19,7 +19,7 @@ This version folds in every decision made on 2026-10-25. They're listed in secti
 | D6 | The user starts a **highlight** whenever they choose. It lasts **24 hours** and holds up to the type's yearly quota (E 48, W 24, C 12). Its photos don't count against normal frames. All Explorer highlights can be used at any time |
 | D7 | A photo can **never be deleted** |
 | D8 | Note: can be added up to **15 minutes after capture**, never after |
-| D9 | Reflection slots: **all photos of a journey open together**, on the journey's unlock anniversary. Slot *k* runs from unlock + (k−1) years to unlock + k years |
+| D9 | Reflection slots: **all photos of a journey open together**, on the journey's unlock anniversary. Slot *k* runs from unlock + (k−1) years to unlock + k years. *(Replaced 2026-11-10 by FS §20 VVVV: slot k runs from the photo's capture date + k years to + (k+1) years; `Phase-1-Amendments.md` §16)* |
 | D10 | A **new overview every year** on each journey, stacking. Readable by the owner's **network** |
 | D11 | Reflections follow their photo's visibility |
 | D12 | Visibility is **Network until the owner chooses.** Reveal choices (visibility, people tags, chapter, feeling tags) **lock when the reveal is finished.** If the owner never finishes the reveal, the photos stay Network |
@@ -112,7 +112,7 @@ Insert-only, and only within 15 minutes of the photo's `captured_at` (D8) and be
 |---|---|
 | id, photo_id | |
 | text, written_at | |
-| year_index | Worked out from `app_now()` against `unlocks_at` (D9). Unique per (photo, year_index) |
+| year_index | Worked out from `app_now()` against `unlocks_at` (D9). Unique per (photo, year_index). *(2026-11-10, FS §20 VVVV: worked out against the photo's capture date; slot 0, before the first anniversary, is refused; `Phase-1-Amendments.md` §16)* |
 
 Insert-only, owner only, any time after unlock (reveal finished or not). Readers are the same as the photo's (D11). The Positivity Feed lists them newest first by `written_at`, ties by id, and returns text with no time (FS §20 Q, BBB) *(amended 2026-10-31)*
 
@@ -121,7 +121,7 @@ Insert-only, owner only, any time after unlock (reveal finished or not). Readers
 |---|---|
 | id, journey_id | |
 | text, written_at | |
-| year_index | Same windows as reflections. Unique per (journey, year_index) (D10) |
+| year_index | Same windows as reflections. Unique per (journey, year_index) (D10). *(2026-11-10: overviews keep the unlock-based windows of the old D9, FS §20 E; reflections moved to capture dates, FS §20 VVVV)* |
 
 Insert-only. Readable by the owner and the owner's network. Under B2's "only after reveal finished" (`PROVISIONAL: B2`), the network reads it only once the reveal is finished (FS §20 HH) *(amended 2026-10-30, `Phase-1-Amendments.md`)* *(2026-11-09: "network" here now means the owner's friends, FS §20 KKKK; see `Phase-1-Amendments.md` §12.3)*
 
@@ -296,14 +296,14 @@ Lantern's 2 private photos of Wind check that **being tagged doesn't give access
 
 | Photo | Depth | Dates (slot) | Visibility |
 |---|---|---|---|
-| lantern-1, 2021-03-14, "first night in the new flat", with a note | **5** | 2022-02-02 (1), 2023-02-10 (2), 2024-02-12 (3), 2025-02-14 (4), 2026-02-20 (5) | public |
-| round-1, 2022-11-08, "the empty office after the co-founder left", with a note | 4 | 2023-09-20, 2024-10-01, 2025-09-15, 2026-09-10 | public |
+| lantern-1, 2021-03-14, "first night in the new flat", with a note | **5** | 2022-03-20 (1), 2023-03-22 (2), 2024-03-18 (3), 2025-03-24 (4), 2026-03-20 (5) *(moved 2026-11-10 for FS §20 VVVV; were 2022-02-02, 2023-02-10, 2024-02-12, 2025-02-14, 2026-02-20)* | public |
+| round-1, 2022-11-08, "the empty office after the co-founder left", with a note | 3 | 2023-11-20 (1), 2024-11-15 (2), 2026-09-10 (3) *(2026-11-10, FS §20 VVVV: only three slots have opened by baseline, so depth 4 became 3, and slot 3 is left as 2026-09-10; were 2023-09-20, 2024-10-01, 2025-09-15, 2026-09-10)* | public |
 | wind-3, 2023-04-06, "arrivals hall" | 3 | 2024-04-20, 2025-05-01, 2026-04-15 | network |
-| lantern-5, 2025-06-21 | **1** | 2026-01-18 | network |
+| lantern-5, 2025-06-21 | **1** | 2026-07-05 *(moved 2026-11-10 for FS §20 VVVV; was 2026-01-18, before the photo's first anniversary)* | network |
 
-Most other photos have 0–2 reflections, left to the generator. *(amended 2026-10-30, user ruling)* The generator adds no reflection, in any slot, to the six Positivity Feed photos fixed in §3.7.
+Most other photos have 0–2 reflections, left to the generator, each inside a slot that has opened by its date (FS §20 VVVV, 2026-11-10). *(amended 2026-10-30, user ruling)* The generator adds no reflection, in any slot, to the six Positivity Feed photos fixed in §3.7.
 
-*(amended 2026-10-30, user ruling)* Six more reflections are fixed in the fixture, not left to the generator: one on a public photo of each Positivity Feed journey, listed in §3.7. With the four rows above, the fixture fixes 19 reflections (5 + 4 + 3 + 1 + 6).
+*(amended 2026-10-30, user ruling)* Six more reflections are fixed in the fixture, not left to the generator: one on a public photo of each Positivity Feed journey, listed in §3.7. With the four rows above, the fixture fixes 18 reflections (5 + 3 + 3 + 1 + 6) *(19 until 2026-11-10: round-1 went from 4 to 3, FS §20 VVVV)*.
 
 **Overviews:** every revealed journey has one per slot it has passed through. Steady Lantern has 15 (journey #1 has 5, down to journey #5 with 1). Second Wind has 15, Open Hands 6 and Long Way Round 9 (4 + 3 + 2). Long Way Round #4 has none.
 
@@ -363,16 +363,16 @@ That is 6 journeys and 23 public photos at baseline. All four working tags appea
 
 What the exclusions test: Steady Lantern #5's free-text tag is not on the list. Lantern #4 and Wind #5 (`worth it`), Lantern #1, Wind #3 and Round #1 (`I almost quit`, `the hard part was the start`) and Round #3 (`worried for nothing`) carry tags from the 8-item draft that are not working tags. Lantern #3 qualifies through `hang in there` even though it also carries `worried for nothing`. Round #4 is unlocked but its reveal was never finished, so nothing from it enters (B9 (f)). Private and Network photos of qualifying journeys never enter (B9 (b)).
 
-*(amended 2026-10-30, user ruling)* **The feed is not empty at baseline.** Each of the six journeys carries one reflection fixed in the fixture (not left to the generator) on one of its public photos. Each sits in slot 1 (§20 D: slot 1 runs from unlock to unlock + 1 year), dated 7 days after that journey's reveal finished, so it is written after the photo was set Public and the reveal locked (§20 F; it also holds under either B2 setting, §20 R). Every date is before baseline 2026-10-25 and away from a slot boundary. Times are 00:00:00 UTC (NB-6). The photo is named by its place among the journey's public photos in capture order, since §3 gives no capture dates for these photos.
+*(amended 2026-10-30, user ruling)* **The feed is not empty at baseline.** Each of the six journeys carries one reflection fixed in the fixture (not left to the generator) on one of its public photos. Each sits in slot 1, dated 7 days after that journey's reveal finished *(2026-11-10, FS §20 VVVV: slot 1 now runs from the photo's first anniversary, so each of the six photos has a pinned capture date, in the table, that puts its reflection inside slot 1; the "Slot 1" column keeps the old unlock-based window for the record)*, so it is written after the photo was set Public and the reveal locked (§20 F; it also holds under either B2 setting, §20 R). Every date is before baseline 2026-10-25 and away from a slot boundary. Times are 00:00:00 UTC (NB-6). The photo is named by its place among the journey's public photos in capture order, since §3 gives no capture dates for these photos.
 
 | Journey | Photo | Reveal finished | Slot 1 | Reflection written (slot) | Text |
 |---|---|---|---|---|---|
-| Steady Lantern #2 | lantern-2, public photo 1 of 4 | 2023-01-14 | 2023-01-01 → 2024-01-01 | 2023-01-21 (1) | `[copy: copywriter]` |
-| Steady Lantern #3 | lantern-3, public photo 1 of 5 | 2024-01-20 | 2024-01-01 → 2025-01-01 | 2024-01-27 (1) | `[copy: copywriter]` |
-| Second Wind #4 | wind-4, public photo 1 of 2 | 2025-04-19 | 2025-04-05 → 2026-04-05 | 2025-04-26 (1) | `[copy: copywriter]` |
-| Open Hands #2 | hands-2, public photo 1 of 2 | 2025-06-22 | 2025-06-03 → 2026-06-03 | 2025-06-29 (1) | `[copy: copywriter]` |
-| Open Hands #3 | hands-3, public photo 1 of 2 | 2026-06-20 | 2026-06-03 → 2027-06-03 | 2026-06-27 (1) | `[copy: copywriter]` |
-| Long Way Round #2 | round-2, public photo 1 of 8 | 2024-09-15 | 2024-09-04 → 2025-09-04 | 2024-09-22 (1) | `[copy: copywriter]` |
+| Steady Lantern #2 | lantern-2, public photo 1 of 4, captured 2022-01-10 | 2023-01-14 | 2023-01-01 → 2024-01-01 | 2023-01-21 (1) | `[copy: copywriter]` |
+| Steady Lantern #3 | lantern-3, public photo 1 of 5, captured 2023-01-12 | 2024-01-20 | 2024-01-01 → 2025-01-01 | 2024-01-27 (1) | `[copy: copywriter]` |
+| Second Wind #4 | wind-4, public photo 1 of 2, captured 2024-04-15 | 2025-04-19 | 2025-04-05 → 2026-04-05 | 2025-04-26 (1) | `[copy: copywriter]` |
+| Open Hands #2 | hands-2, public photo 1 of 2, captured 2024-06-14 | 2025-06-22 | 2025-06-03 → 2026-06-03 | 2025-06-29 (1) | `[copy: copywriter]` |
+| Open Hands #3 | hands-3, public photo 1 of 2, captured 2025-06-12 | 2026-06-20 | 2026-06-03 → 2027-06-03 | 2026-06-27 (1) | `[copy: copywriter]` |
+| Long Way Round #2 | round-2, public photo 1 of 8, captured 2023-09-10 | 2024-09-15 | 2024-09-04 → 2025-09-04 | 2024-09-22 (1) | `[copy: copywriter]` |
 
 *(amended 2026-10-30, user ruling)* The generator leaves these six photos alone: no generated reflection on any of them, in any slot. Each holds exactly its one fixed reflection.
 

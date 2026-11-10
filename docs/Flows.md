@@ -232,7 +232,7 @@ The time control (T-01) and the viewer switcher (T-02) are not part of the produ
 6. The camera hands straight to the note step S-12 (`PROVISIONAL: C4`). Continue at Flow 3. That hand-over is the only sign a photo was taken. Nothing marks the time between press and answer (Spec §20 AAAA; R-170).
 7. When the note step ends, the owner is back at the camera. They press again or leave to S-03.
 
-The steps from app open to a taken photo are three presses: to S-03, to the camera, the shutter. Spec §4 says "three taps" but no doc says which three: FQ-1.
+The steps from app open to a taken photo are three presses: to S-03, to the camera, the shutter. These are Spec §4's "three taps" (decided 2026-11-10, Spec §20 OOOO).
 
 **Branches and refusals**
 
@@ -241,10 +241,10 @@ The steps from app open to a taken photo are three presses: to S-03, to the came
 - **During a highlight.** The camera looks the same and the note offer follows as usual. Highlight photos do not count against normal frames (Spec §20 5). The window closes at exactly its end, after 24 hours of elapsed time, or at unlock if sooner (`PROVISIONAL: B16`, `B25`; Proposal:133). Nothing changes on the camera when it does (R-140).
 - **A bug the user cannot see, part one.** If the image fails the metadata guard, the app strips it again and saves once, at the press instant. The user sees nothing different (Spec §20 PP, VV, XX, AAA).
 - **A bug the user cannot see, part two: a lost press.** If stripping fails twice, the press gives no photo, uses no frame and logs the bug. The screen looks exactly like the normal press it would have been, refusal or note offer included, and a note written for it is quietly discarded. Nothing invites a second press (Spec §20 DDD, GGG, JJJ, QQQ).
-- **The camera is open at the unlock instant.** Nothing changes on screen on its own. The next press is not taken, and there is no refusal about frames. The app goes to S-05, where "Your Journey is ready" shows (Spec §20 CCCC; `PROVISIONAL: C1`). Continue at Flow 5. Gap: how the app tells this press from an ordinary refusal is SI OQ-51, not picked here. Gap: a press on the way out of the camera after that instant. Whether it is CCCC's "next press", going to S-05, or goes where it points, is not stated: FQ-10.
+- **The camera is open at the unlock instant.** Nothing changes on screen on its own. The next press is not taken, and there is no refusal about frames. The app goes to S-05, where "Your Journey is ready" shows (Spec §20 CCCC; `PROVISIONAL: C1`). Continue at Flow 5. Gap: how the app tells this press from an ordinary refusal is SI OQ-51, not picked here. After that instant every press here, the way out included, is that "next press" (`PROVISIONAL: B72`). *(Before 2026-11-10: a gap.)* Gap: a press on the way out of the camera after that instant. Whether it is CCCC's "next press", going to S-05, or goes where it points, is not stated: FQ-10.
 - **Not offered, in any state:** video, import from the gallery, a quality check (Spec §4), a prompt to photograph a hard moment (Spec §16).
 
-**Ends:** at S-03 when the owner leaves while the journey is sealed, or at S-05 when the next press after the unlock instant is not taken. A press on the way out after that instant: FQ-10.
+**Ends:** at S-03 when the owner leaves while the journey is sealed, or at S-05 when the next press after the unlock instant is not taken. A press on the way out after that instant also goes to S-05 (`PROVISIONAL: B72`).
 
 | Time state | Capture |
 |---|---|
@@ -263,7 +263,8 @@ The steps from app open to a taken photo are three presses: to S-03, to the came
 4. From S-13 the owner goes to the camera S-02.
 
 - **Refused:** the type's allowance is used (Explorer 4, Wanderer 2, Contemplator 1; Spec §5), or another highlight is already open (Spec §20 N). One refusal, no number (S-13). `[copy: copywriter]` *The highlight refusal: say it did not start, with no number and nothing about when.*
-- No step is described before the press, though a press uses up the allowance: FQ-2.
+- **Before the press:** S-13 says the window's length with a fixed circle drawing, marked at up to 24 hours (Spec §20 UUUU, XXXX; unlock can cut it short, Proposal:133), and one plain line that it cannot be undone once a photo is taken in it (Spec §20 QQQQ). The press itself starts it; nothing asks "are you sure".
+- **Dismissing it** (Spec §20 WWWW). While a highlight is open, S-13 holds a way to dismiss it, present and the same the whole time it is open (`PROVISIONAL: B76`; R-138). Pressed within 3 hours of starting and before any photo is taken in it, the highlight closes and is given back. Otherwise the press is refused, plainly, with no time or number (`PROVISIONAL: B71`). The grace's 3 hours are told with the same fixed circle drawing (Spec §20 XXXX). `[copy: copywriter]` *Dismissing: say plainly it is given back; the refusal says only that it can no longer be dismissed.*
 - Not offered after unlock or with no journey (Proposal:135).
 - **Refused, or decides not to start.** Back to the sealed year S-03 (decided 2026-11-09, Spec §20 JJJJ).
 
@@ -280,24 +281,24 @@ The steps from app open to a taken photo are three presses: to S-03, to the came
 **Steps**
 
 1. The app offers one handwritten A4 page, photographed live in the app, once, and a way to skip (Spec §20 B; `PROVISIONAL: C4`). Nothing of the photo is shown (Spec §6; S-12). `[copy: copywriter]` *The offer and the skip: say it is optional and becomes the writing on the back of the photo. Skipping must read as a perfectly good answer. Capture is never held up (Spec §20 B). No timer and no time remaining. Whether it may state the 15 minutes as a plain fact: FQ-12.* `[copy: copywriter]` *That the page is taken once, like the photo.*
-2. If the owner wants to, they write the page, on paper, away from the screen. They have 15 minutes from the press (Spec §20 K, NNN). No timer shows, then or at any point (R-140). Whether the owner is told the 15 minutes at all is not stated: FQ-12. Locking the phone, taking a call or the app going to the background does not end the step (Spec §20 DDDD).
+2. If the owner wants to, they write the page, on paper, away from the screen. They have 15 minutes from the press (Spec §20 K, NNN). The offer says so, with a fixed circle drawing marked at 15 minutes that never moves or empties (Spec §20 UUUU, XXXX, decided 2026-11-10), and says a skip is final (Spec §20 WWW). No timer and no time left show, then or at any point (R-140). Locking the phone, taking a call or the app going to the background does not end the step (Spec §20 DDDD).
 3. The owner does one of three things:
    - **Takes the page.** One press, one page. No preview, no re-shoot, no gallery, no typed text in its place (`PROVISIONAL: C4`; Spec §1; S-12). The step simply ends, with no confirmation (Spec §20 VVV).
    - **Skips.** The step ends for good. No note can be added later, even inside the 15 minutes (Spec §20 WWW).
    - **Leaves capture**, by moving to another screen in the app. The step ends (`PROVISIONAL: C4`; Spec §20 DDDD).
 4. Back at the camera, Flow 2 step 7, unless the owner left.
 
-**Every way the step ends** (S-12 lists exactly these seven). Ends 3 and 7 can overlap: FQ-10.
+**Every way the step ends** (S-12 lists exactly these seven). Ends 3 and 7 overlap after the unlock instant; end 7 applies (`PROVISIONAL: B72`).
 
 | # | End | What the owner sees | Goes to | Source |
 |---|---|---|---|---|
 | 1 | Page taken | Nothing. The step ends | Camera | Spec §20 VVV |
 | 2 | Skipped | Nothing. The step ends | Camera | Spec §20 WWW |
-| 3 | Moved to another screen, before the unlock instant | That screen | That screen. After the instant: FQ-10 | `PROVISIONAL: C4`; Spec §20 DDDD |
+| 3 | Moved to another screen, before the unlock instant | That screen | That screen. After the instant: S-05, as end 7 (`PROVISIONAL: B72`) | `PROVISIONAL: C4`; Spec §20 DDDD |
 | 4 | 15 minutes pass | Nothing changes on its own. The next note press is simply not taken, and the step quietly ends. Exactly 15:00 is out | Camera | Spec §20 K, UUU; `PROVISIONAL: B16` |
 | 5 | Page lost twice (a bug) | Same as 1 | Camera | Spec §20 HHH, III, ZZZ |
 | 6 | Server restart (local prototype only) | Same as 4 | Camera | Spec §20 PPP, RRR |
-| 7 | Journey unlocks | Same as 4 on the step, with no refusal about frames. The next press is not taken. A press on the way out: FQ-10 | S-05, with "Your Journey is ready" | Spec §20 YYY, CCCC; `PROVISIONAL: C1` |
+| 7 | Journey unlocks | Same as 4 on the step, with no refusal about frames. The next press is not taken. A press on the way out counts as that press (`PROVISIONAL: B72`) | S-05, with "Your Journey is ready" | Spec §20 YYY, CCCC; `PROVISIONAL: C1`, `B72` |
 
 **Branches and refusals**
 
@@ -306,8 +307,7 @@ The steps from app open to a taken photo are three presses: to S-03, to the came
 - **After a lost press,** everything above looks the same and the window still closes 15 minutes after the press. A page taken is quietly discarded (Spec §20 JJJ, NNN).
 - **A retried page.** If the page fails the metadata guard, the app strips it again and saves it once, at the moment it was taken. The owner sees nothing different (Spec §20 HHH).
 - **Once ended, there is no way back,** from S-03 or anywhere (`PROVISIONAL: C4`; Spec §20 III, RRR, WWW). One note per photo (Spec §1).
-- **Gap: a skip after the unlock instant.** Is it the "next press" that goes to S-05, or does it end as a skip does? SI OQ-52, not picked here.
-- **Gap: moving to another screen after the unlock instant.** Is that press the "next press" that goes to S-05? FQ-10, not picked here.
+- **A skip, or a move to another screen, after the unlock instant** is the "next press": it goes to S-05 (`PROVISIONAL: B72`; settles SI OQ-52 and FQ-10).
 - **Gap: the system closes the app during the step.** §20 DDDD names locking, a call and going to the background, not the system closing the app. Parked in `Status.md`. Not picked here.
 
 **Ends:** at the camera, at another screen, or at S-05 at unlock (table above).
@@ -362,7 +362,7 @@ This is the hardest state in the product. Underneath, the owner's journey return
 - **Earlier journeys with open reflection slots.** This screen does not point to them. They are reached from S-05 (`PROVISIONAL: C3`).
 - **A first journey.** Layers is an empty map and Feed may be empty (`PROVISIONAL: C9`). Rings by `PROVISIONAL: B4`, switchable: none per finished reveal; per year with the app, by years since joining, on the owner's own profile only (Spec §20 WW), and never changing inside a sealed year (R-012). The Positivity Feed and other people's profiles still hold something to read (Spec §2).
 - **Going straight to a named person.** S-03 leads to S-16, and a name search is the way (`PROVISIONAL: C10`), but where the search sits is SI OQ-33, not picked here.
-- **Unlock while this screen is open.** Spec §20 CCCC covers capture and the note step only. What S-03 does at the instant, and what the way to capture does when pressed after it, is not stated: FQ-3.
+- **Unlock while this screen is open.** Spec §20 CCCC covers capture and the note step only. S-03 changes nothing on its own at the instant; the next press, the way to capture included, goes to S-05 (`PROVISIONAL: B73`, settles FQ-3).
 
 **How others see it** (Spec §20 I; Proposal:84, 316–320). On S-16 and S-06, any other viewer, friend or not, on the owner's map or not, sees that a journey exists and nothing else (Spec §20 KKKK; `Phase-1-Amendments.md` §12.5): no type, no dates, no ring or arc for the year, no highlight.
 
@@ -381,25 +381,25 @@ This is the hardest state in the product. Underneath, the owner's journey return
 ## Flow 5: Reveal
 
 **Who:** the owner.
-**Starts:** the owner's next open of the app after unlock, on S-05 (`PROVISIONAL: C1`, `C12`). No notification, ever (Spec §18). If capture or the note step was open at the instant, the next press brings them here (Spec §20 CCCC). Whether a press on the way out of those screens counts: FQ-10.
-**Screens:** S-05, S-04, S-14, S-18, S-19, S-15, S-20, S-21.
+**Starts:** the owner's next open of the app after unlock, on S-05 (`PROVISIONAL: C1`, `C12`). No notification, ever (Spec §18). If capture or the note step was open at the instant, the next press brings them here (Spec §20 CCCC). A press on the way out of those screens counts too (`PROVISIONAL: B72`).
+**Screens:** S-05, S-04, S-18, S-19, S-15, S-20, S-21. *(S-14 Reflect left the reveal on 2026-11-10, Spec §20 VVVV.)*
 
 **Steps**
 
 1. S-05 shows "Your Journey is ready", the way into the reveal (`PROVISIONAL: C1`). `[copy: copywriter]` *"Your Journey is ready": say this year has opened and nothing more. Nothing shown with it may ask the owner to reflect, tag, choose or finish (R-095). No deadline.* The line shows once, on the first open after unlock (Spec §20 FFFF). After that the reveal is reached by the plain way on S-05 (`PROVISIONAL: B41`).
-2. The owner goes into Reveal S-04. The whole journey is there at once, every photo with its note. Photos do not open one by one (Spec §6, §20 A). Each photo is Network until the owner chooses (Spec §20 F). `[copy: copywriter]` *The reveal itself: mark a meeting with a past self. Do not hand out tasks and do not celebrate.* In what order the owner meets the photos is not stated: FQ-4.
-3. From S-04, in any order, the owner can do any of the following. Each comes back to S-04. Reflections and the overview are optional by ruling (Spec §8, §20 O), and nothing else is required before finishing either (`PROVISIONAL: C5`). There is no checklist, tick, summary or "12 of 24" (`PROVISIONAL: B8`; R-099).
-   - **Reflect** on a photo: S-14, Flow 6.
+2. The owner goes into Reveal S-04. The whole journey is there at once, every photo with its note. Photos do not open one by one (Spec §6, §20 A). Each photo is Network until the owner chooses (Spec §20 F). `[copy: copywriter]` *The reveal itself: mark a meeting with a past self. Do not hand out tasks and do not celebrate.* **The owner meets the photos first, one at a time, in the order they were taken** (decided 2026-11-10, Spec §20 PPPP); the steps below come after.
+3. From S-04, in any order, the owner can do any of the following. Each comes back to S-04. The overview is optional by ruling (Spec §20 O), and nothing else is required before finishing either (`PROVISIONAL: C5`). There is no checklist, tick, summary or "12 of 24" (`PROVISIONAL: B8`; R-099).
+   - *Reflecting is not a reveal step since 2026-11-10 (Spec §20 VVVV): each photo's first reflection opens on the anniversary of the day it was taken. Flow 6.*
    - **Tag people** in a photo, by hand: S-18. Find a user by name, or type a name for someone who is not a user (Spec §20 7; `PROVISIONAL: C10`). No face recognition and no suggested people (Spec §10). Typed names never count towards the map (Spec §20 7). `[copy: copywriter]` *Manual tagging: say this is deliberate work, by hand, and that it is meant to be.*
    - **Apply tags:** S-19. One chapter per journey from the fixed categories, and any feeling tags as free text on the journey (Spec §10; `PROVISIONAL: B17`). No popular or suggested tags, and no counts (`PROVISIONAL: B18`). `[copy: copywriter]` *The tone of chapters: even through hard chapters it stays positive and hopeful (Spec §10).*
    - **Write the overview:** S-15, Flow 6a. Optional (Spec §20 O).
    - **Set visibility,** per photo: S-20. Private, Network or Public. No close-friends level: what close friends get is with the user, and nothing is built for it meanwhile (Decisions E2; `PROVISIONAL: B55`; Spec §20 KKKK (f)). Public means signed-in users (`PROVISIONAL: B14`). `[copy: copywriter]` *"Readable, not commentable" (Spec §11), and that each choice is final.*
-4. Each visibility choice, people tag, chapter and feeling tag is set once, even before the reveal is finished (Spec §20 P). One line says so before it is saved (`PROVISIONAL: C5`). `[copy: copywriter]` *"This can't be changed": one plain line, the same weight each time, no alarm.* After saving, the choice shows read-only where it was made (S-04), and it takes effect at once (`PROVISIONAL: B3`). Whether the line needs answering, and what act saves a choice: FQ-8.
-5. Whenever the owner chooses, at any later time, they go to Finish S-21 (`PROVISIONAL: B3`). Nothing is required first (`PROVISIONAL: C5`), and a reveal can be finished without an overview or a reflection (Spec §20 O, §8). `[copy: copywriter]` *The finish: the weightiest act after Commit. Say the choices lock. No reward, no celebration (R-102).* The one-line "this can't be changed" shows here too.
+4. Each visibility choice, people tag, chapter and feeling tag is set once, even before the reveal is finished (Spec §20 P). One plain line says so once per step, never per photo (decided 2026-11-10, Spec §20 QQQQ; narrows `PROVISIONAL: C5`); the press that picks a choice saves it, and nothing asks "are you sure". `[copy: copywriter]` *"This can't be changed": one plain line per step, no alarm.* After saving, the choice shows read-only where it was made (S-04), and it takes effect at once (`PROVISIONAL: B3`). Whether the line needs answering, and what act saves a choice: FQ-8.
+5. Whenever the owner chooses, at any later time, they go to Finish S-21 (`PROVISIONAL: B3`). Nothing is required first (`PROVISIONAL: C5`), and a reveal can be finished without an overview (Spec §20 O). `[copy: copywriter]` *The finish: the weightiest act after Commit. Say the choices lock. No reward, no celebration (R-102).* The one-line "this can't be changed" shows here too, and one plain line says the owner's friends will see that the journey launched (decided 2026-11-10, Spec §20 TTTT). `[copy: copywriter]` *What goes out: one plain line, true under both B2 settings, naming no one.*
 6. At finish (Spec §20 F, J; Proposal §2.3):
    - All reveal choices lock.
    - The map is recomputed. See Flow 7, part B.
-   - "Path crossed" goes out for each crossing and "journey launched" once, to the owner's friends, never to the owner (Spec §20 J, M, UU, KKKK (e)). Who counts as a friend is fixed at the finish (`PROVISIONAL: B48`). A crossed person who is a friend receives it too, and whether that should be so is with the user (Decisions E3 (a)); one who is not a friend does not. Hand-off to S-08. `[copy: copywriter]` *The announcement lines: one plain line each, no image, no ring (S-08).* "Path crossed" never names the crossed person (Spec §20 NNNN (a)).
+   - "Path crossed" goes out for each crossing and "journey launched" once, to the owner's friends, never to the owner (Spec §20 J, M, UU, KKKK (e)). Who counts as a friend is fixed at the finish (`PROVISIONAL: B48`). It never names the person crossed (Spec §20 NNNN (a)); one who is not a friend does not receive it. Hand-off to S-08. `[copy: copywriter]` *The announcement lines: one plain line each, no image, no ring (S-08).* "Path crossed" never names the crossed person (Spec §20 NNNN (a)).
    - Under `PROVISIONAL: B4` (switchable: per finished reveal / per year with the app), this journey's ring is added to S-05. On S-16, others always see one ring per finished reveal (Spec §20 WW).
    - The year's activity line twists into the circle (`PROVISIONAL: B5`).
 7. The app goes to S-05 (S-21). Flow 8.
@@ -408,7 +408,7 @@ This is the hardest state in the product. Underneath, the owner's journey return
 
 - **Never finishes.** The journey stays unlocked. Photos stay Network unless already set. No chapter or tags unless set, no "journey launched", no map change, and no ring under `PROVISIONAL: B4`'s default, switchable (Spec §20 9; `PROVISIONAL: B3`). There is no reminder, and the way back from S-05 stays open (S-04). Conflict with §20 9's wording: see Open questions, DC-3.
 - **Who can read while the reveal is open:** `PROVISIONAL: B2`, switchable. *From unlock (default):* the network reads every photo not yet set Private, and anyone reads photos already set Public. *Only after reveal finished:* no one but the owner reads photos, Public included (Spec §20 R), and the overview waits too (Spec §20 HH). Under both settings, the network reads type and dates from unlock, and chapter and feeling tags once set; public readers never do (Spec §20 T, X).
-- **Reflection during the reveal.** A reflection can be written before finish, and "reflection left" goes out then, not at finish (Proposal:117; S-08). Flow 6.
+- **Reflection and the reveal.** Since 2026-11-10 they are separate (Spec §20 VVVV): a photo's first reflection opens on its first anniversary, whether or not the reveal is finished. "Reflection left" goes out when it is written (S-08). Flow 6.
 - **Changing a set choice.** No way exists. No undo, including of the finish (Spec §20 F, P; S-21).
 - **Deleting a photo.** No way exists (Spec §20 6).
 - **Commit during a reveal.** Allowed from the moment of unlock (Spec §20 C). Flow 1. The new year's seal does not touch this reveal.
@@ -421,10 +421,10 @@ This is the hardest state in the product. Underneath, the owner's journey return
 | Time state | Reveal |
 |---|---|
 | `sealed` | Not reachable. Nothing is readable (Spec §18) |
-| `unlock-day` | The whole journey at once, through the "ready" line |
+| `unlock-day` | The whole journey at once, through the "ready" line; the photos first, in the order taken (Spec §20 PPPP) |
 | `reveal-open` | The five steps, each choice once, none required |
-| `reveal-finished` | Read-only choices. Slot 1 reflections and overview stay open (Proposal:117; `PROVISIONAL: B13`) |
-| `later-years · finished` | As above, with the current slot open for Flow 6. No marker that it opened (R-095, R-096) |
+| `reveal-finished` | Read-only choices. Slot 1 of the overview stays open (`PROVISIONAL: B13`). Reflections follow each photo's own anniversary (Spec §20 VVVV) |
+| `later-years · finished` | As above. Reflection slots open photo by photo for Flow 6. No marker that one opened (R-095, R-096) |
 | `later-years · never finished` | Unmade choices can still be made once, and the reveal can still be finished, doing what any finish does (`PROVISIONAL: B3`; S-21) |
 
 ---
@@ -432,31 +432,31 @@ This is the hardest state in the product. Underneath, the owner's journey return
 ## Flow 6: Reflect
 
 **Who:** the owner writes. Others only read, by the photo's visibility (Spec §8, §20 F).
-**Starts:** Reveal S-04, or a photo S-17. On earlier journeys the route is S-05, then the owner's path S-06, then S-17 (`PROVISIONAL: C3`). Never from S-03, and never from a prompt (Spec §8).
-**Screens:** S-04 or S-17, then S-14.
+**Starts:** a photo S-17 (since 2026-11-10 not Reveal S-04, Spec §20 VVVV). On earlier journeys the route is S-05, then the owner's path S-06, then S-17 (`PROVISIONAL: C3`). Never from S-03, and never from a prompt (Spec §8).
+**Screens:** S-17, then S-14.
 
 **Steps**
 
 1. The owner opens a photo. They see it, its note if any, and earlier reflections in order, read-only (`PROVISIONAL: C13`; S-14, S-17).
-2. If this photo has no reflection in the current slot, the owner may write one, as typed text. It is optional and they are never pushed (Spec §8). `[copy: copywriter]` *A reflection is final once written, and next year there is room for another. Calm, not a warning. "Strict at capture. Generous at reflect." (Brief:119) is available.*
-3. The owner saves. It joins the stack and can never be edited or deleted (Spec §8, §18). When the line shows relative to saving is not stated: FQ-2.
+2. If this photo's current slot is open and holds no reflection, the owner may write one, as typed text. It is optional and they are never pushed (Spec §8). `[copy: copywriter]` *A reflection is final once written, and next year there is room for another. Calm, not a warning. "Strict at capture. Generous at reflect." (Brief:119) is available.*
+3. The owner saves. It joins the stack and can never be edited or deleted (Spec §8, §18). The line that it is final shows before saving, once on the screen; the save press saves, with no "are you sure" (Spec §20 QQQQ).
 4. "Reflection left" goes out to the owner's friends who can see that photo, even when it is public, counted when it is written (Spec §20 J, KKKK; `PROVISIONAL: B10`, `B48`), and to the owner (Spec §20 UU). Hand-off to S-08.
 5. Back to where they came from (S-14).
 
-**How the slots run** (Spec §20 D). For a journey committed 1 Sep 2018, unlocking 1 Sep 2019 (Spec §8):
+**How the slots run** (Spec §20 VVVV, 2026-11-10, replacing §20 D). For a photo taken on 7 Jan 2019, in a journey that unlocks 1 Sep 2019 (Spec §8):
 
 | Slot | Open | Writes |
 |---|---|---|
-| 1 | 1 Sep 2019 to 1 Sep 2020 | One reflection per photo, any time in it |
-| 2 | 1 Sep 2020 to 1 Sep 2021 | One more per photo |
-| … | One per unlock anniversary, indefinitely | |
+| 1 | 7 Jan 2020 to 7 Jan 2021 | One reflection on this photo, any time in it |
+| 2 | 7 Jan 2021 to 7 Jan 2022 | One more |
+| … | One per anniversary of the photo, indefinitely | |
 
-All photos of a journey move to their next slot together, on the journey's unlock anniversary, never on the photo's own date (Spec §8, §20 D).
+Each photo moves to its next slot on its own anniversary, so a journey's photos open for reflection one by one across the year after unlock. A photo taken on 29 February opens on 28 February in other years (`PROVISIONAL: B70`). Between unlock and a photo's first anniversary it can be read, not reflected on.
 
 **Branches and refusals**
 
 - **Slot already used.** No second reflection and no way to write one. The owner can read the stack. The next opens on the anniversary (Spec §8).
-- **A slot passes with nothing written.** Nothing happens. A reflection always goes into the current slot, so there is no writing into a past year (Proposal:115). Whether a stack shows anything for an empty year is not stated: FQ-7.
+- **A slot passes with nothing written.** Nothing happens. A reflection always goes into the current slot, so there is no writing into a past year (Proposal:115). The stack shows only the reflections that exist: no gap, blank or mark for an unwritten year (decided 2026-11-10, Spec §20 SSSS).
 - **The anniversary.** Nothing marks it: no banner, dot, toast or "Year 3 reflections are open" (Spec §8; R-095, R-096).
 - **Others.** May read. Nobody else can write, reply or react (Spec §8, §18).
 - **A Private photo.** Only the owner reads the reflection, and "reflection left" reaches only the owner (Spec §20 F, H, UU; `PROVISIONAL: B10`).
@@ -469,8 +469,8 @@ All photos of a journey move to their next slot together, on the journey's unloc
 | Time state | Reflect |
 |---|---|
 | `sealed` | Not available |
-| `unlock-day`, `reveal-open`, `reveal-finished` | Slot 1 |
-| `later-years`, either variant | Slot *k*. Earlier reflections read-only, in order |
+| `unlock-day`, `reveal-open`, `reveal-finished` | Read only, until each photo's first anniversary opens its slot 1 (Spec §20 VVVV) |
+| `later-years`, either variant | Each photo's current slot. Earlier reflections read-only, in order |
 
 ### Flow 6a: The overview
 
@@ -481,7 +481,7 @@ All photos of a journey move to their next slot together, on the journey's unloc
 3. It joins the stack and can never be edited (Spec §9). No announcement goes out: the feed has three events and this is not one (Spec §13).
 4. Back to where they came from.
 
-- Slot 1 can be written after finish, within the slot (`PROVISIONAL: B13`). Later slots follow the same anniversaries as reflections (Spec §20 E).
+- Slot 1 can be written after finish, within the slot (`PROVISIONAL: B13`). Later slots follow the journey's unlock anniversaries (Spec §20 E); reflections follow each photo's own (Spec §20 VVVV).
 - Under B2's "only after reveal finished" (`PROVISIONAL: B2`, switchable), the network reads it only once the reveal is finished (Spec §20 HH).
 
 ---
@@ -571,7 +571,7 @@ Lantern sees only the current ring, never this table (`PROVISIONAL: C8`).
 
 **Who:** a friend or a public viewer; someone on this person's map who is not their friend is a public viewer (Spec §20 KKKK (d)). **Starts:** a person on the viewer's map S-07, an announcement S-08, a Positivity Feed entry S-09, or a name search (`PROVISIONAL: C10`; where the search sits is SI OQ-33).
 
-1. The viewer arrives on S-16 by a small deliberate act, never by scrolling into it (Spec §13). What that act is, no doc says: FQ-5.
+1. The viewer arrives on S-16 by a small deliberate act, never by scrolling into it (Spec §13): a feed line leads to the person's profile, never straight into their journey, and the viewer opens the path from the profile (decided 2026-11-10, Spec §20 RRRR).
 2. They see the person's name in the circle and one ring per finished reveal, under either B4 setting (Spec §20 WW, XXX). Rings are drawn, never counted in text. A public viewer's rings come from a count alone, with no date on any ring (Spec §20 CCC; R-166).
 3. They go on to the person's path S-06, Flow 9 (Spec §11). Or they leave.
 
@@ -580,7 +580,7 @@ Lantern sees only the current ring, never this table (`PROVISIONAL: C8`).
 - **Friend or public** (Spec §20 KKKK). After unlock, type, dates, chapter and feeling tags, and whether a reveal is finished, reach a friend only (Spec §20 T, SS, KKKK). A public viewer gets no such label anywhere, though they may infer it from rings and photos appearing (Spec §20 ZZ).
 - **A friend request.** S-16 holds the way to send one, and shows the state of this pair only: see Flow 10, part A (`PROVISIONAL: B43`).
 - **The profile owner's journey is sealed.** That one exists, and nothing else (Spec §20 I).
-- **The profile owner never committed.** Name, no rings (S-16). Whether the way to a path is there at all: FQ-6.
+- **The profile owner never committed.** Name, no rings (S-16). No way to a path (`PROVISIONAL: B74`).
 - **The activity graph:** `PROVISIONAL: B5`, switchable. *Owner only (default):* never shown here. *Built from the photos the viewer can see:* no private photo's capture time shows, and nothing finer than one day (Spec §20 GG).
 - **Never on this screen, for any viewer:** the viewer's ring or this person's map (Spec §12, §18); extra access for close friends (`PROVISIONAL: B55`) or for being on this person's map (Spec §20 KKKK (d)); this person's friends, close friends or a count of them (`PROVISIONAL: B46`, `B56`); any sign that a request from this person waits (R-194); who else is tagged or how often (R-139); a highlight (Spec §20 DD); the join date (Spec §20 TT); a score, level, follower or view count (Spec §14; Proposal check 6).
 
@@ -599,7 +599,7 @@ Lantern sees only the current ring, never this table (`PROVISIONAL: C8`).
 ## Flow 9: Walking a path
 
 **Who:** a reader: the owner, a friend or a public reader, or a tagged user reading as whichever of those they are. Someone on the owner's map who is not a friend reads as public (Spec §20 KKKK (d)). Being tagged gives no access (Proposal:293).
-**Starts:** S-16 for another person, S-05 for one's own, or S-08 or S-09 (S-06). Whether a path opened from an announcement or an entry starts at the beginning or at that journey is not stated: FQ-9.
+**Starts:** S-16 for another person, S-05 for one's own, or S-09's one photo (S-06; from S-08 only through S-16, Spec §20 RRRR). A path always opens at its beginning (`PROVISIONAL: B75`); from the feed the reader reaches the profile first (Spec §20 RRRR).
 **Screens:** S-06, S-17, S-15.
 
 **Steps**
@@ -623,7 +623,7 @@ Lantern sees only the current ring, never this table (`PROVISIONAL: C8`).
 - **Before the reveal is finished:** `PROVISIONAL: B2`, switchable. *From unlock (default):* the network reads every photo not yet set Private, and anyone reads photos already set Public. *Only after reveal finished:* no photo for anyone but the owner (Spec §20 R). See the time-state table.
 - **Other people's tags:** never shown to a reader (Spec §20 NNNN (b), 2026-11-10; C6 fixed to hidden). SI OQ-20, whether a shown tag leads to a profile, no longer arises.
 - **The owner on their own path.** On a photo with no reflection in the current slot, the owner can go on to Reflect, Flow 6. Nothing marks that a slot is open (`PROVISIONAL: C3`; R-095, R-096).
-- **A journey or path with nothing this reader can see.** Not stated: FQ-6.
+- **A journey or path with nothing this reader can see.** To a public reader the journey is not shown; to a friend it shows as a place with its type and dates only (`PROVISIONAL: B74`).
 - **Writing.** No comment, reply or reaction exists (Spec §8, §18). Nobody but the owner writes.
 - **From a Positivity Feed entry to a photo.** No next or previous control steps to another entry's photo (Spec §20 Q; R-145). Public-reader limits still apply there (Spec §20 T, CC).
 - **Never, for a non-owner:** whether a photo was taken in a highlight (Spec §20 DD); the join date (Spec §20 TT). **Never, for any reader:** their own ring on this person's map (Spec §12, §18). With B12 fixed to hidden (Spec §20 NNNN), the reader has no tag to count; G-12's weakest point is gone.
@@ -802,19 +802,19 @@ Nothing below was picked. Each flow adds nothing at these points. **New IDs:** F
 
 | ID | Question | Flow | What the docs say |
 |---|---|---|---|
-| FQ-1 | **Which three taps?** Spec §4 says "Three taps" and Concept:140 "One, two, three", but no doc names them. The only route the inventory allows from app open is S-05, S-03, S-02, shutter, which is three presses. If the three are meant to start at the camera, what are the other two? And is the route allowed to be longer than three? | 2 | Spec §4; Concept:140; `PROVISIONAL: C12`; S-02 "Reached from" |
-| FQ-2 | **What comes before a press that cannot be undone, outside the reveal?** C5's one line covers reveal choices. Nothing says whether Commit has a line or a second step before the press, or what happens if it is pressed with no type picked. Starting a highlight uses up the allowance with no line described. S-14 has a line that a reflection is final, but no source says it shows before saving, and S-15 has no such line. | 1, 2a, 6, 6a | Spec §3; Decisions C5; S-01, S-13, S-14, S-15 |
-| FQ-3 | **Other screens open at the unlock instant.** §20 CCCC names capture and the note step. What does S-03, S-13 or S-05 do at that instant, and where does a press on S-03's way to capture, or on S-13's start, go after it? Separately, C1 says "next open": does coming back from the background count as an open, or only a fresh start? | 2a, 4, 5 | Spec §20 CCCC; Decisions C1; SI S-03 row `unlock-day`; G-27 |
-| FQ-4 | **How the reveal opens.** "The whole journey at once" says what, not how. Does the owner first meet the photos, in order, or the five steps? In what order are the photos? §15's "in order" is about reading a path. | 5 | Spec §6, §7, §15; S-04 |
-| FQ-5 | **What is the "small deliberate act"?** It is required on the way into someone's journey, but never defined. The flows name the screens it leads to and do not say what the act is. | 8, 9 | Spec §13; Concept:423; S-08 |
-| FQ-6 | **Paths with nothing to show.** S-16 leads to S-06 in every state, but S-06 has no row for a person with no journeys. For a journey with no photo this reader can see, does it appear as a place on the path? For a public reader, does an entry carrying no photo and no date say anything? C9 names only the empty map, feed and circle. | 8, 9 | S-06, S-16; Spec §20 KKK; Decisions C9 |
-| FQ-7 | **A year left empty in a stack.** A slot that passes unwritten: does the stack show anything for that year, or only the reflections that exist? | 6, 9 | Spec §8; Proposal:115 |
-| FQ-8 | **Whether the "can't be changed" line needs answering, and what act saves a set-once choice.** One question. C5 answers repetition: the line shows before each set-once choice is saved (`Decisions-Needed.md:43`; `PROVISIONAL: C5`). C5 does not say whether that line needs answering, or what act saves the choice: the press that picks it, with the line already in view, or a separate act after the line. A typed feeling tag or name needs some act to end it; a visibility choice may not. **For the user, as a challenge to C5:** a journey can hold many photos, so this line can show many times over. | 5 | Decisions C5; S-18, S-19, S-20, S-21 |
-| FQ-9 | **Where a path opens when reached from an announcement or a Positivity Feed entry.** Spec §15 says from the beginning to now. S-06 is reached from S-08 and S-09. Does it open at the beginning, or at that journey? | 9 | Spec §15; S-06, S-08, S-09 |
-| FQ-10 | **Leaving the camera or the note step after the unlock instant.** §20 CCCC says the next press is not taken and the app goes to the profile. A press on the way out of S-02 or S-12 is a press. Is it CCCC's "next press", going to S-05, or does it go where it points? S-03 is gone by then (Flow 4, time-state table). It also leaves open which applies when ends 3 and 7 of the note step overlap. Same family as SI OQ-51, SI OQ-52 and FQ-3. | 2, 3 | Spec §20 CCCC, DDDD; S-02, S-12; SI OQ-52 |
+| FQ-1 | **Decided 2026-11-10 (Spec §20 OOOO).** **Which three taps?** Spec §4 says "Three taps" and Concept:140 "One, two, three", but no doc names them. The only route the inventory allows from app open is S-05, S-03, S-02, shutter, which is three presses. If the three are meant to start at the camera, what are the other two? And is the route allowed to be longer than three? | 2 | Spec §4; Concept:140; `PROVISIONAL: C12`; S-02 "Reached from" |
+| FQ-2 | **Decided 2026-11-10 (Spec §20 QQQQ, WWWW).** **What comes before a press that cannot be undone, outside the reveal?** C5's one line covers reveal choices. Nothing says whether Commit has a line or a second step before the press, or what happens if it is pressed with no type picked. Starting a highlight uses up the allowance with no line described. S-14 has a line that a reflection is final, but no source says it shows before saving, and S-15 has no such line. | 1, 2a, 6, 6a | Spec §3; Decisions C5; S-01, S-13, S-14, S-15 |
+| FQ-3 | **Default 2026-11-10: `PROVISIONAL: B73`.** **Other screens open at the unlock instant.** §20 CCCC names capture and the note step. What does S-03, S-13 or S-05 do at that instant, and where does a press on S-03's way to capture, or on S-13's start, go after it? Separately, C1 says "next open": does coming back from the background count as an open, or only a fresh start? | 2a, 4, 5 | Spec §20 CCCC; Decisions C1; SI S-03 row `unlock-day`; G-27 |
+| FQ-4 | **Decided 2026-11-10 (Spec §20 PPPP, VVVV).** **How the reveal opens.** "The whole journey at once" says what, not how. Does the owner first meet the photos, in order, or the five steps? In what order are the photos? §15's "in order" is about reading a path. | 5 | Spec §6, §7, §15; S-04 |
+| FQ-5 | **Decided 2026-11-10 (Spec §20 RRRR).** **What is the "small deliberate act"?** It is required on the way into someone's journey, but never defined. The flows name the screens it leads to and do not say what the act is. | 8, 9 | Spec §13; Concept:423; S-08 |
+| FQ-6 | **Default 2026-11-10: `PROVISIONAL: B74`.** **Paths with nothing to show.** S-16 leads to S-06 in every state, but S-06 has no row for a person with no journeys. For a journey with no photo this reader can see, does it appear as a place on the path? For a public reader, does an entry carrying no photo and no date say anything? C9 names only the empty map, feed and circle. | 8, 9 | S-06, S-16; Spec §20 KKK; Decisions C9 |
+| FQ-7 | **Decided 2026-11-10 (Spec §20 SSSS).** **A year left empty in a stack.** A slot that passes unwritten: does the stack show anything for that year, or only the reflections that exist? | 6, 9 | Spec §8; Proposal:115 |
+| FQ-8 | **Decided 2026-11-10 (Spec §20 QQQQ).** **Whether the "can't be changed" line needs answering, and what act saves a set-once choice.** One question. C5 answers repetition: the line shows before each set-once choice is saved (`Decisions-Needed.md:43`; `PROVISIONAL: C5`). C5 does not say whether that line needs answering, or what act saves the choice: the press that picks it, with the line already in view, or a separate act after the line. A typed feeling tag or name needs some act to end it; a visibility choice may not. **For the user, as a challenge to C5:** a journey can hold many photos, so this line can show many times over. | 5 | Decisions C5; S-18, S-19, S-20, S-21 |
+| FQ-9 | **Default 2026-11-10: `PROVISIONAL: B75`.** **Where a path opens when reached from an announcement or a Positivity Feed entry.** Spec §15 says from the beginning to now. S-06 is reached from S-08 and S-09. Does it open at the beginning, or at that journey? | 9 | Spec §15; S-06, S-08, S-09 |
+| FQ-10 | **Default 2026-11-10: `PROVISIONAL: B72`.** **Leaving the camera or the note step after the unlock instant.** §20 CCCC says the next press is not taken and the app goes to the profile. A press on the way out of S-02 or S-12 is a press. Is it CCCC's "next press", going to S-05, or does it go where it points? S-03 is gone by then (Flow 4, time-state table). It also leaves open which applies when ends 3 and 7 of the note step overlap. Same family as SI OQ-51, SI OQ-52 and FQ-3. | 2, 3 | Spec §20 CCCC, DDDD; S-02, S-12; SI OQ-52 |
 | FQ-11 | **The way out of Start a highlight.** S-13's only "Leads to" is the camera. No doc says where an owner goes who is refused a highlight, or who reaches S-13 and decides not to start. | 2a | SI S-13; Proposal:135 **Decided 2026-11-09: back to the sealed year S-03 (Spec §20 JJJJ).** |
-| FQ-12 | **Whether the note offer may state the 15 minutes.** R-140 bans a timer and a countdown, not the length. No source says whether a fixed statement of the 15 minutes is allowed. As written, someone writing slowly can press after the window, see the step simply end (Spec §20 UUU) and never have been told there was a limit. The same goes for a skip being final (Spec §20 WWW). Same question as `Microcopy.md` MQ-1. | 3 | Spec §20 K, UUU, WWW; R-140; S-12 |
-| FQ-13 | **Whether Start a highlight may state the window's length.** The window is 24 hours of elapsed time, cut off at unlock (SI S-13; Proposal:133; `PROVISIONAL: B16`). A flat "24 hours" is false for a highlight started less than 24 hours before unlock, and S-13 must look the same in every state (R-138). No source says whether the length may be stated, and if so, with its cut-off. Same family as FQ-12. | 2a | SI S-13; Proposal:133; R-138, R-140 |
+| FQ-12 | **Decided 2026-11-10 (Spec §20 UUUU, XXXX).** **Whether the note offer may state the 15 minutes.** R-140 bans a timer and a countdown, not the length. No source says whether a fixed statement of the 15 minutes is allowed. As written, someone writing slowly can press after the window, see the step simply end (Spec §20 UUU) and never have been told there was a limit. The same goes for a skip being final (Spec §20 WWW). Same question as `Microcopy.md` MQ-1. | 3 | Spec §20 K, UUU, WWW; R-140; S-12 |
+| FQ-13 | **Decided 2026-11-10 (Spec §20 UUUU, XXXX); "up to 24 hours".** **Whether Start a highlight may state the window's length.** The window is 24 hours of elapsed time, cut off at unlock (SI S-13; Proposal:133; `PROVISIONAL: B16`). A flat "24 hours" is false for a highlight started less than 24 hours before unlock, and S-13 must look the same in every state (R-138). No source says whether the length may be stated, and if so, with its cut-off. Same family as FQ-12. | 2a | SI S-13; Proposal:133; R-138, R-140 |
 
 ### C. Where the docs disagree
 
