@@ -384,7 +384,15 @@ Feeling tags currently drafted: hang in there · it eventually pays off · thank
 
 - **NNNN. No one can tell that they are on someone else's rings.** It is personal (Decisions-Needed E3). (a) "Path crossed" never names the person crossed (B11 fixed to unnamed). (b) A reader of a journey is never shown which photos they are tagged in, and never sees anyone's people tags (B12 fixed to hidden, C6 fixed to hidden). (c) A new friend never sees announcements from before the friendship (B48 confirmed). Restates §12 "a person is never shown which layer they are on" as covering whether they are on the rings at all. B11, B12 and C6 stop being prototype switches; removing them from `prototype_option` is a data model change this ruling requires
 
-*LLLL to NNNN above were ruled on 2026-11-10. E2 (what close friends get) is deferred by the user; B55 stands until then.*
+- **OOOO. The three taps** (Flows FQ-1). From opening the app: the way to the sealed year, the way to the camera, the shutter. Three presses, and the photo is sealed
+- **PPPP. The reveal opens with the photos** (Flows FQ-4), one at a time, in the order they were taken; the reveal's steps come after. *When reflections are written is being clarified with the user (Decisions-Needed E7): the user wants them on the date each photo was taken, not at the reveal*
+- **QQQQ. Lines before set-once acts** (Flows FQ-2, FQ-8). One plain "can't be changed" line per step, never repeated per photo. The press itself saves; nothing asks "are you sure", except removing a friend (B60) and blocking (B62). Commit has no undo and no grace. *Starting a highlight gets a grace period (about 3 hours to dismiss it); the details are with the user (Decisions-Needed E8)*
+- **RRRR. The small deliberate act** (Flows FQ-5). A feed line leads to the person's profile, never straight into the journey; the reader opens the path from the profile
+- **SSSS. An unwritten year leaves no gap** (Flows FQ-7). A reflection stack shows only the reflections that exist
+- **TTTT. The owner is told what goes out at finish** (Microcopy MQ-8). One plain line on Finish the reveal says the owner's friends will see that the journey launched. Words by the copywriter, true under both B2 settings
+- **UUUU. The app states its time limits** (Flows FQ-12, FQ-13; Microcopy MQ-1, MQ-2): the 15-minute note window and the highlight's 24 hours, shown with a circle. *Whether the circle is a fixed drawing or one that runs down is being clarified with the user (Decisions-Needed E9): a running-down circle would be a countdown, which the banned list and §20 S rule out*
+
+*LLLL to UUUU above were ruled on 2026-11-10. E2 (what close friends get) is deferred by the user; B55 stands until then.*
 
 ### Still open — can wait
 

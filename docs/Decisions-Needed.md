@@ -246,6 +246,12 @@ Whatever is chosen, close friends still never see a sealed year, never see anyon
 
 **E6. Does a block touch the rings? (raised 2026-11-10, carrying Spec §20 MMMM).** When one person blocks another, the blocker may still have the other on their rings from earlier tags, and the other may have the blocker on theirs. Options: (a) nothing changes at the block; earlier tags keep counting, and since neither can tag the other as a user any more, each drifts outward as journeys pass (`PROVISIONAL: B69`, built); (b) the blocked person leaves the blocker's rings at once, which breaks Spec §20 G "nobody ever drops off the map"; (c) as (a), but tagging each other stays possible. For the user.
 
+**E7. When reflections are written (raised 2026-11-10, from the user's answer to Flows FQ-4).** The user: "you meet the photos first and then you could do the reflection on the same date they were posted, not on the reveal." Today Spec §20 D opens every photo's reflection slot together at unlock, and the reveal includes reflecting. To settle: (a) does "the date they were posted" mean the anniversary of the day the photo was taken; (b) is that one day only, or does the slot open that day and stay open until the next anniversary; (c) does this replace §20 D for later years too. For the user.
+
+**E8. The highlight grace period (raised 2026-11-10, Spec §20 QQQQ).** The user wants a grace period of about 3 hours to dismiss a highlight once started; Commit gets none. To settle: what happens to photos already taken in the highlight when it is dismissed, since a photo is never deleted (Spec §20 6); and whether the highlight is given back. For the user.
+
+**E9. The time-limit circle (raised 2026-11-10, Spec §20 UUUU).** The user wants the 15-minute note window and the highlight's 24 hours told "with a circle". A circle that runs down as time passes is a countdown, which the banned list ("no streaks, counters, progress bars") and Spec §20 S ("no end time and no countdown" for an open highlight) rule out; a fixed drawing of the length is not. Which is meant? For the user; a running-down circle would change the banned list.
+
 ## D. Already open elsewhere
 
 | # | Decision | Blocks |
