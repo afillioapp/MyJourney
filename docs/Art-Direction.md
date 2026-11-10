@@ -389,7 +389,7 @@ How every mark is drawn [AD]:
 
 ### Profile timelines (Decisions B79–B81, 2026-11-10)
 
-*Added by the supervisor for the art-director's review.* Below the circle on S-05 and S-16, one flat timeline per journey, oldest first. **Under way:** one plain line with the words "a journey is under way", no mark, no ends labelled, identical every day (`PROVISIONAL: B79`). **Closed:** the same line with a small spark at each photo's day, sparks the viewer can read only (`PROVISIONAL: B80`); no axis numbers, no count. A public viewer sees the journey's place with no line (B36). Spark and line use the activity-line tones (§3.3); a spark is a short rise, never a dot that reads as a notification (R-096).
+*Added by the supervisor for the art-director's review.* Below the circle on S-05 and S-16, one flat timeline per journey, oldest first. **Under way:** one plain line with the words "a journey is under way", no mark, no ends labelled, identical every day (`PROVISIONAL: B79`); the owner's two dates sit as plain text beside the words, never at the line's ends. **Closed:** the same line with one identical small spark per day that held a photo the viewer can read (`PROVISIONAL: B80`; Rubric R-210: never taller, doubled or brighter for a busier day); no axis numbers, no count. A public viewer sees no timelines (B36, B80). Spark and line use the activity-line tones (§3.3); a spark is a short rise, never a dot that reads as a notification (R-096).
 
 ## 8. Tokens
 
