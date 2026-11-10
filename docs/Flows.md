@@ -178,7 +178,7 @@ The time control (T-01) and the viewer switcher (T-02) are not part of the produ
 | 10 | Steady Lantern | Baseline | Friend requests: First Light's, incoming, with accept and decline and no time. Friends: Second Wind, Open Hands and Long Way Round by name, with no count. Close friends: Second Wind | Lantern and Round were friends from 2022 until a removal in 2024, and Round's place on her close-friends list ended with it (`PROVISIONAL: B49`). **Never shown:** who removed whom, and that Round was ever on the list | `Phase-1-Amendments.md` §13.1, §13.2 |
 | 10 | Long Way Round | Baseline | Friend requests: two incoming, Open Hands above Second Wind, with no time (`PROVISIONAL: B52`) | **Never shown:** that Hands sent hers on 2026-10-16 and Wind on 2026-10-14 | `Phase-1-Amendments.md` §13.2 |
 | 10 | First Light | Baseline | Friend requests: two outgoing, to Steady Lantern and to Long Way Round, the same in every way (`PROVISIONAL: B44`). No friends | **Never shown:** Round declined his; Lantern has not answered hers. Her earlier request to Hands was withdrawn | `Phase-1-Amendments.md` §13.1, §13.2 |
-| 10 | Second Wind | Baseline, then after 2026-11-14 | At baseline: an incoming request from Open Hands and an outgoing one to her. After: Hands among Wind's friends, no request, and none of Hands' earlier announcements in Wind's feed (`PROVISIONAL: B48`) | A scripted accept on 2026-11-14 resolves the crossed requests (`PROVISIONAL: B53`, `B54`) | `Phase-1-Amendments.md` §13.2, §13.5 |
+| 10 | Second Wind | Baseline, then after 2026-11-14 | At baseline: an incoming request from Open Hands, an outgoing one to her, and an outgoing one to Long Way Round. After: Hands among Wind's friends and one outgoing request, to Long Way Round, which the accept leaves untouched, and none of Hands' earlier announcements in Wind's feed (`PROVISIONAL: B48`) | A scripted accept on 2026-11-14 resolves the crossed requests (`PROVISIONAL: B53`, `B54`) | `Phase-1-Amendments.md` §13.2, §13.5 |
 
 ---
 
@@ -651,12 +651,12 @@ Lantern sees only the current ring, never this table (`PROVISIONAL: C8`).
 
 1. The sender reaches the other person's profile S-16: by name (`PROVISIONAL: C10`; where the search sits is SI OQ-33), from an announcement, from the Positivity Feed, or from their own map. Nothing suggests whom to add (Spec §20 KKKK (c)).
 2. On S-16 the sender presses the way to send a friend request (`PROVISIONAL: B43`). `[copy: copywriter]` *The friend request in each pair state: plain, one person to another. No count, no promise of what friendship gives, nothing that urges a reply.*
-3. The request now waits in the other person's requests list S-22, and nowhere else: no notification, no dot, no count, nothing on any other screen (Spec §20 KKKK (c); `PROVISIONAL: B43`; R-194). The sender sees it as outgoing in their own S-22. S-16 shows the state of this pair; what it shows is SI OQ-57.
+3. The request now waits in the other person's requests list S-22, and nowhere else: no notification, no dot, no count, nothing on any other screen (Spec §20 KKKK (c); `PROVISIONAL: B43`; R-194). The sender sees it as outgoing in their own S-22. S-16 shows only that the viewer's own request is pending (`PROVISIONAL: B61`).
 
 **Branches and refusals**
 
 - **Already friends, or a request of theirs already open.** A second request is not taken (`Phase-1-Amendments.md` §12.1).
-- **The other person has already sent one.** S-16 looks exactly as if nothing waits (Spec §20 KKKK (c); R-194). Sending makes a crossed request, which is allowed, and accepting either makes them friends (`PROVISIONAL: B53`). Whether S-16 should offer "accept" instead: SI OQ-57, DC-15.
+- **The other person has already sent one.** S-16 looks exactly as if nothing waits (Spec §20 KKKK (c); R-194). Sending makes a crossed request, which is allowed, and accepting either makes them friends (`PROVISIONAL: B53`). S-16 never offers "accept" (`PROVISIONAL: B61`; settles DC-15).
 - **Pending, declined or seen.** The sender can never tell (`PROVISIONAL: B44`; R-189).
 
 ### Part B: answering a request
@@ -664,7 +664,7 @@ Lantern sees only the current ring, never this table (`PROVISIONAL: C8`).
 **Who:** the person the request was sent to.
 
 1. On S-05 the way into Friend requests S-22 is always there and looks the same whether or not anything waits (`PROVISIONAL: B43`; R-194). The person goes there on purpose. Nothing draws them (R-095).
-2. S-22 lists incoming requests newest first, each by name, with no time (`PROVISIONAL: B52`), and offers accept or decline (`PROVISIONAL: B44`). `[copy: copywriter]` *Accept and decline: two plain answers of equal weight. Declining must read as an ordinary answer. No guilt, no count.* Whether the finality of an answer is said first: SI OQ-56.
+2. S-22 lists incoming requests newest first, each by name, with no time (`PROVISIONAL: B52`), and offers accept or decline (`PROVISIONAL: B44`). `[copy: copywriter]` *Accept and decline: two plain answers of equal weight. Declining must read as an ordinary answer. No guilt, no count.* No line says an answer is final, and neither asks to confirm (`PROVISIONAL: B60`).
 3. **Accept.** They are friends at once (Spec §20 KKKK (a)). From then each reads the other's Network photos, journeys and overviews, older ones included (`PROVISIONAL: B45`, "access follows the current friendship"; `Phase-1-Amendments.md` §13.5), and "journey launched" and "path crossed" reach them from then on (Spec §20 KKKK (e)). Neither sees the other's earlier announcements (`PROVISIONAL: B48`); whether they should is Decisions E3 (c), with the user. The sender is told by nothing: no notification (Spec §20 KKKK (c)), and no announcement, since the feed has only three events (Spec §13). The friendship simply appears in both friends lists S-23.
 4. **Decline.** Silent. The request leaves the person's list and still looks pending to the sender (`PROVISIONAL: B44`; R-189). It is final for the one who declined, who may send a request of their own later (`PROVISIONAL: B50`).
 
@@ -676,17 +676,17 @@ Lantern sees only the current ring, never this table (`PROVISIONAL: C8`).
 ### Part C: withdrawing a request
 
 1. In S-22 the sender's own outgoing requests show, each with a way to withdraw (`PROVISIONAL: B44`). A declined one looks exactly like a pending one (R-189). `[copy: copywriter]` *How an outgoing request reads: the same words whether pending or declined. Nothing that implies the other person saw it.*
-2. Withdrawn, it is gone for both. The sender may send again, with no limit (`PROVISIONAL: B51`). Whether S-16 offers withdrawal too: SI OQ-55 (c).
+2. Withdrawn, it is gone for both. The sender may send again, with no limit (`PROVISIONAL: B51`). S-16 offers withdrawal too (`PROVISIONAL: B58`).
 
 ### Part D: removing a friend
 
-1. In Friends S-23 (where its way in sits: SI OQ-55 (a)), each friend shows by name, with no count and no order by time or closeness, and a way to remove (`PROVISIONAL: B45`, `B46`). `[copy: copywriter]` *Removing a friend: say plainly what it does. No guilt, and no word that the other person will be told, since they will not be.* Whether removal asks to confirm: SI OQ-56.
+1. In Friends S-23 (reached from the owner's profile S-05 by a way always present, with no count: `PROVISIONAL: B57`), each friend shows by name, A to Z (`PROVISIONAL: B59`), with no count, and a way to remove (`PROVISIONAL: B45`, `B46`). `[copy: copywriter]` *Removing a friend: say plainly what it does. No guilt, and no word that the other person will be told, since they will not be.* Removal asks once to confirm, with no "this is final" line (`PROVISIONAL: B60`).
 2. Removal is silent and acts at once. The removed person reads only the owner's Public photos from then (Spec §20 KKKK (d); `PROVISIONAL: B45`; R-191), stops seeing the owner's announcements, and does not get them back by becoming friends again (`PROVISIONAL: B48`). Their place on the close-friends list ends and is not restored (`PROVISIONAL: B49`). Both maps stay as they were (B45). Nothing stores who removed whom (R-191).
 3. Either of them may send a new request later (`PROVISIONAL: B43`, `B51`).
 
 ### Part E: keeping close friends
 
-1. In Close friends S-24 (where its way in sits, and how a friend is added: SI OQ-55 (a), (d)), the owner adds any current friend or takes anyone off, at any time, silently (Spec §20 KKKK (f); `PROVISIONAL: B47`). `[copy: copywriter]` *What the close-friends list is: a list only you see. It must promise nothing close friends get, since nothing is chosen, and must not suggest anyone is told.*
+1. In Close friends S-24 (reached from S-23: `PROVISIONAL: B57`; how a friend is added is still open, SI OQ-55 (d)), listed A to Z (`PROVISIONAL: B59`), the owner adds any current friend or takes anyone off, at any time, silently (Spec §20 KKKK (f); `PROVISIONAL: B47`). `[copy: copywriter]` *What the close-friends list is: a list only you see. It must promise nothing close friends get, since nothing is chosen, and must not suggest anyone is told.*
 2. Being on the list gives nothing yet (`PROVISIONAL: B55`). What close friends get is Decisions E2, with the user. Whatever is chosen will let a close friend work out that they are on the list (`Phase-1-Amendments.md` §12.6). The options named in E2 would reach Visibility S-20, Reflect S-14 and S-17, and Journey overview S-15. None is built.
 3. No one but the owner sees the list or a count (`PROVISIONAL: B47`; R-193).
 
@@ -777,9 +777,9 @@ Nothing below was picked. Each flow adds nothing at these points. **New IDs:** F
 | SI OQ-33 | Where the name search sits for visiting a profile, and how matches are ordered. Any order by ring, closeness or popularity is banned (R-071). | 4, 8 | SI OQ-33 |
 | SI OQ-32 | How invitation works in the product. Sign-up is not built in the prototype. | Hand-off | SI OQ-32; Decisions C11 |
 | R-143 | Under B4's "per year with the app", on which date a year's ring appears. | 8 | R-143 |
-| SI OQ-55 | Ways between the friendship screens and profiles: where the ways into S-23 and S-24 sit, whether names lead to S-16, whether S-16 can withdraw or remove, how S-24 adds, and the order of outgoing requests and friends. For the supervisor (Instagram reference) | 10 | SI OQ-55; `CLAUDE.md` rule zero step 5 |
-| SI OQ-56 | Whether accepting, declining, withdrawing or removing is confirmed, or its finality said | 10 | SI OQ-56; Decisions B45, B50 |
-| SI OQ-57 | What S-16 shows for each pair state, and whether it may offer "accept" when the other person's request waits | 8, 10 | SI OQ-57; DC-15 |
+| SI OQ-55 | Ways between the friendship screens and profiles: where the ways into S-23 and S-24 sit, whether names lead to S-16, whether S-16 can withdraw or remove, how S-24 adds, and the order of outgoing requests and friends. For the supervisor (Instagram reference). **2026-11-09: (a), (c), (e) settled by Decisions B57 to B59; (b) and (d) open** | 10 | SI OQ-55; `CLAUDE.md` rule zero step 5 |
+| SI OQ-56 | Whether accepting, declining, withdrawing or removing is confirmed, or its finality said. **Settled 2026-11-09 by Decisions B60** | 10 | SI OQ-56; Decisions B45, B50 |
+| SI OQ-57 | What S-16 shows for each pair state, and whether it may offer "accept" when the other person's request waits. **Settled 2026-11-09 by Decisions B61** | 8, 10 | SI OQ-57; DC-15 |
 | Decisions E2 | What close friends get. With the user; nothing built (`PROVISIONAL: B55`) | 10 | Spec §20 H, KKKK (f) |
 | Decisions E3 | (a) "path crossed" reaching a crossed friend; (b) a tagged reader seeing they are tagged; (c) a new friend and earlier announcements. With the user | 5, 7, 9, 10 | Spec §20 KKKK (e); `Phase-1-Amendments.md` OQ-40, OQ-46 |
 | Decisions E4 | Whether anyone may see another user's friends. Built: no one can (`PROVISIONAL: B56`) | 8, 10 | `Phase-1-Amendments.md` OQ-43 |
@@ -823,7 +823,7 @@ Both lines are cited and neither is picked here. The flows follow §20 and Conce
 | DC-12 | Spec:186 and Concept:706, the line twists in "at the end of the journey", against Proposal:65, the ring comes at reveal finished. Which moment is "the end" | `PROVISIONAL: B5` |
 | DC-13 | Proposal:291, "First Light's map is empty at baseline, until Hands tags her", against Spec §20 G and Proposal:391, a tag changes the tagger's map only, so her own map stays empty and she goes on Hands' map. Proposal:291 may mean only that she is on no one's map until then | Spec §20 G |
 | DC-14 | `Screen-Inventory.md:111`, S-03 "Leads to" names Profile (own) S-05, against `Screen-Inventory.md:113`, "Exactly this list", whose elements 5, 6 and 8 name the ways out and do not include S-05. It matters because S-05 is how an owner in a sealed year reaches earlier journeys (`PROVISIONAL: C3`) and the list is the screen's leak test. Without the way out, S-05 is still reached on the next open (`PROVISIONAL: C12`) and from the core of Layers (S-05 "Reached from") | Not picked. Gap shown in Flow 4 step 3. For the user |
-| DC-15 | `Phase-1-Amendments.md` §12.6: another user's profile "may show the state of that one pair ('requested', or an 'accept' offer under B53, ux)", against Rubric R-194: "a request arriving changes nothing outside that list's rows" (Spec §20 KKKK (c), "no notification") | The incoming case follows R-194, a banned-list check: S-16 shows nothing of a waiting request. The rest of the pair's display is not picked: SI OQ-57 |
+| DC-15 | `Phase-1-Amendments.md` §12.6: another user's profile "may show the state of that one pair ('requested', or an 'accept' offer under B53, ux)", against Rubric R-194: "a request arriving changes nothing outside that list's rows" (Spec §20 KKKK (c), "no notification") | The incoming case follows R-194, a banned-list check: S-16 shows nothing of a waiting request. The rest of the pair's display: `PROVISIONAL: B61` (settles SI OQ-57; lead-tech carries §12.6) |
 | DC-16 | Spec:175, "A path has crossed with a friend", against Spec §20 J, "'Path crossed' goes out for every crossing". Under KKKK the two differ: crossings with someone who is not the owner's friend (in the fixture, Round → Hands and Hands → First Light) exist under J and not under a literal reading of :175 (`Phase-1-Amendments.md` §13.4.3, OQ-40) | Spec §20 J |
 
 ### D. Notes
