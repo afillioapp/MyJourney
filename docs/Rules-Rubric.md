@@ -46,6 +46,8 @@ Updated 2026-11-10, second pass (supervisor, carrying FS §20 MMMM, OOOO to XXXX
 
 Updated 2026-11-10 (rules audit `docs/reviews/2026-11-10-rules-supervisor-carriage.md`, of the supervisor's carriage of FS §20 LLLL–XXXX, git a3b9a4f..7ad6990): added R-198 to R-209, each under its area (R-198 supersedes R-121; R-199, R-201 in area 1; R-205 in 3; R-202 to R-204 in 5; R-206 in 7; R-200, R-207 in 8; R-198 in 11; R-208, R-209 in 13). Blocking (MMMM) now has checks R-202 to R-204, from `Phase-1-Amendments.md` §15.5. `Updated` lines on R-121 (superseded), R-138, R-146, R-156. R-140's 2026-11-10 `Updated` line, which sat after the area 8 separator, moved back under R-140 with its text unchanged. Banned-list coverage gains R-199 to R-205 and R-207. No check renumbered or removed.
 
+Updated 2026-11-10 (rules re-audit `docs/reviews/2026-11-10-rules-supervisor-carriage-r2.md`, of the fixes in 648bf78 and DN B79–B85, FS §20 YYYY, ZZZZ): added R-210 after R-201, in area 1 (a drawing never shows a non-owner a per-day photo count or a highlight's burst). `Updated` lines on R-200 (B82 settles the way to Reflect), R-203 (ZZZZ changes the blocker's map) and R-206 (B81 covers the Positivity Feed). Banned-list coverage gains R-210. No check renumbered or removed.
+
 ---
 
 ## What this is for
@@ -234,6 +236,13 @@ Test fixtures named below come from `Phase-1-Proposal.md` §3. Steady Lantern #6
 - **Area:** 1. Sealing and leaks
 - **Source:** R-008, FS §20 I (`FS:279`), FS §20 T, CL:106. Found by `docs/reviews/2026-11-10-rules-supervisor-carriage.md` V1 (B74, `Decisions-Needed.md:109`, `Flows.md:626`: "to a friend it shows as a place with its type and dates only", with no exception for a sealed journey)
 - **How to check:** For every default or SI/Flows row that conditions on visible content, read whether a sealed journey meets its condition; if it does, the row must except it in words. UI test: as Second Wind (Lantern's friend) at baseline, render Lantern's path: Lantern #6 (sealed) shows existence only, no type and no date. As First Light, the same journey shows the same existence line, not nothing, unless FS §20 I is changed.
+
+### R-210
+- **Statement:** For any viewer but the owner, a drawing built from photos (the activity view, a timeline's sparks, any graph) shows at most one mark per UTC day, identical in size, height, weight and tone whatever the number of photos that day. No drawing lets a non-owner read how many photos fall on one day, or see a highlight's burst, by counting, stacking or comparing marks.
+- **Type:** auto (data), review (UI) · **Applies to:** data, API, UI
+- **Area:** 1. Sealing and leaks
+- **Source:** FS §20 DD, GG; DN B6 ("Others learn nothing about highlights"), B8 (counters banned at all times), B80 ("one spark per photo"); R-144, R-151 (residual), R-154. Found by `docs/reviews/2026-11-10-rules-supervisor-carriage-r2.md` R2-2 (B5's default swapped to the viewer setting; B80 draws one spark per photo, with same-day photos unstated)
+- **How to check:** As Second Wind, request the activity data for Lantern #1 and render Lantern's S-16: the day of the graduation-party highlight (P1:266; 4 of Wind's readable photos inside it) and a day with one readable photo give the same response shape (one day value, no per-day number or list length) and the same mark. Planted fault: a build that returns one entry per photo, or draws a taller or doubled spark for that day, fails. As Lantern (owner), B80's own setting applies
 
 ---
 
@@ -782,6 +791,7 @@ Commit, capture, frames, highlights and the note.
 - **Area:** 5. Visibility and access
 - **Source:** FS §20 MMMM, G, NNNN; `PROVISIONAL: B62`–`B69`; `Phase-1-Amendments.md` §15.2, §15.4, §15.5 cases 3–6. Found by `docs/reviews/2026-11-10-rules-supervisor-carriage.md` V6 (S-07 under a block undecided; four tells beyond §15.4's "only by absence")
 - **How to check:** §15.5 cases 3 to 6. Add: `layer` rows byte-identical across block and unblock; render Layers S-07 for both people after the block and compare with the docs' stated behaviour (fails while none is stated); `block_rows()` as blocked person and as a third party returns no row; grep copy for `blocked` on any screen the blocked person can reach.
+- **Updated 2026-11-10 (FS §20 ZZZZ, user ruling; `PROVISIONAL: B84`; `docs/reviews/2026-11-10-rules-supervisor-carriage-r2.md`):** "changes nothing on either person's map" is superseded for the blocker's map only. While the block is active the blocked person is absent from the blocker's S-07, and after an unblock only tags in journeys revealed after it count; the blocked person's map is unchanged and the blocker's name there leads to what an unknown user shows. "`layer` rows byte-identical across block and unblock" now applies to the blocked person's map only; on the blocker's map, check the ZZZZ behaviour instead. Neither map may show anything that says "blocked", and no third party's reader changes
 
 ### R-204
 - **Statement:** The blocked list S-25 is the owner's only: names A to Z, no time, no count, names lead nowhere, a way to unblock each, and a way in from S-05 that is present and identical in every state. No other screen shows that anyone has blocked or been blocked.
@@ -1009,6 +1019,7 @@ Commit, capture, frames, highlights and the note.
 - **Area:** 7. Feed and notifications
 - **Source:** FS §20 RRRR, FS §13 ("a small deliberate act"); SI S-08, S-06, S-17. Added by `docs/reviews/2026-11-10-rules-supervisor-carriage.md` (RRRR had no check)
 - **How to check:** For each of the three line types, read the link target in S-08: only the profile route. Route scan: no route into S-06 or S-17 carries a feed origin. Whether the Positivity Feed counts as "the feed" is N1 of that audit; until ruled, B75 holds and this check covers S-08 only.
+- **Updated 2026-11-10 (`PROVISIONAL: B81`, replacing B75; `docs/reviews/2026-11-10-rules-supervisor-carriage-r2.md`):** a Positivity Feed photo now leads to its owner's profile, never straight into the path. The check also covers S-09 and an S-17 reached from S-09: no route from either into S-06
 
 ---
 
@@ -1083,6 +1094,7 @@ Commit, capture, frames, highlights and the note.
 - **Source:** FS §20 VVVV ("Nothing marks a slot opening: no dot, count or notice"), FS §8; R-095, R-096, R-186; pattern of `PROVISIONAL: B76` and R-194. Found by `docs/reviews/2026-11-10-rules-supervisor-carriage.md` V3
 - **How to check:** As Lantern, render S-17 for lantern-5 at 2026-06-20, 2026-06-21 and 2026-07-06 (after its fixed reflection), in a throwaway copy replayed to before 2026-06-21: identical DOM apart from the stack's own rows. Catalog scan: no function returns more than one photo's slot state.
 - **Status:** Provisional. It states the strictest reading of VVVV. The way's behaviour is undecided (V3, rule zero); if the user or a labelled default lets the way appear on the anniversary, this check is superseded
+- **Updated 2026-11-10 (`PROVISIONAL: B82`; `docs/reviews/2026-11-10-rules-supervisor-carriage-r2.md`):** B82 settles the way: present on every unlocked photo of the owner's, identical whatever the slot state. "A press when no slot is open is refused plainly" now reads as B82 has it: the stack read-only with one plain line giving the date this photo's next slot opens, as a calendar date. That line appears only after the press, never on S-17 itself; it is never relative ("in 23 days"), never an invitation ("come back", "see you", "don't forget"), and never more than one photo's date. Add to the how-to-check: grep that line's copy for `come back|see you|remember|in \d+ (day|week|month)`
 
 ### R-207
 - **Statement:** A reflection stack shows only the reflections that exist: no gap, blank, placeholder, year label or "nothing written" for a slot that passed unwritten, and nothing that lets a reader count the years left empty.
@@ -1685,7 +1697,7 @@ Every row of the banned list (`CLAUDE.md:64–74`, `Master-Prompt.md:37–47`) a
 | No comments from anyone else | R-105, R-106, R-107, R-109, R-124 |
 | No face recognition | R-110, R-111, R-112 |
 | No ads anywhere | R-113 |
-| No streaks, counters, progress bars, reminders | R-097, R-098, R-099, R-038, R-039, R-012, R-013, R-095, R-096, R-124, R-138, R-140, R-143, R-144, R-166, R-178, R-192, R-194, R-200, R-204, R-207 |
+| No streaks, counters, progress bars, reminders | R-097, R-098, R-099, R-038, R-039, R-012, R-013, R-095, R-096, R-124, R-138, R-140, R-143, R-144, R-166, R-178, R-192, R-194, R-200, R-204, R-207, R-210 |
 | No re-engagement notifications | R-094, R-095, R-096, R-194, R-200 |
 | No ranking, levels, badges, leaderboards | R-101, R-102, R-103, R-124, R-143, R-166 |
 | No photo feed | R-084, R-085, R-086, R-145 |
