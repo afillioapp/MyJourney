@@ -379,6 +379,11 @@ Feeling tags currently drafted: hang in there · it eventually pays off · thank
 
 *EEEE–KKKK above were ruled on 2026-11-09.*
 
+- **LLLL. No one can see another user's friends** (Decisions-Needed E4; confirms B56). Each user sees only their own friend, request and close-friends lists
+- **MMMM. Users can block** (Decisions-Needed E5). How a block works follows the Instagram reference, within the banned list; the details are provisional defaults to be set when it is carried. A block is a new insert-only record, so it is a data model change, carried as a Phase-1-Amendments section (on paper until Phase 3)
+
+*LLLL and MMMM above were ruled on 2026-11-10. E2 (what close friends get) is deferred by the user; B55 stands until then.*
+
 ### Still open — can wait
 
 1. Export and data ownership, which the trust position depends on

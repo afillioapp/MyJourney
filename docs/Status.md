@@ -12,7 +12,7 @@ Status values: `todo` · `in progress` · `in review` · `done` · `blocked`
 
 **Current phase:** 2 — Look, started at the user's request (2026-11-04). The Phase 1 gate has not been passed; see the Log.
 **Next step:** private preview of Phase 2 on Vercel (`preview/`), then the user's answers to the open questions, then the Phase 2 gate.
-**Waiting on you:** E2 (close friends get something extra: what, still to decide); AD-18 (not sure; B41 and B42 stand); whether to push the updated preview. Then the Phase 1 and Phase 2 gates. Parked: SI OQ-51, OQ-52; system closing the app during the note window; BBBB (b).
+**Waiting on you:** E3 (what still tells someone they are on a map; explained 2026-11-10); E2 deferred by the user; AD-18 (not sure; B41 and B42 stand); whether to push the updated preview. Then the Phase 1 and Phase 2 gates. Parked: SI OQ-51, OQ-52; system closing the app during the note window; BBBB (b).
 
 ---
 
@@ -105,6 +105,8 @@ Can start any time after Phase 2.
 
 0. **Carry §20 KKKK (network by friend request) before Phase 3.** Data model (`Phase-1-Amendments.md` §12) and fixtures (§13) done on paper, 2026-11-09; rules audit r2 fixed (`reviews/2026-11-09-rules-kkkk-r2.md`). Untested until Phase 3 (no Postgres here). **Still to do:** a ux pass on Flows and Screen-Inventory for the friend screens (the requests list, sending, removing, the close-friends list) and for "network" read as the map.
 
+0b. **Carry §20 MMMM (blocking).** A Phase-1-Amendments section on paper (a new insert-only record; Instagram-reference defaults), the friend screens, fixtures and a rules audit. Not started.
+
 1. **Where the app deploys.** Phase 3 builds on local Postgres (decided 2026-10-30). A hosted Postgres and web framework for the Vercel project (`myjourney`) are still to choose. Does not block Phase 3.
 
 ## Log
@@ -174,3 +176,5 @@ Can start any time after Phase 2.
 - 2026-11-09 — Lead-tech wrote `Phase-1-Amendments.md` §12 (KKKK on paper; untested, no Postgres). Its open questions: generic ones became Instagram-reference defaults B48 to B53 (B52 changes §12's request order, for lead-tech to carry); E3 (what still gives a map place away) and E4 (friend lists) go to the user; OQ-49 (rubric rows KKKK replaced) goes to the rules audit.
 - 2026-11-09 — KKKK carriage: rules audit r1 FAIL (4) fixed: B43 way in, B48 event-time audience, B55, B56, E3 (c), E5, §20 H half reopened, P1 notes, lead-tech §11/§12 (K13, K14), fixture audiences at event time (13/9/5/2/0, matched three ways). Re-audit r2 FAIL on one low item (K8) plus a K14 gap, both fixed by lead-tech. Guardian added R-188 to R-197. Not re-audited after the last two-line fix.
 - 2026-11-09 — ux pass for KKKK: Screen-Inventory S-22 (requests), S-23 (friends), S-24 (close friends), S-16 request element, S-05 way in; Flows Flow 10 Friends; "network as map" lines restated in both. Generic questions SI OQ-55 to OQ-57 settled by the supervisor as Instagram-reference defaults B57 to B61 (B61 strictest over Instagram's "follow back"). Rules audit next.
+- 2026-11-09 — Friend screens rules audit (`reviews/2026-11-09-rules-friend-screens.md`): FAIL (2): V1, SI and Flows do not carry B57–B61; V2, Flows prototype row for Second Wind after 2026-11-14 drops her outgoing request to Long Way Round. B58, B59 tightened. Not yet fixed.
+- 2026-11-10 — User rulings: E4 no (§20 LLLL, B56 decided); E5 yes, blocking (§20 MMMM, to carry: Open decisions 0b); E2 deferred, B55 stands. E3 explained to the user, answer awaited.
