@@ -110,6 +110,7 @@ Approved approach (user, 2026-10-27): build the prototype with these defaults an
 | B75 | **A path always opens at its beginning** (Spec §15, "from the beginning to now"), however it is reached. From the feed the reader reaches the profile first (Spec §20 RRRR); a Positivity Feed entry opens its one photo (Spec §20 Q), and the way from there to the path opens at the beginning. Settles Flows FQ-9. **Proposed by the supervisor 2026-11-10 for the user's one-go OK** (Status, Phase 2 triage B) | no |
 | B76 | **The dismiss way for a highlight sits on S-13, present and the same for as long as the highlight is open**, so it never appears or disappears with the 3 hours; a press after the grace, or after a photo, is refused plainly with no time or number (Spec §20 WWWW; R-138, AD-18's concern). Supervisor, 2026-11-10, strictest reading | no |
 | B77 | **The time-limit circle's drawing**: a clock face of the window's own unit, one fixed arc from twelve o'clock (a quarter for 15 minutes, an eighth of a day for 3 hours, a full day for 24 hours), never animated (Spec §20 XXXX; `Art-Direction.md` §7.x). Supervisor, 2026-11-10, for the art-director's review | no |
+| B78 | **Commit with no type picked.** The Commit press is not offered until one of the three types is picked; it appears the same for each type (Flows FQ-2). Generic form behaviour, Instagram-style disabled button; supervisor, 2026-11-10 | no |
 
 Section A was approved by the user on 2026-10-27 and is being applied.
 

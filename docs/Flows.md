@@ -198,8 +198,8 @@ The time control (T-01) and the viewer switcher (T-02) are not part of the produ
 
 **Branches and refusals**
 
-- **No type picked.** There is nothing to commit. What the screen does if Commit is pressed anyway is not specified: FQ-2.
-- **Confirmation.** The docs describe no second step before the press. Whether there is one: FQ-2.
+- **No type picked.** There is nothing to commit, so the Commit press is not offered until a type is picked (`PROVISIONAL: B78`; FQ-2).
+- **Confirmation.** One plain line says Commit cannot be changed; the press commits, with no second step and no grace (decided 2026-11-10, Spec §20 QQQQ).
 - **Leaves without pressing.** No journey is created (Proposal:76). Nothing asks them back (Spec §19).
 - **Already has a sealed journey.** Commit is not offered. A second Commit is refused at the data level, so no user-facing refusal exists because no route reaches it (Spec §20 C; Proposal check 3; S-01).
 - **Between journeys.** Commit opens the moment the last journey unlocks, even with its reveal still open (Spec §20 C; S-01). The two run side by side: the old reveal stays available (`PROVISIONAL: B3`) while the new year is sealed.
@@ -257,7 +257,7 @@ The steps from app open to a taken photo are three presses: to S-03, to the came
 
 **Who:** the owner. **Starts:** S-03. **Screens:** S-13, then S-02.
 
-1. From S-03 the owner goes to S-13. The way to start is offered the same whether or not a highlight is left or one is open (R-138). The owner starts it whenever they choose. Explorer's "one per season" is a description, not a rule (Spec §20 4). `[copy: copywriter]` *Starting a highlight: say what starting one does: a window, begun by this press, in which the frame limit does not apply. It must hold on every press, including one under 24 hours before unlock, when the window is cut off (Proposal:133), one with no highlight left and one while a highlight is open, since S-13 looks the same in each (R-138). No end time, no number of photos or of highlights left.* Whether S-13 may state the window's length, with its cut-off at unlock: FQ-13.
+1. From S-03 the owner goes to S-13. The way to start is offered the same whether or not a highlight is left or one is open (R-138). The owner starts it whenever they choose. Explorer's "one per season" is a description, not a rule (Spec §20 4). `[copy: copywriter]` *Starting a highlight: say what starting one does: a window, begun by this press, in which the frame limit does not apply. It must hold on every press, including one under 24 hours before unlock, when the window is cut off (Proposal:133), one with no highlight left and one while a highlight is open, since S-13 looks the same in each (R-138). No end time, no number of photos or of highlights left.* It states the length as "up to 24 hours", with the fixed circle drawing (Spec §20 UUUU, XXXX; FQ-13 decided 2026-11-10).
 2. The owner presses start. The only answers are accepted or refused (S-13; Proposal check 5).
 3. **Accepted:** the highlight is open. The owner sees that plain fact on S-03 and S-13, with no end time, no countdown and nothing that shrinks (Spec §20 S; S-02 row `sealed · highlight open`). `[copy: copywriter]` *"A highlight is open": a plain fact, no time attached.* Others learn nothing about it, now or later (`PROVISIONAL: B6`; Spec §20 DD).
 4. From S-13 the owner goes to the camera S-02.
@@ -280,7 +280,7 @@ The steps from app open to a taken photo are three presses: to S-03, to the came
 
 **Steps**
 
-1. The app offers one handwritten A4 page, photographed live in the app, once, and a way to skip (Spec §20 B; `PROVISIONAL: C4`). Nothing of the photo is shown (Spec §6; S-12). `[copy: copywriter]` *The offer and the skip: say it is optional and becomes the writing on the back of the photo. Skipping must read as a perfectly good answer. Capture is never held up (Spec §20 B). No timer and no time remaining. Whether it may state the 15 minutes as a plain fact: FQ-12.* `[copy: copywriter]` *That the page is taken once, like the photo.*
+1. The app offers one handwritten A4 page, photographed live in the app, once, and a way to skip (Spec §20 B; `PROVISIONAL: C4`). Nothing of the photo is shown (Spec §6; S-12). `[copy: copywriter]` *The offer and the skip: say it is optional and becomes the writing on the back of the photo. Skipping must read as a perfectly good answer. Capture is never held up (Spec §20 B). No timer and no time remaining. It states the 15 minutes as a plain fact, with the fixed circle drawing (Spec §20 UUUU, XXXX; FQ-12 decided 2026-11-10).* `[copy: copywriter]` *That the page is taken once, like the photo.*
 2. If the owner wants to, they write the page, on paper, away from the screen. They have 15 minutes from the press (Spec §20 K, NNN). The offer says so, with a fixed circle drawing marked at 15 minutes that never moves or empties (Spec §20 UUUU, XXXX, decided 2026-11-10), and says a skip is final (Spec §20 WWW). No timer and no time left show, then or at any point (R-140). Locking the phone, taking a call or the app going to the background does not end the step (Spec §20 DDDD).
 3. The owner does one of three things:
    - **Takes the page.** One press, one page. No preview, no re-shoot, no gallery, no typed text in its place (`PROVISIONAL: C4`; Spec §1; S-12). The step simply ends, with no confirmation (Spec §20 VVV).
