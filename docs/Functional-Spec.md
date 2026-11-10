@@ -382,7 +382,9 @@ Feeling tags currently drafted: hang in there · it eventually pays off · thank
 - **LLLL. No one can see another user's friends** (Decisions-Needed E4; confirms B56). Each user sees only their own friend, request and close-friends lists
 - **MMMM. Users can block** (Decisions-Needed E5). How a block works follows the Instagram reference, within the banned list; the details are provisional defaults to be set when it is carried. A block is a new insert-only record, so it is a data model change, carried as a Phase-1-Amendments section (on paper until Phase 3)
 
-*LLLL and MMMM above were ruled on 2026-11-10. E2 (what close friends get) is deferred by the user; B55 stands until then.*
+- **NNNN. No one can tell that they are on someone else's rings.** It is personal (Decisions-Needed E3). (a) "Path crossed" never names the person crossed (B11 fixed to unnamed). (b) A reader of a journey is never shown which photos they are tagged in, and never sees anyone's people tags (B12 fixed to hidden, C6 fixed to hidden). (c) A new friend never sees announcements from before the friendship (B48 confirmed). Restates §12 "a person is never shown which layer they are on" as covering whether they are on the rings at all. B11, B12 and C6 stop being prototype switches; removing them from `prototype_option` is a data model change this ruling requires
+
+*LLLL to NNNN above were ruled on 2026-11-10. E2 (what close friends get) is deferred by the user; B55 stands until then.*
 
 ### Still open — can wait
 

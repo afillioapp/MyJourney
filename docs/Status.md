@@ -12,7 +12,7 @@ Status values: `todo` · `in progress` · `in review` · `done` · `blocked`
 
 **Current phase:** 2 — Look, started at the user's request (2026-11-04). The Phase 1 gate has not been passed; see the Log.
 **Next step:** private preview of Phase 2 on Vercel (`preview/`), then the user's answers to the open questions, then the Phase 2 gate.
-**Waiting on you:** E3 (what still tells someone they are on a map; explained 2026-11-10); E2 deferred by the user; AD-18 (not sure; B41 and B42 stand); whether to push the updated preview. Then the Phase 1 and Phase 2 gates. Parked: SI OQ-51, OQ-52; system closing the app during the note window; BBBB (b).
+**Waiting on you:** E2 deferred by the user; AD-18 (not sure; B41 and B42 stand); whether to push the updated preview. Then the Phase 1 and Phase 2 gates. Parked: SI OQ-51, OQ-52; system closing the app during the note window; BBBB (b).
 
 ---
 
@@ -105,6 +105,8 @@ Can start any time after Phase 2.
 
 0. **Carry §20 KKKK (network by friend request) before Phase 3.** Data model (`Phase-1-Amendments.md` §12) and fixtures (§13) done on paper, 2026-11-09; rules audit r2 fixed (`reviews/2026-11-09-rules-kkkk-r2.md`). Untested until Phase 3 (no Postgres here). **Still to do:** a ux pass on Flows and Screen-Inventory for the friend screens (the requests list, sending, removing, the close-friends list) and for "network" read as the map.
 
+0c. **Carry §20 NNNN (no one can tell they are on someone's rings).** Fix B11 (unnamed), B12 and C6 (hidden) across Flows, Screen-Inventory, Microcopy, Rubric and the preview; drop the three columns from `prototype_option` (Phase-1-Amendments O3, a model change the ruling requires). Not started.
+
 0b. **Carry §20 MMMM (blocking).** A Phase-1-Amendments section on paper (a new insert-only record; Instagram-reference defaults), the friend screens, fixtures and a rules audit. Not started.
 
 1. **Where the app deploys.** Phase 3 builds on local Postgres (decided 2026-10-30). A hosted Postgres and web framework for the Vercel project (`myjourney`) are still to choose. Does not block Phase 3.
@@ -178,3 +180,4 @@ Can start any time after Phase 2.
 - 2026-11-09 — ux pass for KKKK: Screen-Inventory S-22 (requests), S-23 (friends), S-24 (close friends), S-16 request element, S-05 way in; Flows Flow 10 Friends; "network as map" lines restated in both. Generic questions SI OQ-55 to OQ-57 settled by the supervisor as Instagram-reference defaults B57 to B61 (B61 strictest over Instagram's "follow back"). Rules audit next.
 - 2026-11-09 — Friend screens rules audit (`reviews/2026-11-09-rules-friend-screens.md`): FAIL (2): V1, SI and Flows do not carry B57–B61; V2, Flows prototype row for Second Wind after 2026-11-14 drops her outgoing request to Long Way Round. B58, B59 tightened. Not yet fixed.
 - 2026-11-10 — User rulings: E4 no (§20 LLLL, B56 decided); E5 yes, blocking (§20 MMMM, to carry: Open decisions 0b); E2 deferred, B55 stands. E3 explained to the user, answer awaited.
+- 2026-11-10 — User ruling §20 NNNN (E3): no one can tell they are on someone else's rings. B11 unnamed, B12 and C6 hidden, all three no longer switches; B48 confirmed. To carry (Open decisions 0c).
