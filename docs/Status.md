@@ -103,6 +103,12 @@ Can start any time after Phase 2.
 
 ## Open decisions
 
+**Phase 2 triage (supervisor, 2026-11-10, at the user's request).** To close the Phase 2 gate in one or two sittings:
+
+- **A. Needed for the gate** (they shape the ritual as a new reader meets it; no default, or the default is a product call): FQ-1 (which three taps); FQ-4 (how the reveal opens); FQ-2 with FQ-8 (lines and confirmations before set-once presses); FQ-12/MQ-1 with FQ-13/MQ-2 (whether the app states the 15-minute note window, the 24-hour highlight and its cap); FQ-5 (the "small deliberate act"); FQ-7 (an unwritten year in a reflection stack); MQ-8 (is the owner told what goes out at finish).
+- **B. Stay on their default, decided by playing:** AD-1 to AD-18 (defaults B27–B42; AD-5 and AD-10's arrangement need none in the prototype), DC-1 to DC-7, DC-9 to DC-14, DC-16 (flows already follow §20 or a labelled default), MQ-4, MQ-6, MQ-7, MQ-10, E6 (B69). **No default yet, supervisor to propose labelled defaults for the user's one-go OK:** FQ-3, FQ-10 (unlock-instant edges, with parked SI OQ-51, OQ-52), FQ-6 (empty paths), FQ-9 (where a path opens).
+- **C. Closed or housekeeping:** FQ-11 (JJJJ), AD-19 (IIII), DC-8 (NNNN), DC-15 (B61), MQ-5 (HHHH), MQ-9 (closed 2026-11-05); MQ-3 and MQ-11 are process (markers for the copywriter, ux), for the supervisor.
+
 0. **Carry §20 KKKK (network by friend request) before Phase 3.** *Done on paper 2026-11-10: friend-screens audit V1 and V2 fixed (`542b705`); not re-audited.* Data model (`Phase-1-Amendments.md` §12) and fixtures (§13) done on paper, 2026-11-09; rules audit r2 fixed (`reviews/2026-11-09-rules-kkkk-r2.md`). Untested until Phase 3 (no Postgres here). **Still to do:** a ux pass on Flows and Screen-Inventory for the friend screens (the requests list, sending, removing, the close-friends list) and for "network" read as the map.
 
 0c. **Carry §20 NNNN (no one can tell they are on someone's rings).** *Done on paper 2026-11-10 by the supervisor:* Phase-1-Amendments §14 (three switches left, tags owner-only, "path crossed" never named), Proposal:170, Spec §20 Z and :196, Flows, Screen-Inventory, Microcopy (M-18 one line, M-25 retired), Decisions B11/B12/C6, Rubric `Updated` lines, preview regenerated. Not audited by the rules-guardian; untested until Phase 3. **For the user:** Concept §16 "you see where you were in their journey" now rests on recognising yourself in a photo, with no mark.
