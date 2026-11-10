@@ -103,9 +103,9 @@ Can start any time after Phase 2.
 
 ## Open decisions
 
-0. **Carry §20 KKKK (network by friend request) before Phase 3.** Data model (`Phase-1-Amendments.md` §12) and fixtures (§13) done on paper, 2026-11-09; rules audit r2 fixed (`reviews/2026-11-09-rules-kkkk-r2.md`). Untested until Phase 3 (no Postgres here). **Still to do:** a ux pass on Flows and Screen-Inventory for the friend screens (the requests list, sending, removing, the close-friends list) and for "network" read as the map.
+0. **Carry §20 KKKK (network by friend request) before Phase 3.** *Done on paper 2026-11-10: friend-screens audit V1 and V2 fixed (`542b705`); not re-audited.* Data model (`Phase-1-Amendments.md` §12) and fixtures (§13) done on paper, 2026-11-09; rules audit r2 fixed (`reviews/2026-11-09-rules-kkkk-r2.md`). Untested until Phase 3 (no Postgres here). **Still to do:** a ux pass on Flows and Screen-Inventory for the friend screens (the requests list, sending, removing, the close-friends list) and for "network" read as the map.
 
-0c. **Carry §20 NNNN (no one can tell they are on someone's rings).** Fix B11 (unnamed), B12 and C6 (hidden) across Flows, Screen-Inventory, Microcopy, Rubric and the preview; drop the three columns from `prototype_option` (Phase-1-Amendments O3, a model change the ruling requires). Not started.
+0c. **Carry §20 NNNN (no one can tell they are on someone's rings).** *Done on paper 2026-11-10 by the supervisor:* Phase-1-Amendments §14 (three switches left, tags owner-only, "path crossed" never named), Proposal:170, Spec §20 Z and :196, Flows, Screen-Inventory, Microcopy (M-18 one line, M-25 retired), Decisions B11/B12/C6, Rubric `Updated` lines, preview regenerated. Not audited by the rules-guardian; untested until Phase 3. **For the user:** Concept §16 "you see where you were in their journey" now rests on recognising yourself in a photo, with no mark.
 
 0b. **Carry §20 MMMM (blocking).** A Phase-1-Amendments section on paper (a new insert-only record; Instagram-reference defaults), the friend screens, fixtures and a rules audit. Not started.
 
@@ -181,3 +181,5 @@ Can start any time after Phase 2.
 - 2026-11-09 — Friend screens rules audit (`reviews/2026-11-09-rules-friend-screens.md`): FAIL (2): V1, SI and Flows do not carry B57–B61; V2, Flows prototype row for Second Wind after 2026-11-14 drops her outgoing request to Long Way Round. B58, B59 tightened. Not yet fixed.
 - 2026-11-10 — User rulings: E4 no (§20 LLLL, B56 decided); E5 yes, blocking (§20 MMMM, to carry: Open decisions 0b); E2 deferred, B55 stands. E3 explained to the user, answer awaited.
 - 2026-11-10 — User ruling §20 NNNN (E3): no one can tell they are on someone else's rings. B11 unnamed, B12 and C6 hidden, all three no longer switches; B48 confirmed. To carry (Open decisions 0c).
+- 2026-11-10 — Friend screens audit V1 (B57–B61 carried into SI and Flows) and V2 (Second Wind's request to Long Way Round) fixed by the supervisor (`542b705`). Not re-audited.
+- 2026-11-10 — §20 NNNN carried on paper by the supervisor (Open decisions 0c). Rules-guardian re-audit still to run. Next: §20 MMMM, blocking (0b).

@@ -193,7 +193,7 @@ Navigating to someone's journey should take a small deliberate act. It must not 
 - A person's journey is read from the beginning to now, in order, not as a grid
 - The reader sees the hard times, then the reflection written later
 - A single photo can be followed forward: the original moment, then the follow-up
-- The reader sees where they themselves appear in that person's journey
+- The reader sees where they themselves appear in that person's journey *(2026-11-10, §20 NNNN: the app never marks it. A reader may recognise themselves in a photo they can read, but is never shown which photos they are tagged in)*
 
 ---
 
@@ -300,7 +300,7 @@ Feeling tags currently drafted: hang in there · it eventually pays off · thank
 
 - **X. Type, dates and tags under B2's "only after reveal finished" setting.** The network reads a journey's type, dates, chapter and feeling tags from unlock, as under §20 T. Only photos (and what follows them) wait for the reveal to finish (Phase-1-Amendments OQ-10)
 - **Y. No chapter filter on the Positivity Feed.** §20 T wins: chapters are never public. Replaces Decisions-Needed B9 (d) (Phase-1-Amendments OQ-11)
-- **Z. Option switches live in the database.** One `prototype_option` row holds the six switches, changed only through `set_option()` (Phase-1-Amendments O3, approved; a model change)
+- **Z. Option switches live in the database.** One `prototype_option` row holds the six switches *(three since 2026-11-10: B11, B12 and C6 are fixed by §20 NNNN)*, changed only through `set_option()` (Phase-1-Amendments O3, approved; a model change)
 - **AA. Highlight rows are sealed**, owner included. The owner learns only yes/no "a highlight is open" through one owner-only function (Phase-1-Amendments O4, approved; a model change)
 
 - **BB. Scripted fixture actions happen at 12:00 UTC** on their dates, away from the 00:00 UTC unlock instant (gate-1 r2 B-1)

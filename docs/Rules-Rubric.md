@@ -40,6 +40,8 @@ Updated 2026-11-09 (rules re-audit `docs/reviews/2026-11-09-rules-kkkk-r2.md`, a
 
 Updated 2026-11-09 (rules audit `docs/reviews/2026-11-09-rules-friend-screens.md`, of the ux pass for FS §20 KKKK (`Screen-Inventory.md` S-05, S-16, S-22 to S-24, OQ-55 to OQ-57; `Flows.md` Flow 10, opening, prototype table, DC-15, DC-16) and Decisions-Needed B57–B61): `Updated` lines on R-150 (step 2 also finds rows added "from Screen-Inventory OQ-n" or that "settle" an OQ or DC) and R-176 (prototype "On screen" cells checked against the fixture's derived state, untouched rows included). No new check. No check renumbered or removed.
 
+Updated 2026-11-10 (supervisor, carrying FS §20 NNNN, LLLL, MMMM; not an audit): `Updated` lines on R-071, R-092, R-139, R-141, R-146, R-147, R-148, R-149, the §14 intro and G-12. B11, B12 and C6 are no longer switches: B11 is always unnamed, B12 and C6 always hidden. No check added, renumbered or removed. The rules-guardian should re-read these on the next audit.
+
 ---
 
 ## What this is for
@@ -766,6 +768,7 @@ Commit, capture, frames, highlights and the note.
 - **How to check:** Review every screen as a member, not the owner. Grep aid: `inner circle`, `closest`, `close friend`, `your ring`, `moved (in|out|closer|further)`. See G-12.
 - **Provisional default:** Decisions-Needed B12 (switchable, R-147): Walking a path shows the photos where the reader appears, in journey order, with no total and no grouping (other setting: hidden). Holds as written under both settings. Under "shown", the "where you appear" view is checked as R-139 says
 - **Provisional default:** Decisions-Needed B11 (switchable, R-146): "Path crossed" names both people, reaches the owner's network, and never says which ring (other setting: unnamed). Holds as written under both settings: the named person learns they crossed the owner's path, never their ring (R-092)
+- **Updated 2026-11-10 (FS §20 NNNN):** B11 and B12 are fixed (unnamed; hidden). Read the two provisional lines above under those settings only: "path crossed" names no one, and no reader is shown where they appear
 
 ### R-072
 - **Statement:** A tag by A never creates or changes anything on B's map.
@@ -854,6 +857,7 @@ Commit, capture, frames, highlights and the note.
 ---
 
 ## 7. Feed and notifications
+- **Updated 2026-11-10 (FS §20 NNNN (b)):** B12 and C6 are fixed to hidden. No reader sees any person tag or any mark where they appear, so the check holds trivially; any tag or mark sent to a non-owner, in the UI or the data, fails
 
 ### R-084
 - **Statement:** The feed carries only three kinds of announcement: journey launched, reflection left, path crossed.
@@ -919,6 +923,7 @@ Commit, capture, frames, highlights and the note.
 - **Source:** FS:164, P1:168
 - **How to check:** Announcement payload is type, actor, subject and time only. Rendered text has no digits and no ring words.
 - **Provisional default:** Decisions-Needed B11 (switchable, R-146): "Path crossed" names both people and reaches the owner's network. It never says which ring (other setting: unnamed). Holds as written under both settings. Under "unnamed" the rendered text and the payload sent to readers carry no subject
+- **Updated 2026-11-10 (FS §20 NNNN (a)):** B11 is fixed to unnamed. The "named" case is retired: no "path crossed" payload carries a subject
 
 ### R-093
 - **Statement:** Getting from the feed to someone's journey takes a small deliberate act. Journey content is never shown inside the feed.
@@ -1460,7 +1465,7 @@ Commit, capture, frames, highlights and the note.
 
 ## 14. Provisional defaults and the options panel
 
-Added 2026-10-27 for the playable prototype (rule zero, CL:19–24; `Decisions-Needed.md` "Provisional defaults in force"). Seven defaults were switchable: B2, B4, B5, B9 (a), B11, B12, C6. **2026-10-30:** B9 (a) decided as text only (FS §20 Q); six remain. Each switch must keep the banned list under **both** of its settings, so the user can compare them without the comparison itself breaking a rule.
+Added 2026-10-27 for the playable prototype (rule zero, CL:19–24; `Decisions-Needed.md` "Provisional defaults in force"). Seven defaults were switchable: B2, B4, B5, B9 (a), B11, B12, C6. **2026-10-30:** B9 (a) decided as text only (FS §20 Q); six remain. **2026-11-10:** B11, B12 and C6 decided (FS §20 NNNN: unnamed, hidden, hidden); three remain, B2, B4, B5. R-146 to R-148 now check one fixed setting each. Each switch must keep the banned list under **both** of its settings, so the user can compare them without the comparison itself breaking a rule.
 
 ### R-141
 - **Statement:** The prototype options panel holds only the time control, the viewer switcher with the simulated date, and the six switchable defaults (B2, B4, B5, B11, B12, C6; B9 (a) was decided 2026-10-30, FS §20 Q, and has no switch; before 2026-10-30 this read "seven"). Each switch offers exactly its two documented settings, starts on the provisional default, and changes nothing but the behaviour its ID names.
@@ -1472,6 +1477,7 @@ Added 2026-10-27 for the playable prototype (rule zero, CL:19–24; `Decisions-N
 - **Provisional default:** Decisions-Needed B23: Option switches are one global setting, not per viewer. Switching the viewer in the panel changes no switch
 - **Provisional default:** Decisions-Needed B22: Reset puts every option switch back to its default (R-117)
 - **Decided 2026-10-30 (FS §20 EE, `FS:309`):** only the panel moves time or flips switches. `clock_jump()`, the jump to the next unlock and `set_option()` are callable by a separate panel role, never by the acting viewer (R-153)
+- **Updated 2026-11-10 (FS §20 NNNN):** the panel holds **three** switches, B2, B4 and B5. A switch for B11, B12 or C6 fails
 
 ### R-142
 - **Statement:** B2, under both settings ("from unlock" / "only after reveal finished"): nothing from a sealed journey is readable by anyone. The setting changes only who besides the owner may read an unlocked journey whose reveal is not finished: under "from unlock", the network reads photos not set Private and anyone signed in reads photos already set Public (B3, B14); under "only after reveal finished", no one but the owner reads any of it, Public photos included (**decided 2026-10-30, FS §20 R**). Before 2026-10-30 the statement read: "B2, under both settings ("from unlock" / "only after reveal finished"): nothing from a sealed journey is readable by anyone, and the setting changes only when the owner's network may read an unlocked journey's Network-default photos."
@@ -1508,17 +1514,21 @@ Added 2026-10-27 for the playable prototype (rule zero, CL:19–24; `Decisions-N
 
 - **Updated 2026-11-09 (FS §20 KKKK, `FS:378`; `docs/reviews/2026-11-09-rules-kkkk.md`):** "recipients equal Wind's map members" now reads "Wind's current friends at read time". At 2027-05-01 those are Steady Lantern and Open Hands, who became friends on 2026-11-14 by script (`Phase-1-Amendments.md` §13.5)
 - **Updated 2026-11-09, second pass (`PROVISIONAL: B48` changed to event time; `docs/reviews/2026-11-09-rules-kkkk-r2.md`):** "Wind's current friends at read time" now reads "Wind's current friends whose friendship began before the event". At 2027-05-01 these are still Steady Lantern and Open Hands, since the 2026-11-14 accept predates the 2027-04-25 finish
+- **Updated 2026-11-10 (FS §20 NNNN (a)):** no longer a switch. Check "unnamed" only: at 2027-05-01 the "path crossed" line names Wind only, and no field of the payload sent to Lantern or Hands carries a subject. A "named" line anywhere fails
+
 ### R-147
 - **Statement:** B12, under both settings ("shown" / "hidden"): Walking a path never gives a reader a total, grouping or ordering of the photos they appear in, and never shows a photo the reader cannot otherwise read.
 - **Type:** auto · **Applies to:** API, UI, copy
 - **Source:** DN B12, FS:196, FS:164, CL:74, P1:51. See R-139 and G-12
 - **How to check:** As Second Wind on Lantern #1 (Wind tagged in 6, 2 of them private). "Shown": only the tagged photos Wind can read appear (not the 2 private ones, R-065), in journey order, with no count, total, "n of", pagination total or grouping in the DOM, and no count field in the API response. "Hidden": no "where you appear" view, route or response field exists for a reader. Under both, R-139 passes. Every audit of "shown" reports R-139's residual risk (a reader can count by scrolling) as its weakest point.
+- **Updated 2026-11-10 (FS §20 NNNN (b)):** no longer a switch. Check "hidden" only: no "where you appear" view, route, mark or response field exists for any reader. The residual risk under "shown" is gone
 
 ### R-148
 - **Statement:** C6, under both settings ("hidden" / "shown"): no reader can total, group or rank how often a person is tagged, and no tag on a photo the reader cannot read is revealed.
 - **Type:** auto · **Applies to:** data, API, UI
 - **Source:** DN C6, FS:164, FS:277, CL:74, CL:24. See R-139
 - **How to check:** As Open Hands on Lantern #1. "Hidden": no person tag appears in any screen or API response for a photo Hands does not own; under the strictest reading (CL:24) it is absent from the data sent, not only from the UI. "Shown": person tags appear only on the single photo they belong to; no journey-level list, count, grouping or ordering by person (R-139); tags on photos Hands cannot read are absent. C6's question also asks whether a tag leads to that person's profile. No default answers that, so a tag that links to a profile is a finding until the supervisor answers (R-134).
+- **Updated 2026-11-10 (FS §20 NNNN (b)):** no longer a switch. Check "hidden" only, for every non-owner and every photo, Public included: no person tag in any screen or API response. The profile-link question is gone
 
 ### R-149
 - **Statement:** Every `PROVISIONAL:` label in the code names an ID in the "Provisional defaults in force" table of `Decisions-Needed.md`, and each switch on the options panel carries the label of its own switchable ID.
@@ -1535,6 +1545,7 @@ Added 2026-10-27 for the playable prototype (rule zero, CL:19–24; `Decisions-N
   A table ID with no label in code is not a failure: some defaults are an absence (B15, C15). `B9a`–`B9f` match row B9. Tested 2026-10-27 on a sample file: step 1 caught `A3` and `PROVISIONAL B2`, step 2 caught `B17`. Baseline 2026-10-27: no code labels yet. Review aid, not part of the auto result: for each label, the code beside it does what that table row says.
 
   Note 2026-10-30: B17 has since been added to the table (fdb83d3), so the sample above no longer shows a missing ID. A fresh sample should use an ID past the table's last row.
+- **Updated 2026-11-10 (FS §20 NNNN):** today's grep lists B2 B4 B5 B9; B9 (a) has no switch (FS §20 Q), so three switches. B11, B12 and C6 labels may stay in code only as `// Spec §20 NNNN` references, never on a switch
 
 ### R-150
 - **Statement:** A deliverable (doc or code) describes every question that `Decisions-Needed.md` answers with a provisional default under that default only, worded as the table row states it, and labelled `PROVISIONAL: <ID>`. It never calls such a question open or "no default", never states a default range that leaves out rows in the table, never describes the other side or a third reading as what the screen holds, and never extends a default or a switch setting to cases its row does not name.
@@ -1677,7 +1688,7 @@ Since 2026-10-27 each gap carries a status line under it: **being fixed** by a `
 
 **G-12. Walking a path can show a ring.** `FS:196` says the reader sees where they themselves appear in someone's journey. Counting those photos lets a reader estimate their ring on that person's map (5+ tight), against `FS:164`, `CLAUDE.md:74` and `P1:51`. Private tags count but stay hidden (`FS:277`), so the estimate is a floor, not exact. Open: is that acceptable, or should the "where you appear" view not total up?
 
-**Provisional default:** Decisions-Needed B12 (switchable): Walking a path shows the photos where the reader appears, in journey order, with no total and no grouping; other setting: hidden. **Partly covered:** under "shown" a reader can still count by scrolling, so the floor estimate this gap describes remains. R-139 and R-147 report it as the weakest point until the user decides. Under "hidden" the gap does not arise.
+**Closed 2026-11-10 (FS §20 NNNN (b)): the reader is never shown where they appear, so there is nothing to count. FS:196 carries the ruling.** *Before:* **Provisional default:** Decisions-Needed B12 (switchable): Walking a path shows the photos where the reader appears, in journey order, with no total and no grouping; other setting: hidden. **Partly covered:** under "shown" a reader can still count by scrolling, so the floor estimate this gap describes remains. R-139 and R-147 report it as the weakest point until the user decides. Under "hidden" the gap does not arise.
 
 **G-13. Highlights during the sealed year.** `P1:48` sealed photo, note, tag and reflection rows, but not highlight rows. **Closed 2026-10-30: FS §20 AA seals highlight rows (P1:48 amended).** A readable highlight record would tell others that, and when, a user started one, against `FS:246` and `FS:279` (§20 I). R-008 already requires that others see nothing, so the gap is in the current implementation. ~~Open for the owner: may the owner see that a highlight is open and when it ends?~~ **Settled 2026-10-30 (FS §20 S): the owner sees only that a highlight is open, never when it ends.** Original question: A running "ends in 3h" would be a counter (`CLAUDE.md:69`); a plain open-or-closed is not addressed anywhere.
 

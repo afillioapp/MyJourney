@@ -52,7 +52,7 @@ Other people can walk your path. They read your years from the beginning to now,
 | Whether your friends can read before you finish | `PROVISIONAL: B2`, switchable |
 | What adds a ring | `PROVISIONAL: B4`, switchable |
 | Finishing is when the line of activity is bent in | `PROVISIONAL: B5` |
-| Finding yourself in someone's hard year | `PROVISIONAL: B12`, switchable |
+| Finding yourself in someone's hard year | Spec §20 NNNN (b): the app never marks it; the reader may still recognise themselves in a photo they can read |
 | Anyone can send a request to anyone | `PROVISIONAL: B43` |
 | A decline is never shown to its sender | `PROVISIONAL: B44` |
 | Either friend can quietly end the friendship at any time | `PROVISIONAL: B45` |
@@ -67,16 +67,15 @@ Other people can walk your path. They read your years from the beginning to now,
 
 **Sources.** All in `docs/`. *Spec* = `Functional-Spec.md`, cited by section, or by letter or number for §20 ("§20 D", "§20 3"). *Proposal* = `Phase-1-Proposal.md`. *Concept* = `My-Journey-Concept.md`. *Decisions* = `Decisions-Needed.md`. *Rubric* = `Rules-Rubric.md` (R-nnn, G-n). *SI* = `Screen-Inventory.md` (S-01 to S-21, OQ-n). *Brief* = `Master-Prompt.md`. `Overview.md` is never cited.
 
-**Provisional defaults.** `PROVISIONAL: <ID>` means Decisions-Needed gives a working default. It is not a decision until the user says so. Six are switchable in the prototype options panel, T-02, and are marked "switchable" wherever they apply:
+**Provisional defaults.** `PROVISIONAL: <ID>` means Decisions-Needed gives a working default. It is not a decision until the user says so. Three are switchable in the prototype options panel, T-02 (six until 2026-11-10, when Spec §20 NNNN fixed B11, B12 and C6), and are marked "switchable" wherever they apply:
 
 | ID | What it switches | Default | Other setting | Flows it changes |
 |---|---|---|---|---|
 | B2 | Reading a journey before its reveal is finished | from unlock | only after reveal finished | 5, 6, 8, 9 |
 | B4 | What adds a ring | per finished reveal | per year with the app (own profile only, §20 WW) | 4, 5, 8 |
 | B5 | Who sees the activity graph | owner only | built from the photos the viewer can see | 8 |
-| B11 | "Path crossed" | named | unnamed | 5, 7 |
-| B12 | Where the reader appears | shown | hidden | 9 |
-| C6 | People tags for readers | hidden | shown | 9 |
+
+*No longer switches (Spec §20 NNNN, 2026-11-10): B11 "path crossed" is always unnamed (Flows 5, 7); B12 "where the reader appears" and C6 "people tags for readers" are always hidden (Flow 9).*
 
 **Weighted moments.** `[copy: copywriter]` marks a line that carries weight, with a note of what it must do. No final copy is written here. All markers are collected in the [index](#index-of-weighted-moments).
 
@@ -169,10 +168,10 @@ The time control (T-01) and the viewer switcher (T-02) are not part of the produ
 | 5 | Long Way Round | Baseline | The plain way into the reveal from the profile (`PROVISIONAL: B41`); the ready line has already shown once (Spec §20 FFFF). The reveal of the last journey, with each choice still to make (`PROVISIONAL: B3`) | #4's reveal was never finished | Proposal:246, 392 |
 | 6 | Steady Lantern, photo lantern-1 | Baseline, then +1 year | The photo, its note and its five reflections in order, with no count printed (`PROVISIONAL: B8`). No way to write another at baseline. A way to write one after the jump, with nothing marking that it opened | The current slot was used at baseline | Proposal:299 |
 | 7 | Steady Lantern | Baseline | The map, with Second Wind on the tight ring: the current ring only (`PROVISIONAL: C8`) | **Never shown:** Wind's earlier rings, which are pre-baseline history, as in Flow 7 part B. The clock only goes forward (Proposal:195), so a ring is seen to move only as two current states, either side of a finished reveal | Proposal:264–270 |
-| 7 | First Light | Baseline, and after 2027-06-20 | Her own map: the core only, at both points (`PROVISIONAL: C9`). Her feed holds nothing from Open Hands, before or after 2027-06-20: she is not Hands' friend, and being on Hands' map grants nothing (Spec §20 KKKK (d), (e)) | Open Hands tags her once on 2027-06-20, which puts her on Hands' map, outer, and leaves her own unchanged (Spec §20 G; DC-13). The "path crossed" naming her goes to Hands' friends, Lantern and Wind, not to her (`Phase-1-Amendments.md` §13.4.2; under `PROVISIONAL: B11`, switchable, it names her only under "named"). **Never shown to her:** the ring, or that she is on Hands' map | Proposal:391; `Phase-1-Amendments.md` §13.3, §13.4.2 |
+| 7 | First Light | Baseline, and after 2027-06-20 | Her own map: the core only, at both points (`PROVISIONAL: C9`). Her feed holds nothing from Open Hands, before or after 2027-06-20: she is not Hands' friend, and being on Hands' map grants nothing (Spec §20 KKKK (d), (e)) | Open Hands tags her once on 2027-06-20, which puts her on Hands' map, outer, and leaves her own unchanged (Spec §20 G; DC-13). The "path crossed" naming her goes to Hands' friends, Lantern and Wind, not to her (`Phase-1-Amendments.md` §13.4.2; it never names her, Spec §20 NNNN (a)). **Never shown to her:** the ring, or that she is on Hands' map | Proposal:391; `Phase-1-Amendments.md` §13.3, §13.4.2 |
 | 8 | First Light | Baseline | Her name in the circle. Rings by `PROVISIONAL: B4`, switchable: none per finished reveal; per year with the app, by years since joining, on this profile only (Spec §20 WW; R-143) | She has no journey | Proposal:65, 211 |
 | 8 | Long Way Round | Baseline | Rings by `PROVISIONAL: B4`, switchable: per finished reveal, drawn with none for the last journey; per year with the app, by years since joining | 3 finished reveals and 1 unfinished | Proposal:65, 210 |
-| 9 | Second Wind, on Steady Lantern #1 | Baseline | `PROVISIONAL: B12`, switchable. Shown: a mark in place on photos where Wind is tagged and can read, with no total and no grouping. Hidden: the path reads as for anyone. Other people's tags by `PROVISIONAL: C6`, switchable: hidden / shown | **Never shown:** Wind is tagged in 6 photos, 2 of them Private, so 4 can carry a mark. Neither figure, nor that Private photos tag Wind, is ever shown to Wind | Proposal:266, 293 |
+| 9 | Second Wind, on Steady Lantern #1 | Baseline | The path reads exactly as for any friend of Lantern: no mark where Wind is tagged and no one's tags (Spec §20 NNNN (b); B12 and C6 fixed to hidden) | **Never shown:** that Wind is tagged at all, in any of her 6 photos (2 of them Private), or any figure about it | Proposal:266, 293 |
 | 9 | Steady Lantern, on Long Way Round #4 | Baseline | `PROVISIONAL: B2`, switchable. From unlock: every photo, since all are Network by default. Only after reveal finished: no photo, but the type and dates still (Spec §20 X). Whether #4's reveal is finished, which a friend may read (Spec §20 SS) | Lantern is Round's friend (since 2025-10-02) and is on neither's map (Spec §20 KKKK (a)) | `Phase-1-Amendments.md` §13.1, §13.3 |
 | 9 | Open Hands, on Long Way Round #4 | Baseline | As a public reader, under both B2 settings: no photo (all are Network), and no type, dates, chapter or reveal state (Spec §20 T, SS, KKKK (d)) | Hands is on Round's map, outer, but not his friend; her request to him is pending and grants nothing (`Phase-1-Amendments.md` §12.2). **Never shown to her:** that she is on his map | `Phase-1-Amendments.md` §13.2, §13.3 |
 | 10 | Steady Lantern | Baseline | Friend requests: First Light's, incoming, with accept and decline and no time. Friends: Second Wind, Open Hands and Long Way Round by name, with no count. Close friends: Second Wind | Lantern and Round were friends from 2022 until a removal in 2024, and Round's place on her close-friends list ended with it (`PROVISIONAL: B49`). **Never shown:** who removed whom, and that Round was ever on the list | `Phase-1-Amendments.md` §13.1, §13.2 |
@@ -400,7 +399,7 @@ This is the hardest state in the product. Underneath, the owner's journey return
 6. At finish (Spec §20 F, J; Proposal §2.3):
    - All reveal choices lock.
    - The map is recomputed. See Flow 7, part B.
-   - "Path crossed" goes out for each crossing and "journey launched" once, to the owner's friends, never to the owner (Spec §20 J, M, UU, KKKK (e)). Who counts as a friend is fixed at the finish (`PROVISIONAL: B48`). A crossed person who is a friend receives it too, and whether that should be so is with the user (Decisions E3 (a)); one who is not a friend does not. Hand-off to S-08. `[copy: copywriter]` *The announcement lines: one plain line each, no image, no ring (S-08).* Whether "path crossed" names the crossed person: `PROVISIONAL: B11`, switchable, named / unnamed.
+   - "Path crossed" goes out for each crossing and "journey launched" once, to the owner's friends, never to the owner (Spec §20 J, M, UU, KKKK (e)). Who counts as a friend is fixed at the finish (`PROVISIONAL: B48`). A crossed person who is a friend receives it too, and whether that should be so is with the user (Decisions E3 (a)); one who is not a friend does not. Hand-off to S-08. `[copy: copywriter]` *The announcement lines: one plain line each, no image, no ring (S-08).* "Path crossed" never names the crossed person (Spec §20 NNNN (a)).
    - Under `PROVISIONAL: B4` (switchable: per finished reveal / per year with the app), this journey's ring is added to S-05. On S-16, others always see one ring per finished reveal (Spec §20 WW).
    - The year's activity line twists into the circle (`PROVISIONAL: B5`).
 7. The app goes to S-05 (S-21). Flow 8.
@@ -512,7 +511,7 @@ All photos of a journey move to their next slot together, on the journey's unloc
 
 1. Each user tagged in this journey goes straight to the ring their count gives: 5 or more photos tight, 2–4 middle, 1 outer. Private photos count. Typed names and the owner do not (Spec §20 G, L, 7; Proposal:156).
 2. Anyone already on the map who is not tagged in this journey moves out one ring. Tight goes to middle, middle to outer, and outer stays outer. Nobody drops off (Spec §12, §20 G).
-3. Each crossing announces "path crossed" to the owner's friends at the finish, never saying which ring (Spec §20 J, M, KKKK (e); `PROVISIONAL: B48`; `PROVISIONAL: B11`, switchable, named / unnamed). A crossed person who is not a friend does not receive it. One who is a friend does, and under "named" learns they are on the map, not where: Decisions E3 (a), with the user (`Phase-1-Amendments.md` OQ-40; SI OQ-21). Crossings with someone who is not a friend are still announced, to the owner's friends: DC-16.
+3. Each crossing announces "path crossed" to the owner's friends at the finish, never saying which ring (Spec §20 J, M, KKKK (e); B48, confirmed by Spec §20 NNNN (c)). It never names the crossed person (Spec §20 NNNN (a)), so a crossed person who is a friend receives the same unnamed line as everyone else and learns nothing (`Phase-1-Amendments.md` OQ-40, §14; SI OQ-21). Crossings with someone who is not a friend are still announced, to the owner's friends: DC-16.
 4. The tagged person's own map does not change, and the owner gains no access to the tagged person's photos (Spec §20 G; Concept:860). Being placed on the map gives the tagged person no access either, and making or ending a friendship changes no map (Spec §20 KKKK (d); `PROVISIONAL: B45`).
 
 Worked example, from the fixtures (Proposal:264–270). Second Wind on Steady Lantern's map:
@@ -609,7 +608,7 @@ Lantern sees only the current ring, never this table (`PROVISIONAL: C8`).
 2. Within a journey they see the photos they are allowed to see, in order of capture date. A non-owner sees the date only, and same-day photos in a fixed order that carries no time (Spec §20 GG, JJ). The owner sees the full time (Spec §20 GG).
 3. They read a hard time, and then the reflection written later on it (Spec §15). Reflections follow their photo's visibility (Spec §20 F). §20 EEE counts a reflection's date among the dates a reader can already see.
 4. They can follow one photo forward on S-17: the original moment, its handwritten note on the back, then the stack of reflections in order (Spec §15; `PROVISIONAL: C13`). Then back to the path. A non-owner never sees when a note was written (Spec §20 LL).
-5. Where they themselves appear: `PROVISIONAL: B12`, switchable. *Shown (default):* on photos the reader can already see, those where they are tagged say so, in place, in journey order, with no total, no grouping, no separate list (R-139). *Hidden:* the path reads the same as for anyone. `[copy: copywriter]` *Finding yourself in someone's hard year: "one of the most powerful moments the product can produce" (Concept:582). Let the reader discover it quietly. No number, no ring, no announcement of it. Under "hidden" it does not occur.*
+5. Where they themselves appear: **never marked** (Spec §20 NNNN (b), 2026-11-10; B12 fixed to hidden). The path reads the same as for anyone with the same access. A reader may still recognise themselves in a photo they can read; the app adds nothing to that. *(Before 2026-11-10 a "shown" setting marked those photos in place: retired, with Microcopy M-25.)*
 6. Owner and network can read the overview stack, back to back, on S-15 (Spec §9, §20 E).
 7. The path reaches now. If the person's current journey is sealed, it shows as existing and nothing else (Spec §20 I). The path stops there, with no "more like this" or next person (R-104). The reader leaves.
 
@@ -622,12 +621,12 @@ Lantern sees only the current ring, never this table (`PROVISIONAL: C8`).
 | Public | Public only | Never. They may see the order of journeys, with no dates as fields (Spec §20 T, KKK) | Never |
 
 - **Before the reveal is finished:** `PROVISIONAL: B2`, switchable. *From unlock (default):* the network reads every photo not yet set Private, and anyone reads photos already set Public. *Only after reveal finished:* no photo for anyone but the owner (Spec §20 R). See the time-state table.
-- **Other people's tags:** `PROVISIONAL: C6`, switchable. *Hidden (default):* a reader sees no one else tagged. *Shown:* tags in place on each photo, with no count, grouping or list (R-139). Whether a shown tag leads to that person's profile is SI OQ-20, not picked here.
+- **Other people's tags:** never shown to a reader (Spec §20 NNNN (b), 2026-11-10; C6 fixed to hidden). SI OQ-20, whether a shown tag leads to a profile, no longer arises.
 - **The owner on their own path.** On a photo with no reflection in the current slot, the owner can go on to Reflect, Flow 6. Nothing marks that a slot is open (`PROVISIONAL: C3`; R-095, R-096).
 - **A journey or path with nothing this reader can see.** Not stated: FQ-6.
 - **Writing.** No comment, reply or reaction exists (Spec §8, §18). Nobody but the owner writes.
 - **From a Positivity Feed entry to a photo.** No next or previous control steps to another entry's photo (Spec §20 Q; R-145). Public-reader limits still apply there (Spec §20 T, CC).
-- **Never, for a non-owner:** whether a photo was taken in a highlight (Spec §20 DD); the join date (Spec §20 TT). **Never, for any reader:** their own ring on this person's map (Spec §12, §18). B12's "shown" still lets a reader count by reading, which R-139 reports as the weakest point (G-12).
+- **Never, for a non-owner:** whether a photo was taken in a highlight (Spec §20 DD); the join date (Spec §20 TT). **Never, for any reader:** their own ring on this person's map (Spec §12, §18). With B12 fixed to hidden (Spec §20 NNNN), the reader has no tag to count; G-12's weakest point is gone.
 
 **Ends:** when the reader leaves.
 
@@ -699,7 +698,7 @@ Lantern sees only the current ring, never this table (`PROVISIONAL: C8`).
 | A close friend | As any friend (`PROVISIONAL: B55`; Decisions E2) |
 | After a removal | Public photos only. No earlier announcement returns, even after a new friendship (`PROVISIONAL: B45`, `B48`) |
 
-**Where E2 to E5 bite.** E2: part E and S-24. E3 (a): "path crossed" reaching a crossed friend, Flow 5 step 6 and Flow 7 part B step 3. E3 (b): Flow 9 step 5 under the "shown" settings of B12 and C6. E3 (c): part B step 3 and part D step 2. E4: no one sees another user's friends, S-16 and S-23 (`PROVISIONAL: B56`). E5: part B, branches. None is settled here.
+**Where E2 to E5 bite.** E2: part E and S-24. E3 (a), (b) and (c): **settled 2026-11-10 by Spec §20 NNNN** (unnamed, hidden, no), in Flow 5 step 6, Flow 7 part B step 3, Flow 9 step 5, part B step 3 and part D step 2. E4: **settled 2026-11-10 by Spec §20 LLLL**, no one sees another user's friends, S-16 and S-23 (B56). E5: **settled 2026-11-10 by Spec §20 MMMM**, users can block; part B, branches, to be carried (blocking screens to come). E2 deferred by the user.
 
 ---
 
@@ -773,7 +772,7 @@ Nothing below was picked. Each flow adds nothing at these points. **New IDs:** F
 | Parked | The system closes the app during the note window. §20 DDDD does not name it. G-28 did. | 3 | `Status.md`, "Waiting on you"; `docs/reviews/2026-10-31-rules-phase-1-r10.md:161` |
 | Parked | BBBB (b) timing: a "closed" answer after the note step refuses is slower than other "closed" answers. Reached only by outside code, and it changes nothing in Flow 3. Listed so it is not lost. | 3 | `docs/reviews/2026-10-31-rules-phase-1-r10.md:181`, `:262` |
 | SI OQ-7 | What the activity line records besides capture times. | 5, 8 | SI OQ-7; Concept:704 |
-| SI OQ-20 | Under C6's "shown", whether a tag leads to that person's profile. | 9 | SI OQ-20 |
+| SI OQ-20 | Under C6's "shown", whether a tag leads to that person's profile. **Gone 2026-11-10: C6 fixed to hidden (Spec §20 NNNN)** | 9 | SI OQ-20 |
 | SI OQ-33 | Where the name search sits for visiting a profile, and how matches are ordered. Any order by ring, closeness or popularity is banned (R-071). | 4, 8 | SI OQ-33 |
 | SI OQ-32 | How invitation works in the product. Sign-up is not built in the prototype. | Hand-off | SI OQ-32; Decisions C11 |
 | R-143 | Under B4's "per year with the app", on which date a year's ring appears. | 8 | R-143 |
@@ -816,7 +815,7 @@ Both lines are cited and neither is picked here. The flows follow §20 and Conce
 | DC-5 | Spec:141 and Concept:365–367, "publish", against Spec §20 F, J, which use "reveal finished" and "journey launched". The flows do not use "publish" | `PROVISIONAL: B1` |
 | DC-6 | Spec:131, feeling tags "inside a category", against Proposal:141, free text on the journey | `PROVISIONAL: B17` |
 | DC-7 | Spec:131, "Popular ones surface", against Spec:202, "never by popularity" | `PROVISIONAL: B18` |
-| DC-8 | Spec:196, "sees where they themselves appear", against Spec:164 and Spec:235, a person is never shown their layer. A reader can count photos and estimate a ring (G-12) | `PROVISIONAL: B12`, switchable |
+| DC-8 | Spec:196, "sees where they themselves appear", against Spec:164 and Spec:235, a person is never shown their layer. A reader can count photos and estimate a ring (G-12) | **Spec §20 NNNN (b), 2026-11-10: never marked.** Spec:196 now carries the ruling |
 | DC-9 | Spec:13 and Spec:184, "The circle frames the profile picture", and `CLAUDE.md:111`, against Spec §20 YY, XXX, no profile picture, the name in the circle | Spec §20 XXX |
 | DC-10 | Spec:233, reminders and counters banned "during the sealed year", against `CLAUDE.md:69` and Spec:242, banned at any time | `PROVISIONAL: B8` |
 | DC-11 | Spec:59, every capture "counts against the journey's quota", against Spec §20 5, highlight photos do not count against normal frames | Spec §20 5 |

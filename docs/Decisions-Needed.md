@@ -27,8 +27,8 @@ Approved approach (user, 2026-10-27): build the prototype with these defaults an
 | B8 | Counters and progress bars are banned at all times, not only while sealed | no |
 | B9 | Positivity Feed: (a) reflection text only, with the photo shown when opened; (b) per-photo visibility; (c) drafted tag list only; (d) chapter filter available; (e) newest first; (f) only after reveal finished. (c) list **decided 2026-10-30**: the four working tags (Spec §20 W). (d) **replaced 2026-10-30: no chapter filter** (Spec §20 Y) | (a), (d), (e) decided (Spec §20 Q, Y, BBB); (c) list decided (§20 W). (b), (f) provisional. No switch |
 | B10 | "Reflection left" reaches only the owner's network members who can see the photo, even when it is public | no |
-| B11 | "Path crossed" names both people and reaches the owner's network. It never says which ring | **yes**: named / unnamed |
-| B12 | Walking a path shows the photos where the reader appears, in journey order, with no total and no grouping | **yes**: shown / hidden |
+| B11 | ~~"Path crossed" names both people and reaches the owner's network.~~ **Decided 2026-11-10 (Spec §20 NNNN (a)): never names the person crossed.** It never says which ring | no (was named / unnamed) |
+| B12 | ~~Walking a path shows the photos where the reader appears.~~ **Decided 2026-11-10 (Spec §20 NNNN (b)): never shown** | no (was shown / hidden) |
 | B13 | The slot 1 overview can be written after the reveal is finished, within the slot. Readable by the network only | no |
 | B14 | "Public" means signed-in users only | no |
 | B15 | No usage analytics or telemetry of any kind | no |
@@ -41,7 +41,7 @@ Approved approach (user, 2026-10-27): build the prototype with these defaults an
 | C3 | The sealed-year screen does not point to earlier journeys. Their open reflection slots are reached from the owner's profile | no |
 | C4 | The note step is offered only inside the capture flow, straight after the photo, for up to 15 minutes. Leaving capture ends it, so there is no way back from the sealed screen (this resolves audit finding 1). The page is taken live, once, with no re-shoot. Skipping ends the step for good (**decided 2026-10-31**, Spec §20 WWW); the window ends at unlock (Spec §20 YYY) | no |
 | C5 | Nothing is required before finishing a reveal. Each set-once choice shows a one-line "this can't be changed" before it is saved | no |
-| C6 | People tags are not shown to readers | **yes**: hidden / shown |
+| C6 | People tags are not shown to readers. **Decided 2026-11-10 (Spec §20 NNNN (b))** | no (was hidden / shown) |
 | C7 | No profile picture is shown anywhere. The profile shows the name in the circle. Announcements carry no image (**decided 2026-10-31**, Spec §20 XXX) | no |
 | C8 | The map shows current rings only: no counts, no history, no drift | no |
 | C9 | Empty states are a plain statement; copy in Phase 2 | no |
@@ -154,9 +154,9 @@ The Phase 1 gate asks that a developer can build the data model "with no questio
 
 **B10. "Reflection left" on a public photo.** It goes to everyone who can see the photo, so every user receives it. Intended? (Inv 22)
 
-**B11. "Path crossed" names the crossed person.** That tells them they are on the owner's map (`Functional-Spec.md:164`). Does it name them, and does it reach them? (Inv 21)
+**B11. "Path crossed" names the crossed person.** That tells them they are on the owner's map (`Functional-Spec.md:164`). Does it name them, and does it reach them? (Inv 21) **Decided 2026-11-10: never named (Spec §20 NNNN (a)).**
 
-**B12. "Where you appear" in Walking a path.** Showing a reader the photos they appear in lets them count those photos and estimate their ring. Show them without a total? Or not at all? (Inv 19, G-12)
+**B12. "Where you appear" in Walking a path.** Showing a reader the photos they appear in lets them count those photos and estimate their ring. Show them without a total? Or not at all? (Inv 19, G-12) **Decided 2026-11-10: not at all (Spec §20 NNNN (b)).**
 
 **B13. Overviews.** Can slot 1 be written after the reveal is finished? Can anyone outside the network read it? (Inv 14, G-19)
 
@@ -186,7 +186,7 @@ The Phase 1 gate asks that a developer can build the data model "with no questio
 
 **C5. Finishing a reveal.** Is anything required before finishing, such as a chapter? Is the owner asked to confirm each set-once choice? (Inv 17, 18)
 
-**C6. People tags for readers.** Can a reader see who else is tagged? Can a tag lead to that person's profile? (Inv 20)
+**C6. People tags for readers.** Can a reader see who else is tagged? Can a tag lead to that person's profile? (Inv 20) **Decided 2026-11-10: readers never see tags (Spec §20 NNNN (b)), so the second question does not arise.**
 
 **C7. Profile picture.** What may it show, given "nothing signals how the person looks"? When is it set, and can it change? May announcements show it? (Inv 31, G-9, G-10)
 

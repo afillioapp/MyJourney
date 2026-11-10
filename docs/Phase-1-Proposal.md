@@ -167,7 +167,7 @@ B's own map never changes because of A's tags.
 - **journey_type**: constants. **chapter**: catalogue seeded from Concept §15.
 - **announcement**: (type limited to journey_launched, reflection_left and path_crossed; actor; subject; at). No media column, no count column. Who sees each one is worked out from visibility (see reading R2), read only through `announcement_rows()` (FS §20 OO). "Reflection left" reaches the actor (FS §20 UU) and otherwise only the owner's network members who can see the photo, even when it is public (`PROVISIONAL: B10`) *(amended 2026-10-30 and 2026-10-31)*. *(2026-11-09: "network" here now means the owner's friends, FS §20 KKKK; see `Phase-1-Amendments.md` §12.3)*
 - **sim_clock** (the last jump's time and when it was made; `app_now()` runs at real speed from it, FS §20 V; moved only by the panel role, never by the acting viewer, FS §20 EE *(amended 2026-10-30, `Phase-1-Amendments.md`)*) and **journey_key**.
-- **prototype_option**: one row, one column per switch (B2, B4, B5, B11, B12, C6), changed only through `set_option()` (FS §20 Z), which only the panel role may call (FS §20 EE). One global row, not per viewer (`PROVISIONAL: B23`). *(amended 2026-10-30, `Phase-1-Amendments.md`)*
+- **prototype_option**: one row, one column per switch (B2, B4, B5; B11, B12 and C6 fixed 2026-11-10 by FS §20 NNNN, `Phase-1-Amendments.md` §14), changed only through `set_option()` (FS §20 Z), which only the panel role may call (FS §20 EE). One global row, not per viewer (`PROVISIONAL: B23`). *(amended 2026-10-30, `Phase-1-Amendments.md`)*
 
 ### 2.5 Checks that ship with the schema
 
