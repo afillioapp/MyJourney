@@ -44,6 +44,8 @@ Updated 2026-11-10 (supervisor, carrying FS §20 NNNN, LLLL, MMMM; not an audit)
 
 Updated 2026-11-10, second pass (supervisor, carrying FS §20 MMMM, OOOO to XXXX; not an audit): `Updated` lines on R-121, R-122, R-138, R-140 and the C5 line; G-1 closed. Blocking (MMMM, Phase-1-Amendments §15) has no check yet: §15.5 lists the cases for the rules-guardian to turn into checks.
 
+Updated 2026-11-10 (rules audit `docs/reviews/2026-11-10-rules-supervisor-carriage.md`, of the supervisor's carriage of FS §20 LLLL–XXXX, git a3b9a4f..7ad6990): added R-198 to R-209, each under its area (R-198 supersedes R-121; R-199, R-201 in area 1; R-205 in 3; R-202 to R-204 in 5; R-206 in 7; R-200, R-207 in 8; R-198 in 11; R-208, R-209 in 13). Blocking (MMMM) now has checks R-202 to R-204, from `Phase-1-Amendments.md` §15.5. `Updated` lines on R-121 (superseded), R-138, R-146, R-156. R-140's 2026-11-10 `Updated` line, which sat after the area 8 separator, moved back under R-140 with its text unchanged. Banned-list coverage gains R-199 to R-205 and R-207. No check renumbered or removed.
+
 ---
 
 ## What this is for
@@ -201,6 +203,7 @@ Test fixtures named below come from `Phase-1-Proposal.md` §3. Steady Lantern #6
 - **Source:** FS §20 AA, DD, MM; DN B6, B24; R-008, R-151. Proposed by `Phase-1-Amendments.md` §4 item 1 (line 264), with the list extended to `highlight_rows` for FS §20 MM (§10). Numbered by `docs/reviews/2026-10-31-rules-phase-1-r6.md`
 - **How to check:** As the table owner, list every object whose definition names the relation `highlight` as a whole identifier, not as part of another name (`highlight_id`, `highlight_open`, `start_highlight`). Scan `pg_get_functiondef()` for every function, `pg_get_viewdef()` for every view and materialised view, `pg_policies.qual` and `with_check` for policies on every other table, `pg_rewrite` rules and trigger functions, and, for SQL-standard bodies, `pg_depend` rows on `'highlight'::regclass`. The set must equal {`capture`, `start_highlight`, `highlight_open`, `highlight_rows`}. A name scan cannot see a table named at run time, so the check also fails on any function owned by the table owner whose body builds SQL at run time (PL/pgSQL `EXECUTE`, `format(` used to build a statement, `query_to_xml`, `dblink`), unless the rules-guardian has reviewed it onto a closed list. The R-151 and R-008 tests must then pass.
 - **Current implementation:** highlight RLS is FORCEd, and the `highlight_rules` policy lets any table-owner definer function called from an app or panel session see every row (`Phase-1-Amendments.md` §4 item 1, lines 260–265). That policy is why this check exists: a new definer function or owner-owned view that names `highlight` would read every user's highlights
+- **Updated 2026-11-10 (`docs/reviews/2026-11-10-rules-supervisor-carriage.md` V7):** `Phase-1-Amendments.md` §16.2 adds `dismiss_highlight()`, which names `highlight`, and says it "joins §4 item 1's list"; §4 item 1 (`:336`) and this check's set were not changed. The set becomes {`capture`, `start_highlight`, `highlight_open`, `highlight_rows`, `dismiss_highlight`} only once §4 item 1 lists it; until then the scan fails. `highlight_dismissal` is held to the same scan (R-209)
 
 ### R-157
 - **Statement:** Nobody can tell from the database's own bookkeeping that anyone captured, started a highlight, reflected, tagged or committed in content they cannot read. No statistic, row estimate, table size, transaction or WAL counter, lock, session list or other database changes in a way they can see.
@@ -217,6 +220,20 @@ Test fixtures named below come from `Phase-1-Proposal.md` §3. Steady Lantern #6
 - **Source:** FS §20 OO (`FS:319`), MM, RR. Proposed by `Phase-1-Amendments.md` §11 checks 1–3 (lines 716–720). Numbered by r6
 - **How to check:** (1) The viewer role, the panel role and PUBLIC hold no table or column privilege on any table in the product schema, except SELECT on `journey_type`, `chapter` and `prototype_option`. A new table fails until it is listed there or given a reader. (2) Every set-returning function the viewer role may execute is a definer function with a fixed row estimate. With sequential scans disabled, the plan of its body has no sequential scan on any user-content table other than `user`. (3) For each fixture viewer, at several clock points and under every setting of `b2` and `c6`, each reader returns exactly the rows its read rule allows. The read rule is checked against this rubric and the provisional defaults, not only against the table's policy: an equivalence test against a wrong policy still passes (r6 V3, B10). (4) Every write goes through a definer function whose body carries the check its insert policy carried. The refusal cases of R-026, R-046, R-052, R-057 and R-122 are run through those functions (R-164).
 - **Current implementation:** `Phase-1-Amendments.md` §11 (one reader per table, `ROWS 1000`, journey first), `P1:44–45`, `P1:48` (h)
+
+### R-199
+- **Statement:** No writer accepts anything on a photo, note or highlight of a journey that has not unlocked, whatever date arithmetic of its own says. Each writer that reads sealed rows as a definer refuses before `unlocks_at` by its own explicit test, and its answer before unlock is the same for an existing and a non-existent id.
+- **Type:** auto · **Applies to:** data, API
+- **Area:** 1. Sealing and leaks
+- **Source:** CL "Sealed content is unreadable"; P1:48, P1:117; FS §20 VVVV; `Phase-1-Amendments.md` §16.1. Found by `docs/reviews/2026-11-10-rules-supervisor-carriage.md` V2 (`add_reflection()` lost the unlock guard the old D9 arithmetic gave it; "c + 1 year ≥ unlocks_at" is false for a Commit not at 00:00 UTC, since `unlocks_at` keeps the Commit's time of day, P1:73–74)
+- **How to check:** In a throwaway copy, Commit at 14:37:00 UTC on day d, capture a photo at 15:00 the same day, jump to d + 1 year 00:00:00 and to 14:36:59: `add_reflection()` on that photo is refused at both, with the same answer as for a random uuid; at 14:37:00 it is accepted (slot 1). Repeat for every definer writer that takes a photo, note or highlight id. Code scan: each such writer names `unlocks_at` (or the seal predicate) itself.
+
+### R-201
+- **Statement:** A provisional default or screen rule written for "nothing this reader can see", "no photo yet" or "an empty journey" never applies to a sealed journey. A sealed journey reaches anyone but its owner as "exists" only (R-008), whatever such a rule says, and reaches the owner as B19 allows.
+- **Type:** review, then auto · **Applies to:** UI, data, copy
+- **Area:** 1. Sealing and leaks
+- **Source:** R-008, FS §20 I (`FS:279`), FS §20 T, CL:106. Found by `docs/reviews/2026-11-10-rules-supervisor-carriage.md` V1 (B74, `Decisions-Needed.md:109`, `Flows.md:626`: "to a friend it shows as a place with its type and dates only", with no exception for a sealed journey)
+- **How to check:** For every default or SI/Flows row that conditions on visible content, read whether a sealed journey meets its condition; if it does, the row must except it in words. UI test: as Second Wind (Lantern's friend) at baseline, render Lantern's path: Lantern #6 (sealed) shows existence only, no type and no date. As First Light, the same journey shows the same existence line, not nothing, unless FS §20 I is changed.
 
 ---
 
@@ -460,6 +477,7 @@ Commit, capture, frames, highlights and the note.
 - **Provisional default:** Decisions-Needed B6: The owner sees only "a highlight is open", with no end time and no countdown. Under B6 the one allowed DOM difference is that plain "a highlight is open" state while one is open. Highlights unused and highlights all used must still render the same DOM, and the start-highlight control is not hidden, greyed or relabelled while one is open; a second start is refused on tap (R-041)
 - **Accepted residual (FS §20 SSS, `FS:355`; Before real users item 7):** since FS §20 QQQ, code that holds a product connection can call `capture()` with an image that fails the guard and learn whether a press would be accepted without using a frame (`Phase-1-Amendments.md` OQ-36 (b)). The device cannot reach it, because the server strips every image. This check's "no call other than capture" still holds: the probe is `capture()` itself. Revisit with OQ-12
 - **Updated 2026-11-10 (FS §20 WWWW; `PROVISIONAL: B76`):** S-13's dismiss way is present and identical for the whole open highlight; its refusal after 3 hours and after a photo is the same words, with no time or number
+- **Updated 2026-11-10 (`docs/reviews/2026-11-10-rules-supervisor-carriage.md` V7):** "no call other than capture and starting a highlight" now also meets `dismiss_highlight()` (§16.2), which reads the sealed journey's highlight row and photo rows and answers on whether a photo is in the highlight, and the new `highlight_dismissal` table read by `capture()`, `start_highlight()` and `highlight_open()`. Until the docs name it here and in R-156 (R-209), this check fails as written for §16.2
 
 ### R-159
 - **Statement:** No stored image, photo or note, carries a time or a place inside its file, for anyone, the owner included. An image that would carry one is never stored.
@@ -531,6 +549,13 @@ Commit, capture, frames, highlights and the note.
 - **Type:** review · **Applies to:** UI, API, docs
 - **Source:** CL:78–83 (enforce rules in code); CL:17–24 (rule zero: a builder never picks); FS §20 WWW, BBBB; `PROVISIONAL: C4`; R-165 (4), R-173 (2). Found by r10 (V1): `Phase-1-Amendments.md:566` has S-12 send the skip request when the user skips **and** when it leaves capture; S-12 end (3) (`Screen-Inventory.md:340`) and Reads (`:348`) send it on skip only
 - **How to check:** For each request the route design receives from the device (`Phase-1-Amendments.md` §6: press, note press, skip request), list every trigger the design names. Each trigger appears on the sending screen's row in `Screen-Inventory.md`, with the request named. A trigger in one doc and not the other fails until the two owners agree it or the user rules. Phase 4: the client sends the request on each listed trigger (UI test)
+
+### R-205
+- **Statement:** A started highlight can be dismissed only by its owner, only while it is open, before `started_at` + 3 hours and before any photo has gone into it; a dismissal gives it back to the allowance and closes it at once. The dismiss call answers accepted or refused only, with one refusal for every cause. No reader returns a dismissal, its time or a count of dismissals, to anyone, the owner included; the dismiss way on S-13 is present and identical for the whole open highlight.
+- **Type:** auto (data, API), review (UI) · **Applies to:** data, API, UI, copy
+- **Area:** 3. Capture and cadence
+- **Source:** FS §20 WWWW, S, AA; `PROVISIONAL: B71`, `B76`; Microcopy M-06a; `Phase-1-Amendments.md` §16.2. Found by `docs/reviews/2026-11-10-rules-supervisor-carriage.md` V7
+- **How to check:** §16.2 checks (1) to (5). Add: as Second Wind, `dismiss_highlight(Lantern #6)` refused with the same answer as a refusal at +3:00:00; render S-13 at start + 0:10, + 2:59 and + 3:01, and after one photo: identical DOM. After unlock, the owner's highlight reader either omits a dismissed highlight or shows it as the docs state; whichever, it is written down before Phase 3 (raised in V7).
 
 ---
 
@@ -743,6 +768,27 @@ Commit, capture, frames, highlights and the note.
 - **Source:** FS §20 CCC (`FS:336`), WW (`FS:330`), ZZ, TT; CL:69 (counters), CL:71 (ranking); FS:185; R-102, R-162. Proposed by `Phase-1-Amendments.md` §11 checks 2 and 5 ("for the rules-guardian to number"). Numbered by r7
 - **How to check:** (1) The count reader is a definer function returning one integer, not a set and with no OUT column; its estimate is constant (§11 check 2). (2) For every viewer and every profile, a missing id and NULL included, it equals the plain count of that profile's finished reveals; for a network viewer it equals the owner's `journey_reveal_rows()`. (3) Polling as First Light across a capture into a sealed journey, a commit, an unlock, a reflection and finished reveals: between any two polls the change equals the change in a network member's count of that owner's "journey launched". Planted faults (count from unlock, count from commit, a date-returning variant) are caught. (4) UI review of Another user's profile, and of Profile (own) under both B4 settings: no numeral, "n journeys", "n years", total, "since" or comparison beside the circle, and no ring carries a date, year or journey label for a public viewer.
 - **Current implementation:** `ring_count(profile_id uuid) → integer`, EXECUTE for the viewer role only (`Phase-1-Amendments.md` §11, lines 804–809, evidence 918–939; §3 `b4`, line 234; `P1:65`)
+
+### R-202
+- **Statement:** While either person holds an active block on the other, every reader and writer that takes a user id answers the other person exactly as it answers an id that does not exist, byte for byte: profile, name search, `ring_count()`, `has_journey_underway()`, journey, overview, photo, reflection, announcement and Positivity Feed readers, the request writer and the user-tag writer.
+- **Type:** auto · **Applies to:** data, API
+- **Area:** 5. Visibility and access
+- **Source:** FS §20 MMMM; `PROVISIONAL: B63`, `B64`; `Phase-1-Amendments.md` §15.3, §15.5 cases 1–2. Found by `docs/reviews/2026-11-10-rules-supervisor-carriage.md` V5 (§15.3 omits `ring_count()` and `has_journey_underway()`)
+- **How to check:** List every function `mj_app` may EXECUTE that takes a user, profile or journey id. For each, as Long Way Round after Second Wind blocks him, call it with Wind's id and with a random uuid: identical result, error text and row shape. Then as Wind with Round's id. The list must equal the set §15.3 names; a function missing from §15.3 fails.
+
+### R-203
+- **Statement:** A block changes nothing on either person's map, ends a current friendship and its close-friends place, closes open requests both ways, and is reversed only by the blocker; an unblock restores nothing. Only the blocker reads the block (name and id only, no time, no count). Every place a blocked pair still meet on their own screens (their own map, their own tags, their own request lists, their own feed) is stated in Screen-Inventory, and none says "blocked" or differs from what an ended friendship shows unless the docs say so in words.
+- **Type:** auto (data), review (UI) · **Applies to:** data, API, UI, copy
+- **Area:** 5. Visibility and access
+- **Source:** FS §20 MMMM, G, NNNN; `PROVISIONAL: B62`–`B69`; `Phase-1-Amendments.md` §15.2, §15.4, §15.5 cases 3–6. Found by `docs/reviews/2026-11-10-rules-supervisor-carriage.md` V6 (S-07 under a block undecided; four tells beyond §15.4's "only by absence")
+- **How to check:** §15.5 cases 3 to 6. Add: `layer` rows byte-identical across block and unblock; render Layers S-07 for both people after the block and compare with the docs' stated behaviour (fails while none is stated); `block_rows()` as blocked person and as a third party returns no row; grep copy for `blocked` on any screen the blocked person can reach.
+
+### R-204
+- **Statement:** The blocked list S-25 is the owner's only: names A to Z, no time, no count, names lead nowhere, a way to unblock each, and a way in from S-05 that is present and identical in every state. No other screen shows that anyone has blocked or been blocked.
+- **Type:** review, then auto · **Applies to:** UI, copy
+- **Area:** 5. Visibility and access
+- **Source:** FS §20 MMMM; `PROVISIONAL: B65`, `B66`, `B67`, `B68`; SI S-25; R-192, R-194. Added by `docs/reviews/2026-11-10-rules-supervisor-carriage.md` (MMMM had no check; Rubric header 2026-11-10 second pass)
+- **How to check:** Render S-05 with 0 and 3 blocks: identical DOM apart from nothing. Render S-25 with 3: three names, A to Z, no digits, no dates, no links on names. Grep copy for `blocked` outside S-25 and the block confirmation.
 
 ---
 
@@ -957,6 +1003,13 @@ Commit, capture, frames, highlights and the note.
 - **Source:** CL:69, CL:70, FS:233, RG:28 ("badges, dots, 'new' markers")
 - **How to check:** Grep for `navigator.setAppBadge`, `unread`, `badge`, `isNew`, `\bnew\b` labels, `seen_at`/`read_at` fields. Schema scan for read-state on announcements. Review navigation and feed.
 
+### R-206
+- **Statement:** Every announcement line in the feed leads only to the actor's profile (S-16, or S-05 for the owner's own line). No feed line opens a path, a journey or a photo directly.
+- **Type:** auto · **Applies to:** UI
+- **Area:** 7. Feed and notifications
+- **Source:** FS §20 RRRR, FS §13 ("a small deliberate act"); SI S-08, S-06, S-17. Added by `docs/reviews/2026-11-10-rules-supervisor-carriage.md` (RRRR had no check)
+- **How to check:** For each of the three line types, read the link target in S-08: only the profile route. Route scan: no route into S-06 or S-17 carries a feed origin. Whether the Positivity Feed counts as "the feed" is N1 of that audit; until ruled, B75 holds and this check covers S-08 only.
+
 ---
 
 ## 8. Engagement mechanics
@@ -1021,9 +1074,24 @@ Commit, capture, frames, highlights and the note.
 - **Source:** CL:69 (counters), FS:233 ("No visible counters ... during the sealed year"; both windows exist only while a journey is sealed, so the time limit in G-4 does not apply), RG:28 ("timers"), FS:281, FS:264. R-013 covers only the countdown to unlock. See G-13 for whether a plain open-or-closed highlight state may show. Found by `docs/reviews/2026-10-27-rules-screen-inventory.md` finding 3
 - **How to check:** Grep copy and code for `minutes? left`, `ends in`, `time left`, `remaining`, `\d+:\d\d` near note or highlight components, and any `setInterval` or `requestAnimationFrame` that formats a time until capture + 15 minutes or a highlight's end. UI test: render the note step at capture + 0:30 and + 14:00, and the sealed-year and capture screens at highlight start + 1 h and + 23 h. Each pair renders the same DOM.
 - **Provisional default:** Decisions-Needed B6: Others learn nothing about highlights. The owner sees only "a highlight is open", with no end time and no countdown. Firm under B6: the plain open state is the only highlight display allowed, and it is identical at start + 1 h and start + 23 h. No end time, start time, "until 3 pm" or "tomorrow" appears (closes G-13 for the owner). Decisions-Needed C4 does not change the note half: the window still runs up to 15 minutes inside capture, and no timer is shown for it
+- **Updated 2026-11-10 (FS §20 UUUU, XXXX):** stating a window's length is allowed, once, in words and with the fixed circle drawing (`PROVISIONAL: B77`). Check: render S-12 and S-13 at several instants of a window; the circle and the words are byte-identical at every one. Any drawing that moves, fills, empties or shows time left fails
+
+### R-200
+- **Statement:** Nothing marks that a photo's reflection slot has opened. The way from a photo to Reflect looks the same on the day before, the day of and the day after the photo's anniversary, and before and after a reflection fills the slot; a press when no slot is open is refused plainly. No reader returns a list or a count of photos with an open or unwritten slot.
+- **Type:** review, then auto · **Applies to:** UI, API, copy
+- **Area:** 8. Engagement mechanics
+- **Source:** FS §20 VVVV ("Nothing marks a slot opening: no dot, count or notice"), FS §8; R-095, R-096, R-186; pattern of `PROVISIONAL: B76` and R-194. Found by `docs/reviews/2026-11-10-rules-supervisor-carriage.md` V3
+- **How to check:** As Lantern, render S-17 for lantern-5 at 2026-06-20, 2026-06-21 and 2026-07-06 (after its fixed reflection), in a throwaway copy replayed to before 2026-06-21: identical DOM apart from the stack's own rows. Catalog scan: no function returns more than one photo's slot state.
+- **Status:** Provisional. It states the strictest reading of VVVV. The way's behaviour is undecided (V3, rule zero); if the user or a labelled default lets the way appear on the anniversary, this check is superseded
+
+### R-207
+- **Statement:** A reflection stack shows only the reflections that exist: no gap, blank, placeholder, year label or "nothing written" for a slot that passed unwritten, and nothing that lets a reader count the years left empty.
+- **Type:** review, then auto · **Applies to:** UI, copy
+- **Area:** 8. Engagement mechanics
+- **Source:** FS §20 SSSS; SI S-14, S-17; Flows Flow 6. Added by `docs/reviews/2026-11-10-rules-supervisor-carriage.md` (SSSS had no check)
+- **How to check:** Render S-17 for round-1 (slots 1, 2, 3 written; a generated photo with slots 1 and 3 written if one exists, or a throwaway one): the two stacks differ only by their reflections' own rows. Grep copy for `no reflection`, `skipped`, `empty year`.
 
 ---
-- **Updated 2026-11-10 (FS §20 UUUU, XXXX):** stating a window's length is allowed, once, in words and with the fixed circle drawing (`PROVISIONAL: B77`). Check: render S-12 and S-13 at several instants of a window; the circle and the words are byte-identical at every one. Any drawing that moves, fills, empties or shows time left fails
 
 ## 9. Comments and voice
 
@@ -1151,6 +1219,7 @@ Commit, capture, frames, highlights and the note.
 - **Source:** FS:97, FS:101, FS:274 (§20 D), P1:22 (D9), P1:115, CL:105. See G-1
 - **How to check:** For Lantern #1 (unlock 2022-01-01), a reflection on 2023-12-31 is slot 2 and one on 2024-01-01 is slot 3, for every photo regardless of capture date. A second reflection in the same slot is refused. A client-supplied slot is ignored.
 - **Updated 2026-11-10 (FS §20 VVVV, replacing §20 D; `Phase-1-Amendments.md` §16.1):** the statement now reads "Each photo's reflection slots follow its own capture date: slot k runs from capture date + k years to + (k+1) years, 00:00 UTC; slot 0 is refused". New how-to-check: as Lantern, reflect on lantern-5 (captured 2025-06-21) at 2026-06-20 23:59:59, refused; at 2026-06-21 00:00:00, accepted, slot 1. The 18 fixed reflections (P1 §3.5, §3.7) each load inside their slot. `PROVISIONAL: B70` for 29 February. The old case (Lantern #1, slots by unlock) is retired. G-1 is closed: FS:104–111's capture-date example was right
+- **Superseded by R-198 on 2026-11-10** (`docs/reviews/2026-11-10-rules-supervisor-carriage.md`). The supervisor's 2026-11-10 `Updated` line above rewrote this statement in place; by "How the rubric grows" the new rule takes a new number. The line is kept as history (R-172). Its how-to-check cannot run on the loaded fixture (forward-only clock, lantern-5's fixed 2026-07-05 reflection); R-198 says how
 
 ### R-122
 - **Statement:** Each journey takes at most one overview per slot, on the same slot windows as reflections.
@@ -1167,6 +1236,13 @@ Commit, capture, frames, highlights and the note.
 - **Source:** FS:261 (§20 mechanics 1), P1:18 (D5), CL:95
 - **How to check:** Commit on the 20th. Month 1 runs to the 20th of the next month: a capture on the 1st of the next calendar month is still month 1. See G-18.
 - **Provisional default:** Decisions-Needed B16: A commit on the 29th–31st uses the last day of shorter months; UTC. Add the case: commit on 2026-01-31 (UTC); month 2 starts 2026-02-28, month 3 on 2026-03-31
+
+### R-198
+- **Statement:** Each photo's reflection slots follow its own capture date: slot k (k ≥ 1) runs from capture UTC date + k years, 00:00 UTC, to + (k+1) years; slot 0 is refused, and so is any reflection before the journey unlocks (R-199). One reflection per photo per slot; the slot is worked out from the app clock, never chosen by the client. A 29 February photo opens on 28 February in other years (`PROVISIONAL: B70`).
+- **Type:** auto · **Applies to:** data, API
+- **Area:** 11. Time and the clock
+- **Source:** FS §20 VVVV (replacing §20 D), FS §8; P1 D9 and P1:115 as amended; `Phase-1-Amendments.md` §16.1. Supersedes R-121 (2026-11-10). Numbered by `docs/reviews/2026-11-10-rules-supervisor-carriage.md`
+- **How to check:** In a throwaway copy replayed only to before 2026-06-21 (the clock moves forward only, O1, and lantern-5 holds a fixed slot-1 reflection from 2026-07-05): lantern-5 at 2026-06-20 23:59:59 refused, at 2026-06-21 00:00:00 accepted (1); a second at 2027-06-20 refused, at 2027-06-21 accepted (2). The 18 fixed reflections (P1 §3.5, §3.7) each load inside their slot, cell by cell as in `docs/reviews/2026-11-10-rules-supervisor-carriage.md` auto check 4. A client-supplied slot is ignored.
 
 ---
 
@@ -1468,6 +1544,20 @@ Commit, capture, frames, highlights and the note.
 - **Source:** FS §20 J, M, UU, KKKK (e); `PROVISIONAL: B48` (strictest reading, raised to the user as DN E3 (c)); R-196. Proposed by `Phase-1-Amendments.md` §12.7 as K13; numbered by `docs/reviews/2026-11-09-rules-kkkk-r2.md`
 - **How to check:** K13's oracle against every viewer's `announcement_rows()` at several clock points, with its scratch case (finish, accept, finish, remove, re-friend, finish), the same-instant tie (not received), and its planted faults (read time, "a friend at the event" without the current friendship, "ever friends at the event and friends now", `<=`). A catalog and result scan finds no recipient list and no time-typed column in `announcement_rows()` other than `at`. In the fixture: 13 / 9 / 5 / 2 / 0 at baseline (Q-F9). Under `c6 = shown` a later friend can still read the person tags on older photos, which B48 does not cover; that is DN E3 (b), not a failure of this check. Not yet run
 
+### R-208
+- **Statement:** Who receives each announcement type is stated once, in words, and every doc that states it agrees; a ruling that settles an audience never does so by pointing at a column of an older table. Every fixture count that depends on an audience is recomputed when the audience changes, and names the reading it assumes.
+- **Type:** review · **Applies to:** data, copy
+- **Area:** 13. Across every area
+- **Source:** FS §20 J, M, UU, KKKK (e), NNNN; R-146, R-197. Found by `docs/reviews/2026-11-10-rules-supervisor-carriage.md` V4 (`Phase-1-Amendments.md:1739`, `:2081` say "the subject left out" is built; §14.1, SI S-08, Flows Flow 7 and §13.4.1's counts say the subject is included)
+- **How to check:** For "path crossed", "journey launched" and "reflection left", grep every doc for its audience and list each statement; they must agree. Recompute §13.4.1's per-viewer counts from the stated audience (13 / 9 / 5 / 2 / 0 with the subject included; 8 / 6 / 4 / 2 / 0 with the subject left out).
+
+### R-209
+- **Statement:** A carriage that adds a function, table or reader to the model in the same change updates every closed list a rubric check holds of the functions allowed to touch that data (R-138, R-156, R-202, §4 item 1), or the change fails.
+- **Type:** auto · **Applies to:** data
+- **Area:** 13. Across every area
+- **Source:** R-138, R-156; `Phase-1-Amendments.md` §4 item 1 (`:336`), §16.2. Found by `docs/reviews/2026-11-10-rules-supervisor-carriage.md` V7 (`dismiss_highlight()` and `highlight_dismissal` added; no list updated)
+- **How to check:** For each new function named in an Amendments section, grep R-138, R-156, R-202 and §4 item 1: it is in each list it belongs to, or the section says why not.
+
 ---
 
 ## 14. Provisional defaults and the options panel
@@ -1522,6 +1612,7 @@ Added 2026-10-27 for the playable prototype (rule zero, CL:19–24; `Decisions-N
 - **Updated 2026-11-09 (FS §20 KKKK, `FS:378`; `docs/reviews/2026-11-09-rules-kkkk.md`):** "recipients equal Wind's map members" now reads "Wind's current friends at read time". At 2027-05-01 those are Steady Lantern and Open Hands, who became friends on 2026-11-14 by script (`Phase-1-Amendments.md` §13.5)
 - **Updated 2026-11-09, second pass (`PROVISIONAL: B48` changed to event time; `docs/reviews/2026-11-09-rules-kkkk-r2.md`):** "Wind's current friends at read time" now reads "Wind's current friends whose friendship began before the event". At 2027-05-01 these are still Steady Lantern and Open Hands, since the 2026-11-14 accept predates the 2027-04-25 finish
 - **Updated 2026-11-10 (FS §20 NNNN (a)):** no longer a switch. Check "unnamed" only: at 2027-05-01 the "path crossed" line names Wind only, and no field of the payload sent to Lantern or Hands carries a subject. A "named" line anywhere fails
+- **Updated 2026-11-10 (`docs/reviews/2026-11-10-rules-supervisor-carriage.md` V4):** the docs disagree on whether the person crossed receives the unnamed line (`Phase-1-Amendments.md:1739`, `:2081` against §14.1, SI S-08, Flows Flow 7). This check runs on the "subject included" reading that §14.1 and the fixture counts use, and reports the residual: in §13.4.3, Lantern #1 and #2's crossings reach Wind alone, who can read 4 of the 6 photos of her, so one unnamed line at the finish lets her tell she is on Lantern's rings. For the user (R-208)
 
 ### R-147
 - **Statement:** B12, under both settings ("shown" / "hidden"): Walking a path never gives a reader a total, grouping or ordering of the photos they appear in, and never shows a photo the reader cannot otherwise read.
@@ -1592,12 +1683,12 @@ Every row of the banned list (`CLAUDE.md:64–74`, `Master-Prompt.md:37–47`) a
 | No comments from anyone else | R-105, R-106, R-107, R-109, R-124 |
 | No face recognition | R-110, R-111, R-112 |
 | No ads anywhere | R-113 |
-| No streaks, counters, progress bars, reminders | R-097, R-098, R-099, R-038, R-039, R-012, R-013, R-095, R-096, R-124, R-138, R-140, R-143, R-144, R-166, R-178, R-192, R-194 |
-| No re-engagement notifications | R-094, R-095, R-096, R-194 |
+| No streaks, counters, progress bars, reminders | R-097, R-098, R-099, R-038, R-039, R-012, R-013, R-095, R-096, R-124, R-138, R-140, R-143, R-144, R-166, R-178, R-192, R-194, R-200, R-204, R-207 |
+| No re-engagement notifications | R-094, R-095, R-096, R-194, R-200 |
 | No ranking, levels, badges, leaderboards | R-101, R-102, R-103, R-124, R-143, R-166 |
 | No photo feed | R-084, R-085, R-086, R-145 |
-| Nothing leaks from a sealed year | R-001 to R-014, R-091, R-138, R-142, R-144, R-156, R-157, R-158, R-161, R-167, R-169, R-176, R-178 |
-| No layer is ever shown to the person on it | R-069, R-070, R-071, R-092, R-139, R-146, R-147, R-148, R-176, R-188, R-193, R-197 |
+| Nothing leaks from a sealed year | R-001 to R-014, R-091, R-138, R-142, R-144, R-156, R-157, R-158, R-161, R-167, R-169, R-176, R-178, R-199, R-201, R-205 |
+| No layer is ever shown to the person on it | R-069, R-070, R-071, R-092, R-139, R-146, R-147, R-148, R-176, R-188, R-193, R-197, R-202, R-203 |
 
 R-141 and R-149 apply to every row: no switch setting may break any item above, and every provisional default in code is labelled and traceable. R-138 sits under two rows because a control hidden or greyed for lack of frames is both a counter and a leak of how much a sealed year holds (RG:28, "disabled-but-visible states").
 
