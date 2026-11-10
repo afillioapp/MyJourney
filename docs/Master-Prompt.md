@@ -70,9 +70,9 @@ A **highlight** is a limited window where the frame limit does not apply. The us
 
 **The sealed year.** Nothing is visible, to anyone, including the owner. Others may know only that a sealed journey exists. During this time the user lives their life. When they do open the app, they read other people's unlocked journeys.
 
-**Reveal.** The whole journey unlocks 12 months after Commit, as one event. This is the single engagement moment of the year. The user writes reflections, tags people by hand (users, or a typed name), applies tags, writes the year overview, and sets visibility. Each choice is set once, and everything locks when the reveal is finished.
+**Reveal.** The whole journey unlocks 12 months after Commit, as one event. This is the single engagement moment of the year. The user meets the photos first, one at a time in the order taken, then tags people by hand (users, or a typed name), applies tags, writes the year overview, and sets visibility. Each choice is set once, and everything locks when the reveal is finished.
 
-**Reflect.** One reflection per photo, per year. Immutable and optional. All photos of a journey move to their next slot together, on the journey's unlock anniversary, forever. Each is a new layer, never an edit.
+**Reflect.** One reflection per photo, per year. Immutable and optional. Each photo's slot opens on the anniversary of the day it was taken, never before unlock, and stays open a year, forever *(Functional-Spec §20 VVVV, 2026-11-10)*. Each is a new layer, never an edit.
 
 **The journey overview.** A new one every year on each journey: how the user's views changed. Also immutable, optional, stacking. Readable by the owner's network.
 

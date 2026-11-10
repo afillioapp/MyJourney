@@ -383,9 +383,13 @@ How every mark is drawn [AD]:
 
 ---
 
-### 7.x The time-limit circle (Spec §20 XXXX, 2026-11-10)
+### The time-limit circle (Spec §20 XXXX, 2026-11-10)
 
 *Added by the supervisor for the art-director's review.* Where the app states a window's length (the note's 15 minutes on S-12, the highlight's "up to 24 hours" and its 3-hour grace on S-13), it shows a small fixed circle beside the words: a clock face of the window's own unit with one arc from twelve o'clock, a quarter of an hour face for 15 minutes, an eighth of a day face for 3 hours, a full day face for 24 hours (`PROVISIONAL: B77`). Same stroke and tones as the navigation marks. **It never moves, fills, empties or shows time left**, and it looks identical at every moment of the window (Spec §20 S; R-138, R-140). It is a statement of the rule, not a timer.
+
+### Profile timelines (Decisions B79–B81, 2026-11-10)
+
+*Added by the supervisor for the art-director's review.* Below the circle on S-05 and S-16, one flat timeline per journey, oldest first. **Under way:** one plain line with the words "a journey is under way", no mark, no ends labelled, identical every day (`PROVISIONAL: B79`). **Closed:** the same line with a small spark at each photo's day, sparks the viewer can read only (`PROVISIONAL: B80`); no axis numbers, no count. A public viewer sees the journey's place with no line (B36). Spark and line use the activity-line tones (§3.3); a spark is a short rise, never a dot that reads as a notification (R-096).
 
 ## 8. Tokens
 

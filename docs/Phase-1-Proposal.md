@@ -114,7 +114,7 @@ Insert-only, and only within 15 minutes of the photo's `captured_at` (D8) and be
 | text, written_at | |
 | year_index | Worked out from `app_now()` against `unlocks_at` (D9). Unique per (photo, year_index). *(2026-11-10, FS §20 VVVV: worked out against the photo's capture date; slot 0, before the first anniversary, is refused; `Phase-1-Amendments.md` §16)* |
 
-Insert-only, owner only, any time after unlock (reveal finished or not). Readers are the same as the photo's (D11). The Positivity Feed lists them newest first by `written_at`, ties by id, and returns text with no time (FS §20 Q, BBB) *(amended 2026-10-31)*
+Insert-only, owner only, any time after unlock (reveal finished or not) *(since 2026-11-10: in the photo's own slot, which opens at the later of its first anniversary and unlock, FS §20 VVVV; `Phase-1-Amendments.md` §16.1)*. Readers are the same as the photo's (D11). The Positivity Feed lists them newest first by `written_at`, ties by id, and returns text with no time (FS §20 Q, BBB) *(amended 2026-10-31)*
 
 **Journey overview**
 | Field | Rule |
@@ -365,7 +365,7 @@ What the exclusions test: Steady Lantern #5's free-text tag is not on the list. 
 
 *(amended 2026-10-30, user ruling)* **The feed is not empty at baseline.** Each of the six journeys carries one reflection fixed in the fixture (not left to the generator) on one of its public photos. Each sits in slot 1, dated 7 days after that journey's reveal finished *(2026-11-10, FS §20 VVVV: slot 1 now runs from the photo's first anniversary, so each of the six photos has a pinned capture date, in the table, that puts its reflection inside slot 1; the "Slot 1" column keeps the old unlock-based window for the record)*, so it is written after the photo was set Public and the reveal locked (§20 F; it also holds under either B2 setting, §20 R). Every date is before baseline 2026-10-25 and away from a slot boundary. Times are 00:00:00 UTC (NB-6). The photo is named by its place among the journey's public photos in capture order, since §3 gives no capture dates for these photos.
 
-| Journey | Photo | Reveal finished | Slot 1 | Reflection written (slot) | Text |
+| Journey | Photo | Reveal finished | Slot 1 (old unlock-based window, history; since 2026-11-10 slot 1 opens on the pinned capture date's anniversary) | Reflection written (slot) | Text |
 |---|---|---|---|---|---|
 | Steady Lantern #2 | lantern-2, public photo 1 of 4, captured 2022-01-10 | 2023-01-14 | 2023-01-01 → 2024-01-01 | 2023-01-21 (1) | `[copy: copywriter]` |
 | Steady Lantern #3 | lantern-3, public photo 1 of 5, captured 2023-01-12 | 2024-01-20 | 2024-01-01 → 2025-01-01 | 2024-01-27 (1) | `[copy: copywriter]` |

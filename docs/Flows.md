@@ -128,12 +128,12 @@ Other people can walk your path. They read your years from the beginning to now,
    |     Profile (8), "ready" line
    |        |
    |        v
-   |     Reveal (5) --- includes Reflect (6) --- finish --> Layers (7) recomputed, Profile (8) ring
+   |     Reveal (5): the photos first, then the steps --- finish --> Layers (7) recomputed, Profile (8) ring
    |        |
    +--------+  the next Commit opens at unlock, not at finish
             |
             v
-     every unlock anniversary: Reflect (6) again, on every earlier journey
+     each photo's own anniversary, from unlock on: Reflect (6) on that photo, every year (Spec §20 VVVV)
 
    at any time, beside all of the above: Friends (10)
 ```
@@ -241,7 +241,7 @@ The steps from app open to a taken photo are three presses: to S-03, to the came
 - **During a highlight.** The camera looks the same and the note offer follows as usual. Highlight photos do not count against normal frames (Spec §20 5). The window closes at exactly its end, after 24 hours of elapsed time, or at unlock if sooner (`PROVISIONAL: B16`, `B25`; Proposal:133). Nothing changes on the camera when it does (R-140).
 - **A bug the user cannot see, part one.** If the image fails the metadata guard, the app strips it again and saves once, at the press instant. The user sees nothing different (Spec §20 PP, VV, XX, AAA).
 - **A bug the user cannot see, part two: a lost press.** If stripping fails twice, the press gives no photo, uses no frame and logs the bug. The screen looks exactly like the normal press it would have been, refusal or note offer included, and a note written for it is quietly discarded. Nothing invites a second press (Spec §20 DDD, GGG, JJJ, QQQ).
-- **The camera is open at the unlock instant.** Nothing changes on screen on its own. The next press is not taken, and there is no refusal about frames. The app goes to S-05, where "Your Journey is ready" shows (Spec §20 CCCC; `PROVISIONAL: C1`). Continue at Flow 5. Gap: how the app tells this press from an ordinary refusal is SI OQ-51, not picked here. After that instant every press here, the way out included, is that "next press" (`PROVISIONAL: B72`). *(Before 2026-11-10: a gap.)* Gap: a press on the way out of the camera after that instant. Whether it is CCCC's "next press", going to S-05, or goes where it points, is not stated: FQ-10.
+- **The camera is open at the unlock instant.** Nothing changes on screen on its own. The next press is not taken, and there is no refusal about frames. The app goes to S-05, where "Your Journey is ready" shows (Spec §20 CCCC; `PROVISIONAL: C1`). Continue at Flow 5. The app tells this press from an ordinary refusal by reading the journey's own state after the press (`PROVISIONAL: B72`; settles SI OQ-51). After that instant every press here, the way out included, is that "next press" (`PROVISIONAL: B72`). *(Before 2026-11-10: a gap.)* Gap: a press on the way out of the camera after that instant. Whether it is CCCC's "next press", going to S-05, or goes where it points, is not stated: FQ-10.
 - **Not offered, in any state:** video, import from the gallery, a quality check (Spec §4), a prompt to photograph a hard moment (Spec §16).
 
 **Ends:** at S-03 when the owner leaves while the journey is sealed, or at S-05 when the next press after the unlock instant is not taken. A press on the way out after that instant also goes to S-05 (`PROVISIONAL: B72`).
@@ -394,12 +394,12 @@ This is the hardest state in the product. Underneath, the owner's journey return
    - **Apply tags:** S-19. One chapter per journey from the fixed categories, and any feeling tags as free text on the journey (Spec §10; `PROVISIONAL: B17`). No popular or suggested tags, and no counts (`PROVISIONAL: B18`). `[copy: copywriter]` *The tone of chapters: even through hard chapters it stays positive and hopeful (Spec §10).*
    - **Write the overview:** S-15, Flow 6a. Optional (Spec §20 O).
    - **Set visibility,** per photo: S-20. Private, Network or Public. No close-friends level: what close friends get is with the user, and nothing is built for it meanwhile (Decisions E2; `PROVISIONAL: B55`; Spec §20 KKKK (f)). Public means signed-in users (`PROVISIONAL: B14`). `[copy: copywriter]` *"Readable, not commentable" (Spec §11), and that each choice is final.*
-4. Each visibility choice, people tag, chapter and feeling tag is set once, even before the reveal is finished (Spec §20 P). One plain line says so once per step, never per photo (decided 2026-11-10, Spec §20 QQQQ; narrows `PROVISIONAL: C5`); the press that picks a choice saves it, and nothing asks "are you sure". `[copy: copywriter]` *"This can't be changed": one plain line per step, no alarm.* After saving, the choice shows read-only where it was made (S-04), and it takes effect at once (`PROVISIONAL: B3`). Whether the line needs answering, and what act saves a choice: FQ-8.
+4. Each visibility choice, people tag, chapter and feeling tag is set once, even before the reveal is finished (Spec §20 P). One plain line says so once per step, never per photo (decided 2026-11-10, Spec §20 QQQQ; narrows `PROVISIONAL: C5`); the press that picks a choice saves it, and nothing asks "are you sure". `[copy: copywriter]` *"This can't be changed": one plain line per step, no alarm.* After saving, the choice shows read-only where it was made (S-04), and it takes effect at once (`PROVISIONAL: B3`). The line needs no answer, and the press that picks a choice saves it (Spec §20 QQQQ; FQ-8 decided).
 5. Whenever the owner chooses, at any later time, they go to Finish S-21 (`PROVISIONAL: B3`). Nothing is required first (`PROVISIONAL: C5`), and a reveal can be finished without an overview (Spec §20 O). `[copy: copywriter]` *The finish: the weightiest act after Commit. Say the choices lock. No reward, no celebration (R-102).* The one-line "this can't be changed" shows here too, and one plain line says the owner's friends will see that the journey launched (decided 2026-11-10, Spec §20 TTTT). `[copy: copywriter]` *What goes out: one plain line, true under both B2 settings, naming no one.*
 6. At finish (Spec §20 F, J; Proposal §2.3):
    - All reveal choices lock.
    - The map is recomputed. See Flow 7, part B.
-   - "Path crossed" goes out for each crossing and "journey launched" once, to the owner's friends, never to the owner (Spec §20 J, M, UU, KKKK (e)). Who counts as a friend is fixed at the finish (`PROVISIONAL: B48`). It never names the person crossed (Spec §20 NNNN (a)); one who is not a friend does not receive it. Hand-off to S-08. `[copy: copywriter]` *The announcement lines: one plain line each, no image, no ring (S-08).* "Path crossed" never names the crossed person (Spec §20 NNNN (a)).
+   - "Path crossed" goes out for each crossing and "journey launched" once, to the owner's friends, never to the owner (Spec §20 J, M, UU, KKKK (e)). Who counts as a friend is fixed at the finish (`PROVISIONAL: B48`). It never names the person crossed (Spec §20 NNNN (a)), and never reaches the person crossed, friend or not (`PROVISIONAL: B83`). Hand-off to S-08. `[copy: copywriter]` *The announcement lines: one plain line each, no image, no ring (S-08).* "Path crossed" never names the crossed person (Spec §20 NNNN (a)).
    - Under `PROVISIONAL: B4` (switchable: per finished reveal / per year with the app), this journey's ring is added to S-05. On S-16, others always see one ring per finished reveal (Spec §20 WW).
    - The year's activity line twists into the circle (`PROVISIONAL: B5`).
 7. The app goes to S-05 (S-21). Flow 8.
@@ -437,7 +437,7 @@ This is the hardest state in the product. Underneath, the owner's journey return
 
 **Steps**
 
-1. The owner opens a photo. They see it, its note if any, and earlier reflections in order, read-only (`PROVISIONAL: C13`; S-14, S-17).
+1. The owner opens a photo. They see it, its note if any, and earlier reflections in order, read-only (`PROVISIONAL: C13`; S-14, S-17). The way to Reflect is on every unlocked photo of theirs, the same whether or not a slot is open: when this photo's slot is open and empty it opens the writer, otherwise one plain line gives the date its next reflection opens, as a plain date (`PROVISIONAL: B82`).
 2. If this photo's current slot is open and holds no reflection, the owner may write one, as typed text. It is optional and they are never pushed (Spec §8). `[copy: copywriter]` *A reflection is final once written, and next year there is room for another. Calm, not a warning. "Strict at capture. Generous at reflect." (Brief:119) is available.*
 3. The owner saves. It joins the stack and can never be edited or deleted (Spec §8, §18). The line that it is final shows before saving, once on the screen; the save press saves, with no "are you sure" (Spec §20 QQQQ).
 4. "Reflection left" goes out to the owner's friends who can see that photo, even when it is public, counted when it is written (Spec §20 J, KKKK; `PROVISIONAL: B10`, `B48`), and to the owner (Spec §20 UU). Hand-off to S-08.
@@ -511,7 +511,7 @@ Each photo moves to its next slot on its own anniversary, so a journey's photos 
 
 1. Each user tagged in this journey goes straight to the ring their count gives: 5 or more photos tight, 2–4 middle, 1 outer. Private photos count. Typed names and the owner do not (Spec §20 G, L, 7; Proposal:156).
 2. Anyone already on the map who is not tagged in this journey moves out one ring. Tight goes to middle, middle to outer, and outer stays outer. Nobody drops off (Spec §12, §20 G).
-3. Each crossing announces "path crossed" to the owner's friends at the finish, never saying which ring (Spec §20 J, M, KKKK (e); B48, confirmed by Spec §20 NNNN (c)). It never names the crossed person (Spec §20 NNNN (a)), so a crossed person who is a friend receives the same unnamed line as everyone else and learns nothing (`Phase-1-Amendments.md` OQ-40, §14; SI OQ-21). Crossings with someone who is not a friend are still announced, to the owner's friends: DC-16.
+3. Each crossing announces "path crossed" to the owner's friends at the finish, never saying which ring (Spec §20 J, M, KKKK (e); B48, confirmed by Spec §20 NNNN (c)). It never names the crossed person (Spec §20 NNNN (a)), and the crossed person never receives it, even as a friend (`PROVISIONAL: B83`), so they learn nothing (`Phase-1-Amendments.md` OQ-40, §13.4.3, §14; SI OQ-21). Crossings with someone who is not a friend are still announced, to the owner's friends: DC-16.
 4. The tagged person's own map does not change, and the owner gains no access to the tagged person's photos (Spec §20 G; Concept:860). Being placed on the map gives the tagged person no access either, and making or ending a friendship changes no map (Spec §20 KKKK (d); `PROVISIONAL: B45`).
 
 Worked example, from the fixtures (Proposal:264–270). Second Wind on Steady Lantern's map:
@@ -548,7 +548,7 @@ Lantern sees only the current ring, never this table (`PROVISIONAL: C8`).
 **Starts:** every time the app opens, in every state (`PROVISIONAL: C12`). Also after finishing a reveal (S-21), from Layers (S-07), and when a press after the unlock instant is not taken (Spec §20 CCCC).
 
 1. The owner sees their name in the circle (Spec §20 XXX), rings, drawn and never counted in words or numerals: one for each finished reveal under the default (`PROVISIONAL: B4`, switchable; R-166), and earlier years' activity lines twisted in (`PROVISIONAL: B5`). A ring never arrives as a reward (Spec §14; R-102).
-2. Below that, what S-05 adds depends on the state of the owner's journeys (table).
+2. Below the circle, one timeline per journey, oldest first (`PROVISIONAL: B81`): a journey under way is a plain line, "a journey is under way", with no mark (`PROVISIONAL: B79`); a closed one has a spark for each photo on the day it was taken (`PROVISIONAL: B80`). Pressing a closed timeline opens that journey (S-06). What else S-05 adds depends on the state of the owner's journeys (table).
 3. From here the owner can go, each as a plain way with no marker on it: their own path S-06, Flow 9; Reveal S-04 when one is open, Flow 5; Commit S-01 when no journey is sealed, Flow 1; overviews S-15, Flow 6a; the sealed year S-03 while sealed, Flow 4; Layers S-07, Flow 7; Feed S-08; Positivity Feed S-09 (S-05). How these look is for art direction.
 4. Or the owner closes the app.
 
@@ -556,7 +556,7 @@ Lantern sees only the current ring, never this table (`PROVISIONAL: C8`).
 
 **Rings:** `PROVISIONAL: B4`, switchable. *Per finished reveal (default):* a journey never finished adds no ring. *Per year with the app:* rings follow years since joining, on this screen only (Spec §20 WW). Under that option, on which date a year's ring appears is not stated (R-143), and it can never appear or change inside a sealed year (R-012).
 
-**Activity:** the graph appears to the owner only after the year unlocks, never during the sealed year (Spec §14). The line twists in at finish (`PROVISIONAL: B5`). What the line records besides capture times is still open: SI OQ-7, not picked here.
+**Activity:** the sparks appear only on a closed timeline, never during the sealed year (Spec §14; `PROVISIONAL: B79`, `B80`). The line twists in at finish (`PROVISIONAL: B5`). What the line records besides capture times is still open: SI OQ-7, not picked here.
 
 | State of the owner's journeys | S-05 adds |
 |---|---|
@@ -573,7 +573,7 @@ Lantern sees only the current ring, never this table (`PROVISIONAL: C8`).
 
 1. The viewer arrives on S-16 by a small deliberate act, never by scrolling into it (Spec §13): a feed line leads to the person's profile, never straight into their journey, and the viewer opens the path from the profile (decided 2026-11-10, Spec §20 RRRR).
 2. They see the person's name in the circle and one ring per finished reveal, under either B4 setting (Spec §20 WW, XXX). Rings are drawn, never counted in text. A public viewer's rings come from a count alone, with no date on any ring (Spec §20 CCC; R-166).
-3. They go on to the person's path S-06, Flow 9 (Spec §11). Or they leave.
+3. Below the circle, the person's timelines, oldest first (`PROVISIONAL: B81`): a journey under way is a plain line, "a journey is under way", the same for everyone (`PROVISIONAL: B79`); a closed journey's line carries sparks for the photos this viewer can read, and a public viewer sees it with no line (`PROVISIONAL: B80`, B36). Pressing a closed timeline opens that journey, Flow 9 (Spec §11). Or they leave.
 
 **Branches and refusals**
 
@@ -581,7 +581,7 @@ Lantern sees only the current ring, never this table (`PROVISIONAL: C8`).
 - **A friend request.** S-16 holds the way to send one, and shows the state of this pair only: see Flow 10, part A (`PROVISIONAL: B43`).
 - **The profile owner's journey is sealed.** That one exists, and nothing else (Spec §20 I).
 - **The profile owner never committed.** Name, no rings (S-16). No way to a path (`PROVISIONAL: B74`).
-- **The activity graph:** `PROVISIONAL: B5`, switchable. *Owner only (default):* never shown here. *Built from the photos the viewer can see:* no private photo's capture time shows, and nothing finer than one day (Spec §20 GG).
+- **The activity view:** `PROVISIONAL: B5`, switchable, default changed 2026-11-10 (B80). *Built from the photos the viewer can see (default):* the sparks on a closed timeline, no private photo's capture time, nothing finer than one day (Spec §20 GG), and none for a public viewer (B36). *Owner only:* no sparks here.
 - **Never on this screen, for any viewer:** the viewer's ring or this person's map (Spec §12, §18); extra access for close friends (`PROVISIONAL: B55`) or for being on this person's map (Spec §20 KKKK (d)); this person's friends, close friends or a count of them (`PROVISIONAL: B46`, `B56`); any sign that a request from this person waits (R-194); who else is tagged or how often (R-139); a highlight (Spec §20 DD); the join date (Spec §20 TT); a score, level, follower or view count (Spec §14; Proposal check 6).
 
 **Ends:** at S-06, or wherever the viewer goes next.
@@ -589,7 +589,7 @@ Lantern sees only the current ring, never this table (`PROVISIONAL: C8`).
 | State of the profile owner's journey | S-16 |
 |---|---|
 | `no-journey` · never committed | Name, no rings |
-| `sealed` | Exists only |
+| `sealed` | Exists only: the plain "a journey is under way" line (`PROVISIONAL: B79`) |
 | `unlock-day`, `reveal-open` | The way into the journey, by visibility and by B2 (`PROVISIONAL: B2`, switchable) |
 | `reveal-finished` | One more ring, and the journey by locked visibility |
 | `later-years` | Rings; overview stack for network viewers |
@@ -599,7 +599,7 @@ Lantern sees only the current ring, never this table (`PROVISIONAL: C8`).
 ## Flow 9: Walking a path
 
 **Who:** a reader: the owner, a friend or a public reader, or a tagged user reading as whichever of those they are. Someone on the owner's map who is not a friend reads as public (Spec §20 KKKK (d)). Being tagged gives no access (Proposal:293).
-**Starts:** S-16 for another person, S-05 for one's own, or S-09's one photo (S-06; from S-08 only through S-16, Spec §20 RRRR). A path always opens at its beginning (`PROVISIONAL: B75`); from the feed the reader reaches the profile first (Spec §20 RRRR).
+**Starts:** a timeline on S-16 for another person, or on S-05 for one's own (`PROVISIONAL: B81`); from S-08 and S-09 only through S-16 (Spec §20 RRRR). The path is entered from a profile timeline, at the journey pressed (`PROVISIONAL: B81`, replacing B75); from the feed and the Positivity Feed the reader reaches the profile first (Spec §20 RRRR; B81).
 **Screens:** S-06, S-17, S-15.
 
 **Steps**
@@ -623,7 +623,7 @@ Lantern sees only the current ring, never this table (`PROVISIONAL: C8`).
 - **Before the reveal is finished:** `PROVISIONAL: B2`, switchable. *From unlock (default):* the network reads every photo not yet set Private, and anyone reads photos already set Public. *Only after reveal finished:* no photo for anyone but the owner (Spec §20 R). See the time-state table.
 - **Other people's tags:** never shown to a reader (Spec §20 NNNN (b), 2026-11-10; C6 fixed to hidden). SI OQ-20, whether a shown tag leads to a profile, no longer arises.
 - **The owner on their own path.** On a photo with no reflection in the current slot, the owner can go on to Reflect, Flow 6. Nothing marks that a slot is open (`PROVISIONAL: C3`; R-095, R-096).
-- **A journey or path with nothing this reader can see.** To a public reader the journey is not shown; to a friend it shows as a place with its type and dates only (`PROVISIONAL: B74`).
+- **A journey or path with nothing this reader can see.** An unlocked journey with no photo the reader can see is not shown to a public reader; to a friend it shows as a place with its type and dates only. A sealed journey shows only that one is under way, to anyone, never its type or dates (Spec §20 I, YYYY; B74 as narrowed).
 - **Writing.** No comment, reply or reaction exists (Spec §8, §18). Nobody but the owner writes.
 - **From a Positivity Feed entry to a photo.** No next or previous control steps to another entry's photo (Spec §20 Q; R-145). Public-reader limits still apply there (Spec §20 T, CC).
 - **Never, for a non-owner:** whether a photo was taken in a highlight (Spec §20 DD); the join date (Spec §20 TT). **Never, for any reader:** their own ring on this person's map (Spec §12, §18). With B12 fixed to hidden (Spec §20 NNNN), the reader has no tag to count; G-12's weakest point is gone.

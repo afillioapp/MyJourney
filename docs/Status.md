@@ -11,7 +11,7 @@ Status values: `todo` · `in progress` · `in review` · `done` · `blocked`
 ## Where we are
 
 **Current phase:** 2 — Look, started at the user's request (2026-11-04). The Phase 1 gate has not been passed; see the Log.
-**Next step:** wrap-up before Phase 3 (user, 2026-11-10). All Phase 2 gate questions (triage pile A) answered and carried (§20 OOOO–XXXX); a rules audit of everything since `a3b9a4f` is running (`docs/reviews/2026-11-10-rules-supervisor-carriage.md`). Then: fix its findings, the user's OK on B72–B75 and E6, then the Phase 1 and Phase 2 gates.
+**Next step:** the user passes the Phase 1 and Phase 2 gates. Everything open was decided by the user or, at the user's "anything open, you decide" (2026-11-10), set as labelled defaults (DN B70–B85, E10 parked). Audit `reviews/2026-11-10-rules-supervisor-carriage.md` FAIL (9) fixed by the supervisor; re-audit r2 to confirm. Then Phase 3 (needs Postgres).
 **Waiting on you:** E6 (does a block touch the rings; built as B69); OK on proposed defaults B72–B75; E2 deferred by you; AD-18 stays on B41/B42; whether to push the updated preview. Then the Phase 1 and Phase 2 gates. Parked: system closing the app during the note window.
 
 ---
@@ -42,9 +42,9 @@ Status values: `todo` · `in progress` · `in review` · `done` · `blocked`
 
 | Deliverable | Owner | Status | Evidence |
 |---|---|---|---|
-| Art direction | art-director | in review | `Art-Direction.md`. Audits r1 FAIL (12), r2 FAIL (5), r3 FAIL (2); round 3 of 3 fixed and checked by the supervisor, not re-audited. Waits on the user: AD-1 to AD-19, defaults B27 to B42 |
-| Flows on paper | ux | in review | `Flows.md`. Audits r1 FAIL (13), r2 FAIL (6), r3 FAIL (1: C2 label, `reviews/2026-11-05-rules-flows-r3.md`). Cap reached. Waits on the user: C2, FQ-1 to FQ-13, DC-1 to DC-14 |
-| Microcopy for the weighted moments | copywriter | in review | `Microcopy.md`. Audit r3 **PASS** (`reviews/2026-11-05-rules-art-microcopy-r3.md`). Waits on the user: MQ-1 to MQ-11 |
+| Art direction | art-director | done, pending the gate | `Art-Direction.md`. Audits r1 FAIL (12), r2 FAIL (5), r3 FAIL (2); round 3 of 3 fixed and checked by the supervisor, not re-audited. Waits on the user: AD-1 to AD-19, defaults B27 to B42 |
+| Flows on paper | ux | done, pending the gate | `Flows.md`. Audits r1 FAIL (13), r2 FAIL (6), r3 FAIL (1: C2 label, `reviews/2026-11-05-rules-flows-r3.md`). Cap reached. Waits on the user: C2, FQ-1 to FQ-13, DC-1 to DC-14 |
+| Microcopy for the weighted moments | copywriter | done, pending the gate | `Microcopy.md`. Audit r3 **PASS** (`reviews/2026-11-05-rules-art-microcopy-r3.md`). Waits on the user: MQ-1 to MQ-11 |
 
 **Gate:** someone who has never heard of the product can follow the flows and understand the ritual.
 
@@ -191,3 +191,4 @@ Can start any time after Phase 2.
 - 2026-11-10 — §20 NNNN carried on paper by the supervisor (Open decisions 0c). Rules-guardian re-audit still to run. Next: §20 MMMM, blocking (0b).
 - 2026-11-10 — §20 MMMM (blocking) carried on paper by the supervisor (Open decisions 0b): Amendments §15, DN B62–B69 and E6, SI S-16 and S-25, Flow 10 parts F and G. Preview regenerated. Not audited; lead-tech review due before Phase 3.
 - 2026-11-10 — Phase 2 triage pile A answered by the user: §20 OOOO (three taps), PPPP (photos first), QQQQ (one line per step; highlight grace), RRRR (feed to profile), SSSS (no gap), TTTT (finish line), UUUU (limits stated); then E7–E9 as §20 VVVV (reflections by capture anniversary), WWWW (dismiss a highlight within 3 hours, before any photo), XXXX (fixed circle). Carried by the supervisor into Spec, Proposal (fixture dates, 18 fixed reflections), Amendments §16, Flows, Screen-Inventory, Microcopy (draft lines for the copywriter), Art-Direction §7.x, Rubric, CLAUDE.md; defaults B70–B78; preview regenerated (`2822ab3`, `7ad6990`). Rules audit started.
+- 2026-11-10 — Rules audit of the supervisor's carriage: FAIL (9: V1 sealed journey type/dates under B74; V2 reflection before unlock; V3 Reflect way as marker; V4 path-crossed subject; V5–V7 block and dismiss gaps; V8, V9 carriage). All fixed by the supervisor; user rulings §20 YYYY (B72–B74), ZZZZ (block removes from blocker's rings); defaults B79–B85 (timelines, Reflect way, subject never receives, blocked side, repeat dismiss), E10 parked. Phase 2 deliverables marked done, pending the gate.

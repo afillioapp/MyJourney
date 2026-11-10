@@ -71,6 +71,7 @@ The tables below repeat the items most at risk on each screen. **An item missing
 ### S-01 Commit
 
 - **Purpose:** the user picks one of three journey types and presses Commit, which cannot be undone.
+- **2026-11-10 (carried after `reviews/2026-11-10-rules-supervisor-carriage.md` V8):** Commit is not offered until a type is picked: absent, not greyed out (`PROVISIONAL: B78`). One plain line that it cannot be changed; the press commits, with no second step and no grace (Spec §20 QQQQ).
 - **Spec source:** Spec:34–47 (§3); Spec §20 3, C; Proposal:14–17 (D1–D4); Plan:105
 - **Viewer:** owner (the committing user)
 - **Reached from:** Profile (own) S-05, where the app opens (`PROVISIONAL: C12`). **Leads to:** The sealed year S-03
@@ -88,6 +89,7 @@ The tables below repeat the items most at risk on each screen. **An item missing
 ### S-02 Capture
 
 - **Purpose:** take one photo inside the app, at the moment, in three taps. It is sealed at once.
+- **2026-11-10 (carried after `reviews/2026-11-10-rules-supervisor-carriage.md` V8):** After the unlock instant every press here, the shutter and any way out, is §20 CCCC's next press: not taken, the app goes to S-05 (Spec §20 YYYY, B72). The app reads the journey's state after the press (settles OQ-51).
 - **Spec source:** Spec:51–59 (§4); Spec:228 (§18); Spec §20 1, 2, 5, 6; Spec §20 PP, QQ, VV, XX, AAA, DDD; Spec §20 GGG (its note-offer part retired by JJJ); Spec §20 JJJ; Spec §20 QQQ; Spec §20 AAAA (the retry's timing gap, accepted; it never shows); Spec §20 CCCC (the camera open at the unlock instant); Proposal:94–99; `Phase-1-Amendments.md` §6 (the press's own timing); Plan:106; Decisions B6, B7, C1, C4
 - **Viewer:** owner
 - **Reached from:** The sealed year S-03, Start a highlight S-13. **Leads to:** after every accepted shutter, straight to the note step S-12 for that photo (`PROVISIONAL: C4`). After a lost press, to whatever the normal press would have given at that instant: the note step S-12 if it would have been accepted, the capture refusal if it would have been refused (Spec §20 QQQ, JJJ). From there back to the camera, or out of capture to S-03. At the unlock instant, after the next press, to Profile (own) S-05 (decided 2026-10-31, Spec §20 CCCC; row below)
@@ -110,6 +112,7 @@ The tables below repeat the items most at risk on each screen. **An item missing
 ### S-03 The sealed year
 
 - **Purpose:** the owner's current journey while it is sealed: an empty state that leaks nothing and reads as intended, and the way out to what the user does instead.
+- **2026-11-10 (carried after `reviews/2026-11-10-rules-supervisor-carriage.md` V8):** At the unlock instant nothing changes on its own; the next press, the way to capture included, goes to S-05 (Spec §20 YYYY, B73).
 - **Spec source:** Spec:71–76 (§6); Spec:233–234 (§18); Spec:246 (§19); Spec §20 I; Proposal:48–50, Proposal:84; Plan:107; Brief:71, Brief:130; Decisions B6, B7, B19, C2, C3, C4
 - **Viewer:** owner. How others see a sealed journey is a state of S-16 and S-06 ("exists only", Proposal:317)
 - **Reached from:** Profile (own) S-05, where the app opens (`PROVISIONAL: C12`); Commit S-01. **Leads to:** Capture S-02, Start a highlight S-13, Positivity Feed S-09, Feed S-08, Layers S-07, Another user's profile S-16, Profile (own) S-05. **Never to** the note step S-12 (`PROVISIONAL: C4`)
@@ -170,6 +173,7 @@ Not on the list:
 ### S-05 Profile (own)
 
 - **Purpose:** the owner's destination, and where the app opens: the circle with the owner's name in it, its rings, the activity line twisted into it, and the way into their own journeys.
+- **2026-11-10 (carried after `reviews/2026-11-10-rules-supervisor-carriage.md` V8):** Below the circle, one timeline per journey, oldest first (`PROVISIONAL: B81`): under way, a plain line "A journey is under way." with no mark (`PROVISIONAL: B79`; Microcopy M-06b); closed, sparks for every photo, on its day (`PROVISIONAL: B80`). Pressing a closed timeline opens S-06 at that journey. "Your Journey is ready" shows the first time S-05 is shown after the unlock instant, fresh start or return from the background (Spec §20 YYYY, B73).
 - **Spec source:** Spec:181–187 (§14); Spec:29 (§2); Spec §20 YY, XXX; Proposal:65; Concept:681–714 (§21); Plan:109; Brief:85; Spec §20 CCCC; Decisions B4, B5, B19, C1, C3, C7, C9, C12
 - **Viewer:** owner. Others see S-16
 - **Reached from:** app entry, in every state (`PROVISIONAL: C12`); Reveal S-04; Layers S-07 (the core); Capture S-02 and the note step S-12, when the next press after the unlock instant is not taken (decided 2026-10-31, Spec §20 CCCC). **Leads to:** Walking a path S-06 (own), and through it the owner's earlier journeys, where open reflection slots are reached (`PROVISIONAL: C3`); Reveal S-04 when a reveal is open; Commit S-01 in `no-journey`; Journey overview S-15; The sealed year S-03; and the app's other screens, Layers S-07, Feed S-08 and Positivity Feed S-09 (how is Phase 2). **Friend requests S-22**, by a way that is present in every state and looks the same, byte for byte, whether no request or many wait: never a number, dot, bold, "new" or a way that appears only when a request waits (`PROVISIONAL: B43`; Spec §20 KKKK (c); `Phase-1-Amendments.md` §12.6, K14; Rubric R-096, R-194). **Friends S-23**, by a way present in every state with no count beside it (`PROVISIONAL: B57`); Close friends S-24 is reached from S-23 (B57). **Blocked S-25**, by a way present in every state with no count beside it (`PROVISIONAL: B65`; Spec §20 MMMM)
@@ -188,7 +192,7 @@ Under either option a ring is a record of time, not a reward. It never arrives a
 | `sealed` (current journey) | Rings and activity lines of earlier journeys. The current journey as existing, with its type by name and its commit and unlock dates as plain dates (Proposal:84; `PROVISIONAL: B19`; Spec §20 EEEE; see OQ-39) | The current year's activity graph: "Never during the sealed year. A visible grid being filled is a streak mechanic and is banned" (Spec:187). **A ring, arc or segment for the current year that is partial, growing, dated or filling**, or anything that changes with the date inside the sealed year (Rubric R-012). A countdown or relative unlock date (Spec §20 EEEE; Rubric R-013). The type's photos per year, cadence or allowance (Rubric R-098). Any thumbnail or count from the sealed journey (Spec:75). A banner, dot or marker that reflections are open on an earlier journey (Spec:102; Rubric R-095, R-096) |
 | `unlock-day`, `reveal-open` | "Your Journey is ready", on the owner's next open after unlock, as the way into Reveal S-04 (`PROVISIONAL: C1`, `C12`). The same when capture or the note step was open at the unlock instant and the app came here after the next press (decided 2026-10-31, Spec §20 CCCC). The year's activity graph, to the owner: "only after the year unlocks" (Spec:187; `PROVISIONAL: B5`). The activity line is not twisted in yet (`PROVISIONAL: B5`). Under B4's default this journey has no ring yet; under the option, rings follow years with the app | As in `sealed`, for any other journey still sealed. A completion meter for the reveal (`PROVISIONAL: B8`). A reminder to finish (Spec:242) |
 | `reveal-finished` | Under B4's default, this journey's ring. The year's activity line twisted into the circle (Spec:186; `PROVISIONAL: B5`) | A ring presented as an achievement or a reward for finishing: "A record, not a rank" (Spec:185; Rubric R-102). **A ring count printed as text, such as "3 journeys" or "4 years"** (counter ban, Brief:42, Spec:233; Rubric R-166) |
-| `later-years` | Rings as B4 gives them. The overview stack, readable back to back (Spec:121). The way into earlier journeys, where slot *k* reflections are reached (`PROVISIONAL: C3`) | As above. **On the unlock anniversary, an in-app banner, dot, toast or "Year 3 reflections are open" marker** (Spec:102: "never pushed or reminded to write one"; Rubric R-095, R-096) |
+| `later-years` | Rings as B4 gives them. The overview stack, readable back to back (Spec:121). The way into earlier journeys, where slot *k* reflections are reached (`PROVISIONAL: C3`) | As above. **On a photo's anniversary (Spec §20 VVVV), an in-app banner, dot, toast or "reflections are open" marker** (Spec:102: "never pushed or reminded to write one"; Rubric R-095, R-096) |
 | `no-journey` · between journeys | As `reveal-open`, `reveal-finished` or `later-years` for the last journey, plus the way to Commit S-01 | As above. A prompt to commit again (Spec:242) |
 
 - **Reads:** User (name; the owner's own `joined_at`, only for B4's per-year option, Spec §20 TT, WW), Journey, Photo (`captured_at`, for the activity graph, after unlock only, Proposal:50; the full time, since the viewer is the owner, Spec §20 GG), Journey overview (Proposal §2.2)
@@ -197,6 +201,7 @@ Under either option a ring is a record of time, not a reward. It never arrives a
 ### S-06 Walking a path
 
 - **Purpose:** read a person's journeys from the beginning to now, in order, with the hard times and the reflections written later.
+- **2026-11-10 (carried after `reviews/2026-11-10-rules-supervisor-carriage.md` V8):** Entered from a timeline on S-05 or S-16, at the journey pressed (`PROVISIONAL: B81`, replacing B75). An unlocked journey with no photo this reader can see is not shown to a public reader, and to a friend shows type and dates only; a sealed journey shows only B79's line (Spec §20 YYYY, B74 as narrowed). Never empty, with no call to action (B74).
 - **Spec source:** Spec:191–196 (§15); Spec:149 (§11); Spec:177 (§13); Spec §20 EEE, KKK; Concept:563–582 (§16); Plan:110; Decisions B2, B12, B19, C6; Spec §20 NNNN
 - **Viewer:** owner, network, public (signed-in, `PROVISIONAL: B14`), tagged. What each sees of the photos depends on photo visibility (Spec:143–147, Proposal:312–320). A journey's type, dates, chapter and feeling tags reach the owner and network only, never public (Spec §20 T, CC); a tagged reader, or anyone on the owner's map, who is not the owner's friend reads as public (Spec §20 KKKK (d))
 - **Reached from:** Profile (own) S-05, Another user's profile S-16, Positivity Feed S-09, by the way from its one photo (`PROVISIONAL: B75`); not Feed S-08 since Spec §20 RRRR. Always opens at its beginning (`PROVISIONAL: B75`). **Leads to:** A photo, followed forward S-17, Journey overview S-15, Another user's profile S-16
@@ -226,6 +231,7 @@ On every journey, for every viewer, never: a grid: "in order, not as a grid" (Sp
 ### S-07 Layers
 
 - **Purpose:** the owner's own map: the user at the core, people on concentric rings earned by crossing journeys, and the way to their profiles.
+- **2026-11-10 (carried after `reviews/2026-11-10-rules-supervisor-carriage.md` V8):** For a blocker, the person they blocked is not on the map while the block is active (Spec §20 ZZZZ). For the blocked person, the blocker stays and drifts as usual; their name leads to what an unknown user shows, as a typed name does (`PROVISIONAL: B84`). Nothing on either map says "blocked".
 - **Spec source:** Spec:156–165 (§12); Spec §20 G, H, L, YY, XXX; Proposal:27–29 (D14–D16); Proposal:145–160; Plan:111; Brief:81; Decisions C7, C8, C9
 - **Viewer:** owner only. "Each user sees only their own map" (Spec:164)
 - **Reached from:** Profile (own) S-05, The sealed year S-03. **Leads to:** Another user's profile S-16
@@ -335,6 +341,7 @@ On every state, never: a prompt to capture a low point: "invited, never nudged" 
 ### S-12 The note step
 
 - **Purpose:** straight after capture, inside the capture flow, an optional, skippable offer to photograph a handwritten A4 page, which becomes the writing on the back of the photo.
+- **2026-11-10 (carried after `reviews/2026-11-10-rules-supervisor-carriage.md` V8):** After the unlock instant every press here, the page, the skip and any way out, is the next press and goes to S-05 (Spec §20 YYYY, B72; settles OQ-52).
 - **Spec source:** Spec:16 (§1); Spec §20 B, K, UUUU, XXXX; Spec §20 PP, QQ, VV, XX, AAA, DDD; Spec §20 HHH, III, JJJ; Spec §20 LLL (the server-side handle); Spec §20 NNN (15 minutes from the press, after a lost press); Spec §20 PPP, RRR (a server restart); Spec §20 QQQ (which lost press reaches this step); Spec §20 UUU (the window ending while the user is on the step); Spec §20 VVV (no confirmation of a saved page); Spec §20 WWW (skipping ends the step for good); Spec §20 YYY (the note window ends at unlock); Spec §20 ZZZ (a note lost twice gets the same answer as a saved note); Spec §20 AAAA (the note press's timing gap, accepted; it never shows); Spec §20 BBBB (the one "closed" answer when the note step refuses); Spec §20 CCCC (the note step open at the unlock instant); Spec §20 DDDD (what "leaving capture" means); Proposal:21 (D8); Proposal:101–108; `Phase-1-Amendments.md` §6 (the route's answers to a note press); Brief:69; Decisions C1, C4, B16
 - **Viewer:** owner
 - **Reached from:** Capture S-02 only, straight after an accepted shutter (`PROVISIONAL: C4`), or after a lost press that a normal press at that instant would have accepted, which looks exactly like one (Spec §20 JJJ, QQQ). Never after a refused press, including a lost press that would have been refused, which shows the refusal instead (Spec §20 QQQ). Never from The sealed year S-03 or any other screen. **Leads to:** the camera S-02, or out of capture to S-03. After end (7), Profile (own) S-05 (decided 2026-10-31, Spec §20 CCCC)
@@ -356,6 +363,7 @@ On every state, never: a prompt to capture a low point: "invited, never nudged" 
 ### S-13 Start a highlight
 
 - **Purpose:** the user opens a 24-hour window in which the frame limit does not apply.
+- **2026-11-10 (carried after `reviews/2026-11-10-rules-supervisor-carriage.md` V8):** At the unlock instant nothing changes on its own; the next press goes to S-05 (Spec §20 YYYY, B73). Start and dismiss may repeat (`PROVISIONAL: B85`).
 - **Spec source:** Spec:63–67 (§5); Spec §20 4, 5, N, QQQQ, UUUU, WWWW, XXXX; Proposal:19 (D6); Proposal:128–135; Brief:65; Decisions B6, B16
 - **Viewer:** owner. Others learn nothing about highlights (`PROVISIONAL: B6`; Spec §20 I)
 - **Reached from:** The sealed year S-03. **Leads to:** Capture S-02; back to the sealed year S-03 after a refusal or when the owner does not start one (decided 2026-11-09, Spec §20 JJJJ)
@@ -373,6 +381,7 @@ On every state, never: a prompt to capture a low point: "invited, never nudged" 
 ### S-14 Reflect
 
 - **Purpose:** the owner writes one reflection on one photo for the current slot, added to the stack and never edited.
+- **2026-11-10 (carried after `reviews/2026-11-10-rules-supervisor-carriage.md` V8):** A photo's slot 1 opens at the later of its first anniversary and unlock (Spec §20 VVVV); a 29 February photo's anniversary is 28 February in other years (`PROVISIONAL: B70`). Reached through the way to Reflect on S-17, always present on the owner's unlocked photos (`PROVISIONAL: B82`).
 - **Spec source:** Spec:95–102 (§8); Spec §20 D, replaced by VVVV; Spec §20 QQQQ, SSSS; Proposal:22 (D9); Proposal:24 (D11); Proposal:110–117; Brief:75; Decisions B10, C3
 - **Viewer:** owner writes. Readers are the photo's readers (Spec §20 F)
 - **Reached from:** A photo, followed forward S-17 (not Reveal S-04 since 2026-11-10, Spec §20 VVVV) (on earlier journeys, from Profile (own) S-05, `PROVISIONAL: C3`). **Leads to:** back to where it came from. Writing one emits "reflection left" (Spec §20 J) to the owner's friends who can see the photo, even when it is public, counted at the time of writing (`PROVISIONAL: B10`, `B48`; Spec §20 KKKK), and to the owner (Spec §20 UU), seen in S-08
@@ -410,6 +419,7 @@ On every state, never: an edit: "Immutable, like everything else" (Spec:120). A 
 ### S-16 Another user's profile
 
 - **Purpose:** another person's circle with their name in it, their rings and the way into their journey, read on purpose.
+- **2026-11-10 (carried after `reviews/2026-11-10-rules-supervisor-carriage.md` V8):** Below the circle, the person's timelines, oldest first (`PROVISIONAL: B81`): under way, the plain line, the same for every viewer (`PROVISIONAL: B79`); closed, sparks for the photos this viewer can read, and for a public viewer no line (`PROVISIONAL: B80`, B36). The way into a path is a closed timeline, and there is none when the viewer can read no journey (Spec §20 YYYY, B74).
 - **Spec source:** Spec:181–187 (§14); Spec:149–150 (§11); Spec:164 (§12); Spec §20 I, SS, TT, WW, YY, ZZ, CCC, XXX, KKKK; Proposal:30 (D17); Proposal:84; Proposal:312–320; `Phase-1-Amendments.md` §12.6, §13.3; Decisions B2, B4, B5, B43, B44, B53, B55, B56, C6, C7, C10
 - **Viewer:** a friend (the network) or public (any other signed-in user, `PROVISIONAL: B14`), and public includes someone on this person's map who is not their friend (Spec §20 KKKK (d)). After unlock, a journey's type, dates, chapter and feeling tags reach a friend only, never a public viewer (Spec §20 T, CC, KKKK)
 - **Reached from:** Feed S-08, Layers S-07, Positivity Feed S-09, a name search (`PROVISIONAL: C10`), Friend requests S-22, Friends S-23 and Close friends S-24, from a name (`PROVISIONAL: B68`; settles OQ-55 (b)). Never between two people where either has blocked the other: to the blocked person it shows what an unknown user shows (`PROVISIONAL: B63`, `B64`). *(A person tag on S-17 is no longer a way here: readers never see tags, Spec §20 NNNN (b); OQ-20 gone.)* **Leads to:** Walking a path S-06
@@ -446,6 +456,7 @@ On every state, never: the viewer's ring on this person's map, or this person's 
 ### S-17 A photo, followed forward
 
 - **Purpose:** one photo read across time: the original moment, the handwritten note on its back, then the reflections that came after, in order. The follow-up is the reflection stack (`PROVISIONAL: C13`).
+- **2026-11-10 (carried after `reviews/2026-11-10-rules-supervisor-carriage.md` V8):** For the owner, on every unlocked photo of theirs, a way to Reflect, the same whether or not this photo's slot is open (`PROVISIONAL: B82`): open and empty, it opens S-14; otherwise one plain line gives the date this photo's next reflection opens, as a plain date. Never a mark that a slot has opened.
 - **Spec source:** Spec:195 (§15); Spec:15–17 (§1); Concept:162–168; Concept:569; Decisions B2, B12, C6, C13; Spec §20 NNNN
 - **Viewer:** owner, network, public, by the photo's visibility (Spec:143–147). The photo's journey's type, dates, chapter and feeling tags reach the owner and network only, even on a Public photo (Spec §20 T, CC)
 - **Reached from:** Walking a path S-06, Positivity Feed S-09. *(Not from Feed S-08 since 2026-11-10: a "reflection left" line leads to the profile, Spec §20 RRRR.)* **Leads to:** Reflect S-14 (owner), Walking a path S-06
@@ -686,7 +697,7 @@ Where two docs disagree, both lines are cited and neither is picked unless Decis
 
 **Contradictions between documents**
 
-1. **Reflection timing in the example.** Spec:104–111 and Concept:203–210 date reflections on the photo's own anniversary (7 Jan), and Concept:200 says "on the photo's anniversary". Spec:101 and Spec §20 D, Concept:852 and Proposal:22 (D9) say all photos of a journey move to their next slot together, on the journey's unlock anniversary. §20 wins by `CLAUDE.md`. Should the example be corrected? Affects S-14, S-17.
+1. **Reflection timing in the example.** **Reversed 2026-11-10 by Spec §20 VVVV: the example's per-photo dates are now the rule.** Spec:104–111 and Concept:203–210 date reflections on the photo's own anniversary (7 Jan), and Concept:200 says "on the photo's anniversary". Spec:101 and Spec §20 D, Concept:852 and Proposal:22 (D9) say all photos of a journey move to their next slot together, on the journey's unlock anniversary. §20 wins by `CLAUDE.md`. Should the example be corrected? Affects S-14, S-17.
    → Decisions A1: correction approved 2026-10-27, being applied (§20 D stands).
 2. **"Written a year or more after the moment."** Spec:98 conflicts with Spec §20 D: a photo taken in month 12 gets its slot 1 reflection weeks after the moment. Affects S-14.
    → Decisions A2: correction approved 2026-10-27, being applied.

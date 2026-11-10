@@ -105,7 +105,7 @@ Screens in the order of the ritual, each one usable before the next starts.
 1. Commit — pick a type, press the button
 2. Capture — three taps, no retake
 3. The sealed year — the empty state, and what a user does instead
-4. Reveal — the annual moment: reflections, tagging, tags, overview, visibility
+4. Reveal — the annual moment: the photos first, then tagging, tags, overview, visibility (reflections follow each photo's anniversary since Functional-Spec §20 VVVV)
 5. Profile — the circle, the rings, the activity line twisted into it
 6. Walking a path — reading someone's journey start to now
 7. Layers — the concentric navigation
