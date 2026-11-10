@@ -12,6 +12,37 @@ Phase 2 deliverable (`Build-Plan.md:77`), owner art-director. Written 2026-11-04
 
 ---
 
+## 0. Visual identity direction: the dotted circle (user, 2026-11-10)
+
+**Status: a direction from the user, logged at their request. Not yet a §20 ruling, and nothing below is built.** Until the user confirms it and the questions below are answered, the build keeps drawing §3.2 and §3.3 as they stand (rule zero).
+
+Reference image: `docs/visual-identity/reference-dotted-circles.png` (a stock image the user found; reference only, not for use in the product). A mock on dummy data: `docs/visual-identity/dotted-circle-mock.svg`.
+
+**What the user described:**
+
+- The circle around the profile picture is made of rings, and each ring is **one journey**, drawn as **52 dots, one per week** of that journey.
+- **The outermost ring is the oldest journey. The innermost ring is the newest.**
+- A week in which a photo was taken and sealed has a **bigger, bolder dot**.
+- **The biggest dot marks a highlight.**
+- So three rings read as a life of three journeys: when the person took pictures, and when the highlights were.
+
+**What it replaces, if confirmed:** the continuous ring line with day marks (§3.2, §3.3) and its "sparks" become 52 dots; ring order flips from "added outermost" (`PROVISIONAL: B34`) to newest innermost.
+
+**What it keeps:** a ring is a record, not a rank; nothing is drawn for a sealed journey (Spec:187, R-011), so a ring appears only after its reveal is finished; one ring per journey matches `PROVISIONAL: B4`'s default.
+
+**Questions this raises, for the user** (listed in [§12](#12-open-questions) as AD-20 to AD-25):
+
+| ID | Question | Why it matters |
+|---|---|---|
+| AD-20 | **Newest ring innermost means every older ring moves out one place at each new journey.** This contradicts B34 ("added outermost"), §3.2 "a ring, once drawn, never moves", the tree reading (Concept:689) and §20 IIII ("the newest ring stays the thinnest", decided 2026-11-09). It is close to the alternative AD-19 already described | Overturns a decided ruling, so it needs the user's word, not a default |
+| AD-21 | **How many dot sizes?** Proposed: three only, no photo / photo / highlight, so a week with one photo and a week with four look the same. A dot that grows with the number of photos would print a count (banned list; `PROVISIONAL: B8`; R-144) | Keeps the circle from becoming a counter |
+| AD-22 | **What is a week?** Proposed: counted from the commit date, not calendar weeks. A journey is 365 or 366 days, so week 52 holds the last 8 or 9 days | Every photo needs exactly one dot |
+| AD-23 | **A highlight that runs across two weeks.** Proposed: its dot is the week the highlight was opened in. An Explorer has up to 4 highlight dots, a Contemplator 1 | Fixes which dot is biggest |
+| AD-24 | **Who sees the dot sizes?** Today the activity view is built from the photos the viewer can see, and a public viewer gets none (`PROVISIONAL: B5`, B36). Proposed: the same, so other viewers see the bigger dots only for photos they may see, and a public viewer sees 52 even dots | A big dot for a Private photo would leak that a photo exists |
+| AD-25 | **Legibility with many journeys.** With fixed dot sizes, each new ring makes the circle bigger, and the inner rings have less room for 52 dots. Like AD-17, there is a point where it stops being readable | Decides the geometry for a five-year user |
+
+---
+
 ## 1. The register
 
 **A family album from the 1970s to the 90s, deliberately not a modern photo book or photo app** (Brief:109; Concept:305; `art-director.md:22`).
@@ -719,6 +750,7 @@ Nothing below is picked. Where the build has to draw something before the user a
 | **AD-17** | **Fine outer rings fall below a device pixel.** At 240 px on a 1× screen, strokes go under 0.5 px from ring 10; at 320 px, from ring 13. On a 2× screen, from about ring 18 and 21. There the lines blur into the band's tone, 1.54 (light) and 1.88 (dark) against the page, below 3:1. The owner's day marks sit on those rings: from about ring 17 the rise is under 0.45 units, so that year's activity is no longer readable. Fixtures reach about 11 rings with the clock's +5 years. Options: accept for the prototype; a larger first pitch or slower ratio, which makes the circle grow further; or a smallest display size above 240 | It decides what an older user can still read on their own profile | None needed: the build draws the formula. For the user to review |
 | **AD-18** | **Is a way that appears by journey state a marker?** S-05 leads to Reveal while a reveal is open, to Commit in `no-journey`, and to the sealed year while sealed (SI:151, SI:170). R-186 says no way appears, disappears or changes because of content, and SI:77 bans "a banner or marker that Commit is open again". On the day of unlock the sealed-year way goes and the Commit and Reveal ways come | When a way appears | Reveal: `PROVISIONAL: B41`. Commit and the sealed year: `PROVISIONAL: B42`. Whether appearing by state is a marker: for the user |
 | **AD-19** | **The newest ring is always the finest** ([§3.2](#32-the-rings)). On the owner's own circle the most recent year is the faintest line, which could read as fading. A geometry within R-185 that avoids it: put the newest ring next to the frame and push older rings out one place at each finish. The tone stays 22% at every count, but every ring then moves at each finish, which contradicts `PROVISIONAL: B34` ("added outermost") and the tree reading (Concept:689). For the user to look at in the preview at +5 years | It changes where a ring sits and whether rings move | None needed: the build draws the formula and B34 **Decided 2026-11-09 (Spec §20 IIII): the newest ring stays the thinnest and is drawn the brightest. The tone is still to be specified here.** |
+| **AD-20 to AD-25** | **The dotted circle** (user direction, 2026-11-10): ring order, dot sizes, what a week is, highlights across two weeks, who sees dot sizes, legibility. Set out in [§0](#0-visual-identity-direction-the-dotted-circle-user-2026-11-10) | Replaces the ring line and flips ring order if confirmed | None: nothing is built until the user confirms the direction |
 
 ### B. Where the docs disagree
 
