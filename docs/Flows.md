@@ -689,6 +689,18 @@ Lantern sees only the current ring, never this table (`PROVISIONAL: C8`).
 2. Being on the list gives nothing yet (`PROVISIONAL: B55`). What close friends get is Decisions E2, with the user. Whatever is chosen will let a close friend work out that they are on the list (`Phase-1-Amendments.md` §12.6). The options named in E2 would reach Visibility S-20, Reflect S-14 and S-17, and Journey overview S-15. None is built.
 3. No one but the owner sees the list or a count (`PROVISIONAL: B47`; R-193).
 
+### Part F: blocking someone
+
+1. On another user's profile S-16, friend or not, the owner chooses to block, and confirms once (`PROVISIONAL: B62`; Spec §20 MMMM). `[copy: copywriter]` *Blocking: say plainly what it does. No guilt, and no word that the other person will be told, since they will not be.*
+2. At once and silently (`PROVISIONAL: B63`, `B64`): a friendship between them ends, as in part D, with the close-friends place; open requests between them close; and from then neither can find the other by name, open the other's profile, read anything of the other's, Public included, send a request, or see the other's announcements or Positivity Feed entries, earlier ones included.
+3. The blocked person is never told. To them the owner looks like a name that does not exist (B64).
+4. The rings do not change at the block. Earlier tags keep counting; since neither can tag the other as a user any more, each drifts outward as journeys pass with no crossing (`PROVISIONAL: B69`; Spec §20 G). **Whether a block should touch the rings is with the user: Decisions E6.**
+
+### Part G: unblocking
+
+1. From the owner's profile S-05, Blocked S-25 lists the people the owner has blocked, A to Z, with no time and no count (`PROVISIONAL: B65`, `B67`). Each has a way to unblock, confirmed once (`PROVISIONAL: B66`).
+2. Unblocking is silent and restores nothing: no friendship, no close-friends place, no request, no earlier announcement (B66, B48). Either may then send a request (part A).
+
 **Ends:** back at S-05 or S-16.
 
 | Between two people | What each reads of the other |
@@ -697,8 +709,10 @@ Lantern sees only the current ring, never this table (`PROVISIONAL: C8`).
 | Friends | Network and Public photos, journey type, dates, chapter and feeling tags, overviews and reveal state, from the accept; announcements from the accept on (Spec §20 T, SS, KKKK; `PROVISIONAL: B48`) |
 | A close friend | As any friend (`PROVISIONAL: B55`; Decisions E2) |
 | After a removal | Public photos only. No earlier announcement returns, even after a new friendship (`PROVISIONAL: B45`, `B48`) |
+| While either has blocked the other | Nothing at all, both ways, Public included; neither can find the other (`PROVISIONAL: B63`, `B64`; Spec §20 MMMM) |
+| After an unblock | As two people who are not friends: Public photos only, and no earlier announcement (`PROVISIONAL: B66`) |
 
-**Where E2 to E5 bite.** E2: part E and S-24. E3 (a), (b) and (c): **settled 2026-11-10 by Spec §20 NNNN** (unnamed, hidden, no), in Flow 5 step 6, Flow 7 part B step 3, Flow 9 step 5, part B step 3 and part D step 2. E4: **settled 2026-11-10 by Spec §20 LLLL**, no one sees another user's friends, S-16 and S-23 (B56). E5: **settled 2026-11-10 by Spec §20 MMMM**, users can block; part B, branches, to be carried (blocking screens to come). E2 deferred by the user.
+**Where E2 to E5 bite.** E2: part E and S-24. E3 (a), (b) and (c): **settled 2026-11-10 by Spec §20 NNNN** (unnamed, hidden, no), in Flow 5 step 6, Flow 7 part B step 3, Flow 9 step 5, part B step 3 and part D step 2. E4: **settled 2026-11-10 by Spec §20 LLLL**, no one sees another user's friends, S-16 and S-23 (B56). E5: **settled 2026-11-10 by Spec §20 MMMM**, users can block: parts F and G, S-25. E6 (does a block touch the rings): part F step 4, with the user. E2 deferred by the user.
 
 ---
 
@@ -776,7 +790,7 @@ Nothing below was picked. Each flow adds nothing at these points. **New IDs:** F
 | SI OQ-33 | Where the name search sits for visiting a profile, and how matches are ordered. Any order by ring, closeness or popularity is banned (R-071). | 4, 8 | SI OQ-33 |
 | SI OQ-32 | How invitation works in the product. Sign-up is not built in the prototype. | Hand-off | SI OQ-32; Decisions C11 |
 | R-143 | Under B4's "per year with the app", on which date a year's ring appears. | 8 | R-143 |
-| SI OQ-55 | Ways between the friendship screens and profiles: where the ways into S-23 and S-24 sit, whether names lead to S-16, whether S-16 can withdraw or remove, how S-24 adds, and the order of outgoing requests and friends. For the supervisor (Instagram reference). **2026-11-09: (a), (c), (e) settled by Decisions B57 to B59; (b) and (d) open** | 10 | SI OQ-55; `CLAUDE.md` rule zero step 5 |
+| SI OQ-55 | Ways between the friendship screens and profiles: where the ways into S-23 and S-24 sit, whether names lead to S-16, whether S-16 can withdraw or remove, how S-24 adds, and the order of outgoing requests and friends. For the supervisor (Instagram reference). **2026-11-09: (a), (c), (e) settled by Decisions B57 to B59; 2026-11-10: (b) by B68; (d) open** | 10 | SI OQ-55; `CLAUDE.md` rule zero step 5 |
 | SI OQ-56 | Whether accepting, declining, withdrawing or removing is confirmed, or its finality said. **Settled 2026-11-09 by Decisions B60** | 10 | SI OQ-56; Decisions B45, B50 |
 | SI OQ-57 | What S-16 shows for each pair state, and whether it may offer "accept" when the other person's request waits. **Settled 2026-11-09 by Decisions B61** | 8, 10 | SI OQ-57; DC-15 |
 | Decisions E2 | What close friends get. With the user; nothing built (`PROVISIONAL: B55`) | 10 | Spec §20 H, KKKK (f) |

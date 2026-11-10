@@ -12,7 +12,7 @@ Status values: `todo` · `in progress` · `in review` · `done` · `blocked`
 
 **Current phase:** 2 — Look, started at the user's request (2026-11-04). The Phase 1 gate has not been passed; see the Log.
 **Next step:** private preview of Phase 2 on Vercel (`preview/`), then the user's answers to the open questions, then the Phase 2 gate.
-**Waiting on you:** E2 deferred by the user; AD-18 (not sure; B41 and B42 stand); whether to push the updated preview. Then the Phase 1 and Phase 2 gates. Parked: SI OQ-51, OQ-52; system closing the app during the note window; BBBB (b).
+**Waiting on you:** E6 (does a block touch the rings); E2 deferred by the user; AD-18 (not sure; B41 and B42 stand); whether to push the updated preview. Then the Phase 1 and Phase 2 gates. Parked: SI OQ-51, OQ-52; system closing the app during the note window; BBBB (b).
 
 ---
 
@@ -107,7 +107,7 @@ Can start any time after Phase 2.
 
 0c. **Carry §20 NNNN (no one can tell they are on someone's rings).** *Done on paper 2026-11-10 by the supervisor:* Phase-1-Amendments §14 (three switches left, tags owner-only, "path crossed" never named), Proposal:170, Spec §20 Z and :196, Flows, Screen-Inventory, Microcopy (M-18 one line, M-25 retired), Decisions B11/B12/C6, Rubric `Updated` lines, preview regenerated. Not audited by the rules-guardian; untested until Phase 3. **For the user:** Concept §16 "you see where you were in their journey" now rests on recognising yourself in a photo, with no mark.
 
-0b. **Carry §20 MMMM (blocking).** A Phase-1-Amendments section on paper (a new insert-only record; Instagram-reference defaults), the friend screens, fixtures and a rules audit. Not started.
+0b. **Carry §20 MMMM (blocking).** *Done on paper 2026-11-10 by the supervisor:* Phase-1-Amendments §15 (two insert-only records, one block term in the readers; untested), Decisions B62–B69 (Instagram reference; B68 settles SI OQ-55 (b)), Screen-Inventory S-16 block, S-05 way in, new S-25 Blocked, Flow 10 parts F and G. No fixture change. **With the user: E6** (does a block touch the rings; built as B69, no). Lead-tech review and a rules audit still to run; copy markers for the copywriter.
 
 1. **Where the app deploys.** Phase 3 builds on local Postgres (decided 2026-10-30). A hosted Postgres and web framework for the Vercel project (`myjourney`) are still to choose. Does not block Phase 3.
 
@@ -183,3 +183,4 @@ Can start any time after Phase 2.
 - 2026-11-10 — User ruling §20 NNNN (E3): no one can tell they are on someone else's rings. B11 unnamed, B12 and C6 hidden, all three no longer switches; B48 confirmed. To carry (Open decisions 0c).
 - 2026-11-10 — Friend screens audit V1 (B57–B61 carried into SI and Flows) and V2 (Second Wind's request to Long Way Round) fixed by the supervisor (`542b705`). Not re-audited.
 - 2026-11-10 — §20 NNNN carried on paper by the supervisor (Open decisions 0c). Rules-guardian re-audit still to run. Next: §20 MMMM, blocking (0b).
+- 2026-11-10 — §20 MMMM (blocking) carried on paper by the supervisor (Open decisions 0b): Amendments §15, DN B62–B69 and E6, SI S-16 and S-25, Flow 10 parts F and G. Preview regenerated. Not audited; lead-tech review due before Phase 3.

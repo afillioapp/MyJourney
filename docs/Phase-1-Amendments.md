@@ -2080,3 +2080,73 @@ Nothing else changes. No new record. The map is still computed from tags only, a
 
 None to the data. §13.4.3's "would-be" column is now what is built. Rows that said "the subject included" (§13.4, 2027-04-25) still list who receives the line; what they read has no name.
 
+
+---
+
+## 15. FS §20 MMMM: blocking
+
+**Status: written on paper 2026-11-10 by the supervisor, at the user's go-ahead. Untested:** no Postgres on this machine; every check below is *not yet run*, and testing is due in Phase 3. Owner: lead-tech, who should review it before Phase 3.
+
+**Source.** FS §20 MMMM (user, 2026-11-10, on DN E5): users can block. Mechanics are Instagram-reference provisional defaults DN B62 to B68. Whether a block touches the rings is with the user (DN E6); built meanwhile as `PROVISIONAL: B69`, nothing changes at the block.
+
+### 15.1 Objects: two insert-only records
+
+Same pattern as §12.1: supporting records (P1 §2.4), random uuid ids (FS §20 JJ), every time from `app_now()` inside the writer, and an insert trigger refuses any other value. No UPDATE or DELETE path.
+
+| Record | Fields | Written only by | Rule |
+|---|---|---|---|
+| `user_block` | `id`, `blocker_id`, `blocked_id`, `blocked_at` | `block_user(other uuid)` | Two different joined users. Refused while the blocker already has an active block on that person. **The blocker is stored**, unlike §12.1's removal, because only the blocker may unblock; it is read by the blocker only (§15.3) |
+| `user_unblock` | `block_id` (primary key), `unblocked_at` | `unblock_user(other uuid)` | Only the blocker, on their own active block (`PROVISIONAL: B66`) |
+
+A block is **active** while it has no `user_unblock` row. Either person may hold an active block on the other; both may.
+
+### 15.2 What `block_user()` does, in one transaction (`PROVISIONAL: B63`)
+
+1. Inserts the `user_block` row.
+2. If the two are current friends, inserts the `friend_removal` row for their friendship, exactly as `remove_friend()` does (§12.1: the remover is not stored). Close-friend places end with it (`PROVISIONAL: B49`).
+3. Closes every open request between them, in both directions, with a new `friend_request_close.cause` value, `blocked`. `friend_request_close` is never returned with its cause to the other person, so the cause tells no one anything: the sender's outgoing row simply leaves, as on a withdrawal (`PROVISIONAL: B64`).
+
+Nothing is sent to anyone. No announcement type exists for it.
+
+### 15.3 The block term: who reads what
+
+One internal predicate, `block_between(a uuid, b uuid) → boolean` (SECURITY DEFINER; no EXECUTE for `mj_app`), true when either holds an active block on the other. It is added to:
+
+| Where | Effect while a block is active, both ways |
+|---|---|
+| `photo_readable()` (§4 item 5) | Refused for the other person, Public included. Everything that follows a photo (reflections, notes, visibility) follows, as now |
+| `overview_readable()` (§5) and the journey, chapter, feeling-tag and `journey_reveal_rows()` readers (§11) | Refused |
+| `announcement_receivable()` (§11, §12.3) | Neither receives the other's announcements, earlier ones included, since the audience is computed when read (B48's two instants plus this term) |
+| `positivity_feed_rows()` (FS §20 BBB) | Neither sees the other's entries |
+| Name search under `PROVISIONAL: C10` (`user_rows()`) | Neither finds the other. A request for the other's profile returns what an unknown id returns, byte for byte (`PROVISIONAL: B64`) |
+| `send_friend_request()` | Refused, with the same answer as a request to an unknown user |
+| The person-tag writer at reveal (S-18) | Refuses a user tag of the other; a typed name is still allowed and never counts (FS §20 7). The S-18 search already hides them, so the refusal is reached only by a crafted call |
+| `viewer_in_network()` (§12.2) | No change needed: step 2 ended the friendship |
+
+**`block_rows()`** returns the viewer's own active blocks as the blocked person's id and name only: no time, no count. Order A to Z is the app's (`PROVISIONAL: B65`, as B59). No reader returns a block to the blocked person, or to a third party.
+
+**Not touched (`PROVISIONAL: B69`, DN E6):** `layer` rows and their computation. Tags made before the block keep counting on both maps. From the block on, neither can tag the other as a user, so each drifts outward at the next finished reveal with no crossing (FS §20 G). Unblocking (`user_unblock`) restores nothing (`PROVISIONAL: B66`).
+
+### 15.4 Leak review
+
+- **The blocked person learns of the block only by absence**: the blocker can no longer be found, and if they were friends, Network photos stop. That is the friendship ending, which removal already allows (B45), and it is how Instagram works. Nothing says "blocked" (B64).
+- **No count, no time, no list to others** (B65, B67; banned list: counters). `blocked_at` is read by no reader; it exists for the time-order rules only.
+- **Third parties learn nothing**: no reader returns another user's blocks, as no reader returns another user's friends (FS §20 LLLL).
+- **The rings are not read** by any part of this section, so a block shows no one their place on any ring (FS §20 NNNN).
+
+### 15.5 Checks (on paper; not yet run)
+
+1. As Second Wind, `block_user(Long Way Round)`. Then, as Round: name search for Wind returns nothing; Wind's profile request returns the unknown-user answer byte for byte; a request to Wind is refused with the unknown-user answer. Wind's open request fr-10 to Round is closed with cause `blocked` and leaves both their lists.
+2. As Round, every Wind photo is refused, Public included; Round's feed holds no Wind announcement, earlier ones included; the Positivity Feed holds no Wind entry. The same holds as Wind for Round.
+3. Block two current friends (Lantern blocks Wind): `viewer_in_network()` is false both ways at once; Wind leaves Lantern's close-friends list (ce-1 ends); an unblock leaves them not friends, and ce-1 is not restored.
+4. `layer` rows for both users are byte-identical before and after the block and after the unblock (`PROVISIONAL: B69`).
+5. `block_rows()` as the blocker: one row, name and id only. As the blocked person and as a third party: no row. No reader returns `blocked_at`.
+6. `unblock_user()` by the blocked person is refused; by the blocker, it inserts one `user_unblock`; a second call is refused.
+
+### 15.6 Fixture effect
+
+**None.** No block at baseline, so the approved fixture (P1 §3, §13) is unchanged. The demoer can block from any profile in the prototype; Reset to baseline (`PROVISIONAL: B22`) removes it, as it does every demoer act. Checks run on a throwaway copy (`mj_scratch_*`), as §6.
+
+### 15.7 Model change
+
+**Yes**, required by FS §20 MMMM: two insert-only records, one new `friend_request_close.cause` value, one internal predicate added to the readers above, one owner-only reader. No field of the nine product objects changes. P1:170's list of supporting records needs a line (to carry with lead-tech's review).
