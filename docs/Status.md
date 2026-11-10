@@ -11,8 +11,8 @@ Status values: `todo` · `in progress` · `in review` · `done` · `blocked`
 ## Where we are
 
 **Current phase:** 2 — Look, started at the user's request (2026-11-04). The Phase 1 gate has not been passed; see the Log.
-**Next step:** private preview of Phase 2 on Vercel (`preview/`), then the user's answers to the open questions, then the Phase 2 gate.
-**Waiting on you:** E6 (does a block touch the rings); E2 deferred by the user; AD-18 (not sure; B41 and B42 stand); whether to push the updated preview. Then the Phase 1 and Phase 2 gates. Parked: SI OQ-51, OQ-52; system closing the app during the note window; BBBB (b).
+**Next step:** wrap-up before Phase 3 (user, 2026-11-10). All Phase 2 gate questions (triage pile A) answered and carried (§20 OOOO–XXXX); a rules audit of everything since `a3b9a4f` is running (`docs/reviews/2026-11-10-rules-supervisor-carriage.md`). Then: fix its findings, the user's OK on B72–B75 and E6, then the Phase 1 and Phase 2 gates.
+**Waiting on you:** E6 (does a block touch the rings; built as B69); OK on proposed defaults B72–B75; E2 deferred by you; AD-18 stays on B41/B42; whether to push the updated preview. Then the Phase 1 and Phase 2 gates. Parked: system closing the app during the note window.
 
 ---
 
@@ -190,3 +190,4 @@ Can start any time after Phase 2.
 - 2026-11-10 — Friend screens audit V1 (B57–B61 carried into SI and Flows) and V2 (Second Wind's request to Long Way Round) fixed by the supervisor (`542b705`). Not re-audited.
 - 2026-11-10 — §20 NNNN carried on paper by the supervisor (Open decisions 0c). Rules-guardian re-audit still to run. Next: §20 MMMM, blocking (0b).
 - 2026-11-10 — §20 MMMM (blocking) carried on paper by the supervisor (Open decisions 0b): Amendments §15, DN B62–B69 and E6, SI S-16 and S-25, Flow 10 parts F and G. Preview regenerated. Not audited; lead-tech review due before Phase 3.
+- 2026-11-10 — Phase 2 triage pile A answered by the user: §20 OOOO (three taps), PPPP (photos first), QQQQ (one line per step; highlight grace), RRRR (feed to profile), SSSS (no gap), TTTT (finish line), UUUU (limits stated); then E7–E9 as §20 VVVV (reflections by capture anniversary), WWWW (dismiss a highlight within 3 hours, before any photo), XXXX (fixed circle). Carried by the supervisor into Spec, Proposal (fixture dates, 18 fixed reflections), Amendments §16, Flows, Screen-Inventory, Microcopy (draft lines for the copywriter), Art-Direction §7.x, Rubric, CLAUDE.md; defaults B70–B78; preview regenerated (`2822ab3`, `7ad6990`). Rules audit started.
