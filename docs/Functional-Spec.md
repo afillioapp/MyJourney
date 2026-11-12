@@ -403,7 +403,9 @@ Feeling tags currently drafted: hang in there · it eventually pays off · thank
 
 - **AAAAA. The circle is drawn in dots: one ring per journey, 52 dots per ring, the newest ring next to the name** (the user's direction of 2026-11-10, Art-Direction §0; AD-20, AD-21). (a) Each ring is one journey, drawn as 52 dots, one for each week of that journey. The ring line with its day marks is retired. (b) **Three dot sizes only:** a week with no photo, a week with one or more photos, and the week a highlight opened in, the biggest. A week's dot never grows with the number of photos, because a dot that grew would count them (banned list). (c) **The newest ring sits next to the name, and is the boldest and the brightest.** When a reveal is finished, its journey's ring is drawn next to the name and every older ring moves out one place, a step finer. This replaces the tree order of §20 IIII ("added outside, never moved") and its "newest thinnest"; IIII's "brightest" stays. (d) Unchanged: nothing is drawn for a sealed journey; a ring is a record, not a rank; no label on any ring (B38). What a week is, a highlight's week, who sees the sizes and many rings are labelled defaults, Decisions-Needed B86 to B89
 
-*AAAAA was confirmed by the user on 2026-11-12.*
+- **BBBBB. B4's "one ring per year with the app" option is kept** (Decisions-Needed E11). It stays a switchable provisional default beside the default of one ring per finished reveal, and still shows only on the owner's own profile (§20 WW); everyone else sees one ring per finished reveal. Under the option a ring is a year with the app rather than a journey, so AAAAA (a) "each ring is one journey" holds under B4's default. How a year's ring is drawn in dots is a labelled default, Decisions-Needed B90
+
+*AAAAA and BBBBB were ruled by the user on 2026-11-12.*
 
 ### Still open — can wait
 

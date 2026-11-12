@@ -140,10 +140,10 @@ The geometry is the same under both B4 settings. Only the number of rings, `n`, 
 The owner sees the same weeks under both settings (R-141, R-187). Only what carries them differs (`PROVISIONAL: B28`):
 
 - Under the default, the journey's ring carries its weeks from reveal finished.
-- **Under the per-year option: open, Decisions-Needed E11.** Spec §20 AAAAA (a) makes each ring one journey, so a ring per year conflicts with it. Nothing below in this list is built; the build draws the default only. As written before AAAAA: each finished journey's weeks go on the owner's ring for the year that holds that journey's reveal-finished date, counted from the journey's own commit date.
+- **Under the per-year option** (kept, Spec §20 BBBBB; drawn as `PROVISIONAL: B90`): a ring is a year with the app. Each finished journey's weeks go on the owner's ring for the year that holds that journey's reveal-finished date, counted from the journey's own commit date (`PROVISIONAL: B28`, `B86`). Not built yet: the prototype has no options panel.
 - That ring is drawn only later, so until it exists the journey's flat graph stays shown to the owner. This applies under this option only, as an exception to `PROVISIONAL: B31`.
-- What a per-year ring with no finished journey would look like, and where its weeks start, is not settled (E11).
-- Two reveals finished in the same year (possible under `PROVISIONAL: B3`) would share that year's ring. How, and whether that is wanted, is part of AD-2 and E11.
+- A year with no finished journey is a ring of 52 small dots. Order and start angle count years instead of journeys: the newest year next to the frame, `θ_k` from the year's place in order (`PROVISIONAL: B90`).
+- Two reveals finished in the same year (possible under `PROVISIONAL: B3`) share that year's ring: a week takes the larger of its two sizes, so nothing doubles (`PROVISIONAL: B90`). Whether that is wanted stays part of AD-2.
 
 **The ring at place `j`, counted from the frame outward (1 is the newest):** [AD]
 
