@@ -150,29 +150,29 @@ The owner sees the same weeks under both settings (R-141, R-187). Only what carr
 | Value | Formula | Note |
 |---|---|---|
 | Pitch `p_j` | `11 × 0.85^(j−1)` | Each ring is 85% of the pitch of the ring inside it, so older rings are finer |
-| Radius `r_j` | `80 + p_1 + p_2 + … + p_j` | The dots' centres. Depends on `j` only |
-| Dot, a week with no photo | radius `0.09 × p_j` | |
-| Dot, a week with a photo | radius `0.20 × p_j` | One photo or forty: the same dot |
-| Dot, the week a highlight opened | radius `0.32 × p_j` | The biggest, for the owner only (`PROVISIONAL: B87`, `B88`) |
+| Radius `r_j` | `83 + p_1 + p_2 + … + p_j` | The dots' centres. Depends on `j` only. The 3 extra units keep the biggest dot clear of the frame's crossing ends, which reach radius 88.2 |
+| Dot, a week with no photo | radius `0.12 × p_j` | |
+| Dot, a week with a photo | radius `0.24 × p_j` | One photo or forty: the same dot. Twice the no-photo dot |
+| Dot, the week a highlight opened | radius `0.36 × p_j` | The biggest, three times the no-photo dot, for the owner only (`PROVISIONAL: B87`, `B88`) |
 | Ink | place 1: `--mj-ink`; every other place: `--mj-ink-soft` | The newest ring is the brightest (Spec §20 IIII, kept by AAAAA) |
 | Week `w`'s angle | `θ_k + 360 × (w + 0.5) / 52`, for `w` = 0 … 51 | Weeks run clockwise from the journey's start angle |
-| Start angle `θ_k` | `(k × 137.508) mod 360`, where `k` is the journey's place in the order of finishing, 1 the first | Fixed for the journey, so its pattern never turns as the ring moves out. The starts scatter like grain in wood: no shared start, no gauge |
+| Start angle `θ_k` | `(k × 135) mod 360`, where `k` is the journey's place in the order of finishing, 1 the first | Fixed for the journey, so its pattern never turns as the ring moves out. 135° is 19.5 dot spacings, so each ring's dots sit halfway between the dots of the ring next to it, as in the user's reference, with no spiral arms. Starts scatter round the circle and repeat only every 8 rings: no shared start, no gauge |
 
-Dots are filled circles, no stroke. The outer edge approaches `80 + 11 / 0.15 = 153.3` and never reaches it. Nothing is drawn there.
+Dots are filled circles, no stroke. The outer edge approaches `83 + 11 / 0.15 = 156.3` and never reaches it. Nothing is drawn there.
 
 Worked values, for checking a build. Ring `j` looks the same at every count `n`, apart from which journey's weeks it carries:
 
 | Place j | p_j | r_j | No photo | Photo | Highlight | Gap between dot centres |
 |---|---|---|---|---|---|---|
-| 1 | 11.00 | 91.00 | 0.99 | 2.20 | 3.52 | 11.00 |
-| 2 | 9.35 | 100.35 | 0.84 | 1.87 | 2.99 | 12.13 |
-| 3 | 7.95 | 108.30 | 0.72 | 1.59 | 2.54 | 13.09 |
-| 5 | 5.74 | 120.79 | 0.52 | 1.15 | 1.84 | 14.60 |
-| 8 | 3.53 | 133.35 | 0.32 | 0.71 | 1.13 | 16.11 |
-| 12 | 1.84 | 142.90 | 0.17 | 0.37 | 0.59 | 17.27 |
-| 20 | 0.50 | 150.49 | 0.05 | 0.10 | 0.16 | 18.18 |
+| 1 | 11.00 | 94.00 | 1.32 | 2.64 | 3.96 | 11.36 |
+| 2 | 9.35 | 103.35 | 1.12 | 2.24 | 3.37 | 12.49 |
+| 3 | 7.95 | 111.30 | 0.95 | 1.91 | 2.86 | 13.45 |
+| 5 | 5.74 | 123.79 | 0.69 | 1.38 | 2.07 | 14.96 |
+| 8 | 3.53 | 136.35 | 0.42 | 0.85 | 1.27 | 16.48 |
+| 12 | 1.84 | 145.90 | 0.22 | 0.44 | 0.66 | 17.63 |
+| 20 | 0.50 | 153.49 | 0.06 | 0.12 | 0.18 | 18.55 |
 
-The biggest dots never touch: two highlight weeks side by side on ring 1 leave 4 units between them, and a highlight dot on ring `j` and one on ring `j + 1` leave a quarter of `p_j`.
+The biggest dots never touch: two highlight weeks side by side on ring 1 leave 3 units between them, and a highlight dot on ring `j` and one on ring `j + 1` leave almost a fifth of `p_j`.
 
 **What holds at every value these formulas allow** (R-185):
 
@@ -477,12 +477,13 @@ Copy-ready. All values are [AD], resting on the register in [§1](#1-the-registe
   --mj-core-r: 80;
   --mj-core-stroke: 2;
   --mj-ring-first-pitch: 11;
+  --mj-ring-clearance: 3;      /* extra space between the frame and the first ring */
   --mj-ring-pitch-ratio: .85;
-  --mj-ring-angle-step: 137.508;
+  --mj-ring-angle-step: 135;
   --mj-ring-weeks: 52;
-  --mj-dot-none-ratio: .09;     /* a week with no photo */
-  --mj-dot-photo-ratio: .20;    /* a week with one or more photos */
-  --mj-dot-highlight-ratio: .32; /* the week a highlight opened, owner only */
+  --mj-dot-none-ratio: .12;     /* a week with no photo */
+  --mj-dot-photo-ratio: .24;    /* a week with one or more photos */
+  --mj-dot-highlight-ratio: .36; /* the week a highlight opened, owner only */
 }
 
 /* Black-card album page. How this theme is chosen: AD-4 */
@@ -579,7 +580,7 @@ All text pairs pass AA at any size.
 **Fine rings fall short.** Every dot is full `ink` or `ink-soft`, but the oldest rings' dots are small.
 
 - When a dot is smaller than a device pixel, it blurs toward the page and its contrast falls below 3:1.
-- At 240 px a no-photo dot is under half a pixel from place 8, a photo dot from place 13 (`PROVISIONAL: B89`).
+- At 240 px a no-photo dot is under half a pixel across from place 10, a photo dot from place 14 (`PROVISIONAL: B89`).
 - This is not accepted here. It is **AD-25**, which takes over AD-17.
 
 ### Type
@@ -673,7 +674,7 @@ Each "do" holds for every value the formulas allow (R-185).
 | **No tiers** (Concept:693; R-185) | One formula for every ring count; states named only by count and journey state | A name for a range of counts, a style that changes at a count, gold at year 5, a new look at a milestone |
 | **Tone and weight do not rise with count** (R-185) | Each ring's dots fixed by its place; an older ring only gets finer as it moves out | Heavier or darker circles for more rings, dots that grow as rings are added |
 | **No "higher is better" in colour** (Concept:691) | Ink only | A warm-to-hot ramp, metal tones, saturation by age or by activity |
-| **Size is not capacity** (Concept:687, 694) | Growth by a smaller step each year, toward no drawn edge, in the same box for everyone | A drawn boundary, track or band for the rings to reach (the formula's limit at radius 153.3 is never drawn and has no token), equal steps to a full band, circles lined up to compare |
+| **Size is not capacity** (Concept:687, 694) | Growth by a smaller step each year, toward no drawn edge, in the same box for everyone | A drawn boundary, track or band for the rings to reach (the formula's limit at radius 156.3 is never drawn and has no token), equal steps to a full band, circles lined up to compare |
 | **The weeks print no count** (R-144; `PROVISIONAL: B8`) | One same-size dot per week with a photo; three sizes in all (Spec §20 AAAAA) | Dots that grow by count, heat colours, a grid, totals. A fuller ring can still read as better: AD-11 |
 | **Difficulty is not drawn** (CL:89–93) | Types shown by name in plain text | A colour, icon, star or stripe per type, on a ring or anywhere near a person |
 | **Layers are not rank** (Spec:185; Concept:691) | Same line and same name style on all three rings | Larger names near the core, a glow on the inner ring, "close friends" colour, fading with distance |

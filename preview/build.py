@@ -233,18 +233,21 @@ def polar(r, deg, cx=160.0):
     return cx + r * math.sin(a), cx - r * math.cos(a)
 
 
-def ease(x):
-    return x * x * (3 - 2 * x)
-
-
 CORE_R = 80
 
 
-def ring_values(k):
-    """Ring k, counted from the frame outward (§3.2). It depends on k alone, never on the count."""
-    p = 6 * 0.92 ** (k - 1)
-    r = CORE_R + sum(6 * 0.92 ** i for i in range(k))
-    return p, 0.22 * p, 0.42 * p, 0.28 * p, r
+WEEKS = 52
+FIRST_PITCH, PITCH_RATIO, CLEARANCE = 11, 0.85, 3
+DOT_RATIOS = (0.12, 0.24, 0.36)   # a week with no photo, with a photo, the week a highlight opened
+ANGLE_STEP = 135.0                # 19.5 dot spacings: each ring's dots sit halfway between the next ring's
+
+
+def ring_values(j):
+    """The ring at place j, counted from the frame outward, 1 the newest (§3.2, Spec §20 AAAAA).
+    It depends on j alone, never on the count."""
+    p = FIRST_PITCH * PITCH_RATIO ** (j - 1)
+    r = CORE_R + CLEARANCE + sum(FIRST_PITCH * PITCH_RATIO ** i for i in range(j))
+    return (p, r) + tuple(f * p for f in DOT_RATIOS) + (2 * math.pi * r / WEEKS,)
 
 
 # The worked values of §3.2. The build stops if the formulas drift from the doc.
@@ -252,33 +255,43 @@ WORKED = re.findall(r"^\| (\d+) \| ([\d.]+) \| ([\d.]+) \| ([\d.]+) \| ([\d.]+) 
 if len(WORKED) < 5:
     raise SystemExit("Art-Direction §3.2 worked values not found")
 for row in WORKED:
-    k = int(row[0])
-    p, w, s, a, r = ring_values(k)
-    got = (p, w, s, a, r, w * 240 / 320)
+    j = int(row[0])
+    got = ring_values(j)
     for mine, theirs in zip(got, row[1:]):
         if abs(mine - float(theirs)) > 0.006:
-            raise SystemExit("Ring table mismatch at k=%d: %s against %s" % (k, got, row))
+            raise SystemExit("Ring table mismatch at place %d: %s against %s" % (j, got, row))
 if not re.search(r"A%d %d 0 1 1" % (CORE_R, CORE_R), PATHS["frame"]):
     raise SystemExit("The frame path no longer has radius %d: update CORE_R" % CORE_R)
 
 
-def ring(k, days=None, length=365):
-    """One ring as one open path. days=None or [] gives a plain ring."""
-    p, w, s, a, r = ring_values(k)
-    theta = (k * 137.508) % 360
-    h = 360 * 4 / length
-    centres = [360 * (d + 0.5) / length for d in (days or [])]
-    points = []
-    for step in range(0, 745):
-        phi = step * 0.5
-        flare = s * (1 - ease(phi / 12)) if phi < 12 else (s * ease((phi - 360) / 12) if phi > 360 else 0)
-        mark = 0.0
-        for c in centres:
-            d = abs((phi % 360 - c + 180) % 360 - 180)
-            if d < h:
-                mark = max(mark, math.cos(math.pi * d / (2 * h)) ** 2)
-        points.append("%.2f %.2f" % polar(r + flare + a * mark, theta + phi))
-    return '<path d="M%s" stroke-width="%.2f"/>' % (" L".join(points), w)
+def week_of(day):
+    """Day index from the commit date (0 is the commit date) to week 0..51. Week 52 takes the last 8 or 9 days.
+    PROVISIONAL: B86"""
+    return min(day // 7, WEEKS - 1)
+
+
+def week_sizes(days=None, highlights=()):
+    """52 sizes: 0 no photo, 1 one or more photos, 2 the week a highlight opened (Spec §20 AAAAA (b)).
+    highlights: the opening day of each highlight that holds a photo (PROVISIONAL: B87). No count is kept."""
+    sizes = [0] * WEEKS
+    for d in days or ():
+        sizes[week_of(d)] = max(sizes[week_of(d)], 1)
+    for d in highlights:
+        sizes[week_of(d)] = 2
+    return sizes
+
+
+def dot_ring(j, k, sizes=None):
+    """The ring at place j for the journey that finished k-th. sizes=None gives 52 even dots, as every viewer
+    but the owner sees them (PROVISIONAL: B88). The newest ring, place 1, is the brightest (Spec §20 IIII)."""
+    p, r = ring_values(j)[:2]
+    radii = ring_values(j)[2:5]
+    theta = (k * ANGLE_STEP) % 360
+    out = []
+    for w, size in enumerate(sizes or [0] * WEEKS):
+        x, y = polar(r, theta + 360 * (w + 0.5) / WEEKS)
+        out.append('<circle cx="%.2f" cy="%.2f" r="%.2f"/>' % (x, y, radii[size]))
+    return '<g class="ring %s" data-place="%d">%s</g>' % ("ink" if j == 1 else "soft", j, "".join(out))
 
 
 def balanced(name):
@@ -288,13 +301,20 @@ def balanced(name):
     return min(([" ".join(words[:i]), " ".join(words[i:])] for i in range(1, len(words))), key=lambda ls: max(map(len, ls)))
 
 
-def circle(name, n=0, lines=None):
-    """Lines: one (days, length) per ring for the owner's day marks. None draws plain rings."""
-    rings = "".join(ring(k, *(lines[k - 1] if lines else (None, 365))) for k in range(1, n + 1))
+def circle(name, journeys=()):
+    """journeys: one entry per finished reveal, in the order of finishing, oldest first. An entry is None for
+    even dots, or the owner's {"days": [...], "highlights": [...]} (day indices from the commit date).
+    The newest is drawn next to the frame and every older ring one place further out (Spec §20 AAAAA (c))."""
+    n = len(journeys)
+    rings = "".join(
+        dot_ring(n - i, i + 1, week_sizes(j["days"], j.get("highlights", ())) if j else None)
+        for i, j in enumerate(journeys)
+    )
     ls = balanced(name)
     top = 160 - 14.5 * (len(ls) - 1)
     text = "".join('<tspan x="160" y="%.1f">%s</tspan>' % (top + 29 * i, esc(x)) for i, x in enumerate(ls))
-    return ('<svg class="circle" viewBox="0 0 320 320"><g class="line" aria-hidden="true"><path d="%s" stroke-width="2"/>%s</g>'
+    return ('<svg class="circle" viewBox="0 0 320 320"><g class="line" aria-hidden="true"><path d="%s" stroke-width="2"/></g>'
+            '<g class="dots" aria-hidden="true">%s</g>'
             '<text class="circle-name" text-anchor="middle" dominant-baseline="central" data-fixture>%s</text></svg>') % (PATHS["frame"], rings, text)
 
 
@@ -367,6 +387,18 @@ LANTERN = [
 ]
 LANTERN_6 = journey_days("lantern-6", "2026-01-01", "2027-01-01", 9, before=297)
 
+
+def day_index(commit, date):
+    return (dt.date.fromisoformat(date) - dt.date.fromisoformat(commit)).days
+
+
+# The owner's rings, oldest first. Highlights hold photos here (Proposal §3.3), so each marks its week (B87).
+LANTERN_HIGHLIGHTS = [["2021-07-17"], [], [], [], ["2025-08-09"]]
+LANTERN_COMMITS = ["2021-01-01", "2022-01-01", "2023-01-01", "2024-01-01", "2025-01-01"]
+LANTERN_RINGS = [{"days": days, "highlights": [day_index(c, h) for h in hs]}
+                 for (days, _), c, hs in zip(LANTERN, LANTERN_COMMITS, LANTERN_HIGHLIGHTS)]
+LANTERN_6_RING = {"days": LANTERN_6[0], "highlights": []}
+
 FIXTURE = {
     "type": "Contemplator",            # Steady Lantern #6
     "commit": "2026-01-01",
@@ -396,8 +428,8 @@ SCREEN_S03 = (
     + '<div class="facts">%s%s%s</div>' % (fixture(FIXTURE["type"]), fixture(FIXTURE["commit"]), fixture(FIXTURE["unlock"]))
     + line("M-10", 0, "t-display-m")
 )
-SCREEN_READY = circle("Steady Lantern", 5, LANTERN) + line("M-11", 0) + flat_graph(*LANTERN_6)
-SCREEN_PROFILE = circle("Steady Lantern", 6, LANTERN + [LANTERN_6])
+SCREEN_READY = circle("Steady Lantern", LANTERN_RINGS) + line("M-11", 0) + flat_graph(*LANTERN_6)
+SCREEN_PROFILE = circle("Steady Lantern", LANTERN_RINGS + [LANTERN_6_RING])
 SCREEN_NO_RINGS = circle("First Light") + line("M-23", 0)
 SCREEN_MAP = layer_map(["Steady", "Lantern"], FIXTURE["map_people"]) + line("M-21", 0)
 
@@ -415,7 +447,7 @@ MOMENTS = [
      "How long this line stays is open (C18). Its type style is not specified, so it is plain reading text here.",
      SCREEN_READY),
     ("A profile", "S-05. Steady Lantern, once she has finished that reveal.",
-     "The straight line has bent into the circle as one more ring. Nothing celebrates it, and on this state the screen has no line of its own: a ring being added is one of the places left silent on purpose.",
+     "Her year is now a ring of 52 weeks next to her name, and each older ring has moved out one place, a step finer. Bigger dots are weeks with photos, the biggest the weeks her highlights opened, and only she sees the sizes. Nothing celebrates it, and on this state the screen has no line of its own: a ring being added is one of the places left silent on purpose.",
      "The ways on from this screen are not placed yet (AD-10).",
      SCREEN_PROFILE),
     ("A profile, before any Commit", "S-05. First Light.",
@@ -456,10 +488,12 @@ def token_table():
 LOOK_STATES = [
     ("0 rings", "First Light", circle("First Light"),
      "The frame and the name, and nothing else: no ghost ring, start line or placeholder. It is the logo with a name in it."),
-    ("1 or more rings", "Long Way Round, as other viewers see it", circle("Long Way Round", 3),
-     "Each ring is one line whose ends cross, a little finer than the ring inside it. The crossings scatter like grain, so no ring has a start to count from. Anyone but the owner sees plain rings (B27)."),
-    ("1 or more rings", "Second Wind, drawn far ahead of the fixtures, as other viewers see it", circle("Second Wind", 30),
-     "The same formula at every count, with no point where the drawing changes. The circle grows by a smaller step each time and never reaches an edge, and nothing is drawn beyond the newest ring. The finest outer rings fall below a screen pixel and blur together. Whether that is acceptable is open (AD-17)."),
+    ("1 or more rings", "Steady Lantern, as she sees her own", circle("Steady Lantern", LANTERN_RINGS),
+     "One ring per journey, 52 dots, one per week. A week with photos has a bigger dot, however many it held, and the week a highlight opened has the biggest. The newest journey is next to her name and the brightest; each older ring is a step finer. Only the owner sees the sizes (B88)."),
+    ("1 or more rings", "Long Way Round, as other viewers see it", circle("Long Way Round", [None] * 3),
+     "Every ring is 52 even dots, so nothing shows which weeks held photos or where a highlight fell (B27, B88). Each ring's dots sit halfway between the dots of the ring next to it, so no ring has a start to count from."),
+    ("1 or more rings", "Second Wind, drawn far ahead of the fixtures, as other viewers see it", circle("Second Wind", [None] * 30),
+     "The same formula at every count, with no point where the drawing changes. The circle grows by a smaller step each time and never reaches an edge, and nothing is drawn beyond the oldest ring. The oldest rings' dots fall below a screen pixel. Whether that is acceptable is open (AD-25, B89)."),
 ]
 
 
@@ -523,6 +557,7 @@ section>.measure{margin-bottom:var(--mj-space-4)}
 
 /* Drawings */
 .line,.line path{fill:none;stroke:var(--mj-ink);stroke-linecap:round;stroke-linejoin:round}
+.dots .ink{fill:var(--mj-ink)}.dots .soft{fill:var(--mj-ink-soft)}
 .circle{display:block;width:100%;max-width:320px;height:auto}
 .circle-name{font-family:var(--mj-font-display);font-size:26px;font-weight:500;font-variation-settings:"SOFT" 100,"WONK" 1;fill:var(--mj-ink)}
 .state{display:flex;flex-wrap:wrap;gap:var(--mj-space-5);align-items:center;margin-bottom:var(--mj-space-6)}
@@ -640,7 +675,7 @@ def build():
 <section>
 <h2 class="t-display-m">The moments</h2>
 <p class="t-body measure">Pictures of screens, in the order of the ritual. Nothing in them can be pressed. Every line inside a frame is the recommended line from the microcopy, word for word, and the names and dates are dummy data.</p>
-<p class="t-small soft measure">Navigation is left out of every frame: where the ways sit is open (AD-10), and their words are not written (Microcopy MQ-3). The art direction draws each mark only beside its word, so none is shown. The days marked on the rings are invented, because the dummy data fixes how many photos a journey holds and only a few of their dates.</p>
+<p class="t-small soft measure">Navigation is left out of every frame: where the ways sit is open (AD-10), and their words are not written (Microcopy MQ-3). The art direction draws each mark only beside its word, so none is shown. The weeks marked on the rings are invented, because the dummy data fixes how many photos a journey holds and only a few of their dates. The highlight weeks are the fixture's own.</p>
 {moments}
 </section>
 
