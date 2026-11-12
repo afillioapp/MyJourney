@@ -183,7 +183,7 @@ Navigating to someone's journey should take a small deliberate act. It must not 
 - The destination. Where a journey is actually read
 - **The circle** frames the profile picture
 - One **ring** per year with the app. A record, not a rank: no scores, no levels, no leaderboard, no badges, no comparison between users
-- The year's **activity line** is twisted into the circle at the end of the journey, so the linear year becomes a ring
+- The year's **activity line** is twisted into the circle at the end of the journey, so the linear year becomes a ring *(2026-11-12: drawn as 52 weekly dots per journey, the newest ring next to the name, §20 AAAAA)*
 - **The activity graph appears only after the year unlocks.** Never during the sealed year. A visible grid being filled is a streak mechanic and is banned
 
 ---
@@ -400,6 +400,10 @@ Feeling tags currently drafted: hang in there · it eventually pays off · thank
 - **ZZZZ. A block removes the blocked person from the blocker's rings** (Decisions-Needed E6; an exception to §20 G "nobody ever drops off the map"). From the block on, neither can tag the other. Their memories remain: photos, notes, reflections and the tags themselves stay untouched; they just stop counting on the blocker's rings. The blocked person's own rings are unchanged (`PROVISIONAL: B84`)
 
 *LLLL to ZZZZ above were ruled on 2026-11-10. E2 (what close friends get) is deferred by the user; B55 stands until then.*
+
+- **AAAAA. The circle is drawn in dots: one ring per journey, 52 dots per ring, the newest ring next to the name** (the user's direction of 2026-11-10, Art-Direction §0; AD-20, AD-21). (a) Each ring is one journey, drawn as 52 dots, one for each week of that journey. The ring line with its day marks is retired. (b) **Three dot sizes only:** a week with no photo, a week with one or more photos, and the week a highlight opened in, the biggest. A week's dot never grows with the number of photos, because a dot that grew would count them (banned list). (c) **The newest ring sits next to the name, and is the boldest and the brightest.** When a reveal is finished, its journey's ring is drawn next to the name and every older ring moves out one place, a step finer. This replaces the tree order of §20 IIII ("added outside, never moved") and its "newest thinnest"; IIII's "brightest" stays. (d) Unchanged: nothing is drawn for a sealed journey; a ring is a record, not a rank; no label on any ring (B38). What a week is, a highlight's week, who sees the sizes and many rings are labelled defaults, Decisions-Needed B86 to B89
+
+*AAAAA was confirmed by the user on 2026-11-12.*
 
 ### Still open — can wait
 

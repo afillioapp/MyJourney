@@ -2,7 +2,7 @@
 
 The blackboard. Every worker reads this before starting and every finished step is recorded here with its evidence. The phases, deliverables and gates come from `Build-Plan.md`; this file only tracks where they stand.
 
-Last updated: 2026-11-09
+Last updated: 2026-11-12
 
 Status values: `todo` · `in progress` · `in review` · `done` · `blocked`
 
@@ -194,3 +194,4 @@ Can start any time after Phase 2.
 - 2026-11-10 — Rules audit of the supervisor's carriage: FAIL (9: V1 sealed journey type/dates under B74; V2 reflection before unlock; V3 Reflect way as marker; V4 path-crossed subject; V5–V7 block and dismiss gaps; V8, V9 carriage). Fixed by the supervisor; re-audit r2 FAIL (6 partly fixed, 3 new: R2-1 to R2-3), then fixed again (r2 fixes, below); user rulings §20 YYYY (B72–B74), ZZZZ (block removes from blocker's rings); defaults B79–B85 (timelines, Reflect way, subject never receives, blocked side, repeat dismiss), E10 parked. Phase 2 deliverables marked done, pending the gate.
 - 2026-11-10 — Re-audit r2 (`reviews/2026-11-10-rules-supervisor-carriage-r2.md`): FAIL; V1, V2, V5 fixed, V3, V4, V6–V9 partly, new R2-1 (owner's dates at the line's ends), R2-2 (a spark per photo counts a day), R2-3 (public timelines show unfinished reveals). All addressed by the supervisor: one identical spark per day, no timelines for public viewers, the owner's dates beside the words, B83 counts 8 / 6 / 4 / 2 / 0, `reflect_state()`, `dismiss_highlight` in the fixed set. Not re-audited a third time.
 - 2026-11-10 — User direction for the visual identity: the dotted circle (one ring per journey, 52 weekly dots, bigger dot for a week with a photo, biggest for a highlight, oldest ring outermost). Logged in `Art-Direction.md` §0 with a reference image and a mock in `docs/visual-identity/`; questions AD-20 to AD-25 for the user. Not a §20 ruling yet; nothing built.
+- 2026-11-12 — User confirmed the dotted circle: §20 AAAAA (one ring per journey, 52 weekly dots, three sizes, newest ring next to the name, older rings move out a step finer; replaces IIII's tree order and "newest thinnest", keeps "brightest"). Carried by the supervisor into Functional-Spec §14 and §20, Art-Direction §0, §2, §3.2, §3.3, §3.5, §3.6, §4, §8, §10, §11, §12, Decisions-Needed B27, B34 and new defaults B86 (weeks), B87 (highlight dot), B88 (sizes owner only), B89 (many rings), and CLAUDE.md. Next: preview and prototype drawing, then a rules audit.

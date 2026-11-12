@@ -115,7 +115,7 @@ A highlight is a limited window where the frame limit does not apply. The user s
 
 **The feed** — announcements only, on three events: journey launched (when the reveal is finished), reflection left (only to people who can see that photo), path crossed (every crossing).
 
-**The profile** — the destination. The circle frames the picture, one ring per year, a record not a rank. The year's activity line twists into that circle, and the activity graph appears only after the year unlocks.
+**The profile** — the destination. The circle holds the person's name, not a picture (§20 XXX). One ring per journey (Decisions-Needed B4), drawn as 52 dots, one per week, with the newest ring next to the name; older rings move out one place, a step finer, each time a reveal is finished (§20 AAAAA, 2026-11-12). A week with a photo has a bigger dot and the week a highlight opened the biggest, and only the owner sees the sizes; everyone else sees even dots (B88). A record, not a rank. Nothing is drawn for a journey until its reveal is finished, and the activity graph appears only after the year unlocks.
 
 ## How the build runs
 
