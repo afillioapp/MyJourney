@@ -1,6 +1,6 @@
 # My Journey: art direction
 
-Phase 2 deliverable (`Build-Plan.md:77`), owner art-director. Written 2026-11-04, revised 2026-11-05 after the rules audit `docs/reviews/2026-11-04-rules-art-microcopy.md` (round 1: ART-1 to ART-12). Spec §20 was read in full, rulings **A to DDDD**; DDDD is the last ruling in `Functional-Spec.md` on 2026-11-05. It holds the circle system, colour, type and texture. It holds no flows or screen structure (ux, `Flows.md`), no final copy (copywriter) and no code.
+Phase 2 deliverable (`Build-Plan.md:77`), owner art-director. Written 2026-11-04, revised 2026-11-05 after the rules audit `docs/reviews/2026-11-04-rules-art-microcopy.md` (round 1: ART-1 to ART-12). Spec §20 was read in full, rulings **A to DDDD**; DDDD is the last ruling in `Functional-Spec.md` on 2026-11-05. *2026-11-12: rulings through AAAAA (the dotted circle) are carried by the supervisor in §0, §2 to §4, §8 and §10 to §12.* It holds the circle system, colour, type and texture. It holds no flows or screen structure (ux, `Flows.md`), no final copy (copywriter) and no code.
 
 **How to read this file**
 
@@ -140,10 +140,10 @@ The geometry is the same under both B4 settings. Only the number of rings, `n`, 
 The owner sees the same weeks under both settings (R-141, R-187). Only what carries them differs (`PROVISIONAL: B28`):
 
 - Under the default, the journey's ring carries its weeks from reveal finished.
-- Under the per-year option, each finished journey's weeks go on the owner's ring for the year that holds that journey's reveal-finished date, counted from the journey's own commit date (`PROVISIONAL: B86`).
+- **Under the per-year option: open, Decisions-Needed E11.** Spec §20 AAAAA (a) makes each ring one journey, so a ring per year conflicts with it. Nothing below in this list is built; the build draws the default only. As written before AAAAA: each finished journey's weeks go on the owner's ring for the year that holds that journey's reveal-finished date, counted from the journey's own commit date.
 - That ring is drawn only later, so until it exists the journey's flat graph stays shown to the owner. This applies under this option only, as an exception to `PROVISIONAL: B31`.
-- A per-year ring that holds no finished journey is a ring of even dots.
-- Two reveals finished in the same year (possible under `PROVISIONAL: B3`) both put their weeks on that year's ring, each from its own commit date; a week takes the larger of the two sizes. Whether that is wanted is part of AD-2.
+- What a per-year ring with no finished journey would look like, and where its weeks start, is not settled (E11).
+- Two reveals finished in the same year (possible under `PROVISIONAL: B3`) would share that year's ring. How, and whether that is wanted, is part of AD-2 and E11.
 
 **The ring at place `j`, counted from the frame outward (1 is the newest):** [AD]
 
@@ -176,7 +176,7 @@ The biggest dots never touch: two highlight weeks side by side on ring 1 leave 3
 
 **What holds at every value these formulas allow** (R-185):
 
-- **Tone does not rise with count.** A ring's dots are fixed by its place, so adding a ring makes every older ring a step finer, never bolder.
+- **Tone does not rise with count, measured place by place.** The ring at place `j` has the same dots and ink at every count `n`, so adding a ring never darkens a place; every older ring moves to a finer place. Measured instead over the whole band from the frame to the outermost dot, the ink share of plain rings is 2.59% with one ring and 2.96% with two, then falls with each further ring. That one rise is recorded here, not hidden; whether it reads as a darker circle is for the rules audit (R-185) and the user.
 - **Weight does not rise with count.** No dot grows with the number of photos or of rings.
 - **Size is not a capacity.** The circle grows by a smaller step each time and never reaches an edge. No boundary, track or band is drawn or kept as a token. It does grow: "more years means a more elaborate circle" (Concept:687) and it "grows more sophisticated year by year" (Concept:700).
 - **There are no steps or tiers.** One formula from the first ring to the last, with no boundary where the drawing changes.
@@ -195,7 +195,7 @@ Where the fine outer rings stop being legible is **AD-25** (`PROVISIONAL: B89`),
 
 "The user's linear journey literally becomes a circle" (Concept:706): the journey's 52 weeks are bent round into its ring. They show in the ring when the reveal is finished (`PROVISIONAL: B5`; SI:178; Flows:361), never during the sealed year (Spec:187; Concept:712; R-011). The ring records capture dates only (SI OQ-7; **AD-8**, `PROVISIONAL: B33`).
 
-**A week** (`PROVISIONAL: B86`): week `w` holds the journey's UTC days `7w + 1` to `7w + 7`, counted from the commit date as day 1 (`PROVISIONAL: B16`). Week 52 also holds what is left, so it has 8 or 9 days. Every photo falls in exactly one week.
+**A week** (`PROVISIONAL: B86`): week `w` holds the journey's UTC days `7w + 1` to `7w + 7`, counted from the commit date as day 1 (`PROVISIONAL: B16`). Week 52 also holds what is left: 8 to 10 days, since a journey is 365 or 366 days and, when Commit is not at 00:00 UTC, the commit date and the unlock date both count. Every photo falls in exactly one week.
 
 **Its size** (Spec §20 AAAAA (b)):
 
@@ -216,7 +216,7 @@ Rules for the drawing [AD]:
 - A ring of small dots beside a busy one marks a quiet year.
 - Fullness can be read as a score, which is what a contribution graph is read for.
 
-Under B5's default only the owner sees the sizes, after the reveal is finished (`PROVISIONAL: B88`). This file does not settle whether fullness is acceptable: **AD-11**, raised next to AD-1.
+Under either B5 setting only the owner sees the sizes, after the reveal is finished (`PROVISIONAL: B88`). This file does not settle whether fullness is acceptable: **AD-11**, raised next to AD-1.
 
 ### 3.4 The flat graph
 
@@ -245,12 +245,12 @@ What each viewer sees comes from the docs. Where they are silent, the cell names
 
 | Viewer | B4 setting | Rings on the profile | B5 setting | Dot sizes in rings | Flat graph |
 |---|---|---|---|---|---|
-| Owner, S-05 | per finished reveal (default) | One per finished reveal (Proposal:65; SI:173) | either | Three sizes, after reveal finished (SI:178, 185; Spec §20 AAAAA) | From unlock (SI:184) until reveal finished, then not shown (`PROVISIONAL: B31`; AD-6) |
+| Owner, S-05 | per finished reveal (default) | One per finished reveal (Proposal:65; SI:173) | either | Three sizes, after reveal finished (SI:178, 185; Spec §20 AAAAA) | From unlock (SI:184) and after reveal finished as the journey's profile timeline with its sparks (`PROVISIONAL: B31`, `B80`; AD-6) |
 | Owner, S-05 | per year with the app | One per year with the app, own profile only (Spec §20 WW; SI:174). When a ring appears: `PROVISIONAL: B28` (AD-2) | either | Three sizes, after reveal finished: each finished journey's weeks on the ring for the year holding its reveal-finished date (`PROVISIONAL: B28`; AD-2). Rings holding no finished journey are even dots | From unlock, and after reveal finished until the year's ring is drawn (`PROVISIONAL: B28`, an exception to B31; AD-2, AD-6) |
-| Network, S-16 | **either** | One per finished reveal (Spec §20 WW; SI:412). Never per year, which would give the join date (Spec §20 TT) | owner only (default) | None: 52 even dots per ring (`PROVISIONAL: B27`, `B88`; AD-1, AD-24) | None (SI:412) |
-| Network, S-16 | either | As above | built from photos the viewer can see | None: 52 even dots per ring (`PROVISIONAL: B27`, `B88`; AD-1, AD-24) | From photos this viewer can read, one-day resolution (SI:412; Spec §20 GG). Anchored to the commit date, which the network reads (Spec §20 T). From unlock until reveal finished, then not shown (`PROVISIONAL: B31`; AD-6) |
-| Public, S-16 | **either** | One per finished reveal, from the count alone, no date (Spec §20 CCC, WW; SI:412) | owner only (default) | None: 52 even dots per ring; a public viewer's rings come from the count alone (Spec §20 CCC; `PROVISIONAL: B88`) | None (SI:412) |
-| Public, S-16 | either | As above | built from photos the viewer can see | None: 52 even dots per ring (Spec §20 CCC; `PROVISIONAL: B88`) | None (`PROVISIONAL: B36`; AD-12) |
+| Network, S-16 | **either** | One per finished reveal (Spec §20 WW; SI:412). Never per year, which would give the join date (Spec §20 TT) | owner only (the option since 2026-11-10, B80) | None: 52 even dots per ring (`PROVISIONAL: B27`, `B88`; AD-1, AD-24) | None (SI:412) |
+| Network, S-16 | either | As above | built from photos the viewer can see (the default since 2026-11-10, B80) | None: 52 even dots per ring (`PROVISIONAL: B27`, `B88`; AD-1, AD-24) | From photos this viewer can read, one-day resolution (SI:412; Spec §20 GG). Anchored to the commit date, which the network reads (Spec §20 T). From unlock and after reveal finished as the journey's profile timeline with its sparks (`PROVISIONAL: B31`, `B80`; AD-6) |
+| Public, S-16 | **either** | One per finished reveal, from the count alone, no date (Spec §20 CCC, WW; SI:412) | owner only (the option since 2026-11-10, B80) | None: 52 even dots per ring; a public viewer's rings come from the count alone (Spec §20 CCC; `PROVISIONAL: B88`) | None (SI:412) |
+| Public, S-16 | either | As above | built from photos the viewer can see (the default since 2026-11-10, B80) | None: 52 even dots per ring (Spec §20 CCC; `PROVISIONAL: B88`) | None (`PROVISIONAL: B36`; AD-12) |
 
 **Drawing facts that follow from the geometry, not decisions.**
 
@@ -730,7 +730,7 @@ Nothing below is picked. Where the build has to draw something before the user a
 | **AD-8** | **What does the line record besides capture dates?** Already open as SI OQ-7 (Concept:704; Proposal:50; Flows:516) | Recording more is a data decision | Provisional default `PROVISIONAL: B33` (`Decisions-Needed.md`) |
 | **AD-9** | **Under `PROVISIONAL: B3`, a reveal finished years late: where does its ring go?** Outermost by order of finishing, or in its journey's time order? | It decides what a ring's place means | Provisional default `PROVISIONAL: B34` (`Decisions-Needed.md`) **Decided 2026-11-12 (Spec §20 AAAAA): rings follow the order of finishing, the latest next to the frame, so a late reveal is drawn next to the frame.** |
 | **AD-10** | **Where do the ways sit, and can a ring be pressed?** SI:170 and SI:250 leave the navigation to Phase 2, and Flows:509 lists the ways but not where they are. SI:167 asks for a way into journeys. For a public viewer a ring can lead to no journey in particular (Spec §20 CCC) | Screen structure, for ux, and a press | Ring press: provisional default `PROVISIONAL: B35`. Arrangement: for ux |
-| **AD-11** | **The line's density shows the type and how full a year was** ([§3.3](#33-the-weeks-in-the-ring)). An Explorer's ring is almost continuous; a Contemplator's has at most 13 separate rises; an empty year is a clean ring. Is that acceptable? If not, the user could ask for a coarser encoding, such as one mark per month with a photo. That still shows fullness, but not the type | Fullness can read as a score, and it would reach the network if AD-1 is answered yes | None needed beyond B5's default: only the owner sees it |
+| **AD-11** | **The line's density shows the type and how full a year was** ([§3.3](#33-the-weeks-in-the-ring)). An Explorer's ring is almost continuous; a Contemplator's has at most 13 separate rises; an empty year is a clean ring. Is that acceptable? If not, the user could ask for a coarser encoding, such as one mark per month with a photo. That still shows fullness, but not the type | Fullness can read as a score, and it would reach the network if AD-1 is answered yes | Only the owner sees the dot sizes (`PROVISIONAL: B88`). *2026-11-12: read as weeks, an Explorer's ring is almost all photo dots, a Contemplator's has at most 13 bigger dots, a quiet year is a ring of small dots* |
 | **AD-12** | **Under B5's option, does a public viewer get a flat graph at all? If so, what is it anchored to?** SI:412 allows a graph "no finer than one day" and names no anchor. Anchored to the commit date, one dated photo gives the commit date away (R-152, R-179). A graph that disappears at finish would also tell a public viewer the reveal state, which Spec §20 ZZ does not list | Who sees a drawing, and when it disappears | Provisional default `PROVISIONAL: B36` (`Decisions-Needed.md`) |
 | **AD-13** | **Are rings drawn anywhere other than S-05 and S-16?** SI names them only there. No line forbids them elsewhere | On which screens a drawing appears | Provisional default `PROVISIONAL: B37` (`Decisions-Needed.md`) |
 | **AD-14** | **May the owner or the network see a year or date on a ring?** Banned for a public viewer (Spec §20 CCC). The owner and network read journey dates (Spec §20 T), but no line asks for labels | What a viewer can learn from the circle | Provisional default `PROVISIONAL: B38` (`Decisions-Needed.md`) |

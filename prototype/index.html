@@ -168,6 +168,8 @@ const FEED_JOURNEYS = ["lantern2","lantern3","wind4","hands2","hands3","round2"]
 // Highlights: [journey, window start, photos], Phase-1-Proposal §3.3. Their photos sit inside the 24 hours.
 const HIGHLIGHTS0 = { lantern1: ["2021-07-17T10:00:00Z", 19], lantern5: ["2025-08-09T09:00:00Z", 12], hands2: ["2024-06-18T06:00:00Z", 30] };
 
+// A fixed, well-mixed key per photo for same-day order (§20 JJ). It carries no time.
+function mixKey(str) { let h = 2166136261; for (const c of str) { h ^= c.charCodeAt(0); h = Math.imul(h, 16777619); } h ^= h >>> 15; h = Math.imul(h, 2246822507); h ^= h >>> 13; h = Math.imul(h, 3266489909); h ^= h >>> 16; return (h >>> 0).toString(36).padStart(7, "0"); }
 function seeded(n) { let x = n * 9301 + 49297; return () => (x = (x * 9301 + 49297) % 233280) / 233280; }
 function build() {
   const journeys = {}, photos = [];
@@ -185,7 +187,7 @@ function build() {
     for (let i = 0; i < count; i++) {
       const inHighlight = i >= normal;
       const captured = inHighlight ? hStart + Math.floor((i - normal + 0.5) * DAY / hCount) : c + Math.floor((i + 0.5) * 360 / normal) * DAY + Math.floor(r() * 50000) * 1000;
-      const p = { id: "p" + (pid++), journey: id, captured, vis: split ? order[i] : "network", visSet: !!split, hue: Math.floor(r() * 360), title: null, note: false, reflections: [], tags: [], inHighlight };
+      const p = { id: "p" + (pid++), key: mixKey("photo" + pid), journey: id, captured, vis: split ? order[i] : "network", visSet: !!split, hue: Math.floor(r() * 360), title: null, note: false, reflections: [], tags: [], inHighlight };
       photos.push(p); journeys[id].photoIds.push(p.id);
     }
   }
@@ -221,7 +223,7 @@ function canSeePhoto(viewer, p, t = now()) {
   return inNetwork(viewer, j.owner, t); // B2 default: network reads from unlock
 }
 const factsVisible = (viewer, j) => viewer === j.owner || inNetwork(viewer, j.owner); // §20 T: type, dates, chapter, tags
-// B4 default: one ring per finished reveal, in the order of finishing (§20 AAAAA; B34). §20 CCC: others get the count only.
+// PROVISIONAL: B4, one ring per finished reveal, in the order of finishing (§20 AAAAA; B34). §20 CCC: others get the count only.
 const finishedJourneys = (u, t = now()) => userJourneys(u).filter(j => isFinished(j, t)).sort((a, b) => a.finished - b.finished);
 function framesAllowed(j, t) { const m = Math.min(12, Math.floor((new Date(t).getUTCFullYear() - new Date(j.commit).getUTCFullYear()) * 12 + new Date(t).getUTCMonth() - new Date(j.commit).getUTCMonth()) + 1); return TYPES[j.type].cadence * m; }
 function openHighlight(j, t = now()) { return j.highlights.find(h => t >= h.start && t < Math.min(h.start + DAY, j.unlock)); }
@@ -241,7 +243,7 @@ function press() {
   if (h && h.count < TYPES[j.type].quota) { accepted = true; inHighlight = true; h.count++; }
   else if (normal < framesAllowed(j, t)) accepted = true;
   if (!accepted) { state.notice = { kind: "refused" }; return render(); }
-  const p = { id: "p" + Object.keys(state.photos).length + "x", journey: j.id, captured: t, vis: "network", visSet: false, hue: Math.floor(Math.random() * 360), title: null, note: false, reflections: [], tags: [], inHighlight };
+  const p = { id: "p" + Object.keys(state.photos).length + "x", key: mixKey("press" + Math.random()), journey: j.id, captured: t, vis: "network", visSet: false, hue: Math.floor(Math.random() * 360), title: null, note: false, reflections: [], tags: [], inHighlight };
   state.photos[p.id] = p; j.photoIds.push(p.id);
   state.note = { photo: p.id, until: Math.min(t + 15 * 60000, j.unlock) };
   state.notice = null; state.sub = "note"; render();
@@ -297,7 +299,7 @@ const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;",
 const draft = '<span class="draft">draft</span>';
 function tile(p) { return `<button class="tile" data-photo="${p.id}" style="background:linear-gradient(135deg,hsl(${p.hue} 35% 55%),hsl(${(p.hue + 40) % 360} 40% 38%))" aria-label="Photo from ${fmt(p.captured)}"><span>${fmt(p.captured).replace(/ \d{4}$/, "")}</span></button>`; }
 // ---------- the dotted circle (§20 AAAAA; Art-Direction §3.2, §3.3; the same numbers as preview/build.py) ----------
-const WEEKS = 52, CORE_R = 80, FIRST_PITCH = 11, PITCH_RATIO = 0.85, CLEARANCE = 3, ANGLE_STEP = 135;
+const WEEKS = 52, CORE_R = 80, FIRST_PITCH = 11, PITCH_RATIO = 0.85, CLEARANCE = 3, ANGLE_STEP = 135; // PROVISIONAL: B89, each ring 85% of the one inside it
 const DOT_RATIOS = [0.12, 0.24, 0.36]; // a week with no photo, with a photo, the week a highlight opened
 const FRAME = "M87.75 109.41 Q108.92 95.79 126.19 87.50 A80 80 0 1 1 94.47 114.11 Q105.63 98.55 122.73 80.06"; // Art-Direction §3.1
 function ringValues(j) { // place j from the frame outward, 1 the newest
@@ -306,11 +308,11 @@ function ringValues(j) { // place j from the frame outward, 1 the newest
   return { p, r, radii: DOT_RATIOS.map(f => f * p) };
 }
 const utcDay = t => Math.floor(t / DAY);
-const weekOf = day => Math.min(Math.floor(day / 7), WEEKS - 1); // PROVISIONAL: B86, weeks from the commit date, week 52 takes 8 or 9 days
-function weekSizes(j) { // the owner's view only. No count is kept: a week with forty photos is a photo week
+const weekOf = day => Math.min(Math.floor(day / 7), WEEKS - 1); // PROVISIONAL: B86, weeks from the commit date, week 52 takes the 8 to 10 days left
+function weekSizes(j) { // the owner's view only. Each week records only whether it held a photo: a week with forty photos is a photo week
   const sizes = Array(WEEKS).fill(0), c = utcDay(j.commit);
   for (const p of j.photoIds.map(i => state.photos[i])) { const w = weekOf(utcDay(p.captured) - c); sizes[w] = Math.max(sizes[w], 1); }
-  for (const h of j.highlights) if (h.count > 0) sizes[weekOf(utcDay(h.start) - c)] = 2; // PROVISIONAL: B87, only a highlight that holds a photo
+  for (const h of j.highlights) if (h.count > 0) sizes[weekOf(utcDay(h.start) - c)] = 2; // PROVISIONAL: B87, only a highlight that holds a photo; reads only whether it holds one
   return sizes;
 }
 function dotRing(j, k, sizes) { // sizes null: 52 even dots, as everyone but the owner sees them (PROVISIONAL: B88)
@@ -378,7 +380,7 @@ function screenOther(u) {
 }
 function screenJourney(id) {
   const j = state.journeys[id], viewer = state.viewer;
-  const ps = j.photoIds.map(i => state.photos[i]).filter(p => canSeePhoto(viewer, p)).sort((a, b) => viewer === j.owner ? a.captured - b.captured : (Math.floor(a.captured / DAY) - Math.floor(b.captured / DAY)) || a.id.localeCompare(b.id));
+  const ps = j.photoIds.map(i => state.photos[i]).filter(p => canSeePhoto(viewer, p)).sort((a, b) => viewer === j.owner ? a.captured - b.captured : (Math.floor(a.captured / DAY) - Math.floor(b.captured / DAY)) || a.key.localeCompare(b.key)); // §20 JJ: same-day ties by a random key, never by capture order
   let h = `<button class="link" data-back>Back</button><h3>${factsVisible(viewer, j) ? esc(j.chapter || "A journey") : "A journey"}</h3>`;
   if (factsVisible(viewer, j)) h += `<p class="meta">${esc(USERS[j.owner])} · ${TYPES[j.type].name} · ${fmt(j.commit)} to ${fmt(j.unlock)}</p>`;
   return h + `<div class="grid">${ps.map(tile).join("")}</div>`;

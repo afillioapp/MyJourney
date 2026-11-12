@@ -400,8 +400,8 @@ This is the hardest state in the product. Underneath, the owner's journey return
    - All reveal choices lock.
    - The map is recomputed. See Flow 7, part B.
    - "Path crossed" goes out for each crossing and "journey launched" once, to the owner's friends, never to the owner (Spec §20 J, M, UU, KKKK (e)). Who counts as a friend is fixed at the finish (`PROVISIONAL: B48`). It never names the person crossed (Spec §20 NNNN (a)), and never reaches the person crossed, friend or not (`PROVISIONAL: B83`). Hand-off to S-08. `[copy: copywriter]` *The announcement lines: one plain line each, no image, no ring (S-08).* "Path crossed" never names the crossed person (Spec §20 NNNN (a)).
-   - Under `PROVISIONAL: B4` (switchable: per finished reveal / per year with the app), this journey's ring is added to S-05. On S-16, others always see one ring per finished reveal (Spec §20 WW).
-   - The year's activity line twists into the circle (`PROVISIONAL: B5`).
+   - Under `PROVISIONAL: B4` (switchable: per finished reveal / per year with the app), this journey's ring is drawn on S-05 next to the name, and every older ring moves out one place (Spec §20 AAAAA). On S-16, others always see one ring per finished reveal, as even dots (Spec §20 WW; `PROVISIONAL: B88`).
+   - The year's weeks show in that ring as 52 dots: bigger for a week with photos, biggest for the week a highlight opened, to the owner only (Spec §20 AAAAA; `PROVISIONAL: B5`, `B86` to `B88`).
 7. The app goes to S-05 (S-21). Flow 8.
 
 **Branches and refusals**
@@ -547,7 +547,7 @@ Lantern sees only the current ring, never this table (`PROVISIONAL: C8`).
 
 **Starts:** every time the app opens, in every state (`PROVISIONAL: C12`). Also after finishing a reveal (S-21), from Layers (S-07), and when a press after the unlock instant is not taken (Spec §20 CCCC).
 
-1. The owner sees their name in the circle (Spec §20 XXX), rings, drawn and never counted in words or numerals: one for each finished reveal under the default (`PROVISIONAL: B4`, switchable; R-166), and earlier years' activity lines twisted in (`PROVISIONAL: B5`). A ring never arrives as a reward (Spec §14; R-102).
+1. The owner sees their name in the circle (Spec §20 XXX), rings, drawn and never counted in words or numerals: one for each finished reveal under the default (`PROVISIONAL: B4`, switchable; R-166), and each finished journey's weeks as dots in its ring, the newest next to the name (Spec §20 AAAAA; `PROVISIONAL: B5`, `B88`). A ring never arrives as a reward (Spec §14; R-102).
 2. Below the circle, one timeline per journey, oldest first (`PROVISIONAL: B81`): a journey under way is a plain line, "a journey is under way", with no mark (`PROVISIONAL: B79`); a closed one has one identical spark per day that held a photo (`PROVISIONAL: B80`). The owner's two dates sit as plain text beside the under-way words, never at the line's ends (B79). Pressing a closed timeline opens that journey (S-06). What else S-05 adds depends on the state of the owner's journeys (table).
 3. From here the owner can go, each as a plain way with no marker on it: their own path S-06, Flow 9; Reveal S-04 when one is open, Flow 5; Commit S-01 when no journey is sealed, Flow 1; overviews S-15, Flow 6a; the sealed year S-03 while sealed, Flow 4; Layers S-07, Flow 7; Feed S-08; Positivity Feed S-09 (S-05). How these look is for art direction.
 4. Or the owner closes the app.
@@ -556,14 +556,14 @@ Lantern sees only the current ring, never this table (`PROVISIONAL: C8`).
 
 **Rings:** `PROVISIONAL: B4`, switchable. *Per finished reveal (default):* a journey never finished adds no ring. *Per year with the app:* rings follow years since joining, on this screen only (Spec §20 WW). Under that option, on which date a year's ring appears is not stated (R-143), and it can never appear or change inside a sealed year (R-012).
 
-**Activity:** the sparks appear only on a closed timeline, never during the sealed year (Spec §14; `PROVISIONAL: B79`, `B80`). The line twists in at finish (`PROVISIONAL: B5`). What the line records besides capture times is still open: SI OQ-7, not picked here.
+**Activity:** the sparks appear only on a closed timeline, never during the sealed year (Spec §14; `PROVISIONAL: B79`, `B80`). The journey's weeks show in its ring at finish, as dots (Spec §20 AAAAA; `PROVISIONAL: B5`). What the line records besides capture times is still open: SI OQ-7, not picked here.
 
 | State of the owner's journeys | S-05 adds |
 |---|---|
 | `no-journey` · never committed | Name, the way to Commit. Rings by `PROVISIONAL: B4`, switchable: none per finished reveal; per year with the app, by years since joining (Spec §20 WW; R-143). `[copy: copywriter]` as above |
 | `sealed` (current journey) | The current journey as existing, its type by name, its two dates as plain dates (`PROVISIONAL: B19`; Spec §20 EEEE). No partial or growing mark for this year (R-012). No sign of open slots on earlier journeys |
-| `unlock-day`, `reveal-open` | "Your Journey is ready" (`PROVISIONAL: C1`; on the first open after unlock only, Spec §20 FFFF), the year's activity graph, no line twisted in yet (`PROVISIONAL: B5`). No ring yet per finished reveal; per year with the app, rings follow years (`PROVISIONAL: B4`, switchable). No reminder to finish |
-| `reveal-finished` | The line twisted in (`PROVISIONAL: B5`). This journey's ring per finished reveal; per year with the app, finishing adds nothing here (`PROVISIONAL: B4`, switchable). No celebration |
+| `unlock-day`, `reveal-open` | "Your Journey is ready" (`PROVISIONAL: C1`; on the first open after unlock only, Spec §20 FFFF), the year's activity graph, no ring for this journey yet (`PROVISIONAL: B5`). No ring yet per finished reveal; per year with the app, rings follow years (`PROVISIONAL: B4`, switchable). No reminder to finish |
+| `reveal-finished` | This journey's ring, next to the name, its weeks as dots; older rings one place out (Spec §20 AAAAA; `PROVISIONAL: B5`). This journey's ring per finished reveal; per year with the app, finishing adds nothing here (`PROVISIONAL: B4`, switchable). No celebration |
 | `later-years` | The overview stack, the way into earlier journeys. Nothing marks an anniversary |
 | `no-journey` · between journeys | As for the last journey's state, plus the way to Commit. No prompt |
 

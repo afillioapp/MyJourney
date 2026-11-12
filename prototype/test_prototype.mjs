@@ -125,6 +125,20 @@ test("the fixture highlights hold their photos inside their 24 hours (Proposal ย
   }
 });
 
+test("a friend's same-day photos never come in the order they were taken (ยง20 JJ, R-155)", () => {
+  const { run, screen } = boot();
+  run(`clock = Date.UTC(2026, 9, 25); jumpedAt = Date.now(); state.viewer = "wind"; state.sub = "journey:lantern1"; render();`);
+  const shown = [...screen().matchAll(/data-photo="(p\d+)"/g)].map(m => m[1]);
+  const byDay = {};
+  for (const id of shown) {
+    const t = JSON.parse(run(`state.photos["${id}"].captured`));
+    (byDay[Math.floor(t / DAY)] ??= []).push(t);
+  }
+  const sameDay = Object.values(byDay).filter(ts => ts.length > 2);
+  assert.ok(sameDay.length > 0, "the fixture should give Wind a day with several of Lantern's photos");
+  for (const ts of sameDay) assert.notDeepEqual(ts, [...ts].sort((a, b) => a - b));
+});
+
 test("the circle's markup carries no number for a screen reader", () => {
   const { run } = boot();
   const svg = run(`circleSvg("lantern", "wind")`);

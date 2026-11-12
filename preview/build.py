@@ -237,7 +237,7 @@ CORE_R = 80
 
 
 WEEKS = 52
-FIRST_PITCH, PITCH_RATIO, CLEARANCE = 11, 0.85, 3
+FIRST_PITCH, PITCH_RATIO, CLEARANCE = 11, 0.85, 3   # PROVISIONAL: B89, each ring 85% of the one inside it
 DOT_RATIOS = (0.12, 0.24, 0.36)   # a week with no photo, with a photo, the week a highlight opened
 ANGLE_STEP = 135.0                # 19.5 dot spacings: each ring's dots sit halfway between the next ring's
 
@@ -265,7 +265,7 @@ if not re.search(r"A%d %d 0 1 1" % (CORE_R, CORE_R), PATHS["frame"]):
 
 
 def week_of(day):
-    """Day index from the commit date (0 is the commit date) to week 0..51. Week 52 takes the last 8 or 9 days.
+    """Day index from the commit date (0 is the commit date) to week 0..51. Week 52 takes the 8 to 10 days left.
     PROVISIONAL: B86"""
     return min(day // 7, WEEKS - 1)
 
@@ -302,7 +302,7 @@ def balanced(name):
 
 
 def circle(name, journeys=()):
-    """journeys: one entry per finished reveal, in the order of finishing, oldest first. An entry is None for
+    """PROVISIONAL: B4, one ring per finished reveal. journeys: one entry per finished reveal, in the order of finishing, oldest first. An entry is None for
     even dots, or the owner's {"days": [...], "highlights": [...]} (day indices from the commit date).
     The newest is drawn next to the frame and every older ring one place further out (Spec §20 AAAAA (c))."""
     n = len(journeys)

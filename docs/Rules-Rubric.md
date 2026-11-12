@@ -48,6 +48,8 @@ Updated 2026-11-10 (rules audit `docs/reviews/2026-11-10-rules-supervisor-carria
 
 Updated 2026-11-10 (rules re-audit `docs/reviews/2026-11-10-rules-supervisor-carriage-r2.md`, of the fixes in 648bf78 and DN B79–B85, FS §20 YYYY, ZZZZ): added R-210 after R-201, in area 1 (a drawing never shows a non-owner a per-day photo count or a highlight's burst). `Updated` lines on R-200 (B82 settles the way to Reflect), R-203 (ZZZZ changes the blocker's map) and R-206 (B81 covers the Positivity Feed). Banned-list coverage gains R-210. No check renumbered or removed.
 
+Updated 2026-11-12 (rules audit `docs/reviews/2026-11-12-rules-dotted-circle.md`, of FS §20 AAAAA's carriage and the dotted circle in the preview and the prototype, git a2c9ff4..1177709): added three checks, each under its area. R-211 (area 5): to anyone but the owner, the dotted circle comes from the ring count alone (B88). R-212 (area 8): the owner's ring has three sizes and prints no count (AAAAA (b), B86, B87). R-213 (area 14): every provisional default the code builds carries its label, numbers and geometry included. Added G-29: AAAAA (a) against B4's per-year option, GGGG and B28. AAAAA retired the ring line, so `Updated 2026-11-12` lines carry it on R-011, R-144, R-185 and R-187, whose wording assumed the line. More `Updated` lines: R-098 (the owner can count a finished ring's highlight dots), R-149 (IDs now reach B89, but its patterns stop at two digits), R-150, R-151 (the residual can now be played in the prototype), R-155 (the prototype's same-day order), R-165, R-210 and G-7. Banned-list coverage gains R-211 and R-212. No check renumbered or removed.
+
 ---
 
 ## What this is for
@@ -168,6 +170,7 @@ Test fixtures named below come from `Phase-1-Proposal.md` §3. Steady Lantern #6
 - **How to check:** As owner and as a network member before 2027-01-01, request activity data for Lantern #6 (expect none) and render Lantern's profile (no activity element for #6). After unlock, expect it.
 - **Current implementation:** built from `captured_at`, unreadable while sealed (P1:50).
 - **Provisional default:** Decisions-Needed B5 (switchable, R-144): The activity line twists in at reveal finished; the graph is visible to the owner only (other setting: built from the photos the viewer can see). Holds as written under both settings. Tighter under B5: for a journey that has unlocked but whose reveal is not finished (Long Way Round #4), the line does not twist into the circle
+- **Updated 2026-11-12 (FS §20 AAAAA, `FS:404`; `docs/reviews/2026-11-12-rules-dotted-circle.md` V8):** the ring line is retired. Each journey is now a ring of 52 weekly dots. "The line does not twist into the circle" now reads: no ring of dots is drawn for Long Way Round #4, and no older ring moves out, until its reveal is finished (AAAAA (c), (d)). The dot sizes belong to the owner under both B5 settings (`PROVISIONAL: B88`; R-211, R-212)
 
 ### R-012
 - **Statement:** During a sealed year nothing fills, grows or advances to show how far the year or the quota has got: no progress ring or arc on the circle for the current year, no "month 7 of 12", no elapsed-time bar, no grid being filled.
@@ -198,6 +201,7 @@ Test fixtures named below come from `Phase-1-Proposal.md` §3. Steady Lantern #6
 - **Residual (weakest point, reported by every audit; narrowed by FS §20 GG on 2026-10-30, see next line):** readers who can see `captured_at` of many photos from one day (Lantern #1: 19 in 24 hours) can infer a highlight. Neither DD nor B24 addresses it; it goes to the supervisor, not into the build
 - **Decided 2026-10-30 (FS §20 GG, `FS:311`):** readers other than the owner see a photo's capture date, never its time (R-154). This narrows the residual above but does not close it: 19 Lantern #1 photos dated the same day still suggest a highlight. The residual stays reported until the user rules on it
 - **Updated 2026-10-31 (FS §20 MM, OO):** "`highlight` rows return 0 rows" is read through `highlight_rows()`; the `highlight` table refuses every product role. The only ways highlight rows can be reached are fixed by R-156
+- **Updated 2026-11-12 (`docs/reviews/2026-11-12-rules-dotted-circle.md` R1):** the residual can now be played. Since 1177709 the prototype fixture holds the three highlights of Proposal §3.3 inside their 24 hours (`prototype/index.html:169`, `:184–186`). At baseline Second Wind reads 10 of Lantern #1's 19 highlight photos, 6 dated 17 July 2021 and 4 dated 18 July. Up to 7 of the photos she reads share one date. First Light reads 3 of them. The circle adds nothing (B88, R-211); the photo dates carry the residual. It is still for the user
 
 ### R-156
 - **Statement:** Highlight rows can be reached by a product session in four ways only: `capture()` and `start_highlight()` (which answer accepted or refused), `highlight_open()` (true or false, owner only, R-009) and the owner's reader after unlock. No other function, view, policy, rule or trigger can read or write them.
@@ -243,6 +247,7 @@ Test fixtures named below come from `Phase-1-Proposal.md` §3. Steady Lantern #6
 - **Area:** 1. Sealing and leaks
 - **Source:** FS §20 DD, GG; DN B6 ("Others learn nothing about highlights"), B8 (counters banned at all times), B80 ("one spark per photo"); R-144, R-151 (residual), R-154. Found by `docs/reviews/2026-11-10-rules-supervisor-carriage-r2.md` R2-2 (B5's default swapped to the viewer setting; B80 draws one spark per photo, with same-day photos unstated)
 - **How to check:** As Second Wind, request the activity data for Lantern #1 and render Lantern's S-16: the day of the graduation-party highlight (P1:266; 4 of Wind's readable photos inside it) and a day with one readable photo give the same response shape (one day value, no per-day number or list length) and the same mark. Planted fault: a build that returns one entry per photo, or draws a taller or doubled spark for that day, fails. As Lantern (owner), B80's own setting applies
+- **Updated 2026-11-12 (FS §20 AAAAA; `PROVISIONAL: B88`; `docs/reviews/2026-11-12-rules-dotted-circle.md`):** the dotted circle is a drawing built from photos. To anyone but the owner it draws no mark from photos at all: 52 even dots per ring, from the count alone. That is stricter than this check, and R-211 checks it. The owner's ring follows R-212
 
 ---
 
@@ -751,6 +756,7 @@ Commit, capture, frames, highlights and the note.
 - **Decided 2026-10-31 (FS §20 DDD, FFF, `FS:337`, `FS:339`):** the bug log's line prefix carries a real time and a virtual transaction id, which is a server counter. It lives outside the product data and no product role can read it (R-167), so (a) and (b) do not reach it. They do reach anything that copies it in: no table, column or reader may hold a log line, a virtual or real transaction id, or a log time
 
 - **Updated 2026-11-09 (FS §20 KKKK, `FS:378`; `docs/reviews/2026-11-09-rules-kkkk.md`):** the order clause covers photos, notes and journeys. One time-decided order is allowed, by `PROVISIONAL: B52`: a viewer's own incoming friend requests, newest first by that request's own `sent_at`, with no time value returned. It must never take its key from another table's time (R-192)
+- **Updated 2026-11-12 (`docs/reviews/2026-11-12-rules-dotted-circle.md` V2):** the prototype is held to (a) and (c) as well. Its photo ids run in sequence, in capture order (`"p" + (pid++)`, `prototype/index.html:188`; `press()` at `:244`). A non-owner's path breaks a same-day tie by that id (`:381`). Before 1177709 no fixture day held two photos, so this order told nobody anything. Now the fixture highlights hold their photos within 24 hours, and Second Wind receives Lantern #1's six photos dated 17 July 2021 in capture order. Check: as Wind at baseline, the order within each same-day group has no relation to `captured`. A planted tie-break by an id in capture order is caught
 ### R-161
 - **Statement:** A user's join date is readable by that user only. Everyone else reads names, never when someone joined.
 - **Type:** auto · **Applies to:** data, API, UI
@@ -799,6 +805,19 @@ Commit, capture, frames, highlights and the note.
 - **Area:** 5. Visibility and access
 - **Source:** FS §20 MMMM; `PROVISIONAL: B65`, `B66`, `B67`, `B68`; SI S-25; R-192, R-194. Added by `docs/reviews/2026-11-10-rules-supervisor-carriage.md` (MMMM had no check; Rubric header 2026-11-10 second pass)
 - **How to check:** Render S-05 with 0 and 3 blocks: identical DOM apart from nothing. Render S-25 with 3: three names, A to Z, no digits, no dates, no links on names. Grep copy for `blocked` outside S-25 and the block confirmation.
+
+### R-211
+- **Statement:** To anyone but the owner, the dotted circle depends on the ring count alone. Every ring is 52 dots of the no-photo size, at the places and start angles the count gives. Nothing in it changes with any of these: which weeks held photos, where a highlight opened, a photo's visibility, a journey date, the B5 setting, the viewer's friendship with the owner, or the viewer's place on the owner's map.
+- **Type:** auto · **Applies to:** data, API, UI
+- **Area:** 5. Visibility and access
+- **Source:** FS §20 AAAAA (`FS:404`), CCC, DD, T, WW, H, NNNN; `PROVISIONAL: B88` (strictest reading: B27 carried to the dots), B5; R-151, R-166, R-179, R-210. Added by `docs/reviews/2026-11-12-rules-dotted-circle.md`, because AAAAA had no check
+- **How to check:** At baseline, render Steady Lantern's S-16 as Second Wind (Lantern's friend, on her tight ring) and as First Light (public, on no map). Also render Second Wind's S-16 as First Light.
+  - (a) Each ring has exactly 52 dots, all with the no-photo radius of the ring's place.
+  - (b) Mask the name, its text and the `aria-label`. The circle markup is then byte-identical for the two viewers, and equal to that of any profile with the same number of finished reveals (Lantern and Wind have five each).
+  - (c) Flip B5, and repeat once a reveal is finished (Lantern #6 at 2027-01-02). The markup is identical apart from the added ring.
+  - (d) These planted faults are caught: the owner's sizes given to a non-owner; sizes built from the photos the viewer can read (AD-24 as first proposed); a start angle taken from a commit date; a ring per year for a non-owner (WW).
+  - Data: the only reader behind a non-owner's circle is `ring_count()` (R-166).
+- **Current implementation:** `circleSvg(owner, viewer)` passes sizes only when `viewer === owner` (`prototype/index.html:331–333`). In the preview, `dot_ring(j, k, sizes=None)` (`preview/build.py:284`). `prototype/test_prototype.mjs` tests (a) for one friend only. (b) to (d) have no tests yet
 
 ---
 
@@ -1037,6 +1056,7 @@ Commit, capture, frames, highlights and the note.
 - **Source:** FS:243, CL:69, P1:49. See G-5
 - **How to check:** R-038 and R-039 hold, and copy grep for `left this month`, `remaining`, `of (12|24|48)`, `\d+ (more|to go)`.
 - **Provisional default:** Decisions-Needed B7: Frames left are never shown. A refused capture says so with no number (copy in Phase 2). Firm under B7: no count of the quota is shown in any form, not only "in a way that reads as a target" (`FS:243`). Frames used, frames left, highlights used or left, and photos this month all fail, at any time, to the owner as well (closes G-5)
+- **Updated 2026-11-12 (FS §20 AAAAA (b), `FS:404`; `PROVISIONAL: B87`; `docs/reviews/2026-11-12-rules-dotted-circle.md` R2):** on the owner's ring of a finished journey, one biggest dot marks each week in which a highlight holding a photo opened. The owner can therefore count the highlights that journey used. AAAAA rules the biggest dot, so this does not fail B7's line above. B7 still holds for everything else: no numeral; no drawing of highlights left or unused (an outline, an empty big dot, a dot for a dismissed highlight); and nothing of the kind for a journey whose reveal is not finished, or while it is sealed (R-212)
 
 ### R-099
 - **Statement:** There is no progress bar, completion meter or percentage anywhere: not for the year, the quota, the reveal ("12 of 24 reflected"), the profile or the overview stack.
@@ -1102,6 +1122,20 @@ Commit, capture, frames, highlights and the note.
 - **Area:** 8. Engagement mechanics
 - **Source:** FS §20 SSSS; SI S-14, S-17; Flows Flow 6. Added by `docs/reviews/2026-11-10-rules-supervisor-carriage.md` (SSSS had no check)
 - **How to check:** Render S-17 for round-1 (slots 1, 2, 3 written; a generated photo with slots 1 and 3 written if one exists, or a throwaway one): the two stacks differ only by their reflections' own rows. Grep copy for `no reflection`, `skipped`, `empty year`.
+
+### R-212
+- **Statement:** On the owner's own circle, each week of a finished journey has a dot in one of three sizes. The size depends only on whether the week holds a photo and whether a highlight holding a photo opened in it. No size depends on how many photos, highlights, reflections or tags a week or a journey holds. A ring is drawn whole when its reveal is finished, and never in part. Nothing is drawn for a journey whose reveal is not finished, for a week still to come, or for a highlight that held no photo.
+- **Type:** auto · **Applies to:** UI
+- **Area:** 8. Engagement mechanics
+- **Source:** FS §20 AAAAA (b), (d) (`FS:404`), WWWW; CL:69 (counters); `PROVISIONAL: B8`, `B29`, `B86`, `B87`; R-012, R-098, R-099, R-143, R-144. Added by `docs/reviews/2026-11-12-rules-dotted-circle.md`, because AAAAA had no check
+- **How to check:** As Steady Lantern at baseline, every ring has 52 dots in at most three radii, the radii of its place (`Art-Direction.md` §3.2). The only biggest dots are the highlight weeks of Lantern #1 and #5. Then, in a throwaway copy:
+  - (1) Add one photo, then forty, to a no-photo week of a finished journey. The dot takes the photo size and keeps it.
+  - (2) Start a highlight and dismiss it, or let it pass with no photo. No biggest dot appears (B87).
+  - (3) Open a highlight on the last day of a week and take its photos in the next week. The biggest dot sits on the opening week and a photo dot on the next.
+  - (4) Commit at 14:37 UTC and take a photo on the unlock day before 14:37. That photo falls in week 52, and there is no 53rd dot (B86).
+  - (5) The circle is byte-identical at 2026-02-01, 2026-07-01, 2026-12-31 and after a capture (R-012). It is unchanged at unlock-day until the reveal is finished.
+  - These planted faults are caught: a radius scaled by a photo count, a fourth size, a biggest dot from a press that took no photo, dots drawn week by week or animated in (B29).
+- **Residual (for the user, AD-11):** the ring makes the weeks without a photo visible and countable. A finished ring can therefore read as a 52-cell grid, more or less filled, and the owner can count the highlights it used (R-098). AAAAA rules the sizes. Whether fullness reads as a score is still open (AD-11), and every audit of the circle reports it
 
 ---
 
@@ -1369,6 +1403,7 @@ Commit, capture, frames, highlights and the note.
 - **Updated 2026-10-31 (r7):** the word list in (1) also takes `not ruled`, `open from`, `left open` and `open:`. r7 found `Phase-1-Amendments.md:484` ("is not ruled (OQ-32)") and `:572` ("Open from DDD: OQ-31, OQ-32"), which the r6 list missed. Run (1) also on `Phase-1-Proposal.md` and on `Screen-Inventory.md` outside its Open questions section. Added (4): where an OQ answer, in any doc, says a ruling is handled on a named screen or section, that screen's table or that section carries it. r7 found `Screen-Inventory.md:711` ("handled the same way on S-12 (Spec §20 HHH)") with nothing on S-12
 - **Updated 2026-10-31 (r8):** added (5): a ruling recorded as an accepted residual or "no build change" is still checked under (3) against every screen whose behaviour its words state. r8 found FS §20 PPP ("that note step then ends early") recorded only in two OQ cells, with S-12 listing no such end. Added (6): after any edit to FS §20, every `Spec:` and `FS:` line citation in the build docs that points at or after the edit is re-checked by the editor, not only by the doc's owner. r8 found `Screen-Inventory.md:577` citing Spec:350 for export, which since PPP is a ruling line
 - **Updated 2026-10-31 (r10):** (4) also covers a body line, in any build doc, that assigns a behaviour to a named screen ("S-12 sends …", "the screen row is ux's"). That screen's rows carry the behaviour with every trigger the line names. r10 found `Phase-1-Amendments.md:566` and OQ-39 `:954` ("S-12 sends it on skip and on leaving capture"), while S-12 (`Screen-Inventory.md:340` end (3), `:348`) sends it on skip only. (3) is run per doc against the order of commits: a ruling recorded after a doc's last edit (here AAAA, BBBB after `Screen-Inventory.md`'s b89299a) is either carried there or stated as not bearing
+- **Updated 2026-11-12 (`docs/reviews/2026-11-12-rules-dotted-circle.md` V5):** (3) reaches every doc that describes what a viewer sees of the drawing a ruling changes, not only the doc that owns the drawing. FS §20 AAAAA was carried into Art-Direction, Decisions-Needed, FS §14, CLAUDE.md and Status. It was carried into none of these: `Screen-Inventory.md` S-05 and S-16, and `Flows.md` Flow 5 and Flow 8. Those still describe a line twisted in and a ring added, and give no viewer's dot sizes. Under (2), a status line fails if it names an earlier range or date after its doc has carried a later ruling. Two examples: "A to DDDD" at `Art-Direction.md:3`, and "Last updated: 2026-11-09" at `Decisions-Needed.md:10`
 
 ### R-168
 - **Statement:** No screen state holds anything that its own "must never show" column, or another state of the same screen, bans. Where two rulings force a state to do both, the build stops and the conflict goes to the user; neither side is built by choice.
@@ -1467,6 +1502,12 @@ Commit, capture, frames, highlights and the note.
 - **Area:** 8. Engagement mechanics
 - **Source:** R-102, R-143, MJC:693 ("no tier name"), art-director brief. Found as ART-6 (`Art-Direction.md:193–195`). Proposed in `docs/reviews/2026-11-04-rules-art-microcopy.md` as P-7, numbered by the supervisor 2026-11-05
 - **How to check:** Grep code and fixtures for `established`, `veteran`, `young` as a state name keyed to ring count. Read the art direction's "never read" rules against the worked values at n = 1, 5, 9, 10, 17, 25, 40.
+- **Updated 2026-11-12 (FS §20 AAAAA, `FS:404`; `docs/reviews/2026-11-12-rules-dotted-circle.md` V6):** the ring line is retired, and with it the 22% ink share and the worked values at n = 1, 5, 9, 10, 17, 25, 40. The check now reads:
+  - (1) The worked values for places 1, 2, 3, 5, 8, 12 and 20 (`Art-Direction.md` §3.2) match the build. `preview/build.py` enforces this.
+  - (2) At every count n, the ring at place j has exactly place j's dot radii and ink. Nothing about it depends on n, except which journey it carries.
+  - (3) Every "do" that names a quantity also names its measure. "Tone does not rise with count" (`Art-Direction.md:179`) names none, and the result depends on the measure. Take even dots and measure ink over the band from the frame (radius 80) to the outer ring's edge: tone rises from 2.59% at n = 1 to 2.96% at n = 2, then falls (2.72% at 5, 1.89% at 20). Measured from the first ring's inner edge instead, it falls at every step (4.38% to 2.06%). The check fails until the art direction states its measure and gives its value at n = 1 to 5. Total ink rises with n toward about 3.6 times one ring. That is growth (Concept:687), not tone.
+  - (4) The ink step between place 1 and the other places is set by place, at every n ≥ 2, never by a count.
+  - (5) The grep for a state name keyed to ring count stays as before.
 
 ### R-186
 - **Statement:** A navigation way exists only where a `Screen-Inventory.md` "Leads to" row names it from that screen, and no way appears, disappears or changes because of content.
@@ -1482,6 +1523,7 @@ Commit, capture, frames, highlights and the note.
 - **Source:** R-141 (a switch changes nothing but its own behaviour), rule zero (CL:19–24: a builder never picks; a question with no default is not answered by another row), R-150, R-168. Found by `docs/reviews/2026-11-05-rules-art-microcopy-r2.md`. ART-R2-1: B41 makes C1's line the only way into Reveal S-04, which forces C18 and can strand an unfinished reveal against `Screen-Inventory.md:151`. ART-R2-3: B28 with B31 removes the owner's activity line under B4's option, so flipping B4 changes B5's behaviour
 - **How to check:** (1) For each new or changed Decisions-Needed row, list every other row and every switch setting touching the same screen, drawing or data. For each switch, compare what each screen shows under its two settings with every other default in force: anything that changes beyond the switch's own ID fails. (2) For each row, list the open questions (no default) its behaviour depends on. Read the row under each possible answer. If one answer leaves a screen unreachable that a "Reached from" row requires, or turns the row into a banned mechanic (R-095, R-096), the row has forced that question and fails
 - **Updated 2026-11-05 (`docs/reviews/2026-11-05-rules-art-microcopy-r3.md` ART-R3-1):** a default can hold at one clock point and fail in between. Run (1) at more than one clock point: at each scripted fixture event the row touches, at the day after it, and at the next event that completes the behaviour (for example the next anniversary or unlock). Found when revised B28 put a finished journey's day marks on a ring not drawn until the next join anniversary, so from Second Wind's 2027-04-25 finish the line showed nowhere under B4's per-year option and on ring n+1 under the default
+- **Updated 2026-11-12 (FS §20 AAAAA, `FS:404`; `docs/reviews/2026-11-12-rules-dotted-circle.md` V3):** B28's "day marks on the ring for the year" now reads as weeks (`Art-Direction.md:143`). Run (1) for B4's per-year option with dots. Under B28's timing, a finished journey's weeks go on the ring for the year in which it was finished. The ring for the year in which its photos were taken holds no finished journey, so it is drawn as 52 even dots (`Art-Direction.md:145`, `:249`), and §3.3 reads such a ring as a year with no photo (`:216`). Flipping B4 then changes what the owner's circle says about activity. G-29 holds this until the user rules
 
 
 ### R-188
@@ -1609,6 +1651,7 @@ Added 2026-10-27 for the playable prototype (rule zero, CL:19–24; `Decisions-N
 - **Source:** DN B5, DN B8, FS:145, FS:187, P1:50, CL:73
 - **How to check:** Under each setting R-011 passes, and the line twists into the circle only at reveal finished (none for Long Way Round #4). "Owner only": as Second Wind, request activity data for Lantern #5: none returned, no graph rendered. "Built from the photos the viewer can see": as Second Wind, the Lantern #5 graph equals one built from only the #5 photos Wind can read; changing a private photo's `captured_at` in a test copy leaves Wind's API response byte-identical. Under both, no axis label, tooltip or caption prints a number of photos (R-099 under B8).
 - **Updated 2026-11-10 (DN B80, B79):** B5's default is now "built from the photos the viewer can see", shown as sparks on a closed timeline; a journey under way is one plain line with no mark (B79). Check under both settings as before, plus: a public viewer gets no line (B36), and the under-way line is byte-identical on 2026-02-01, 2026-07-01 and 2026-12-31 for Lantern #6 (R-012)
+- **Updated 2026-11-12 (FS §20 AAAAA, `FS:404`; `PROVISIONAL: B88`; `docs/reviews/2026-11-12-rules-dotted-circle.md` V8):** the ring line is retired. "The line twists into the circle only at reveal finished" now reads: a journey's ring of 52 dots appears only when its reveal is finished (none for Long Way Round #4). B5 does not set the dot sizes. The owner sees them under both settings, and every other viewer sees even dots under both (B88). Flipping B5 therefore leaves every circle byte-identical (R-211 (c)). B5 still governs the timelines' sparks (B80)
 
 ### R-145
 - **Statement:** The Positivity Feed is text only (**decided 2026-10-30, FS §20 Q**): each entry is a reflection's text, no photograph appears in the list, and opening one entry shows that one photo. B9 (a) has no switch. The announcement feed shows no image (R-086), and the Positivity Feed meets B9 (b)–(f). Before 2026-10-30 the statement read: "B9 (a), under both settings ("text only" / "with photographs"): the announcement feed shows no image, and the Positivity Feed meets B9 (b)–(f). The "with photographs" setting is reported as a finding against "No photo feed" until the user rules on G-8."
@@ -1658,6 +1701,7 @@ Added 2026-10-27 for the playable prototype (rule zero, CL:19–24; `Decisions-N
 
   Note 2026-10-30: B17 has since been added to the table (fdb83d3), so the sample above no longer shows a missing ID. A fresh sample should use an ID past the table's last row.
 - **Updated 2026-11-10 (FS §20 NNNN):** today's grep lists B2 B4 B5 B9; B9 (a) has no switch (FS §20 Q), so three switches. B11, B12 and C6 labels may stay in code only as `// Spec §20 NNNN` references, never on a switch
+- **Updated 2026-11-12 (`docs/reviews/2026-11-12-rules-dotted-circle.md` V8):** the table now reaches B89. Every pattern above takes one or two digits (`[0-9]{1,2}`). Once B100 exists, step 1 will report `PROVISIONAL: B100` as malformed, and step 2 will cut it to B10, which is in the table and so passes unseen. From now on, run all three steps with `[0-9]{1,3}`. This check runs only from label to table, so a default built with no label passes it, as B89 did in this audit. R-213 checks the other direction. Today step 3 lists B2 B4 B5 (B9 is no longer marked switchable)
 
 ### R-150
 - **Statement:** A deliverable (doc or code) describes every question that `Decisions-Needed.md` answers with a provisional default under that default only, worded as the table row states it, and labelled `PROVISIONAL: <ID>`. It never calls such a question open or "no default", never states a default range that leaves out rows in the table, never describes the other side or a third reading as what the screen holds, and never extends a default or a switch setting to cases its row does not name.
@@ -1670,6 +1714,7 @@ Added 2026-10-27 for the playable prototype (rule zero, CL:19–24; `Decisions-N
   4. Review: each labelled passage says what its row says, no more. A reading the row does not state (for example, what a switch setting does to a case the row does not name) is raised as a question, not built.
 
 - **Updated 2026-11-09 (`docs/reviews/2026-11-09-rules-friend-screens.md` V1):** step 2's pattern finds only rows that say "Raised as … OQ-n". Rows added later name their source differently ("added … from Screen-Inventory OQ-55", "settles Screen-Inventory OQ-57 and Flows DC-15"). Step 2 now also takes every Decisions-Needed row matching `from (Screen-Inventory|SI) OQ-[0-9]+` or `settles [^|]*(OQ|DC)-[0-9]+`. For each, the named OQ or DC line in the deliverable that raised it, and every body line that sends a reader to that OQ ("… is OQ-55", "Not set", "not picked"), must name the B-row and describe the screen under it. A deliverable that still calls such a question open, or still says "not set", fails. Run it on both the doc that raised the question and every doc that cites it (here `Screen-Inventory.md` and `Flows.md`)
+- **Updated 2026-11-12 (`docs/reviews/2026-11-12-rules-dotted-circle.md` V4):** when a row is rewritten to carry a ruling, read it against the current table for every ID it names, not only the ruling's own. Found at `Art-Direction.md:248–253`: the §3.6 rows rewritten for FS §20 AAAAA kept B5's default as "owner only" and B31's "then not shown". Both changed on 2026-11-10 (B80, B81). Found also at `:219`, which gives the dot sizes to "B5's default", although B88 sets them under both B5 settings
 ### R-153
 - **Statement:** Only the prototype panel can move the clock or change an option switch. No acting viewer, through any route, function or direct database call, can jump time, jump to the next unlock or flip a switch.
 - **Type:** auto · **Applies to:** data, API
@@ -1684,6 +1729,16 @@ Added 2026-10-27 for the playable prototype (rule zero, CL:19–24; `Decisions-N
 - **How to check:** (1) The loader and the test harness open connections as the panel role only, never as the table owner or directly as the viewer role. (2) As the panel role without the role switch, calling one product function (for example `finish_reveal`) is refused. (3) The loader's source contains no INSERT, UPDATE, DELETE, COPY or TRUNCATE on a product table. (4) After load, the baseline matches P1 §3: counts per journey, the §3.4 rings and the §3.6 matrix. (5) `pg_auth_members`: the viewer role is not a member of the panel role, and the panel role's membership in the viewer role is non-inheriting. As the viewer role, `SET ROLE` to the panel role is refused.
 - **Current implementation:** `GRANT mj_app TO mj_panel WITH INHERIT FALSE, SET TRUE`, and `SET LOCAL ROLE mj_app` for each action (`Phase-1-Amendments.md` §1.4, §1.5, §2.1, §2.2; `P1:195`)
 
+### R-213
+- **Statement:** Every provisional default whose behaviour the code builds carries its `PROVISIONAL: <ID>` label where the code builds it. That includes defaults the code holds as numbers or geometry (a ratio, a constant, a table of values), and the default side of a switch that has no control yet. No other form counts as a label: not "B4 default", not "per B89", and not an ID that appears only in a commit message or a doc.
+- **Type:** auto (scan), then review · **Applies to:** data, API, UI
+- **Area:** 14. Provisional defaults and the options panel
+- **Source:** CL rule zero step 3 ("Every provisional default is labelled in the code"); the rule-zero line of R-135 ("the default without its `PROVISIONAL:` label still fails"); R-149, which checks only that every label names a row and lets an unlabelled row pass; R-150. Found by `docs/reviews/2026-11-12-rules-dotted-circle.md` V1. B89's 85% ratio is built at `preview/build.py:240` and `prototype/index.html:300`, and B4's one ring per finished reveal at `prototype/index.html:224` and `preview/build.py:304`, all with no label
+- **How to check:**
+  - (1) List every Decisions-Needed row added or changed since the last audit, and every row a doc or commit says the preview draws or the prototype builds. Find the code that builds each one. That line, or the function around it, carries `PROVISIONAL: <ID>`. A row that is only an absence (B15, C15, B29, B38) needs no label, and the review says so row by row.
+  - (2) This scan for informal forms must print nothing: `grep -rnE --include='*.py' --include='*.html' --include='*.js' --include='*.mjs' --exclude-dir=graphify-out --exclude-dir=node_modules '\b[BC][0-9]{1,3} default\b|default [BC][0-9]{1,3}\b' preview prototype site`. Generated files, such as `preview/index.html`, are checked through the code that generates them.
+  - On 2026-11-12 the scan printed `prototype/index.html:221` (B2) and `:224` (B4).
+
 ---
 
 ## Banned-list coverage
@@ -1697,12 +1752,12 @@ Every row of the banned list (`CLAUDE.md:64–74`, `Master-Prompt.md:37–47`) a
 | No comments from anyone else | R-105, R-106, R-107, R-109, R-124 |
 | No face recognition | R-110, R-111, R-112 |
 | No ads anywhere | R-113 |
-| No streaks, counters, progress bars, reminders | R-097, R-098, R-099, R-038, R-039, R-012, R-013, R-095, R-096, R-124, R-138, R-140, R-143, R-144, R-166, R-178, R-192, R-194, R-200, R-204, R-207, R-210 |
+| No streaks, counters, progress bars, reminders | R-097, R-098, R-099, R-038, R-039, R-012, R-013, R-095, R-096, R-124, R-138, R-140, R-143, R-144, R-166, R-178, R-192, R-194, R-200, R-204, R-207, R-210, R-212 |
 | No re-engagement notifications | R-094, R-095, R-096, R-194, R-200 |
-| No ranking, levels, badges, leaderboards | R-101, R-102, R-103, R-124, R-143, R-166 |
+| No ranking, levels, badges, leaderboards | R-101, R-102, R-103, R-124, R-143, R-166, R-211, R-212 |
 | No photo feed | R-084, R-085, R-086, R-145 |
 | Nothing leaks from a sealed year | R-001 to R-014, R-091, R-138, R-142, R-144, R-156, R-157, R-158, R-161, R-167, R-169, R-176, R-178, R-199, R-201, R-205 |
-| No layer is ever shown to the person on it | R-069, R-070, R-071, R-092, R-139, R-146, R-147, R-148, R-176, R-188, R-193, R-197, R-202, R-203 |
+| No layer is ever shown to the person on it | R-069, R-070, R-071, R-092, R-139, R-146, R-147, R-148, R-176, R-188, R-193, R-197, R-202, R-203, R-211 |
 
 R-141 and R-149 apply to every row: no switch setting may break any item above, and every provisional default in code is labelled and traceable. R-138 sits under two rows because a control hidden or greyed for lack of frames is both a counter and a leak of how much a sealed year holds (RG:28, "disabled-but-visible states").
 
@@ -1719,6 +1774,8 @@ R-169 to R-171 (added 2026-10-31, r8) carry FS §20 III–PPP. R-169 sits under 
 R-172 and R-173 (added 2026-10-31, r9) carry FS §20 QQQ–XXX. R-173 sits under "No retakes": a note step that the screen has ended but the server still accepts is a way back to a second take (III, WWW, C4). R-172 applies to every row: a history line rewritten to cite a later ruling hides what was open when, which is how a decided label and an open question end up in one sentence.
 
 R-174 and R-175 (added 2026-10-31, r10) carry FS §20 YYY–BBBB. R-175 sits under "No retakes": a skip request the screen never sends leaves the note step open at the server, which is a way back to a second take (WWW, C4). R-174 applies to every row: a ruling's words lifted out of their subject become a rule nobody ruled on.
+
+R-211 to R-213 (added 2026-11-12) carry FS §20 AAAAA. R-211 sits under "No ranking" and "No layer is ever shown". To anyone but the owner, two circles with the same count are identical, and no circle varies with the viewer's place on the owner's map. R-212 sits under "No streaks, counters" and "No ranking": a dot that grew with the number of photos would be a counter, and a ring that filled week by week would be a gauge (AAAAA (b)). R-213 applies to every row, as R-149 does. A default built without its label cannot be found or switched, and a banned item can come in that way.
 
 ## `Phase-1-Proposal.md` §2.5 mapping
 
@@ -1775,6 +1832,8 @@ Since 2026-10-27 each gap carries a status line under it: **being fixed** by a `
 **G-7. What adds a ring to the circle.** `FS:185` says one ring "per year with the app", and `MJC:687` says "each year with the app adds a ring". `P1:65` says one ring "per journey whose reveal is finished". These differ for a user with a year and no journey, or a reveal never finished (Long Way Round #4).
 
 **Provisional default:** Decisions-Needed B4 (switchable): One ring per finished reveal (`P1:65`); other setting: per year with the app. R-143 must pass under both settings. The contradiction stays open until the user decides.
+
+**Updated 2026-11-12 (FS §20 AAAAA (a), `FS:404`).** §20 now says "Each ring is one journey, drawn as 52 dots", which is `P1:65`'s side. It does not say whether this settles the gap and so retires B4's per-year option. Meanwhile FS §20 GGGG (`FS:372`) keeps B4 switchable. Raised as G-29.
 
 **G-8. The Positivity Feed and "no photo feed".** `CLAUDE.md:72` and `Master-Prompt.md:45` say "No photo feed. The feed carries announcements only, never images". The Positivity Feed is fed by public photos and their reflections (`FS:203–204`, `P1:324`). Open: does the Positivity Feed show photographs, and if so how does that fit the ban? Also `FS:203` says it draws from "journeys set to public", while visibility is per photo (`FS:141`); `MJC:375` and `MJC:379` show the same split. And `MJC:244` says "no feed", against `FS:169–177`.
 
@@ -1850,6 +1909,25 @@ Related: under FS §20 TT (`FS:324`), B4's other setting, "per year with the app
 **G-27. Capture or the note step open at the unlock instant (added 2026-10-31, r10).** YYY rules the note step: at unlock it ends as at 15 minutes, and nothing on it changes on its own (`Screen-Inventory.md:340` end (7)). Nothing rules what follows. S-12 "leads to the camera S-02" (`:336`), but S-02's `unlock-day` row is "Not available" (`:99`). A press made on an open camera at or after unlock is answered `refused` (`Phase-1-Amendments.md:574`), and S-02's one refusal row is for "no frame, or the highlight's quota reached" (`:94`). S-12's never-list bans "nothing that sets end (7) apart from end (4)" (`:340`), yet after (4) the camera works and after (7) it does not. Decisions-Needed C1 says "Your Journey is ready" appears on next open. Open: (a) does an open camera change at the unlock instant, or only on the next open (C1)? (b) does a press refused for unlock show the B7 refusal, which then reads as "no frame"? (c) where does S-12 end (7) lead? Not picked. It does not block Phase 3 (`capture()` already refuses after unlock, P1:99). It blocks the S-02 and S-12 flows (Phase 2) and screens (Phase 4). The prototype reaches it whenever the demoer jumps to the next unlock with capture open (R-153).
 
 **G-28. What counts as leaving capture (added 2026-10-31, r10).** `PROVISIONAL: C4` says leaving capture ends the note step, and since WWW the client tells the route by sending the skip request on it (`Phase-1-Amendments.md:566`). No doc says whether the app going to the background, the screen locking, an incoming call or the app being closed by the system is leaving capture. A normal app resumes the step on return; under C4 that would be a way back. Not picked. Phase 4 (and the S-12 flow in Phase 2).
+
+**G-29. One ring per journey against one ring per year (added 2026-11-12, `docs/reviews/2026-11-12-rules-dotted-circle.md` V3).**
+
+The two sides:
+
+- FS §20 AAAAA (a) (`FS:404`): "Each ring is one journey, drawn as 52 dots, one for each week of that journey. The ring line with its day marks is retired."
+- FS §20 GGGG (`FS:372`): "B4 itself remains a switchable provisional default", and "each finished journey's day marks go on the ring for the year that holds its reveal-finished date".
+
+DN B4 (`DN:23`) and B28 (`DN:63`) still carry the per-year option and its day marks, and `FS:185` still says "One ring per year with the app". AAAAA does not name B4, GGGG or WW.
+
+`Art-Direction.md` §3.2 keeps the option (`:132`, `:138–146`). It fills what AAAAA leaves out with three readings that no row states:
+
+- A per-year ring that holds no finished journey is "a ring of even dots" (`:145`, `:249`). The same file reads such a ring as a year with no photo (`:216`).
+- A week shared by two journeys "takes the larger of the two sizes" (`:146`).
+- The start angle `θ_k` comes from a journey's place in the order of finishing (`:159`). A per-year ring with no journey, or with two, has no such place.
+
+Open: does AAAAA retire B4's per-year option? If not, what does a per-year ring of dots carry? Not picked. The prototype has no B4 switch and the preview draws only the default, so nothing built depends on the answer yet. It blocks the B4 switch (Phase 4) and the per-year half of R-143 and R-187.
+
+**Still open.** For the user.
 
 ### Rules that cannot be made testable yet
 
