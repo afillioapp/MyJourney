@@ -70,7 +70,8 @@ h4 { font-size: 13px; margin: 0; text-transform: uppercase; letter-spacing: .06e
 .item { display: grid; gap: 2px; padding: 10px 0; border-bottom: 1px solid var(--line); }
 .quote { font-family: var(--display); font-size: 16px; }
 .draft { font-size: 11px; color: var(--rose); border: 1px dashed var(--rose); border-radius: 4px; padding: 0 4px; margin-left: 4px; white-space: nowrap; }
-.circle { justify-self: center; }
+.circle { justify-self: center; width: min(300px, 100%); height: auto; }
+.dots .ink { fill: var(--ink); } .dots .soft { fill: var(--muted); }
 .dialog { position: fixed; inset: 0; background: rgba(0,0,0,.35); display: grid; place-items: center; padding: 16px; }
 .dialog .card { max-width: 360px; }
 label { font-size: 13px; color: var(--muted); display: grid; gap: 4px; }
@@ -101,8 +102,12 @@ select, input[type="text"] { font: inherit; padding: 8px; border: 1px solid var(
       <p>Forward only. Reset goes back to 25 Oct 2026 and clears what you did. Scripted fixture actions apply as you pass their dates.</p>
     </div>
     <div class="box">
+      <h2>The circle</h2>
+      <p>One ring per finished reveal, 52 dots, one per week of that journey. The newest ring sits next to the name; each reveal you finish pushes the older rings out one place. A week with photos has a bigger dot, the week a highlight opened the biggest. Only the owner sees the sizes: switch the viewer and open the same person to compare (§20 AAAAA, B88).</p>
+    </div>
+    <div class="box">
       <h2>Not in this quick demo</h2>
-      <p>Option switches, jump to next unlock (C17 is still open), the activity line and graph, reflections on old photos, real photos and handwriting. No database: everything lives in this page and resets on reload.</p>
+      <p>Option switches, jump to next unlock (C17 is still open), the flat graph and the profile timelines, reflections on old photos, real photos and handwriting. No database: everything lives in this page and resets on reload.</p>
     </div>
   </aside>
   <main class="phone" aria-label="The app">
@@ -160,6 +165,8 @@ const CROSS0 = [["lantern","2022-01-16","wind"],["lantern","2023-01-14","wind"],
   ["hands","2025-06-22","lantern"],["hands","2026-06-20","lantern"],["hands","2027-06-20","lantern"],["hands","2027-06-20","light"],
   ["round","2023-09-12","hands"]];
 const FEED_JOURNEYS = ["lantern2","lantern3","wind4","hands2","hands3","round2"]; // four working tags, §20 W
+// Highlights: [journey, window start, photos], Phase-1-Proposal §3.3. Their photos sit inside the 24 hours.
+const HIGHLIGHTS0 = { lantern1: ["2021-07-17T10:00:00Z", 19], lantern5: ["2025-08-09T09:00:00Z", 12], hands2: ["2024-06-18T06:00:00Z", 30] };
 
 function seeded(n) { let x = n * 9301 + 49297; return () => (x = (x * 9301 + 49297) % 233280) / 233280; }
 function build() {
@@ -172,8 +179,13 @@ function build() {
     if (split) { for (const [k, v] of [["private", split[0]], ["network", split[1]], ["public", split[2]]]) for (let i = 0; i < v; i++) vis.push(k); }
     const r = seeded(pid + 7);
     const order = vis.map((v, i) => [r(), v]).sort((a, b) => a[0] - b[0]).map(x => x[1]);
+    const [hStart, hCount] = HIGHLIGHTS0[id] ? [Date.parse(HIGHLIGHTS0[id][0]), HIGHLIGHTS0[id][1]] : [0, 0];
+    if (hCount) journeys[id].highlights.push({ start: hStart, count: hCount });
+    const normal = count - hCount;
     for (let i = 0; i < count; i++) {
-      const p = { id: "p" + (pid++), journey: id, captured: c + Math.floor((i + 0.5) * 360 / count) * DAY + Math.floor(r() * 50000) * 1000, vis: split ? order[i] : "network", visSet: !!split, hue: Math.floor(r() * 360), title: null, note: false, reflections: [], tags: [] };
+      const inHighlight = i >= normal;
+      const captured = inHighlight ? hStart + Math.floor((i - normal + 0.5) * DAY / hCount) : c + Math.floor((i + 0.5) * 360 / normal) * DAY + Math.floor(r() * 50000) * 1000;
+      const p = { id: "p" + (pid++), journey: id, captured, vis: split ? order[i] : "network", visSet: !!split, hue: Math.floor(r() * 360), title: null, note: false, reflections: [], tags: [], inHighlight };
       photos.push(p); journeys[id].photoIds.push(p.id);
     }
   }
@@ -209,7 +221,8 @@ function canSeePhoto(viewer, p, t = now()) {
   return inNetwork(viewer, j.owner, t); // B2 default: network reads from unlock
 }
 const factsVisible = (viewer, j) => viewer === j.owner || inNetwork(viewer, j.owner); // §20 T: type, dates, chapter, tags
-const ringCount = u => userJourneys(u).filter(j => isFinished(j)).length; // B4 default; §20 CCC: count only
+// B4 default: one ring per finished reveal, in the order of finishing (§20 AAAAA; B34). §20 CCC: others get the count only.
+const finishedJourneys = (u, t = now()) => userJourneys(u).filter(j => isFinished(j, t)).sort((a, b) => a.finished - b.finished);
 function framesAllowed(j, t) { const m = Math.min(12, Math.floor((new Date(t).getUTCFullYear() - new Date(j.commit).getUTCFullYear()) * 12 + new Date(t).getUTCMonth() - new Date(j.commit).getUTCMonth()) + 1); return TYPES[j.type].cadence * m; }
 function openHighlight(j, t = now()) { return j.highlights.find(h => t >= h.start && t < Math.min(h.start + DAY, j.unlock)); }
 
@@ -283,10 +296,44 @@ const el = (h) => { const t = document.createElement("template"); t.innerHTML = 
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 const draft = '<span class="draft">draft</span>';
 function tile(p) { return `<button class="tile" data-photo="${p.id}" style="background:linear-gradient(135deg,hsl(${p.hue} 35% 55%),hsl(${(p.hue + 40) % 360} 40% 38%))" aria-label="Photo from ${fmt(p.captured)}"><span>${fmt(p.captured).replace(/ \d{4}$/, "")}</span></button>`; }
-function circleSvg(name, rings) {
-  const size = 220, c = size / 2, out = [];
-  for (let i = 0; i < rings; i++) { const r = 44 + i * (60 / Math.max(rings, 1)) + 6; out.push(`<circle cx="${c}" cy="${c}" r="${Math.min(r, 104)}" fill="none" stroke="currentColor" stroke-opacity="${0.35 + 0.1 * (i % 3)}" stroke-width="3"/>`); }
-  return `<svg class="circle" width="${size}" height="${size}" viewBox="0 0 ${size} ${size}" role="img" aria-label="${esc(name)}'s circle" style="color:var(--teal)"><circle cx="${c}" cy="${c}" r="40" fill="var(--card)" stroke="var(--line)"/>${out.join("")}<text x="${c}" y="${c + 5}" text-anchor="middle" font-family="Young Serif, Georgia, serif" font-size="13" fill="var(--ink)">${esc(name.split(" ")[0])}</text><text x="${c}" y="${c + 20}" text-anchor="middle" font-family="Young Serif, Georgia, serif" font-size="13" fill="var(--ink)">${esc(name.split(" ").slice(1).join(" "))}</text></svg>`;
+// ---------- the dotted circle (§20 AAAAA; Art-Direction §3.2, §3.3; the same numbers as preview/build.py) ----------
+const WEEKS = 52, CORE_R = 80, FIRST_PITCH = 11, PITCH_RATIO = 0.85, CLEARANCE = 3, ANGLE_STEP = 135;
+const DOT_RATIOS = [0.12, 0.24, 0.36]; // a week with no photo, with a photo, the week a highlight opened
+const FRAME = "M87.75 109.41 Q108.92 95.79 126.19 87.50 A80 80 0 1 1 94.47 114.11 Q105.63 98.55 122.73 80.06"; // Art-Direction §3.1
+function ringValues(j) { // place j from the frame outward, 1 the newest
+  const p = FIRST_PITCH * PITCH_RATIO ** (j - 1);
+  let r = CORE_R + CLEARANCE; for (let i = 0; i < j; i++) r += FIRST_PITCH * PITCH_RATIO ** i;
+  return { p, r, radii: DOT_RATIOS.map(f => f * p) };
+}
+const utcDay = t => Math.floor(t / DAY);
+const weekOf = day => Math.min(Math.floor(day / 7), WEEKS - 1); // PROVISIONAL: B86, weeks from the commit date, week 52 takes 8 or 9 days
+function weekSizes(j) { // the owner's view only. No count is kept: a week with forty photos is a photo week
+  const sizes = Array(WEEKS).fill(0), c = utcDay(j.commit);
+  for (const p of j.photoIds.map(i => state.photos[i])) { const w = weekOf(utcDay(p.captured) - c); sizes[w] = Math.max(sizes[w], 1); }
+  for (const h of j.highlights) if (h.count > 0) sizes[weekOf(utcDay(h.start) - c)] = 2; // PROVISIONAL: B87, only a highlight that holds a photo
+  return sizes;
+}
+function dotRing(j, k, sizes) { // sizes null: 52 even dots, as everyone but the owner sees them (PROVISIONAL: B88)
+  const { r, radii } = ringValues(j), theta = (k * ANGLE_STEP) % 360, out = [];
+  for (let w = 0; w < WEEKS; w++) {
+    const a = (theta + 360 * (w + 0.5) / WEEKS) * Math.PI / 180;
+    out.push(`<circle cx="${(160 + r * Math.sin(a)).toFixed(2)}" cy="${(160 - r * Math.cos(a)).toFixed(2)}" r="${radii[sizes ? sizes[w] : 0].toFixed(2)}"/>`);
+  }
+  return `<g class="ring ${j === 1 ? "ink" : "soft"}" data-place="${j}">${out.join("")}</g>`; // the newest ring is the brightest (§20 IIII)
+}
+function balanced(name) {
+  const w = name.split(" ");
+  if (w.length === 1) return w;
+  let best = null;
+  for (let i = 1; i < w.length; i++) { const ls = [w.slice(0, i).join(" "), w.slice(i).join(" ")]; if (!best || Math.max(...ls.map(x => x.length)) < Math.max(...best.map(x => x.length))) best = ls; }
+  return best;
+}
+function circleSvg(owner, viewer) {
+  const js = finishedJourneys(owner), n = js.length;
+  const rings = js.map((j, i) => dotRing(n - i, i + 1, viewer === owner ? weekSizes(j) : null)).join("");
+  const ls = balanced(USERS[owner]), top = 160 - 14.5 * (ls.length - 1);
+  const text = ls.map((x, i) => `<tspan x="160" y="${(top + 29 * i).toFixed(1)}">${esc(x)}</tspan>`).join("");
+  return `<svg class="circle" viewBox="0 0 320 320" role="img" aria-label="${esc(USERS[owner])}'s circle"><path d="${FRAME}" fill="none" stroke="var(--ink)" stroke-width="2" stroke-linecap="round" aria-hidden="true"/><g class="dots" aria-hidden="true">${rings}</g><text text-anchor="middle" dominant-baseline="central" font-family="Young Serif, Georgia, serif" font-size="26" fill="var(--ink)">${text}</text></svg>`;
 }
 function navItems() {
   const items = [["profile", "Profile"], ["feed", "Feed"], ["positivity", "Positivity"], ["layers", "Layers"], ["people", "People"]];
@@ -296,7 +343,7 @@ function navItems() {
 function screenProfile() {
   const u = state.viewer, js = userJourneys(u).filter(j => j.commit <= now());
   const cur = current(u), ready = js.find(j => !isSealed(j) && !isFinished(j));
-  let h = `<h3>${esc(USERS[u])}</h3>${circleSvg(USERS[u], ringCount(u))}`;
+  let h = `<h3>${esc(USERS[u])}</h3>${circleSvg(u, u)}`;
   if (ready) h += `<div class="card"><p class="quote">Your Journey is ready.</p><button class="btn" data-go="reveal" data-j="${ready.id}">Open it</button></div>`;
   if (cur) {
     h += `<div class="card"><h4>Your journey is underway</h4><p>${TYPES[cur.type].name}. Committed ${fmt(cur.commit)}. Unlocks ${fmt(cur.unlock)}.</p>`;
@@ -323,7 +370,7 @@ function journeyRow(viewer, j) {
 }
 function screenOther(u) {
   const viewer = state.viewer, js = userJourneys(u).filter(j => j.commit <= now());
-  let h = `<button class="link" data-tab="people">Back</button><h3>${esc(USERS[u])}</h3>${circleSvg(USERS[u], ringCount(u))}`;
+  let h = `<button class="link" data-tab="people">Back</button><h3>${esc(USERS[u])}</h3>${circleSvg(u, viewer)}`;
   if (js.some(j => isSealed(j))) h += `<div class="card"><p>A journey is underway.</p></div>`;
   const past = js.filter(j => !isSealed(j));
   h += past.length ? `<h4>Path</h4><div class="list">${past.reverse().map(j => journeyRow(viewer, j)).join("")}</div>` : `<p class="lead">No unlocked journeys yet.</p>`;
